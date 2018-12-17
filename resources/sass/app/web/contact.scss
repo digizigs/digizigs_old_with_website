@@ -1,0 +1,88 @@
+
+#contact {
+  	padding-top: 40px;
+  	padding-bottom: 40px;
+	background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+	#google-map{
+
+	}
+
+	#contact-us {
+	  	
+		
+		
+	  	.heading {
+			
+			padding-bottom: 30px;
+			
+			h2{
+				font-size: 36px;
+				font-weight: 500;
+			}
+			p{
+				font-size: 18px;
+			}
+		}
+	}
+
+	.contact-info {
+		padding-left:70px;
+	  	font-weight: 300;
+
+	  	ul{
+	  		list-style: none;
+			li{
+				display: block;
+				padding: 15px;
+				font-size: 24px;
+				fa{
+					font-size: 24px;
+				}
+				span{
+					font-weight: 600;
+					margin-right: 20px;
+					margin-left: 20px;
+				}
+
+				a{
+					color: #fff;
+				}
+			}
+
+	  	}
+	}
+
+
+	.form-control {
+		background-color: transparent;
+	  	border-color: rgba(255,255,255,.1);
+	  	height: 50px;
+	  	border-radius: 0;
+	  	color: #fff;
+    }
+    textarea.form-control {
+		min-height: 180px;
+	  	resize:none;
+	}
+
+	.form-group {
+  		margin-bottom: 30px;
+	}
+
+	.btn-submit{
+		background-color:$primary_color;
+		color: #fff;
+	}
+
+	.btn-submit:hover{
+		background-color: $primary_hover_color;
+	}
+
+
+
+
+
+
+}

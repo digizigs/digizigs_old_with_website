@@ -1,0 +1,33 @@
+
+#stratergy{
+	padding-top: 60px;
+	padding-bottom: 50px;
+
+
+	.title{
+		text-align: center;
+		font-size: 72px;
+		font-weight: 800;
+		color: #221F1F;
+	}
+	
+	.img-box{
+		height: 400px;
+		width: 100%;
+		background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #CCDBEE;
+
+        img{
+        	height: 100%;
+        	width: 100%;
+        }
+	}
+
+	.points-box{
+		ul{
+			list-style: none;
+		}
+	}
+}

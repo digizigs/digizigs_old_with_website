@@ -1,0 +1,84 @@
+
+.bdr{
+  border:1px solid grey;
+}
+
+.mp0{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	margin: 0;
+  padding: 0;
+	font-family: 'Roboto', sans-serif; 
+  //font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;  
+  font-smoothing: antialiased; 
+  font-size:14px; 
+  color:#fff; 
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: #666;
+  background-color: #F9F9F9;
+}
+
+a:focus,
+a:hover,
+a:visited,
+input,
+input:hover,
+input:focus,
+input:active,
+select {
+  text-decoration: none;
+  outline: none !important; 
+}
+
+.parallax {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.parallax,
+.parallax h1,
+.parallax h2,
+.parallax h3,
+.parallax h4,
+.parallax h5,
+.parallax h6 {
+  color: #fff;
+}
+
+.parallax input[type="text"],
+.parallax input[type="text"]:hover,
+.parallax input[type="email"],
+.parallax input[type="email"]:hover,
+.parallax input[type="url"],
+.parallax input[type="url"]:hover,
+.parallax input[type="password"],
+.parallax input[type="password"]:hover,
+.parallax textarea,
+.parallax textarea:hover {
+  font-weight: 300;
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+
+

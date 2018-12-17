@@ -1,0 +1,38 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Bootstrap 4
+//@import '~bootstrap/scss/bootstrap';
+
+//Bootstrap 3.7
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+
+// Variables
+@import '../includes/variables';
+@import '../includes/presets';
+
+
+//Vendor
+@import '../vendor/animate';
+@import '../vendor/lightbox';
+
+
+//Auth
+@import 'auth/login';
+@import 'auth/register';
+
+//Custom Css
+@import 'web/typography';
+@import 'web/preloader';
+@import 'web/header';
+@import 'web/process';
+@import 'web/stratergy';
+@import 'web/our-service';
+@import 'web/features';
+@import 'web/portfolio';
+@import 'web/blog';
+@import 'web/contact';
+@import 'web/footer';

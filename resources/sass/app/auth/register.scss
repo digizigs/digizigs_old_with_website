@@ -1,0 +1,108 @@
+.reg-wrapper{
+	height: 100vh;
+	width: 100%;
+	background-color: $page-background-color;
+
+	.auth-box{
+		padding: 0;
+  		position: absolute;
+  		text-align: center;
+  		top: 50%;
+  		left: 50%;
+  		transform: translate(-50%, 10%);	
+	}
+	.brand-box{
+		padding: 20px 20px;
+		width: 100%;
+		font-size: 30px;
+		color: #fff;
+	}
+	.register-box{
+		margin: 0;
+		padding: 0;
+		//height: 300px;
+		width: 100%;
+		background-color: #fff;
+		padding: 10px;
+
+		.msg {
+		    color: $page-background-color;
+		    margin: 20px;
+		    text-align: center;
+		    font-weight: 500;
+		    a{
+		    	color: $page-background-color;
+		    }
+		}
+
+		.input-group{
+			margin-bottom: 0px; 
+			padding: 0 0px;
+			margin-top: 10px;
+			padding: 0 10px;
+			.input-group-addon {
+    			border: none;
+    			background-color: transparent;
+    			padding-left: 0;
+    			font-weight: bold;
+
+    			.fas{
+    				padding: 0;
+    				//margin-top: -20px;
+    			} 
+    		}
+
+			.form-line{
+				display: inline-block;
+    			width: 100%;
+    			border-bottom: 1px solid #ddd;
+    			position: relative;
+
+			}
+
+			input[type="text"],
+			.form-control {
+		    	border: none;
+		    	box-shadow: none;
+		    	padding-left: 0; 
+			}
+			.form-control{
+				padding: 10px !important;
+			}
+			.form-control:focus {
+    			-webkit-box-shadow: none !important;
+    			-moz-box-shadow: none !important;
+    			-ms-box-shadow: none !important;
+    			box-shadow: none !important; 
+			}	
+		}
+		.bg-pink {
+  			background-color: #E91E63 !important;
+  			color: #fff; }
+  		.bg-pink .content .text,
+  		.bg-pink .content .number {
+    		color: #fff !important; 
+    	}
+
+    	.waves-effect {
+  			background: rgba(233, 30, 99, 0.5); 
+  		}
+
+  		.caption{
+  			margin-top: 15px;
+  			
+  				
+  			a{
+  				color: $page-background-color;
+  				font-weight: 400;
+  			}
+  		}
+		.btn-login{
+			//margin-left: -20px;
+			margin-top: 20px;
+		}
+		.p-t-5{
+			padding-top: 5px;
+		}
+	}
+}

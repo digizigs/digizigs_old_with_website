@@ -1,0 +1,52 @@
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background: #fff;
+}
+
+.preloader > i {
+  position: absolute;
+  font-size: 36px;
+  line-height: 36px;
+  top: 50%;
+  left: 50%;
+  height: 36px;
+  width: 36px;
+  margin-top: -15px;
+  margin-left: -15px;
+  display: inline-block;
+}
+
+.top-move{
+  display: none;
+  position: fixed;
+  //height: 50px;
+  //width: 50px;
+  font-size: 24px;
+  padding: 10px;
+  background-color: $primary_color;
+  z-index: 9999;
+  bottom:40px;
+  right: 40px;
+  color: #fff;
+  opacity:.5;
+  border-radius:2px;
+  //-webkit-animation: bounce 3000ms infinite;
+  //animation: bounce 3000ms infinite;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.top-move:hover{
+  cursor: pointer;
+  background-color: $primary_hover_color;
+  opacity:1;
+}
