@@ -7,7 +7,7 @@
 @section('content')
 
 <!--.preloader-->
-<div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+<!--div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div-->
 <!--/.preloader-->
 
 <!--Move to top-->
