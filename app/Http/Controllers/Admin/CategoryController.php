@@ -12,7 +12,7 @@ class CategoryController extends Controller
     
     public function index()
     {
-        return view('admin\posts\category');
+        return view('admin.posts.category');
     }
 
     public function getcategories(){
