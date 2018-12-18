@@ -97,24 +97,24 @@
         </li><!--Inquiry-->
 
         <!--User Management -->
-        <li class="{{current_page('/appointment') ? 'active' : '' }} treeview">          
+        <li class="{{current_page('/accessmanagement') ? 'active' : '' }} treeview">          
           <a href="{{url('/admin/appointment/all')}}">
-            <i class="fa fa-users"></i> <span>User Management</span>
+            <i class="fa fa-universal-access"></i> <span>Access Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{current_page('appointment/all') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/all')}}"><i class="fa fa-briefcase"></i>Permissions</a>
+            <li class="{{current_page('accessmanagement/permission') ? 'active' : '' }}">
+              <a href="{{route('accessmanagement.permissions')}}"><i class="fa fa-key"></i>Permissions</a>
             </li> 
             
-            <li class="{{current_page('appointment/new') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/new')}}"><i class="fa fa-briefcase"></i>Roles</a>
+            <li class="{{current_page('accessmanagement/roles') ? 'active' : '' }}">
+              <a href="{{route('accessmanagement.roles')}}"><i class="fa fa-briefcase"></i>Roles</a>
             </li>
 
-            <li class="{{current_page('appointment/create') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/create')}}"><i class="fa fa-user"></i>Users</a>
+            <li class="{{current_page('accessmanagement/user') ? 'active' : '' }}">
+              <a href="{{route('accessmanagement.users')}}"><i class="fa fa-users"></i>Users</a>
             </li>
           </ul>
         </li><!--User Management-->

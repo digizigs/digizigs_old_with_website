@@ -1,24 +1,68 @@
+
+
+import moment from 'moment'
+import Vue from 'vue'
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
 
-//Vue.component('example-component', require('../components/ExampleComponent.vue'));
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key)))
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+//Sweet Alert
+import Swal from 'sweetalert2';
+window.swal = Swal;
+const toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
+const swalWithBootstrapButtons = Swal.mixin({
+  confirmButtonClass: 'btn btn-success',
+  cancelButtonClass: 'btn btn-danger',
+  buttonsStyling: false,
+})
+
+window.toast = toast;
+window.swalWithBootstrapButtons = swalWithBootstrapButtons;
+
+
+
+let routes = [
+	{ path: '/subscriptions', component: require('../components/admin/subscription/Subscriptions.vue') }
+];
+
+
+const router = new VueRouter({
+	mode: 'history',
+	routes
+})
+
+
+Vue.component('category', require('../components/admin/category/Category.vue'));
+Vue.component('editcategory', require('../components/admin/category/EditCategory.vue'));
+Vue.component('newpost', require('../components/admin/post/NewPost.vue'));
+Vue.component('subscriptions', require('../components/admin/subscription/Subscriptions.vue'));
+
+//Access Controll
+Vue.component('roles', require('../components/admin/accesscontroll/Roles.vue'));
+Vue.component('addroles', require('../components/admin/accesscontroll/AddRole.vue'));
+Vue.component('permissions', require('../components/admin/accesscontroll/Permissions.vue'));
+Vue.component('users', require('../components/admin/accesscontroll/Users.vue'));
+
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
 });
+
+//Filters
+//vue.filter('upFirstText',function(text){
+	//return text.charAt(0).toUpperCase() + text.slice(1)
+//})
+
+Vue.filter('myDate',function(created){
+  return moment(created, "YYYYMMDD").fromNow();
+})

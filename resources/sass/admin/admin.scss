@@ -1,0 +1,25 @@
+// Bootstrap 4
+//@import '~bootstrap/scss/bootstrap';
+
+//Bootstrap 3.7
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
+
+// Variables
+@import '../includes/variables';
+@import '../includes/presets';
+
+
+//Vendor
+@import '../../vendor/select2/select2';
+
+
+
+//misc
+@import 'adminlte';
+@import 'custom';
+
+//Pages
+@import 'pages/setting';
+@import 'pages/category';

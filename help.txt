@@ -101,3 +101,6 @@ flush privileges;
 
 //pdf
 https://itsolutionstuff.com/post/laravel-57-generate-pdf-from-html-exampleexample.html
+
+//clear app config catch
+php artisan config:cache

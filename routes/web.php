@@ -49,4 +49,12 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
     Route::get('/getsubscriptions', 'Admin\SubscriptionController@getSubscription')->name('get.subscriptions');
 
 
+    //Access Management
+    Route::get('/accessmanagement/roles', 'Admin\RoleController@index')->name('accessmanagement.roles');
+    Route::get('/accessmanagement/getroles', 'Admin\RoleController@getroles');
+    Route::resource('/accessmanagement/addrole', 'Admin\RoleController');
+
+    Route::get('/accessmanagement/permissions', 'Admin\PermissionController@index')->name('accessmanagement.permissions');
+    Route::get('/accessmanagement/users', 'Admin\UserController@index')->name('accessmanagement.users');
+
 });    

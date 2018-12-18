@@ -1,63 +1,41 @@
+//fonts
+.alt-font {font-family: 'Montserrat', sans-serif; font-weight: 500}
+.main-font {font-family: 'Roboto', sans-serif;}
 
-// Body
-$body-bg: #f8fafc;
+//Margin
+.m-t-10{margin-top: 10px;}
+.m-t-20{margin-top: 20px;}
+.m-t-30{margin-top: 30px;}
+.m-t-40{margin-top: 40px;}
+.m-t-50{margin-top: 50px;}
 
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 14px;
-$line-height-base: 1.6;
-
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
-$dark-pink:#E91E63;
-
-
-//Variables
-$primary_color:#028FCC;
-$primary_hover_color:#027DB3;
-
-
-$section_title_font_size:38px;
-$section_title_font_weight:600;
-
-//===================Admin==========================
-$top-nav-background:#fff;
+.m-b-10{margin-bottom: 10px;}
 
 
 
-$sidebar-background:#494D55;       //Active
-$sidebar-li-color:#fff;
-$sidebar-li-hover-background:#23282D;
+.p-5{padding: 5px;}
+.p-10{padding: 10px;}
+.p-l-r-10{padding-left: 20px !important; padding-right: 20px !important;}
+
+.mp-0{margin: 0 !important;padding: 0 !important}
+.m-0{margin: 0 !important}
+
+//Padding
+.no-padding-left-right {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
 
 
-$page-background:#F9F9FB;
+//box shadow
+/* box-shadow */
+.btn-shadow { box-shadow: 0 0 6px rgba(0,0,0,.3);}
+.box-shadow-light { box-shadow: 0 0 3px rgba(0,0,0,.1);}
+.box-shadow { box-shadow: 0 0 3px rgba(0,0,0, .2);}
+.box-shadow-dark { box-shadow: 0 0 4px rgba(0,0,0,.4);}
+.box-shadow-large { box-shadow: 0 0 12px rgba(0,0,0,.1);}
 
-$footer-background:#fff;
-
-//Admin Nav Color
-$nav-color:#028FCC;
-$nav-li-color:#fff;
-$nav-li-hover:#027DB3;
-
-//Admin Sidebar
-$sidebar-background-color:#FBFBFC ;
-//$sidebar-li-color:#168796;
-$sidebar-hover-background:#fff ;
-$sidebar-left-border:#007D96;
-$sidebar-hover-color:#007D96;
-$sidebar-li-li-color:#ECF0F5;
-
-//footer
-
-
-//Login Page
-$page-background-color:#00BCD4;
+.btn-primary{
+	background-color: $nav-color !important;
+	border-radius:2px !important;
+}
