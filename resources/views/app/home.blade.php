@@ -29,7 +29,7 @@
                             <span   class="txt-rotate" 
                                     data-period="2000" 
                                     data-rotate='[ "Hello.",
-                                                 "We are DigiZigs", 
+                                                 "We are DigiZigs ", 
                                                  "we transfer research", 
                                                  "..into insight to create", 
                                                  " memorable experience on the web" ]'>

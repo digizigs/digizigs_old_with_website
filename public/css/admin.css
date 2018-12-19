@@ -15115,7 +15115,7 @@ body {
 }
 
 .main-sidebar {
-  background-color: #494D55;
+  background-color: #222D32;
 }
 
 .main-sidebar .sidebar-menu a {
@@ -15140,7 +15140,7 @@ body {
 }
 
 .main-sidebar .sidebar-menu li.active {
-  background-color: #23282D;
+  background-color: #2C3B41;
 }
 
 .main-sidebar .sidebar-menu li.active li.active a {
@@ -15148,7 +15148,7 @@ body {
 }
 
 .main-sidebar li:hover {
-  background-color: #23282D;
+  background-color: #2C3B41;
 }
 
 .main-sidebar .treeview-menu > li > a {
@@ -15190,7 +15190,7 @@ body {
 
 .main-content .main-content-header h4 {
   font-weight: 600;
-  color: #23282D;
+  color: #2C3B41;
 }
 
 .main-content .main-content-header .fa,

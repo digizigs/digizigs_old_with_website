@@ -10,7 +10,7 @@ use PDF;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-
+use Alert;
 
 class AppController extends Controller
 {
@@ -30,7 +30,7 @@ class AppController extends Controller
 
         //return Auth()->user()->permissions;
 
-        
+         Alert::message('Robots are working!');
         return view('app/home');
 
     }
@@ -52,8 +52,10 @@ class AppController extends Controller
     	$connect->email = $email;
     	$connect->type = 'subscription';
     	$is_save = $connect->save();
-
+        Alert::message('Robots are working!');
+        
     	if ($is_save){
+            Alert::message('Robots are working!');
     		return redirect()->back()->with('subscription','Subscription done');
     	}   
     }

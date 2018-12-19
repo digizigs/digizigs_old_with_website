@@ -4,23 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
    
-    public function index()
-    {       
-        return view('admin.accesscontroll.roles');
+    public function index(){       
+        $roles = Role::all();
+
+        return view('admin.accesscontroll.roles', compact('roles'));
     }
 
 
     public function getroles()
     {
         $roles = Role::orderby('created_at','desc')->get();
-        //$permission = Role::findByName($roles)->permissions;
+        $permission = Permission::orderby('created_at','desc')->get();
 
-        return request()->json(200,$roles);
+        return request()->json(200,['roles'=>$roles,'permissions'=>$permission]);
     }
 
    

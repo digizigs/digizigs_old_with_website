@@ -55,6 +55,10 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
     Route::resource('/accessmanagement/addrole', 'Admin\RoleController');
 
     Route::get('/accessmanagement/permissions', 'Admin\PermissionController@index')->name('accessmanagement.permissions');
+    Route::get('/accessmanagement/getpermissions', 'Admin\PermissionController@getpermission');
+    Route::resource('/accessmanagement/addpermission', 'Admin\PermissionController');
+
+
     Route::get('/accessmanagement/users', 'Admin\UserController@index')->name('accessmanagement.users');
 
 });    

@@ -4,3 +4,5 @@
 
 
 <!--script src="{{asset('public/admin/js/app.min.js')}}"></script-->
+
+@yield('javascript')

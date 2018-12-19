@@ -79,6 +79,7 @@
 			return{
 				role:{role_name:''},
 				roles:{},
+				permissions:{},
 				success:'',
 				errors:'',
 			}
@@ -142,8 +143,9 @@
 		created(){
 			axios.get('getroles')
 			.then((response) => {
-				this.roles=response.data
-				//console.log(this.categories)
+				this.roles=response.data.roles
+				this.permissions=response.data.permissions
+				console.log(response.data.roles)
 			})//this.appointments=response.data
 			.catch((error) => console.log(error))
 		}
