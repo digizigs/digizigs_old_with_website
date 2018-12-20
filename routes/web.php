@@ -1,5 +1,7 @@
 <?php
 
+//use Analytics;
+use Spatie\Analytics\Period;
 
 
 //App
@@ -44,9 +46,9 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
     Route::get('/tags', 'Admin\TagController@index')->name('tags');
 
 
-    //Subscription
-    Route::get('/subscriptions', 'Admin\SubscriptionController@index')->name('subscriptions');
-    Route::get('/getsubscriptions', 'Admin\SubscriptionController@getSubscription')->name('get.subscriptions');
+    //Subscription and Contacts
+    Route::get('/connects/subscriptions', 'Admin\SubscriptionController@index')->name('subscriptions');
+    Route::get('/connects/getsubscriptions', 'Admin\SubscriptionController@getSubscription')->name('get.subscriptions');
 
 
     //Access Management
@@ -60,5 +62,20 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
 
 
     Route::get('/accessmanagement/users', 'Admin\UserController@index')->name('accessmanagement.users');
+
+    //Media Library
+    Route::get('/medialibrary/gallery', 'Admin\MedialibraryController@index')->name('medialibrary.gallery');
+
+
+
+
+
+    //testlab
+    Route::get('/testlab/test', function(){
+
+        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+        dd($analyticsData);
+        return view('admin.test');
+    })->name('testlab');
 
 });    

@@ -16,7 +16,7 @@
 
 <!--script src="{{asset('public/assets/ckeditor/ckeditor.js')}}"></script-->
 <!--script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script-->
-
+<link rel="stylesheet" href="{{asset('public/vendor/select2/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('public/css/admin.css')}}">
 
 @section('HeaderSection')

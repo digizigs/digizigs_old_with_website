@@ -41,62 +41,55 @@
           </a>
         </li><!--Category-->
 
-        <!--Category-->
+        <!--Tags-->
         <li class="{{current_page('/tags') ? 'active' : '' }}">
           <a href="{{route('tags')}}">
             <i class="fa fa-tags"></i> <span>Tags</span>
           </a>
-        </li><!--Category-->
-
-        
-        <!--New Vue Appointment -->
-        <li class="{{current_page('/appointment') ? 'active' : '' }} treeview">          
-          <a href="{{url('/admin/appointment/all')}}">
-            <i class="fa fa-handshake-o"></i> <span>Appointment</span>
+        </li><!--Tags-->
+                               
+        <!--Connects -->
+        <li class="{{current_page('/connects') ? 'active' : '' }} treeview">          
+          <a href="{{route('subscriptions')}}">
+            <i class="fa fa-plug"></i> <span>Connects</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{current_page('appointment/all') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/all')}}"><i class="fa fa-circle-o"></i> All Appointments</a>
+            <li class="{{current_page('connects/subscription') ? 'active' : '' }}">
+              <a href="{{route('subscriptions')}}"><i class="fa fa-flag-checkered"></i>Subscriptions</a>
             </li> 
             
-            <li class="{{current_page('appointment/new') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/new')}}"><i class="fa fa-circle-o"></i>Book Appointment</a>
+            <li class="{{current_page('connects/inquiry') ? 'active' : '' }}">
+              <a href="{{route('admin.settings')}}"><i class="fa fa-telegram"></i>Inquiry</a>
             </li>
-
-            <li class="{{current_page('appointment/create') ? 'active' : '' }}">
-              <a href="{{url('/admin/appointment/create')}}"><i class="fa fa-circle-o"></i> Doctor Schedule</a>
-            </li>
-          </ul>
-        </li><!--Appointment-->
-
-
-
-
-        <!--Profile-->
-        <li class="{{current_page('profile') ? 'active' : '' }}">
-          <a href="{{url('/admin/profile')}}">
-            <i class="fa fa-user"></i> <span>Profile</span>
-          </a>
-        </li><!--Profile-->
         
-        <!--Subscriptions-->
-        <li class="{{current_page('subscription') ? 'active' : '' }}">
-          <a href="{{route('subscriptions')}}">
-            <i class="fa fa-flag-checkered"></i> <span>Subscriptions</span>
-          </a>
-        </li><!--Subscriptions-->
+          </ul>
+        </li><!--Connects-->
 
-        <!--Inquiry-->
-        <li class="{{current_page('inquiry') ? 'active' : '' }}">
-          <a href="{{route('admin.settings')}}">
-            <i class="fa fa-telegram"></i> <span>Inquiry</span>
+         <!--Media Library -->
+        <li class="{{current_page('/medialibrary') ? 'active' : '' }} treeview">          
+          <a href="">
+            <i class="fa fa-picture-o"></i> <span>Media Library</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
-        </li><!--Inquiry-->
+          <ul class="treeview-menu">
+            <li class="{{current_page('medialibrary/gallery') ? 'active' : '' }}">
+              <a href="{{route('medialibrary.gallery')}}"><i class="fa fa-camera-retro"></i>Gallery</a>
+            </li> 
+            
+            <li class="{{current_page('connects/inquiry') ? 'active' : '' }}">
+              <a href="{{route('admin.settings')}}"><i class="fa fa-telegram"></i>Inquiry</a>
+            </li>
+        
+          </ul>
+        </li><!--Media Library-->
 
-        <!--User Management -->
+
+        <!--Access Management -->
         <li class="{{current_page('/accessmanagement') ? 'active' : '' }} treeview">          
           <a href="{{url('/admin/appointment/all')}}">
             <i class="fa fa-universal-access"></i> <span>Access Management</span>
@@ -117,7 +110,31 @@
               <a href="{{route('accessmanagement.users')}}"><i class="fa fa-users"></i>Users</a>
             </li>
           </ul>
-        </li><!--User Management-->
+        </li><!--Access Management-->
+
+         <!--Test Lab -->
+        <li class="{{current_page('/testlab/') ? 'active' : '' }} treeview">          
+          <a href="">
+            <i class="fa fa-flask"></i> <span>Test Lab</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+
+          <ul class="treeview-menu">
+            <li class="{{current_page('testlab/test') ? 'active' : '' }}">
+              <a href="{{route('testlab')}}"><i class="fa fa-circle-o"></i> Test</a>
+            </li> 
+                
+          </ul>
+        </li><!--Test Lab-->
+
+        <!--Profile-->
+        <li class="{{current_page('account') ? 'active' : '' }}">
+          <a href="{{url('/admin/profile')}}">
+            <i class="fa fa-user"></i> <span>Account</span>
+          </a>
+        </li><!--Profile-->
 
         <!--Setting-->
         <li class="{{current_page('setting') ? 'active' : '' }}">
@@ -128,6 +145,21 @@
             <i class="fa fa-cogs"></i> <span>Settings</span>
           </a>
         </li><!--Setting-->
+
+        <!--Logout-->
+        <li class="{{current_page('setting') ? 'active' : '' }}">
+          <!--a href="{{route('admin.settings')}}">
+            <i class="fa fa-cogs"></i> <span>Settings</span>
+          </a-->
+          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="fa fa-power-off"></i> <span>Logout</span>
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+          </form>
+        </li><!--Logout-->
+
+
       </ul>
 
     </section>

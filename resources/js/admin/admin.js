@@ -10,7 +10,7 @@ require('../includes/vue');
 
 
 //Vendor
-require('../vendor/select2/select2');
+//require('../vendor/select2/select2');
 
 
 

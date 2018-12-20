@@ -72380,7 +72380,8 @@ __webpack_require__(219);
 __webpack_require__(164);
 
 //Vendor
-__webpack_require__(220);
+//require('../vendor/select2/select2');
+
 
 //Admin LTE js
 __webpack_require__(221);
@@ -72688,12 +72689,7 @@ window.FontAwesomeCdnConfig = {
 }();
 
 /***/ }),
-/* 220 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
+/* 220 */,
 /* 221 */
 /***/ (function(module, exports) {
 
