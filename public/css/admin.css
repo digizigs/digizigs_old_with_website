@@ -13546,7 +13546,7 @@ table.text-center th {
 
 .select2-dropdown {
   border: 1px solid #d2d6de;
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -14594,5 +14594,61 @@ body {
 
 .category td {
   text-align: center !important;
+}
+
+.role-modal {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.role-modal .modal-content {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.role-modal .panel {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.role-action-seperator {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.roles .fa-pencil {
+  color: #e49606;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.roles .fa-trash-o {
+  color: #bd3535;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.permissions .fa-pencil {
+  color: #e49606;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.permissions .fa-trash-o {
+  color: #bd3535;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.users .fa-pencil {
+  color: #e49606;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.users .fa-trash-o {
+  color: #bd3535;
+  font-weight: 600;
+  cursor: pointer;
 }
 

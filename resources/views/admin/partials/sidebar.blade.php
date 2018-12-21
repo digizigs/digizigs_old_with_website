@@ -91,7 +91,7 @@
 
         <!--Access Management -->
         <li class="{{current_page('/accessmanagement') ? 'active' : '' }} treeview">          
-          <a href="{{url('/admin/appointment/all')}}">
+          <a href="">
             <i class="fa fa-universal-access"></i> <span>Access Management</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

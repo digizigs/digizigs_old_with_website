@@ -52,16 +52,22 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
 
 
     //Access Management
-    Route::get('/accessmanagement/roles', 'Admin\RoleController@index')->name('accessmanagement.roles');
-    Route::get('/accessmanagement/getroles', 'Admin\RoleController@getroles');
-    Route::resource('/accessmanagement/addrole', 'Admin\RoleController');
+        //Roles
+    Route::get('/accessmanagement/roles', 'Admin\AccessControl\RoleController@index')->name('accessmanagement.roles');
+    Route::post('/accessmanagement/saveroles', 'Admin\AccessControl\RoleController@store')->name('accessmanagement.role.save');
+    //Route::get('/accessmanagement/getroles', 'Admin\RoleController@getroles');
+    //Route::resource('/accessmanagement/addrole', 'Admin\RoleController');
+   
 
-    Route::get('/accessmanagement/permissions', 'Admin\PermissionController@index')->name('accessmanagement.permissions');
-    Route::get('/accessmanagement/getpermissions', 'Admin\PermissionController@getpermission');
-    Route::resource('/accessmanagement/addpermission', 'Admin\PermissionController');
 
+        //Permissions
+    Route::get('/accessmanagement/permissions', 'Admin\AccessControl\PermissionController@index')->name('accessmanagement.permissions');
+    Route::post('/accessmanagement/savepermissions', 'Admin\AccessControl\PermissionController@store')->name('accessmanagement.permission.save');
+    //Route::get('/accessmanagement/getpermissions', 'Admin\PermissionController@getpermission');
+    //Route::resource('/accessmanagement/addpermission', 'Admin\PermissionController');
 
-    Route::get('/accessmanagement/users', 'Admin\UserController@index')->name('accessmanagement.users');
+        //Users
+    Route::get('/accessmanagement/users', 'Admin\AccessControl\UserController@index')->name('accessmanagement.users');
 
     //Media Library
     Route::get('/medialibrary/gallery', 'Admin\MedialibraryController@index')->name('medialibrary.gallery');

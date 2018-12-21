@@ -62,9 +62,9 @@
 			                                        <span class="label label-info label-many">{{ $permission }}</span>
 			                                    @endforeach
 						                  	</td>
-						                  	<td>
-						                  		<i class="fa fa-key actionicon" aria-hidden="true"></i> | 
-						                  		<i class="fa fa-pencil actionicon" aria-hidden="true"></i> | 
+						                  	<td>						                  
+						                  		<i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+						                  		<span class="role-action-seperator">|</span> 
 						                  		<i class="fa fa-trash-o actionicon" aria-hidden="true" @click="deleterole(role.id)"></i>
 						                  	</td>                 
 						                </tr>
@@ -81,23 +81,22 @@
 	        
 	    </div>
 
-	   
-
 		<!--Add Role modal-->
 		<div class="modal fade" id="addrole" role="dialog"  data-backdrop="false">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
-					<div class="modal-header ">
+					<div class="modal-header panel-heading">
 						<button type="button" class="close" data-dismiss="modal" >&times;</button>
 						<h4 class="modal-title"><b>New Role</b></h4>
 					</div>
 					<div class="modal-body">
 						
-						<form  role="form" class="form-horizontal">
+						<form  role="form" class="form-horizontal" action=" {{ URL::route('accessmanagement.role.save') }}" method="post">
+							{{ csrf_field() }}
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Role Name</label>
 								<div class="col-sm-10">
-									<input class="form-control" type="text"  >
+									<input class="form-control" type="text" name="name" required="Please ente a Role Name">
 									<i><small>The name is how it appears.</small></i>
 								</div>
 								
@@ -106,28 +105,30 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Permission</label>
 								<div class="col-sm-10">
-									<select class="form-control select2 select2-hidden-accessible " multiple="" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
-										<option>Alabama</option>
-										<option>Alaska</option>
-										<option>California</option>
-										<option>Delaware</option>
-										<option>Tennessee</option>
-										<option>Texas</option>
-										<option>Washington</option>
-										</select>
-
-									</div>
-									
+									<select class="form-control select2 select2-hidden-accessible " multiple=""  style="width: 100%;" tabindex="-1" aria-hidden="true" name="permission[]">
+										@if (count($permissions) > 0)
+											@foreach ($permissions as $permission)
+												<option>{{$permission}}</option>
+											@endforeach
+										@endif									
+									</select>
 								</div>
 								
-							</form>
-						</div>
-						<div class="modal-footer">
+							</div>
+							
+							
 							<button class="btn btn-primary btn-sm" >Add Role</button>
-						</div>
+							
+						</form>
+						
+						
 					</div>
+
+				
+					
 				</div>
 			</div>
+		</div>
 
 
 	</section>
@@ -147,7 +148,7 @@
 
 
 		
-    $(".select2").select2();
+    		$(".select2").select2();
 
 
 

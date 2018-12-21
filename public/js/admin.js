@@ -72384,7 +72384,7 @@ __webpack_require__(164);
 
 
 //Admin LTE js
-__webpack_require__(221);
+__webpack_require__(220);
 
 /***/ }),
 /* 219 */
@@ -72689,8 +72689,7 @@ window.FontAwesomeCdnConfig = {
 }();
 
 /***/ }),
-/* 220 */,
-/* 221 */
+/* 220 */
 /***/ (function(module, exports) {
 
 /*! AdminLTE app.js

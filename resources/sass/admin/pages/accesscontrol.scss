@@ -1,0 +1,67 @@
+.role-modal{
+	margin: 0 !important;
+	padding: 0 !important;
+
+	.modal-content{
+		margin: 0 !important;
+		padding: 0 !important;
+		//background-color: red;
+	}
+
+
+	.panel{
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+.role-action-seperator{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+
+.roles{
+	
+	.fa-pencil{
+		color: #e49606;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.fa-trash-o{
+		color: #bd3535;
+		font-weight: 600;
+		cursor: pointer;
+	}
+}
+
+.permissions{
+	.fa-pencil{
+		color: #e49606;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.fa-trash-o{
+		color: #bd3535;
+		font-weight: 600;
+		cursor: pointer;
+	}
+}
+
+.users{
+	
+	.fa-pencil{
+		color: #e49606;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.fa-trash-o{
+		color: #bd3535;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+}
