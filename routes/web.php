@@ -9,10 +9,10 @@ Route::get('', 'App\AppController@index')->name('apphome');
 Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
 Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
-Route::get('/blog', 'Blog\BlogController@index')->name('blog');
-Route::get('/ecom', 'Ecom\EcomController@index')->name('blog');
-Route::get('/resume', 'Web\AppController@index')->name('app.resume');
-Route::get('/curtainmenu', 'Web\AppController@curtainmenu')->name('app.resume');
+//Route::get('/blog', 'Blog\BlogController@index')->name('blog');
+//Route::get('/ecom', 'Ecom\EcomController@index')->name('blog');
+//Route::get('/resume', 'Web\AppController@index')->name('app.resume');
+//Route::get('/curtainmenu', 'Web\AppController@curtainmenu')->name('app.resume');
 
 
 
@@ -53,21 +53,22 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
 
     //Access Management
         //Roles
-    Route::get('/accessmanagement/roles', 'Admin\AccessControl\RoleController@index')->name('accessmanagement.roles');
-    Route::post('/accessmanagement/saveroles', 'Admin\AccessControl\RoleController@store')->name('accessmanagement.role.save');
-    //Route::get('/accessmanagement/getroles', 'Admin\RoleController@getroles');
-    //Route::resource('/accessmanagement/addrole', 'Admin\RoleController');
+    //Route::get('/accessmanagement/roles', 'Admin\AccessControl\RoleController@index')->name('accessmanagement.roles');
+    //Route::post('/accessmanagement/saveroles', 'Admin\AccessControl\RoleController@store')->name('accessmanagement.role.save');
+    //Route::get('/accessmanagement/getroles', 'Admin\AccessControl\RoleController@getroles');
+    Route::resource('/accessmanagement/role', 'Admin\AccessControl\RoleController'); //Role
    
 
 
         //Permissions
-    Route::get('/accessmanagement/permissions', 'Admin\AccessControl\PermissionController@index')->name('accessmanagement.permissions');
-    Route::post('/accessmanagement/savepermissions', 'Admin\AccessControl\PermissionController@store')->name('accessmanagement.permission.save');
+    Route::resource('/accessmanagement/permission', 'Admin\AccessControl\PermissionController'); //Permission
+    //Route::get('/accessmanagement/permissions', 'Admin\AccessControl\PermissionController@index')->name('accessmanagement.permissions');
+    //Route::post('/accessmanagement/savepermissions', 'Admin\AccessControl\PermissionController@store')->name('accessmanagement.permission.save');
     //Route::get('/accessmanagement/getpermissions', 'Admin\PermissionController@getpermission');
     //Route::resource('/accessmanagement/addpermission', 'Admin\PermissionController');
 
         //Users
-    Route::get('/accessmanagement/users', 'Admin\AccessControl\UserController@index')->name('accessmanagement.users');
+    Route::resource('/accessmanagement/user', 'Admin\AccessControl\UserController'); //Permission
 
     //Media Library
     Route::get('/medialibrary/gallery', 'Admin\MedialibraryController@index')->name('medialibrary.gallery');

@@ -11,6 +11,10 @@
 			<p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
 		@endif
 
+		@if(Session::has('deleted'))
+			<p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
+		@endif
+
 
 		<div class="main-content-header box-shadow box">
 			<div class="row">
@@ -27,7 +31,7 @@
 			<div class="row">
 				
 				<div class="col-md-6 col-xs-6">
-					<form  role="form" class="form-horizontal" action=" {{ URL::route('accessmanagement.permission.save') }}" method="post">
+					<form  role="form" class="form-horizontal" action=" {{ URL::route('permission.store') }}" method="post">
 						{{ csrf_field() }}
 						<div class="input-group input-group-sm" >
 							<input type="text" name="name" class="form-control pull-right" placeholder="Add new permission" required="">
@@ -55,9 +59,15 @@
 										<tr id="{{ $permission->id }}">
 											<td>{{ $permission->name }}</td>
 											<td>
-												<i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+												<a href="{{ route('permission.edit',$permission->id) }}">
+													<i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+												</a>
 												<span class="role-action-seperator">|</span>
-												<i class="fa fa-trash-o actionicon" aria-hidden="true" ></i>
+												<form action="{{ route('permission.destroy' , $permission->id ) }}" method="POST" style="display: inline-block;">
+												    {{ csrf_field() }}
+												    {{ method_field('DELETE') }}
+												    <button style="background: none;border: none;"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
+												</form>
 											</td>
 										</tr>
 									@endforeach
@@ -89,7 +99,7 @@
 			    $("#successMessage").fadeTo(500, 0).slideUp(500, function(){
 			        $(this).remove(); 
 			    });
-			}, 4000);
+			}, 2000);
 
 		});
 	</script>

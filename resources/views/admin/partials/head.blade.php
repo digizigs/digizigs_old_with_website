@@ -9,6 +9,7 @@
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{asset('public/images/fevicon/logo-icon.png')}}" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Font Awesome -->
 <!--ink rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"-->

@@ -99,15 +99,15 @@
           </a>
           <ul class="treeview-menu">
             <li class="{{current_page('accessmanagement/permission') ? 'active' : '' }}">
-              <a href="{{route('accessmanagement.permissions')}}"><i class="fa fa-key"></i>Permissions</a>
+              <a href="{{route('permission.index')}}"><i class="fa fa-key"></i>Permissions</a>
             </li> 
             
-            <li class="{{current_page('accessmanagement/roles') ? 'active' : '' }}">
-              <a href="{{route('accessmanagement.roles')}}"><i class="fa fa-briefcase"></i>Roles</a>
+            <li class="{{current_page('accessmanagement/role') ? 'active' : '' }}">
+              <a href="{{route('role.index')}}"><i class="fa fa-briefcase"></i>Roles</a>
             </li>
 
             <li class="{{current_page('accessmanagement/user') ? 'active' : '' }}">
-              <a href="{{route('accessmanagement.users')}}"><i class="fa fa-users"></i>Users</a>
+              <a href="{{route('user.index')}}"><i class="fa fa-users"></i>Users</a>
             </li>
           </ul>
         </li><!--Access Management-->

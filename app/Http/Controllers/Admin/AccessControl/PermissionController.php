@@ -28,39 +28,38 @@ class PermissionController extends Controller
         //}
 
         Permission::create($request->all());
-        return redirect()->route('accessmanagement.permissions')->with('message', 'Permission added successfully');
+        return redirect()->route('permission.index')->with('message', 'Permission added successfully');
        
     }
    
     public function edit($id) {
-        if (! Gate::allows('users_manage')) {
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
         $permission = Permission::findOrFail($id);
-
-        return view('admin.permissions.edit', compact('permission'));
+        return view('admin.accesscontroll.permissionsedit', compact('permission'));
     }
 
    
     public function update(Request $request, $id) {
-         if (! Gate::allows('users_manage')) {
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
         $permission = Permission::findOrFail($id);
         $permission->update($request->all());
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('permission.index')->with('message', 'Permission Updated successfully');;
     }
 
     
     public function destroy($id) {
-        if (! Gate::allows('users_manage')) {
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
         $permission = Permission::findOrFail($id);
         $permission->delete();
 
-        return redirect()->route('admin.permissions.index');
+        return redirect()->route('permission.index')->with('deleted', 'Permission deleted successfully');
     }
 
     public function massDestroy(Request $request)

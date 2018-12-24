@@ -50,7 +50,7 @@ class RoleController extends Controller
 
         //$roles = Role::orderby('created_at','desc')->get();
         //return request()->json(200,$roles);
-        return redirect()->route('accessmanagement.roles');
+        return redirect()->route('role.index')->with('message', 'Role added successfully');
     }
 
   
@@ -59,14 +59,15 @@ class RoleController extends Controller
     
     public function edit($id)
     {
-         if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('users_manage')) {
             return abort(401);
         }
         $permissions = Permission::get()->pluck('name', 'name');
 
         $role = Role::findOrFail($id);
 
-        return view('admin.roles.edit', compact('role', 'permissions'));
+
+        return view('admin.accesscontroll.roleedit', compact('role', 'permissions'));
     }
 
   
@@ -80,26 +81,21 @@ class RoleController extends Controller
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->syncPermissions($permissions);
 
-        return redirect()->route('admin.roles.index');
+        return redirect()->route('role.index')->with('message', 'Role updated successfully');
     }
 
    
     public function destroy($id)
     {
-        $role = Role::find($id);
-        $is_deleted=$role->delete();
-        if($is_deleted){
-            $roles=Role::orderby('created_at','desc')->get();
-            return request()->json(200,$roles);
-        }
+        
 
-         /*if (! Gate::allows('users_manage')) {
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
         $role = Role::findOrFail($id);
         $role->delete();
 
-        return redirect()->route('admin.roles.index');*/
+         return redirect()->route('role.index')->with('deleted', 'Role deleted successfully');
         
     }
 }

@@ -5,7 +5,18 @@
 
 
 @section('content')
-  <section class="roles ">
+	
+	
+  	<section class="roles ">
+		
+		@if(Session::has('message'))
+			<p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
+		@endif
+
+
+		@if(Session::has('deleted'))
+			<p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
+		@endif
 
 		<div class="main-content-header box-shadow box box-header">
 	        <div class="row">
@@ -63,9 +74,17 @@
 			                                    @endforeach
 						                  	</td>
 						                  	<td>						                  
-						                  		<i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+						                  		<a href="{{ route('role.edit',$role->id) }}">
+						                  			<i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+						                  		</a>
 						                  		<span class="role-action-seperator">|</span> 
-						                  		<i class="fa fa-trash-o actionicon" aria-hidden="true" @click="deleterole(role.id)"></i>
+						                  		
+
+						                  		<form action="{{ route('role.destroy' , $role->id ) }}" method="POST" style="display: inline-block;">
+												    {{ csrf_field() }}
+												    {{ method_field('DELETE') }}
+												    <button style="background: none;border: none;"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
+												</form>
 						                  	</td>                 
 						                </tr>
 									@endforeach
@@ -91,7 +110,7 @@
 					</div>
 					<div class="modal-body">
 						
-						<form  role="form" class="form-horizontal" action=" {{ URL::route('accessmanagement.role.save') }}" method="post">
+						<form  role="form" class="form-horizontal" action=" {{ URL::route('role.store')}}" method="post">
 							{{ csrf_field() }}
 							<div class="form-group">
 								<label class="col-sm-2 control-label">Role Name</label>
@@ -142,7 +161,7 @@
 		$(document).ready(function(){
 			$('.role_item').each(function(){
 				$(this).click(function(event){
-					console.log('Clicked');
+					//console.log('Clicked');
 				})
 			});
 
@@ -150,7 +169,11 @@
 		
     		$(".select2").select2();
 
-
+    		window.setTimeout(function() {
+			    $("#successMessage").fadeTo(500, 0).slideUp(500, function(){
+			        $(this).remove(); 
+			    });
+			}, 2000);
 
 		});
 	</script>

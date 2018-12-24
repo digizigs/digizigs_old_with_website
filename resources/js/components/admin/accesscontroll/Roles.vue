@@ -48,7 +48,13 @@
 			                	</tr>
 				                <tr v-for="role in roles" v-bind:id="role.id">
 				                  <td>{{role.name}}</td>
-				                  <td><span class="label label-success" >read</span> <span class="label label-success" >write</span></td>
+				                  <td>
+				                  	@foreach ({{role.name}}->permissions()->pluck('name') as $permission)
+										dsds
+				                  	@endforeach
+				                  	<span class="label label-success" >read</span> 
+				                  	<span class="label label-success" >write</span>
+				                  </td>
 				                  <td>
 				                  	<i class="fa fa-key actionicon" aria-hidden="true"></i> | 
 				                  	<i class="fa fa-pencil actionicon" aria-hidden="true"></i> | 
@@ -138,6 +144,9 @@
 				    )
 				  } 
 				})
+			},
+			rolepermission(role){
+				return
 			}
 		},
 		created(){

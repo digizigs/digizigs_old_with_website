@@ -41,15 +41,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        if (! Gate::allows('users_manage')) {
+    {   
+
+
+       /* if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
+
         $user = User::create($request->all());
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->assignRole($roles);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -115,7 +118,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('user.index');
     }
 
     public function massDestroy(Request $request)
