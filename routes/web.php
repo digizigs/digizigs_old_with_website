@@ -20,7 +20,7 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']] //setting('admin_url','admin')
-Route::group(['prefix' => ''setting('admin_url','dz-admin')'','middleware'=>['auth']],function(){
+Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']],function(){
 
     
 	Route::get('/', 'Admin\DashboardController@index')->name('admin.home');
