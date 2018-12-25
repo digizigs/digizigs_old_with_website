@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\AccessControl;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserStoreRequest;
+use App\Http\Requests\Admin\UserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -12,86 +14,52 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
         $users = User::all();
-        return view('admin.accesscontroll.users', compact('users'));
+        $roles = Role::get()->pluck('name', 'name');
+        return view('admin.accesscontroll.users', compact('users','roles'));
       
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {   
+    
+    public function store(UserStoreRequest $request) {   
+        //dd($request);
 
-
-       /* if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('users_manage')) {
             return abort(401);
-        }*/
+        }
 
         $user = User::create($request->all());
         $roles = $request->input('roles') ? $request->input('roles') : [];
+        //dd($roles);
         $user->assignRole($roles);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'User added successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+   
+    public function edit($id) {
         if (! Gate::allows('users_manage')) {
             return abort(401);
         }
         $roles = Role::get()->pluck('name', 'name');
-
         $user = User::findOrFail($id);
 
-        return view('admin.users.edit', compact('user', 'roles'));
+        return view('admin.accesscontroll.useredit', compact('user', 'roles'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    
+    public function update(UserUpdateRequest $request, $id)
     {
         if (! Gate::allows('users_manage')) {
             return abort(401);
@@ -101,15 +69,10 @@ class UserController extends Controller
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->syncRoles($roles);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('user.index')->with('message', 'User updated successfully');;;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function destroy($id)
     {
         if (! Gate::allows('users_manage')) {
@@ -118,7 +81,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('deleted', 'User deleted successfully');;;
     }
 
     public function massDestroy(Request $request)

@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Notifications\verifyEmail;
+use Hash;
 
 class User extends Authenticatable
 {
-    use Notifiable,HasRoles;
+     use Notifiable;
+    use HasRoles;
   
    
     protected $fillable = [
@@ -21,6 +23,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setPasswordAttribute($input)
+    {
+        if ($input)
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+    }
+    
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
 
     public function verified(){
         return $this->verifyToken === null;

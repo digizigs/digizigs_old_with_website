@@ -90,6 +90,7 @@
 
 
         <!--Access Management -->
+        @can('users_manage')
         <li class="{{current_page('/accessmanagement') ? 'active' : '' }} treeview">          
           <a href="">
             <i class="fa fa-universal-access"></i> <span>Access Management</span>
@@ -111,6 +112,7 @@
             </li>
           </ul>
         </li><!--Access Management-->
+        @endcan
 
          <!--Test Lab -->
         <li class="{{current_page('/testlab/') ? 'active' : '' }} treeview">          
@@ -147,7 +149,7 @@
         </li><!--Setting-->
 
         <!--Logout-->
-        <li class="{{current_page('setting') ? 'active' : '' }}">
+        <li class="">
           <!--a href="{{route('admin.settings')}}">
             <i class="fa fa-cogs"></i> <span>Settings</span>
           </a-->

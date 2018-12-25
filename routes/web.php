@@ -19,8 +19,8 @@ Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-//Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']]
-Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
+//Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']] //setting('admin_url')
+Route::group(['prefix' => setting('admin_url','admin'),'middleware'=>['auth']],function(){
 
     
 	Route::get('/', 'Admin\DashboardController@index')->name('admin.home');
@@ -53,22 +53,9 @@ Route::group(['prefix' => 'dz-admin','middleware'=>['auth']],function(){
 
     //Access Management
         //Roles
-    //Route::get('/accessmanagement/roles', 'Admin\AccessControl\RoleController@index')->name('accessmanagement.roles');
-    //Route::post('/accessmanagement/saveroles', 'Admin\AccessControl\RoleController@store')->name('accessmanagement.role.save');
-    //Route::get('/accessmanagement/getroles', 'Admin\AccessControl\RoleController@getroles');
     Route::resource('/accessmanagement/role', 'Admin\AccessControl\RoleController'); //Role
-   
-
-
-        //Permissions
     Route::resource('/accessmanagement/permission', 'Admin\AccessControl\PermissionController'); //Permission
-    //Route::get('/accessmanagement/permissions', 'Admin\AccessControl\PermissionController@index')->name('accessmanagement.permissions');
-    //Route::post('/accessmanagement/savepermissions', 'Admin\AccessControl\PermissionController@store')->name('accessmanagement.permission.save');
-    //Route::get('/accessmanagement/getpermissions', 'Admin\PermissionController@getpermission');
-    //Route::resource('/accessmanagement/addpermission', 'Admin\PermissionController');
-
-        //Users
-    Route::resource('/accessmanagement/user', 'Admin\AccessControl\UserController'); //Permission
+    Route::resource('/accessmanagement/user', 'Admin\AccessControl\UserController'); //User
 
     //Media Library
     Route::get('/medialibrary/gallery', 'Admin\MedialibraryController@index')->name('medialibrary.gallery');
