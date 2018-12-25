@@ -30,7 +30,7 @@ return [
             [
                 'type' => 'text',
                 'data' => 'string',
-                'name' => 'app_desc',
+                'name' => 'app_description',
                 'label' => 'Tagline',
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input

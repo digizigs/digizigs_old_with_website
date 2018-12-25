@@ -19,7 +19,7 @@ Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-//Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']] //setting('admin_url')
+//Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']] //setting('admin_url','admin')
 Route::group(['prefix' => setting('admin_url','admin'),'middleware'=>['auth']],function(){
 
     
