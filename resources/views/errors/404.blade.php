@@ -6,8 +6,9 @@
     <style type="text/css">
         body{
           margin-top: 150px;
-            background-color: #C4CCD9;
+            background-color: #09334f;
         }
+        
         .error-main{
           background-color: #fff;
           box-shadow: 0px 10px 10px -10px #5D6572;

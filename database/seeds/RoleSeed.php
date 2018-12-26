@@ -16,6 +16,12 @@ class RoleSeed extends Seeder
         $super_admin->givePermissionTo('users_manage');
         $super_admin->givePermissionTo('app_manage');
         $super_admin->givePermissionTo('write_post');
-        $super_admin->givePermissionTo('edit_post');  
+        $super_admin->givePermissionTo('edit_post');
+
+
+
+
+
+          
     }
 }

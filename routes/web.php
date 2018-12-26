@@ -9,12 +9,6 @@ Route::get('', 'App\AppController@index')->name('apphome');
 Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
 Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
-//Route::get('/blog', 'Blog\BlogController@index')->name('blog');
-//Route::get('/ecom', 'Ecom\EcomController@index')->name('blog');
-//Route::get('/resume', 'Web\AppController@index')->name('app.resume');
-//Route::get('/curtainmenu', 'Web\AppController@curtainmenu')->name('app.resume');
-
-
 
 Auth::routes();
 
@@ -51,11 +45,14 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
     Route::get('/connects/getsubscriptions', 'Admin\SubscriptionController@getSubscription')->name('get.subscriptions');
 
 
-    //Access Management
-        //Roles
-    Route::resource('/accessmanagement/role', 'Admin\AccessControl\RoleController'); //Role
-    Route::resource('/accessmanagement/permission', 'Admin\AccessControl\PermissionController'); //Permission
-    Route::resource('/accessmanagement/user', 'Admin\AccessControl\UserController'); //User
+    //Access MAnagement
+    Route::group(['prefix' => 'accessmanagement','middleware' => ['permission:users_manage']], function(){
+        Route::resource('/role', 'Admin\AccessControl\RoleController'); //Role
+        Route::resource('/permission', 'Admin\AccessControl\PermissionController'); //Permission
+        Route::resource('/user', 'Admin\AccessControl\UserController'); //User
+    });
+
+
 
     //Media Library
     Route::get('/medialibrary/gallery', 'Admin\MedialibraryController@index')->name('medialibrary.gallery');

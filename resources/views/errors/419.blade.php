@@ -6,7 +6,7 @@
     <style type="text/css">
         body{
           margin-top: 150px;
-            background-color: #C4CCD9;
+          background-color: #09334f;
         }
         .error-main{
           background-color: #fff;
