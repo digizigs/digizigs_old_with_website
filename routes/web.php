@@ -46,12 +46,23 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
 
 
     //Access MAnagement
-    Route::group(['prefix' => 'accessmanagement','middleware' => ['permission:users_manage']], function(){
+    Route::group(['prefix' => 'access','middleware' => ['permission:users_manage']], function(){
         Route::resource('/role', 'Admin\AccessControl\RoleController'); //Role
         Route::resource('/permission', 'Admin\AccessControl\PermissionController'); //Permission
         Route::resource('/user', 'Admin\AccessControl\UserController'); //User
     });
 
+    //Client MAnagement
+    Route::group(['prefix' => 'client','middleware' => ['permission:users_manage']], function(){
+        //Route::resource('/role', 'Admin\AccessControl\RoleController'); //Role
+        //Route::resource('/permission', 'Admin\AccessControl\PermissionController'); //Permission
+        Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
+    });
+
+
+
+    //account-profile
+    Route::resource('/profile', 'Admin\ProfileController'); //User
 
 
     //Media Library

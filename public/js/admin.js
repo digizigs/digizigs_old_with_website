@@ -71179,6 +71179,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -71239,6 +71245,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					swalWithBootstrapButtons('Deleted!', 'Category deleted successfully', 'success');
 				}
 			});
+		},
+		rolepermission: function rolepermission(role) {
+			return;
 		}
 	},
 	created: function created() {
@@ -71330,7 +71339,20 @@ var render = function() {
                       return _c("tr", { attrs: { id: role.id } }, [
                         _c("td", [_vm._v(_vm._s(role.name))]),
                         _vm._v(" "),
-                        _vm._m(3, true),
+                        _c("td", [
+                          _vm._v(
+                            "\n\t\t\t                  \t@foreach (" +
+                              _vm._s(role.name) +
+                              "->permissions()->pluck('name') as $permission)\n\t\t\t\t\t\t\t\t\tdsds\n\t\t\t                  \t@endforeach\n\t\t\t                  \t"
+                          ),
+                          _c("span", { staticClass: "label label-success" }, [
+                            _vm._v("read")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "label label-success" }, [
+                            _vm._v("write")
+                          ])
+                        ]),
                         _vm._v(" "),
                         _c("td", [
                           _c("i", {
@@ -71417,16 +71439,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Permissions")]),
       _vm._v(" "),
       _c("th", [_vm._v("Actions")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "label label-success" }, [_vm._v("read")]),
-      _vm._v(" "),
-      _c("span", { staticClass: "label label-success" }, [_vm._v("write")])
     ])
   }
 ]

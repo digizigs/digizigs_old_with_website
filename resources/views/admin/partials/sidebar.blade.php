@@ -88,10 +88,28 @@
           </ul>
         </li><!--Media Library-->
 
+        <!--Access Management -->
+        @can('client_manage')
+        <li class="{{current_page('/client') ? 'active' : '' }} treeview">          
+          <a href="">
+            <i class="fa fa-ravelry"></i> <span>Client Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            
+            <li class="{{current_page('client/invoice') ? 'active' : '' }}">
+              <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>Invoice</a>
+            </li>
+          </ul>
+        </li><!--Access Management-->
+        @endcan
+
 
         <!--Access Management -->
         @can('users_manage')
-        <li class="{{current_page('/accessmanagement') ? 'active' : '' }} treeview">          
+        <li class="{{current_page('/access') ? 'active' : '' }} treeview">          
           <a href="">
             <i class="fa fa-universal-access"></i> <span>Access Management</span>
             <span class="pull-right-container">
@@ -99,15 +117,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{current_page('accessmanagement/permission') ? 'active' : '' }}">
+            <li class="{{current_page('access/permission') ? 'active' : '' }}">
               <a href="{{route('permission.index')}}"><i class="fa fa-key"></i>Permissions</a>
             </li> 
             
-            <li class="{{current_page('accessmanagement/role') ? 'active' : '' }}">
+            <li class="{{current_page('access/role') ? 'active' : '' }}">
               <a href="{{route('role.index')}}"><i class="fa fa-briefcase"></i>Roles</a>
             </li>
 
-            <li class="{{current_page('accessmanagement/user') ? 'active' : '' }}">
+            <li class="{{current_page('access/user') ? 'active' : '' }}">
               <a href="{{route('user.index')}}"><i class="fa fa-users"></i>Users</a>
             </li>
           </ul>
@@ -133,8 +151,8 @@
 
         <!--Profile-->
         <li class="{{current_page('account') ? 'active' : '' }}">
-          <a href="{{url('/admin/profile')}}">
-            <i class="fa fa-user"></i> <span>Account</span>
+          <a href="{{route('profile.index')}}">
+            <i class="fa fa-user"></i> <span>Profile</span>
           </a>
         </li><!--Profile-->
 

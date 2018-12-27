@@ -46,7 +46,7 @@ return [
             [
                 'type' => 'text',
                 'data' => 'string',
-                'name' => 'admin_url',
+                'name' => 'app_admin_url',
                 'label' => 'Admin URL',
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input

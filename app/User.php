@@ -2,17 +2,21 @@
 
 namespace App;
 
+use App\Models\Profile;
+use App\Notifications\verifyEmail;
+use Hash;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
-use App\Notifications\verifyEmail;
-use Hash;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-     use Notifiable;
+    use Notifiable;
     use HasRoles;
+    use HasMediaTrait;
   
    
     protected $fillable = [
@@ -39,14 +43,17 @@ class User extends Authenticatable
         return $this->verifyToken === null;
     }
 
-     public function SendVerificationEmail(){
+    public function SendVerificationEmail(){
 
         $this->notify(new verifyEmail($this));
     }
 
 
-
-
+    /*public function profile()
+    {
+        return $this->belongsTo('App\Models\Profile');
+    }*/
+    
 
 
 
