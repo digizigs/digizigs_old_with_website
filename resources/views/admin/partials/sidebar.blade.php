@@ -88,7 +88,7 @@
           </ul>
         </li><!--Media Library-->
 
-        <!--Access Management -->
+        <!--Client Management -->
         @can('client_manage')
         <li class="{{current_page('/client') ? 'active' : '' }} treeview">          
           <a href="">
@@ -103,7 +103,7 @@
               <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>Invoice</a>
             </li>
           </ul>
-        </li><!--Access Management-->
+        </li><!--Client Management-->
         @endcan
 
 

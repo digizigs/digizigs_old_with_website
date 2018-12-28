@@ -14,6 +14,8 @@ class ProfileController extends Controller
     
     public function index() {
 
+        //dd(config('app.url'));
+
         $userid = auth()->user();
         $user = Auth::getUser();
 
@@ -23,7 +25,8 @@ class ProfileController extends Controller
 
         $avatars =Auth::getUser()->getMedia('avatar');
 
-        $publicFullUrl = Auth::getUser()->getFullUrl();
+        return base_url();
+        //$publicFullUrl = Auth::getUser()->getFullUrl();
 
         //return $avatars = Auth::getUser()->getMedia('avatars')->first()->getUrl('thumb');
         

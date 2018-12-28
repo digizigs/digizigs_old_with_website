@@ -59,8 +59,6 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
         Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
     });
 
-
-
     //account-profile
     Route::resource('/profile', 'Admin\ProfileController'); //User
 
