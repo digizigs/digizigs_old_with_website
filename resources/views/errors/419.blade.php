@@ -34,7 +34,7 @@
           <div class="row">
             <div class="col-lg-8 col-12 col-sm-10 offset-lg-2 offset-sm-1">
               <h1 class="m-0">419</h1>
-              <h6>Session is Expired - {{config('app.name')}}</h6>
+              <h6>Session is Expired - {{setting('app_name')}}</h6>
               <p>Lorem ipsum dolor sit <span class="text-info">amet</span>, consectetur <span class="text-info">adipisicing</span> elit, sed do eiusmod.</p>
 
               <p>Goto <a href="{{route('apphome')}}">Home</a></p>

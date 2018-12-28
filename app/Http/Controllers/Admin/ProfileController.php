@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
-use Illuminate\Auth\Middleware\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 
 class ProfileController extends Controller
@@ -14,13 +15,17 @@ class ProfileController extends Controller
     public function index() {
 
         $userid = auth()->user();
-        $userprofile =Profile::where('user_id',auth()->user()->id)->get();
+        $user = Auth::getUser();
 
-        $avatars =auth()->user()->getMedia('avatar');
 
-      
 
-        //return $avatars = Auth::user()->getMedia('avatars')->first()->getUrl('thumb');
+        //$userprofile =Profile::where('user_id',auth()->user()->id)->get();
+
+        $avatars =Auth::getUser()->getMedia('avatar');
+
+        $publicFullUrl = Auth::getUser()->getFullUrl();
+
+        //return $avatars = Auth::getUser()->getMedia('avatars')->first()->getUrl('thumb');
         
         return view('admin.profile.profile',compact('avatars'));
     }

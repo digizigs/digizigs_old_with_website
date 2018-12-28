@@ -167,7 +167,9 @@
 		              	@foreach($avatars as $avatar)
 							{{$avatar}}
 		              	@endforeach
-				            
+				        
+				       
+
 				    </div><!--Col-md-9-->
 		      	</div><!--Row-->
 		     
