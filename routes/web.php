@@ -54,8 +54,6 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
 
     //Client MAnagement
     Route::group(['prefix' => 'client','middleware' => ['permission:users_manage']], function(){
-        //Route::resource('/role', 'Admin\AccessControl\RoleController'); //Role
-        //Route::resource('/permission', 'Admin\AccessControl\PermissionController'); //Permission
         Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
     });
 

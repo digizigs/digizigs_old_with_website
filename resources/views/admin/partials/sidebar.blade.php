@@ -97,12 +97,20 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            
+
+          <ul class="treeview-menu">            
+            <li class="{{current_page('client/invoice') ? 'active' : '' }}">
+              <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>CLients</a>
+            </li>
+          </ul>
+
+
+          <ul class="treeview-menu">            
             <li class="{{current_page('client/invoice') ? 'active' : '' }}">
               <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>Invoice</a>
             </li>
           </ul>
+
         </li><!--Client Management-->
         @endcan
 
