@@ -164,9 +164,7 @@
 			                </form>
 		              	</div>
 
-		              	@foreach($avatars as $avatar)
-							{{$avatar}}
-		              	@endforeach
+		              	
 				        
 				       
 

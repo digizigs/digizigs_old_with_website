@@ -14,7 +14,6 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.7",
         "spatie/laravel-analytics": "^3.6",
-        "spatie/laravel-medialibrary": "^7.5",
         "spatie/laravel-permission": "^2.29",
         "uxweb/sweet-alert": "^2.0"
     },

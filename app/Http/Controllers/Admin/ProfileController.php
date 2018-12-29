@@ -17,20 +17,20 @@ class ProfileController extends Controller
         //dd(config('app.url'));
 
         $userid = auth()->user();
-        $user = Auth::getUser();
+        //$user = Auth::getUser();
 
 
 
         //$userprofile =Profile::where('user_id',auth()->user()->id)->get();
 
-        $avatars =Auth::getUser()->getMedia('avatar');
+        //$avatars =Auth::getUser()->getMedia('avatar');
 
-        return base_url();
+        //return base_url();
         //$publicFullUrl = Auth::getUser()->getFullUrl();
 
         //return $avatars = Auth::getUser()->getMedia('avatars')->first()->getUrl('thumb');
         
-        return view('admin.profile.profile',compact('avatars'));
+        return view('admin.profile.profile',compact('userid'));
     }
 
     

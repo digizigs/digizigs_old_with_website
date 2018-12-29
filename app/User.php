@@ -12,11 +12,11 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
-    use HasMediaTrait;
+    
   
    
     protected $fillable = [
