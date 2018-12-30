@@ -30,7 +30,7 @@ class AppController extends Controller
 
         //return Auth()->user()->permissions;
 
-         Alert::message('Robots are working!');
+        Alert::message('Robots are working!');
         return view('app/home');
 
     }
@@ -38,7 +38,7 @@ class AppController extends Controller
 
     public function subscribe(Request $request){
 
-    	 $data = Validator::make($request->all(),[           
+    	$data = Validator::make($request->all(),[           
             'email'=>'required|max:255|email',          
         ],[          
             'email.required' => 'Email is required',
@@ -52,12 +52,47 @@ class AppController extends Controller
     	$connect->email = $email;
     	$connect->type = 'subscription';
     	$is_save = $connect->save();
-        Alert::message('Robots are working!');
+        
+        //flash('Message')->important();
         
     	if ($is_save){
             Alert::message('Robots are working!');
     		return redirect()->back()->with('subscription','Subscription done');
     	}   
+    }
+
+    public function contactus(Request $request){
+
+        $data = Validator::make($request->all(),[    
+            'name'=>'required',
+            'contact'=>'required',
+            'email'=>'required|max:255|email',       
+            'message'=>'required',          
+        ],[      
+            'name.required' => 'Name is required',
+            'contact.required' => 'Contact number is required',
+            'email.required' => 'Email is required',
+            'email.required' => 'Email is required',
+            'message.email' => 'Please enter your query',          
+        ])->Validate();
+
+        $name = $request->name;
+        $contact = $request->contact;
+        $email = $request->email;
+        $message = $request->message;
+
+        $connect = new Connect;
+        $connect->name = $name;
+        $connect->contact = $contact;
+        $connect->email = $email;
+        $connect->message = $message;
+        $connect->type = 'inquiry';
+        $is_save = $connect->save();
+      
+        
+        if ($is_save){
+            return redirect()->back()->with('contact','Inquiry submited successfully');
+        }   
     }
 
     public function generatePdf(){

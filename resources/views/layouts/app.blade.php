@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>{{setting('app_name')}} | @yield('title')</title>
+    <title>{{setting('app_name')}}</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
@@ -38,16 +38,19 @@
     
   
 
-    <div id="app">    
-      
-            @yield('content')
-     
+    <div id="app">  
+        
+
+        @yield('content')
+
+        
+
     </div>
-  
 
     <!--Script-->
     <script src="{{asset('/public/js/app.js')}}"></script>
 
+    @yield('javascript')
 
 </body>
 </html>

@@ -41,6 +41,10 @@ const router = new VueRouter({
 })
 
 
+//--------------------------------App----------------------------------------
+
+
+//--------------------------------Admin----------------------------------------
 Vue.component('category', require('../components/admin/category/Category.vue'));
 Vue.component('editcategory', require('../components/admin/category/EditCategory.vue'));
 Vue.component('newpost', require('../components/admin/post/NewPost.vue'));
