@@ -1,5 +1,5 @@
 <!--Contact-->
-<section id="contact" style="background: url({{asset('public/images/web/contact/contact-bg.jpg')}});">
+<section id="contact" style="background: url({{asset('images/web/contact/contact-bg.jpg')}});">
     <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms">
         
     </div>

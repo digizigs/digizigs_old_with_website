@@ -4,7 +4,7 @@
             <div class="carousel-inner">
                 <div class="item active">
 
-                    <div class="fill" style="background-image:url({{asset('public/images/web/slider/11.jpg')}})"></div>
+                    <div class="fill" style="background-image:url({{asset('images/web/slider/11.jpg')}})"></div>
                     <div class="caption">
                        
                         <h1>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill" style="background-image:url({{asset('public/images/web/slider/22.jpg')}})"></div>
+                    <div class="fill" style="background-image:url({{asset('images/web/slider/22.jpg')}})"></div>
                     <div class="caption">
                         <h1>
                             <span   class="txt-rotate" 
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill" style="background-image:url({{asset('public/images/web/slider/33.jpg')}})"></div>
+                    <div class="fill" style="background-image:url({{asset('images/web/slider/33.jpg')}})"></div>
                     <div class="caption">
                         <h1>
                             <span   class="txt-rotate" 

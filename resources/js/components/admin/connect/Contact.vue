@@ -1,11 +1,11 @@
 <template>
-	<section class="Subscriptions ">
+	<section class="contact ">
 
-		<div class="main-content-header box-shadow box-header">
+		<div class="main-content-header box-shadow box-header box">
 	        <div class="row">
 	    	              
 	          <div class="col-md-6 col-xs-12 mp-0 alt-font">
-	            <i class="fa fa-flag-checkered"></i><span> Subscriptions</span>
+	            <i class="fa fa-telegram"></i><span> Inquiry</span>
 	          </div>
 	          	  	         
 	        </div>
@@ -17,13 +17,13 @@
 	        <div class="row"> 
 				
 				<!-- /.info-box -->
-	          	<div class="col-md-4 col-sm-6 col-xs-12">
+	          	<div class="col-md-6 col-sm-6 col-xs-12">
 
 		            <div class="info-box bg-aqua">
-		              <span class="info-box-icon"><i class="fa fa-flag-checkered"></i></span>
+		              <span class="info-box-icon"><i class="fa fa-telegram"></i></span>
 
 		              <div class="info-box-content">
-		                <span class="info-box-text">YTD Subscriptions</span>
+		                <span class="info-box-text">New Inquiry</span>
 		                <span class="info-box-number">{{totalsubs}}</span>
 
 		                <div class="progress">
@@ -37,35 +37,15 @@
 		            </div>	            
 	          	</div><!-- /.info-box -->
 
+	          	
 	          	<!-- /.info-box -->
-	          	<div class="col-md-4 col-sm-6 col-xs-12">
+	          	<div class="col-md-6 col-sm-6 col-xs-12">
 
 		            <div class="info-box bg-aqua">
-		              <span class="info-box-icon"><i class="fa fa-flag-checkered"></i></span>
+		              <span class="info-box-icon"><i class="fa fa-telegram"></i></span>
 
 		              <div class="info-box-content">
-		                <span class="info-box-text">Subscription</span>
-		                <span class="info-box-number">41,410</span>
-
-		                <div class="progress">
-		                  <div class="progress-bar" style="width: 50%"></div>
-		                </div>
-		                    <span class="progress-description">
-		                      70% Increase in 30 Days
-		                    </span>
-		              </div>
-		              <!-- /.info-box-content -->
-		            </div>	            
-	          	</div><!-- /.info-box -->
-
-	          	<!-- /.info-box -->
-	          	<div class="col-md-4 col-sm-6 col-xs-12">
-
-		            <div class="info-box bg-aqua">
-		              <span class="info-box-icon"><i class="fa fa-flag-checkered"></i></span>
-
-		              <div class="info-box-content">
-		                <span class="info-box-text">Unsubscription</span>
+		                <span class="info-box-text">Total Inquiry</span>
 		                <span class="info-box-number">41,410</span>
 
 		                <div class="progress">
@@ -102,20 +82,25 @@
 			              <table class="table table-hover">
 			                <tbody><tr>
 			                  <th>ID</th>
+			                  <th>Name</th>
 			                  <th>Email</th>
-			                  <th>Subscription Date</th>
-			                  <th>Status</th>
+			                  <th>Contact No.</th>
+			                  <th>Contact Date</th>
 			                  <th></th>
 			                  <th></th>
 			                </tr>
-			                <tr v-for="subs,key in subscriptions">
-			                  <td>{{key + 1}}</td>
-			                  <td>{{subs.email}}</td>
-			                  <td>{{subs.created_at | myDate}}</td>
-			                  <td v-if="subs.status == '1'"><span class="label label-success" >Subscribed</span></td>
-			                  <td v-if="subs.status == '0'"><span class="label label-warning" >Unsubscribed</span></td>
-			                  <td v-if="subs.status == '0'"><i class="fa fa-check" aria-hidden="true"></i></td>
-			                  <td v-if="subs.status == '1'"><i class="fa fa-times" aria-hidden="true"></i></td>
+			                <tr v-for="cont,key in contacts">
+			                  	<td>{{key + 1}}</td>
+			                  	<td>{{cont.name}}</td>
+			                  	<td>{{cont.email}}</td>
+			                  	<td>{{cont.contact}}</td>
+			                  	<td>{{cont.created_at | myDate}}</td>
+			                  	<td>
+			                  		<a href="#viewcontacts" data-toggle="modal" @click="contactview(cont.id)">
+			                  			<i class="fa fa-eye" aria-hidden="true"></i>	
+			                  		</a>	
+			                  	</td>
+			                  
 			                </tr>
 			                
 			              </tbody></table>
@@ -130,6 +115,11 @@
 
 	    </div>
 
+
+	 	<div id="modal">	
+	 		<contactview :recrd="contact"></contactview>
+	 	</div>
+
 	</section>
 </template>
 
@@ -137,12 +127,16 @@
 	export default{
 		data(){
 			return{
-				subscriptions:{},
+				contacts:{},
+				contact:'',
+				success:'',
+				errors:'',
 			}
 		},
 		computed: {
-			totalsubs:function(total,subs){
-				return 50;
+			totalsubs:function(total,cont){
+				//return 50;
+				//return cont+ ;//this.responseData && this.responseData.length
 				//return this.subscriptions.length;
 
             	
@@ -152,12 +146,26 @@
 
 		},
 		methods:{
+			contactview(id){
+				axios.get('contact/'+id)
+				.then((response) => {
+					this.contact=response.data
+					})//this.apntupdate = response.data
+				.catch(error => this.errors=error.response.data.errors);	
+			},
+			userdata(id){
+				axios.get('contact/show',id)
+				.then((response) => {
+					this.userdetail=response.data
+					})//this.apntupdate = response.data
+				.catch(error => this.errors=error.response.data.errors);			
+			}
 		
 		},
 		created(){
-			axios.get('getsubscriptions')
+			axios.get('contact/create')
 			.then((response) => {
-				this.subscriptions=response.data
+				this.contacts=response.data
 				//console.log(response.data)
 			})//this.appointments=response.data
 			.catch((error) => console.log(error))
@@ -177,6 +185,17 @@
 		cursor: pointer;
 		color: #ff5c5c;
 		font-size: 18px;
+	}
+
+	.fa-envelope-o{
+		cursor: pointer;
+	}
+
+	.table{
+		margin-top: 20px;	
+	}
+	.modal-content{
+		border-radius: 3px !important;
 	}
 
 </style>

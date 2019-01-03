@@ -31,7 +31,7 @@ window.swalWithBootstrapButtons = swalWithBootstrapButtons;
 
 
 let routes = [
-	{ path: '/subscriptions', component: require('../components/admin/subscription/Subscriptions.vue') }
+	//{ path: '/subscriptions', component: require('../components/admin/subscription/Subscriptions.vue') }
 ];
 
 
@@ -48,7 +48,11 @@ const router = new VueRouter({
 Vue.component('category', require('../components/admin/category/Category.vue'));
 Vue.component('editcategory', require('../components/admin/category/EditCategory.vue'));
 Vue.component('newpost', require('../components/admin/post/NewPost.vue'));
-Vue.component('subscriptions', require('../components/admin/subscription/Subscriptions.vue'));
+
+//Connects
+Vue.component('subscriptions', require('../components/admin/connect/Subscriptions.vue'));
+Vue.component('contact', require('../components/admin/connect/Contact.vue'));
+Vue.component('contactview', require('../components/admin/connect/Contact_content_view.vue'));
 
 //Access Controll
 Vue.component('roles', require('../components/admin/accesscontroll/Roles.vue'));
@@ -68,5 +72,5 @@ const app = new Vue({
 //})
 
 Vue.filter('myDate',function(created){
-  return moment(created, "YYYYMMDD").fromNow();
+  return moment(created, "YYYYMMDD").utcOffset('IST').fromNow();
 })

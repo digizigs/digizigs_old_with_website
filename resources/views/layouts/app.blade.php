@@ -30,7 +30,7 @@
 
 
     
-    <link href="{{asset('/public/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/app.css')}}" rel="stylesheet">
 
    
 </head>
@@ -48,7 +48,7 @@
     </div>
 
     <!--Script-->
-    <script src="{{asset('/public/js/app.js')}}"></script>
+    <script src="{{asset('/js/app.js')}}"></script>
 
     @yield('javascript')
 

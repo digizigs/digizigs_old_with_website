@@ -57,12 +57,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{current_page('connects/subscription') ? 'active' : '' }}">
+            <li class="{{current_page('/connects/subscription') ? 'active' : '' }}">
               <a href="{{route('subscriptions')}}"><i class="fa fa-flag-checkered"></i>Subscriptions</a>
             </li> 
             
-            <li class="{{current_page('connects/inquiry') ? 'active' : '' }}">
-              <a href="{{route('admin.settings')}}"><i class="fa fa-telegram"></i>Inquiry</a>
+            <li class="{{current_page('/connects/contact') ? 'active' : '' }}">
+              <a href="{{route('contact.index')}}"><i class="fa fa-telegram"></i>Inquiry</a>
             </li>
         
           </ul>

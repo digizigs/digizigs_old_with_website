@@ -44,9 +44,10 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
 
 
     //Subscription and Contacts
-    Route::get('/connects/subscriptions', 'Admin\SubscriptionController@index')->name('subscriptions');
-    Route::get('/connects/getsubscriptions', 'Admin\SubscriptionController@getSubscription')->name('get.subscriptions');
-
+    Route::get('/connects/subscriptions', 'Admin\Connect\SubscriptionController@index')->name('subscriptions');
+    Route::get('/connects/getsubscriptions', 'Admin\Connect\SubscriptionController@getSubscription')->name('get.subscriptions');
+    Route::resource('/connects/contact', 'Admin\Connect\ContactController'); //Contact
+    
 
     //Access MAnagement
     Route::group(['prefix' => 'access','middleware' => ['permission:users_manage']], function(){

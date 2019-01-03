@@ -32,7 +32,7 @@
                         <h4>Recent Updates</h4>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\images\web\recent1.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('images\web\recent1.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\images\web\recent2.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('images\web\recent2.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\images\web\recent3.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('images\web\recent3.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
