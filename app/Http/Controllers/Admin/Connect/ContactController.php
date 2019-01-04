@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin\Connect;
 
 use App\Http\Controllers\Controller;
+use App\Mail\NewUser;
 use App\Models\Connect;
+use Auth;
 use Illuminate\Http\Request;
 use Mail;
 
@@ -12,6 +14,8 @@ class ContactController extends Controller
    
     public function index()
     {
+
+        Mail::to(Auth::user()->email)->send(new NewUser());
         return view('admin.connect.contact');
     }
 
@@ -25,7 +29,7 @@ class ContactController extends Controller
    
     public function store(Request $request)
     {
-        //Mail::
+       
         return $request->all();
     }
 
