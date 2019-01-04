@@ -1,5 +1,5 @@
 <!--Features-->
-<section id="features" class="" style="background: url({{asset('images/web/features/poster.jpg')}});">
+<section id="features" class="" style="background: url({{asset('public/images/web/features/poster.jpg')}});">
     <div class="container">
 
         <div class="row">
@@ -57,7 +57,7 @@
 
             <div class="col-md-4 hidden-sm hidden-xs ">
                 <div class="feature-image">
-                    <img src="{{asset('images/web/features/animation-rocket.gif')}}" class="pos-hcenter img-responsive " alt="">
+                    <img src="{{asset('public/images/web/features/animation-rocket.gif')}}" class="pos-hcenter img-responsive " alt="">
                 </div>
             </div>
 
@@ -107,7 +107,7 @@
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12 ">
                 <div class="text-icon-box mb50 center wow fadeInUp padding20 box-hover-1" data-wow-delay="0.1s">
                     <div class="box-img-icon features-box-icon">
-                        <img src="{{asset('images/web/features/design-tool.svg')}}" alt="">
+                        <img src="{{asset('public/images/web/features/design-tool.svg')}}" alt="">
                     </div>
                     <h3 class="box-title">PROTOTYPING</h3>
                     <p>Planning / sketching an early sample of work as per requirement of the clients before processing concept !</p>
@@ -116,7 +116,7 @@
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12 ">
                 <div class="text-icon-box relative mb50 center  wow fadeInUp padding20 box-hover-1" data-wow-delay="0.2s">
                     <div class="box-img-icon features-box-icon">
-                        <img src="{{asset('images/web/features/tools.svg')}}" alt="">
+                        <img src="{{asset('public/images/web/features/tools.svg')}}" alt="">
                     </div>
                     <h3 class="box-title">DESIGN PROCESS</h3>
                     <p>Stepping into the design process with an efficient approach, applying it to the best-chosen concept !</p>
@@ -125,7 +125,7 @@
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12 ">
                 <div class="text-icon-box relative mb50 center wow fadeInUp padding20 box-hover-1" data-wow-delay="0.2s">
                     <div class="box-img-icon features-box-icon">
-                        <img src="{{asset('images/web/features/schedule.svg')}}" alt="">
+                        <img src="{{asset('public/images/web/features/schedule.svg')}}" alt="">
                     </div>
                     <h3 class="box-title">DEVELOPMENT</h3>
                     <p>Creating responsive, functional website with all the graphical elements and contents chosen by client !</p>
@@ -134,7 +134,7 @@
             <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12 ">
                 <div class="text-icon-box relative mb50 center wow fadeInUp padding20 box-hover-1" data-wow-delay="0.2s">
                     <div class="box-img-icon features-box-icon">
-                        <img src="{{asset('images/web/features/quality.svg')}}" alt="">
+                        <img src="{{asset('public/images/web/features/quality.svg')}}" alt="">
                     </div>
                     <h3 class="box-title">TESTING</h3>
                     <p>Ensuring the performance and security of the website developed using the advanced testing and tools !</p>

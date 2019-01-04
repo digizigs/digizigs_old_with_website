@@ -8,7 +8,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{asset('images/fevicon/logo-icon.png')}}" type="image/x-icon">
+<link rel="shortcut icon" href="{{asset('public/images/fevicon/logo-icon.png')}}" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Font Awesome -->
@@ -17,8 +17,8 @@
 
 <!--script src="{{asset('public/assets/ckeditor/ckeditor.js')}}"></script-->
 <!--script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script-->
-<link rel="stylesheet" href="{{asset('vendor/select2/select2.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/admin.css')}}">
+<link rel="stylesheet" href="{{asset('public/vendor/select2/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('public/css/admin.css')}}">
 
 @section('HeaderSection')
 

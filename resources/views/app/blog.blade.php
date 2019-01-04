@@ -11,7 +11,7 @@
 
             <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
                 <div class="post-thumb">
-                  <a href="#"><img class="img-responsive" src="{{asset('images/web/blog/1.jpg')}}" alt=""></a> 
+                  <a href="#"><img class="img-responsive" src="{{asset('public/images/web/blog/1.jpg')}}" alt=""></a> 
                   <div class="post-meta">
                     <span><i class="fa fa-comments-o"></i> 3 Comments</span>
                     <span><i class="fa fa-heart"></i> 0 Likes</span> 
@@ -32,7 +32,7 @@
 
             <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
                 <div class="post-thumb">
-                  <a href="#"><img class="img-responsive" src="{{asset('images/web/blog/1.jpg')}}" alt=""></a> 
+                  <a href="#"><img class="img-responsive" src="{{asset('public/images/web/blog/1.jpg')}}" alt=""></a> 
                   <div class="post-meta">
                     <span><i class="fa fa-comments-o"></i> 3 Comments</span>
                     <span><i class="fa fa-heart"></i> 0 Likes</span> 
@@ -53,7 +53,7 @@
 
             <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms">
                 <div class="post-thumb">
-                  <a href="#"><img class="img-responsive" src="{{asset('images/web/blog/3.jpg')}}" alt=""></a>
+                  <a href="#"><img class="img-responsive" src="{{asset('public/images/web/blog/3.jpg')}}" alt=""></a>
                   <div class="post-meta">
                     <span><i class="fa fa-comments-o"></i> 3 Comments</span>
                     <span><i class="fa fa-heart"></i> 0 Likes</span> 
