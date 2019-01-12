@@ -1,7 +1,7 @@
 @component('mail::message')
 Welcome to DigiZigs
 
-The body of your message.
+Thanks for connecting us,we will get back to you _soon_.
 
 @component('mail::button', ['url' => ''])
 Button Text

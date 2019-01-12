@@ -70746,7 +70746,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created: function created() {
 		var _this = this;
 
-		axios.get('getsubscriptions').then(function (response) {
+		axios.get('subscription/create').then(function (response) {
 			_this.subscriptions = response.data;
 			//console.log(response.data)
 		}) //this.appointments=response.data
@@ -71264,7 +71264,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		contactview: function contactview(id) {
 			var _this = this;
 
-			axios.get('contact/' + id).then(function (response) {
+			axios.get('inquiry/' + id).then(function (response) {
 				_this.contact = response.data;
 			}) //this.apntupdate = response.data
 			.catch(function (error) {
@@ -71285,7 +71285,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	created: function created() {
 		var _this3 = this;
 
-		axios.get('contact/create').then(function (response) {
+		axios.get('inquiry/create').then(function (response) {
 			_this3.contacts = response.data;
 			//console.log(response.data)
 		}) //this.appointments=response.data
@@ -71676,9 +71676,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.message = {};
 		}
 	},
-	created: function created() {
-		message.name = 'dddddd';
-	}
+	created: function created() {}
 });
 
 /***/ }),

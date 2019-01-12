@@ -9,7 +9,7 @@ Route::get('', 'App\AppController@index')->name('apphome');
 Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
 Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
 
-Route::post('/contactus', 'App\AppController@contactus')->name('app.contactus');
+Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
 
 
@@ -44,10 +44,15 @@ Route::group(['prefix' => setting('admin_url','dz-admin'),'middleware'=>['auth']
 
 
     //Subscription and Contacts
-    Route::get('/connects/subscriptions', 'Admin\Connect\SubscriptionController@index')->name('subscriptions');
-    Route::get('/connects/getsubscriptions', 'Admin\Connect\SubscriptionController@getSubscription')->name('get.subscriptions');
-    Route::resource('/connects/contact', 'Admin\Connect\ContactController'); //Contact
+    //Route::get('/connects/subscriptions', 'Admin\Connect\SubscriptionController@index')->name('subscriptions');
+    //Route::get('/connects/getsubscriptions', 'Admin\Connect\SubscriptionController@getSubscription')->name('get.subscriptions');
     
+    
+    //Access MAnagement
+    Route::group(['prefix' => 'connect','middleware' => ['permission:users_manage']], function(){
+        Route::resource('/subscription', 'Admin\Subscription\SubscriptionController'); //Contact
+        Route::resource('/inquiry', 'Admin\Inquiry\InquiryController'); //Contact
+    });
 
     //Access MAnagement
     Route::group(['prefix' => 'access','middleware' => ['permission:users_manage']], function(){

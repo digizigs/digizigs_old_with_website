@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Connect;
+namespace App\Http\Controllers\Admin\Subscription;
 
 use App\Http\Controllers\Controller;
-use App\Models\Connect;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -19,15 +19,16 @@ class SubscriptionController extends Controller
     }
 
     
-    public function getSubscription(){
+    /*public function getSubscription(){
         //return 'wola';
-        $subscription=Connect::orderby('created_at','desc')->get();
+        $subscription=Subscription::orderby('created_at','desc')->get();
         return request()->json(200,$subscription);
-    }
+    }*/
 
     public function create()
     {
-        
+        $subscription=Subscription::orderby('created_at','desc')->get();
+        return request()->json(200,$subscription);
     }
 
     

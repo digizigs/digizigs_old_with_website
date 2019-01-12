@@ -147,7 +147,7 @@
 		},
 		methods:{
 			contactview(id){
-				axios.get('contact/'+id)
+				axios.get('inquiry/'+id)
 				.then((response) => {
 					this.contact=response.data
 					})//this.apntupdate = response.data
@@ -163,7 +163,7 @@
 		
 		},
 		created(){
-			axios.get('contact/create')
+			axios.get('inquiry/create')
 			.then((response) => {
 				this.contacts=response.data
 				//console.log(response.data)

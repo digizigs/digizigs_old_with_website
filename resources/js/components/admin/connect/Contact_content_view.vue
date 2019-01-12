@@ -62,7 +62,7 @@
 			
 		},
 		created(){
-			message.name='dddddd';
+			
 		}
 	};
 

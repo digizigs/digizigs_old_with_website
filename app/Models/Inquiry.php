@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Connect extends Model
+class Inquiry extends Model
 {
     //
 }

@@ -179,6 +179,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Snowfire\Beautymail\BeautymailServiceProvider::class,
       
 
     ],

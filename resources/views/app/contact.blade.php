@@ -15,7 +15,7 @@
               <div class="row">
 
                 <div class="col-sm-12">
-                  <form id="main-contact-form" name="contact-form" method="post" action="{{route('app.contactus')}}">
+                  <form id="main-contact-form" name="contact-form" method="post" action="{{route('app.inquiry')}}">
                     @csrf
                     <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
                       <div class="col-sm-6">

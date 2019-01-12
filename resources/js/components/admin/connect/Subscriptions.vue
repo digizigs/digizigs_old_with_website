@@ -155,7 +155,7 @@
 		
 		},
 		created(){
-			axios.get('getsubscriptions')
+			axios.get('subscription/create')
 			.then((response) => {
 				this.subscriptions=response.data
 				//console.log(response.data)

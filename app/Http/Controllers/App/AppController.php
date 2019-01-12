@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\App;
 
+use Alert;
 use App\Http\Controllers\Controller;
-use App\Models\Connect;
+use App\Models\Inquiry;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
-
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use Alert;
+use Spatie\Permission\Models\Role;
 
 class AppController extends Controller
 {
@@ -48,9 +48,8 @@ class AppController extends Controller
 
     	$email = $request->email;
 
-    	$connect = new Connect;
+    	$connect = new Subscription;
     	$connect->email = $email;
-    	$connect->type = 'subscription';
     	$is_save = $connect->save();
         
         //flash('Message')->important();
@@ -61,7 +60,7 @@ class AppController extends Controller
     	}   
     }
 
-    public function contactus(Request $request){
+    public function inquiry(Request $request){
 
         $data = Validator::make($request->all(),[    
             'name'=>'required',
@@ -81,12 +80,11 @@ class AppController extends Controller
         $email = $request->email;
         $message = $request->message;
 
-        $connect = new Connect;
+        $connect = new Inquiry;
         $connect->name = $name;
         $connect->contact = $contact;
         $connect->email = $email;
         $connect->message = $message;
-        $connect->type = 'inquiry';
         $is_save = $connect->save();
       
         

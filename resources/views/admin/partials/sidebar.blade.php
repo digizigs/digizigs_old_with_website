@@ -49,20 +49,20 @@
         </li><!--Tags-->
                                
         <!--Connects -->
-        <li class="{{current_page('/connects') ? 'active' : '' }} treeview">          
-          <a href="{{route('subscriptions')}}">
+        <li class="{{current_page('/connect') ? 'active' : '' }} treeview">          
+          <a href="">
             <i class="fa fa-plug"></i> <span>Connects</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{current_page('/connects/subscription') ? 'active' : '' }}">
-              <a href="{{route('subscriptions')}}"><i class="fa fa-flag-checkered"></i>Subscriptions</a>
+            <li class="{{current_page('/connect/subscription') ? 'active' : '' }}">
+              <a href="{{route('subscription.index')}}"><i class="fa fa-flag-checkered"></i>Subscriptions</a> 
             </li> 
             
-            <li class="{{current_page('/connects/contact') ? 'active' : '' }}">
-              <a href="{{route('contact.index')}}"><i class="fa fa-telegram"></i>Inquiry</a>
+            <li class="{{current_page('/connect/inquiry') ? 'active' : '' }}">
+              <a href="{{route('inquiry.index')}}"><i class="fa fa-telegram"></i>Inquiry</a>
             </li>
         
           </ul>
