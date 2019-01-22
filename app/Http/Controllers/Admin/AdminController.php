@@ -17,11 +17,17 @@ class AdminController extends Controller
 
   
   
-    public function dashboard(){
+    public function index(){
+    	return view('admin.pages.dashboard');
+    } 
 
-        //return 'admin';
-       // return view('admin/dashboard');
+
+    public function tables(){
+    	return view('admin.asset.tables');
     }
+
+
+
 
     
 }

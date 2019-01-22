@@ -11,33 +11,52 @@ Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount
 
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
-
+//Route::resource('/blog', 'App\BlogController');
+Route::resource('/blog', 'Blog\BlogController');
+Route::resource('/ecom', 'Ecom\EcomController');
 
 Auth::routes();
+
+
+
 
 //Route::get('/home', 'HomeController@index')->name('home');
 //Admin Route Group   //['prefix' => 'dz-admin','middleware'=>['auth','admin']] //setting('admin_url','admin')
 Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
 
     
-	Route::get('/', 'Admin\DashboardController@index')->name('admin.home');
+	Route::get('/', 'Admin\AdminController@index')->name('admin.home');
+    Route::get('/theme/tables', 'Admin\AdminController@tables')->name('theme.tables');
+
+
+    //Asset preset theme pages
+
+
+
+
 
 	//Settings
-    Route::get('/settings', 'Admin\SettingController@index')->name('admin.settings');
-    Route::post('/settings', 'Admin\SettingController@store')->name('admin.settings.store');
+    Route::resource('/settings', 'Admin\SettingController');
+    
 
 
     //Posts
-    Route::get('/post/all', 'Admin\PostController@index')->name('post.all');
-    Route::get('/post/new', 'Admin\PostController@create')->name('post.new');
-    Route::resource('/post/publishpost', 'Admin\PostController');
+    Route::resource('/post', 'Admin\Post\PostController');
+    //Route::get('/allpost', 'Admin\Post\PostController@getallpost');
+    //Route::get('/getDestroy', 'Admin\Post\PostController@getallpost')->name('post.delete');
+    //Route::get('/post/getallpost', 'Admin\Post\PostController@getallpost');
+
+
+
+
 
     //Catogery
-    Route::get('/cat', 'Admin\CategoryController@cat')->name('cat');
-    Route::get('/category', 'Admin\CategoryController@index')->name('categories');
-    Route::get('/getcategory', 'Admin\CategoryController@getcategories')->name('post.getcategory');
-    Route::post('/savecategory', 'Admin\CategoryController@store')->name('post.category.save');
-    Route::resource('/updatecategory', 'Admin\CategoryController');
+    Route::resource('/category', 'Admin\CategoryController');
+    //Route::get('/cat', 'Admin\CategoryController@cat')->name('cat');
+    //Route::get('/category', 'Admin\CategoryController@index')->name('categories');
+    //Route::get('/getcategory', 'Admin\CategoryController@getcategories')->name('post.getcategory');
+    //Route::post('/savecategory', 'Admin\CategoryController@store')->name('post.category.save');
+    //Route::resource('/updatecategory', 'Admin\CategoryController');
 
     //Tag
     Route::get('/tags', 'Admin\TagController@index')->name('tags');
@@ -49,16 +68,16 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     
     
     //Access MAnagement
-    Route::group(['prefix' => 'connect','middleware' => ['permission:users_manage']], function(){
-        Route::resource('/subscription', 'Admin\Subscription\SubscriptionController'); //Contact
-        Route::resource('/inquiry', 'Admin\Inquiry\InquiryController'); //Contact
+    Route::group(['prefix' => 'connect'], function(){
+        Route::resource('/subscription', 'Admin\Connect\SubscriptionController'); //Contact
+        Route::resource('/inquiry', 'Admin\Connect\InquiryController'); //Contact
     });
 
     //Access MAnagement
-    Route::group(['prefix' => 'access','middleware' => ['permission:users_manage']], function(){
-        Route::resource('/role', 'Admin\AccessControl\RoleController'); //Role
-        Route::resource('/permission', 'Admin\AccessControl\PermissionController'); //Permission
-        Route::resource('/user', 'Admin\AccessControl\UserController'); //User
+    Route::group(['prefix' => 'access'], function(){
+        Route::resource('/roles', 'Admin\AccessControl\RoleController'); //Role
+        Route::resource('/permissions', 'Admin\AccessControl\PermissionController'); //Permission
+        Route::resource('/users', 'Admin\AccessControl\UserController'); //User
     });
 
     //Client MAnagement
@@ -67,7 +86,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     });
 
     //account-profile
-    Route::resource('/profile', 'Admin\ProfileController'); //User
+    Route::resource('/profile', 'Admin\Profile\ProfileController'); //User
 
 
     //Media Library

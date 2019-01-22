@@ -1,195 +1,71 @@
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-   
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        
+<div class="col-md-3 left_col menu_fixed">
+  <div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+      <a href="{{route('admin.home')}}" class="site_title"><i class="fa fa-paw"></i> <span>{{setting('app_name')}}</span></a>
+    </div>
 
-        <!--Dashboard-->
-        <li class="{{current_page('dashboard') ? 'active' : '' }}">
-          <a href="{{route('admin.home')}}">
-            <i class="fa fa-tachometer"></i> <span>Dashboard</span>
-          </a>
-        </li><!--Dashboard-->
-        
-        <!--Posts -->
-        <li class="{{current_page('/post/') ? 'active' : '' }} treeview">          
-          <a href="{{url('/admin/appointment/all')}}">
-            <i class="fa fa-thumb-tack"></i> <span>Post</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{current_page('post/all') ? 'active' : '' }}">
-              <a href="{{route('post.all')}}"><i class="fa fa-circle-o"></i> All Posts</a>
-            </li> 
-            
-            <li class="{{current_page('post/new') ? 'active' : '' }}">
-              <a href="{{route('post.new')}}"><i class="fa fa-circle-o"></i>Add New</a>
-            </li>
+    <div class="clearfix"></div>
+
+    <!-- menu profile quick info -->
+    <div class="profile clearfix">
+      <div class="profile_pic">
+        <img src="{{asset('public/images/img.jpg')}}" alt="..." class="img-circle profile_img">
+      </div>
+      <div class="profile_info">
+        <span>Welcome,</span>
+        <h2>{{ Auth::user()->firstname }}, {{ Auth::user()->lastname }}</h2>
+      </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br />
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <h3>General</h3>
+        <ul class="nav side-menu">
+
+          <li class=""><a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
+          </li>
+
+          <li><a><i class="fa fa-edit"></i> Post <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('post.index')}}">All Posts</a></li>
+              <li><a href="{{route('post.create')}}">Add Post</a></li>
+            </ul>
+          </li>
+         
+        </ul>
+      </div>
+      <div class="menu_section">
        
-          </ul>
-        </li><!--Posts-->
+      </div>
 
-        <!--Category-->
-        <li class="{{current_page('/category') ? 'active' : '' }}">
-          <a href="{{route('categories')}}">
-            <i class="fa fa-object-group"></i> <span>Categories</span>
-          </a>
-        </li><!--Category-->
+    </div>
+    <!-- /sidebar menu -->
 
-        <!--Tags-->
-        <li class="{{current_page('/tags') ? 'active' : '' }}">
-          <a href="{{route('tags')}}">
-            <i class="fa fa-tags"></i> <span>Tags</span>
-          </a>
-        </li><!--Tags-->
-                               
-        <!--Connects -->
-        <li class="{{current_page('/connect') ? 'active' : '' }} treeview">          
-          <a href="">
-            <i class="fa fa-plug"></i> <span>Connects</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{current_page('/connect/subscription') ? 'active' : '' }}">
-              <a href="{{route('subscription.index')}}"><i class="fa fa-flag-checkered"></i>Subscriptions</a> 
-            </li> 
-            
-            <li class="{{current_page('/connect/inquiry') ? 'active' : '' }}">
-              <a href="{{route('inquiry.index')}}"><i class="fa fa-telegram"></i>Inquiry</a>
-            </li>
-        
-          </ul>
-        </li><!--Connects-->
+    <!-- /menu footer buttons -->
+    <div class="sidebar-footer hidden-small">
+      <a data-toggle="tooltip" data-placement="top" title="Settings">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Lock">
+        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+      </a>
+      <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+      </form>
+    </div>
+    <!-- /menu footer buttons -->
 
-         <!--Media Library -->
-        <li class="{{current_page('/medialibrary') ? 'active' : '' }} treeview">          
-          <a href="">
-            <i class="fa fa-picture-o"></i> <span>Media Library</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{current_page('medialibrary/gallery') ? 'active' : '' }}">
-              <a href="{{route('medialibrary.gallery')}}"><i class="fa fa-camera-retro"></i>Gallery</a>
-            </li> 
-            
-            <li class="{{current_page('connects/inquiry') ? 'active' : '' }}">
-              <a href="{{route('admin.settings')}}"><i class="fa fa-telegram"></i>Inquiry</a>
-            </li>
-        
-          </ul>
-        </li><!--Media Library-->
-
-        <!--Client Management -->
-        @can('client_manage')
-        <li class="{{current_page('/client') ? 'active' : '' }} treeview">          
-          <a href="">
-            <i class="fa fa-ravelry"></i> <span>Client Management</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-
-          <ul class="treeview-menu">            
-            <li class="{{current_page('client/invoice') ? 'active' : '' }}">
-              <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>CLients</a>
-            </li>
-          </ul>
-
-
-          <ul class="treeview-menu">            
-            <li class="{{current_page('client/invoice') ? 'active' : '' }}">
-              <a href="{{route('invoice.index')}}"><i class="fa fa-money"></i>Invoice</a>
-            </li>
-          </ul>
-
-        </li><!--Client Management-->
-        @endcan
-
-
-        <!--Access Management -->
-        @can('users_manage')
-        <li class="{{current_page('/access') ? 'active' : '' }} treeview">          
-          <a href="">
-            <i class="fa fa-universal-access"></i> <span>Access Management</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{current_page('access/permission') ? 'active' : '' }}">
-              <a href="{{route('permission.index')}}"><i class="fa fa-key"></i>Permissions</a>
-            </li> 
-            
-            <li class="{{current_page('access/role') ? 'active' : '' }}">
-              <a href="{{route('role.index')}}"><i class="fa fa-briefcase"></i>Roles</a>
-            </li>
-
-            <li class="{{current_page('access/user') ? 'active' : '' }}">
-              <a href="{{route('user.index')}}"><i class="fa fa-users"></i>Users</a>
-            </li>
-          </ul>
-        </li><!--Access Management-->
-        @endcan
-
-         <!--Test Lab -->
-        <li class="{{current_page('/testlab/') ? 'active' : '' }} treeview">          
-          <a href="">
-            <i class="fa fa-flask"></i> <span>Test Lab</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-
-          <ul class="treeview-menu">
-            <li class="{{current_page('testlab/test') ? 'active' : '' }}">
-              <a href="{{route('testlab')}}"><i class="fa fa-circle-o"></i> Test</a>
-            </li> 
-                
-          </ul>
-        </li><!--Test Lab-->
-
-        <!--Profile-->
-        <li class="{{current_page('account') ? 'active' : '' }}">
-          <a href="{{route('profile.index')}}">
-            <i class="fa fa-user"></i> <span>Profile</span>
-          </a>
-        </li><!--Profile-->
-
-        <!--Setting-->
-        <li class="{{current_page('setting') ? 'active' : '' }}">
-          <!--a href="{{route('admin.settings')}}">
-            <i class="fa fa-cogs"></i> <span>Settings</span>
-          </a-->
-          <a href="{{route('admin.settings')}}">
-            <i class="fa fa-cogs"></i> <span>Settings</span>
-          </a>
-        </li><!--Setting-->
-
-        <!--Logout-->
-        <li class="">
-          <!--a href="{{route('admin.settings')}}">
-            <i class="fa fa-cogs"></i> <span>Settings</span>
-          </a-->
-          <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i class="fa fa-power-off"></i> <span>Logout</span>
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-          </form>
-        </li><!--Logout-->
-
-
-      </ul>
-
-    </section>
-    <!-- /.sidebar -->
-</aside>
+    
+  </div>
+</div>

@@ -100,6 +100,9 @@ class AppController extends Controller
          return $pdf->download('itsolutionstuff.pdf');
     }
 
+    public function blog(){
+        return 'Blog';
+    }
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Post;
 use App\Models\Profile;
 use App\Notifications\verifyEmail;
 use Hash;
@@ -36,7 +37,14 @@ class User extends Authenticatable
     
     public function role()
     {
-        return $this->belongsToMany(Role::class, 'role_user');
+        return $this
+        ->belongsToMany(Role::class, 'role_user')
+        ->orderBy('created_at', 'DESC');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
     }
 
     public function verified(){

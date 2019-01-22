@@ -1,0 +1,222 @@
+
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes sonar {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+
+/* Scrollbar */
+/*------scroll bar---------------------*/
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #525965;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #525965;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #525965;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
+/* sidebar menu */
+#sidebar-menu{
+	
+	ul li a:hover > i::before {
+  		display: inline-block;
+  		animation: swing ease-in-out 0.5s 1 alternate;
+	}
+
+
+	ul li a{
+		//color: #818896;
+	}
+
+	ul li  a:hover i {
+    	color:#16c7ff;
+    	text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
+	}
+
+	ul{
+    .active,.current-page{
+      i{
+        color:#16c7ff;
+      }
+    }
+    ul{
+      .current-page{
+        i{
+          color:#16c7ff;
+        }
+      }
+    }
+  }
+
+  .child-menu{
+    .current-page{
+      i{
+        color:#16c7ff;
+      }
+    }
+  }
+}
+
+.sidebar-footer{
+  a:hover span{
+      color:#16c7ff;
+      text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
+  }
+}
+
+
+
+/* table-action-font-icon */
+
+.table-responsive{
+  .table-action-font-icon{
+    span {
+      margin-left: 10px;
+      margin-right:10px;
+    }
+
+  }
+
+  tr{
+    i{
+       font-size: 16px;
+    }
+  }
+  
+  tr:hover {
+    i::before {
+      display: inline-block;
+      animation: swing ease-in-out 0.5s 1 alternate;
+    }
+    i{
+      color:#16c7ff;
+     
+    }
+  }
+
+ 
+}
+
+/* New Post image upload image preview box */
+.avatar-preview {
+        width: 250px;
+        height: 250px;
+        position: relative;
+        border-radius: 10px;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; 
+      }
+
+.avatar-preview{
+
+  //background-image: url(http://localhost/digizigs/public/images/picture.jpg);
+}
+
+
+/* Form Errors */
+.is-invalid{
+  border: 1px solid #e74c3c;
+}
+
+
+//Pagination active link background
+.page-link{
+  background-color: red;
+}
+
+.pagination{
+  .active{
+    background-color: red !important;
+  }
+}
+
+.delete-form{
+  margin: 0 !important;
+  padding: 0 !important;
+  button{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+
+//Alerts
+.alert-delete{
+  position: fixed;
+  margin-left: 400px;
+  z-index: 999;
+}
+
+.alert{
+  position: absolute !important;
+}

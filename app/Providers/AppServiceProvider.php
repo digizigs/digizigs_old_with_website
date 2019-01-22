@@ -37,8 +37,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('path.public', function() {
+        /*$this->app->bind('path.public', function() {
             return base_path('public_html');
-        });
+        });*/
+
+        //To run sketchboard on only development mode
+        /*if ($this->app->environment() !== 'production') {
+            if (class_exists('\davestewart\sketchpad\SketchpadServiceProvider')) {
+                $this->app->register(\davestewart\sketchpad\SketchpadServiceProvider::class);
+            }
+        }*/
+
+
     }
 }

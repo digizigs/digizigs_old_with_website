@@ -14,7 +14,7 @@ class EcomController extends Controller
      */
     public function index()
     {
-        return view ('ecom.home');
+        return 'Ecom\Ecom';
     }
 
     /**

@@ -180,6 +180,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
       
 
     ],
@@ -234,6 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
      
 
     ],
