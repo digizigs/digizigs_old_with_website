@@ -55,15 +55,22 @@
 
 	                  <div class="x_content">
                       
-	                      <form action="">
-                          
-                          <h4> <b>{{$inquiry->name}}</b></h4> 
+	                      <form action="{{route('inquiry.update',$inquiry->id)}}" method="post">
+                          @csrf
+                          {{method_field('PUT')}}
+                          <h3> <b>{{$inquiry->name}}</b><small> {{ Carbon\Carbon::parse($inquiry->created_at)->diffForHumans() }}</small></h3>
+                          <input type="text" name="name" value="{{$inquiry->name}}" style="display: none">
+
                           <p> Email: {{$inquiry->email}}</p>
-                          <p> Contact: {{$inquiry->Contact}}</p>
-                          <small> :-{{ Carbon\Carbon::parse($inquiry->created_at)->diffForHumans() }}</small>
+                          <input type="text" name="email" value="{{$inquiry->email}}" style="display: none">
+
+                          <p> Contact: {{$inquiry->contact}}</p>
+                          
                           <hr>
-                          <h5>Message:</h5>  
+                          <h5>Message:</h5>
                           <p>{{$inquiry->message}}</p>
+                          <input type="text" name="message" value="{{$inquiry->message}}" style="display: none">  
+
                           <hr>
                           <h4>Reply:</h4>
                           <div class="form-group">

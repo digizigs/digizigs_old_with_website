@@ -89,7 +89,7 @@
                               <td class=" ">{{ Carbon\Carbon::parse($inquiry->created_at)->diffForHumans() }}</td>
                               <td class=" "> {{str_limit($inquiry->message,50)}} </td>
                               <td class="" style="width: 5%;">
-                                <a href="{{route('inquiry.show',$inquiry->id)}}">
+                                <a href="{{route('inquiry.edit',$inquiry->id)}}">
                                   <i class="fa fa-eye" aria-hidden="true"></i>
                                 </a>
                               

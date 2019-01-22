@@ -62,8 +62,7 @@ class InquiryController extends Controller
      */
     public function show($id)
     {
-        $inquiry = Inquiry::find($id);
-        return view('admin.pages.connect.inquiry_show',compact('inquiry'));
+
     }
 
     /**
@@ -74,7 +73,8 @@ class InquiryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inquiry = Inquiry::find($id);
+        return view('admin.pages.connect.inquiry_show',compact('inquiry'));
     }
 
     /**
@@ -86,7 +86,21 @@ class InquiryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return $request->email;
+        $to_email = $request->email;
+
+        $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+        $beautymail->send('email.Beautymail', [], function($message)
+        {
+            $email = Input::get('email');
+            $message
+                ->from('info@digizigs.com','DigiZigs')
+                ->to($email, 'John Smith')
+                ->subject('Inquiry');
+        });
+
+
+        return redirect()->route('inquiry.index')->with('message', 'Response sent to client successfully');
     }
 
     /**

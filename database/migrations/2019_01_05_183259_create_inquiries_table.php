@@ -19,6 +19,7 @@ class CreateInquiriesTable extends Migration
             $table->string('contact')->nullable();
             $table->string('email');
             $table->text('message')->nullable();
+            $table->text('response')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
