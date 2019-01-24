@@ -21,7 +21,7 @@ class PostController extends Controller
 
         //$posts = Post::paginate(10);
         //$posts = with('author')->find(1);
-        $posts = Post::orderby('created_at','desc')->with('user','tags')->paginate(10);
+        $posts = Post::orderby('created_at','desc')->with('user')->paginate(10);
         //dd($posts);
         return view('admin.pages.post.posts',compact('posts'));
 
@@ -81,17 +81,23 @@ class PostController extends Controller
         if($request->tags){
             $tags = $request->tags;
             foreach($tags as $tag){
-                $itag = new Tag;
-                $itag->post_id = $post->id;
-                $itag->user_id = Auth::user()->id;
-                $itag->name = $tag;
-                $itag->slug = str_slug( $tag);
-                $itag->save();
+
+                $itag = Tag::where('name', '=', $tag)->first();
+
+
+                if ($itag != null) {
+                    //return $itag->id;
+                    //$post->tags()->sync($itag->id);
+                }else{
+                    $ntag = new Tag;
+                    $ntag->post_id = $post->id;
+                    $ntag->name = $tag;
+                    $ntag->slug = str_slug( $tag);
+                    $ntag->save();
+                }
+
             }
         }
-        
-
-        
         
 
         //if($save_post){
@@ -119,7 +125,7 @@ class PostController extends Controller
         $post = Post::with('categories','tags')->find($id);
         $categories = Category::orderby('created_at','desc')->get();
         $tags = Tag::orderby('created_at','desc')->get();
-        return view('admin.pages.post.post_edit',compact('categories','tags','post'));
+        return view('admin.pages.post.post_edit',compact('categories','post'));
     }
 
    
@@ -151,17 +157,27 @@ class PostController extends Controller
         $post->save();
         $post->categories()->sync($request->categories);
 
-
+        
+     
         //Saving Tags
         if($request->tags){
             $tags = $request->tags;
             foreach($tags as $tag){
-                $itag = new Tag;
-                $itag->post_id = $post->id;
-                $itag->user_id = Auth::user()->id;
-                $itag->name = $tag;
-                $itag->slug = str_slug( $tag);
-                $itag->save();
+
+                $itag = Tag::where('name', '=', $tag)->first();
+
+
+                if ($itag != null) {
+                    //return $itag->id;
+                    //$post->tags()->sync($itag->id);
+                }else{
+                    $ntag = new Tag;
+                    $ntag->post_id = $post->id;
+                    $ntag->name = $tag;
+                    $ntag->slug = str_slug( $tag);
+                    $ntag->save();
+                }
+
             }
         }
 

@@ -14,7 +14,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return view('admin.clientcontroll.invoice');
+        return view('admin/pages.client.invoice');
     }
 
     /**

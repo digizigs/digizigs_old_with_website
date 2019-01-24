@@ -91,11 +91,11 @@
                               <td class=" "> {{ $post -> status}} </td>
                               <td class="" style="width: 5%;">
                                 
-                                @can('edit_post')
-                                  <a href="{{ route('post.edit' , $post->id)}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @else
-                                  <a href="{{ route('post.edit' , $post->id)}}" class="disabled"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                @endcan
+                                
+                                <a href="{{ route('post.edit' , $post->id)}}" >
+                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                             
                                 
                               </td>
                               <td style="width: 5%;">

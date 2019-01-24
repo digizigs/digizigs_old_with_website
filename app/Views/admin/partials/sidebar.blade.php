@@ -55,6 +55,16 @@
             </ul>
           </li>
 
+          <li><a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('service.index')}}">Services</a></li>
+              <li><a href="{{route('project.index')}}">Projects</a></li>
+              <li><a href="{{route('client.index')}}">Clients</a></li>
+              <li><a href="{{route('billing.index')}}">Billing</a></li>
+              <li><a href="{{route('invoice.index')}}">Invoice</a></li>
+            </ul>
+          </li>
+
 
 
 

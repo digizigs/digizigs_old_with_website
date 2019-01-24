@@ -39,11 +39,11 @@ const router = new VueRouter({
 
 
 //Posts
-Vue.component('posts', require('./components/post/PostLists.vue'));
-Vue.component('editposts', require('./components/post/EditPostModal.vue'));
+//Vue.component('posts', require('./components/post/PostLists.vue'));
+//Vue.component('editposts', require('./components/post/EditPostModal.vue'));
 
-
-
+//Client Management
+Vue.component('service', require('./client/service.vue'));
 
 //Posts
 

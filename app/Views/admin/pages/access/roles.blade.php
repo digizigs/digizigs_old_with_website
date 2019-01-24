@@ -111,7 +111,7 @@
         	</div>
 
           <!--Add Role modal-->
-            <div class="modal fade" id="addrole" role="dialog"  data-backdrop="false">
+          <div class="modal fade" id="addrole" role="dialog"  data-backdrop="false">
               <div class="modal-dialog modal-md">
                 <div class="modal-content">
                   <div class="modal-header panel-heading">
@@ -157,7 +157,8 @@
                   
                 </div>
               </div>
-            </div>
+          </div>
+          
       </div>
     </div>
   </div>

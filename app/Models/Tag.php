@@ -10,6 +10,7 @@ class Tag extends Model
     public function posts()
     {
         return $this->belongsTo('App\Models\Post');
+        
     }
 
 

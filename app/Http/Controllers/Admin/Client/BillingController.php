@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClientController extends Controller
+class BillingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-         return view('admin/pages.client.client');
+        return view('admin/pages.client.billing');
     }
 
     /**
