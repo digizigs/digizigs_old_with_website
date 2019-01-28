@@ -87,13 +87,13 @@
                         <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                           
                           <!-- draft and publish status -->
-                          <div class="panel">
+                          <div class="panel" >
                               <a class="panel-heading collapsed" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
                                 <span class=" ">Status & Visiblity</span>
                                 <span><i class="fa fa-caret-down pull-right" style="margin-top: 5px;"></i></span>
                               </a>
                               <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                <div class="panel-body">
+                                <div class="panel-body" style="background-color: red">
 
                                   <div class="radio">
                                     <label class="">

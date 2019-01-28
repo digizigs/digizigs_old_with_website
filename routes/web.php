@@ -6,6 +6,7 @@ use Spatie\Analytics\Period;
 
 //App
 Route::get('', 'App\AppController@index')->name('apphome');
+Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
 Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
 Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
 

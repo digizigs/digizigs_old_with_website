@@ -1,4 +1,7 @@
 
+body,html{
+  font-family: 'Roboto'
+}
 
 @keyframes swing {
   0% {
@@ -210,13 +213,3 @@
 }
 
 
-//Alerts
-.alert-delete{
-  position: fixed;
-  margin-left: 400px;
-  z-index: 999;
-}
-
-.alert{
-  position: absolute !important;
-}

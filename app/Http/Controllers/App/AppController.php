@@ -35,6 +35,9 @@ class AppController extends Controller
 
     }
 
+    public function home2(){
+        return view('app/home2');
+    }
 
     public function subscribe(Request $request){
 

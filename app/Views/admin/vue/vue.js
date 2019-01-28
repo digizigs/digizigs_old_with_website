@@ -42,8 +42,25 @@ const router = new VueRouter({
 //Vue.component('posts', require('./components/post/PostLists.vue'));
 //Vue.component('editposts', require('./components/post/EditPostModal.vue'));
 
-//Client Management
-Vue.component('service', require('./client/service.vue'));
+//=======================Client Management==================================//
+
+//Service
+Vue.component('services', require('./client/service/services.vue'));
+Vue.component('newservice', require('./client/service/newservice.vue'));
+Vue.component('editservice', require('./client/service/editservice.vue'));
+
+//Client
+Vue.component('clients', require('./client/client/clients.vue'));
+Vue.component('newclient', require('./client/client/newclient.vue'));
+
+
+
+
+
+
+
+
+
 
 //Posts
 

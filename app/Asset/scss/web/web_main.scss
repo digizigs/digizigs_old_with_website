@@ -5,11 +5,21 @@
 @import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
-
-//Variable and preset
-@import '../app/variables';
-@import '../app/presets';
+@import './presets';
 
 
-@import './theme';
+//Vendor
+@import '../../vendor/animate/css/animate';
+@import '../../vendor/lightbox/css/lightbox';
+
+
+@import './typography';
+
+
+
 @import './custom';
+
+//For new web page
+//@import './WebNew/main';
+
+

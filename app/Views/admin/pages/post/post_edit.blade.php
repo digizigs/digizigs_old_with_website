@@ -69,7 +69,7 @@
                         
                       </textarea>
                       
-                      <small><b>Word Count</b> 12</small>
+                      <small><b>Word Count</b> 12</small> <small class="pull-right">Last edited on : {{$post->updated_at}}</small>
                     </div>                  
                   </div>
                   

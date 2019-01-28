@@ -1,7 +1,9 @@
 <div class="col-md-3 left_col menu_fixed">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="{{route('admin.home')}}" class="site_title"><i class="fa fa-paw"></i> <span>{{setting('app_name')}}</span></a>
+      <a href="{{route('admin.home')}}" class="site_title" >
+        <img src="{{asset('public/images/DigiZigs_new_2.png')}}" style="width: 180px;" > 
+      </a>
     </div>
 
     <div class="clearfix"></div>
@@ -86,23 +88,7 @@
     <!-- /sidebar menu -->
 
     <!-- /menu footer buttons -->
-    <div class="sidebar-footer hidden-small">
-      <a  href="{{route('settings.index')}}" data-toggle="tooltip" data-placement="top" title="Settings">
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="Profile" href="{{route('profile.index')}}">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-      </a>
-      <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-      </a>
-      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-      </form>
-    </div>
+    
     <!-- /menu footer buttons -->
 
     

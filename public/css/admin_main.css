@@ -8924,7 +8924,7 @@ body .container.body .right_col {
 }
 
 .left_col .mCSB_scrollTools {
-  width: 6px;
+  width: 60px;
 }
 
 .left_col .mCSB_dragger {
@@ -13365,6 +13365,11 @@ ul.notifications {
   overflow: auto !important;
 }
 
+body,
+html {
+  font-family: 'Roboto';
+}
+
 @-webkit-keyframes swing {
   0% {
     -webkit-transform: rotate(0deg);
@@ -13625,15 +13630,5 @@ ul.notifications {
 .delete-form button {
   margin: 0 !important;
   padding: 0 !important;
-}
-
-.alert-delete {
-  position: fixed;
-  margin-left: 400px;
-  z-index: 999;
-}
-
-.alert {
-  position: absolute !important;
 }
 

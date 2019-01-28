@@ -65,8 +65,8 @@
     
     <!--script src="{{asset('public/build/js/custom.min.js')}}"></script-->
 
-    <script src="{{asset('public/js/admin.js')}}"></script>
-    <!--script src="{{asset('public/js/admin_main.js')}}"></script-->
+    <!--script src="{{asset('public/js/admin.js')}}"></script-->
+    <script src="{{asset('public/js/admin_main.js')}}"></script>
     
 	
 @yield('javascript')

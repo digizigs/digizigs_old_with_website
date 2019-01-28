@@ -10,7 +10,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+    <link rel="icon" href="{{asset('public/images/DZ-Fevicon-2.png')}}" type="image/ico" />
     <title>{{setting('app_name')}}</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
@@ -24,13 +24,10 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'UA-131227644-1');
     </script>
 
-
-    
-    <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('public/css/web_main.css')}}" rel="stylesheet">
 
    
 </head>
@@ -40,7 +37,7 @@
 
     <div id="app">  
         
-
+        
         @yield('content')
 
         
@@ -48,7 +45,7 @@
     </div>
 
     <!--Script-->
-    <script src="{{asset('public/js/app.js')}}"></script>
+    <script src="{{asset('public/js/web_main.js')}}"></script>
 
     @yield('javascript')
 

@@ -13535,13 +13535,6 @@ ul.notifications {
   padding: 0 !important;
 }
 
-.alert-delete {
-  position: fixed;
-  margin-left: 400px;
-  z-index: 999;
-}
 
-.alert {
-  position: absolute !important;
 }
 
