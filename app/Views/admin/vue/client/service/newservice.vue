@@ -10,30 +10,29 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="">
+                  <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
                     <div class="form-group">
-                      <div class="col-sm-10 col-xs-12">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text" placeholder="Name of the service"  required="Please ente a Role Name" v-model="service.name">
                       </div> 
                     </div><br>
 
                     <div class="form-group">
-                      <div class="col-sm-10 col-xs-12" >
+                      <div class="col-md-12 col-xs-12" >
                         <textarea class="form-control" placeholder="Breif description of service"  cols="30" rows="5" required="" v-model="service.desc"></textarea>
                       </div> 
                     </div><br>
 
                     <div class="form-group">
-                      <div class="col-sm-10 col-xs-12">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text" placeholder="Billing charge of service" required="Please ente a Role Name" v-model="service.bill">
                       </div> 
                     </div><br>
 
                     <div class="form-group">
-                      <label class="col-sm-2 control-label">Duration</label>
-                      <div class="col-sm-10 col-xs-12">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text" required="Please ente a Role Name" v-model="service.tat">
                         <i><small>Expected Completion Time</small></i>
                       </div> 

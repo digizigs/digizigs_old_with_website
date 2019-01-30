@@ -93,7 +93,7 @@
                                 <span><i class="fa fa-caret-down pull-right" style="margin-top: 5px;"></i></span>
                               </a>
                               <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                <div class="panel-body" style="background-color: red">
+                                <div class="panel-body" style="background-color: #F2F5F7">
 
                                   <div class="radio">
                                     <label class="">
@@ -169,7 +169,7 @@
                                 </div>
                               </div>
                               <div class="panel-footer">
-                                <label class="btn btn-primary">
+                                <label class="btn btn-dark btn-sm">
                                     Browse Image
                                     <input type="file" id="imageUpload" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" name="feature_image">
                                 </label>

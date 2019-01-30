@@ -8866,8 +8866,7 @@ table.tile_info td p {
 }
 
 body .container.body .right_col {
-  /* background: #F7F7F7 */
-  background: #ffff;
+  background: #F7F7F7;
 }
 
 .nav-md .container.body .right_col {
@@ -9036,7 +9035,7 @@ body .container.body .right_col {
 
 body {
   color: #73879C;
-  /* background: #2A3F54; */
+  background: #2A3F54;
   font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -9526,7 +9525,7 @@ a:visited {
 
 footer {
   background: #fff;
-  padding: 2px;
+  padding: 15px;
   display: block;
 }
 
@@ -13368,6 +13367,7 @@ ul.notifications {
 body,
 html {
   font-family: 'Roboto';
+  font-size: 12px;
 }
 
 @-webkit-keyframes swing {
@@ -13538,10 +13538,13 @@ html {
   background: transparent;
 }
 
-/* sidebar menu */
+footer {
+  background: #fff;
+  padding: 15px;
+  display: block;
+}
 
 #sidebar-menu ul li a:hover > i::before {
-  display: inline-block;
   -webkit-animation: swing ease-in-out 0.5s 1 alternate;
           animation: swing ease-in-out 0.5s 1 alternate;
 }
@@ -13569,7 +13572,14 @@ html {
   text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
 }
 
-/* table-action-font-icon */
+.nav.side-menu > li .fa {
+  font-size: 14px;
+}
+
+.nav.side-menu > li > a {
+  margin-bottom: 2px;
+  font-size: 12px;
+}
 
 .table-responsive .table-action-font-icon span {
   margin-left: 10px;
@@ -13590,8 +13600,6 @@ html {
   color: #16c7ff;
 }
 
-/* New Post image upload image preview box */
-
 .avatar-preview {
   width: 250px;
   height: 250px;
@@ -13607,8 +13615,6 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-/* Form Errors */
 
 .is-invalid {
   border: 1px solid #e74c3c;
@@ -13630,5 +13636,9 @@ html {
 .delete-form button {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.panel-body {
+  background-color: #F2F5F7;
 }
 

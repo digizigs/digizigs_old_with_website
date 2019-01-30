@@ -55009,7 +55009,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55020,7 +55020,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -55140,6 +55139,7 @@ var render = function() {
               _c(
                 "form",
                 {
+                  staticClass: "form-horizontal",
                   attrs: { role: "form" },
                   on: {
                     submit: function($event) {
@@ -55149,7 +55149,7 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55180,7 +55180,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("textarea", {
                         directives: [
                           {
@@ -55212,7 +55212,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55243,11 +55243,7 @@ var render = function() {
                   _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Duration")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {

@@ -1,6 +1,7 @@
 
 body,html{
-  font-family: 'Roboto'
+  font-family: 'Roboto';
+  font-size: 12px;
 }
 
 @keyframes swing {
@@ -83,11 +84,19 @@ body,html{
 }
 
 
-/* sidebar menu */
+//========================Footer=========================
+footer {
+    background: #fff;
+    padding: 15px;
+    display: block
+}
+//=======================================================
+
+//========================sidebar menu===================
 #sidebar-menu{
 	
 	ul li a:hover > i::before {
-  		display: inline-block;
+  		//display: inline-block;
   		animation: swing ease-in-out 0.5s 1 alternate;
 	}
 
@@ -132,9 +141,21 @@ body,html{
   }
 }
 
+.nav.side-menu>li{
+  .fa{
+    font-size: 14px;
+  }
+}
+.nav.side-menu>li>a {
+    margin-bottom: 2px;
+    font-size: 12px;
+}
 
 
-/* table-action-font-icon */
+//=======================================================
+
+
+//====================table-action-font-icon ============
 
 .table-responsive{
   .table-action-font-icon{
@@ -164,8 +185,9 @@ body,html{
 
  
 }
+//====================table-action-font-icon ============
 
-/* New Post image upload image preview box */
+//============New Post image upload image preview box====
 .avatar-preview {
         width: 250px;
         height: 250px;
@@ -184,13 +206,15 @@ body,html{
 
   //background-image: url(http://localhost/digizigs/public/images/picture.jpg);
 }
+//============New Post image upload image preview box====
 
 
-/* Form Errors */
+
+//============================Form Errors===============
 .is-invalid{
   border: 1px solid #e74c3c;
 }
-
+//============================Form Errors===============
 
 //Pagination active link background
 .page-link{
@@ -212,4 +236,6 @@ body,html{
   }
 }
 
-
+.panel-body{
+  background-color: #F2F5F7;
+}
