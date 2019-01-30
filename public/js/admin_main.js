@@ -55009,7 +55009,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55020,10 +55020,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
 //
 //
 //
@@ -55153,11 +55149,7 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Service")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55170,6 +55162,7 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
+                          placeholder: "Name of the service",
                           required: "Please ente a Role Name"
                         },
                         domProps: { value: _vm.service.name },
@@ -55181,18 +55174,13 @@ var render = function() {
                             _vm.$set(_vm.service, "name", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(1)
+                      })
                     ])
                   ]),
+                  _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Description")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
                       _c("textarea", {
                         directives: [
                           {
@@ -55203,7 +55191,12 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { id: "", cols: "30", rows: "5", required: "" },
+                        attrs: {
+                          placeholder: "Breif description of service",
+                          cols: "30",
+                          rows: "5",
+                          required: ""
+                        },
                         domProps: { value: _vm.service.desc },
                         on: {
                           input: function($event) {
@@ -55213,18 +55206,13 @@ var render = function() {
                             _vm.$set(_vm.service, "desc", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(2)
+                      })
                     ])
                   ]),
+                  _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Service Charge")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55237,6 +55225,7 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
+                          placeholder: "Billing charge of service",
                           required: "Please ente a Role Name"
                         },
                         domProps: { value: _vm.service.bill },
@@ -55248,18 +55237,17 @@ var render = function() {
                             _vm.$set(_vm.service, "bill", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(3)
+                      })
                     ])
                   ]),
+                  _c("br"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { staticClass: "col-sm-2 control-label" }, [
                       _vm._v("Duration")
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                    _c("div", { staticClass: "col-sm-10 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55285,18 +55273,20 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(4)
+                      _vm._m(1)
                     ])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-dark btn-sm",
-                      on: { click: _vm.addservice }
-                    },
-                    [_vm._v("Add Service")]
-                  )
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-sm pull-right",
+                        on: { click: _vm.addservice }
+                      },
+                      [_vm._v("Add Service")]
+                    )
+                  ])
                 ]
               )
             ])
@@ -55325,24 +55315,6 @@ var staticRenderFns = [
         _c("b", [_vm._v("New Service")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("The name is how it appears.")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Breif description of service")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Billing charge of service")])])
   },
   function() {
     var _vm = this
