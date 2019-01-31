@@ -52,20 +52,20 @@
 
                   <div class="col-md-8">
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{$post->title}}">
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                     </div>
               
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="editor1">Post Body</label>
-                      <textarea id="textarea" name="post_body" rows="15" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
+                      <textarea id="textarea" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
                         
                       </textarea>
                       
@@ -182,12 +182,12 @@
                             </a>
                             <div id="collapsefour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
                               <div class="panel-body">
-                                <div class="avatar-preview imgUp" style="background-image: url({{asset('public/uploads/' . $post->image_url)}});">
+                                <div class="avatar-preview imgUp img-thumbnail" style="background-image: url({{asset('public/uploads/' . $post->image_url)}});">
                                   
                                 </div>
                               </div>
                               <div class="panel-footer">
-                                <label class="btn btn-primary">
+                                <label class="btn btn-dark btn-sm">
                                     Browse Image
                                     <input type="file" id="imageUpload" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" name="feature_image">
                                 </label>

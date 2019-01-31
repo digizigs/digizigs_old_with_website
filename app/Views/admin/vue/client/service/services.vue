@@ -32,11 +32,11 @@
               	<div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                       <div class="x_title">                     
-                    <a href="#addservices" class="btn btn-dark btn-sm" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Add Service</a>
-                    <div class="clearfix"></div>
+                      <a href="#addservices" class="btn btn-dark btn-sm" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Add Service</a>
+                      <div class="clearfix"></div>
                   </div>
 
-                    <div class="x_content">
+                  <div class="x_content">
                     <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
@@ -74,8 +74,9 @@
                                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </a>
                               </td>
-                            </tr>
 
+                            </tr>
+                           
                           </tbody>
                         </table>
 

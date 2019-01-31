@@ -10,45 +10,39 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="">
+                  <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service</label>
-                      <div class="col-sm-10">
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text"  required="Please ente a Role Name" v-model="recrd.name">
-                        <i><small>The name is how it appears.</small></i>
+                        <i><small>itle of Service</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Description</label>
-                      <div class="col-sm-10">
+                    <div class="form-group glow-input">                   
+                      <div class="col-md-12 col-xs-12">
                         <textarea class="form-control" id="" cols="30" rows="5" required="" v-model="recrd.description"></textarea>
-                        <i><small>Breif description of service</small></i>
+                        <i><small>Description Of service</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service Charge</label>
-                      <div class="col-sm-10">
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.charge">
                         <i><small>Billing charge of service</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Duration</label>
-                      <div class="col-sm-10">
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
                         <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.duration">
                         <i><small>Expected Completion Time</small></i>
                       </div> 
                     </div>
                     
                     
-                    <hr><br>
-                    
-                    <button class="btn btn-dark btn-sm" @click="updateservice">Update</button>
+                    <button class="btn btn-dark btn-sm pull-right" @click="updateservice">Update</button>
                     
                   </form>
                   

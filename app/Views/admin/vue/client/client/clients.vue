@@ -42,8 +42,8 @@
 	                            <tr class="headings">
 	                              <th class="column-title"> Id </th>
 	                              <th class="column-title"> Client </th>
-	                              <th class="column-title"> Service </th>
 	                              <th class="column-title"> Status </th>
+	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
@@ -55,15 +55,16 @@
 
 	                          <tbody>
 
-	                            <tr class="even pointer" >
+	                            <tr class="even pointer" v-for="client,key in clients.data">
 	                              <td class=" "> 1 </td>
-	                              <td class=" "> Vandana Travels </td>
-	                              <td class=" "> 
+	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
+	                              <td class=" "> <span class="label label-warning label-many">WIP</span> </td>
+	                              <td class=" " style="width: 50%;"> 
 									<span class="label label-info label-many" style="font-weight:300;">Logo Design</span>
 									<span class="label label-info label-many">Pakage Upload</span>
 									<span class="label label-info label-many">Seo</span>
+									
 	                              </td>
-	                              <td class=" "> <span class="label label-warning label-many">WIP</span> </td>
 	                              <td class="" style="width: 2%;">
 	                                <a href="#editservices" class="disabled" data-toggle="modal"  >
 	                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -84,7 +85,7 @@
 	                          </tbody>
 	                        </table>
 
-	                        <!--pagination :data="services" @pagination-change-page="paginationdata" ></pagination-->
+	                        <pagination :data="clients" @pagination-change-page="paginationdata" ></pagination>
 
 	                    </div>  
 							     
@@ -96,7 +97,7 @@
         </div>
 
 		<div id="modal">
-          <newclient ></newclient>
+          <newclient @recordupdated="refreshRecord"></newclient>
           <!--quickapointment></quickapointment-->
           <!--editapointment :recrd="apntupdate" @recordupdated="refreshRecord"></editapointment-->
 
@@ -110,17 +111,33 @@
 	export default{
 		data(){
 			return{
-				services:{},
+				clients:{},
+				clientupdate:{},
+				success:'',
+				errors:'',
 			}
 		},
 		watch:{
 
 		},
 		methods:{
-		
+			paginationdata(page){
+		        if (typeof page === 'undefined'){
+		          page=1;
+		        } 
+		        axios.get('client/create?page=' + page)
+		          .then(response => this.clients = response.data)
+		          .catch(error => this.errors=error.response.data.errors);
+
+		    },
+			refreshRecord(record){
+	        	this.clients=record.data;
+	      	},
 		},
 		created(){
-		
+			axios.get('client/create')
+			.then((response) => {	this.clients=response.data})//this.appointments=response.data
+			.catch((error) => console.log(error))
 		}
 	};
 

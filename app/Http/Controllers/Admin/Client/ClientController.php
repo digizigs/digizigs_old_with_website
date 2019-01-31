@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin\Client;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -24,7 +25,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $clients = Client::orderby('created_at','desc')->paginate(8);
+        return request()->json(200,$clients);
     }
 
     /**
@@ -34,8 +36,20 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        
+        $client = new Client;
+        $client->clientname = $request->clientname;
+        $client->clientemail = $request->clientemail;
+        $client->contact_name = $request->contact_name;
+        $client->contact_email = $request->contact_email;
+        $client->contact_phone = $request->contact_phone;
+        $client->address = $request->address;
+        $client->save();
+
+        //return redirect()->route('service.index')->with('message', 'Service added successfully');
+        $clients = Client::orderby('created_at','desc')->paginate(8);
+        return request()->json(200,$clients);
     }
 
     /**

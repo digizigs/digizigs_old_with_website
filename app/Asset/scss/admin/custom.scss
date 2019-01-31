@@ -46,49 +46,17 @@ body,html{
 }
 
 
-/* Scrollbar */
-/*------scroll bar---------------------*/
+//@import './scrollbar';
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 7px;
-}
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}
-::-webkit-scrollbar-thumb {
-  background: #525965;
-  border: 0px none #ffffff;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #525965;
-}
-::-webkit-scrollbar-thumb:active {
-  background: #525965;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-  border: 0px none #ffffff;
-  border-radius: 50px;
-}
-::-webkit-scrollbar-track:hover {
-  background: transparent;
-}
-::-webkit-scrollbar-track:active {
-  background: transparent;
-}
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
 
 
 //========================Footer=========================
 footer {
     background: #fff;
-    padding: 15px;
-    display: block
+    padding: 12px;
+    display: block;
+    text-align: center;
+
 }
 //=======================================================
 
@@ -96,7 +64,7 @@ footer {
 #sidebar-menu{
 	
 	ul li a:hover > i::before {
-  		//display: inline-block;
+  		display: inline-block;
   		animation: swing ease-in-out 0.5s 1 alternate;
 	}
 
@@ -151,6 +119,13 @@ footer {
     font-size: 12px;
 }
 
+@media (max-width:480px) {
+    .nav.side-menu>li{
+      .fa{
+        font-size: 14px;
+      }
+    }
+}
 
 //=======================================================
 
@@ -190,16 +165,17 @@ footer {
 //============New Post image upload image preview box====
 .avatar-preview {
         width: 250px;
-        height: 250px;
+        height: 150px;
         position: relative;
-        border-radius: 10px;
-        border: 6px solid #F8F8F8;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+        //border: 6px solid #F8F8F8;
+       //box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         margin: auto;
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover; 
+        background-size: cover;
+        cursor: pointer; 
       }
 
 .avatar-preview{
@@ -238,4 +214,13 @@ footer {
 
 .panel-body{
   background-color: #F2F5F7;
+}
+
+
+
+.alert{
+  position: absolute;
+  z-index: 999;
+  top: 20px;
+  right: 20px;
 }

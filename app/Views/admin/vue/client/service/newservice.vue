@@ -13,27 +13,30 @@
                   <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text" placeholder="Name of the service"  required="Please ente a Role Name" v-model="service.name">
+                        <input class="form-control input-sm" type="text"  required="Please ente a Role Name" v-model="service.name">
+                        <i><small>Title of Service</small></i>
                       </div> 
                     </div><br>
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12" >
-                        <textarea class="form-control" placeholder="Breif description of service"  cols="30" rows="5" required="" v-model="service.desc"></textarea>
+                        <textarea class="form-control input-sm"  cols="30" rows="5" required="" v-model="service.desc"></textarea>
+                        <i><small>Description Of service</small></i>
                       </div> 
                     </div><br>
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text" placeholder="Billing charge of service" required="Please ente a Role Name" v-model="service.bill">
+                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.bill">
+                        <i><small>Billing charge of service</small></i>
                       </div> 
                     </div><br>
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="service.tat">
+                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.tat">
                         <i><small>Expected Completion Time</small></i>
                       </div> 
                     </div>
@@ -88,7 +91,7 @@
 						})
 
 					})
-					.catch((error) => console.log(error))
+					.catch((error) => this.errors(error))
 
 
 				
@@ -104,5 +107,6 @@
 
 <style type="text/css" Scoped>
 
+	
 
 </style>

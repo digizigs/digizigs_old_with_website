@@ -53133,7 +53133,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -53177,6 +53177,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -55009,7 +55010,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55020,6 +55021,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -55108,7 +55112,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					title: 'New Service added successfully'
 				});
 			}).catch(function (error) {
-				return console.log(error);
+				return _this.errors(error);
 			});
 		}
 	},
@@ -55148,7 +55152,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
@@ -55159,10 +55163,9 @@ var render = function() {
                             expression: "service.name"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
-                          placeholder: "Name of the service",
                           required: "Please ente a Role Name"
                         },
                         domProps: { value: _vm.service.name },
@@ -55174,12 +55177,14 @@ var render = function() {
                             _vm.$set(_vm.service, "name", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm._m(1)
                     ])
                   ]),
                   _c("br"),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("textarea", {
                         directives: [
@@ -55190,13 +55195,8 @@ var render = function() {
                             expression: "service.desc"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          placeholder: "Breif description of service",
-                          cols: "30",
-                          rows: "5",
-                          required: ""
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { cols: "30", rows: "5", required: "" },
                         domProps: { value: _vm.service.desc },
                         on: {
                           input: function($event) {
@@ -55206,12 +55206,14 @@ var render = function() {
                             _vm.$set(_vm.service, "desc", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm._m(2)
                     ])
                   ]),
                   _c("br"),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
@@ -55222,10 +55224,9 @@ var render = function() {
                             expression: "service.bill"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
-                          placeholder: "Billing charge of service",
                           required: "Please ente a Role Name"
                         },
                         domProps: { value: _vm.service.bill },
@@ -55237,12 +55238,14 @@ var render = function() {
                             _vm.$set(_vm.service, "bill", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm._m(3)
                     ])
                   ]),
                   _c("br"),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
@@ -55253,7 +55256,7 @@ var render = function() {
                             expression: "service.tat"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
                           required: "Please ente a Role Name"
@@ -55269,7 +55272,7 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _vm._m(4)
                     ])
                   ]),
                   _vm._v(" "),
@@ -55311,6 +55314,24 @@ var staticRenderFns = [
         _c("b", [_vm._v("New Service")])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Title of Service")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Description Of service")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Billing charge of service")])])
   },
   function() {
     var _vm = this
@@ -55414,7 +55435,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55425,12 +55446,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55551,6 +55566,7 @@ var render = function() {
               _c(
                 "form",
                 {
+                  staticClass: "form-horizontal",
                   attrs: { role: "form" },
                   on: {
                     submit: function($event) {
@@ -55559,12 +55575,8 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Service")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55594,12 +55606,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Description")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("textarea", {
                         directives: [
                           {
@@ -55630,12 +55638,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Service Charge")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55665,12 +55669,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { staticClass: "col-sm-2 control-label" }, [
-                      _vm._v("Duration")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-10" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-md-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -55700,13 +55700,10 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("hr"),
-                  _c("br"),
-                  _vm._v(" "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-dark btn-sm",
+                      staticClass: "btn btn-dark btn-sm pull-right",
                       on: { click: _vm.updateservice }
                     },
                     [_vm._v("Update")]
@@ -55744,13 +55741,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("The name is how it appears.")])])
+    return _c("i", [_c("small", [_vm._v("itle of Service")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Breif description of service")])])
+    return _c("i", [_c("small", [_vm._v("Description Of service")])])
   },
   function() {
     var _vm = this
@@ -55979,17 +55976,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			services: {}
+			clients: {},
+			clientupdate: {},
+			success: '',
+			errors: ''
 		};
 	},
 
 	watch: {},
-	methods: {},
-	created: function created() {}
+	methods: {
+		paginationdata: function paginationdata(page) {
+			var _this = this;
+
+			if (typeof page === 'undefined') {
+				page = 1;
+			}
+			axios.get('client/create?page=' + page).then(function (response) {
+				return _this.clients = response.data;
+			}).catch(function (error) {
+				return _this.errors = error.response.data.errors;
+			});
+		},
+		refreshRecord: function refreshRecord(record) {
+			this.clients = record.data;
+		}
+	},
+	created: function created() {
+		var _this2 = this;
+
+		axios.get('client/create').then(function (response) {
+			_this2.clients = response.data;
+		}) //this.appointments=response.data
+		.catch(function (error) {
+			return console.log(error);
+		});
+	}
 });
 
 /***/ }),
@@ -56014,82 +56040,106 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "x_content" }, [
-              _c("div", { staticClass: "table-responsive" }, [
-                _c(
-                  "table",
-                  {
-                    staticClass: "table table-striped jambo_table bulk_action"
-                  },
-                  [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c("tbody", [
-                      _c("tr", { staticClass: "even pointer" }, [
-                        _c("td", { staticClass: " " }, [_vm._v(" 1 ")]),
-                        _vm._v(" "),
-                        _c("td", { staticClass: " " }, [
-                          _vm._v(" Vandana Travels ")
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(3),
-                        _vm._v(" "),
-                        _vm._m(4),
-                        _vm._v(" "),
-                        _vm._m(5),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "2%" } }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "disabled",
-                              attrs: { href: "" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                }
-                              }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fa fa-eye",
-                                attrs: { "aria-hidden": "true" }
-                              })
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("td", { staticStyle: { width: "2%" } }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "disabled",
-                              attrs: { href: "" },
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                }
-                              }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fa fa-th-list",
-                                attrs: { "aria-hidden": "true" }
-                              })
-                            ]
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              ])
+              _c(
+                "div",
+                { staticClass: "table-responsive" },
+                [
+                  _c(
+                    "table",
+                    {
+                      staticClass: "table table-striped jambo_table bulk_action"
+                    },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.clients.data, function(client, key) {
+                          return _c("tr", { staticClass: "even pointer" }, [
+                            _c("td", { staticClass: " " }, [_vm._v(" 1 ")]),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: " ",
+                                staticStyle: { width: "10%" }
+                              },
+                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(3, true),
+                            _vm._v(" "),
+                            _vm._m(4, true),
+                            _vm._v(" "),
+                            _vm._m(5, true),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "2%" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "disabled",
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-eye",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "2%" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "disabled",
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-th-list",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("pagination", {
+                    attrs: { data: _vm.clients },
+                    on: { "pagination-change-page": _vm.paginationdata }
+                  })
+                ],
+                1
+              )
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { attrs: { id: "modal" } }, [_c("newclient")], 1)
+    _c(
+      "div",
+      { attrs: { id: "modal" } },
+      [_c("newclient", { on: { recordupdated: _vm.refreshRecord } })],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -56162,9 +56212,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }, [_vm._v(" Client ")]),
         _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Service ")]),
-        _vm._v(" "),
         _c("th", { staticClass: "column-title" }, [_vm._v(" Status ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v(" Service ")]),
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }),
         _vm._v(" "),
@@ -56195,6 +56245,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: " " }, [
+      _c("span", { staticClass: "label label-warning label-many" }, [
+        _vm._v("WIP")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: " ", staticStyle: { width: "50%" } }, [
       _c(
         "span",
         {
@@ -56210,16 +56270,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "label label-info label-many" }, [
         _vm._v("Seo")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: " " }, [
-      _c("span", { staticClass: "label label-warning label-many" }, [
-        _vm._v("WIP")
       ])
     ])
   },
@@ -56339,7 +56389,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56435,12 +56485,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			client: { clientname: '', clientemail: '', contact_name: '', contact_email: '', contact_phone: '', address: '' },
 			success: '',
 			errors: '',
-			services: {}
+			clients: {}
 		};
 	},
 
 	watch: {},
-	methods: {},
+	methods: {
+		addclient: function addclient() {
+			var _this = this;
+
+			axios.post('client', this.client).then(function (data) {
+				console.log(data);
+				//this.services=response.data           
+				_this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+				_this.client = {};
+				$('#addclient').modal('hide');
+
+				toast({
+					type: 'success',
+					title: 'New Client added successfully'
+				});
+			}).catch(function (error) {
+				return console.log(error);
+			});
+		}
+	},
 	created: function created() {}
 });
 
@@ -56468,6 +56537,7 @@ var render = function() {
               _c(
                 "form",
                 {
+                  staticClass: "form-horizontal",
                   attrs: { role: "form" },
                   on: {
                     submit: function($event) {
@@ -56476,44 +56546,44 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.clientname,
-                            expression: "client.clientname"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Client Name",
-                          required: "Please ente a Role Name"
-                        },
-                        domProps: { value: _vm.client.clientname },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-sm-12 col-xs-12 col-xs-12" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.client.clientname,
+                              expression: "client.clientname"
                             }
-                            _vm.$set(
-                              _vm.client,
-                              "clientname",
-                              $event.target.value
-                            )
+                          ],
+                          staticClass: "form-control input-sm",
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.client.clientname },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.client,
+                                "clientname",
+                                $event.target.value
+                              )
+                            }
                           }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(1)
-                    ])
+                        }),
+                        _vm._v(" "),
+                        _vm._m(1)
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -56523,12 +56593,8 @@ var render = function() {
                             expression: "client.clientemail"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Client Email",
-                          required: "Please ente a Role Name"
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "text" },
                         domProps: { value: _vm.client.clientemail },
                         on: {
                           input: function($event) {
@@ -56548,8 +56614,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -56559,12 +56625,8 @@ var render = function() {
                             expression: "client.contact_name"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Contact Person Name",
-                          required: "Please ente a Role Name"
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "text" },
                         domProps: { value: _vm.client.contact_name },
                         on: {
                           input: function($event) {
@@ -56584,8 +56646,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -56595,12 +56657,8 @@ var render = function() {
                             expression: "client.contact_email"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Contact Person Email",
-                          required: "Please ente a Role Name"
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "text" },
                         domProps: { value: _vm.client.contact_email },
                         on: {
                           input: function($event) {
@@ -56620,8 +56678,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
                       _c("input", {
                         directives: [
                           {
@@ -56631,12 +56689,8 @@ var render = function() {
                             expression: "client.contact_phone"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Contact Number",
-                          required: "Please ente a Role Name"
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "text" },
                         domProps: { value: _vm.client.contact_phone },
                         on: {
                           input: function($event) {
@@ -56656,8 +56710,8 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("div", { staticClass: "col-sm-12" }, [
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
                       _c("textarea", {
                         directives: [
                           {
@@ -56667,14 +56721,8 @@ var render = function() {
                             expression: "client.address"
                           }
                         ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "",
-                          id: "",
-                          cols: "30",
-                          rows: "5",
-                          placeholder: "Address"
-                        },
+                        staticClass: "form-control input-sm",
+                        attrs: { name: "", id: "", cols: "30", rows: "5" },
                         domProps: { value: _vm.client.address },
                         on: {
                           input: function($event) {
@@ -56690,7 +56738,16 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(7)
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-sm pull-right",
+                        on: { click: _vm.addclient }
+                      },
+                      [_vm._v("Add Client")]
+                    )
+                  ])
                 ]
               )
             ])
@@ -56724,47 +56781,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("The name is how it appears.")])])
+    return _c("i", [_c("small", [_vm._v("Name of Client")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Breif description of service")])])
+    return _c("i", [_c("small", [_vm._v("Client Email-id")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Billing charge of service")])])
+    return _c("i", [_c("small", [_vm._v("Contact person Name")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Billing charge of service")])])
+    return _c("i", [_c("small", [_vm._v("Contact person email")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Expected Completion Time")])])
+    return _c("i", [_c("small", [_vm._v("Contact number")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Expected Completion Time")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("button", { staticClass: "btn btn-dark btn-sm form-control" }, [
-        _vm._v("Add Client")
-      ])
-    ])
+    return _c("i", [_c("small", [_vm._v("Address of client")])])
   }
 ]
 render._withStripped = true

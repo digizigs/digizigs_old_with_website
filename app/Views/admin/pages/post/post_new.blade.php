@@ -9,7 +9,7 @@
   <div class="right_col" role="main" style="min-height: 3543px;">
 
     
-
+          <!--p class="alert alert-info " id="successMessage">Post published successfully</p-->
           @if(Session::has('message'))
             <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
           @endif
@@ -42,14 +42,14 @@
               </div>
             </div>
             <div class="clearfix"></div>
-            <div class="row">
+            <div class="row" >
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
                 <form class="form-horizontal form-label-left" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                   @csrf
                   <div class="col-md-8">
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{ old('post_title') }}">
                     </div>
@@ -58,14 +58,14 @@
                     
 
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{ old('post_desc') }}">
                     </div>
               
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="editor1">Post Body</label>
-                      <textarea id="textarea" name="post_body" rows="15" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">
+                      <textarea id="textarea" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">
                         
                       </textarea>
                       
@@ -164,7 +164,7 @@
                             </a>
                             <div id="collapsefour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
                               <div class="panel-body">
-                                <div class="avatar-preview imgUp" style="background-image: url({{asset('public/images/picture.jpgs')}});">
+                                <div class="avatar-preview imgUp img-thumbnail" style="background-image: url({{asset('public/images/picture.jpgs')}});">
                                   
                                 </div>
                               </div>

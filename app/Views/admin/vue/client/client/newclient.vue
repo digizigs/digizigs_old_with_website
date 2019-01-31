@@ -10,53 +10,53 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="">
+                  <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <input class="form-control" type="text" placeholder="Client Name"  required="Please ente a Role Name" v-model="client.clientname">
-                        <i><small>The name is how it appears.</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12 col-xs-12">
+                        <input class="form-control input-sm" type="text"    v-model="client.clientname">
+                        <i><small>Name of Client</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <input class="form-control" type="text" placeholder="Client Email"  required="Please ente a Role Name" v-model="client.clientemail">
-                        <i><small>Breif description of service</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12">
+                        <input class="form-control input-sm" type="text"    v-model="client.clientemail">
+                        <i><small>Client Email-id</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <input class="form-control" type="text" placeholder="Contact Person Name" required="Please ente a Role Name" v-model="client.contact_name">
-                        <i><small>Billing charge of service</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12">
+                        <input class="form-control input-sm" type="text"   v-model="client.contact_name">
+                        <i><small>Contact person Name</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <input class="form-control" type="text" placeholder="Contact Person Email" required="Please ente a Role Name" v-model="client.contact_email">
-                        <i><small>Billing charge of service</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12">
+                        <input class="form-control input-sm" type="text"   v-model="client.contact_email">
+                        <i><small>Contact person email</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <input class="form-control" type="text" placeholder="Contact Number" required="Please ente a Role Name" v-model="client.contact_phone">
-                        <i><small>Expected Completion Time</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12">
+                        <input class="form-control input-sm" type="text"   v-model="client.contact_phone">
+                        <i><small>Contact number</small></i>
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <textarea class="form-control" name="" id="" cols="30" rows="5" placeholder="Address" v-model="client.address"></textarea>
-                        <i><small>Expected Completion Time</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-sm-12 col-xs-12">
+                        <textarea class="form-control input-sm" name="" id="" cols="30" rows="5"  v-model="client.address"></textarea>
+                        <i><small>Address of client</small></i>
                       </div> 
                     </div>
                     
                     <div class="form-group">
-                      <button class="btn btn-dark btn-sm form-control" >Add Client</button>
+                      <button class="btn btn-dark btn-sm pull-right" @click="addclient" >Add Client</button>
                     </div>
                     
                     
@@ -83,14 +83,31 @@
 				client:{clientname:'',clientemail:'',contact_name:'',contact_email:'',contact_phone:'',address:''},
 				success:'',
 				errors:'',
-				services:{},
+				clients:{},
 			}
 		},
 		watch:{
 
 		},
 		methods:{
-		
+		  addclient(){
+        axios.post('client',this.client)
+            .then(data => {
+              console.log(data);
+              //this.services=response.data           
+              this.$emit('recordupdated',data),
+              this.success='Service added successfully'
+              this.client={}
+            $('#addclient').modal('hide');
+
+            toast({
+                type: 'success',
+                title: 'New Client added successfully'
+            })
+
+          })
+          .catch((error) => console.log(error))
+      }
 		},
 		created(){
 		

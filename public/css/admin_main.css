@@ -13492,59 +13492,15 @@ html {
   }
 }
 
-/* Scrollbar */
-
-/*------scroll bar---------------------*/
-
-::-webkit-scrollbar {
-  width: 5px;
-  height: 7px;
-}
-
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #525965;
-  border: 0px none #ffffff;
-  border-radius: 0px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #525965;
-}
-
-::-webkit-scrollbar-thumb:active {
-  background: #525965;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  border: 0px none #ffffff;
-  border-radius: 50px;
-}
-
-::-webkit-scrollbar-track:hover {
-  background: transparent;
-}
-
-::-webkit-scrollbar-track:active {
-  background: transparent;
-}
-
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
 footer {
   background: #fff;
-  padding: 15px;
+  padding: 12px;
   display: block;
+  text-align: center;
 }
 
 #sidebar-menu ul li a:hover > i::before {
+  display: inline-block;
   -webkit-animation: swing ease-in-out 0.5s 1 alternate;
           animation: swing ease-in-out 0.5s 1 alternate;
 }
@@ -13581,6 +13537,12 @@ footer {
   font-size: 12px;
 }
 
+@media (max-width: 480px) {
+  .nav.side-menu > li .fa {
+    font-size: 14px;
+  }
+}
+
 .table-responsive .table-action-font-icon span {
   margin-left: 10px;
   margin-right: 10px;
@@ -13602,18 +13564,14 @@ footer {
 
 .avatar-preview {
   width: 250px;
-  height: 250px;
+  height: 150px;
   position: relative;
-  border-radius: 10px;
-  border: 6px solid #F8F8F8;
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
   margin: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: pointer;
 }
 
 .is-invalid {
@@ -13640,5 +13598,94 @@ footer {
 
 .panel-body {
   background-color: #F2F5F7;
+}
+
+.alert {
+  position: absolute;
+  z-index: 999;
+  top: 20px;
+  right: 20px;
+}
+
+/* Scrollbar */
+
+/*------scroll bar---------------------*/
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #525965;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+
+/*
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #525965;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #525965;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+*/
+
+.alert {
+  position: absolute;
+  z-index: 999;
+  top: 20px;
+  right: 20px;
+}
+
+.glow-input input,
+.glow-input textarea {
+  border: 1px solid #CCCCCC !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
+  -webkit-transition: border 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s !important;
+  transition: border 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s !important;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s !important;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s, -webkit-box-shadow 0.2s linear 0s !important;
+  border-radius: 4px !important;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px #666 inset;
+  box-shadow: 0 0 5px #666 inset;
+  line-height: 25px;
+  text-indent: 5px;
+}
+
+.glow-input input:focus,
+.glow-input textarea:focus {
+  border-color: rgba(82, 168, 236, 0.8) !important;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6) !important;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6) !important;
+  outline: 0 none !important;
+}
+
+.is-invalid {
+  border: 1px solid #e74c3c;
 }
 

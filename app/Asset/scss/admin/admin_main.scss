@@ -15,3 +15,11 @@
 @import './custom';
 
 
+@import './snippets/scrollbar'; //Scroll bar modification
+@import './snippets/flashalert'; //flash alert
+@import './snippets/glowinput'; //GlowInput
+
+.is-invalid{
+  border: 1px solid #e74c3c;
+}
+
