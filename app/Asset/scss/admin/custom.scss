@@ -60,74 +60,7 @@ footer {
 }
 //=======================================================
 
-//========================sidebar menu===================
-#sidebar-menu{
-	
-	ul li a:hover > i::before {
-  		display: inline-block;
-  		animation: swing ease-in-out 0.5s 1 alternate;
-	}
 
-
-	ul li a{
-		//color: #818896;
-	}
-
-	ul li  a:hover i {
-    	color:#16c7ff;
-    	text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
-	}
-
-	ul{
-    .active,.current-page{
-      i{
-        color:#16c7ff;
-      }
-    }
-    ul{
-      .current-page{
-        i{
-          color:#16c7ff;
-        }
-      }
-    }
-  }
-
-  .child-menu{
-    .current-page{
-      i{
-        color:#16c7ff;
-      }
-    }
-  }
-}
-
-.sidebar-footer{
-  a:hover span{
-      color:#16c7ff;
-      text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
-  }
-}
-
-.nav.side-menu>li{
-  .fa{
-    font-size: 14px;
-  }
-}
-.nav.side-menu>li>a {
-    margin-bottom: 2px;
-    font-size: 12px;
-}
-
-@media (max-width:480px) {
-    .nav.side-menu>li{
-      .fa{
-        font-size: 14px;
-      }
-    }
-}
-
-//=======================================================
 
 
 //====================table-action-font-icon ============
@@ -223,4 +156,10 @@ footer {
   z-index: 999;
   top: 20px;
   right: 20px;
+}
+
+
+.right_col{
+  min-height: 100vh;
+  margin: 0;
 }

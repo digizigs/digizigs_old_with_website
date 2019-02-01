@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -38,6 +39,23 @@ class ClientController extends Controller
     public function store(Request $request)
     {   
         
+        $data = Validator::make($request->all(),[
+
+            'clientname'=>'required|max:255',
+            'clientemail'=>'required|max:255',
+            'contact_name'=>'required|max:255',
+            'contact_email'=>'required|max:255',     
+            'contact_phone'=>'required|max:255',     
+        ],[
+            'clientname.required' => 'Name of service is required', 
+            'clientemail.required' => 'Description of service is required', 
+            'contact_name.required' => 'Billing Charge of service is required', 
+            'contact_email.required' => 'Duration for complition of service is required',
+            'contact_phone.required' => 'Duration for complition of service is required',  
+
+        ])->Validate();
+
+
         $client = new Client;
         $client->clientname = $request->clientname;
         $client->clientemail = $request->clientemail;

@@ -106,7 +106,9 @@
             })
 
           })
-          .catch((error) => console.log(error))
+          .catch((error) => {
+            this.errors=error.response.data.errors;           
+          })
       }
 		},
 		created(){
