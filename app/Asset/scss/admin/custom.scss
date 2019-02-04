@@ -1,6 +1,7 @@
 
 body,html{
   font-family: 'Roboto';
+  //font-family: open sans, sans-serif;
   font-size: 12px;
 }
 
@@ -160,6 +161,18 @@ footer {
 
 
 .right_col{
-  min-height: 100vh;
+  min-height: 2000px;
   margin: 0;
 }
+
+
+//=========================Pagination==========================
+.pagination{
+
+  .active{
+    a{
+      background-color: #3F5367 !important;
+    }
+  }
+}
+//=========================Pagination==========================

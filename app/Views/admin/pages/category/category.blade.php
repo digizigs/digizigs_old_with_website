@@ -19,7 +19,7 @@
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
+                  <div class="input-group ">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
@@ -63,14 +63,14 @@
                             @csrf
 
                             <!--catagory-->
-                            <div class="form-group">
+                            <div class="form-group glow-input">
                               <label for="usr">Add New Category</label>
                               <input type="text" class="form-control input-sm" name="category_name">
                               <small><i>The name is how it appears on your site.</i></small>
                             </div>
 
                             <!--Parent category dropdown-->
-                            <div class="form-group">
+                            <div class="form-group glow-input">
                               <label for="sel1">Parent Catagory</label>
                               <select class="form-control input-sm" name="parent_id">
                                 <option value="0">None</option>

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);@charset "UTF-8";
+@charset "UTF-8";
 
 /*!
  * Bootstrap v3.4.0 (https://getbootstrap.com/)
@@ -8333,98 +8333,6 @@ button.close {
   }
 }
 
-.alt-font {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-}
-
-.main-font {
-  font-family: 'Roboto', sans-serif;
-}
-
-.m-t-10 {
-  margin-top: 10px;
-}
-
-.m-t-20 {
-  margin-top: 20px;
-}
-
-.m-t-30 {
-  margin-top: 30px;
-}
-
-.m-t-40 {
-  margin-top: 40px;
-}
-
-.m-t-50 {
-  margin-top: 50px;
-}
-
-.m-b-10 {
-  margin-bottom: 10px;
-}
-
-.p-5 {
-  padding: 5px;
-}
-
-.p-10 {
-  padding: 10px;
-}
-
-.p-l-r-10 {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-}
-
-.mp-0 {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.m-0 {
-  margin: 0 !important;
-}
-
-.no-padding-left-right {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-/* box-shadow */
-
-.btn-shadow {
-  -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.box-shadow-light {
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-.box-shadow {
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
-}
-
-.box-shadow-dark {
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-}
-
-.box-shadow-large {
-  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-  background-color: #028FCC !important;
-  border-radius: 2px !important;
-}
-
 .x_title h2,
 table.tile_info td p {
   white-space: nowrap;
@@ -8688,7 +8596,7 @@ table.tile_info td p {
 
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-  border-right: 5px solid #1ABB9C;
+  border-right: 1px solid #1ABB9C;
 }
 
 .nav-sm .nav.side-menu li.active-sm ul ul,
@@ -8743,14 +8651,12 @@ table.tile_info td p {
 
 .menu_section h3 {
   padding-left: 15px;
-  color: #fff;
-  text-transform: uppercase;
+  color: #999999;
   letter-spacing: .5px;
-  font-weight: 700;
-  font-size: 11px;
+  font-weight: 500;
+  font-size: 13px;
   margin-bottom: 0;
   margin-top: 0;
-  text-shadow: 1px 1px #000;
 }
 
 .menu_section > ul {
@@ -8923,7 +8829,7 @@ body .container.body .right_col {
 }
 
 .left_col .mCSB_scrollTools {
-  width: 60px;
+  width: 6px;
 }
 
 .left_col .mCSB_dragger {
@@ -9525,7 +9431,7 @@ a:visited {
 
 footer {
   background: #fff;
-  padding: 15px;
+  padding: 15px 20px;
   display: block;
 }
 
@@ -13564,8 +13470,12 @@ footer {
 }
 
 .right_col {
-  min-height: 100vh;
+  min-height: 2000px;
   margin: 0;
+}
+
+.pagination .active a {
+  background-color: #3F5367 !important;
 }
 
 .menu_section .side-menu {
@@ -13573,13 +13483,23 @@ footer {
 }
 
 .menu_section .side-menu li a {
-  padding: 10px 5px;
+  padding: 10px 10px;
   font-weight: 400;
 }
 
 .menu_section .side-menu li a .fa-chevron-down {
   font-size: 10px;
   margin-bottom: 20px !important;
+}
+
+.nav_title {
+  border: 1px solid #fff;
+  margin-bottom: 10px;
+}
+
+.navbar-title {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+          box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
 }
 
 #sidebar-menu ul li a:hover > i::before {
@@ -13606,7 +13526,13 @@ footer {
   color: #16c7ff;
 }
 
-.sidebar-footer a:hover span {
+.sidebar-footer a:hover i::before {
+  display: inline-block;
+  -webkit-animation: swing ease-in-out 0.5s 1 alternate;
+          animation: swing ease-in-out 0.5s 1 alternate;
+}
+
+.sidebar-footer a:hover i {
   color: #16c7ff;
   text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
 }
@@ -13679,7 +13605,8 @@ footer {
 }
 
 .glow-input input,
-.glow-input textarea {
+.glow-input textarea,
+.glow-input select {
   border: 1px solid #CCCCCC !important;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset !important;

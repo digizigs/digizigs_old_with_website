@@ -55977,6 +55977,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -56057,6 +56061,24 @@ var render = function() {
                         _vm._l(_vm.clients.data, function(client, key) {
                           return _c("tr", { staticClass: "even pointer" }, [
                             _c("td", { staticClass: " " }, [_vm._v(" 1 ")]),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: " ",
+                                staticStyle: { width: "10%" }
+                              },
+                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: " ",
+                                staticStyle: { width: "10%" }
+                              },
+                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
+                            ),
                             _vm._v(" "),
                             _c(
                               "td",
@@ -56211,6 +56233,10 @@ var staticRenderFns = [
         _c("th", { staticClass: "column-title" }, [_vm._v(" Id ")]),
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }, [_vm._v(" Client ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v(" Email ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v(" Contact ")]),
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }, [_vm._v(" Status ")]),
         _vm._v(" "),
@@ -56389,7 +56415,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56400,6 +56426,98 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56546,197 +56664,718 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-sm-12 col-xs-12 col-xs-12" },
-                      [
-                        _c("input", {
-                          directives: [
+                  _c(
+                    "div",
+                    {
+                      attrs: {
+                        role: "tabpanel",
+                        "data-example-id": "togglable-tabs"
+                      }
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-content",
+                          attrs: { id: "myTabContent" }
+                        },
+                        [
+                          _c(
+                            "div",
                             {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.client.clientname,
-                              expression: "client.clientname"
-                            }
-                          ],
-                          staticClass: "form-control input-sm",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.client.clientname },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                              staticClass: "tab-pane fade active in",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content1",
+                                "aria-labelledby": "home-tab"
                               }
-                              _vm.$set(
-                                _vm.client,
-                                "clientname",
-                                $event.target.value
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(2),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(3),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientemail,
+                                            expression: "client.clientemail"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientemail
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientemail",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(4),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientemail,
+                                            expression: "client.clientemail"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientemail
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientemail",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(5),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.contact_name,
+                                            expression: "client.contact_name"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.contact_name
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "contact_name",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
                               )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1)
-                      ]
-                    )
-                  ]),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content2",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(6),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(7),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(8),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(9),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content3",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(10),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(11),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(12),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(13),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(14),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(15),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(16),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.clientname,
+                                            expression: "client.clientname"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.client.clientname
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "clientname",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(17)
+                        ]
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.clientemail,
-                            expression: "client.clientemail"
-                          }
-                        ],
-                        staticClass: "form-control input-sm",
-                        attrs: { type: "text" },
-                        domProps: { value: _vm.client.clientemail },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.client,
-                              "clientemail",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(2)
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.contact_name,
-                            expression: "client.contact_name"
-                          }
-                        ],
-                        staticClass: "form-control input-sm",
-                        attrs: { type: "text" },
-                        domProps: { value: _vm.client.contact_name },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.client,
-                              "contact_name",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(3)
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.contact_email,
-                            expression: "client.contact_email"
-                          }
-                        ],
-                        staticClass: "form-control input-sm",
-                        attrs: { type: "text" },
-                        domProps: { value: _vm.client.contact_email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.client,
-                              "contact_email",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(4)
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.contact_phone,
-                            expression: "client.contact_phone"
-                          }
-                        ],
-                        staticClass: "form-control input-sm",
-                        attrs: { type: "text" },
-                        domProps: { value: _vm.client.contact_phone },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(
-                              _vm.client,
-                              "contact_phone",
-                              $event.target.value
-                            )
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(5)
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
-                      _c("textarea", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.client.address,
-                            expression: "client.address"
-                          }
-                        ],
-                        staticClass: "form-control input-sm",
-                        attrs: { name: "", id: "", cols: "30", rows: "5" },
-                        domProps: { value: _vm.client.address },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.client, "address", $event.target.value)
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(6)
-                    ])
-                  ]),
+                  _c("hr"),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c(
@@ -56781,37 +57420,201 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Name of Client")])])
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs bar_tabs",
+        attrs: { id: "myTab", role: "tablist" }
+      },
+      [
+        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content1",
+                id: "home-tab",
+                role: "tab",
+                "data-toggle": "tab",
+                "aria-expanded": "true"
+              }
+            },
+            [_vm._v("Details")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content2",
+                role: "tab",
+                id: "profile-tab",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Contacts")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content3",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Address")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content4",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Additional Info")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Client Email-id")])])
+    return _c("i", [_c("small", [_vm._v("Name")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Contact person Name")])])
+    return _c("i", [_c("small", [_vm._v("Website")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Contact person email")])])
+    return _c("i", [_c("small", [_vm._v("Email")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Contact number")])])
+    return _c("i", [_c("small", [_vm._v("Phone Number")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("Address of client")])])
+    return _c("i", [_c("small", [_vm._v("First Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Last Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Phone")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Line 1")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Line 2")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Street/Landmark")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("City")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("State/Province")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Postal Code")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Country")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "tab-pane fade",
+        attrs: {
+          role: "tabpanel",
+          id: "tab_content4",
+          "aria-labelledby": "profile-tab"
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group glow-input" }, [
+          _c("div", { staticClass: "col-sm-12 col-xs-12 col-xs-12" }, [
+            _c("i", [_c("small", [_vm._v("Public Note")])]),
+            _vm._v(" "),
+            _c("textarea", { staticClass: "form-control input-sm" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group glow-input" }, [
+          _c("div", { staticClass: "col-sm-12 col-xs-12 col-xs-12" }, [
+            _c("i", [_c("small", [_vm._v("Private Note")])]),
+            _vm._v(" "),
+            _c("textarea", { staticClass: "form-control input-sm" })
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

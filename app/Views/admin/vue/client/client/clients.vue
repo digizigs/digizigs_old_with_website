@@ -42,6 +42,8 @@
 	                            <tr class="headings">
 	                              <th class="column-title"> Id </th>
 	                              <th class="column-title"> Client </th>
+	                              <th class="column-title"> Email </th>
+	                              <th class="column-title"> Contact </th>
 	                              <th class="column-title"> Status </th>
 	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
@@ -57,6 +59,8 @@
 
 	                            <tr class="even pointer" v-for="client,key in clients.data">
 	                              <td class=" "> 1 </td>
+	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
+	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
 	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
 	                              <td class=" "> <span class="label label-warning label-many">WIP</span> </td>
 	                              <td class=" " style="width: 50%;"> 
