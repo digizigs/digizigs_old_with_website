@@ -1,43 +1,38 @@
 <template>
 	<section>
 		<!--Add service-->
-        <div class="modal fade" id="addclient" role="dialog"  data-backdrop="false">
+        <div class="modal fade" id="editclient" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
                   <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                  
-                  <h4 class="modal-title"><i class="fa fa-user" aria-hidden="true"></i> New Client</h4>
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>
+                  <h4 class="modal-title"><b>{{recrd.client_name}}</b></h4>
                 </div>
                 <div class="modal-body">
                   
-                  <!--span v-if="error_message.length > 0" >
-                    <li v-for="error in errors" class="alert-danger">{{error[0]}}</li>
-                  </span-->
-                 
-      
                   <form  role="form" @submit.prevent="" class="form-horizontal">
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
 
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Details</a>
+                        <li role="presentation" class="active"><a href="#tab_content11" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Details</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Contacts</a>
+                        <li role="presentation" class=""><a href="#tab_content22" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Contacts</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Address</a>
+                        <li role="presentation" class=""><a href="#tab_content33" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Address</a>
                         </li>
-                        <li role="presentation" class=""><a href="#tab_content4" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Additional Info</a>
+                        <li role="presentation" class=""><a href="#tab_content44" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Additional Info</a>
                         </li>
                       </ul>
-                      
+
                       <div id="myTabContent" class="tab-content">
 
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content11" aria-labelledby="home-tab">
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Name</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.client_name">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.client_name">
                               <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
                             </div> 
                           </div>
@@ -45,7 +40,7 @@
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
                               <i><small>Website</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.client_website">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.client_website">
                               <span v-if="errors.client_website" :class="['label label-danger']">{{ errors.client_website[0] }}</span>                               
                             </div> 
                           </div>
@@ -53,7 +48,7 @@
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
                               <i><small>Email</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.client_email"> 
+                              <input class="form-control input-sm" type="text"    v-model="recrd.client_email"> 
                               <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
                             </div> 
                           </div>
@@ -61,98 +56,98 @@
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
                               <i><small>Phone Number</small></i>
-                              <input class="form-control input-sm" type="text"   v-model="client.client_phone">
+                              <input class="form-control input-sm" type="text"   v-model="recrd.client_phone">
                               <span v-if="errors.client_phone" :class="['label label-danger']">{{ errors.client_phone[0] }}</span>
                             </div> 
                           </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content22" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>First Name</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.contact_first_name">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_first_name">
                             </div>
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Last Name</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.contact_last_name">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_last_name">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Email</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.contact_email">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_email">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Phone</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.contact_phone">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_phone">
                             </div>  
                           </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content33" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Line 1</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_line_1">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_line_1">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Line 2</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_line_2">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_line_2">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Street/Landmark</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_street">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_street">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>City</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_city">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_city">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>State/Province</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_state">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_state">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Postal Code</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_postal">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_postal">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Country</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="client.address_country">
+                              <input class="form-control input-sm" type="text"    v-model="recrd.address_country">
                             </div>
                           </div>
                         </div>
 
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content44" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Public Note</small></i>
-                              <textarea class="form-control input-sm"  v-model="client.public_note"></textarea>
+                              <textarea class="form-control input-sm"  v-model="recrd.public_note"></textarea>
                             </div>
                           </div>
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Private Note</small></i>
-                              <textarea class="form-control input-sm"  v-model="client.private_note"></textarea>
+                              <textarea class="form-control input-sm"  v-model="recrd.private_note"></textarea>
                             </div>
                           </div>
                         </div>
-
                       </div>
+
                     </div>
 
                   
@@ -162,7 +157,7 @@
                     <hr>
                    
                     <div class="form-group">
-                      <button class="btn btn-dark btn-sm pull-right" @click="addclient" >Add Client</button>
+                      <button class="btn btn-dark btn-sm pull-right" @click="addclient" >Update</button>
                     </div>
 
                   </form>
@@ -180,6 +175,7 @@
 
 <script type="text/javascript">
 	export default{
+    props:['recrd'],
 		data(){
 			return{
 				client:{
@@ -202,8 +198,7 @@
           private_note:''
         },
 				success:'',
-				errors:[],
-        error_message:'',
+				errors:'',
 				clients:{},
 			}
 		},
@@ -214,7 +209,7 @@
 		  addclient(){
         axios.post('client',this.client)
             .then(data => {
-              //console.log(data);
+              console.log(data);
               //this.services=response.data           
               this.$emit('recordupdated',data),
               this.success='Service added successfully'
@@ -228,9 +223,7 @@
 
           })
           .catch((error) => {
-            this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;
-            //console.log(this.errors);           
+            this.errors=error.response.data.errors;           
           })
       }
 		},

@@ -52,6 +52,8 @@ Vue.component('editservice', require('./client/service/editservice.vue'));
 //Client
 Vue.component('clients', require('./client/client/clients.vue'));
 Vue.component('newclient', require('./client/client/newclient.vue'));
+Vue.component('editclient', require('./client/client/editclient.vue'));
+Vue.component('detailclient', require('./client/client/detailclient.vue'));
 
 
 

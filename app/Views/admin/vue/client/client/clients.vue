@@ -59,23 +59,23 @@
 
 	                            <tr class="even pointer" v-for="client,key in clients.data">
 	                              <td class=" "> 1 </td>
-	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
-	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
-	                              <td class=" " style="width: 10%;"> {{client.clientname}} </td>
+	                              <td class=" " style="width: 20%;"> {{client.client_name}} </td>
+	                              <td class=" " style="width: 20%;"> {{client.client_email}} </td>
+	                              <td class=" " style="width: 10%;"> {{client.client_phone}} </td>
 	                              <td class=" "> <span class="label label-warning label-many">WIP</span> </td>
-	                              <td class=" " style="width: 50%;"> 
+	                              <td class=" " style="width: 40%;"> 
 									<span class="label label-info label-many" style="font-weight:300;">Logo Design</span>
 									<span class="label label-info label-many">Pakage Upload</span>
 									<span class="label label-info label-many">Seo</span>
 									
 	                              </td>
 	                              <td class="" style="width: 2%;">
-	                                <a href="#editservices" class="disabled" data-toggle="modal"  >
+	                                <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
 	                              <td style="width: 2%;">
-	                                <a href="" class="disabled" v-on:click.prevent >
+	                                <a href="#detailclient" class="disabled" data-toggle="modal">
 	                                  <i class="fa fa-eye" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
@@ -102,6 +102,8 @@
 
 		<div id="modal">
           <newclient @recordupdated="refreshRecord"></newclient>
+          <editclient :recrd="clientupdate" @recordupdated="refreshRecord"></editclient>
+          <detailclient @recordupdated="refreshRecord"></detailclient>
           <!--quickapointment></quickapointment-->
           <!--editapointment :recrd="apntupdate" @recordupdated="refreshRecord"></editapointment-->
 
@@ -137,10 +139,19 @@
 			refreshRecord(record){
 	        	this.clients=record.data;
 	      	},
+	      	updateclient(id){
+	      		console.log(id)
+	      		axios.get('client/'+id+'/edit')
+		        .then((response) => {
+		          console.log(response.data)
+		          this.clientupdate=response.data
+		          })//this.apntupdate = response.data
+		        .catch(error => this.errors=error.response.data.errors);
+	      	}
 		},
 		created(){
 			axios.get('client/create')
-			.then((response) => {	this.clients=response.data})//this.appointments=response.data
+			.then((response) => {this.clients=response.data})//this.appointments=response.data
 			.catch((error) => console.log(error))
 		}
 	};

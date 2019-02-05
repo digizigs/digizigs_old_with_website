@@ -5,7 +5,7 @@
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
-                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title"><b>Update Service</b></h4>
                 </div>
                 <div class="modal-body">
@@ -15,29 +15,29 @@
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text"  required="Please ente a Role Name" v-model="recrd.name">
                         <i><small>itle of Service</small></i>
+                        <input class="form-control input-sm" type="text"  required="Please ente a Role Name" v-model="recrd.name">
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">                   
                       <div class="col-md-12 col-xs-12">
-                        <textarea class="form-control" id="" cols="30" rows="5" required="" v-model="recrd.description"></textarea>
                         <i><small>Description Of service</small></i>
+                        <textarea class="form-control input-sm" id="" cols="30" rows="5" required="" v-model="recrd.description"></textarea>
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.charge">
                         <i><small>Billing charge of service</small></i>
+                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="recrd.charge">
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.duration">
                         <i><small>Expected Completion Time</small></i>
+                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="recrd.duration">
                       </div> 
                     </div>
                     
@@ -92,7 +92,7 @@
             this.errors=error.response.data;
             this.errormessage=this.errors.message;
           });
-			}
+			},
 		},
 		created(){
 		

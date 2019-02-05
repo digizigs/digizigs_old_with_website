@@ -47126,6 +47126,8 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('editservice', __webpack_r
 //Client
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('clients', __webpack_require__(196));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('newclient', __webpack_require__(201));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('editclient', __webpack_require__(218));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('detailclient', __webpack_require__(223));
 
 //Posts
 
@@ -55577,6 +55579,8 @@ var render = function() {
                 [
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -55586,7 +55590,7 @@ var render = function() {
                             expression: "recrd.name"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
                           required: "Please ente a Role Name"
@@ -55600,14 +55604,14 @@ var render = function() {
                             _vm.$set(_vm.recrd, "name", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(1)
+                      })
                     ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
                       _c("textarea", {
                         directives: [
                           {
@@ -55617,7 +55621,7 @@ var render = function() {
                             expression: "recrd.description"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: { id: "", cols: "30", rows: "5", required: "" },
                         domProps: { value: _vm.recrd.description },
                         on: {
@@ -55632,14 +55636,14 @@ var render = function() {
                             )
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(2)
+                      })
                     ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -55649,7 +55653,7 @@ var render = function() {
                             expression: "recrd.charge"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
                           required: "Please ente a Role Name"
@@ -55663,14 +55667,14 @@ var render = function() {
                             _vm.$set(_vm.recrd, "charge", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(3)
+                      })
                     ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                      _vm._m(4),
+                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -55680,7 +55684,7 @@ var render = function() {
                             expression: "recrd.duration"
                           }
                         ],
-                        staticClass: "form-control",
+                        staticClass: "form-control input-sm",
                         attrs: {
                           type: "text",
                           required: "Please ente a Role Name"
@@ -55694,9 +55698,7 @@ var render = function() {
                             _vm.$set(_vm.recrd, "duration", $event.target.value)
                           }
                         }
-                      }),
-                      _vm._v(" "),
-                      _vm._m(4)
+                      })
                     ])
                   ]),
                   _vm._v(" "),
@@ -55981,6 +55983,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -56008,13 +56012,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		refreshRecord: function refreshRecord(record) {
 			this.clients = record.data;
+		},
+		updateclient: function updateclient(id) {
+			var _this2 = this;
+
+			console.log(id);
+			axios.get('client/' + id + '/edit').then(function (response) {
+				console.log(response.data);
+				_this2.clientupdate = response.data;
+			}) //this.apntupdate = response.data
+			.catch(function (error) {
+				return _this2.errors = error.response.data.errors;
+			});
 		}
 	},
 	created: function created() {
-		var _this2 = this;
+		var _this3 = this;
 
 		axios.get('client/create').then(function (response) {
-			_this2.clients = response.data;
+			_this3.clients = response.data;
 		}) //this.appointments=response.data
 		.catch(function (error) {
 			return console.log(error);
@@ -56066,9 +56082,18 @@ var render = function() {
                               "td",
                               {
                                 staticClass: " ",
-                                staticStyle: { width: "10%" }
+                                staticStyle: { width: "20%" }
                               },
-                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
+                              [_vm._v(" " + _vm._s(client.client_name) + " ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              {
+                                staticClass: " ",
+                                staticStyle: { width: "20%" }
+                              },
+                              [_vm._v(" " + _vm._s(client.client_email) + " ")]
                             ),
                             _vm._v(" "),
                             _c(
@@ -56077,44 +56102,38 @@ var render = function() {
                                 staticClass: " ",
                                 staticStyle: { width: "10%" }
                               },
-                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: " ",
-                                staticStyle: { width: "10%" }
-                              },
-                              [_vm._v(" " + _vm._s(client.clientname) + " ")]
+                              [_vm._v(" " + _vm._s(client.client_phone) + " ")]
                             ),
                             _vm._v(" "),
                             _vm._m(3, true),
                             _vm._v(" "),
                             _vm._m(4, true),
                             _vm._v(" "),
-                            _vm._m(5, true),
-                            _vm._v(" "),
                             _c("td", { staticStyle: { width: "2%" } }, [
                               _c(
                                 "a",
                                 {
                                   staticClass: "disabled",
-                                  attrs: { href: "" },
+                                  attrs: {
+                                    href: "#editclient",
+                                    "data-toggle": "modal"
+                                  },
                                   on: {
                                     click: function($event) {
-                                      $event.preventDefault()
+                                      _vm.updateclient(client.id)
                                     }
                                   }
                                 },
                                 [
                                   _c("i", {
-                                    staticClass: "fa fa-eye",
+                                    staticClass: "fa fa-pencil-square-o",
                                     attrs: { "aria-hidden": "true" }
                                   })
                                 ]
                               )
                             ]),
+                            _vm._v(" "),
+                            _vm._m(5, true),
                             _vm._v(" "),
                             _c("td", { staticStyle: { width: "2%" } }, [
                               _c(
@@ -56159,7 +56178,16 @@ var render = function() {
     _c(
       "div",
       { attrs: { id: "modal" } },
-      [_c("newclient", { on: { recordupdated: _vm.refreshRecord } })],
+      [
+        _c("newclient", { on: { recordupdated: _vm.refreshRecord } }),
+        _vm._v(" "),
+        _c("editclient", {
+          attrs: { recrd: _vm.clientupdate },
+          on: { recordupdated: _vm.refreshRecord }
+        }),
+        _vm._v(" "),
+        _c("detailclient", { on: { recordupdated: _vm.refreshRecord } })
+      ],
       1
     )
   ])
@@ -56280,7 +56308,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: " ", staticStyle: { width: "50%" } }, [
+    return _c("td", { staticClass: " ", staticStyle: { width: "40%" } }, [
       _c(
         "span",
         {
@@ -56308,11 +56336,11 @@ var staticRenderFns = [
         "a",
         {
           staticClass: "disabled",
-          attrs: { href: "#editservices", "data-toggle": "modal" }
+          attrs: { href: "#detailclient", "data-toggle": "modal" }
         },
         [
           _c("i", {
-            staticClass: "fa fa-pencil-square-o",
+            staticClass: "fa fa-eye",
             attrs: { "aria-hidden": "true" }
           })
         ]
@@ -56415,7 +56443,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -56596,39 +56624,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			client: { clientname: '', clientemail: '', contact_name: '', contact_email: '', contact_phone: '', address: '' },
-			success: '',
-			errors: '',
-			clients: {}
-		};
-	},
+    data: function data() {
+        return {
+            client: {
+                client_name: '',
+                client_website: '',
+                client_phone: '',
+                client_email: '',
+                contact_first_name: '',
+                contact_last_name: '',
+                contact_email: '',
+                contact_phone: '',
+                address_line_1: '',
+                address_line_2: '',
+                address_street: '',
+                address_city: '',
+                address_state: '',
+                address_postal: '',
+                address_country: '',
+                public_note: '',
+                private_note: ''
+            },
+            success: '',
+            errors: [],
+            error_message: '',
+            clients: {}
+        };
+    },
 
-	watch: {},
-	methods: {
-		addclient: function addclient() {
-			var _this = this;
+    watch: {},
+    methods: {
+        addclient: function addclient() {
+            var _this = this;
 
-			axios.post('client', this.client).then(function (data) {
-				console.log(data);
-				//this.services=response.data           
-				_this.$emit('recordupdated', data), _this.success = 'Service added successfully';
-				_this.client = {};
-				$('#addclient').modal('hide');
+            axios.post('client', this.client).then(function (data) {
+                //console.log(data);
+                //this.services=response.data           
+                _this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+                _this.client = {};
+                $('#addclient').modal('hide');
 
-				toast({
-					type: 'success',
-					title: 'New Client added successfully'
-				});
-			}).catch(function (error) {
-				_this.errors = error.response.data.errors;
-			});
-		}
-	},
-	created: function created() {}
+                toast({
+                    type: 'success',
+                    title: 'New Client added successfully'
+                });
+            }).catch(function (error) {
+                _this.errors = error.response.data.errors;
+                _this.error_message = error.response.data.message;
+                //console.log(this.errors);           
+            });
+        }
+    },
+    created: function created() {}
 });
 
 /***/ }),
@@ -56711,14 +56770,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.client_name,
+                                            expression: "client.client_name"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.client_name
                                         },
                                         on: {
                                           input: function($event) {
@@ -56727,12 +56786,26 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "client_name",
                                               $event.target.value
                                             )
                                           }
                                         }
-                                      })
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_name
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_name[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ]
@@ -56753,14 +56826,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientemail,
-                                            expression: "client.clientemail"
+                                            value: _vm.client.client_website,
+                                            expression: "client.client_website"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientemail
+                                          value: _vm.client.client_website
                                         },
                                         on: {
                                           input: function($event) {
@@ -56769,12 +56842,26 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientemail",
+                                              "client_website",
                                               $event.target.value
                                             )
                                           }
                                         }
-                                      })
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_website
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_website[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ]
@@ -56795,14 +56882,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientemail,
-                                            expression: "client.clientemail"
+                                            value: _vm.client.client_email,
+                                            expression: "client.client_email"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientemail
+                                          value: _vm.client.client_email
                                         },
                                         on: {
                                           input: function($event) {
@@ -56811,12 +56898,26 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientemail",
+                                              "client_email",
                                               $event.target.value
                                             )
                                           }
                                         }
-                                      })
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_email
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_email[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ]
@@ -56837,14 +56938,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.contact_name,
-                                            expression: "client.contact_name"
+                                            value: _vm.client.client_phone,
+                                            expression: "client.client_phone"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.contact_name
+                                          value: _vm.client.client_phone
                                         },
                                         on: {
                                           input: function($event) {
@@ -56853,12 +56954,26 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "contact_name",
+                                              "client_phone",
                                               $event.target.value
                                             )
                                           }
                                         }
-                                      })
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_phone
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_phone[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ]
@@ -56895,14 +57010,16 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value:
+                                              _vm.client.contact_first_name,
+                                            expression:
+                                              "client.contact_first_name"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.contact_first_name
                                         },
                                         on: {
                                           input: function($event) {
@@ -56911,7 +57028,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "contact_first_name",
                                               $event.target.value
                                             )
                                           }
@@ -56934,14 +57051,15 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.contact_last_name,
+                                            expression:
+                                              "client.contact_last_name"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.contact_last_name
                                         },
                                         on: {
                                           input: function($event) {
@@ -56950,7 +57068,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "contact_last_name",
                                               $event.target.value
                                             )
                                           }
@@ -56973,14 +57091,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.contact_email,
+                                            expression: "client.contact_email"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.contact_email
                                         },
                                         on: {
                                           input: function($event) {
@@ -56989,7 +57107,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "contact_email",
                                               $event.target.value
                                             )
                                           }
@@ -57012,14 +57130,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.contact_phone,
+                                            expression: "client.contact_phone"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.contact_phone
                                         },
                                         on: {
                                           input: function($event) {
@@ -57028,7 +57146,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "contact_phone",
                                               $event.target.value
                                             )
                                           }
@@ -57070,14 +57188,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_line_1,
+                                            expression: "client.address_line_1"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_line_1
                                         },
                                         on: {
                                           input: function($event) {
@@ -57086,7 +57204,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_line_1",
                                               $event.target.value
                                             )
                                           }
@@ -57115,14 +57233,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_line_2,
+                                            expression: "client.address_line_2"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_line_2
                                         },
                                         on: {
                                           input: function($event) {
@@ -57131,7 +57249,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_line_2",
                                               $event.target.value
                                             )
                                           }
@@ -57160,14 +57278,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_street,
+                                            expression: "client.address_street"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_street
                                         },
                                         on: {
                                           input: function($event) {
@@ -57176,7 +57294,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_street",
                                               $event.target.value
                                             )
                                           }
@@ -57205,14 +57323,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_city,
+                                            expression: "client.address_city"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_city
                                         },
                                         on: {
                                           input: function($event) {
@@ -57221,7 +57339,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_city",
                                               $event.target.value
                                             )
                                           }
@@ -57250,14 +57368,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_state,
+                                            expression: "client.address_state"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_state
                                         },
                                         on: {
                                           input: function($event) {
@@ -57266,7 +57384,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_state",
                                               $event.target.value
                                             )
                                           }
@@ -57295,14 +57413,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_postal,
+                                            expression: "client.address_postal"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_postal
                                         },
                                         on: {
                                           input: function($event) {
@@ -57311,7 +57429,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_postal",
                                               $event.target.value
                                             )
                                           }
@@ -57340,14 +57458,14 @@ var render = function() {
                                           {
                                             name: "model",
                                             rawName: "v-model",
-                                            value: _vm.client.clientname,
-                                            expression: "client.clientname"
+                                            value: _vm.client.address_country,
+                                            expression: "client.address_country"
                                           }
                                         ],
                                         staticClass: "form-control input-sm",
                                         attrs: { type: "text" },
                                         domProps: {
-                                          value: _vm.client.clientname
+                                          value: _vm.client.address_country
                                         },
                                         on: {
                                           input: function($event) {
@@ -57356,7 +57474,7 @@ var render = function() {
                                             }
                                             _vm.$set(
                                               _vm.client,
-                                              "clientname",
+                                              "address_country",
                                               $event.target.value
                                             )
                                           }
@@ -57369,7 +57487,106 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _vm._m(17)
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content4",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(17),
+                                      _vm._v(" "),
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.public_note,
+                                            expression: "client.public_note"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        domProps: {
+                                          value: _vm.client.public_note
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "public_note",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(18),
+                                      _vm._v(" "),
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.client.private_note,
+                                            expression: "client.private_note"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        domProps: {
+                                          value: _vm.client.private_note
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.client,
+                                              "private_note",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
                         ]
                       )
                     ]
@@ -57412,7 +57629,11 @@ var staticRenderFns = [
       ),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [
-        _c("b", [_vm._v("New Client")])
+        _c("i", {
+          staticClass: "fa fa-user",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" New Client")
       ])
     ])
   },
@@ -57587,34 +57808,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "tab-pane fade",
-        attrs: {
-          role: "tabpanel",
-          id: "tab_content4",
-          "aria-labelledby": "profile-tab"
-        }
-      },
-      [
-        _c("div", { staticClass: "form-group glow-input" }, [
-          _c("div", { staticClass: "col-sm-12 col-xs-12 col-xs-12" }, [
-            _c("i", [_c("small", [_vm._v("Public Note")])]),
-            _vm._v(" "),
-            _c("textarea", { staticClass: "form-control input-sm" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group glow-input" }, [
-          _c("div", { staticClass: "col-sm-12 col-xs-12 col-xs-12" }, [
-            _c("i", [_c("small", [_vm._v("Private Note")])]),
-            _vm._v(" "),
-            _c("textarea", { staticClass: "form-control input-sm" })
-          ])
-        ])
-      ]
-    )
+    return _c("i", [_c("small", [_vm._v("Public Note")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Private Note")])])
   }
 ]
 render._withStripped = true
@@ -61932,6 +62132,1709 @@ $(document).ready(function () {
    
  });*/
 });
+
+/***/ }),
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(219)
+}
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(221)
+/* template */
+var __vue_template__ = __webpack_require__(222)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "app/Views/admin/vue/client/client/editclient.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2721f89b", Component.options)
+  } else {
+    hotAPI.reload("data-v-2721f89b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(220);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(10)("05c98705", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2721f89b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editclient.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2721f89b\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editclient.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 221 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['recrd'],
+  data: function data() {
+    return {
+      client: {
+        client_name: '',
+        client_website: '',
+        client_phone: '',
+        client_email: '',
+        contact_first_name: '',
+        contact_last_name: '',
+        contact_email: '',
+        contact_phone: '',
+        address_line_1: '',
+        address_line_2: '',
+        address_street: '',
+        address_city: '',
+        address_state: '',
+        address_postal: '',
+        address_country: '',
+        public_note: '',
+        private_note: ''
+      },
+      success: '',
+      errors: '',
+      clients: {}
+    };
+  },
+
+  watch: {},
+  methods: {
+    addclient: function addclient() {
+      var _this = this;
+
+      axios.post('client', this.client).then(function (data) {
+        console.log(data);
+        //this.services=response.data           
+        _this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+        _this.client = {};
+        $('#addclient').modal('hide');
+
+        toast({
+          type: 'success',
+          title: 'New Client added successfully'
+        });
+      }).catch(function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    }
+  },
+  created: function created() {}
+});
+
+/***/ }),
+/* 222 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "editclient", role: "dialog", "data-backdrop": "false" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-md" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header panel-heading" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              ),
+              _vm._v(" "),
+              _c("i", {
+                staticClass: "fa fa-user-circle",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
+              _c("h4", { staticClass: "modal-title" }, [
+                _c("b", [_vm._v(_vm._s(_vm.recrd.client_name))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: { role: "form" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      attrs: {
+                        role: "tabpanel",
+                        "data-example-id": "togglable-tabs"
+                      }
+                    },
+                    [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-content",
+                          attrs: { id: "myTabContent" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade active in",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content11",
+                                "aria-labelledby": "home-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(1),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.client_name,
+                                            expression: "recrd.client_name"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.client_name
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "client_name",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_name
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_name[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(2),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.client_website,
+                                            expression: "recrd.client_website"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.client_website
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "client_website",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_website
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_website[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(3),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.client_email,
+                                            expression: "recrd.client_email"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.client_email
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "client_email",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_email
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_email[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-sm-12 col-xs-12" },
+                                    [
+                                      _vm._m(4),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.client_phone,
+                                            expression: "recrd.client_phone"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.client_phone
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "client_phone",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.errors.client_phone
+                                        ? _c(
+                                            "span",
+                                            { class: ["label label-danger"] },
+                                            [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.errors.client_phone[0]
+                                                )
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content22",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(5),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.contact_first_name,
+                                            expression:
+                                              "recrd.contact_first_name"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.contact_first_name
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "contact_first_name",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(6),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.contact_last_name,
+                                            expression:
+                                              "recrd.contact_last_name"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.contact_last_name
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "contact_last_name",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(7),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.contact_email,
+                                            expression: "recrd.contact_email"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.contact_email
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "contact_email",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(8),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.contact_phone,
+                                            expression: "recrd.contact_phone"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.contact_phone
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "contact_phone",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content33",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(9),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_line_1,
+                                            expression: "recrd.address_line_1"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_line_1
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_line_1",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(10),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_line_2,
+                                            expression: "recrd.address_line_2"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_line_2
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_line_2",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(11),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_street,
+                                            expression: "recrd.address_street"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_street
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_street",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(12),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_city,
+                                            expression: "recrd.address_city"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_city
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_city",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(13),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_state,
+                                            expression: "recrd.address_state"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_state
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_state",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(14),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_postal,
+                                            expression: "recrd.address_postal"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_postal
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_postal",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(15),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.address_country,
+                                            expression: "recrd.address_country"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        attrs: { type: "text" },
+                                        domProps: {
+                                          value: _vm.recrd.address_country
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "address_country",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "tab-pane fade",
+                              attrs: {
+                                role: "tabpanel",
+                                id: "tab_content44",
+                                "aria-labelledby": "profile-tab"
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(16),
+                                      _vm._v(" "),
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.public_note,
+                                            expression: "recrd.public_note"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        domProps: {
+                                          value: _vm.recrd.public_note
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "public_note",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "form-group glow-input" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-sm-12 col-xs-12 col-xs-12"
+                                    },
+                                    [
+                                      _vm._m(17),
+                                      _vm._v(" "),
+                                      _c("textarea", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.recrd.private_note,
+                                            expression: "recrd.private_note"
+                                          }
+                                        ],
+                                        staticClass: "form-control input-sm",
+                                        domProps: {
+                                          value: _vm.recrd.private_note
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.recrd,
+                                              "private_note",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-dark btn-sm pull-right",
+                        on: { click: _vm.addclient }
+                      },
+                      [_vm._v("Update")]
+                    )
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs bar_tabs",
+        attrs: { id: "myTab", role: "tablist" }
+      },
+      [
+        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content11",
+                id: "home-tab",
+                role: "tab",
+                "data-toggle": "tab",
+                "aria-expanded": "true"
+              }
+            },
+            [_vm._v("Details")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content22",
+                role: "tab",
+                id: "profile-tab",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Contacts")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content33",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Address")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content44",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Additional Info")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Website")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Phone Number")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("First Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Last Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Phone")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Line 1")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Line 2")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Street/Landmark")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("City")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("State/Province")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Postal Code")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Country")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Public Note")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", [_c("small", [_vm._v("Private Note")])])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2721f89b", module.exports)
+  }
+}
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(224)
+}
+var normalizeComponent = __webpack_require__(11)
+/* script */
+var __vue_script__ = __webpack_require__(226)
+/* template */
+var __vue_template__ = __webpack_require__(227)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "app/Views/admin/vue/client/client/detailclient.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2e04e2a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-2e04e2a2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(225);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(10)("811738a2", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e04e2a2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detailclient.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e04e2a2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./detailclient.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 226 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			client: { clientname: '', clientemail: '', contact_name: '', contact_email: '', contact_phone: '', address: '' },
+			success: '',
+			errors: '',
+			clients: {}
+		};
+	},
+
+	watch: {},
+	methods: {
+		addclient: function addclient() {
+			var _this = this;
+
+			axios.post('client', this.client).then(function (data) {
+				console.log(data);
+				//this.services=response.data           
+				_this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+				_this.client = {};
+				$('#addclient').modal('hide');
+
+				toast({
+					type: 'success',
+					title: 'New Client added successfully'
+				});
+			}).catch(function (error) {
+				_this.errors = error.response.data.errors;
+			});
+		}
+	},
+	created: function created() {}
+});
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("section", [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "detailclient", role: "dialog", "data-backdrop": "false" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-md" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", {
+                staticClass: "form-horizontal",
+                attrs: { role: "form" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header panel-heading" }, [
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      ),
+      _vm._v(" "),
+      _c("i", {
+        staticClass: "fa fa-user-circle",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [
+        _c("b", [_vm._v("Detail Client")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2e04e2a2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

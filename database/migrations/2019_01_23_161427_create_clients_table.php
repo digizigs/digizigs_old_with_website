@@ -16,19 +16,22 @@ class CreateClientsTable extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('client_name');
-            $table->string('client_website');
-            $table->string('Client_phone');
-            $table->string('contact_first_name');
-            $table->string('contact_last_name');
-            $table->string('contact_email');
-            $table->string('contact_phone');
-            $table->string('address_line_1');
-            $table->string('address_line_2');
-            $table->string('address_street');
-            $table->string('address_city');
-            $table->string('address_state');
-            $table->integer('address_postal');
-            $table->string('address_country');
+            $table->string('client_website')->nullable();
+            $table->string('client_phone')->nullable();
+            $table->string('client_email')->nullable();
+            $table->string('contact_first_name')->nullable();
+            $table->string('contact_last_name')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->string('contact_phone')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('address_street')->nullable();
+            $table->string('address_city')->nullable();
+            $table->string('address_state')->nullable();
+            $table->integer('address_postal')->nullable();
+            $table->string('address_country')->nullable();
+            $table->text('public_note')->nullable();
+            $table->text('private_note')->nullable();
             $table->timestamps();
         });
     }
