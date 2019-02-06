@@ -79,11 +79,7 @@
 	                                  <i class="fa fa-eye" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
-	                              <td style="width: 2%;">
-	                                <a href="" class="disabled" v-on:click.prevent >
-	                                  <i class="fa fa-th-list" aria-hidden="true"></i>
-	                                </a>
-	                              </td>
+	                             
 	                            </tr>
 
 	                          </tbody>

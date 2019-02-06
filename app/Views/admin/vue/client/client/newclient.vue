@@ -220,6 +220,7 @@
               this.success='Service added successfully'
               this.client={}
             $('#addclient').modal('hide');
+            this.client={};
 
             toast({
                 type: 'success',

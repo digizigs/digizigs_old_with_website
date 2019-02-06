@@ -85,7 +85,7 @@
       <a href="{{route('settings.index')}}" data-toggle="tooltip" data-placement="top" title="Settings">
         <i class="fa fa-cog" aria-hidden="true"></i>
       </a>
-      <a data-toggle="tooltip" data-placement="top" title="Homepage">
+      <a href="{{route('apphome')}}" data-toggle="tooltip" data-placement="top" title="Homepage">
         <i class="fa fa-home" aria-hidden="true"></i>
       </a>
       <a href="{{route('profile.index')}}" data-toggle="tooltip" data-placement="top" title="Profile">

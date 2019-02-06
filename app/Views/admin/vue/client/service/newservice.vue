@@ -15,29 +15,29 @@
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
+                        <i><small>Poduct Name</small></i>
                         <input class="form-control input-sm" type="text"  required="Please ente a Role Name" v-model="service.name">
-                        <i><small>Title of Service</small></i>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12" >
+                        <i><small>Product description</small></i>
                         <textarea class="form-control input-sm"  cols="30" rows="5" required="" v-model="service.desc"></textarea>
-                        <i><small>Description Of service</small></i>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
+                        <i><small>Product Cost</small></i>
                         <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.bill">
-                        <i><small>Billing charge of service</small></i>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
+                        <i><small>Product Deadline</small></i>
                         <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.tat">
-                        <i><small>Expected Completion Time</small></i>
                       </div> 
                     </div>
                     
