@@ -48,7 +48,7 @@
 	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
-	                              <th class="column-title">  </th>
+	                              
 	                              <th class="bulk-actions" colspan="7">
 	                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
 	                              </th>
@@ -59,22 +59,22 @@
 
 	                            <tr class="even pointer" v-for="client,key in clients.data">
 	                              <td class=" "> 1 </td>
-	                              <td class=" " style="width: 20%;"> {{client.client_name}} </td>
-	                              <td class=" " style="width: 20%;"> {{client.client_email}} </td>
+	                              <td class=" " style="width: 15%;"> {{client.client_name}} </td>
+	                              <td class=" " style="width: 15%;"> {{client.client_email}} </td>
 	                              <td class=" " style="width: 10%;"> {{client.client_phone}} </td>
-	                              <td class=" "> <span class="label label-warning label-many">WIP</span> </td>
+	                              <td class=" " style="width: 10%;"> <span class="label label-warning label-many">WIP</span> </td>
 	                              <td class=" " style="width: 40%;"> 
 									<span class="label label-info label-many" style="font-weight:300;">Logo Design</span>
 									<span class="label label-info label-many">Pakage Upload</span>
 									<span class="label label-info label-many">Seo</span>
 									
 	                              </td>
-	                              <td class="" style="width: 2%;">
+	                              <td class="" style="width: 5%;">
 	                                <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
-	                              <td style="width: 2%;">
+	                              <td style="width: 5%;">
 	                                <a href="#detailclient" class="disabled" data-toggle="modal" @click="detailclient(client.id)">
 	                                  <i class="fa fa-eye" aria-hidden="true"></i>
 	                                </a>

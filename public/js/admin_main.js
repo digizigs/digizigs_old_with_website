@@ -56087,7 +56087,7 @@ var render = function() {
                               "td",
                               {
                                 staticClass: " ",
-                                staticStyle: { width: "20%" }
+                                staticStyle: { width: "15%" }
                               },
                               [_vm._v(" " + _vm._s(client.client_name) + " ")]
                             ),
@@ -56096,7 +56096,7 @@ var render = function() {
                               "td",
                               {
                                 staticClass: " ",
-                                staticStyle: { width: "20%" }
+                                staticStyle: { width: "15%" }
                               },
                               [_vm._v(" " + _vm._s(client.client_email) + " ")]
                             ),
@@ -56114,7 +56114,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm._m(4, true),
                             _vm._v(" "),
-                            _c("td", { staticStyle: { width: "2%" } }, [
+                            _c("td", { staticStyle: { width: "5%" } }, [
                               _c(
                                 "a",
                                 {
@@ -56138,7 +56138,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("td", { staticStyle: { width: "2%" } }, [
+                            _c("td", { staticStyle: { width: "5%" } }, [
                               _c(
                                 "a",
                                 {
@@ -56283,8 +56283,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }),
         _vm._v(" "),
-        _c("th", { staticClass: "column-title" }),
-        _vm._v(" "),
         _c("th", { staticClass: "bulk-actions", attrs: { colspan: "7" } }, [
           _c(
             "a",
@@ -56307,7 +56305,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", { staticClass: " " }, [
+    return _c("td", { staticClass: " ", staticStyle: { width: "10%" } }, [
       _c("span", { staticClass: "label label-warning label-many" }, [
         _vm._v("WIP")
       ])
@@ -59364,7 +59362,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59375,25 +59373,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -59568,126 +59547,187 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("ul", { staticClass: "list-unstyled timeline" }, [
-                _c("li", [
-                  _c("div", { staticClass: "block" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "block_content" }, [
-                      _vm._m(2),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.client_name))
-                      ]),
+              _c(
+                "div",
+                {
+                  attrs: {
+                    role: "tabpanel",
+                    "data-example-id": "togglable-tabs"
+                  }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "tab-content",
+                      attrs: { id: "myTabContent" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade active in",
+                          staticStyle: { "margin-left": "20px" },
+                          attrs: {
+                            role: "tabpanel",
+                            id: "tab_content111",
+                            "aria-labelledby": "home-tab"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "project_detail" }, [
+                            _c("p", { staticClass: "title" }, [_vm._v("Name")]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.client_name))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Website")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.client_website))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Email")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.client_email))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Phone")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.client_phone))])
+                          ])
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm._m(3),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.client_website))
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade",
+                          staticStyle: { "margin-left": "20px" },
+                          attrs: {
+                            role: "tabpanel",
+                            id: "tab_content222",
+                            "aria-labelledby": "profile-tab"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "project_detail" }, [
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("First Name")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(_vm._s(_vm.recrd.contact_first_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Last Name")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(_vm._s(_vm.recrd.contact_last_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Email")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.contact_email))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Phone")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.contact_phone))])
+                          ])
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm._m(4),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.client_email))
-                      ]),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade",
+                          staticStyle: { "margin-left": "20px" },
+                          attrs: {
+                            role: "tabpanel",
+                            id: "tab_content333",
+                            "aria-labelledby": "profile-tab"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "project_detail" }, [
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Line 1")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_line_1))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Street/Landmark")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_street))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [_vm._v("City")]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_city))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("State/Province")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_state))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Postal Code")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_postal))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Country")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_country))])
+                          ])
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm._m(5),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.client_phone))
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("div", { staticClass: "block" }, [
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "block_content" }, [
-                      _vm._m(7),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.contact_first_name))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(8),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.contact_last_name))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(9),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.contact_email))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(10),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.contact_phone))
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("div", { staticClass: "block" }, [
-                    _vm._m(11),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "block_content" }, [
-                      _vm._m(12),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_line_1))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(13),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_line_2))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(14),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_street))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(15),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_city))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(16),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_state))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(17),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_postal))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(18),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.address_country))
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("div", { staticClass: "block" }, [
-                    _vm._m(19),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "block_content" }, [
-                      _vm._m(20),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.private_note))
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(21),
-                      _c("p", { staticClass: "excerpt" }, [
-                        _vm._v(_vm._s(_vm.recrd.public_note))
-                      ])
-                    ])
-                  ])
-                ])
-              ])
+                      _c(
+                        "div",
+                        {
+                          staticClass: "tab-pane fade",
+                          staticStyle: { "margin-left": "20px" },
+                          attrs: {
+                            role: "tabpanel",
+                            id: "tab_content444",
+                            "aria-labelledby": "profile-tab"
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "project_detail" }, [
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Public Note")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.private_note))]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _vm._v("Private Note")
+                            ]),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.public_note))])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
             ])
           ])
         ])
@@ -59700,259 +59740,78 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x_content" }, [
-      _c("div", { staticClass: "col-xs-3" }, [
-        _c("ul", { staticClass: "nav nav-tabs tabs-left" }, [
-          _c("li", { staticClass: "active" }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "#home",
-                  "data-toggle": "tab",
-                  "aria-expanded": "false"
-                }
-              },
-              [_vm._v("Details")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", {}, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "#profile",
-                  "data-toggle": "tab",
-                  "aria-expanded": "false"
-                }
-              },
-              [_vm._v("Contact")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", {}, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "#messages",
-                  "data-toggle": "tab",
-                  "aria-expanded": "true"
-                }
-              },
-              [_vm._v("Address")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", {}, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  href: "#settings",
-                  "data-toggle": "tab",
-                  "aria-expanded": "false"
-                }
-              },
-              [_vm._v("Notes")]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-9" }, [
-        _c("div", { staticClass: "tab-content" }, [
-          _c("div", { staticClass: "tab-pane", attrs: { id: "home" } }, [
-            _c("p", { staticClass: "lead" }, [_vm._v("Home tab")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher\n                            synth. Cosby sweater eu banh mi, qui irure terr."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "tab-pane", attrs: { id: "profile" } }, [
-            _vm._v("Profile Tab.")
-          ]),
-          _vm._v(" "),
+    return _c(
+      "ul",
+      {
+        staticClass: "nav nav-tabs bar_tabs",
+        attrs: { id: "myTab", role: "tablist" }
+      },
+      [
+        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
           _c(
-            "div",
-            { staticClass: "tab-pane active", attrs: { id: "messages" } },
-            [_vm._v("Messages Tab.")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "tab-pane", attrs: { id: "settings" } }, [
-            _vm._v("Settings Tab.")
-          ])
+            "a",
+            {
+              attrs: {
+                href: "#tab_content111",
+                id: "home-tab",
+                role: "tab",
+                "data-toggle": "tab",
+                "aria-expanded": "true"
+              }
+            },
+            [_vm._v("Details")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content222",
+                role: "tab",
+                id: "profile-tab",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Contact")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content333",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Address")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { attrs: { role: "presentation" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "#tab_content444",
+                role: "tab",
+                id: "profile-tab2",
+                "data-toggle": "tab",
+                "aria-expanded": "false"
+              }
+            },
+            [_vm._v("Notes")]
+          )
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "clearfix" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tags" }, [
-      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
-        _c("span", [_vm._v("Details")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Client Name")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Client Website")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Client Email")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Client Phone")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tags" }, [
-      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
-        _c("span", [_vm._v("Contact")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("First Name")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Last Name")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Email")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Phone")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tags" }, [
-      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
-        _c("span", [_vm._v("Address")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Line 1")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Line 2")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Street/Landmark")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("City")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("State/Province")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Postal Code")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Postal Code")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tags" }, [
-      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
-        _c("span", [_vm._v("Notes")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Public Note")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "title" }, [
-      _c("a", [_vm._v("Private Note")])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
