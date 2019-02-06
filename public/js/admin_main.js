@@ -55987,6 +55987,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			clients: {},
 			clientupdate: {},
+			clientdetail: {},
 			success: '',
 			errors: ''
 		};
@@ -56012,21 +56013,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		updateclient: function updateclient(id) {
 			var _this2 = this;
 
-			console.log(id);
 			axios.get('client/' + id + '/edit').then(function (response) {
-				console.log(response.data);
 				_this2.clientupdate = response.data;
 			}) //this.apntupdate = response.data
 			.catch(function (error) {
 				return _this2.errors = error.response.data.errors;
 			});
+		},
+		detailclient: function detailclient(id) {
+			var _this3 = this;
+
+			axios.get('client/' + id + '/edit').then(function (response) {
+				_this3.clientdetail = response.data;
+			}) //this.apntupdate = response.data
+			.catch(function (error) {
+				return _this3.errors = error.response.data.errors;
+			});
 		}
 	},
 	created: function created() {
-		var _this3 = this;
+		var _this4 = this;
 
 		axios.get('client/create').then(function (response) {
-			_this3.clients = response.data;
+			_this4.clients = response.data;
 		}) //this.appointments=response.data
 		.catch(function (error) {
 			return console.log(error);
@@ -56129,7 +56138,29 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _vm._m(5, true)
+                            _c("td", { staticStyle: { width: "2%" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "disabled",
+                                  attrs: {
+                                    href: "#detailclient",
+                                    "data-toggle": "modal"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.detailclient(client.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-eye",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            ])
                           ])
                         }),
                         0
@@ -56161,7 +56192,10 @@ var render = function() {
           on: { recordupdated: _vm.refreshRecord }
         }),
         _vm._v(" "),
-        _c("detailclient", { on: { recordupdated: _vm.refreshRecord } })
+        _c("detailclient", {
+          attrs: { recrd: _vm.clientdetail },
+          on: { recordupdated: _vm.refreshRecord }
+        })
       ],
       1
     )
@@ -56300,26 +56334,6 @@ var staticRenderFns = [
       _c("span", { staticClass: "label label-info label-many" }, [
         _vm._v("Seo")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticStyle: { width: "2%" } }, [
-      _c(
-        "a",
-        {
-          staticClass: "disabled",
-          attrs: { href: "#detailclient", "data-toggle": "modal" }
-        },
-        [
-          _c("i", {
-            staticClass: "fa fa-eye",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
-      )
     ])
   }
 ]
@@ -57888,7 +57902,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58106,23 +58120,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   watch: {},
   methods: {
-    addclient: function addclient() {
+    updateclient: function updateclient() {
       var _this = this;
 
-      axios.post('client', this.client).then(function (data) {
-        console.log(data);
-        //this.services=response.data           
-        _this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+      axios.put('client/' + this.recrd.id, this.recrd).then(function (data) {
+        _this.success = 'Client Updated successfully';
+        _this.$emit('recordupdated', data);
         _this.client = {};
-        $('#addclient').modal('hide');
+        $('#editclient').modal('hide');
 
         toast({
           type: 'success',
-          title: 'New Client added successfully'
+          title: 'Client Updated successfully'
         });
       }).catch(function (error) {
-        _this.errors = error.response.data.errors;
+        _this.errors = error.response.data;
+        _this.errormessage = _this.errors.message;
+        console.log(_this.errors);
       });
+    },
+    colosemodal: function colosemodal() {
+      this.client = {};
+      this.recrd = null;
     }
   },
   created: function created() {}
@@ -58151,7 +58170,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: { close: _vm.colosemodal }
                 },
                 [_vm._v("×")]
               ),
@@ -58161,7 +58181,7 @@ var render = function() {
                 attrs: { "aria-hidden": "true" }
               }),
               _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
+              _c("h4", { staticClass: "modal-title green" }, [
                 _c("b", [_vm._v(_vm._s(_vm.recrd.client_name))])
               ])
             ]),
@@ -59054,7 +59074,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-dark btn-sm pull-right",
-                        on: { click: _vm.addclient }
+                        on: { click: _vm.updateclient }
                       },
                       [_vm._v("Update")]
                     )
@@ -59344,7 +59364,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -59388,39 +59408,125 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			client: { clientname: '', clientemail: '', contact_name: '', contact_email: '', contact_phone: '', address: '' },
-			success: '',
-			errors: '',
-			clients: {}
-		};
-	},
+  props: ['recrd'],
+  data: function data() {
+    return {
+      client: { clientname: '', clientemail: '', contact_name: '', contact_email: '', contact_phone: '', address: '' },
+      success: '',
+      errors: '',
+      clients: {}
+    };
+  },
 
-	watch: {},
-	methods: {
-		addclient: function addclient() {
-			var _this = this;
+  watch: {},
+  methods: {
+    addclient: function addclient() {
+      var _this = this;
 
-			axios.post('client', this.client).then(function (data) {
-				console.log(data);
-				//this.services=response.data           
-				_this.$emit('recordupdated', data), _this.success = 'Service added successfully';
-				_this.client = {};
-				$('#addclient').modal('hide');
+      axios.post('client', this.client).then(function (data) {
+        console.log(data);
+        //this.services=response.data           
+        _this.$emit('recordupdated', data), _this.success = 'Service added successfully';
+        _this.client = {};
+        $('#addclient').modal('hide');
 
-				toast({
-					type: 'success',
-					title: 'New Client added successfully'
-				});
-			}).catch(function (error) {
-				_this.errors = error.response.data.errors;
-			});
-		}
-	},
-	created: function created() {}
+        toast({
+          type: 'success',
+          title: 'New Client added successfully'
+        });
+      }).catch(function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -59441,18 +59547,147 @@ var render = function() {
       [
         _c("div", { staticClass: "modal-dialog modal-md" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "modal-header panel-heading" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              ),
+              _vm._v(" "),
+              _c("i", {
+                staticClass: "fa fa-user-circle",
+                attrs: { "aria-hidden": "true" }
+              }),
+              _vm._v(" "),
+              _c("h4", { staticClass: "modal-title green" }, [
+                _c("b", [_vm._v(_vm._s(_vm.recrd.client_name))])
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c("form", {
-                staticClass: "form-horizontal",
-                attrs: { role: "form" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                  }
-                }
-              })
+              _vm._m(0),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled timeline" }, [
+                _c("li", [
+                  _c("div", { staticClass: "block" }, [
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "block_content" }, [
+                      _vm._m(2),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.client_name))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.client_website))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(4),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.client_email))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(5),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.client_phone))
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "block" }, [
+                    _vm._m(6),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "block_content" }, [
+                      _vm._m(7),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.contact_first_name))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.contact_last_name))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(9),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.contact_email))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(10),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.contact_phone))
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "block" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "block_content" }, [
+                      _vm._m(12),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_line_1))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(13),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_line_2))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(14),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_street))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(15),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_city))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(16),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_state))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(17),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_postal))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(18),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.address_country))
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("div", { staticClass: "block" }, [
+                    _vm._m(19),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "block_content" }, [
+                      _vm._m(20),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.private_note))
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(21),
+                      _c("p", { staticClass: "excerpt" }, [
+                        _vm._v(_vm._s(_vm.recrd.public_note))
+                      ])
+                    ])
+                  ])
+                ])
+              ])
             ])
           ])
         ])
@@ -59465,24 +59700,258 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header panel-heading" }, [
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("×")]
-      ),
+    return _c("div", { staticClass: "x_content" }, [
+      _c("div", { staticClass: "col-xs-3" }, [
+        _c("ul", { staticClass: "nav nav-tabs tabs-left" }, [
+          _c("li", { staticClass: "active" }, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "#home",
+                  "data-toggle": "tab",
+                  "aria-expanded": "false"
+                }
+              },
+              [_vm._v("Details")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", {}, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "#profile",
+                  "data-toggle": "tab",
+                  "aria-expanded": "false"
+                }
+              },
+              [_vm._v("Contact")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", {}, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "#messages",
+                  "data-toggle": "tab",
+                  "aria-expanded": "true"
+                }
+              },
+              [_vm._v("Address")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", {}, [
+            _c(
+              "a",
+              {
+                attrs: {
+                  href: "#settings",
+                  "data-toggle": "tab",
+                  "aria-expanded": "false"
+                }
+              },
+              [_vm._v("Notes")]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _c("i", {
-        staticClass: "fa fa-user-circle",
-        attrs: { "aria-hidden": "true" }
-      }),
+      _c("div", { staticClass: "col-xs-9" }, [
+        _c("div", { staticClass: "tab-content" }, [
+          _c("div", { staticClass: "tab-pane", attrs: { id: "home" } }, [
+            _c("p", { staticClass: "lead" }, [_vm._v("Home tab")]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher\n                            synth. Cosby sweater eu banh mi, qui irure terr."
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tab-pane", attrs: { id: "profile" } }, [
+            _vm._v("Profile Tab.")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tab-pane active", attrs: { id: "messages" } },
+            [_vm._v("Messages Tab.")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "tab-pane", attrs: { id: "settings" } }, [
+            _vm._v("Settings Tab.")
+          ])
+        ])
+      ]),
       _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [
-        _c("b", [_vm._v("Detail Client")])
+      _c("div", { staticClass: "clearfix" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tags" }, [
+      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
+        _c("span", [_vm._v("Details")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Client Name")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Client Website")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Client Email")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Client Phone")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tags" }, [
+      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
+        _c("span", [_vm._v("Contact")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("First Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Last Name")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Email")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Phone")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tags" }, [
+      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
+        _c("span", [_vm._v("Address")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Line 1")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("Line 2")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Street/Landmark")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [_c("a", [_vm._v("City")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("State/Province")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Postal Code")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Postal Code")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tags" }, [
+      _c("a", { staticClass: "tag", attrs: { href: "" } }, [
+        _c("span", [_vm._v("Notes")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Public Note")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h2", { staticClass: "title" }, [
+      _c("a", [_vm._v("Private Note")])
     ])
   }
 ]
