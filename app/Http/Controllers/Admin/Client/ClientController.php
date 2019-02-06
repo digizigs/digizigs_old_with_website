@@ -80,12 +80,41 @@ class ClientController extends Controller
 
         $client = Client::find($id);
         return request()->json(200,$client);
+
     }
 
  
     public function update(Request $request, $id) {
 
-        //
+        $client = Client::find($id);
+        
+        $client->client_name = $request->client_name;
+        $client->client_email = $request->client_email;
+        $client->client_website = $request->client_website;
+        $client->client_phone = $request->client_phone;
+
+        $client->contact_first_name = $request->contact_first_name;
+        $client->contact_last_name = $request->contact_last_name;
+        $client->contact_email = $request->contact_email;
+        $client->contact_phone = $request->contact_phone;
+        
+
+        $client->address_line_1 = $request->address_line_1;
+        $client->address_line_2 = $request->address_line_2;
+        $client->address_street = $request->address_street;
+        $client->address_city = $request->address_city;
+        $client->address_state = $request->address_state;
+        $client->address_postal = $request->address_postal;
+        $client->address_country = $request->address_country;
+
+        $client->public_note = $request->public_note;
+        $client->private_note = $request->private_note;
+        $client_save = $client->save();
+
+        if($client_save){
+            $clients = Client::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$clients);
+        }
     }
 
     /**

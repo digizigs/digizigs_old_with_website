@@ -5,9 +5,9 @@
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
-                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" @close="colosemodal" >&times;</button>
                   <i class="fa fa-user-circle" aria-hidden="true"></i>
-                  <h4 class="modal-title"><b>{{recrd.client_name}}</b></h4>
+                  <h4 class="modal-title green"><b>{{recrd.client_name}}</b></h4>
                 </div>
                 <div class="modal-body">
                   
@@ -157,7 +157,7 @@
                     <hr>
                    
                     <div class="form-group">
-                      <button class="btn btn-dark btn-sm pull-right" @click="addclient" >Update</button>
+                      <button class="btn btn-dark btn-sm pull-right" @click="updateclient" >Update</button>
                     </div>
 
                   </form>
@@ -206,26 +206,31 @@
 
 		},
 		methods:{
-		  addclient(){
-        axios.post('client',this.client)
-            .then(data => {
-              console.log(data);
-              //this.services=response.data           
-              this.$emit('recordupdated',data),
-              this.success='Service added successfully'
-              this.client={}
-            $('#addclient').modal('hide');
+		  updateclient(){
+         axios.put('client/'+this.recrd.id,this.recrd)
+          .then(data=>{
+            this.success='Client Updated successfully'
+            this.$emit('recordupdated',data)
+            this.client={}
+            $('#editclient').modal('hide');
 
             toast({
-                type: 'success',
-                title: 'New Client added successfully'
+              type: 'success',
+              title: 'Client Updated successfully',
             })
 
-          })
+          }) 
+
           .catch((error) => {
-            this.errors=error.response.data.errors;           
-          })
-      }
+            this.errors=error.response.data;
+            this.errormessage=this.errors.message;
+            console.log(this.errors);
+          });
+      },
+      colosemodal(){
+        this.client={};
+        this.recrd=null;
+      }  
 		},
 		created(){
 		

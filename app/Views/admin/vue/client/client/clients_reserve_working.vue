@@ -75,7 +75,7 @@
 	                                </a>
 	                              </td>
 	                              <td style="width: 2%;">
-	                                <a href="#detailclient" class="disabled" data-toggle="modal" @click="detailclient(client.id)">
+	                                <a href="#detailclient" class="disabled" data-toggle="modal">
 	                                  <i class="fa fa-eye" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
@@ -103,7 +103,7 @@
 		<div id="modal">
           <newclient @recordupdated="refreshRecord"></newclient>
           <editclient :recrd="clientupdate" @recordupdated="refreshRecord"></editclient>
-          <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
+          <detailclient @recordupdated="refreshRecord"></detailclient>
           <!--quickapointment></quickapointment-->
           <!--editapointment :recrd="apntupdate" @recordupdated="refreshRecord"></editapointment-->
 
@@ -119,7 +119,6 @@
 			return{
 				clients:{},
 				clientupdate:{},
-				clientdetail:{},
 				success:'',
 				errors:'',
 			}
@@ -144,13 +143,6 @@
 	      		axios.get('client/'+id+'/edit')
 		        .then((response) => {
 		          this.clientupdate=response.data
-		          })//this.apntupdate = response.data
-		        .catch(error => this.errors=error.response.data.errors);
-	      	},
-	      	detailclient(id){
-	      		axios.get('client/'+id+'/edit')
-		        .then((response) => {
-		          this.clientdetail=response.data
 		          })//this.apntupdate = response.data
 		        .catch(error => this.errors=error.response.data.errors);
 	      	}
