@@ -66,22 +66,22 @@
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>First Name</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_first_name">
+                              <input class="form-control input-sm" type="text" v-model="recrd.contact_first_name">
                             </div>
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Last Name</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_last_name">
+                              <input class="form-control input-sm" type="text" v-model="recrd.contact_last_name">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Email</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_email">
+                              <input class="form-control input-sm" type="text" v-model="recrd.contact_email">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Phone</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.contact_phone">
+                              <input class="form-control input-sm" type="text" v-model="recrd.contact_phone">
                             </div>  
                           </div>
                         </div>
@@ -90,37 +90,37 @@
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Line 1</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_line_1">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_line_1">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Line 2</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_line_2">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_line_2">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Street/Landmark</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_street">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_street">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>City</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_city">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_city">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>State/Province</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_state">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_state">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
                               <i><small>Postal Code</small></i>
-                              <input class="form-control input-sm" type="text"    v-model="recrd.address_postal">
+                              <input class="form-control input-sm" type="text" v-model="recrd.address_postal">
                             </div>
                           </div>
                           <div class="form-group glow-input">
@@ -198,7 +198,8 @@
           private_note:''
         },
 				success:'',
-				errors:'',
+				errors:[],
+        errormessage:'',
 				clients:{},
 			}
 		},
@@ -222,9 +223,9 @@
           }) 
 
           .catch((error) => {
-            this.errors=error.response.data;
-            this.errormessage=this.errors.message;
-            console.log(this.errors);
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
+            //console.log(this.errors);
           });
       },
       colosemodal(){

@@ -9,7 +9,9 @@
                   <i class="fa fa-user-circle" aria-hidden="true"></i>
                   <h4 class="modal-title green"><b>{{recrd.client_name}}</b></h4>
                 </div>
-                <div class="modal-body">                                 
+                <div class="modal-body">
+
+
               
                     <div class="" role="tabpanel" data-example-id="togglable-tabs">
                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
@@ -24,64 +26,67 @@
                       </ul>
                       <div id="myTabContent" class="tab-content">
 
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content111" aria-labelledby="home-tab" style="margin-left:20px;">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content111" aria-labelledby="home-tab" style="margin-left:25px;">
                             <div class="project_detail">
-                              <p class="title">Name</p>
+                              <b><i class="title"><i class="fa fa-user" aria-hidden="true"></i> Name</i></b>
                               <p>{{recrd.client_name}}</p>
-                              <p class="title">Website</p>
+                              <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i> Website</i></b>
                               <p>{{recrd.client_website}}</p>
-                              <p class="title">Email</p>
+                              <b><i class="title"><i class="fa fa-envelope" aria-hidden="true"></i> Email</i></b>
                               <p>{{recrd.client_email}}</p>
-                              <p class="title">Phone</p>
+                              <b><i class="title"><i class="fa fa-phone" aria-hidden="true"></i> Phone</i></b>
                               <p>{{recrd.client_phone}}</p>
                             </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content222" aria-labelledby="profile-tab" style="margin-left:20px;">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content222" aria-labelledby="profile-tab" style="margin-left:25px;">
                           <div class="project_detail">
-                            <p class="title">First Name</p>
+                            <b><i class="title"><i class="fa fa-info" aria-hidden="true"></i> First Name</i></b>
                             <p>{{recrd.contact_first_name}}</p>
-                            <p class="title">Last Name</p>
+                            <b><i class="title"><i class="fa fa-info" aria-hidden="true"></i> Last Name</i></b>
                             <p>{{recrd.contact_last_name}}</p>
-                            <p class="title">Email</p>
+                            <b><i class="title"><i class="fa fa-envelope" aria-hidden="true"></i> Email</i></b>
                             <p>{{recrd.contact_email}}</p>
-                            <p class="title">Phone</p>
+                            <b><i class="title"><i class="fa fa-phone" aria-hidden="true"></i> Phone</i></b>
                             <p>{{recrd.contact_phone}}</p>
                           </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content333" aria-labelledby="profile-tab" style="margin-left:20px;">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content333" aria-labelledby="profile-tab" style="margin-left:25px;">
                           <div class="project_detail">
                             
-                              <p class="title">Line 1</p>
+                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 1</i></b>
                               <p>{{recrd.address_line_1}}</p>
+
+                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 2</i></b>
+                              <p>{{recrd.address_line_2}}</p>
                             
                             
-                              <p class="title">Street/Landmark</p>
+                              <i class="title"><i class="fa fa-language" aria-hidden="true"></i>Street/Landmark</i>
                               <p>{{recrd.address_street}}</p>
                             
                             
-                              <p class="title">City</p>
+                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>City</i></b>
                               <p>{{recrd.address_city}}</p>
                             
                             
-                              <p class="title">State/Province</p>
+                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>State/Province</i></b>
                               <p>{{recrd.address_state}}</p>
                             
                             
-                              <p class="title">Postal Code</p>
+                              <b><i class="title"><i class="fa fa-map-pin" aria-hidden="true"></i>Postal Code</i></b>
                               <p>{{recrd.address_postal}}</p>
                             
                             
-                              <p class="title">Country</p>
+                              <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i>Country</i></b>
                               <p>{{recrd.address_country}}</p>
                             
                             
                           </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content444" aria-labelledby="profile-tab" style="margin-left:20px;">
+                        <div role="tabpanel" class="tab-pane fade" id="tab_content444" aria-labelledby="profile-tab" style="margin-left:25px;">
                            <div class="project_detail">
-                            <p class="title">Public Note</p>
+                            <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Public Note</i></b>
                             <p>{{recrd.private_note}}</p>
-                            <p class="title">Private Note</p>
+                            <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Private Note</i></b>
                             <p>{{recrd.public_note}}</p>
                           </div>
                         </div>
@@ -141,6 +146,8 @@
 </script>
 
 <style type="text/css" Scoped>
-
+  .fa{
+    margin-right: 10px;
+  }
 
 </style>

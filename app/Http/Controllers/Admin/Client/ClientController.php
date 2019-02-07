@@ -125,6 +125,11 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $is_deleted=$client->delete();
+        if($is_deleted){
+            $client = Client::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$client);
+        }
     }
 }

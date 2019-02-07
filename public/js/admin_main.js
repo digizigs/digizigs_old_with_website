@@ -55012,7 +55012,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55086,13 +55086,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			service: { name: '', desc: '', bill: '', tat: '' },
 			success: '',
-			errors: '',
+			errors: [],
+			error_message: '',
 			services: {}
 		};
 	},
@@ -55114,7 +55119,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					title: 'New Service added successfully'
 				});
 			}).catch(function (error) {
-				return _this.errors(error);
+				_this.errors = error.response.data.errors;
+				_this.error_message = error.response.data.message;
 			});
 		}
 	},
@@ -55168,10 +55174,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.service.name },
                         on: {
                           input: function($event) {
@@ -55181,7 +55184,13 @@ var render = function() {
                             _vm.$set(_vm.service, "name", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.name
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.name[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _c("br"),
@@ -55200,7 +55209,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: { cols: "30", rows: "5", required: "" },
+                        attrs: { cols: "30", rows: "3" },
                         domProps: { value: _vm.service.desc },
                         on: {
                           input: function($event) {
@@ -55210,7 +55219,13 @@ var render = function() {
                             _vm.$set(_vm.service, "desc", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.desc
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.desc[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _c("br"),
@@ -55229,10 +55244,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.service.bill },
                         on: {
                           input: function($event) {
@@ -55242,7 +55254,13 @@ var render = function() {
                             _vm.$set(_vm.service, "bill", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.bill
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.bill[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _c("br"),
@@ -55261,10 +55279,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.service.tat },
                         on: {
                           input: function($event) {
@@ -55274,7 +55289,13 @@ var render = function() {
                             _vm.$set(_vm.service, "tat", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.tat
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.tat[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -55437,7 +55458,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -55507,6 +55528,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['recrd'],
@@ -55514,7 +55539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			service: { name: '', desc: '', bill: '', tat: '' },
 			success: '',
-			errors: '',
+			errors: [],
 			errormessage: '',
 			services: {}
 		};
@@ -55536,8 +55561,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					title: 'Service Updated successfully'
 				});
 			}).catch(function (error) {
-				_this.errors = error.response.data;
-				_this.errormessage = _this.errors.message;
+				_this.errors = error.response.data.errors;
+				_this.error_message = error.response.data.message;
 			});
 		}
 	},
@@ -55591,10 +55616,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.recrd.name },
                         on: {
                           input: function($event) {
@@ -55604,7 +55626,13 @@ var render = function() {
                             _vm.$set(_vm.recrd, "name", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.name
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.name[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -55622,7 +55650,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: { id: "", cols: "30", rows: "5", required: "" },
+                        attrs: { id: "", cols: "30", rows: "5" },
                         domProps: { value: _vm.recrd.description },
                         on: {
                           input: function($event) {
@@ -55636,7 +55664,13 @@ var render = function() {
                             )
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.description
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.description[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -55654,10 +55688,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.recrd.charge },
                         on: {
                           input: function($event) {
@@ -55667,7 +55698,13 @@ var render = function() {
                             _vm.$set(_vm.recrd, "charge", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.bill
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.bill[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -55685,10 +55722,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control input-sm",
-                        attrs: {
-                          type: "text",
-                          required: "Please ente a Role Name"
-                        },
+                        attrs: { type: "text" },
                         domProps: { value: _vm.recrd.duration },
                         on: {
                           input: function($event) {
@@ -55698,7 +55732,13 @@ var render = function() {
                             _vm.$set(_vm.recrd, "duration", $event.target.value)
                           }
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.tat
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.tat[0]))
+                          ])
+                        : _vm._e()
                     ])
                   ]),
                   _vm._v(" "),
@@ -55743,7 +55783,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("i", [_c("small", [_vm._v("itle of Service")])])
+    return _c("i", [_c("small", [_vm._v("Title of Service")])])
   },
   function() {
     var _vm = this
@@ -55981,6 +56021,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -56029,13 +56074,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			.catch(function (error) {
 				return _this3.errors = error.response.data.errors;
 			});
+		},
+		deleteclient: function deleteclient(id) {
+			var _this4 = this;
+
+			swalWithBootstrapButtons({
+				title: 'Delete Client?',
+				text: "You won't be able to revert this!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, delete it!',
+				cancelButtonText: 'No, cancel!',
+				reverseButtons: true
+			}).then(function (result) {
+				if (result.value) {
+
+					axios.delete('client/' + id).then(function (response) {
+						_this4.clients = response.data;
+						_this4.success = "Client Deleted Successfuly";
+					}) //this.categories=response.data
+					.catch(function (error) {
+						console.log(response.data);
+						_this4.errors = error.response.data.errors;
+						_this4.success = '';
+					});
+
+					swalWithBootstrapButtons('Deleted!', 'Client deleted successfully', 'success');
+				}
+			});
 		}
 	},
 	created: function created() {
-		var _this4 = this;
+		var _this5 = this;
 
 		axios.get('client/create').then(function (response) {
-			_this4.clients = response.data;
+			_this5.clients = response.data;
 		}) //this.appointments=response.data
 		.catch(function (error) {
 			return console.log(error);
@@ -56114,7 +56187,7 @@ var render = function() {
                             _vm._v(" "),
                             _vm._m(4, true),
                             _vm._v(" "),
-                            _c("td", { staticStyle: { width: "5%" } }, [
+                            _c("td", { staticStyle: { width: "1%" } }, [
                               _c(
                                 "a",
                                 {
@@ -56138,7 +56211,7 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c("td", { staticStyle: { width: "5%" } }, [
+                            _c("td", { staticStyle: { width: "1%" } }, [
                               _c(
                                 "a",
                                 {
@@ -56156,6 +56229,32 @@ var render = function() {
                                 [
                                   _c("i", {
                                     staticClass: "fa fa-eye",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "1%" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "disabled",
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        $event.preventDefault()
+                                      },
+                                      function($event) {
+                                        _vm.deleteclient(client.id)
+                                      }
+                                    ]
+                                  }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-trash",
                                     attrs: { "aria-hidden": "true" }
                                   })
                                 ]
@@ -56278,6 +56377,8 @@ var staticRenderFns = [
         _c("th", { staticClass: "column-title" }, [_vm._v(" Status ")]),
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }, [_vm._v(" Service ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }),
         _vm._v(" "),
         _c("th", { staticClass: "column-title" }),
         _vm._v(" "),
@@ -56430,7 +56531,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57900,7 +58001,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58111,7 +58212,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         private_note: ''
       },
       success: '',
-      errors: '',
+      errors: [],
+      errormessage: '',
       clients: {}
     };
   },
@@ -58132,9 +58234,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           title: 'Client Updated successfully'
         });
       }).catch(function (error) {
-        _this.errors = error.response.data;
-        _this.errormessage = _this.errors.message;
-        console.log(_this.errors);
+        _this.errors = error.response.data.errors;
+        _this.error_message = error.response.data.message;
+        //console.log(this.errors);
       });
     },
     colosemodal: function colosemodal() {
@@ -59362,7 +59464,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.fa{\n  margin-right: 10px;\n}\n\n", ""]);
 
 // exports
 
@@ -59373,6 +59475,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59569,7 +59676,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "tab-pane fade active in",
-                          staticStyle: { "margin-left": "20px" },
+                          staticStyle: { "margin-left": "25px" },
                           attrs: {
                             role: "tabpanel",
                             id: "tab_content111",
@@ -59578,25 +59685,19 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "project_detail" }, [
-                            _c("p", { staticClass: "title" }, [_vm._v("Name")]),
+                            _vm._m(1),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.client_name))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Website")
-                            ]),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.client_website))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Email")
-                            ]),
+                            _vm._m(3),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.client_email))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Phone")
-                            ]),
+                            _vm._m(4),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.client_phone))])
                           ])
@@ -59607,7 +59708,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "20px" },
+                          staticStyle: { "margin-left": "25px" },
                           attrs: {
                             role: "tabpanel",
                             id: "tab_content222",
@@ -59616,31 +59717,23 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "project_detail" }, [
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("First Name")
-                            ]),
+                            _vm._m(5),
                             _vm._v(" "),
                             _c("p", [
                               _vm._v(_vm._s(_vm.recrd.contact_first_name))
                             ]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Last Name")
-                            ]),
+                            _vm._m(6),
                             _vm._v(" "),
                             _c("p", [
                               _vm._v(_vm._s(_vm.recrd.contact_last_name))
                             ]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Email")
-                            ]),
+                            _vm._m(7),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.contact_email))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Phone")
-                            ]),
+                            _vm._m(8),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.contact_phone))])
                           ])
@@ -59651,7 +59744,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "20px" },
+                          staticStyle: { "margin-left": "25px" },
                           attrs: {
                             role: "tabpanel",
                             id: "tab_content333",
@@ -59660,37 +59753,31 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "project_detail" }, [
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Line 1")
-                            ]),
+                            _vm._m(9),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_line_1))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Street/Landmark")
-                            ]),
+                            _vm._m(10),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(_vm.recrd.address_line_2))]),
+                            _vm._v(" "),
+                            _vm._m(11),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_street))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [_vm._v("City")]),
+                            _vm._m(12),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_city))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("State/Province")
-                            ]),
+                            _vm._m(13),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_state))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Postal Code")
-                            ]),
+                            _vm._m(14),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_postal))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Country")
-                            ]),
+                            _vm._m(15),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_country))])
                           ])
@@ -59701,7 +59788,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "20px" },
+                          staticStyle: { "margin-left": "25px" },
                           attrs: {
                             role: "tabpanel",
                             id: "tab_content444",
@@ -59710,15 +59797,11 @@ var render = function() {
                         },
                         [
                           _c("div", { staticClass: "project_detail" }, [
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Public Note")
-                            ]),
+                            _vm._m(16),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.private_note))]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "title" }, [
-                              _vm._v("Private Note")
-                            ]),
+                            _vm._m(17),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.public_note))])
                           ])
@@ -59812,6 +59895,242 @@ var staticRenderFns = [
         ])
       ]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-user",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Name")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-globe",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Website")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-envelope",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Email")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-phone",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Phone")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-info",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" First Name")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-info",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Last Name")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-envelope",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Email")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-phone",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v(" Phone")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-map-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Line 1")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-map-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Line 2")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("i", { staticClass: "title" }, [
+      _c("i", {
+        staticClass: "fa fa-language",
+        attrs: { "aria-hidden": "true" }
+      }),
+      _vm._v("Street/Landmark")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-map-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("City")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-map-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("State/Province")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-map-pin",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Postal Code")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-globe",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Country")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-sticky-note-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Public Note")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [
+      _c("i", { staticClass: "title" }, [
+        _c("i", {
+          staticClass: "fa fa-sticky-note-o",
+          attrs: { "aria-hidden": "true" }
+        }),
+        _vm._v("Private Note")
+      ])
+    ])
   }
 ]
 render._withStripped = true

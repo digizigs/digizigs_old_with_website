@@ -15,29 +15,33 @@
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
-                        <i><small>itle of Service</small></i>
-                        <input class="form-control input-sm" type="text"  required="Please ente a Role Name" v-model="recrd.name">
+                        <i><small>Title of Service</small></i>
+                        <input class="form-control input-sm" type="text" v-model="recrd.name">
+                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span> 
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">                   
                       <div class="col-md-12 col-xs-12">
                         <i><small>Description Of service</small></i>
-                        <textarea class="form-control input-sm" id="" cols="30" rows="5" required="" v-model="recrd.description"></textarea>
+                        <textarea class="form-control input-sm" id="" cols="30" rows="5" v-model="recrd.description"></textarea>
+                        <span v-if="errors.description" :class="['label label-danger']">{{ errors.description[0] }}</span> 
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
                         <i><small>Billing charge of service</small></i>
-                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="recrd.charge">
+                        <input class="form-control input-sm" type="text" v-model="recrd.charge">
+                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span> 
                       </div> 
                     </div>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
                         <i><small>Expected Completion Time</small></i>
-                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="recrd.duration">
+                        <input class="form-control input-sm" type="text"  v-model="recrd.duration">
+                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span> 
                       </div> 
                     </div>
                     
@@ -64,7 +68,7 @@
 			return{
 				service:{name:'',desc:'',bill:'',tat:''},
 				success:'',
-				errors:'',
+				errors:[],
         errormessage:'',
 				services:{},
 			}
@@ -89,8 +93,8 @@
           }) 
 
           .catch((error) => {
-            this.errors=error.response.data;
-            this.errormessage=this.errors.message;
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
           });
 			},
 		},
