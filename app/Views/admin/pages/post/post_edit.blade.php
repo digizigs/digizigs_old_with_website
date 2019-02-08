@@ -28,10 +28,10 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New Post</h3>
+                <h3>Edit Article</h3>
               </div>
 
-              <div class="title_right">
+              <!--div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -40,9 +40,10 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </div-->
             </div>
             <div class="clearfix"></div>
+            <hr>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
@@ -53,18 +54,18 @@
                   <div class="col-md-8">
 
                     <div class="form-group glow-input">
-                      <label for="usr">Post Title</label>
+                      <label for="usr">Article Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{$post->title}}">
                     </div>
 
 
                     <div class="form-group glow-input">
-                      <label for="usr">Post Description</label>
+                      <label for="usr">Article Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                     </div>
               
                     <div class="form-group glow-input">
-                      <label for="editor1">Post Body</label>
+                      <label for="editor1">Article Body</label>
                       <textarea id="textarea" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
                         
                       </textarea>

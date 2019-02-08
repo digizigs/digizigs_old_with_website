@@ -36,7 +36,7 @@
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Name</small></i>
+                              <b><i><small>Name</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.client_name">
                               <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
                             </div> 
@@ -44,7 +44,7 @@
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
-                              <i><small>Website</small></i>
+                              <b><i><small>Website</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.client_website">
                               <span v-if="errors.client_website" :class="['label label-danger']">{{ errors.client_website[0] }}</span>                               
                             </div> 
@@ -52,7 +52,7 @@
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
-                              <i><small>Email</small></i>
+                              <b><i><small>Email</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.client_email"> 
                               <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
                             </div> 
@@ -60,7 +60,7 @@
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12">
-                              <i><small>Phone Number</small></i>
+                              <b><i><small>Phone Number</small></i></b>
                               <input class="form-control input-sm" type="text"   v-model="client.client_phone">
                               <span v-if="errors.client_phone" :class="['label label-danger']">{{ errors.client_phone[0] }}</span>
                             </div> 
@@ -70,22 +70,22 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>First Name</small></i>
+                              <b><i><small>First Name</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.contact_first_name">
                             </div>
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Last Name</small></i>
+                              <b><i><small>Last Name</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.contact_last_name">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Email</small></i>
+                              <b><i><small>Email</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.contact_email">
                             </div> 
 
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Phone</small></i>
+                              <b><i><small>Phone</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.contact_phone">
                             </div>  
                           </div>
@@ -94,43 +94,43 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Line 1</small></i>
+                              <b><i><small>Line 1</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_line_1">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Line 2</small></i>
+                              <b><i><small>Line 2</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_line_2">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Street/Landmark</small></i>
+                              <b><i><small>Street/Landmark</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_street">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>City</small></i>
+                              <b><i><small>City</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_city">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>State/Province</small></i>
+                              <b><i><small>State/Province</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_state">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Postal Code</small></i>
+                              <b><i><small>Postal Code</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_postal">
                             </div>
                           </div>
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Country</small></i>
+                              <b><i><small>Country</small></i></b>
                               <input class="form-control input-sm" type="text"    v-model="client.address_country">
                             </div>
                           </div>
@@ -139,14 +139,14 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Public Note</small></i>
+                              <b><i><small>Public Note</small></i></b>
                               <textarea class="form-control input-sm"  v-model="client.public_note"></textarea>
                             </div>
                           </div>
 
                           <div class="form-group glow-input">
                             <div class="col-sm-12 col-xs-12 col-xs-12">
-                              <i><small>Private Note</small></i>
+                              <b><i><small>Private Note</small></i></b>
                               <textarea class="form-control input-sm"  v-model="client.private_note"></textarea>
                             </div>
                           </div>

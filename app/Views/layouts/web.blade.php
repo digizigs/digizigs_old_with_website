@@ -13,7 +13,7 @@
 
     <title>{{config('app.name')}} | @yield('title')</title>
 
-    <link href="{{asset('/public/css/blog.css')}}" rel="stylesheet">
+    <link href="{{asset('/public/css/front_main.css')}}" rel="stylesheet">
    
 </head>
 <body>
@@ -26,10 +26,10 @@
      
     </div>
 
-   @include('blog.includes.footer')
+  
 
     <!--Script-->
-    <script src="{{asset('/public/js/blog.js')}}"></script>
+    <script src="{{asset('/public/js/front_main.js')}}"></script>
 
 </body>
 </html>
