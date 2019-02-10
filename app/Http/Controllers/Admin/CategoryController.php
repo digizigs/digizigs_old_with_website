@@ -13,7 +13,8 @@ class CategoryController extends Controller
     
     public function index()
     {   
-        $categories = Category::orderby('created_at','desc')->get();
+        $categories = Category::orderby('created_at','desc')->with('posts')->get();
+        //dd($categories);
         return view('admin.pages.category.category',compact('categories'));
     }
 

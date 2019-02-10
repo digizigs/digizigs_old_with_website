@@ -48,7 +48,7 @@
 	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
-	                              
+	                              <th class="column-title">  </th>
 	                              <th class="bulk-actions" colspan="7">
 	                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
 	                              </th>
@@ -69,14 +69,19 @@
 									<span class="label label-info label-many">Seo</span>
 									
 	                              </td>
-	                              <td class="" style="width: 5%;">
+	                              <td style="width: 1%;">
 	                                <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
-	                              <td style="width: 5%;">
+	                              <td style="width: 1%;">
 	                                <a href="#detailclient" class="disabled" data-toggle="modal" @click="detailclient(client.id)">
 	                                  <i class="fa fa-eye" aria-hidden="true"></i>
+	                                </a>
+	                              </td>
+	                              <td style="width: 1%;">
+	                                <a href="" class="disabled" v-on:click.prevent @click="deleteclient(client.id)">
+	                                  <i class="fa fa-trash" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
 	                             
@@ -149,6 +154,37 @@
 		          this.clientdetail=response.data
 		          })//this.apntupdate = response.data
 		        .catch(error => this.errors=error.response.data.errors);
+	      	},deleteclient(id){
+	      		swalWithBootstrapButtons({
+		          title: 'Delete Client?',
+		          text: "You won't be able to revert this!",
+		          type: 'warning',
+		          showCancelButton: true,
+		          confirmButtonText: 'Yes, delete it!',
+		          cancelButtonText: 'No, cancel!',
+		          reverseButtons: true
+		        }).then((result) => {
+		          if (result.value) {
+
+		            axios.delete('client/'+id)
+		            .then(response =>{
+		              this.clients=response.data;
+		              this.success="Client Deleted Successfuly";
+
+		            })//this.categories=response.data
+		            .catch((error) => {
+		              console.log(response.data);
+		                    this.errors=error.response.data.errors;
+		                    this.success='';                
+		              });
+
+		            swalWithBootstrapButtons(
+		              'Deleted!',
+		              'Client deleted successfully',
+		              'success'
+		            )
+		          } 
+		        })
 	      	}
 		},
 		created(){

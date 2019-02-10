@@ -18,6 +18,8 @@ mix.js('resources/js/admin/admin.js', 'public/js')
 
 
 mix.js('app/Asset/js/web/web_main.js', 'public/js')
+mix.js('app/Asset/js/web/front_main.js', 'public/js')
 mix.js('app/Asset/js/admin/admin_main.js', 'public/js')
    .sass('app/Asset/scss/web/web_main.scss', 'public/css')
+   .sass('app/Asset/scss/web/front_main.scss', 'public/css')
    .sass('app/Asset/scss/admin/admin_main.scss', 'public/css');

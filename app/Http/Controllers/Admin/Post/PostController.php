@@ -21,7 +21,7 @@ class PostController extends Controller
 
         //$posts = Post::paginate(10);
         //$posts = with('author')->find(1);
-        $posts = Post::orderby('created_at','desc')->with('user')->paginate(10);
+        $posts = Post::orderby('created_at','desc')->with('user','categories')->paginate(10);
         //dd($posts);
         return view('admin.pages.post.posts',compact('posts'));
 
@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function getallpost(){
 
-        $posts = Post::orderby('created_at','desc')->with('user')->get();
+        $posts = Post::orderby('created_at','desc')->with('user','categories')->get();
         return request()->json(200,$posts);
     }
    

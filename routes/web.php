@@ -1,20 +1,46 @@
 <?php
 
 //use Analytics;
+use App\Models\Page;
 use Spatie\Analytics\Period;
 
 
 //App
 Route::get('', 'App\AppController@index')->name('apphome');
-Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
-Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
-Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
-
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
+
+Route::get('{page}',function($slug){
+
+    $page = \App\Models\Page::findBySlug($slug);
+    $view = "app/pages/{$page->slug}";
+   
+
+    return view()->first([
+        "app/pages/{$page->slug}",
+        'app/page',     
+    ],compact('page'));
+
+
+    /*if(!view()->exists($view)){
+        //return view($view,compact('page'));
+        $view = 'app/page';
+    }
+
+
+    return view($view,compact('page'));
+    return abort('404');//view('app\page',compact('page'));
+    return $page;*/
+});
+
+
+//Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
+//Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
+//Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
+
 //Route::resource('/blog', 'App\BlogController');
-Route::resource('/blog', 'Blog\BlogController');
-Route::resource('/ecom', 'Ecom\EcomController');
+//Route::resource('/blog', 'Blog\BlogController');
+//Route::resource('/ecom', 'Ecom\EcomController');
 
 Auth::routes();
 
@@ -58,6 +84,11 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //Route::get('/getcategory', 'Admin\CategoryController@getcategories')->name('post.getcategory');
     //Route::post('/savecategory', 'Admin\CategoryController@store')->name('post.category.save');
     //Route::resource('/updatecategory', 'Admin\CategoryController');
+
+
+    //Menu
+    Route::resource('/menu', 'Admin\Menu\MenuController');
+
 
     //Tag
     Route::get('/tags', 'Admin\TagController@index')->name('tags');

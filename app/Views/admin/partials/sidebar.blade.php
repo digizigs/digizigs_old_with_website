@@ -26,15 +26,19 @@
           <li class=""><a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
           </li>
 
-          <li><a><i class="fa fa-edit"></i> Post <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-edit"></i> Article <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('post.index')}}">All Posts</a></li>
-              <li><a href="{{route('post.create')}}">Add Post</a></li>
+              <li><a href="{{route('post.index')}}">All Article</a></li>
+              <li><a href="{{route('post.create')}}">Add Article</a></li>
             </ul>
           </li>
           
           <li>
             <a href="{{route('category.index')}}"><i class="fa fa-object-group"></i> Category </a>
+          </li>
+
+          <li>
+            <a href="{{route('menu.index')}}"><i class="fa fa-bars"></i> Menus </a>
           </li>
 
           <li><a><i class="fa fa-universal-access"></i>Access Management<span class="fa fa-chevron-down"></span></a>

@@ -16,28 +16,32 @@
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
                         <i><small>Poduct Name</small></i>
-                        <input class="form-control input-sm" type="text"  required="Please ente a Role Name" v-model="service.name">
+                        <input class="form-control input-sm" type="text"  v-model="service.name">
+                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12" >
                         <i><small>Product description</small></i>
-                        <textarea class="form-control input-sm"  cols="30" rows="5" required="" v-model="service.desc"></textarea>
+                        <textarea class="form-control input-sm"  cols="30" rows="3"  v-model="service.desc"></textarea>
+                        <span v-if="errors.desc" :class="['label label-danger']">{{ errors.desc[0] }}</span>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
                         <i><small>Product Cost</small></i>
-                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.bill">
+                        <input class="form-control input-sm" type="text" v-model="service.bill">
+                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span>
                       </div> 
                     </div><br>
 
                     <div class="form-group glow-input">
                       <div class="col-md-12 col-xs-12">
                         <i><small>Product Deadline</small></i>
-                        <input class="form-control input-sm" type="text" required="Please ente a Role Name" v-model="service.tat">
+                        <input class="form-control input-sm" type="text" v-model="service.tat">
+                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span>
                       </div> 
                     </div>
                     
@@ -67,7 +71,8 @@
 			return{
 				service:{name:'',desc:'',bill:'',tat:''},
 				success:'',
-				errors:'',
+				errors:[],
+        error_message:'',
 				services:{},
 			}
 		},
@@ -91,7 +96,10 @@
 						})
 
 					})
-					.catch((error) => this.errors(error))
+					.catch((error) => {
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
+          })
 
 
 				

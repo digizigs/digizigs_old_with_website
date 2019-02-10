@@ -11,8 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Bootstrap -->
-    <!--link href="{{asset('public/vendor/bootstrap/dist/css/bootstrap.min.csss')}}" rel="stylesheet"-->
+   
     <!-- Font Awesome -->
     <link href="{{asset('public/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
