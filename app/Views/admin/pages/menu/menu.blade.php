@@ -203,29 +203,30 @@
 
                             <div class="panel panel-default">
                               <div class="panel-heading" style="padding-bottom: 0;">
-                                <form action="" class="form-horizontal">
-                                  
+                                <form action="{{route('create-menu')}}" method="post" class="form-horizontal">
+                                  @csrf
                                   <div class="form-group glow-input">
                                     
                                     <div class="col-sm-6 col-xs-7">
-                                      <input class="form-control input-sm"  name="menu-name" id="menu-name" placeholder="Menu Name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
+                                      <input class="form-control input-sm"  name="menuname" id="menu-name" placeholder="Menu Name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
                                     </div>
 
                                     @if(request()->has('action'))
+
                                       <div class="publishing-action">
-                                        <a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Create menu</a>
+                                        <!--a onclick="" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Create menu</a-->
+                                        <button class="btn btn-dark btn-sm pull-right">Create menu</button>
                                       </div>
-                                      @elseif(request()->has("menu"))
+
+                                    @elseif(request()->has("menu"))
+
                                       <div class="publishing-action">
-                                        <a onclick="getmenus()" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Save menu</a>
+                                        <a onclick="" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Save menu</a>
                                         <span class="spinner" id="spincustomu2"></span>
                                       </div>
 
-                                      @else
-                                      <div class="publishing-action">
-                                        <a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Create menu</a>
-                                      </div>
-                                      @endif
+                                   
+                                    @endif
 
                                   </div>
                                       
@@ -244,7 +245,7 @@
                                     </p>
                                   </div>
                                   
-                                  @else
+                                  @elseif(request()->has('menu'))
                                   
                                     <h4>Menu Structure</h4>
                                     <div class="drag-instructions post-body-plain" style="">

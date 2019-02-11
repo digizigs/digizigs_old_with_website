@@ -87,7 +87,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
     //Menu
-    Route::resource('/menu', 'Admin\Menu\MenuController');
+    Route::get('/menu', 'Admin\Menu\MenuController@index')->name('menu-index');
+    Route::post('/menu/add', 'Admin\Menu\MenuController@createnewmenu')->name('create-menu');
 
 
     //Tag

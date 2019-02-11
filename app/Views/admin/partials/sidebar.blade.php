@@ -38,7 +38,7 @@
           </li>
 
           <li>
-            <a href="{{route('menu.index')}}"><i class="fa fa-bars"></i> Menus </a>
+            <a href="{{route('menu-index')}}"><i class="fa fa-bars"></i> Menus </a>
           </li>
 
           <li><a><i class="fa fa-universal-access"></i>Access Management<span class="fa fa-chevron-down"></span></a>
