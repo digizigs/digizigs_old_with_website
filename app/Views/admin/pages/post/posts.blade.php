@@ -14,7 +14,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>All Articles <small></small></h3>
+                <h3>All Posts <small></small></h3>
               </div>
 
               <div class="title_right">

@@ -10,7 +10,7 @@ Route::get('', 'App\AppController@index')->name('apphome');
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
 
-Route::get('{page}',function($slug){
+/*Route::get('{page}',function($slug){
 
     $page = \App\Models\Page::findBySlug($slug);
     $view = "app/pages/{$page->slug}";
@@ -20,18 +20,8 @@ Route::get('{page}',function($slug){
         "app/pages/{$page->slug}",
         'app/page',     
     ],compact('page'));
-
-
-    /*if(!view()->exists($view)){
-        //return view($view,compact('page'));
-        $view = 'app/page';
-    }
-
-
-    return view($view,compact('page'));
-    return abort('404');//view('app\page',compact('page'));
-    return $page;*/
-});
+   
+});*/
 
 
 //Route::get('/homenew', 'App\AppController@home2')->name('apphome2');

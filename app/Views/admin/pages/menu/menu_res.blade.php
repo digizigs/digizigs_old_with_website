@@ -36,7 +36,7 @@
 
               <?php
                 $currentUrl = url()->current();
-                echo $currentUrl;
+                //echo $currentUrl;
               ?>  
 
                 <div class="clearfix"></div>
@@ -146,14 +146,16 @@
                                       <div class="form-group glow-input">
                                         <label class="col-sm-2 control-label">Link</label>
                                         <div class="col-sm-10">
-                                          <input class="form-control input-sm" id="focusedInput" type="text" value="http://">
+                                          <input class="form-control input-sm" id="custom-menu-item-url" name="url" type="text" value="http://">
+
                                         </div>
                                       </div>
 
                                       <div class="form-group glow-input">
                                         <label class="col-sm-2 control-label">Label</label>
                                         <div class="col-sm-10">
-                                          <input class="form-control input-sm"  type="text">
+                                          <input class="form-control input-sm" id="custom-menu-item-name" name="label" type="text" title="Label menu">
+                                         
                                         </div>
                                       </div>
 
@@ -197,18 +199,35 @@
 
                           
                           
-                          @if(request()->has('menu') && !empty(request()->input("menu")))
+                          
 
                             <div class="panel panel-default">
                               <div class="panel-heading" style="padding-bottom: 0;">
-                                <form action="" class="form-horizontal">
-                                  
+                                <form action="{{route('create-menu')}}" method="post" class="form-horizontal">
+                                  @csrf
                                   <div class="form-group glow-input">
                                     
                                     <div class="col-sm-6 col-xs-7">
-                                      <input class="form-control input-sm"  type="text" placeholder="Menu Name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
+                                      <input class="form-control input-sm"  name="menuname" id="menu-name" placeholder="Menu Name" value="@if(isset($indmenu)){{$indmenu->name}}@endif">
                                     </div>
-                                    <button class="btn btn-dark btn-sm pull-right">Save Menu</button>
+
+                                    @if(request()->has('action'))
+
+                                      <div class="publishing-action">
+                                        <!--a onclick="" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Create menu</a-->
+                                        <button class="btn btn-dark btn-sm pull-right">Create menu</button>
+                                      </div>
+
+                                    @elseif(request()->has("menu"))
+
+                                      <div class="publishing-action">
+                                        <a onclick="" name="save_menu" id="save_menu_header" class="btn btn-dark btn-sm pull-right">Save menu</a>
+                                        <span class="spinner" id="spincustomu2"></span>
+                                      </div>
+
+                                   
+                                    @endif
+
                                   </div>
                                       
                                 </form>
@@ -216,54 +235,50 @@
                               </div>
                               
                               <div class="panel-body">
-                                  
-                                  <div class="panel-group col-md-6" id="accordion">
 
-                                            <div class="panel panel-default">
-                                              <div class="panel-heading">
-                                                <h5 style="margin: 0;padding: 0;">
-                                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse">
-                                                  Collapsible Group 1</a>
-                                                </h5>
-                                              </div>
-                                              <div id="collapse" class="panel-collapse collapse">
-                                                <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                                                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                commodo consequat.</div>
-                                              </div>
-                                            </div>
-                                            
+                                @if(request()->has('action'))
 
-                                          </div>
-                              </div>
-                            </div>
-                          @else
-
-                            <div class="panel panel-default">
-                              <div class="panel-heading" style="padding-bottom: 0;">
-                                <form action="" class="form-horizontal">
-                                  
-                                  <div class="form-group glow-input">
-                                    
-                                    <div class="col-sm-6 col-xs-7">
-                                      <input class="form-control input-sm"  type="text" placeholder="Menu Name">
-                                    </div>
-                                    <button class="btn btn-dark btn-sm pull-right">Create Menu</button>
+                                  <h4>Menu Creation</h4>
+                                  <div class="drag-instructions post-body-plain" style="">
+                                    <p>
+                                      Please enter the name and select "Create menu" button
+                                    </p>
                                   </div>
-                                      
-                                </form>
-                                 
-                              </div>
-                              
-                              <div class="panel-body">
-                                Give your menu a name, then click Create Menu.
+                                  
+                                  @elseif(request()->has('menu'))
+                                  
+                                    <h4>Menu Structure</h4>
+                                    <div class="drag-instructions post-body-plain" style="">
+                                      <p>
+                                        Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.
+                                      </p>
+                                    </div>
+
+                                    <div class="panel-group col-md-6" id="accordion">
+
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading">
+                                        <h5 style="margin: 0;padding: 0;">
+                                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse">
+                                          Collapsible Group 1</a>
+                                        </h5>
+                                      </div>
+                                      <div id="collapse" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                         
+                                          
+
+                                        </div>
+                                      </div>
+                                    </div>                                 
+                                  </div>
+
+                                @endif
+                                  
+                                  
                               </div>
                             </div>
-
-                            
-
-                          @endif
+                        
 
                         </div>
 
@@ -280,4 +295,245 @@
 
 
     
+@endsection
+
+@section('javascript')
+  <script>
+    var arraydata = [];
+
+    function getmenus() {
+      arraydata = [];
+      $("#spinsavemenu").show()
+
+      var cont = 0;
+      $("#menu-to-edit li").each(function(index) {
+        var dept = 0;
+        for (var i = 0; i < $("#menu-to-edit li").length; i++) {
+
+          var n = $(this).attr("class").indexOf("menu-item-depth-" + i);
+          if (n != -1) {
+            dept = i;
+          }
+        };
+        var textoiner = $(this).find(".item-edit").text();
+        var id = this.id.split("-");
+        var textoexplotado = textoiner.split("|"); 
+        var padre = 0;  
+        if (!!textoexplotado[textoexplotado.length-2] && textoexplotado[textoexplotado.length-2]!= id[2]) {  
+          padre = textoexplotado[textoexplotado.length-2]
+        }
+        arraydata.push({
+          depth : dept,
+          id : id[2],
+          parent : padre,
+          sort : cont
+        })
+        cont++;
+      });
+      updateitem();
+      actualizarmenu();
+    }
+
+    function addcustommenu() {
+      $("#spincustomu").show();
+
+      $.ajax({
+        data : {
+          labelmenu : $("#custom-menu-item-name").val(),
+          linkmenu : $("#custom-menu-item-url").val(),
+          idmenu : $("#idmenu").val()
+        },
+
+        url : addcustommenur,
+        type : 'POST',
+        success : function(response) {
+          
+          window.location = "";
+
+        },
+        complete: function(){
+          $("#spincustomu").hide();
+        }
+
+      });
+    }
+
+    function updateitem(id = 0) {
+      
+      if(id){
+        var label = $("#idlabelmenu_" + id).val()
+        var clases = $("#clases_menu_" + id).val()
+        var url = $("#url_menu_" + id).val()
+        var data = {
+          label : label,
+          clases : clases,
+          url : url,
+          id : id
+        }
+      }else{
+        var arr_data = [];
+        $('.menu-item-settings').each(function(k, v){
+          var id = $(this).find(".edit-menu-item-id").val();
+          var label = $(this).find(".edit-menu-item-title").val();
+          var clases = $(this).find(".edit-menu-item-classes").val();
+          var url = $(this).find(".edit-menu-item-url").val();
+          arr_data.push({
+            id : id,
+            label : label,
+            class : clases,
+            link : url
+          });
+        });
+
+        var data = {arraydata: arr_data};
+      }
+      $.ajax({
+        data : data,
+        url :updateitemr,
+        type : 'POST',
+        beforeSend: function(xhr){
+          if(id){
+            $("#spincustomu2").show();
+          }
+        },
+        success : function(response) {
+                },
+        complete: function(){
+          if(id){
+            $("#spincustomu2").hide();
+          }
+        }
+              });
+    }
+
+    function actualizarmenu() {
+
+      $.ajax({
+        dataType : "json",
+        data : {
+          arraydata : arraydata,
+          menuname : $("#menu-name").val(),
+          idmenu : $("#idmenu").val()
+        },
+
+        url : generatemenucontrolr,
+        type : 'POST',
+        beforeSend: function(xhr) {
+          $("#spincustomu2").show();
+        },
+        success : function(response) {
+
+          console.log("aqu llega")
+          
+        },
+        complete: function(){
+          $("#spincustomu2").hide();
+        }
+      });
+    }
+
+    function deleteitem(id) {
+      $.ajax({
+        dataType : "json",
+        data : {
+
+          id : id
+        },
+
+        url :deleteitemmenur,
+        type : 'POST',
+        success : function(response) {
+
+        }
+      });
+    }
+
+    function deletemenu() {
+
+      var r = confirm("Do you want to delete this menu ?");
+      if (r == true) {
+        $.ajax({
+          dataType : "json",
+
+          data : {
+
+            id : $("#idmenu").val()
+          },
+
+          url : deletemenugr,
+          type : 'POST',
+          beforeSend: function(xhr){
+            $("#spincustomu2").show();
+          },
+          success : function(response) {
+
+            if (!response.error) {
+              alert(response.resp);
+              window.location = menuwr
+            }else{
+              alert(response.resp)
+            }
+
+          },
+          complete: function(){
+            $("#spincustomu2").hide();
+          }
+        });
+
+      } else {
+        return false;
+      }
+
+    }
+
+    function createnewmenu() {
+
+      if (!!$("#menu-name").val()) {
+        $.ajax({
+          dataType : "json",
+
+          data : {
+            menuname : $("#menu-name").val(),
+          },
+
+          url :createnewmenur,
+          type : 'POST',
+          success : function(response) {
+
+            window.location = menuwr+"?menu=" + response.resp
+
+          }
+        });
+      } else {
+        alert("Enter menu name!")
+        $("#menu-name").focus();
+        return false;
+      }
+
+    }
+
+    function insertParam(key, value){
+        key = encodeURI(key); value = encodeURI(value);
+
+        var kvp = document.location.search.substr(1).split('&');
+
+        var i=kvp.length; var x; while(i--) 
+        {
+            x = kvp[i].split('=');
+
+            if (x[0]==key)
+            {
+                x[1] = value;
+                kvp[i] = x.join('=');
+                break;
+            }
+        }
+
+        if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+        //this will reload the page, it's likely better to store this until finished
+        document.location.search = kvp.join('&'); 
+    }
+
+  </script>
 @endsection

@@ -28,7 +28,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Edit Article</h3>
+                <h3>Edit Post</h3>
               </div>
 
               <!--div class="title_right">
@@ -54,18 +54,18 @@
                   <div class="col-md-8">
 
                     <div class="form-group glow-input">
-                      <label for="usr">Article Title</label>
+                      <label for="usr">Post Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{$post->title}}">
                     </div>
 
 
                     <div class="form-group glow-input">
-                      <label for="usr">Article Description</label>
+                      <label for="usr">Post Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                     </div>
               
                     <div class="form-group glow-input">
-                      <label for="editor1">Article Body</label>
+                      <label for="editor1">Post Body</label>
                       <textarea id="textarea" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
                         
                       </textarea>
