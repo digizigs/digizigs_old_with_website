@@ -35,8 +35,8 @@
 
           <li><a><i class="fa fa-file-text-o"></i> Pages <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="">All Pages</a></li>
-              <li><a href="">Add Page</a></li>
+              <li><a href="{{route('page.index')}}">All Pages</a></li>
+              <li><a href="{{route('page.create')}}">Add Page</a></li>
             </ul>
           </li>
           

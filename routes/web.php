@@ -63,8 +63,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //Route::get('/getDestroy', 'Admin\Post\PostController@getallpost')->name('post.delete');
     //Route::get('/post/getallpost', 'Admin\Post\PostController@getallpost');
 
-
-
+    //PAge
+    Route::resource('/page', 'Admin\Page\PageController');
 
 
     //Catogery

@@ -154,7 +154,8 @@
 		          this.clientdetail=response.data
 		          })//this.apntupdate = response.data
 		        .catch(error => this.errors=error.response.data.errors);
-	      	},deleteclient(id){
+	      	},
+	      	deleteclient(id){
 	      		swalWithBootstrapButtons({
 		          title: 'Delete Client?',
 		          text: "You won't be able to revert this!",
