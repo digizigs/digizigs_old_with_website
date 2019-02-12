@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Menu;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MenuController extends Controller
 {
@@ -16,17 +17,22 @@ class MenuController extends Controller
     	return view('admin.pages.menu.menu',compact('menus'));
     }
 
-
-    public function createnewmenu(Request $request) {
-
-        $menu = new Menu();
-        $menu->name = request()->input("menuname");
-        $menu->save();
-        //return json_encode(array("resp" => $menu->id));
+    public function allmenu() {
 
         $menus = Menu::orderby('created_at','desc')->get();
-        //return view('admin.pages.menu.menu',compact('menus'))->with('message','New menu created successfully');
-        return redirect()->route('menu-index')->with('message', 'New menu created successfully');
+        return request()->json(200,$menus);
+    }
+
+    public function createnewmenu(Request $request) {
+       
+        $menu = new Menu();
+        $menu->name = $request->name;;
+        $menu->save();
+        
+
+        $menus = Menu::orderby('created_at','desc')->get();        
+        return request()->json(200,$menus);
+       
     }
 
 

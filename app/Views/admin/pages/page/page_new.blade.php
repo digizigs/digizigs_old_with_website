@@ -27,7 +27,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New Post</h3>
+                <h3>New Page</h3>
               </div>
 
               <div class="title_right">
@@ -47,12 +47,12 @@
             <div class="row" >
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
-                <form class="form-horizontal form-label-left" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
+                <form class="form-horizontal form-label-left" method="post" action="{{route('page.store')}}" enctype="multipart/form-data">
                   @csrf
                   <div class="col-md-8">
 
                     <div class="form-group glow-input">
-                      <label for="usr">Post Title</label>
+                      <label for="usr">Page Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{ old('post_title') }}">
                     </div>
 
@@ -61,12 +61,12 @@
 
 
                     <div class="form-group glow-input">
-                      <label for="usr">Post Description</label>
+                      <label for="usr">Page Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{ old('post_desc') }}">
                     </div>
               
                     <div class="form-group glow-input">
-                      <label for="editor1">Post Body</label>
+                      <label for="editor1">Page Body</label>
                       <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">
                         
                       </textarea>
@@ -79,7 +79,7 @@
                   <div class="col-md-4">
                     <div class="x_panel">
                       <div class="x_title">
-                        <h2><i class="fa fa-align-left"></i> Options <small>Post Options</small></h2>
+                        <h2><i class="fa fa-align-left"></i> Options <small>Page Options</small></h2>
                         <button class="btn btn-dark btn-sm pull-right">Publish</button>
                         <div class="clearfix"></div>
                       </div>

@@ -63,10 +63,10 @@
                       <label for="usr">Post Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                     </div>
-              
+                   
                     <div class="form-group glow-input">
                       <label for="editor1">Post Body</label>
-                      <textarea id="textarea" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
+                      <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">{{$post->body}}
                         
                       </textarea>
                       
@@ -270,6 +270,7 @@
 
 @section('javascript')
   <script src="{{asset('public/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+  <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
   <script>
       $("#tags_1").select2();
       $(".select2").select2();
@@ -280,4 +281,9 @@
       });
 
   </script>
+
+  <script>
+          CKEDITOR.replace( 'post_body' );
+  </script>
+
 @endsection

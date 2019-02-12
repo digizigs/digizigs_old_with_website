@@ -14,7 +14,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>All Posts <small></small></h3>
+                <h3>All Pages <small></small></h3>
               </div>
 
               <div class="title_right">
@@ -49,7 +49,7 @@
               	<div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
-	                    <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a>
+	                    <a href="{{route('page.create')}}" class="btn btn-dark btn-sm">Add New Page</a>
                       
                       <span class="pull-right" style="margin-top: 10px;">
                         <a href="">All</a> | <a href="">Published</a> | <a href="">Draft</a> | <a href="">Trash</a>
@@ -80,29 +80,29 @@
 
                           <tbody>
               
-                          @foreach($posts as $post)
+                          @foreach($pages as $page)
                             <tr class="even pointer">                             
-                              <td class=" ">{{ $post -> title}}</td>
-                              <td class=" ">{{ $post ->user->firstname}} </td>
+                              <td class=" ">{{ $page -> title}}</td>
+                              <td class=" ">{{ $page ->user->firstname}} </td>
                               <td class=" ">                               
-                                 @foreach($post->categories as $cat)                          
+                                 @foreach($page->categories as $cat)                          
                                     <span class="label label-info label-many" style="font-weight:300;">{{$cat->name}}</span>
                                  @endforeach
                               </td>
                               
-                              <td class=" ">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
-                              <td class=" "> {{ $post -> status}} </td>
+                              <td class=" ">{{ Carbon\Carbon::parse($page->created_at)->diffForHumans() }}</td>
+                              <td class=" "> {{ $page -> status}} </td>
                               <td class="" style="width: 5%;">
                                 
                                 
-                                <a href="{{ route('post.edit' , $post->id)}}" >
+                                <a href="{{ route('page.edit' , $page->id)}}" >
                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                              
                                 
                               </td>
                               <td style="width: 5%;">
-                                <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
+                                <form action="{{ route('page.destroy' , $page->id)}}" method="POST" class="delete-form">
                                     @csrf
                                     {{ method_field('DELETE') }}
                                     <button style="background: none;border: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -115,7 +115,7 @@
                         </table>
                       </div>
 								      
-                      {{ $posts->links() }}
+                      {{ $pages->links() }}
 
 
 

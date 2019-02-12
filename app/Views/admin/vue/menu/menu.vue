@@ -8,7 +8,7 @@
                 <h3> Menus <small></small></h3>
               </div>
 
-              <div class="title_right">
+              <!-- <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -17,7 +17,7 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <div class="clearfix"></div>
@@ -38,28 +38,43 @@
                       <!--Select menu or create new menu-->
                       <div class="row">
                         <div class="manage-menus">
-                          <form @submit.prevent="">
-                            <label for="menu" class="selected-menu">Select the menu you want to edit:</label>
 
-                            <select name="menu" class=" input-sm glow-input">
-                              
-                                <option value="">test</option> 
-                              
-                            </select>
+                          <div class="select-menu" v-if="this.newmenu == false">
 
-                            <span class="submit-btn">
-                              <input type="submit" class="btn btn-dark btn-sm" value="Select" style="margin-left: 10px;margin-top: 4px;" @click="selectmenu">
-                            </span>
-                            <span class="add-new-menu-action"> or <a href=""  v-on:click.prevent @click="createmenu">Create new menu</a>. </span>
-                          </form>
+                              <div class="form-group">                                
+                                <select name="menu" class="col-md-2 input-sm glow-input input" v-model="selectedmenu">
+                                    <option value="">Select</option>
+                                    <option v-for="menu in menus" v-bind:value="menu.name">{{menu.name}}</option>                              
+                                </select>
+                                <button class="select-menu btn btn-dark btn-sm" @click="selectmenu">Select Menu</button>                             
+                                <span > or <a href="" v-on:click.prevent @click="createmenu">Create new menu</a>. 
+                                
+                              </span>
+                              </div>
+                              
+                          </div>
+
+                          <div class="select-menu" v-if="this.newmenu == true">
+                              <div class="form-group">                        
+                                <div class="col-md-2 glow-input">
+                                  <input type="text" class="cm input form-control input-sm" v-model="menu_name.name">
+                                </div>
+                                <button class=" btn btn-dark btn-sm" @click="addnewmenu">Create Menu</button>
+                                <span> or <a href="" v-on:click.prevent @click="selectmenu">Select from existing</a></span>                              
+                              </div>
+                          </div>
+
                         </div>
                       </div>
                       
 
                       <div class="row" style="margin-top: 40px;">
-                        
-                        <div   class="col-md-4 col-xs-12">
-                          <div class="panel-group" id="accordion">
+
+
+                        <!--Left Column-->
+                        <div class="col-md-4 col-xs-12" >
+
+                          <div class="panel-group" id="accordion" v-if="this.menuselect == true">
 
                             <div class="panel panel-default">
                               <div class="panel-heading">
@@ -72,7 +87,7 @@
                               <div id="collapse1" class="panel-collapse collapse">
                                 <div class="panel-body">                                                       
                                   <div>
-                                    <button type="submit" class="btn btn-dark btn-sm pull-right" style="margin-top: 20px;" >
+                                    <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
                                     Add Menu item
                                     </button>
                                   </div>
@@ -94,7 +109,7 @@
 
                                       
                                       <div>
-                                        <button type="submit" class="btn btn-dark btn-sm pull-right" style="margin-top: 20px;" >
+                                        <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
                                           Add Menu item
                                         </button>
                                       </div>
@@ -131,7 +146,7 @@
                                     </div>
 
                                     <div>
-                                      <button type="submit" class="btn btn-dark btn-sm pull-right" style="margin-top: 20px;" >
+                                      <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
                                         Add Menu item
                                       </button>
                                     </div>
@@ -151,7 +166,7 @@
                                 <div class="panel-body">
                                   
                                       <div>
-                                        <button type="submit" class="btn btn-dark btn-sm pull-right" style="margin-top: 20px;" >
+                                        <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
                                           Add Menu item
                                         </button>
                                       </div>
@@ -161,33 +176,29 @@
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </div><!--Left Column-->
 
-                        <div   class="col-md-8 col-xs-12">
+                        <!--Right Column-->
+                        <div class="col-md-8 col-xs-12">
                           
-                          <div class="panel panel-default">
+                          <!--IF menu is selected-->
+                          <div class="panel panel-default"  v-if="this.menuselect == true">
 
                               <div class="panel-heading" style="padding-bottom: 0;">
-                                <form  class="form-horizontal">
-                                  
-                                  <div class="form-group glow-input">
-                                    
+
+                                <form  class="form-horizontal">                                 
+                                  <div class="form-group glow-input">                                   
                                     <div class="col-sm-6 col-xs-7">
-                                      <input class="form-control input-sm"  name="menuname" id="menu-name" placeholder="Menu Name" value="">
+                                      <h4>{{this.selectedmenu}}</h4>
                                     </div>
 
-                                    
+                                      <div class="publishing-action">                                        
+                                        <button class="btn btn-dark btn-sm pull-right">Save menu</button>
+                                      </div>                                   
 
-                                      <div class="publishing-action">
-                                        
-                                        <button class="btn btn-dark btn-sm pull-right">Create menu</button>
-                                      </div>
+                                  </div>                                     
+                                </form>
 
-                                   
-
-                                  </div>
-                                      
-                                </form>                               
                               </div>
                               
                               <div class="panel-body">                                  
@@ -219,11 +230,62 @@
                                  
                               </div>
                           </div>
-                        </div>
+
+
+                          <!--New Menu is clicked-->
+                          <div class="panel panel-default" v-if="this.newmenu == true">
+
+                              <div class="panel-heading" style="padding-bottom: 0;">
+
+                                <form  class="form-horizontal" @submit.prevent="">                                 
+                                  <div class="form-group glow-input">                                   
+                                    <div class="col-sm-6 col-xs-7">
+                                      <input class="form-control input-sm"  placeholder="Menu Name" value=""  required="">
+                                    </div>
+
+                                      <div class="publishing-action">                                        
+                                        <button class="btn btn-dark btn-sm pull-right" @click="addnewmenu">Create menu</button>
+                                      </div>                                   
+
+                                  </div>                                     
+                                </form>
+
+                              </div>
+                              
+                              <div class="panel-body">                                  
+                                <h4>Create Menu</h4>
+                                <div class="drag-instructions post-body-plain" style="">
+                                  <p>
+                                    Enter a menu name to create new menu
+                                  </p>
+                                </div>
+
+                                <div class="panel-group col-md-6" id="accordion" v-if="this.menuselect == true">
+
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                      <h5 style="margin: 0;padding: 0;">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse">
+                                        Collapsible Group 1</a>
+                                      </h5>
+                                    </div>
+                                    <div id="collapse" class="panel-collapse collapse">
+                                      <div class="panel-body">
+                                       
+                                        
+
+                                      </div>
+                                    </div>
+                                  </div>                                 
+                                </div>
+                                 
+                              </div>
+                          </div>
+                        </div><!--Right Column-->
 
                       </div>
 
-</div>  
+                  </div>  
                 </div>
               </div>
         </div>
@@ -238,6 +300,11 @@
 			return{
 			   menuselect:false,
          newmenu:false,
+         selectedmenu:'',
+         menus:'',
+         menu_name:{'name':''},
+         errors:[],
+         error_message:'',
 			}
 		},
 		watch:{
@@ -245,16 +312,58 @@
 		},
 		methods:{
 		  selectmenu(){
-        
-        this.menuselect=true;
+
+       
+          this.newmenu=false;
+          this.menuselect=false;
+            
       },
       createmenu(){
-        
+        this.menuselect=false;
         this.newmenu=true;
       },
+      addnewmenu(){
+
+         if(this.menu_name.name == ''){
+          toast({
+                type: 'warning',
+                title: 'please enter a menu name'
+            })
+         }else{
+            axios.post('menu/add',this.menu_name)
+            .then(response => {
+              console.log(response.data);
+              this.menus=response.data           
+              //this.$emit('recordupdated',data),
+              //this.success='Service added successfully'
+              //this.client={}
+            //$('#addclient').modal('hide');
+            //this.client={};
+
+            toast({
+                type: 'success',
+                title: 'New Menu added successfully'
+            })
+
+          })
+          .catch((error) => {
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
+            console.log(this.errors);           
+          })
+     
+         };
+      },   
+        
+      
 		},
 		created(){
-		
+		  axios.get('menu/all')
+      .then((response) => {
+          this.menus=response.data;
+          //console.log(this.menus);
+        })//this.clients=response.data}
+      .catch((error) => console.log(error))
 		}
 	};
 
@@ -262,5 +371,13 @@
 
 <style type="text/css" Scoped>
 
+  .select-menu{
+    margin-left: 10px;
+  }
+  
+  .cm{
+    margin-left: -10px;
+  }
 
+  
 </style>

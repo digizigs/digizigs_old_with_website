@@ -8,8 +8,8 @@
 @section('content')
   <div class="right_col" role="main" style="min-height: 3543px;">
 
-    
-          <!--p class="alert alert-info " id="successMessage">Post published successfully</p-->
+        
+
           @if(Session::has('message'))
             <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
           @endif
@@ -23,64 +23,62 @@
               <div style="color:red;"><small><i>{{$error}}</i></small></div>
             @endforeach
           @endif
-
+          
+          
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New Post</h3>
+                <h3>Edit Page</h3>
               </div>
 
-              <div class="title_right">
+              <!--div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <!--div class="input-group">
+                  <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                  </div-->
+                  </div>
                 </div>
-              </div>
+              </div-->
             </div>
-
             <div class="clearfix"></div>
             <hr>
-            <div class="row" >
+            <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
-                <form class="form-horizontal form-label-left" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
+                <form class="form-horizontal form-label-left" method="post" action="{{ route('page.update' , $page->id)}}" enctype="multipart/form-data">
                   @csrf
+                  {{method_field('PUT')}}
+
                   <div class="col-md-8">
 
                     <div class="form-group glow-input">
-                      <label for="usr">Post Title</label>
-                      <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{ old('post_title') }}">
+                      <label for="usr">Page Title</label>
+                      <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{$page->title}}">
                     </div>
 
 
-                    
-
-
                     <div class="form-group glow-input">
-                      <label for="usr">Post Description</label>
-                      <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{ old('post_desc') }}">
+                      <label for="usr">Page Description</label>
+                      <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$page->description}}{{ old('post_desc') }}">
                     </div>
-              
+                   
                     <div class="form-group glow-input">
-                      <label for="editor1">Post Body</label>
-                      <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">
+                      <label for="editor1">Page Body</label>
+                      <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$page->body}}{{ old('post_body') }}">{{$page->body}}
                         
                       </textarea>
                       
-                      <small><b>Word Count</b> 12</small>
-                    </div>
-                    
+                      <small><b>Word Count</b> 12</small> <small class="pull-right">Last edited on : {{$page->updated_at}}</small>
+                    </div>                  
                   </div>
                   
                   <div class="col-md-4">
                     <div class="x_panel">
                       <div class="x_title">
-                        <h2><i class="fa fa-align-left"></i> Options <small>Post Options</small></h2>
-                        <button class="btn btn-dark btn-sm pull-right">Publish</button>
+                        <h2><i class="fa fa-align-left"></i> Options <small>Page Options</small></h2>
+                        <button class="btn btn-dark btn-sm pull-right">Update</button>
                         <div class="clearfix"></div>
                       </div>
                       <div class="x_content">
@@ -89,21 +87,29 @@
                         <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                           
                           <!-- draft and publish status -->
-                          <div class="panel" >
+                          <div class="panel">
                               <a class="panel-heading collapsed" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne">
                                 <span class=" ">Status & Visiblity</span>
                                 <span><i class="fa fa-caret-down pull-right" style="margin-top: 5px;"></i></span>
                               </a>
                               <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                <div class="panel-body" style="background-color: #F2F5F7">
+                                <div class="panel-body">
 
                                   <div class="radio">
+
                                     <label class="">
-                                      <div class="iradio_flat-green" style="position: relative;"><input type="radio" class="flat" checked="" name="status" value="Published" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Published
+                                      <div class="iradio_flat-green" style="position: relative;">
+                                        <input type="radio" class="flat" name="status" value="Published" style="position: absolute; opacity: 0;" @if($page->status == 'Published') checked  @endif>
+                                          <!--ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"-->
+                                            
+                                          </ins>
+                                      </div> Published
                                     </label>
                                     
                                     <label class="">
-                                      <div class="iradio_flat-green" style="position: relative;"><input type="radio" class="flat" name="status" value="Draft" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> Draft
+                                      <div class="iradio_flat-green" style="position: relative;">
+                                        <input type="radio" class="flat" name="status" value="Draft" style="position: absolute; opacity: 0;" @if($page->status == 'Draft') checked  @endif>
+                                      </div> Draft
                                     </label>
 
 
@@ -127,7 +133,15 @@
                                   <select class="form-control select2 select2-hidden-accessible " multiple=""  style="width: 100%; height: 200px;" tabindex="-1" aria-hidden="true" name="categories[]">
                                   
                                       @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}"
+                                        
+                                        @foreach($page->categories as $postCat)
+                                          @if($postCat->id == $category->id)
+                                            selected
+                                          @endif
+                                        @endforeach
+    
+                                        >{{$category->name}}</option>
                                       @endforeach
                                               
                                   </select>
@@ -148,7 +162,10 @@
                               <div class="panel-body">
                                
                                 <div class="col-md-12" >
-                                  <select class="form-control tags" multiple=""  style="width: 100%; height: 200px;" tabindex="-1" aria-hidden="true" name="tags[]"  value="{{ old('tags[]') }}">          
+                                  <select class="form-control tags" multiple=""  style="width: 100%; height: 200px;" tabindex="-1" aria-hidden="true" name="tags[]" >
+
+                                   
+
                                   </select>                               
                                 </div>
 
@@ -166,7 +183,7 @@
                             </a>
                             <div id="collapsefour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
                               <div class="panel-body">
-                                <div class="avatar-preview imgUp img-thumbnail" style="background-image: url({{asset('public/images/picture.jpgs')}});">
+                                <div class="avatar-preview imgUp img-thumbnail" style="background-image: url({{asset('public/uploads/' . $page->image_url)}});">
                                   
                                 </div>
                               </div>
@@ -266,8 +283,7 @@
   </script>
 
   <script>
-          CKEDITOR.replace( 'editor1' );
+          CKEDITOR.replace( 'post_body' );
   </script>
 
-                
 @endsection

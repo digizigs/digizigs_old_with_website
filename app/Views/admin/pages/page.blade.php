@@ -49,7 +49,7 @@
               	<div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
-	                    <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a>
+	                    <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Article</a>
                       
                       <span class="pull-right" style="margin-top: 10px;">
                         <a href="">All</a> | <a href="">Published</a> | <a href="">Draft</a> | <a href="">Trash</a>

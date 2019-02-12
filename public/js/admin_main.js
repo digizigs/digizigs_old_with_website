@@ -60234,7 +60234,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.select-menu{\n  margin-left: 10px;\n}\n.cm{\n  margin-left: -10px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -60479,27 +60479,134 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	data: function data() {
-		return {
-			menuselect: false,
-			newmenu: false
-		};
-	},
+  data: function data() {
+    return {
+      menuselect: false,
+      newmenu: false,
+      selectedmenu: '',
+      menus: '',
+      menu_name: { 'name': '' },
+      errors: [],
+      error_message: ''
+    };
+  },
 
-	watch: {},
-	methods: {
-		selectmenu: function selectmenu() {
+  watch: {},
+  methods: {
+    selectmenu: function selectmenu() {
 
-			this.menuselect = true;
-		},
-		createmenu: function createmenu() {
+      this.newmenu = false;
+      this.menuselect = false;
+    },
+    createmenu: function createmenu() {
+      this.menuselect = false;
+      this.newmenu = true;
+    },
+    addnewmenu: function addnewmenu() {
+      var _this = this;
 
-			this.newmenu = true;
-		}
-	},
-	created: function created() {}
+      if (this.menu_name.name == '') {
+        toast({
+          type: 'warning',
+          title: 'please enter a menu name'
+        });
+      } else {
+        axios.post('menu/add', this.menu_name).then(function (response) {
+          console.log(response.data);
+          _this.menus = response.data;
+          //this.$emit('recordupdated',data),
+          //this.success='Service added successfully'
+          //this.client={}
+          //$('#addclient').modal('hide');
+          //this.client={};
+
+          toast({
+            type: 'success',
+            title: 'New Menu added successfully'
+          });
+        }).catch(function (error) {
+          _this.errors = error.response.data.errors;
+          _this.error_message = error.response.data.message;
+          console.log(_this.errors);
+        });
+      };
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    axios.get('menu/all').then(function (response) {
+      _this2.menus = response.data;
+      //console.log(this.menus);
+    }) //this.clients=response.data}
+    .catch(function (error) {
+      return console.log(error);
+    });
+  }
 });
 
 /***/ }),
@@ -60525,64 +60632,284 @@ var render = function() {
               _c("div", { staticClass: "x_content" }, [
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "manage-menus" }, [
-                    _c(
-                      "form",
-                      {
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "selected-menu",
-                            attrs: { for: "menu" }
-                          },
-                          [_vm._v("Select the menu you want to edit:")]
-                        ),
-                        _vm._v(" "),
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "submit-btn" }, [
-                          _c("input", {
-                            staticClass: "btn btn-dark btn-sm",
-                            staticStyle: {
-                              "margin-left": "10px",
-                              "margin-top": "4px"
-                            },
-                            attrs: { type: "submit", value: "Select" },
-                            on: { click: _vm.selectmenu }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "add-new-menu-action" }, [
-                          _vm._v(" or "),
-                          _c(
-                            "a",
-                            {
-                              attrs: { href: "" },
-                              on: {
-                                click: [
-                                  function($event) {
-                                    $event.preventDefault()
-                                  },
-                                  _vm.createmenu
-                                ]
-                              }
-                            },
-                            [_vm._v("Create new menu")]
-                          ),
-                          _vm._v(". ")
+                    this.newmenu == false
+                      ? _c("div", { staticClass: "select-menu" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.selectedmenu,
+                                    expression: "selectedmenu"
+                                  }
+                                ],
+                                staticClass:
+                                  "col-md-2 input-sm glow-input input",
+                                attrs: { name: "menu" },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.selectedmenu = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "" } }, [
+                                  _vm._v("Select")
+                                ]),
+                                _vm._v(" "),
+                                _vm._l(_vm.menus, function(menu) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: menu.name } },
+                                    [_vm._v(_vm._s(menu.name))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "select-menu btn btn-dark btn-sm",
+                                on: { click: _vm.selectmenu }
+                              },
+                              [_vm._v("Select Menu")]
+                            ),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v(" or "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        $event.preventDefault()
+                                      },
+                                      _vm.createmenu
+                                    ]
+                                  }
+                                },
+                                [_vm._v("Create new menu")]
+                              ),
+                              _vm._v(
+                                ". \n                                \n                              "
+                              )
+                            ])
+                          ])
                         ])
-                      ]
-                    )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    this.newmenu == true
+                      ? _c("div", { staticClass: "select-menu" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("div", { staticClass: "col-md-2 glow-input" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.menu_name.name,
+                                    expression: "menu_name.name"
+                                  }
+                                ],
+                                staticClass: "cm input form-control input-sm",
+                                attrs: { type: "text" },
+                                domProps: { value: _vm.menu_name.name },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.menu_name,
+                                      "name",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: " btn btn-dark btn-sm",
+                                on: { click: _vm.addnewmenu }
+                              },
+                              [_vm._v("Create Menu")]
+                            ),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v(" or "),
+                              _c(
+                                "a",
+                                {
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        $event.preventDefault()
+                                      },
+                                      _vm.selectmenu
+                                    ]
+                                  }
+                                },
+                                [_vm._v("Select from existing")]
+                              )
+                            ])
+                          ])
+                        ])
+                      : _vm._e()
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _c(
+                  "div",
+                  { staticClass: "row", staticStyle: { "margin-top": "40px" } },
+                  [
+                    _c("div", { staticClass: "col-md-4 col-xs-12" }, [
+                      this.menuselect == true
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "panel-group",
+                              attrs: { id: "accordion" }
+                            },
+                            [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _vm._m(2),
+                              _vm._v(" "),
+                              _vm._m(3),
+                              _vm._v(" "),
+                              _vm._m(4)
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-8 col-xs-12" }, [
+                      this.menuselect == true
+                        ? _c("div", { staticClass: "panel panel-default" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "panel-heading",
+                                staticStyle: { "padding-bottom": "0" }
+                              },
+                              [
+                                _c("form", { staticClass: "form-horizontal" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group glow-input" },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "col-sm-6 col-xs-7" },
+                                        [
+                                          _c("h4", [
+                                            _vm._v(_vm._s(this.selectedmenu))
+                                          ])
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _vm._m(5)
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(6)
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      this.newmenu == true
+                        ? _c("div", { staticClass: "panel panel-default" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "panel-heading",
+                                staticStyle: { "padding-bottom": "0" }
+                              },
+                              [
+                                _c(
+                                  "form",
+                                  {
+                                    staticClass: "form-horizontal",
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "form-group glow-input" },
+                                      [
+                                        _vm._m(7),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "publishing-action" },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-dark btn-sm pull-right",
+                                                on: { click: _vm.addnewmenu }
+                                              },
+                                              [_vm._v("Create menu")]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "panel-body" }, [
+                              _c("h4", [_vm._v("Create Menu")]),
+                              _vm._v(" "),
+                              _vm._m(8),
+                              _vm._v(" "),
+                              this.menuselect == true
+                                ? _c(
+                                    "div",
+                                    {
+                                      staticClass: "panel-group col-md-6",
+                                      attrs: { id: "accordion" }
+                                    },
+                                    [_vm._m(9)]
+                                  )
+                                : _vm._e()
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  ]
+                )
               ])
             ])
           ])
@@ -60599,31 +60926,321 @@ var staticRenderFns = [
     return _c("div", { staticClass: "page-title" }, [
       _c("div", { staticClass: "title_left" }, [
         _c("h3", [_vm._v(" Menus "), _c("small")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                "data-parent": "#accordion",
+                href: "#collapse1"
+              }
+            },
+            [
+              _vm._v(
+                "\n                                  Pages\n                                "
+              )
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "title_right" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search"
-          },
-          [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Search for..." }
-              }),
+      _c(
+        "div",
+        { staticClass: "panel-collapse collapse", attrs: { id: "collapse1" } },
+        [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-dark btn-xs pull-right",
+                  staticStyle: { "margin-top": "20px" },
+                  attrs: { type: "submit" }
+                },
+                [
+                  _vm._v(
+                    "\n                                    Add Menu item\n                                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                "data-parent": "#accordion",
+                href: "#collapse2"
+              }
+            },
+            [
+              _vm._v(
+                "\n                                    Post\n                                  "
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "panel-collapse collapse", attrs: { id: "collapse2" } },
+        [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-dark btn-xs pull-right",
+                  staticStyle: { "margin-top": "20px" },
+                  attrs: { type: "submit" }
+                },
+                [
+                  _vm._v(
+                    "\n                                          Add Menu item\n                                        "
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                "data-parent": "#accordion",
+                href: "#collapse3"
+              }
+            },
+            [_vm._v("\n                                  Custom Link")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "panel-collapse collapse", attrs: { id: "collapse3" } },
+        [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("form", { staticClass: "form-horizontal" }, [
+              _c("div", { staticClass: "form-group glow-input" }, [
+                _c("label", { staticClass: "col-sm-2 control-label" }, [
+                  _vm._v("Link")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    staticClass: "form-control input-sm",
+                    attrs: {
+                      id: "custom-menu-item-url",
+                      name: "url",
+                      type: "text",
+                      value: "http://"
+                    }
+                  })
+                ])
+              ]),
               _vm._v(" "),
-              _c("span", { staticClass: "input-group-btn" }, [
+              _c("div", { staticClass: "form-group glow-input" }, [
+                _c("label", { staticClass: "col-sm-2 control-label" }, [
+                  _vm._v("Label")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    staticClass: "form-control input-sm",
+                    attrs: {
+                      id: "custom-menu-item-name",
+                      name: "label",
+                      type: "text",
+                      title: "Label menu"
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
                 _c(
                   "button",
-                  { staticClass: "btn btn-default", attrs: { type: "button" } },
-                  [_vm._v("Go!")]
+                  {
+                    staticClass: "btn btn-dark btn-xs pull-right",
+                    staticStyle: { "margin-top": "20px" },
+                    attrs: { type: "submit" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                        Add Menu item\n                                      "
+                    )
+                  ]
                 )
               ])
             ])
-          ]
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
+          _c(
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                "data-parent": "#accordion",
+                href: "#collapse4"
+              }
+            },
+            [_vm._v("\n                                  Categories")]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "panel-collapse collapse", attrs: { id: "collapse4" } },
+        [
+          _c("div", { staticClass: "panel-body" }, [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-dark btn-xs pull-right",
+                  staticStyle: { "margin-top": "20px" },
+                  attrs: { type: "submit" }
+                },
+                [
+                  _vm._v(
+                    "\n                                          Add Menu item\n                                        "
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "publishing-action" }, [
+      _c("button", { staticClass: "btn btn-dark btn-sm pull-right" }, [
+        _vm._v("Save menu")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body" }, [
+      _c("h4", [_vm._v("Menu Structure")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "drag-instructions post-body-plain" }, [
+        _c("p", [
+          _vm._v(
+            "\n                                    Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.\n                                  "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "panel-group col-md-6", attrs: { id: "accordion" } },
+        [
+          _c("div", { staticClass: "panel panel-default" }, [
+            _c("div", { staticClass: "panel-heading" }, [
+              _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      "data-toggle": "collapse",
+                      "data-parent": "#accordion",
+                      href: "#collapse"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                        Collapsible Group 1"
+                    )
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "panel-collapse collapse",
+                attrs: { id: "collapse" }
+              },
+              [_c("div", { staticClass: "panel-body" })]
+            )
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-6 col-xs-7" }, [
+      _c("input", {
+        staticClass: "form-control input-sm",
+        attrs: { placeholder: "Menu Name", value: "", required: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "drag-instructions post-body-plain" }, [
+      _c("p", [
+        _vm._v(
+          "\n                                    Enter a menu name to create new menu\n                                  "
         )
       ])
     ])
@@ -60632,352 +61249,33 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      { staticClass: " input-sm glow-input", attrs: { name: "menu" } },
-      [_c("option", { attrs: { value: "" } }, [_vm._v("test")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row", staticStyle: { "margin-top": "40px" } },
-      [
-        _c("div", { staticClass: "col-md-4 col-xs-12" }, [
+    return _c("div", { staticClass: "panel panel-default" }, [
+      _c("div", { staticClass: "panel-heading" }, [
+        _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
           _c(
-            "div",
-            { staticClass: "panel-group", attrs: { id: "accordion" } },
+            "a",
+            {
+              attrs: {
+                "data-toggle": "collapse",
+                "data-parent": "#accordion",
+                href: "#collapse"
+              }
+            },
             [
-              _c("div", { staticClass: "panel panel-default" }, [
-                _c("div", { staticClass: "panel-heading" }, [
-                  _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          "data-toggle": "collapse",
-                          "data-parent": "#accordion",
-                          href: "#collapse1"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                  Pages\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-collapse collapse",
-                    attrs: { id: "collapse1" }
-                  },
-                  [
-                    _c("div", { staticClass: "panel-body" }, [
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-dark btn-sm pull-right",
-                            staticStyle: { "margin-top": "20px" },
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    Add Menu item\n                                    "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "panel panel-default" }, [
-                _c("div", { staticClass: "panel-heading" }, [
-                  _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          "data-toggle": "collapse",
-                          "data-parent": "#accordion",
-                          href: "#collapse2"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Post\n                                  "
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-collapse collapse",
-                    attrs: { id: "collapse2" }
-                  },
-                  [
-                    _c("div", { staticClass: "panel-body" }, [
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-dark btn-sm pull-right",
-                            staticStyle: { "margin-top": "20px" },
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                          Add Menu item\n                                        "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "panel panel-default" }, [
-                _c("div", { staticClass: "panel-heading" }, [
-                  _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          "data-toggle": "collapse",
-                          "data-parent": "#accordion",
-                          href: "#collapse3"
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                  Custom Link"
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-collapse collapse",
-                    attrs: { id: "collapse3" }
-                  },
-                  [
-                    _c("div", { staticClass: "panel-body" }, [
-                      _c("form", { staticClass: "form-horizontal" }, [
-                        _c("div", { staticClass: "form-group glow-input" }, [
-                          _c(
-                            "label",
-                            { staticClass: "col-sm-2 control-label" },
-                            [_vm._v("Link")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-10" }, [
-                            _c("input", {
-                              staticClass: "form-control input-sm",
-                              attrs: {
-                                id: "custom-menu-item-url",
-                                name: "url",
-                                type: "text",
-                                value: "http://"
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "form-group glow-input" }, [
-                          _c(
-                            "label",
-                            { staticClass: "col-sm-2 control-label" },
-                            [_vm._v("Label")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-sm-10" }, [
-                            _c("input", {
-                              staticClass: "form-control input-sm",
-                              attrs: {
-                                id: "custom-menu-item-name",
-                                name: "label",
-                                type: "text",
-                                title: "Label menu"
-                              }
-                            })
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-dark btn-sm pull-right",
-                              staticStyle: { "margin-top": "20px" },
-                              attrs: { type: "submit" }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                        Add Menu item\n                                      "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "panel panel-default" }, [
-                _c("div", { staticClass: "panel-heading" }, [
-                  _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          "data-toggle": "collapse",
-                          "data-parent": "#accordion",
-                          href: "#collapse4"
-                        }
-                      },
-                      [_vm._v("\n                                  Categories")]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-collapse collapse",
-                    attrs: { id: "collapse4" }
-                  },
-                  [
-                    _c("div", { staticClass: "panel-body" }, [
-                      _c("div", [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-dark btn-sm pull-right",
-                            staticStyle: { "margin-top": "20px" },
-                            attrs: { type: "submit" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                          Add Menu item\n                                        "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]
-                )
-              ])
+              _vm._v(
+                "\n                                        Collapsible Group 1"
+              )
             ]
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-8 col-xs-12" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c(
-              "div",
-              {
-                staticClass: "panel-heading",
-                staticStyle: { "padding-bottom": "0" }
-              },
-              [
-                _c("form", { staticClass: "form-horizontal" }, [
-                  _c("div", { staticClass: "form-group glow-input" }, [
-                    _c("div", { staticClass: "col-sm-6 col-xs-7" }, [
-                      _c("input", {
-                        staticClass: "form-control input-sm",
-                        attrs: {
-                          name: "menuname",
-                          id: "menu-name",
-                          placeholder: "Menu Name",
-                          value: ""
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "publishing-action" }, [
-                      _c(
-                        "button",
-                        { staticClass: "btn btn-dark btn-sm pull-right" },
-                        [_vm._v("Create menu")]
-                      )
-                    ])
-                  ])
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _c("h4", [_vm._v("Menu Structure")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "drag-instructions post-body-plain" }, [
-                _c("p", [
-                  _vm._v(
-                    "\n                                    Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.\n                                  "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "panel-group col-md-6",
-                  attrs: { id: "accordion" }
-                },
-                [
-                  _c("div", { staticClass: "panel panel-default" }, [
-                    _c("div", { staticClass: "panel-heading" }, [
-                      _c("h5", { staticStyle: { margin: "0", padding: "0" } }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              "data-toggle": "collapse",
-                              "data-parent": "#accordion",
-                              href: "#collapse"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        Collapsible Group 1"
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "panel-collapse collapse",
-                        attrs: { id: "collapse" }
-                      },
-                      [_c("div", { staticClass: "panel-body" })]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ])
         ])
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "panel-collapse collapse", attrs: { id: "collapse" } },
+        [_c("div", { staticClass: "panel-body" })]
+      )
+    ])
   }
 ]
 render._withStripped = true
