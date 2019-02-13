@@ -5,21 +5,23 @@
 @import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
-@import './presets';
+//@import './presets';
 
 
 //Vendor
-@import '../../vendor/animate/css/animate';
-@import '../../vendor/lightbox/css/lightbox';
+//@import '../../vendor/animate/css/animate';
+//@import '../../vendor/lightbox/css/lightbox';
 
 
-@import './typography';
+//@import './typography';/For old home
 
 
 
-@import './custom';
+//@import './custom'; //For old home
 
 //For new web page
 //@import './WebNew/main';
 
-
+///////////////////New Layout//////////////////////
+@import './navbar';
+@import './custom';

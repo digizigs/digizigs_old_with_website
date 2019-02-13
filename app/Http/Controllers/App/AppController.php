@@ -12,26 +12,21 @@ use PDF;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
+use App\Models\Post;
+
 class AppController extends Controller
 {
    
     public function index(){
 
+        $homepage = setting('home_page');
 
-        //$role = Role::create(['name'=>'writer']);
-        //$permission = Permission::create(['name' => 'edit articles']);
-        //return Auth()->user();
-        //$role = Role::findById(2);
-        //$permission = Permission::findById(4);
-
-        //$role->givePermissionTo($permission);
-        //Auth()->user()->givePermissionTo('write post');
-        //Auth()->user()->assignRole('writer');
-
-        //return Auth()->user()->permissions;
-
-        Alert::message('Robots are working!');
-        return view('app/home');
+        if($homepage == 'Home'){
+            return view('app/pages/home');
+        }else{
+            $posts = Post::orderby('created_at','desc')->where('type', 'post')->with('user')->get();
+            return view('app/pages/post',compact('posts'));
+        }     
 
     }
 

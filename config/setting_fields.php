@@ -12,7 +12,28 @@ return [
     | create sections of settings with a type of input.
     */
 
-    'app' => [
+    'home' => [
+
+        'title' => 'Home',
+        'desc' => 'Home page of website, Blog page or home page' ,
+        'icon' => 'fa fa-globe',
+
+        'elements' => [
+            [
+                'type' => 'select',
+                    'name' => 'home_page',
+                    'label' => 'Home Page',
+                    'rules' => 'required',
+                    'options' => [
+                        'Home',
+                        'Blog',                        
+                    ]
+            ]
+        ],
+
+
+    ],
+    'app' => [  
 
         'title' => 'General',
         'desc' => 'All the general settings for application.',
@@ -50,8 +71,10 @@ return [
                 'label' => 'Admin URL',
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input
-            ]
-        ]
+            ],
+        ],
+
+
     ],
 
   
