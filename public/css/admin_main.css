@@ -13632,11 +13632,11 @@ footer {
   outline: 0 none !important;
 }
 
-.wrap {
+.setting-page-tab {
   margin: 10px 20px 0 2px;
 }
 
-.wrap h1 {
+.setting-page-tab h1 {
   font-size: 23px;
   font-weight: 400;
   margin: 0;
@@ -13644,7 +13644,7 @@ footer {
   line-height: 29px;
 }
 
-.wrap input {
+.setting-page-tab input {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: inherit;
@@ -13657,7 +13657,7 @@ footer {
   width: 50%;
 }
 
-.wrap input[type=text] {
+.setting-page-tab input[type=text] {
   border: 1px solid #ddd;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -13668,7 +13668,7 @@ footer {
   transition: 50ms border-color ease-in-out;
 }
 
-.wrap input[type=email] {
+.setting-page-tab input[type=email] {
   border: 1px solid #ddd;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
           box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -13679,19 +13679,106 @@ footer {
   transition: 50ms border-color ease-in-out;
 }
 
-.wrap input[type=text]:focus {
+.setting-page-tab input[type=number] {
+  border: 1px solid #ddd;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  color: #32373c;
+  outline: 0;
+  -webkit-transition: 50ms border-color ease-in-out;
+  transition: 50ms border-color ease-in-out;
+  height: 28px;
+  line-height: 1;
+}
+
+.setting-page-tab input[type=radio] {
+  border: 1px solid #b4b9be;
+  background: #fff;
+  color: #555;
+  clear: none;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 0;
+  height: 16px;
+  margin: -4px 4px 0 0;
+  outline: 0;
+  padding: 0 !important;
+  text-align: center;
+  vertical-align: middle;
+  width: 16px;
+  min-width: 16px;
+  -webkit-appearance: none;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-transition: .05s border-color ease-in-out;
+  transition: .05s border-color ease-in-out;
+  border-radius: 50%;
+  margin-right: 4px;
+  line-height: 10px;
+}
+
+.setting-page-tab input[type=radio]:checked:before {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  font: 400 21px/1 dashicons;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.setting-page-tab input[type=radio]:checked:before {
+  content: "\2022";
+  text-indent: -9999px;
+  border-radius: 50px;
+  font-size: 24px;
+  width: 6px;
+  height: 6px;
+  margin: 4px;
+  line-height: 16px;
+  background-color: #1e8cbe;
+}
+
+.setting-page-tab input[type=radio],
+.setting-page-tab select {
+  border: 1px solid #ddd;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+  background-color: #fff;
+  color: #32373c;
+  outline: 0;
+  -webkit-transition: 50ms border-color ease-in-out;
+  transition: 50ms border-color ease-in-out;
+}
+
+.setting-page-tab input[type=radio]:focus,
+.setting-page-tab select:focus {
   border-color: #5b9dd9;
   -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
           box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
 }
 
-.wrap input[type=email]:focus {
+.setting-page-tab input[type=number]:focus {
   border-color: #5b9dd9;
   -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
           box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
 }
 
-.wrap select {
+.setting-page-tab input[type=text]:focus {
+  border-color: #5b9dd9;
+  -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+          box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+}
+
+.setting-page-tab input[type=email]:focus {
+  border-color: #5b9dd9;
+  -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+          box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+}
+
+.setting-page-tab select {
   vertical-align: middle;
   border: 1px solid #ddd;
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -13711,33 +13798,55 @@ footer {
   width: 50%;
 }
 
-.wrap select:focus {
+.setting-page-tab select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.setting-page-tab select {
+  font-size: 14px;
+  border-radius: 0;
+}
+
+.setting-page-tab select {
+  margin: 1px;
+  padding: 3px 5px;
+}
+
+.setting-page-tab select:focus {
   border-color: #5b9dd9;
   -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
           box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
 }
 
-.wrap ::-webkit-input-placeholder {
+.setting-page-tab fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.setting-page-tab ::-webkit-input-placeholder {
   color: #72777c;
 }
 
-.wrap ::-moz-placeholder {
+.setting-page-tab ::-moz-placeholder {
   color: #72777c;
   opacity: 1;
 }
 
-.wrap :-ms-input-placeholder {
+.setting-page-tab :-ms-input-placeholder {
   color: #72777c;
 }
 
-.wrap .form-table td {
+.setting-page-tab .form-table td {
   margin-bottom: 9px;
   padding: 15px 10px;
   line-height: 1.3;
   vertical-align: middle;
 }
 
-.wrap .form-table td th {
+.setting-page-tab .form-table td th {
   color: #23282d;
   font-weight: 400;
   text-shadow: none;
@@ -13750,13 +13859,13 @@ footer {
   font-weight: 600;
 }
 
-.wrap .form-table td td {
+.setting-page-tab .form-table td td {
   display: block;
   width: auto;
   vertical-align: middle;
 }
 
-.wrap p.description {
+.setting-page-tab p.description {
   margin: 2px 0 5px;
   color: #666;
   font-size: 13px;
@@ -13764,7 +13873,7 @@ footer {
 }
 
 @media screen and (max-width: 782px) {
-  .wrap td input[type=text] {
+  .setting-page-tab td input[type=text] {
     width: 100%;
     font-size: 16px;
     display: block;
@@ -13773,12 +13882,12 @@ footer {
             box-sizing: border-box;
   }
 
-  .wrap input {
+  .setting-page-tab input {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
 
-  .wrap input[type=text] {
+  .setting-page-tab input[type=text] {
     border: 1px solid #ddd;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -13789,13 +13898,13 @@ footer {
     transition: 50ms border-color ease-in-out;
   }
 
-  .wrap input[type=text]:focus {
+  .setting-page-tab input[type=text]:focus {
     border-color: #5b9dd9;
     -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
             box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
   }
 
-  .wrap input[type=email] {
+  .setting-page-tab input[type=email] {
     border: 1px solid #ddd;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -13806,42 +13915,42 @@ footer {
     transition: 50ms border-color ease-in-out;
   }
 
-  .wrap input[type=email]:focus {
+  .setting-page-tab input[type=email]:focus {
     border-color: #5b9dd9;
     -webkit-box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
             box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
   }
 
-  .wrap input {
+  .setting-page-tab input {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
   }
 
-  .wrap input {
+  .setting-page-tab input {
     font-size: 14px;
     border-radius: 0;
   }
 
-  .wrap input {
+  .setting-page-tab input {
     margin: 1px;
     padding: 5px 5px;
   }
 
-  .wrap ::-webkit-input-placeholder {
+  .setting-page-tab ::-webkit-input-placeholder {
     color: #72777c;
   }
 
-  .wrap ::-moz-placeholder {
+  .setting-page-tab ::-moz-placeholder {
     color: #72777c;
     opacity: 1;
   }
 
-  .wrap :-ms-input-placeholder {
+  .setting-page-tab :-ms-input-placeholder {
     color: #72777c;
   }
 
-  .wrap select {
+  .setting-page-tab select {
     width: 100%;
   }
 }

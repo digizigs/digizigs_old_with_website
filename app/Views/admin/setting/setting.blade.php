@@ -56,7 +56,7 @@
 
 
 
-                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <div class="setting-page-tab" role="tabpanel" data-example-id="togglable-tabs">
 	                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
 	                        <li role="" class="active">
 	                        	<a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-cog"> </i> General</a>
@@ -124,10 +124,16 @@
 												</tr>
 												<tr>
 													<th scope="row">Membership</th>
-													<td> <fieldset><legend class="screen-reader-text"><span>Membership</span></legend><label for="users_can_register">
-													<input name="users_can_register" type="checkbox" id="users_can_register" value="1">
-													Anyone can register</label>
-													</fieldset>
+													<td> 
+														<fieldset>
+															<legend class="screen-reader-text">
+																<span>Membership</span>
+															</legend>
+															<label for="users_can_register">
+																<input name="users_can_register" type="checkbox" id="users_can_register" value="1">
+																	Anyone can register
+															</label>
+														</fieldset>
 													</td>
 												</tr>
 												<tr>
@@ -138,7 +144,8 @@
 														<option value="contributor">Contributor</option>
 														<option value="author">Author</option>
 														<option value="editor">Editor</option>
-														<option value="administrator">Administrator</option></select>
+														<option value="administrator">Administrator</option>
+													</select>
 													</td>
 												</tr>
 
@@ -166,60 +173,86 @@
 	                        <div role="tabpanel" class="tab-pane fade" id="tab_content2">
 								<div class="wrap">
 									<h1>Reading Settings</h1>
-									<form method="post" action="options.php">
-										<input type="hidden" name="option_page" value="reading"><input type="hidden" name="action" value="update"><input type="hidden" id="_wpnonce" name="_wpnonce" value="9d808dbbf4"><input type="hidden" name="_wp_http_referer" value="/wordpress/wp-admin/options-reading.php">
+
+									<form method="post" action="options.php">										
 										<table class="form-table">
-											<tbody><tr>
-												<th scope="row">Your homepage displays</th>
-												<td id="front-static-pages"><fieldset><legend class="screen-reader-text"><span>Your homepage displays</span></legend>
-												<p><label>
-													<input name="show_on_front" type="radio" value="posts" class="tog" checked="checked">
-												Your latest posts	</label>
-											</p>
-											<p><label>
-												<input name="show_on_front" type="radio" value="page" class="tog">
-												A <a href="edit.php?post_type=page">static page</a> (select below)	</label>
-											</p>
-											<ul>
-												<li><label for="page_on_front">Homepage: <select name="page_on_front" id="page_on_front" disabled="">
-													<option value="0">— Select —</option>
-													<option class="level-0" value="2">Sample Page</option>
-												</select>
-											</label></li>
-											<li><label for="page_for_posts">Posts page: <select name="page_for_posts" id="page_for_posts" disabled="">
-												<option value="0">— Select —</option>
-												<option class="level-0" value="2">Sample Page</option>
-											</select>
-										</label></li>
-									</ul>
-								</fieldset></td>
-								</tr>
-								<tr>
-								<th scope="row"><label for="posts_per_page">Blog pages show at most</label></th>
-								<td>
-									<input name="posts_per_page" type="number" step="1" min="1" id="posts_per_page" value="10" class="small-text"> posts</td>
-								</tr>
-								<tr>
-									<th scope="row"><label for="posts_per_rss">Syndication feeds show the most recent</label></th>
-									<td><input name="posts_per_rss" type="number" step="1" min="1" id="posts_per_rss" value="10" class="small-text"> items</td>
-								</tr>
-								<tr>
-									<th scope="row">For each article in a feed, show </th>
-									<td><fieldset><legend class="screen-reader-text"><span>For each article in a feed, show </span></legend>
-									<p><label><input name="rss_use_excerpt" type="radio" value="0" checked="checked"> Full text</label><br>
-									<label><input name="rss_use_excerpt" type="radio" value="1"> Summary</label></p>
-								</fieldset></td>
-								</tr>
-								<tr class="option-site-visibility">
-								<th scope="row">Search Engine Visibility </th>
-								<td><fieldset><legend class="screen-reader-text"><span>Search Engine Visibility </span></legend>
-								<label for="blog_public"><input name="blog_public" type="checkbox" id="blog_public" value="0">
-								Discourage search engines from indexing this site</label>
-								<p class="description">It is up to search engines to honor this request.</p>
-								</fieldset></td>
-								</tr>
-								</tbody></table>
-								<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p></form>
+											<tbody>
+												<tr>
+													<th scope="row">Your homepage displays</th>
+													<td id="front-static-pages">
+														<fieldset>
+															<legend class="screen-reader-text">
+																<span>Your homepage displays</span>
+															</legend>
+															<p>
+																<label>
+																	<input name="show_on_front" type="radio" value="posts" class="tog" checked="checked">
+																		Your latest posts	
+																</label>
+															</p>
+															<p><label>
+																<input name="show_on_front" type="radio" value="page" class="tog">
+																	A <a href="edit.php?post_type=page">static page</a> (select below)	
+																</label>
+															</p>
+															<ul>
+																<li>
+																	<label for="page_on_front">Homepage: 
+																		<select name="page_on_front" id="page_on_front">
+																			<option value="0">— Select —</option>
+																			<option class="level-0" value="2">Sample Page</option>
+																		</select>
+
+																	</label>
+																</li>
+																<li>
+																	<label for="page_for_posts">Posts page: 
+																		<select name="page_for_posts" id="page_for_posts">
+																			<option value="0">— Select —</option>
+																			<option class="level-0" value="2">Sample Page</option>
+																		</select>
+																	</label>
+																</li>
+															</ul>
+														</fieldset>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="posts_per_page">Blog pages show at most</label></th>
+													<td>
+														<input name="posts_per_page" type="number" step="1" min="1" id="posts_per_page" value="10" class="small-text"> posts
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="posts_per_rss">Syndication feeds show the most recent</label></th>
+													<td>
+														<input name="posts_per_rss" type="number" step="1" min="1" id="posts_per_rss" value="10" class="small-text"> items
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">For each article in a feed, show </th>
+													<td>
+														<fieldset>
+															<legend class="screen-reader-text">
+																<span>For each article in a feed, show </span>
+															</legend>
+															<p>
+																<label>
+																	<input name="rss_use_excerpt" type="radio" value="0" checked="checked"> Full text
+																</label><br>
+																<label>
+																	<input name="rss_use_excerpt" type="radio" value="1"> Summary</label>
+																</p>
+														</fieldset>
+													</td>
+												</tr>
+												
+											</tbody>
+										</table>
+										<p class="submit">
+											
+											<button class="btn btn-dark btn-sm">Save</button>
+										</p></form>
 								</div>
 	                        </div>
 
