@@ -16,7 +16,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">{{setting('app_name')}}</a>
+	      <a class="navbar-brand" href="{{route('apphome')}}">{{setting('app_name')}}</a>
 	    </div>
 	    <div id="navbar" class="collapse navbar-collapse">
 	      <ul class="nav navbar-nav navbar-right">
@@ -28,7 +28,7 @@
   	</div>
 </nav>
 
-<div class="container-fluid content" style="height: 5000px; border: 1px solid grey;">
+<div class="container content"">
 	<div class="col-md-10">
 		@foreach($posts as $post)
 		
@@ -38,7 +38,7 @@
 		@endforeach
 	</div>
 	
-	<div class="col-md-2">sidebar Area</div>
+	<div class="col-md-2"></div>
 </div>
 
 
