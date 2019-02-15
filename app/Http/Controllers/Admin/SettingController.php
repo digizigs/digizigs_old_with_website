@@ -46,9 +46,7 @@ class SettingController extends Controller
 
 
 
-		for($i = 0; $i < count($data); $i++){
-    		echo $data->app_name;
-		}
+		
 
     	
 
