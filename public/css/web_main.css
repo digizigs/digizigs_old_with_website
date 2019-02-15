@@ -8373,7 +8373,6 @@ button.close {
   z-index: 100;
   -webkit-transition: background-color 1s ease 0s;
   transition: background-color 1s ease 0s;
-  border-bottom: 1px solid grey;
 }
 
 .navbar-default .navbar-brand {

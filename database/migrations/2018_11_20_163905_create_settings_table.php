@@ -14,10 +14,10 @@ class CreateSettingsTable extends Migration
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');           
+            $table->string('type');
             $table->string('name');
-            $table->text('val');
-            $table->char('type', 20)->default('string');
+            $table->text('val');            
             $table->timestamps();
         });
     }

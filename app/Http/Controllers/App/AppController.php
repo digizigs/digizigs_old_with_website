@@ -19,6 +19,8 @@ class AppController extends Controller
    
     public function index(){
 
+        return app_setting('app_name');
+
         $homepage = setting('home_page');
 
         if($homepage == 'Home'){
