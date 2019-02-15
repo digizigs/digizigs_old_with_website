@@ -54,7 +54,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 	//Settings
     Route::resource('/settings', 'Admin\SettingController');
-    
+    Route::post('/settings/general', 'Admin\SettingController@set_general_setting')->name('setting.general.save');
 
 
     //Posts

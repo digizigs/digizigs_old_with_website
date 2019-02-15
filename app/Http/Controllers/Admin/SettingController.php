@@ -32,4 +32,29 @@ class SettingController extends Controller
 	    return redirect()->back()->with('message', 'Settings has been saved.');
 	}
 
+
+	public function set_general_setting(Request $request){
+
+		
+
+		$data = array('app_name'=>$request->app_name,
+                      'app_desc'=>$request->app_desc,
+                      'app_url'=>$request->app_url,
+                      'app_email'=>$request->app_email,
+    	);
+
+
+
+
+		for($i = 0; $i < count($data); $i++){
+    		echo $data->app_name;
+		}
+
+    	
+
+	}
+
+
+
+
 }

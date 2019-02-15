@@ -74,39 +74,41 @@
 			                         	
 										<div class="wrap">
 											<h1>General Settings</h1>
-											<form method="post" action="options.php" >
-												
+
+											<form method="post" action="{{route('setting.general.save')}}" >
+												@csrf
 												<table class="form-table wp-input-box">
 													<tbody>
 														<tr>
 															<th scope="row"><label for="blogname">Site Title</label></th>
 															<td>
-																<input name="blogname" type="text" id="blogname" value="" class="regular-text">
+																<input name="app_name" type="text" value="" class="regular-text">
 															</td>
 														</tr>
 														<tr>
 															<th scope="row"><label for="blogdescription">Tagline</label></th>
 															<td>
-																<input name="blogdescription" type="text"  aria-describedby="tagline-description" value="" class="regular-text">
-																<p class="description" id="tagline-description">In a few words, explain what this site is about.</p>
+																<input name="app_desc" type="text"  aria-describedby="tagline-description" value="" class="regular-text">
+																<p class="description">In a few words, explain what this site is about.</p>
 															</td>
-														</tr>
-														<tr>
-															<th scope="row"><label for="siteurl">WordPress Address (URL)</label></th>
-															<td>
-																<input name="siteurl" type="text" id="siteurl" value="" class="regular-text code">
-															</td>
-														</tr>
+														</tr>														
 														<tr>
 															<th scope="row"><label for="home">Site Address (URL)</label></th>
 															<td>
-																<input name="home" type="text" id="home" aria-describedby="home-description" value="">
-																<p class="description" id="home-description">Enter the address here if you <a href="https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory">want your site home page to be different from your WordPress installation directory</a>.</p>
+																<input name="app_url" type="text" value="">
+																<p class="app_url">Application URL</p>
+															</td>
+														</tr>
+														<tr>
+															<th scope="row"><label for="home">Site Admin Address (URL)</label></th>
+															<td>
+																<input name="app_admin_url" type="text" value="">
+																<p class="app_url">This is the admin url of the application</p>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row"><label for="new_admin_email">Email Address</label></th>
-															<td><input name="new_admin_email" type="email" id="new_admin_email" aria-describedby="new-admin-email-description" value="" class="regular-text ltr">
+															<td><input name="app_email" type="email"  aria-describedby="new-admin-email-description" value="" class="regular-text ltr">
 															<p class="description" >
 																This address is used for admin purposes. If you change this we will send you an email at your new address to confirm it. 
 																<strong>
