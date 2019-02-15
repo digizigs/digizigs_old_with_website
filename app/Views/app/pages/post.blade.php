@@ -16,7 +16,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">{{setting('app_name')}}</a>
+	      <a class="navbar-brand" href="{{route('apphome')}}">{{setting('app_name')}}</a>
 	    </div>
 	    <div id="navbar" class="collapse navbar-collapse">
 	      <ul class="nav navbar-nav navbar-right">
