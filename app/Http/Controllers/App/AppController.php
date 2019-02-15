@@ -19,12 +19,15 @@ class AppController extends Controller
    
     public function index(){
 
-        $homepage = setting('home_page');
+        //return app_setting('app_name');
 
-        if($homepage == 'Home'){
+        $homepage = setting('home_page');
+        $post_per_page = setting('post_per_page');
+
+        if($homepage == 1){
             return view('app/pages/home');
         }else{
-            $posts = Post::orderby('created_at','desc')->where('type', 'post')->with('user')->get();
+            $posts = Post::orderby('created_at','desc')->where('type', 'post')->with('user')->paginate($post_per_page);
             return view('app/pages/post',compact('posts'));
         }     
 
