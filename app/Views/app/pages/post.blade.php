@@ -28,17 +28,20 @@
   	</div>
 </nav>
 
-<div class="container-fluid content" style="height: 5000px; border: 1px solid grey;">
+<div class="container content" style="height: 5000px;">
 	<div class="col-md-10">
 		@foreach($posts as $post)
 		
 			<h1>{{$post->title}}</h1>
 			<h4>{{$post->description}}</h4>
 			<p>{!!$post->body!!}</p>
+
 		@endforeach
 	</div>
 	
-	<div class="col-md-2">sidebar Area</div>
+	<div class="col-md-2">
+		sidebar Area
+	</div>
 </div>
 
 

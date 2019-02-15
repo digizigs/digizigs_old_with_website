@@ -24,6 +24,7 @@ return [
                     'name' => 'home_page',
                     'label' => 'Home Page',
                     'rules' => 'required',
+                    'class' => 'input-sm', // class for input
                     'options' => [
                         'Home',
                         'Blog',                        

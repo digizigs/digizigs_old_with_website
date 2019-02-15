@@ -105,7 +105,7 @@ class PostController extends Controller
         //}
 
 
-        return redirect()->route('post.index')->with('message', 'Permission added successfully');
+        return redirect()->route('post.index')->with('message', 'New Post added successfully');
     }
 
    
