@@ -374,30 +374,40 @@
 		border-color:#5b9dd9;
 		box-shadow:0 0 2px rgba(30,140,190,.8);
 	}
+	
 
+
+	
+
+	
+	//Selection Input Box
 	select{
 		vertical-align:middle;
 		border:1px solid #ddd;
 		box-shadow:inset 0 1px 2px rgba(0,0,0,.07);
 		background-color:#fff;
 		color:#32373c;
-		outline:0;
+		//outline:0;
 		transition:50ms border-color ease-in-out;
 		font-family:inherit;
 		font-size:inherit;
 		font-weight:inherit;
-		font-size:14px;
-		border-radius:0;
-		margin:1px;
+		//font-size:14px;
+		//border-radius:0;
+		//margin:1px;
 		padding:5px 5px;
-		width: 50%;
+		width: 150px;
 	}
-	
-
 	select:focus{
 		border-color:#5b9dd9;
 		box-shadow:0 0 2px rgba(30,140,190,.8);
 	}
+
+
+	fieldset label,label{
+		vertical-align:middle;
+	}
+
 
 
 }
