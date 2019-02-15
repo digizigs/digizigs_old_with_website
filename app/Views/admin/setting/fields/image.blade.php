@@ -1,9 +1,9 @@
 <div class="form-group {{ $errors->has($field['name']) ? ' has-error' : '' }} glow-input">
-    <label for="{{ $field['name'] }}">{{ $field['label'] }}</label>
+    <label for="{{ $field['name'] }}" class="">{{ $field['label'] }}</label>
     <input type="{{ $field['type'] }}"
            name="{{ $field['name'] }}"
            value="{{ old($field['name'], \setting($field['name'])) }}"
-           class="form-control {{ array_get( $field, 'class') }} input-sm"
+           class="form-control {{ array_get( $field, 'class') }}"
            id="{{ $field['name'] }}"
            placeholder="{{ $field['label'] }}">
 

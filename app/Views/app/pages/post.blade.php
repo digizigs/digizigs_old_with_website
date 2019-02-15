@@ -28,11 +28,10 @@
   	</div>
 </nav>
 
-<<<<<<< HEAD
+
+
+
 <div class="container content" style="height: 5000px;">
-=======
-<div class="container content"">
->>>>>>> ab2e25948f1444dfa164ace8de6b6783f0b9847a
 	<div class="col-md-10">
 		@foreach($posts as $post)
 		
@@ -40,16 +39,17 @@
 			<h4>{{$post->description}}</h4>
 			<p>{!!$post->body!!}</p>
 
+			<br><hr><br>
+
 		@endforeach
+
+		{{ $posts->links() }}
+		
 	</div>
 	
-<<<<<<< HEAD
-	<div class="col-md-2">
-		sidebar Area
-	</div>
-=======
+
 	<div class="col-md-2"></div>
->>>>>>> ab2e25948f1444dfa164ace8de6b6783f0b9847a
+
 </div>
 
 
