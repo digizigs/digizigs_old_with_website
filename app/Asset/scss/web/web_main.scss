@@ -23,5 +23,24 @@
 //@import './WebNew/main';
 
 ///////////////////New Layout//////////////////////
-@import './navbar';
-@import './custom';
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
+
+
+//Vendors
+@import '../../vendor/animate/css/animate.scss';
+
+@import './snippet/typography';
+@import './snippet/preloader';
+
+//Home Page
+@import './snippet/main-menu-area';
+@import './snippet/header-area';
+@import './snippet/caption-slider';
+@import './snippet/footer';
+
+//Blog Page
+@import './blog_main';
+
+//@import './navbar';
+//@import './custom';

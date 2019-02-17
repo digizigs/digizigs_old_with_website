@@ -16,14 +16,14 @@
     <link href="{{asset('/public/css/front_main.css')}}" rel="stylesheet">
    
 </head>
-<body>
+<body >
     
     @include('blog.includes.nav')
 
     <div id="app">    
       
             @yield('content')
-     
+            Web
     </div>
 
   

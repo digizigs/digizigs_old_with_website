@@ -1,0 +1,89 @@
+
+/**
+*Header-area
+**/
+
+
+
+.overlay {
+    position: relative;
+}
+
+.overlay:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8
+}
+
+.header-text h2 {
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: #fff;
+}
+
+.header-text p{
+    color: #fff;
+}
+
+.header-text .button {
+    margin-top: 30px;
+}
+
+.screen-slider .item {
+    //background: url('images/mobile2.png') no-repeat scroll center center / auto 100%;
+    padding: 56px 22px;
+    display: inline-block;
+    margin: auto;
+}
+
+.screen-slider.owl-carousel .owl-item {
+    text-align: center
+}
+
+.screen-slider .owl-controls {
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+.screen-slider .owl-controls .owl-nav > div {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    color: #fff;
+}
+
+.screen-slider .owl-controls .owl-nav {
+    position: relative;
+    margin-top: 0;
+}
+
+.screen-slider .owl-controls .owl-nav:after {
+    content: "/";
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    color: #fff;
+}
+
+@media only screen and  (max-width: 768px) {
+    
+    .header-area{
+        padding-top: 20px;
+
+
+        h2{
+            font-size: 32px;
+        }
+    }
+}
+
+

@@ -3,9 +3,9 @@ window._ = require('lodash');
 
 
 try {
-    window.Popper = require('popper.js').default;    //Popper
-    window.$ = window.jQuery = require('jquery');    //Jquery
-    require('bootstrap-sass');						 // bootstrap.min
+    //window.Popper = require('popper.js').default;    //Popper
+    //window.$ = window.jQuery = require('jquery');    //Jquery
+    //require('bootstrap-sass');						 // bootstrap.min
 } catch (e) {}
 
 
@@ -42,5 +42,11 @@ if (token) {
 
 //Include rest of the js files Vue,Admin theme js,customjs
 //require('./vue');
-require('./theme');
+require('../../vendor/parallex/parallax-1.1.3.js');
+require('../../vendor/owlcarousel/js/owl.carousel.min.js');
+
+//Snippets
+//require('./snippet/typing-effect');
+
+
 require('./custom');
