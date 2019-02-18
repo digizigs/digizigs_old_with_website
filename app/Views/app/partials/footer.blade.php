@@ -7,7 +7,7 @@
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
                         <h4>Strategy</h4>
-                        <p>When it comes to the success of your website, app or software, strategy is everything. It’s the foundation for your success. It’s do or die.We understand business. That's why we begin every project with a workshop — crafting a one-of-a-kind, unique strategy that is designed to help you win.</p>
+                        <p>When it about success of your website, app or software, strategy is everything. We understand the business. That's why we create every project as a workshop — crafting a one-of-a-kind, Our unique strategy that is designed to help you win in this competitive market.We keep you one step ahead of your competitor.</p>
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                         <h4>Recent Updates</h4>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\web\images\recent1.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('public/web/images/recent1.jpg')}}" class="" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>

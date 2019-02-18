@@ -25,7 +25,7 @@
                                          "Manage your Business" ]'>
                     </span>
                 </h2>
-                <p>When it comes to the success of your website, app or software, strategy is everything. It’s the foundation for your success. It’s do or die.We understand business. That's why we begin every project with a workshop — crafting a one-of-a-kind, unique strategy that is designed to help you win.</p>
+                <p>When it about success of your website, app or software, strategy is everything. We understand the business. That's why we create every project as a workshop — crafting a one-of-a-kind, Our unique strategy that is designed to help you win in this competitive market.We keep you one step ahead of your competitor.</p>
 
                 <a href="#" class="button white">Get Started</a>
             </div>
@@ -259,6 +259,154 @@
 <!--Caption slider-->
 
 
+<!-- Case study -->
+<section class="Case-study testimonial-area section-padding gray-bg overlay" style="background: url({{asset('public/web/images/parallax-8.jpg')}}) no-repeat scroll center center / cover;">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
+                    <div class="page-title">
+                        <p>Award winning web design</p>
+                        <h2>Our portfolio contains 4 years of <i>Client satifaction</i></h2>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="case-study-testimonials" class="owl-carousel">
+
+                            <!--TESTIMONIAL 1 -->
+                            <div class="item">
+                              <div class="shadow-effect">
+                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                              </div>
+                              <div class="testimonial-name">EMILIANO AQUILANI</div>
+                            </div>
+                            <!--END OF TESTIMONIAL 1 -->
+
+                            <!--TESTIMONIAL 2 -->
+                            <div class="item">
+                              <div class="shadow-effect">
+                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                              </div>
+                              <div class="testimonial-name">ANNA ITURBE</div>
+                            </div>
+                            <!--END OF TESTIMONIAL 2 -->
+
+                            <!--TESTIMONIAL 3 -->
+                            <div class="item">
+                              <div class="shadow-effect">
+                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                              </div>
+                              <div class="testimonial-name">LARA ATKINSON</div>
+                            </div>
+                            <!--END OF TESTIMONIAL 3 -->
+
+                            <!--TESTIMONIAL 4 -->
+                            <div class="item">
+                              <div class="shadow-effect">
+                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                              </div>
+                              <div class="testimonial-name">IAN OWEN</div>
+                            </div>
+                            <!--END OF TESTIMONIAL 4 -->
+
+                            <!--TESTIMONIAL 5 -->
+                            <div class="item">
+                              <div class="shadow-effect">
+                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                              </div>
+                              <div class="testimonial-name">MICHAEL TEDDY</div>
+                            </div>
+                            <!--END OF TESTIMONIAL 5 -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Case study -->
+
+<!-- ps://www.liquidlight.co.uk
+https://codepen.io/shamim539/pen/GZPZBp -->
+<section class="testimonials">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
+                <div class="page-title">
+                    <p>Award winning web design</p>
+                    <h2>Our portfolio contains 4 years of <i>Client satifaction</i></h2>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+              <div id="customers-testimonials" class="owl-carousel">
+
+                <!--TESTIMONIAL 1 -->
+                <div class="item">
+                  <div class="shadow-effect">
+                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                  </div>
+                  <div class="testimonial-name">EMILIANO AQUILANI</div>
+                </div>
+                <!--END OF TESTIMONIAL 1 -->
+                <!--TESTIMONIAL 2 -->
+                <div class="item">
+                  <div class="shadow-effect">
+                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                  </div>
+                  <div class="testimonial-name">ANNA ITURBE</div>
+                </div>
+                <!--END OF TESTIMONIAL 2 -->
+                <!--TESTIMONIAL 3 -->
+                <div class="item">
+                  <div class="shadow-effect">
+                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                  </div>
+                  <div class="testimonial-name">LARA ATKINSON</div>
+                </div>
+                <!--END OF TESTIMONIAL 3 -->
+                <!--TESTIMONIAL 4 -->
+                <div class="item">
+                  <div class="shadow-effect">
+                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                  </div>
+                  <div class="testimonial-name">IAN OWEN</div>
+                </div>
+                <!--END OF TESTIMONIAL 4 -->
+                <!--TESTIMONIAL 5 -->
+                <div class="item">
+                  <div class="shadow-effect">
+                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
+                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
+                  </div>
+                  <div class="testimonial-name">MICHAEL TEDDY</div>
+                </div>
+                <!--END OF TESTIMONIAL 5 -->
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END OF TESTIMONIALS -->
 
 
 

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 162);
+/******/ 	return __webpack_require__(__webpack_require__.s = 159);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -17719,6 +17719,17 @@ module.exports = __webpack_require__(16);
 
 /***/ }),
 
+/***/ 159:
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(160);
+__webpack_require__(164);
+__webpack_require__(165);
+module.exports = __webpack_require__(166);
+
+
+/***/ }),
+
 /***/ 16:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -17779,18 +17790,7 @@ module.exports.default = axios;
 
 /***/ }),
 
-/***/ 162:
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(163);
-__webpack_require__(166);
-__webpack_require__(167);
-module.exports = __webpack_require__(168);
-
-
-/***/ }),
-
-/***/ 163:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -17834,18 +17834,18 @@ if (token) {
 
 //Include rest of the js files Vue,Admin theme js,customjs
 //require('./vue');
-__webpack_require__(164);
-__webpack_require__(235);
+__webpack_require__(161);
+__webpack_require__(162);
 
 //Snippets
 //require('./snippet/typing-effect');
 
 
-__webpack_require__(165);
+__webpack_require__(163);
 
 /***/ }),
 
-/***/ 164:
+/***/ 161:
 /***/ (function(module, exports) {
 
 
@@ -17908,610 +17908,7 @@ __webpack_require__(165);
 
 /***/ }),
 
-/***/ 165:
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-
-    /* Preloader Js
-       ===================*/
-    $(window).on("load", function () {
-        $('.preloader').fadeOut(500);
-    });
-
-    //Parralex
-    //Background Parallax
-    $('.header-area').parallax("50%", -0.4);
-    //$('.price-area').parallax("50%", -0.5);
-    //$('.testimonial-area').parallax("10%", -0.2);
-
-
-    //On scroll navbar blue color
-    $(window).scroll(function () {
-        // checks if window is scrolled more than 500px, adds/removes solid class
-        if ($(this).scrollTop() > 100) {
-            $('.main-menu-area').addClass('nav-blue');
-        } else {
-            $('.main-menu-area').removeClass('nav-blue');
-        }
-    });
-
-    //1)======================Typing Effecct===================
-    typing_effect();
-    function typing_effect() {
-
-        var TxtRotate = function TxtRotate(el, toRotate, period) {
-            this.toRotate = toRotate;
-            this.el = el;
-            this.loopNum = 0;
-            this.period = parseInt(period, 10) || 2000;
-            this.txt = '';
-            this.tick();
-            this.isDeleting = false;
-        };
-
-        TxtRotate.prototype.tick = function () {
-            var i = this.loopNum % this.toRotate.length;
-            var fullTxt = this.toRotate[i];
-
-            if (this.isDeleting) {
-                this.txt = fullTxt.substring(0, this.txt.length - 1);
-            } else {
-                this.txt = fullTxt.substring(0, this.txt.length + 1);
-            }
-
-            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
-
-            var that = this;
-            var delta = 300 - Math.random() * 100;
-
-            if (this.isDeleting) {
-                delta /= 2;
-            }
-
-            if (!this.isDeleting && this.txt === fullTxt) {
-                delta = this.period;
-                this.isDeleting = true;
-            } else if (this.isDeleting && this.txt === '') {
-                this.isDeleting = false;
-                this.loopNum++;
-                delta = 500;
-            }
-
-            setTimeout(function () {
-                that.tick();
-            }, delta);
-        };
-
-        window.onload = function () {
-            var elements = document.getElementsByClassName('txt-rotate');
-            for (var i = 0; i < elements.length; i++) {
-                var toRotate = elements[i].getAttribute('data-rotate');
-                var period = elements[i].getAttribute('data-period');
-                if (toRotate) {
-                    new TxtRotate(elements[i], JSON.parse(toRotate), period);
-                }
-            }
-            // INJECT CSS
-            var css = document.createElement("style");
-            css.type = "text/css";
-            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
-            document.body.appendChild(css);
-        };
-    };
-
-    //Main menu link click
-    // Select all links with hashes
-    $('.main-menu-area a[href*="#"]')
-    // Remove links that don't actually link to anything
-    .not('[href="#"]').not('[href="#0"]').click(function (event) {
-        // On-page links
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            // Figure out element to scroll to
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            // Does a scroll target exist?
-            if (target.length) {
-                // Only prevent default if animation is actually gonna happen
-                event.preventDefault();
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 1000, function () {
-                    // Callback after animation
-                    // Must change focus!
-                    var $target = $(target);
-                    $target.focus();
-                    if ($target.is(":focus")) {
-                        // Checking if the target was focused
-                        return false;
-                    } else {
-                        $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                        $target.focus(); // Set focus again
-                    };
-                });
-            }
-        }
-    });
-
-    //Screen header slider
-    $('.screen-slider').owlCarousel({
-        loop: true,
-        margin: 0,
-        responsiveClass: true,
-        nav: true,
-        autoplay: true,
-        autoplayTimeout: 2000,
-        smartSpeed: 1000,
-        navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
-        items: 1,
-        animateIn: 'fadeIn',
-        animateOut: 'fadeOut',
-        center: true
-    });
-}); //Document ready
-
-/***/ }),
-
-/***/ 166:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 167:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 168:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 17:
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-
-/***/ }),
-
-/***/ 18:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(2);
-var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(27);
-var dispatchRequest = __webpack_require__(28);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, {method: 'get'}, this.defaults, config);
-  config.method = config.method.toLowerCase();
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-
-/***/ 19:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(19);
-
-var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
-
-function setContentTypeIfUnset(headers, value) {
-  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
-    headers['Content-Type'] = value;
-  }
-}
-
-function getDefaultAdapter() {
-  var adapter;
-  if (typeof XMLHttpRequest !== 'undefined') {
-    // For browsers use XHR adapter
-    adapter = __webpack_require__(5);
-  } else if (typeof process !== 'undefined') {
-    // For node use HTTP adapter
-    adapter = __webpack_require__(5);
-  }
-  return adapter;
-}
-
-var defaults = {
-  adapter: getDefaultAdapter(),
-
-  transformRequest: [function transformRequest(data, headers) {
-    normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) ||
-      utils.isArrayBuffer(data) ||
-      utils.isBuffer(data) ||
-      utils.isStream(data) ||
-      utils.isFile(data) ||
-      utils.isBlob(data)
-    ) {
-      return data;
-    }
-    if (utils.isArrayBufferView(data)) {
-      return data.buffer;
-    }
-    if (utils.isURLSearchParams(data)) {
-      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
-      return data.toString();
-    }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
-    }
-    return data;
-  }],
-
-  transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
-      try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
-    }
-    return data;
-  }],
-
-  /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
-  timeout: 0,
-
-  xsrfCookieName: 'XSRF-TOKEN',
-  xsrfHeaderName: 'X-XSRF-TOKEN',
-
-  maxContentLength: -1,
-
-  validateStatus: function validateStatus(status) {
-    return status >= 200 && status < 300;
-  }
-};
-
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
-
-utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
-  defaults.headers[method] = {};
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
-});
-
-module.exports = defaults;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
-
-/***/ }),
-
-/***/ 20:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(6);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-
-/***/ 21:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, request, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.request = request;
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-
-/***/ 22:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      } else {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-
-/***/ 23:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(1);
-
-// Headers whose duplicates are ignored by node
-// c.f. https://nodejs.org/api/http.html#http_message_headers
-var ignoreDuplicateOf = [
-  'age', 'authorization', 'content-length', 'content-type', 'etag',
-  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
-  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
-  'referer', 'retry-after', 'user-agent'
-];
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
-        return;
-      }
-      if (key === 'set-cookie') {
-        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
-      } else {
-        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-      }
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-
-/***/ 235:
+/***/ 162:
 /***/ (function(module, exports) {
 
 !function (a, b, c, d) {
@@ -19072,6 +18469,656 @@ module.exports = function parseHeaders(headers) {
     }
   }, a.fn.owlCarousel.Constructor.Plugins.Hash = c;
 }(window.Zepto || window.jQuery, window, document);
+
+/***/ }),
+
+/***/ 163:
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+
+    /* Preloader Js
+       ===================*/
+    $(window).on("load", function () {
+        $('.preloader').fadeOut(500);
+    });
+
+    //Parralex
+    //Background Parallax
+    $('.header-area').parallax("50%", -0.4);
+    //$('.price-area').parallax("50%", -0.5);
+    //$('.testimonial-area').parallax("10%", -0.2);
+
+
+    //On scroll navbar blue color
+    $(window).scroll(function () {
+        // checks if window is scrolled more than 500px, adds/removes solid class
+        if ($(this).scrollTop() > 100) {
+            $('.main-menu-area').addClass('nav-blue');
+        } else {
+            $('.main-menu-area').removeClass('nav-blue');
+        }
+    });
+
+    //1)======================Typing Effecct===================
+    typing_effect();
+    function typing_effect() {
+
+        var TxtRotate = function TxtRotate(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtRotate.prototype.tick = function () {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 300 - Math.random() * 100;
+
+            if (this.isDeleting) {
+                delta /= 2;
+            }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function () {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function () {
+            var elements = document.getElementsByClassName('txt-rotate');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-rotate');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtRotate(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+            document.body.appendChild(css);
+        };
+    };
+
+    //Main menu link click
+    // Select all links with hashes
+    $('.main-menu-area a[href*="#"]')
+    // Remove links that don't actually link to anything
+    .not('[href="#"]').not('[href="#0"]').click(function (event) {
+        // On-page links
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            // Figure out element to scroll to
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            // Does a scroll target exist?
+            if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000, function () {
+                    // Callback after animation
+                    // Must change focus!
+                    var $target = $(target);
+                    $target.focus();
+                    if ($target.is(":focus")) {
+                        // Checking if the target was focused
+                        return false;
+                    } else {
+                        $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                        $target.focus(); // Set focus again
+                    };
+                });
+            }
+        }
+    });
+
+    //Screen header slider
+    $('.screen-slider').owlCarousel({
+        loop: true,
+        margin: 0,
+        responsiveClass: true,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 2000,
+        smartSpeed: 1000,
+        navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
+        items: 1,
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+        center: true
+    });
+
+    //Case study
+    $('#case-study-testimonials').owlCarousel({
+        loop: true,
+        center: true,
+        margin: 0,
+        responsiveClass: true,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        //navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
+        items: 2,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
+        }
+    });
+
+    $('#customers-testimonials').owlCarousel({
+        loop: true,
+        center: true,
+        items: 3,
+        margin: 0,
+        autoplay: true,
+        dots: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        responsive: {
+            0: {
+                items: 1
+            },
+            768: {
+                items: 2
+            },
+            1170: {
+                items: 3
+            }
+        }
+    });
+}); //Document ready
+
+/***/ }),
+
+/***/ 164:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 165:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 166:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 17:
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__(2);
+var utils = __webpack_require__(1);
+var InterceptorManager = __webpack_require__(27);
+var dispatchRequest = __webpack_require__(28);
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, {method: 'get'}, this.defaults, config);
+  config.method = config.method.toLowerCase();
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+var utils = __webpack_require__(1);
+var normalizeHeaderName = __webpack_require__(19);
+
+var DEFAULT_CONTENT_TYPE = {
+  'Content-Type': 'application/x-www-form-urlencoded'
+};
+
+function setContentTypeIfUnset(headers, value) {
+  if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
+    headers['Content-Type'] = value;
+  }
+}
+
+function getDefaultAdapter() {
+  var adapter;
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    adapter = __webpack_require__(5);
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    adapter = __webpack_require__(5);
+  }
+  return adapter;
+}
+
+var defaults = {
+  adapter: getDefaultAdapter(),
+
+  transformRequest: [function transformRequest(data, headers) {
+    normalizeHeaderName(headers, 'Content-Type');
+    if (utils.isFormData(data) ||
+      utils.isArrayBuffer(data) ||
+      utils.isBuffer(data) ||
+      utils.isStream(data) ||
+      utils.isFile(data) ||
+      utils.isBlob(data)
+    ) {
+      return data;
+    }
+    if (utils.isArrayBufferView(data)) {
+      return data.buffer;
+    }
+    if (utils.isURLSearchParams(data)) {
+      setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
+      return data.toString();
+    }
+    if (utils.isObject(data)) {
+      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+      return JSON.stringify(data);
+    }
+    return data;
+  }],
+
+  transformResponse: [function transformResponse(data) {
+    /*eslint no-param-reassign:0*/
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) { /* Ignore */ }
+    }
+    return data;
+  }],
+
+  /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */
+  timeout: 0,
+
+  xsrfCookieName: 'XSRF-TOKEN',
+  xsrfHeaderName: 'X-XSRF-TOKEN',
+
+  maxContentLength: -1,
+
+  validateStatus: function validateStatus(status) {
+    return status >= 200 && status < 300;
+  }
+};
+
+defaults.headers = {
+  common: {
+    'Accept': 'application/json, text/plain, */*'
+  }
+};
+
+utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
+  defaults.headers[method] = {};
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
+});
+
+module.exports = defaults;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)))
+
+/***/ }),
+
+/***/ 20:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createError = __webpack_require__(6);
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+
+/***/ 21:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.request = request;
+  error.response = response;
+  return error;
+};
+
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      } else {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(1);
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
 
 /***/ }),
 

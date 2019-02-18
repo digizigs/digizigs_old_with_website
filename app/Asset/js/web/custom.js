@@ -143,4 +143,52 @@ $(document).ready(function(){
         center: true,
     });
 
+
+    //Case study
+    $('#case-study-testimonials').owlCarousel({
+        loop: true,
+        center:true,
+        margin: 0,
+        responsiveClass: true,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 8500,
+        smartSpeed: 450,
+        //navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
+        items: 2,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 2
+          },
+          1170: {
+            items: 3
+          }
+        },
+    });
+
+    $('#customers-testimonials').owlCarousel({
+                    loop: true,
+                    center: true,
+                    items: 3,
+                    margin: 0,
+                    autoplay: true,
+                    dots:true,
+                    autoplayTimeout: 8500,
+                    smartSpeed: 450,
+                    responsive: {
+                      0: {
+                        items: 1
+                      },
+                      768: {
+                        items: 2
+                      },
+                      1170: {
+                        items: 3
+                      }
+                    }
+                });
+
 });//Document ready
