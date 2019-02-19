@@ -28,7 +28,11 @@
 
 
 //Vendors
+
+@import '../../vendor/magnific-popup/magnific-popup.scss';
+@import '../../vendor/normalize/normalize.scss';
 @import '../../vendor/animate/css/animate.scss';
+
 
 @import './snippet/typography';
 @import './snippet/preloader';

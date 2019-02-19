@@ -9,17 +9,17 @@
     });
     /*WoW js Active
     =================*/
-    new WOW().init({
-        mobile: true,
-    });
+    //new WOW().init({
+        //mobile: true,
+    //});
     /* Scroll to top
     ===================*/
-    $.scrollUp({
-        scrollText: '<i class="fa fa-angle-up"></i>',
-        easingType: 'linear',
-        scrollSpeed: 900,
-        animation: 'fade'
-    });
+    //$.scrollUp({
+        //scrollText: '<i class="fa fa-angle-up"></i>',
+        //easingType: 'linear',
+        //scrollSpeed: 900,
+        //animation: 'fade'
+    //});
     /* testimonials Slider Active
     =============================*/
     $('.testimonials').owlCarousel({
@@ -74,7 +74,7 @@
     });
     /*--------------------
        MAGNIFIC POPUP JS
-       ----------------------*/
+       
     var magnifPopup = function () {
         $('.work-popup').magnificPopup({
             type: 'image',
@@ -99,9 +99,9 @@
                 }
             }
         });
-    };
+    };----------------------*/
     // Call the functions 
-    magnifPopup();
+    //magnifPopup();
 
     //Background Parallax
     $('.header-area').parallax("50%", -0.4);

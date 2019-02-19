@@ -10,12 +10,8 @@ try {
 
 
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-
 let token = document.head.querySelector('meta[name="csrf-token"]');
-
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
@@ -42,11 +38,16 @@ if (token) {
 
 //Include rest of the js files Vue,Admin theme js,customjs
 //require('./vue');
+
+//Vendors
+//require('../../vendor/modernizr/modernizr-2.8.3.min.js');
+require('../../vendor/magnific-popup/magnific-popup.min.js');
 require('../../vendor/parallex/parallax-1.1.3.js');
 require('../../vendor/owlcarousel/js/owl.carousel.min.js');
+require('../../vendor/wow/wow.min.js');
 
 //Snippets
-//require('./snippet/typing-effect');
+require('./snippet/typing-effect');
 
 
 require('./custom');
