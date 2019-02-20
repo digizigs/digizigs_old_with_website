@@ -8,15 +8,17 @@
 
 
 <!--Header-area-->
-<header class="header-area overlay full-height relative v-center" id="home-page" style="background:#000000 url({{asset('public/web/images/parallax-2.jpg')}}) no-repeat scroll center center / cover;">
+<header id="header-area" class="header-area overlay full-height relative v-center" id="home-page" style="background:#000000 url({{asset('public/web/images/parallax-2.jpg')}}) no-repeat scroll center center / cover;">
 
-    <div class="absolute anlge-bg" style="background: url({{asset('public/web/images/angle-bg.png')}}) no-repeat scroll center bottom -120px / 100% auto;"></div>
+    <div class="absolute anlge-bg" style="background: url({{asset('public/web/images/angle-bg.png')}}) no-repeat scroll center bottom -120px / 100% auto;">
+        
+    </div>
     <div class="container">
         <div class="row v-center">
             <div class="col-xs-12 col-md-7 header-text">
                 <h2>
-                	<span>We design and develop experiences to . . . .</span><br>
-                	<span   class="txt-rotate" 
+                    <span>We design and develop experiences to . . . .</span><br>
+                    <span   class="txt-rotate" 
                             data-period="2000" 
                             data-rotate='["make Your Business Grow.",
                                          "stablish your Brand", 
@@ -31,20 +33,40 @@
             </div>
             <div class="hidden-xs hidden-sm col-md-5 text-right">
                 <div class="screen-box screen-slider">
-                    <div class="item" style="background: url({{asset('public/web/images/mobile2.png')}}) no-repeat scroll center center / auto 100%;">
-                        <img src="{{asset('public/web/images/screen-1.jpg')}}" alt="">
+                    <div class="item bdr">
+                       <a href="">
+                          <div class="item-box">
+                              sss
+                          </div> 
+                       </a> 
                     </div>
-                    <div class="item" style="background: url({{asset('public/web/images/mobile2.png')}}) no-repeat scroll center center / auto 100%;">
-                        <img src="{{asset('public/web/images/screen-2.jpg')}}" alt="">
+                    <div class="item bdr">
+                       <a href="">
+                          <div class="item-box">
+                              
+                          </div> 
+                       </a>
                     </div>
-                    <div class="item" style="background: url({{asset('public/web/images/mobile2.png')}}) no-repeat scroll center center / auto 100%;">
-                        <img src="{{asset('public/web/images/screen-3.jpg')}}" alt="">
+                    <div class="item bdr">
+                       <a href="">
+                         <div class="item-box">
+                             
+                         </div>  
+                       </a> 
                     </div>
-                    <div class="item" style="background: url({{asset('public/web/images/mobile2.png')}}) no-repeat scroll center center / auto 100%;">
-                        <img src="{{asset('public/web/images/screen-4.jpg')}}" alt="">
+                    <div class="item bdr">
+                       <a href="">
+                         <div class="item-box">
+                             
+                         </div>  
+                       </a> 
                     </div>
-                    <div class="item" style="background: url({{asset('public/web/images/mobile2.png')}}) no-repeat scroll center center / auto 100%;">
-                        <img src="{{asset('public/web/images/screen-5.jpg')}}" alt="">
+                    <div class="item bdr">
+                       <a href="">
+                         <div class="item-box">
+                             
+                         </div>  
+                       </a> 
                     </div>
                 </div>
             </div>
@@ -55,7 +77,7 @@
 
 
 <!--feature page-->    
-<section class="gray-bg section-padding" id="feature-page">
+<section id="feature-area" class="feature-area gray-bg section-padding" >
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
@@ -77,7 +99,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="box">
-                    <div class="box-icon">
+                    <div class="box-icon" data-animation="animated fadeInRight">
                         <img src="{{asset('public/web/images/portfolio-icon-2.png')}}" alt="">
                     </div>
                     <h3>Loaded with features</h3>
@@ -126,8 +148,8 @@
 <!--feature page-->
 
 
-<!--Caption slider-->
-<section class="angle-bg sky-bg section-padding">
+<!--Case Study-->
+<section id="case_study" class="angle-bg sky-bg section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -147,16 +169,12 @@
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-1.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-md-3">
+                                    <div class="col-xs-6 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-2.jpg')}}" alt="">
+                                            <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="item row">
@@ -172,16 +190,12 @@
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-3.jpg')}}" alt="">
+                                    <div class="col-xs-6 col-md-6">
+                                        <div class="caption-photo two " data-animation="animated fadeInRight">
+                                            <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
-                                        <div class="caption-photo two" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-4.jpg')}}" alt="">
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="item row">
@@ -197,16 +211,12 @@
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-7.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-md-3">
+                                    <div class="col-xs-6 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-2.jpg')}}" alt="">
+                                            <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="item row">
@@ -222,120 +232,38 @@
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-3">
-                                        <div class="caption-photo one" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-3.jpg')}}" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-md-3">
+                                    <div class="col-xs-6 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/screen-4.jpg')}}" alt="">
+                                            <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
 
                         </div>
                         <!-- Indicators -->
-                        <ol class="carousel-indicators caption-indector">
+                        <ul class="carousel-indicators caption-indector">
                             <li data-target="#caption_slide" data-slide-to="0" class="active">
-                                <strong>Lorem ipsum-1 </strong>consectetur adipisicing elit.
+                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="1">
-                                <strong>Lorem ipsum-2 </strong>consectetur adipisicing elit.
+                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="2">
-                                <strong>Lorem ipsum-3 </strong>consectetur adipisicing elit.
+                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="3">
-                                <strong>Lorem ipsum-4 </strong>consectetur adipisicing elit.
+                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
                             </li>
-                        </ol>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
 </section>
-<!--Caption slider-->
+<!--Case Study-->
 
-
-<!-- Case study -->
-<section class="Case-study testimonial-area section-padding gray-bg overlay" style="background: url({{asset('public/web/images/parallax-8.jpg')}}) no-repeat scroll center center / cover;">
-        <div class="container-fluid">
-
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
-                    <div class="page-title">
-                        <p>Award winning web design</p>
-                        <h2>Our portfolio contains 4 years of <i>Client satifaction</i></h2>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="case-study-testimonials" class="owl-carousel">
-
-                            <!--TESTIMONIAL 1 -->
-                            <div class="item">
-                              <div class="shadow-effect">
-                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                              </div>
-                              <div class="testimonial-name">EMILIANO AQUILANI</div>
-                            </div>
-                            <!--END OF TESTIMONIAL 1 -->
-
-                            <!--TESTIMONIAL 2 -->
-                            <div class="item">
-                              <div class="shadow-effect">
-                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                              </div>
-                              <div class="testimonial-name">ANNA ITURBE</div>
-                            </div>
-                            <!--END OF TESTIMONIAL 2 -->
-
-                            <!--TESTIMONIAL 3 -->
-                            <div class="item">
-                              <div class="shadow-effect">
-                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                              </div>
-                              <div class="testimonial-name">LARA ATKINSON</div>
-                            </div>
-                            <!--END OF TESTIMONIAL 3 -->
-
-                            <!--TESTIMONIAL 4 -->
-                            <div class="item">
-                              <div class="shadow-effect">
-                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                              </div>
-                              <div class="testimonial-name">IAN OWEN</div>
-                            </div>
-                            <!--END OF TESTIMONIAL 4 -->
-
-                            <!--TESTIMONIAL 5 -->
-                            <div class="item">
-                              <div class="shadow-effect">
-                                <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                                <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                              </div>
-                              <div class="testimonial-name">MICHAEL TEDDY</div>
-                            </div>
-                            <!--END OF TESTIMONIAL 5 -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
-<!-- Case study -->
 
 <!-- ps://www.liquidlight.co.uk
 https://codepen.io/shamim539/pen/GZPZBp -->

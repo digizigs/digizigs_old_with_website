@@ -2,7 +2,7 @@
 //@import '~bootstrap/scss/bootstrap';
 
 //Bootstrap 3.7
-@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+//@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
 //@import './presets';
@@ -24,6 +24,10 @@
 
 ///////////////////New Layout//////////////////////
 
+//Bootstrap 3.7
+@import '../../vendor/bootstrap/dist/css/bootstrap.min.css';
+
+
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
 
 
@@ -40,12 +44,13 @@
 //Home Page
 @import './snippet/main-menu-area';
 @import './snippet/header-area';
+@import './snippet/feature-area';
 @import './snippet/caption-slider';
-@import './snippet/case-study';
+//@import './snippet/case-study';
 @import './snippet/footer';
 
 //Blog Page
-@import './blog_main';
+//@import './blog_main';
 
 //@import './navbar';
-//@import './custom';
+@import './custom';
