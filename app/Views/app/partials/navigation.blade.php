@@ -9,7 +9,7 @@
 		        <span class="icon-bar"></span> 
 		      </button>
 		      <a class="navbar-brand logo" href="{{route('apphome')}}">
-		      	digizigs
+		      	<span>d</span>igizigs
 		      </a>
 		    </div>
 		    <div class="collapse navbar-collapse" id="primary-menu">

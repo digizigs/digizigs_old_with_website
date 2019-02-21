@@ -1,2 +1,12 @@
 https://www.gravitatedesign.com/services/
 https://www.liquidlight.co.uk/
+
+
+
+@include('app.partials.preloader')
+
+        @include('app.partials.navigation')
+        
+        @yield('content')
+
+        @include('app.partials.footer')

@@ -4028,7 +4028,6 @@ h6 {
 html,
 body {
   height: 100%;
-  background-color: #E0EBED;
 }
 
 body {
@@ -4391,14 +4390,20 @@ preloader
 }
 
 .main-menu-area .logo {
-  text-transform: uppercase;
   letter-spacing: 5px;
   height: inherit;
   padding-left: 0;
   padding: 20px 15px;
-  color: #D52F5B;
+  color: #fff;
   font-weight: 800;
   font-size: 26px;
+}
+
+.main-menu-area .logo span {
+  background-color: #fff;
+  padding: 0px 5px 0px 12px;
+  color: #138fc2;
+  margin-right: 5px;
 }
 
 .main-menu-area #primary-menu > ul > li > a {
@@ -4469,6 +4474,7 @@ preloader
 @media only screen and (max-width: 768px) {
   .main-menu-area .navbar {
     background-color: #138fc2 !important;
+    margin: 0;
   }
 
   .main-menu-area .logo {

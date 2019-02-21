@@ -11,19 +11,17 @@
   
 
     <div id="app">  
-        
         @include('app.partials.preloader')
 
         @include('app.partials.navigation')
-        
+
         @yield('content')
 
-        @include('app.partials.footer')
-
+		@include('app.partials.footer')
     </div>
-
+	
     @include('app.partials.scripts')
-
+	
     @yield('javascript')
 
 </body>
