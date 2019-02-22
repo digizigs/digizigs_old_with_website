@@ -31,18 +31,41 @@
         margin-top: 30px;
     }
 
-    .screen-slider .item {
-        //background: url('images/mobile2.png') no-repeat scroll center center / auto 100%;
-        //padding: 56px 22px;
-        display: inline-block;
-        margin: auto;
-        height: 200px;
-        width: 300px;
-
+    .screen-slider .item {        
+        width:350px;
+        //height:250px;
+       
+      
         .item-box{
-            height: 100%;
-            width: 100%;
-            background-color: red;
+            //height: 100%;
+            //width: 100%;
+            img{
+                -webkit-filter: brightness(0) invert(1);
+                filter: brightness(0) invert(1);
+                transition: 0.3s;
+                display: block;
+                margin: auto;
+                
+            }
+
+            h3{
+                padding-top: 20px;
+                color: #fff;
+            }
+            p{
+                color: #fff;
+            }
+        }
+        .info-box{
+
+        }
+    }
+    .screen-slider .item:hover {
+        
+        .item-box{
+            img{
+                opacity:.5;
+            }
         }
     }
 

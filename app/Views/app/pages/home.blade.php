@@ -15,6 +15,7 @@
     </div>
     <div class="container">
         <div class="row v-center">
+
             <div class="col-xs-12 col-md-7 header-text">
                 <h2>
                     <span>We design and develop experiences to . . . .</span><br>
@@ -29,43 +30,56 @@
                 </h2>
                 <p>When it about success of your website, app or software, strategy is everything. We understand the business. That's why we create every project as a workshop — crafting a one-of-a-kind, Our unique strategy that is designed to help you win in this competitive market.We keep you one step ahead of your competitor.</p>
 
-                <a href="#" class="button white">Get Started</a>
+                <a href="#" class="button">Get Started</a>
             </div>
+
             <div class="hidden-xs hidden-sm col-md-5 text-right">
                 <div class="screen-box screen-slider">
-                    <div class="item bdr">
+                    <div class="item ">
                        <a href="">
                           <div class="item-box">
-                              sss
-                          </div> 
+                              <img src="{{asset('public/web/images/service-icon-3.png')}}" alt="">
+                              <h3>SPECIAL FEATURES</h3>
+                                <p>Ours is company providing full spectrum of custom services. Be it mobile app, web app, e-commerce solutions or digital promotions, you have it all.</p>
+                          </div>
+                          
                        </a> 
                     </div>
-                    <div class="item bdr">
+                    <div class="item ">
                        <a href="">
                           <div class="item-box">
-                              
-                          </div> 
+                              <img src="{{asset('public/web/images/portfolio-icon-1.png')}}" alt="">
+                              <h3>Loaded with features</h3>
+                                <p>Discover the web design trends, techniques, and tools that will define website and digital product design.</p>
+                          </div>
                        </a>
                     </div>
-                    <div class="item bdr">
+                    <div class="item ">
                        <a href="">
                          <div class="item-box">
-                             
-                         </div>  
+                             <img src="{{asset('public/web/images/portfolio-icon-6.png')}}" alt="">
+                             <h3>Responsive web design</h3>
+                            <p>Responsive Web Design is the combination of flexible grids, flexible images, and media queries.</p>
+                         </div>                        
                        </a> 
                     </div>
-                    <div class="item bdr">
+                    <div class="item ">
                        <a href="">
                          <div class="item-box">
-                             
-                         </div>  
+                             <img src="{{asset('public/web/images/service-icon-1.png')}}" alt="">
+                             <h3>Easy to Edit</h3>
+                                <p>We provide you a 100% Customization with admin panel you can edit easily.</p>
+                         </div>                       
                        </a> 
                     </div>
-                    <div class="item bdr">
+                    <div class="item ">
                        <a href="">
                          <div class="item-box">
-                             
-                         </div>  
+                             <img src="{{asset('public/web/images/portfolio-icon-5.png')}}" alt="">
+                             <h3>Fully Secured</h3>
+                            <p>The Website is fully secured there is no issues and bug will faced to you!</p>
+                         </div>
+                         
                        </a> 
                     </div>
                 </div>
@@ -76,77 +90,35 @@
 <!--Header-area/-->
 
 
-<!--feature page-->    
-<section id="feature-area" class="feature-area gray-bg section-padding" >
-    <div class="container">
+<!--Our Process-->
+<section id="process" class="">
+    <div class="content">
+        <div class="title">We Design Experience</div>
+        <div class="subtag">DigiZigs is a full-service creative agency working with brands worldwide</div>
+        <div class="title" >Collaborative collective of strategists, designers and developers.</div>
+        <p>An integrated design agency team headquartered in Chicago. Our visual, content and brand communication strategies deliver the most engaging user experiences to the worlds innovative brands.</p>
+        
+        <a data-scroll class="button" href="#services">Our Process</a>
+    </div>
+</section>
+
+<!--How we work-->
+<section class="how-we-work">   
+    <div class="block-inner left-x-large">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-                <div class="page-title">
-                    <h2>SPECIAL FEATURES</h2>
-                    <p>Ours is company providing full spectrum of custom services. Be it mobile app, web app, e-commerce solutions or digital promotions, you have it all.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon">
-                        <img src="{{asset('public/web/images/portfolio-icon-1.png')}}" alt="">
-                    </div>
-                    <h3>Responsive web design</h3>
-                    <p>Responsive Web Design is the combination of flexible grids, flexible images, and media queries.</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon" data-animation="animated fadeInRight">
-                        <img src="{{asset('public/web/images/portfolio-icon-2.png')}}" alt="">
-                    </div>
-                    <h3>Loaded with features</h3>
-                    <p>Discover the web design trends, techniques, and tools that will define website and digital product design.</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon">
-                        <img src="{{asset('public/web/images/portfolio-icon-3.png')}}" alt="">
-                    </div>
-                    <h3>Customer Support</h3>
-                    <p>Our ongoing customer support helps you to make client aplication up to date and 99.99% up and running</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon">
-                        <img src="{{asset('public/web/images/portfolio-icon-4.png')}}" alt="">
-                    </div>
-                    <h3>Free updates forever</h3>
-                    <p>We will give you updates by every week or month for you website get better.</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon">
-                        <img src="{{asset('public/web/images/portfolio-icon-5.png')}}" alt="">
-                    </div>
-                    <h3>Easy to Edit</h3>
-                    <p>We provide you a 100% Customization with admin panel you can edit easily.</p>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="box">
-                    <div class="box-icon">
-                        <img src="{{asset('public/web/images/portfolio-icon-6.png')}}" alt="">
-                    </div>
-                    <h3>Fully Secured</h3>
-                    <p>The Website is fully secured there is no issues and bug will faced to you!</p>
-                </div>
+            <div class="img-area small-12 col-sm-7 medium-7 col-option-left-x-large col-image">
+                
+                <img alt="our approach" src="https://uploads.gravitatedesign.com/2016/04/17222425/approach2.jpg">
+                        </div>
+            <div class="columns small-12 col-sm-5 medium-5 col-option-left-x-large">
+                <h2 style="text-align: left;">How We Work</h2>
+    <p style="text-align: left;">We work in small teams using data to&nbsp;make creative solutions for our clients. Our process is simple, we listen before we create then we measure and repeat. We refine because we’re never satisfied. We test, hone, and customize our process to better suit your specific goals, and we work to redefine the digital experience in your industry.</p>
+    <p style="text-align: left;"><a class="button" href="https://www.gravitatedesign.com/approach/">View our Approach</a></p>
             </div>
         </div>
     </div>
 </section>
-<!--feature page-->
-
+<!--How we work-->
 
 <!--Case Study-->
 <section id="case_study" class="angle-bg sky-bg section-padding">

@@ -1,6 +1,7 @@
 
 .footer-area {
-    background-color: #272938;
+    //background-color: #272938;
+    background-color: #0B333C;
     color: #7286a0;
     line-height: 24px;
 
@@ -71,7 +72,7 @@
           input {
               width: 100%;
               display: block;
-              background-color: #1f2131;
+              background-color: #05181d;
               border-radius: 3px;
               height: 40px;
               border: 1px solid #1f2131;
@@ -102,11 +103,17 @@
     }
 
     .footer-bottom{
-      background-color: #1f2131;
-      padding: 25px 0;
+      background-color: #05181d;
+      padding: 15px 0;
+      font-size: 12px;
+      font-weight: 400; 
       a {
         color: #7286a0;
-        padding: 0 10px; 
+        padding: 0 10px;
+        
+      }
+      span{
+        
       }
     }
 

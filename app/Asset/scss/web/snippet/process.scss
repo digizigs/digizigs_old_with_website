@@ -1,0 +1,58 @@
+/* 3-Process */
+#process{
+	//background-color: #E0EBED;
+	//padding-top: 40px;
+	//padding-bottom: 60px;
+	text-align: center;
+	padding: 0px 50px;
+
+	.content{
+		height: 100%;
+		width:100%;
+		background-color: #E0EBED;
+		padding: 50px 0px;
+		.title{
+			font-size: 22px;
+			font-weight: 400;
+			padding: 20px;
+		}
+		.subtag{
+			font-size: 36px;
+			font-weight: 500;
+			padding: 20px;
+			color: #000;
+			line-height: 36px;
+		}
+		
+		p{
+			padding-bottom: 60px;
+		}
+		.btn-process{
+			border: 1px solid #fff;
+		  	color: #fff;
+		  	font-size: 14px;
+		  	font-weight: 600;
+		  	padding: 15px 125px;
+		  	text-transform: uppercase;
+		  	margin-top: 60px;
+		  	margin-bottom: 40px;
+		}
+
+		.btn-process:hover{
+			background-color: #fff;
+			color: #fff;
+			border: 1px solid #fff;
+		}
+	}
+}
+
+.how-we-work{
+	background-color: #18444E;
+	color: #fff;
+	margin: 0px 50px;
+	padding: 50px 0;
+	.img-area{
+		margin-left: -50px;
+		padding-top: -100px;
+	}
+}

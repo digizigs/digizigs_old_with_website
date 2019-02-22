@@ -134,7 +134,7 @@ $(document).ready(function(){
         responsiveClass: true,
         nav: true,
         autoplay: true,
-        autoplayTimeout: 2000,
+        autoplayTimeout: 3000,
         smartSpeed: 1000,
         navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
         items: 1,
@@ -154,7 +154,7 @@ $(document).ready(function(){
         autoplay: true,
         autoplayTimeout: 8500,
         smartSpeed: 450,
-        //navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
+        navText: ['<i class="ti-arrow-left"></i>', '<i class="ti-arrow-right" ></i>'],
         items: 2,
         responsive: {
           0: {

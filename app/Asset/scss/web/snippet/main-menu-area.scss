@@ -36,9 +36,9 @@
         font-size: 26px;
 
         span{
-            background-color: #fff;
+            background-color: #D52F5B;
             padding: 0px 5px 0px 12px;
-            color: #138fc2;
+            color: #fff;
             margin-right: 5px;
         }
     }
@@ -64,7 +64,7 @@
         height: 0;
         border-right: 10px solid transparent;
         border-left: 10px solid transparent;
-        border-top: 10px solid #fff;
+        border-top: 10px solid #D52F5B;
         opacity: 0;
         -webkit-transition: 0.3s;
         transition: 0.3s;
@@ -78,7 +78,8 @@
 
     #primary-menu ul li.active a,
     #primary-menu ul li a:hover {
-        border-top: 3px solid #fff;
+        border-top: 3px solid #D52F5B;
+        color: #D52F5B;
     }
 
     .affix {
@@ -88,7 +89,7 @@
 
 .nav-blue{
     .navbar{
-        background-color: #138fc2 !important;
+        background-color: #0B333C !important;
         transition: background-color 1s ease 0s;
 
         .logo {

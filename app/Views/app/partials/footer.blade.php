@@ -104,7 +104,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="copyright-txt">
-                        © 2018 <a href="{{url('/')}}">DigiZigs Web Technologies.</a> All Rights Reserved.
+                        <span>© 2018</span> <a href="{{url('/')}}">DigiZigs Web Technologies.</a> <span>All Rights Reserved.</span>
                     </div>
                 </div>
                 <div class="col-lg-6 text-right">
