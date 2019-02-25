@@ -5,7 +5,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="icon" href="{{asset('public/images/DZ-Fevicon-2.png')}}" type="image/ico" />
-<title>{{setting('app_name')}}</title>
+<title>{{setting('app_name')}} | Leading Web Design and Devlopment Agency'</title>
 
 
 

@@ -28,13 +28,17 @@ class AppController extends Controller
             return view('app/pages/home');
         }else{
             $posts = Post::orderby('created_at','desc')->where('type', 'post')->with('user')->paginate($post_per_page);
-            return view('app/pages/post',compact('posts'));
+            return view('app.pages.post',compact('posts'));
         }     
 
     }
 
     public function home2(){
         return view('app/home2');
+    }
+
+    public function contact(){
+        return view('app.pages.contact');
     }
 
     public function subscribe(Request $request){

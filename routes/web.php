@@ -7,6 +7,7 @@ use Spatie\Analytics\Period;
 
 //App
 Route::get('/', 'App\AppController@index')->name('apphome');
+Route::get('/contact', 'App\AppController@contact')->name('contact');
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
 

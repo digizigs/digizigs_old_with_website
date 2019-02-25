@@ -4,9 +4,18 @@
 
 #case_study{
     
+    color: #fff;
+    .wraper{
+        background-color: #18444E;
+        margin-top: -20px;
+        z-index: 900;
+        padding: 60px 0px;
+    }
+    
     h2 {
         margin-bottom: 20px;
         font-size: 40px;
+        
     }
     .button {
         margin-top: 30px;
@@ -15,7 +24,7 @@
         display: inline-block;
         -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
-        height: 300px;
+        //height: 300px;
     }
  
     .caption-photo.one {
@@ -76,6 +85,14 @@
         li strong {
             display: block;
         } 
+    }
+
+    @media only screen and (max-width: 768px) {
+        text-align: center;
+
+        .caption-button{
+            margin-bottom: 30px;
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);/*!
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -4146,7 +4146,6 @@ input:-webkit-autofill:focus {
 .button {
   display: inline-block;
   padding: 8px 30px;
-  border: 1px solid #138FC2 !important;
   color: #fff !important;
   background-color: #D52F5B !important;
   -webkit-transition: 0.3s;
@@ -4160,16 +4159,25 @@ input:-webkit-autofill:focus {
 .button:hover {
   background-color: #562231 !important;
   color: #138fc2;
-  border: 1px solid #fff !important;
 }
 
 .button.white:hover {
   background-color: #2f60c3;
   color: #ffffff;
+  border: 1px solid #fff !important;
 }
 
 .button i {
   margin-left: 5px;
+}
+
+.button.secondary {
+  background-color: #18444E !important;
+}
+
+.button.secondary:hover {
+  background-color: #05181D !important;
+  border: 1px solid #D52F5B !important;
 }
 
 /**
@@ -4429,7 +4437,7 @@ preloader
   height: 0;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-top: 10px solid #D52F5B;
+  border-top: 10px solid #fff;
   opacity: 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -4443,8 +4451,8 @@ preloader
 
 .main-menu-area #primary-menu ul li.active a,
 .main-menu-area #primary-menu ul li a:hover {
-  border-top: 3px solid #D52F5B;
-  color: #D52F5B;
+  border-top: 3px solid #fff;
+  color: #fff;
 }
 
 .main-menu-area .affix {
@@ -4583,12 +4591,16 @@ preloader
   top: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .header-text h2 {
   margin-bottom: 20px;
   font-size: 40px;
+  color: #fff;
+}
+
+.header-text h2 .txt-rotate {
   color: #fff;
 }
 
@@ -4679,6 +4691,17 @@ preloader
 *Caption-slider
 **/
 
+#case_study {
+  color: #fff;
+}
+
+#case_study .wraper {
+  background-color: #18444E;
+  margin-top: -20px;
+  z-index: 900;
+  padding: 60px 0px;
+}
+
 #case_study h2 {
   margin-bottom: 20px;
   font-size: 40px;
@@ -4692,7 +4715,6 @@ preloader
   display: inline-block;
   -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
-  height: 300px;
 }
 
 #case_study .caption-photo.one {
@@ -4761,7 +4783,59 @@ preloader
   display: block;
 }
 
+@media only screen and (max-width: 768px) {
+  #case_study {
+    text-align: center;
+  }
+
+  #case_study .caption-button {
+    margin-bottom: 30px;
+  }
+}
+
 /* 3-Process */
+
+#our-service {
+  background-color: #783045;
+}
+
+#our-service .info-box {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+  min-height: 100%;
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #D52F5B;
+}
+
+#our-service .info-box h4 {
+  color: #fff;
+}
+
+#our-service .info-box svg {
+  color: #D52F5B;
+}
+
+#our-service .info-box:hover svg {
+  -webkit-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+#our-service .title {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  color: #fff;
+  z-index: 1;
+  display: table;
+  text-align: center;
+  margin-top: 40px;
+}
 
 #process {
   text-align: center;
@@ -4772,7 +4846,10 @@ preloader
   height: 100%;
   width: 100%;
   background-color: #E0EBED;
-  padding: 50px 0px;
+  padding: 50px 40px;
+  margin-top: -30px;
+  margin-bottom: -30px;
+  z-index: -999;
 }
 
 #process .content .title {
@@ -4810,11 +4887,39 @@ preloader
   border: 1px solid #fff;
 }
 
+@media only screen and (max-width: 768px) {
+  #process {
+    padding: 0px 20px;
+  }
+
+  #process .content {
+    padding: 30px 20px;
+  }
+
+  #process .content .title {
+    font-size: 18px;
+    font-weight: 400;
+    padding: 10px;
+  }
+
+  #process .content .subtag {
+    font-size: 22px;
+    font-weight: 500;
+    padding: 5px;
+    color: #000;
+    line-height: 24px;
+  }
+
+  #process .content p {
+    padding: 20px;
+  }
+}
+
 .how-we-work {
   background-color: #18444E;
   color: #fff;
   margin: 0px 50px;
-  padding: 50px 0;
+  padding: 80px 0;
 }
 
 .how-we-work .img-area {
@@ -4822,10 +4927,94 @@ preloader
   padding-top: -100px;
 }
 
+.how-we-work .text-area {
+  text-align: center;
+}
+
+.how-we-work .text-area h2 {
+  padding-bottom: 30px;
+}
+
+.how-we-work .text-area .button {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+  .how-we-work {
+    margin: 0px 20px;
+  }
+
+  .how-we-work .img-area {
+    padding-bottom: 20px;
+  }
+
+  .how-we-work .text-area {
+    padding: 20px;
+  }
+
+  .how-we-work .text-area p {
+    padding: 20px;
+  }
+}
+
+.get-started {
+  padding: 0 80px;
+  text-align: center;
+  position: relative;
+}
+
+.get-started .block-inner {
+  background-color: #D52F5B;
+  margin-top: -20px;
+  padding: 50px 40px;
+  color: #fff;
+}
+
+.get-started .block-inner h2 {
+  text-align: center;
+  padding: 30px;
+  font-weight: 400;
+}
+
+.get-started .block-inner h4 {
+  padding: 0 80px;
+  font-weight: 100;
+  text-align: center;
+  font-size: 16px;
+}
+
+.get-started .block-inner a {
+  text-align: center;
+}
+
+.get-started .block-inner .button {
+  margin: 50px 0px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .get-started {
+    padding: 0 30px;
+  }
+
+  .get-started .block-inner {
+    padding: 20px 10px;
+  }
+
+  .get-started .block-inner h2 {
+    padding: 10px;
+  }
+
+  .get-started .block-inner h4 {
+    padding: 0 20px;
+  }
+}
+
 .footer-area {
   background-color: #0B333C;
   color: #7286a0;
   line-height: 24px;
+  z-index: -999;
 }
 
 .footer-area a:hover {

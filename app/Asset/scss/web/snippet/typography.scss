@@ -164,7 +164,7 @@ input:-webkit-autofill:focus {
 .button {
     display: inline-block;
     padding: 8px 30px;
-    border:1px solid #138FC2 !important;
+    //border:1px solid #138FC2 !important;
     color: #fff !important;
     background-color: #D52F5B !important;
     -webkit-transition: 0.3s;
@@ -178,16 +178,26 @@ input:-webkit-autofill:focus {
 .button:hover {
     background-color: #562231 !important;
     color: #138fc2;
-    border:1px solid #fff !important;
+    //border:1px solid #fff !important;
 }
 
 .button.white:hover {
     background-color: #2f60c3;
     color: #ffffff;
+    border:1px solid #fff !important;
 }
 
 .button i {
     margin-left: 5px;
+}
+
+.button.secondary{
+    background-color: #18444E !important;
+    //border:1px solid #D52F5B !important;
+}
+.button.secondary:hover{
+    background-color: #05181D !important;
+    border:1px solid #D52F5B !important;
 }
 
 /**

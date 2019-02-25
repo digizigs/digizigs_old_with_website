@@ -64,7 +64,7 @@
         height: 0;
         border-right: 10px solid transparent;
         border-left: 10px solid transparent;
-        border-top: 10px solid #D52F5B;
+        border-top: 10px solid #fff;
         opacity: 0;
         -webkit-transition: 0.3s;
         transition: 0.3s;
@@ -78,8 +78,8 @@
 
     #primary-menu ul li.active a,
     #primary-menu ul li a:hover {
-        border-top: 3px solid #D52F5B;
-        color: #D52F5B;
+        border-top: 3px solid #fff;
+        color: #fff;
     }
 
     .affix {

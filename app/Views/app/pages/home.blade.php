@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Home')
+@section('title','Leading Web Design and Devlopment Agency')
 
 
 
@@ -10,7 +10,7 @@
 <!--Header-area-->
 <header id="header-area" class="header-area overlay full-height relative v-center" id="home-page" style="background:#000000 url({{asset('public/web/images/parallax-2.jpg')}}) no-repeat scroll center center / cover;">
 
-    <div class="absolute anlge-bg" style="background: url({{asset('public/web/images/angle-bg.png')}}) no-repeat scroll center bottom -120px / 100% auto;">
+    <div class="absolute anlge-bgk" style="background: url({{asset('public/web/images/angle-bg.png')}}) no-repeat scroll center bottom -120px / 100% auto;">
         
     </div>
     <div class="container">
@@ -91,37 +91,122 @@
 
 
 <!--Our Process-->
-<section id="process" class="">
-    <div class="content">
-        <div class="title">We Design Experience</div>
-        <div class="subtag">DigiZigs is a full-service creative agency working with brands worldwide</div>
-        <div class="title" >Collaborative collective of strategists, designers and developers.</div>
-        <p>An integrated design agency team headquartered in Chicago. Our visual, content and brand communication strategies deliver the most engaging user experiences to the worlds innovative brands.</p>
+<section id="our-service" class="">
+
+        <div class="title"><h1>Our Services</h1></div>
+        <div class="row" style="padding: 0;margin: 0;">
         
-        <a data-scroll class="button" href="#services">Our Process</a>
-    </div>
+            <div class="col-md-4 part-1 info-box">
+                <svg version="1.1" id="svg-services-design" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="4" stroke-miterlimit="10" d="M120,110c0,2.2-1.8,4-4,4H35c-2.2,0-4-1.8-4-4V42
+                            c0-2.2,1.8-4,4-4h81c2.2,0,4,1.8,4,4V110z"></path>
+                    </g>
+                    <rect x="38" y="63" fill="#fff" width="30" height="44"></rect>
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" d="M48.5,51c0,2.5-2,4.5-4.5,4.5c-2.5,0-4.5-2-4.5-4.5
+                            s2-4.5,4.5-4.5C46.5,46.5,48.5,48.5,48.5,51z"></path>
+                    </g>
+                    <rect x="74" y="63" fill="#fff" width="39" height="19"></rect>
+                    <rect x="74" y="89" fill="#fff" width="16" height="18"></rect>
+                    <path fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="10" d="M111.5,54c0,0.3-0.2,0.5-0.5,0.5H58
+                        c-0.3,0-0.5-0.2-0.5-0.5v-6c0-0.3,0.2-0.5,0.5-0.5h53c0.3,0,0.5,0.2,0.5,0.5V54z"></path>
+                    <rect x="96" y="89" fill="#fff" width="17" height="18"></rect>
+                </svg>
+                <h4>WEB &amp; INTERACTIVE DESIGN</h4>
+                <p>Exceptional websites and app experiences are a blend of the right message and the right technology. Our interactive design approach focuses on usability, impact, and achieving results.</p>
+            </div>
+            <div class="col-md-4 part-2 info-box">
+                <svg version="1.1" id="svg-services-branding" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+                    <path fill="#B2DAE3" d="M104.9,66.4c-2.4,10.1-9.8,18.2-19.5,21.5c0.5,2.2,0.8,4.6,0.8,7c0,9.2-4.1,17.4-10.6,22.9
+                        c5.2,4.5,12,7.2,19.5,7.2c16.6,0,30.1-13.5,30.1-30.1C125.2,81.7,116.7,70.5,104.9,66.4z"></path>
+                    <path fill="#B2DAE3" d="M75.6,71.9c-4.8,4.1-8.3,9.6-9.8,16c3.1,1.1,6.4,1.6,9.8,1.6c3.4,0,6.7-0.6,9.8-1.6
+                        C83.9,81.6,80.4,76,75.6,71.9z"></path>
+                    <circle fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="56.1" cy="94.9" r="30.1"></circle>
+                    <circle fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="95.1" cy="94.9" r="30.1"></circle>
+                    <circle fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="75.6" cy="59.5" r="30.1"></circle>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="26" y1="94.9" x2="48.4" y2="72.4"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="27.7" y1="105" x2="53.1" y2="79.6"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="31.8" y1="112.7" x2="59.6" y2="84.9"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="37.7" y1="118.7" x2="65.2" y2="91.2"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="45.3" y1="122.9" x2="65.9" y2="102.3"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="55" y1="125" x2="69.4" y2="110.6"></line>
+                </svg>
+                <h4>BRANDING &amp; STRATEGY</h4>
+                <p>Whether a new or established business or organization, you can look to us to best articulate who you are, what you do, and most importantly, why any of these thingd matters – beautifully.</p>
+            </div>
+            <div class="col-md-4 part-3 info-box">
+                <svg version="1.1" id="svg-services-development" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
+                    <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        83,77 50,77 50.1,61 83.1,61 "></polygon>
+                    <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        83,106 50,106 50.1,90 83.1,90 "></polygon>
+                    <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        129.9,106 97,106 97.1,90 130,90 "></polygon>
+                    <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        77.1,36.5 66.6,46.9 56.1,36.5 66.6,26 "></polygon>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="67" y1="46" x2="67" y2="60"></line>
+                    <polyline fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+                        48,69 26,69 26,98 49,98 "></polyline>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="84" y1="98" x2="97" y2="98"></line>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="84" y1="69" x2="96" y2="69"></line>
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M110,69.5c0,3.6-2.9,6.5-6.5,6.5S97,73.1,97,69.5s2.9-6.5,6.5-6.5S110,65.9,110,69.5z"></path>
+                    </g>
+                    <line fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="67" y1="107" x2="67" y2="119"></line>
+                    <g>
+                        <path fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                            M66.5,133c-3.6,0-6.5-2.9-6.5-6.5s2.9-6.5,6.5-6.5c3.6,0,6.5,2.9,6.5,6.5S70.1,133,66.5,133z"></path>
+                    </g>
+                    <line fill="none" stroke="#B2DAE3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="60" y1="69" x2="73" y2="69"></line>
+                    <line fill="none" stroke="#B2DAE3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="60" y1="98" x2="73" y2="98"></line>
+                    <line fill="none" stroke="#B2DAE3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="107" y1="98" x2="121" y2="98"></line>
+                </svg>
+                <h4>WEB &amp; APPLICATION DEVELOPMENT</h4>
+                <p>The best-planned experience is wasted without a top-notch implementation. We craft functional websites and applications engineered for stability, performance, and long-term adaptability.</p>
+            </div>
+
+        </div>
 </section>
 
 <!--How we work-->
 <section class="how-we-work">   
     <div class="block-inner left-x-large">
         <div class="row">
+
             <div class="img-area small-12 col-sm-7 medium-7 col-option-left-x-large col-image">
-                
-                <img alt="our approach" src="https://uploads.gravitatedesign.com/2016/04/17222425/approach2.jpg">
-                        </div>
-            <div class="columns small-12 col-sm-5 medium-5 col-option-left-x-large">
-                <h2 style="text-align: left;">How We Work</h2>
-    <p style="text-align: left;">We work in small teams using data to&nbsp;make creative solutions for our clients. Our process is simple, we listen before we create then we measure and repeat. We refine because we’re never satisfied. We test, hone, and customize our process to better suit your specific goals, and we work to redefine the digital experience in your industry.</p>
-    <p style="text-align: left;"><a class="button" href="https://www.gravitatedesign.com/approach/">View our Approach</a></p>
+                <img alt="our approach" class="img-responsive" src="{{asset('public/web/images/rawpixel.jpg')}}">
+            </div>
+
+            <div class="text-area columns small-12 col-sm-5 medium-5 col-option-left-x-large">
+                <h2>How We Work</h2>
+                <p >We work in small teams using data to&nbsp;make creative and innovative solutions of the box  for our clients. Our way of work is simple, we understand our client  before we create then we measure and repeat till perfection. We are a different leauge as we never satisfy,. We customize our process to better suit your specific goals, and we work to redefine the digital experience in your industry.</p>
+                <p><a class="button" href="https://www.digizigs.com">View our Approach</a></p>
             </div>
         </div>
     </div>
 </section>
 <!--How we work-->
 
+<section class="get-started">
+
+    
+    <div class="block-inner">
+        <div class="row align-center">
+            <div class="">
+                <h2>Ready to get started?</h2>
+                <h4>Exited to start a project or really curious about our process? Just drop us a note or give us a call (+91)&nbsp;9712340450; we’re happy to answer all your questions.</h4>
+                <a class="button secondary" href="https://www.digizigs.com/contact/">Work With Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!--Case Study-->
-<section id="case_study" class="angle-bg sky-bg section-padding">
+<section id="case_study" class="angle-bg">
+    <div class="wraper">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -132,18 +217,18 @@
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Easy to build</h2>
+                                            <h2>PROTOTYPING</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Planning / sketching an early sample of work as per requirement of the clients before processing concept !</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6">
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
-                                            <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
+                                            <img src="{{asset('public/web/images/quality.svg')}}" class="img-responsive" alt="">
                                         </div>
                                     </div>
                                     
@@ -153,16 +238,16 @@
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Easy to use</h2>
+                                            <h2>DESIGN PROCESS</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Stepping into the design process with an efficient approach, applying it to the best-chosen concept !</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6">
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo two " data-animation="animated fadeInRight">
                                             <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
@@ -174,16 +259,16 @@
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Easy to customize</h2>
+                                            <h2>DEVELOPMENT</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Creating responsive, functional website with all the graphical elements and contents chosen by client !</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6">
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
                                             <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
@@ -195,16 +280,16 @@
                                 <div class="v-center">
                                     <div class="col-xs-12 col-md-6">
                                         <div class="caption-title" data-animation="animated fadeInUp">
-                                            <h2>Awesome design</h2>
+                                            <h2>TESTING</h2>
                                         </div>
                                         <div class="caption-desc" data-animation="animated fadeInUp">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute</p>
+                                            <p>Ensuring the performance and security of the website developed using the advanced testing and tools !</p>
                                         </div>
                                         <div class="caption-button" data-animation="animated fadeInUp">
                                             <a href="#" class="button">Read more</a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-6 col-md-6">
+                                    <div class="col-xs-12 col-md-6">
                                         <div class="caption-photo two" data-animation="animated fadeInRight">
                                             <img src="{{asset('public/web/images/small1.jpg')}}" class="img-responsive" alt="">
                                         </div>
@@ -215,98 +300,40 @@
 
                         </div>
                         <!-- Indicators -->
-                        <ul class="carousel-indicators caption-indector">
+                        <ul class="carousel-indicators caption-indector hidden-xs">
                             <li data-target="#caption_slide" data-slide-to="0" class="active">
-                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
+                                <strong>Easy to build </strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="1">
-                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
+                                <strong>Easy to use</strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="2">
-                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
+                                <strong>Easy to customize</strong>consectetur adipisicing elit.
                             </li>
                             <li data-target="#caption_slide" data-slide-to="3">
-                                <strong>Lorem ipsum </strong>consectetur adipisicing elit.
+                                <strong>Awesome design</strong>consectetur adipisicing elit.
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 <!--Case Study-->
 
 
-<!-- ps://www.liquidlight.co.uk
-https://codepen.io/shamim539/pen/GZPZBp -->
-<section class="testimonials">
-    <div class="container-fluid">
+<!--Our Process-->
+<section id="process" class="">
+    <div class="content">
+        <div class="title">We Design Experience</div>
+        <div class="subtag">DigiZigs is a full-service creative agency working with brands worldwide</div>
+        <div class="title" >Collaborative collective of strategists, designers and developers.</div>
+        <p>An integrated app devlopment agency team headquartered in Vadodara. Our visual, content and brand communication strategies deliver the most engaging user experiences to the worlds innovative brands.</p>
         
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center">
-                <div class="page-title">
-                    <p>Award winning web design</p>
-                    <h2>Our portfolio contains 4 years of <i>Client satifaction</i></h2>
-                    
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-              <div id="customers-testimonials" class="owl-carousel">
-
-                <!--TESTIMONIAL 1 -->
-                <div class="item">
-                  <div class="shadow-effect">
-                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                  </div>
-                  <div class="testimonial-name">EMILIANO AQUILANI</div>
-                </div>
-                <!--END OF TESTIMONIAL 1 -->
-                <!--TESTIMONIAL 2 -->
-                <div class="item">
-                  <div class="shadow-effect">
-                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                  </div>
-                  <div class="testimonial-name">ANNA ITURBE</div>
-                </div>
-                <!--END OF TESTIMONIAL 2 -->
-                <!--TESTIMONIAL 3 -->
-                <div class="item">
-                  <div class="shadow-effect">
-                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                  </div>
-                  <div class="testimonial-name">LARA ATKINSON</div>
-                </div>
-                <!--END OF TESTIMONIAL 3 -->
-                <!--TESTIMONIAL 4 -->
-                <div class="item">
-                  <div class="shadow-effect">
-                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                  </div>
-                  <div class="testimonial-name">IAN OWEN</div>
-                </div>
-                <!--END OF TESTIMONIAL 4 -->
-                <!--TESTIMONIAL 5 -->
-                <div class="item">
-                  <div class="shadow-effect">
-                    <img class="img-circle" src="http://themes.audemedia.com/html/goodgrowth/images/testimonial3.jpg" alt="">
-                    <p>Dramatically maintain clicks-and-mortar solutions without functional solutions. Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate.</p>
-                  </div>
-                  <div class="testimonial-name">MICHAEL TEDDY</div>
-                </div>
-                <!--END OF TESTIMONIAL 5 -->
-              </div>
-            </div>
-        </div>
+        <a data-scroll class="button" href="#services">Our Process</a>
     </div>
 </section>
-<!-- END OF TESTIMONIALS -->
 
 
 
