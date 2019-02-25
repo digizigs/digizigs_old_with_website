@@ -4837,6 +4837,12 @@ preloader
   margin-top: 40px;
 }
 
+@media only screen and (max-width: 768px) {
+  #our-service .info-box {
+    padding: 60px 20px 20px 20px;
+  }
+}
+
 #process {
   text-align: center;
   padding: 0px 50px;
@@ -5010,8 +5016,70 @@ preloader
   }
 }
 
+.contact-page .contact-us {
+  background-color: #FFF;
+  position: relative;
+  text-align: center;
+  z-index: -999;
+}
+
+.contact-page .contact-us .banner {
+  padding-top: 100px;
+  font-size: 36px;
+  color: #fff;
+}
+
+.contact-page .contact-us .content-area {
+  background-color: #E0EBED;
+  color: #fff;
+  padding: 80px 30px;
+}
+
+.contact-page .contact-us .content-area h2 {
+  color: #D52F5B;
+  padding: 20px;
+  font-size: 36px;
+}
+
+.contact-page .contact-us .content-area p {
+  color: #0B333C;
+  padding-bottom: 20px;
+}
+
+.contact-page .contact-form-area {
+  padding: 0 40px;
+}
+
+.contact-page .contact-form-area .content {
+  background-color: #D52F5B;
+  height: 500px;
+  margin: -40px 0px;
+  z-index: 9999;
+  padding: 60px 30px;
+}
+
+.contact-page .contact-form-area .content h2 {
+  color: #0B333C;
+  font-size: 36px;
+}
+
+.contact-page .contact-form-area .content p {
+  color: #fff;
+  padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-page .contact-page {
+    padding-bottom: 40px;
+  }
+
+  .contact-page .contact-page .contact-form-area {
+    padding: 0 20px;
+  }
+}
+
 .footer-area {
-  background-color: #0B333C;
+  background-color: #1D262D;
   color: #7286a0;
   line-height: 24px;
   z-index: -999;

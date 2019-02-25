@@ -96,7 +96,7 @@
         <div class="title"><h1>Our Services</h1></div>
         <div class="row" style="padding: 0;margin: 0;">
         
-            <div class="col-md-4 part-1 info-box">
+            <div class="col-md-4 part-1 info-box bdr">
                 <svg version="1.1" id="svg-services-design" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <g>
                         <path fill="none" stroke="#fff" stroke-width="4" stroke-miterlimit="10" d="M120,110c0,2.2-1.8,4-4,4H35c-2.2,0-4-1.8-4-4V42
@@ -116,7 +116,7 @@
                 <h4>WEB &amp; INTERACTIVE DESIGN</h4>
                 <p>Exceptional websites and app experiences are a blend of the right message and the right technology. Our interactive design approach focuses on usability, impact, and achieving results.</p>
             </div>
-            <div class="col-md-4 part-2 info-box">
+            <div class="col-md-4 part-2 info-box bdr">
                 <svg version="1.1" id="svg-services-branding" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <path fill="#B2DAE3" d="M104.9,66.4c-2.4,10.1-9.8,18.2-19.5,21.5c0.5,2.2,0.8,4.6,0.8,7c0,9.2-4.1,17.4-10.6,22.9
                         c5.2,4.5,12,7.2,19.5,7.2c16.6,0,30.1-13.5,30.1-30.1C125.2,81.7,116.7,70.5,104.9,66.4z"></path>
@@ -135,7 +135,7 @@
                 <h4>BRANDING &amp; STRATEGY</h4>
                 <p>Whether a new or established business or organization, you can look to us to best articulate who you are, what you do, and most importantly, why any of these thingd matters – beautifully.</p>
             </div>
-            <div class="col-md-4 part-3 info-box">
+            <div class="col-md-4 part-3 info-box bdr">
                 <svg version="1.1" id="svg-services-development" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
                         83,77 50,77 50.1,61 83.1,61 "></polygon>

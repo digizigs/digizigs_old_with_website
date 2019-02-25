@@ -11,7 +11,7 @@ $(document).ready(function(){
     //Parralex
      //Background Parallax
     $('.header-area').parallax("50%", -0.4);
-    //$('.price-area').parallax("50%", -0.5);
+    $('.banner').parallax("30%", -0.6);
     //$('.testimonial-area').parallax("10%", -0.2);
 
 

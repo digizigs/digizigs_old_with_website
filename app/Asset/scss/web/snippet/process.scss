@@ -54,7 +54,13 @@
 		//font-weight: $section_title_font_weight;
 		margin-top:40px
 	}
-	
+
+	@media only screen and (max-width: 768px) {
+
+		.info-box{
+			padding: 60px 20px 20px 20px ;
+		}
+	}
 }
 
 
@@ -211,6 +217,74 @@
 			}
 			h4{
 				padding: 0 20px;
+			}
+		}
+	}
+}
+
+
+
+//////////////Contact Page
+.contact-page{
+	.contact-us{
+		background-color: #FFF;
+		position: relative;
+		text-align: center;
+		z-index: -999;
+		.banner{
+			padding-top: 100px;
+			font-size: 36px;
+			color: #fff;
+		}
+		.content-area{	
+			background-color: #E0EBED;	
+			color: #fff;
+			padding: 80px 30px;
+			
+			h2{
+				color: #D52F5B;
+				padding: 20px;
+				font-size: 36px;
+			}
+
+			p{
+				color: #0B333C;
+				padding-bottom: 20px;
+			}
+		}		
+	}
+
+	.contact-form-area{
+		padding: 0 40px;
+
+		.content{
+			background-color: #D52F5B;
+			height: 500px;
+			margin: -40px 0px;
+			z-index: 9999;
+			padding: 60px 30px;
+
+			h2{
+				color: #0B333C;
+				font-size: 36px;
+			}
+			p{
+				color: #fff;
+				padding-bottom: 30px;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 768px) {
+
+		.contact-page{
+			padding-bottom: 40px;
+			.contact-form-area{
+				padding: 0 20px;
+				
+				.contact-form{
+					//margin-bottom: 40px;
+				}
 			}
 		}
 	}
