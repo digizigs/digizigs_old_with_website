@@ -51,6 +51,22 @@ return [
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input
             ],
+            [
+                'type' => 'file',
+                'data' => 'string',
+                'name' => 'app_icon',
+                'label' => 'App Icon',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'file',
+                'data' => 'string',
+                'name' => 'app_favicon',
+                'label' => 'App Favicon',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
         ],
 
 
