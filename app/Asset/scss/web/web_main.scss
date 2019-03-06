@@ -9,8 +9,8 @@
 
 
 //Vendor
-//@import '../../vendor/animate/css/animate';
-//@import '../../vendor/lightbox/css/lightbox';
+@import '../../vendor/animate/css/animate';
+@import '../../vendor/lightbox/css/lightbox';
 
 
 //@import './typography';/For old home
@@ -44,6 +44,9 @@
 
 @import './snippet/typography';
 @import './snippet/preloader';
+
+//Effect
+@import './effects/hover-1';
 
 //Home Page
 @import './snippet/main-menu-area';

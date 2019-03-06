@@ -96,7 +96,7 @@
         <div class="title"><h1>Our Services</h1></div>
         <div class="row" style="padding: 0;margin: 0;">
         
-            <div class="col-md-4 part-1 info-box bdr">
+            <div class="col-md-4 part-1 info-box ">
                 <svg version="1.1" id="svg-services-design" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <g>
                         <path fill="none" stroke="#fff" stroke-width="4" stroke-miterlimit="10" d="M120,110c0,2.2-1.8,4-4,4H35c-2.2,0-4-1.8-4-4V42
@@ -116,7 +116,7 @@
                 <h4>WEB &amp; INTERACTIVE DESIGN</h4>
                 <p>Exceptional websites and app experiences are a blend of the right message and the right technology. Our interactive design approach focuses on usability, impact, and achieving results.</p>
             </div>
-            <div class="col-md-4 part-2 info-box bdr">
+            <div class="col-md-4 part-2 info-box ">
                 <svg version="1.1" id="svg-services-branding" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <path fill="#B2DAE3" d="M104.9,66.4c-2.4,10.1-9.8,18.2-19.5,21.5c0.5,2.2,0.8,4.6,0.8,7c0,9.2-4.1,17.4-10.6,22.9
                         c5.2,4.5,12,7.2,19.5,7.2c16.6,0,30.1-13.5,30.1-30.1C125.2,81.7,116.7,70.5,104.9,66.4z"></path>
@@ -135,7 +135,7 @@
                 <h4>BRANDING &amp; STRATEGY</h4>
                 <p>Whether a new or established business or organization, you can look to us to best articulate who you are, what you do, and most importantly, why any of these thingd matters – beautifully.</p>
             </div>
-            <div class="col-md-4 part-3 info-box bdr">
+            <div class="col-md-4 part-3 info-box ">
                 <svg version="1.1" id="svg-services-development" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="150px" height="150px" viewBox="0 0 150 150" enable-background="new 0 0 150 150" xml:space="preserve">
                     <polygon fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
                         83,77 50,77 50.1,61 83.1,61 "></polygon>
@@ -322,6 +322,205 @@
 </section>
 <!--Case Study-->
 
+<!--Portfolio-->
+    <section id="portfolio">
+
+        <div class="container">
+          <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+              <h2>Our Works</h2>
+              <p>Over the years we’ve taken numbers of projects, succeeding in every single one of those!</p>
+            </div>
+          </div> 
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/1.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/2.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/3.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/4.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/5.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/6.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/7.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 hover-overlay">
+                  <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
+                    <div class="folio-image">
+                      <img class="img-responsive" src="http://www.digizigs.com/public/images/web/portfolio/8.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                      <div class="overlay-content">
+                        <div class="overlay-text">
+                          <div class="folio-info">
+                            <h3>Time Hours</h3>
+                            <p>Design, Photography</p>
+                          </div>
+                          <div class="folio-overview">
+                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                            <span class="folio-expand"><a href="http://www.digizigs.com/public/images/web/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="portfolio-single-wrap">
+          <div id="portfolio-single">
+          </div>
+        </div><!-- /#portfolio-single-wrap -->
+    </section><!--/#portfolio-->
 
 <!--Our Process-->
 <section id="process" class="">
