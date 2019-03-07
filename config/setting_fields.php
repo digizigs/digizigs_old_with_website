@@ -71,7 +71,7 @@ return [
                     'options' => [
                         '-Select-',
                         'Home',
-                        'Blog',                                             
+                        'Blog',                                         
                     ]
             ],
             [
