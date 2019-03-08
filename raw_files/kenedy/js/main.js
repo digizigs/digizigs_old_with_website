@@ -45,7 +45,7 @@ $(document).ready(function () {
 
     //------- Pre Loader --------//  
     $(window).on('load', function () {
-        $(".preloader-area").delay(200).fadeOut(500);
+        $(".preloader-area").delay(2000).fadeOut(500);
     })
 
     //------- Lightbox  js --------//  

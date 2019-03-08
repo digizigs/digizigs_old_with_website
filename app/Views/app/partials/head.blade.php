@@ -4,7 +4,7 @@
 
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="icon" href="{{asset('public/images/d-fevi.png')}}" type="image/ico" />
+<link rel="icon" href="{{asset('public/images/brand_assets/d-fevi-orange.png')}}" type="image/ico" />
 <title>{{setting('app_name')}} | Leading Web Design and Devlopment Agency'</title>
 
 
@@ -16,7 +16,7 @@
 
 <link href="{{asset('public/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/vendor/owl-carousel/owl.carousel.min.css')}}" rel="stylesheet">
-
-<link href="{{asset('public/web/css/themify-icons.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/linearicons.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/themify-icons.css')}}" rel="stylesheet">
 
 <link href="{{asset('public/css/web_main.css')}}" rel="stylesheet">
