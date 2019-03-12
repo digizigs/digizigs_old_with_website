@@ -1,11 +1,8 @@
 .home-banner-area {
-  background-size: cover; }
+  background-size: cover; 
   @media (max-width: 769px) {
     .home-banner-area .fullscreen {
       height: 600px !important; } }
-
-.banner-area {
-  background: #90acd1; }
 
 .banner-content {
   text-align: left; }
@@ -118,4 +115,5 @@
   	margin: 10px auto;
 }
 
+}
 
