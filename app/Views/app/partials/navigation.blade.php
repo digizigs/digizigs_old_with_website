@@ -1,28 +1,28 @@
-
-<div class="main-menu-area" data-spy="affix" data-offset-top="100">
-	<nav class="navbar navbar-default">
-		<div class="container">
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span> 
-		      </button>
-		      <a class="navbar-brand logo" href="{{route('apphome')}}">
-		      	<img src="{{asset('public/images/DZ-Logo.png')}}" alt="" style="height: 30px;">
-		      </a>
-		    </div>
-		    <div class="collapse navbar-collapse" id="primary-menu">
-		      <ul class="nav navbar-nav navbar-right">
-		        <li class="active"><a href="{{route('apphome')}}">Home</a></li>
-                <li><a href="#service-page">Service</a></li>
-                <li><a href="#feature-page">Features</a></li>
-                <li><a href="#digital-page">Digital</a></li>                         
-                <li><a href="#about-page">About</a></li>
-                <li><a href="#blog-page">Blog</a></li>
-                <li><a href="{{route('contact')}}">Contact</a></li>
-		      </ul>
-			</div>
-	  	</div>
-	</nav>
-</div>
+<!-- Start Header Area -->
+<header id="header" class="">
+    <div class="container main-menu">
+        <div class="row align-items-center d-flex">
+            <div id="logo">
+                <a href="{{route('apphome')}}"><img src="{{asset('public/images/brand_assets/DZ-Logo Orange-black.png')}}" alt="digizigs-logo" /></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class=""><a class="active" href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li class="menu-has-children"><a href="#">Pages</a>
+                        <ul>
+                            <li><a href="elements.html">Elements</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="services.html">Service</a></li>
+                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('app.blog')}}">Blog</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- End Header Area -->

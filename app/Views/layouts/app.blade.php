@@ -11,9 +11,9 @@
   
 
     <div id="app">  
-        {{--@include('app.partials.preloader')--}}
+        @include('app.partials.preloader')
 
-        {{--@include('app.partials.navigation')--}}
+        @include('app.partials.navigation')
 
         @yield('content')
 

@@ -14,8 +14,7 @@ use Spatie\Permission\Models\Role;
 
 use App\Models\Post;
 
-class AppController extends Controller
-{
+class AppController extends Controller {
    
     public function index(){
 
@@ -33,8 +32,8 @@ class AppController extends Controller
 
     }
 
-    public function home2(){
-        return view('app/home2');
+    public function blog(){
+        return view('app.pages.post');
     }
 
     public function contact(){
@@ -105,9 +104,7 @@ class AppController extends Controller
          return $pdf->download('itsolutionstuff.pdf');
     }
 
-    public function blog(){
-        return 'Blog';
-    }
+  
 
 
 
