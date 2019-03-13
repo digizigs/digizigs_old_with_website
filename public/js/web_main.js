@@ -18601,12 +18601,34 @@ $(document).ready(function () {
         $(".preloader-area").delay(500).fadeOut(500);
     });
 
+    //------- Go to Top --------// 
+    $(window).on("scroll", function () {
+        if ($(this).scrollTop() > 100) {
+            $('#header1').addClass('header-scrolled1');
+            $('#back-top').addClass('back-top-animation');
+        } else {
+            $('#header1').removeClass('header-scrolled1');
+            $('#back-top').removeClass('back-top-animation');
+        }
+    });
+
+    $('#back-top a').on("click", function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 1000);
+        return false;
+    });
+
     //------- Header Scroll Class  js --------//  
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
+            $('.logo-black').removeClass('logo-hide');
+            $('.logo-white').addClass('logo-hide');
         } else {
             $('#header').removeClass('header-scrolled');
+            $('.logo-black').addClass('logo-hide');
+            $('.logo-white').removeClass('logo-hide');
         }
     });
 
@@ -18618,6 +18640,21 @@ $(document).ready(function () {
         },
         speed: 400
     });
+
+    //Testimonial slider
+    if ($('.testi_slider').length) {
+        $('.testi_slider').owlCarousel({
+            loop: true,
+            margin: 30,
+            items: 1,
+            nav: true,
+            autoplay: 2500,
+            smartSpeed: 1500,
+            dots: true,
+            responsiveClass: true,
+            navText: ["<i class='lnr lnr-arrow-left'></i>", "<i class='lnr lnr-arrow-right'></i>"]
+        });
+    }
 
     //------- Mobile Nav  js --------// 
     if ($('#nav-menu-container').length) {

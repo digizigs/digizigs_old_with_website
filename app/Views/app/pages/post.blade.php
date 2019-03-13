@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Home')
+@section('title','Blog')
 
 
 
@@ -22,7 +22,7 @@
 
 					<p class="link-nav">
 						
-							<a href="index.html" class="box">Get Started </a>
+							<a href="{{route('apphome')}}" class="box">Get Started </a>
 						
 					</p>
 				</div>
@@ -48,7 +48,7 @@
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Social life</h4>
 								<span></span>
-								<p>Enjoy your social life together</p>
+								
 							</div>
 						</a>
 					</div>
@@ -65,7 +65,7 @@
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Politics</h4>
 								<span></span>
-								<p>Be a part of politics</p>
+								
 							</div>
 						</a>
 					</div>
@@ -82,7 +82,7 @@
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Food</h4>
 								<span></span>
-								<p>Let the food be finished</p>
+								
 							</div>
 						</a>
 					</div>
@@ -438,9 +438,6 @@
 </section>
 <!-- End post-content Area -->
 
-<!-- Horizontal bar -->
-<div class="container">
-	<hr>
-</div>
+
 
 @endsection

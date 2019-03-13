@@ -26,10 +26,17 @@
     background: #222222; }
 
 #logo {
-  margin-left: 15px; }
-  @media (max-width: 673px) {
-    #logo {
-      margin-left: 20px; } }
+  margin-left: 15px;
+
+}
+.logo-hide{
+    display: none;
+}   
+@media (max-width: 673px) {
+  #logo {
+    margin-left: 20px; 
+  }
+}
 
 #header #logo h1 {
   font-size: 34px;
@@ -131,7 +138,7 @@
 
 .nav-menu a.active, .nav-menu a:hover {
     color: #e45447 !important; 
-}
+} 
 
 .nav-menu.white a {
   color: #fff; }
@@ -162,7 +169,8 @@
   font-weight: 400; }
 
 .nav-menu ul li:hover > a {
-  color: #e45447; }
+  color: #e45447; 
+}
 
 .nav-menu ul ul {
   margin: 0; }

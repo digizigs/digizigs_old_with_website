@@ -6,14 +6,14 @@
 
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
-                        <h4>Strategy</h4>
+                        <h4 class="section-title">Strategy</h4>
                         <p>When it about success of your website, app or software, strategy is everything. We understand the business. That's why we create every project as a workshop — crafting a one-of-a-kind, Our unique strategy that is designed to help you win in this competitive market.We keep you one step ahead of your competitor.</p>
                     </div>
                 </div>
 
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
-                        <h4>Our Services</h4>
+                        <h4 class="section-title">Our Services</h4>
                         <ul>
                             <li><a href="#">Web Design</a></li>
                             <li><a href="#">Web Application Design</a></li>
@@ -30,10 +30,10 @@
 
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
-                        <h4>Recent Updates</h4>
+                        <h4 class="section-title">Recent Updates</h4>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public/web/images/recent1.jpg')}}" class="" alt="">
+                                <img src="{{asset('public/images/blog/post-img1.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\web\images\recent2.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('public/images/blog/post-img2.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="media">
                             <a href="#">
-                                <img src="{{asset('public\web\images\recent3.jpg')}}" class="d-flex mr-3" alt="">
+                                <img src="{{asset('public/images/blog/post-img1.jpg')}}" class="d-flex mr-3" alt="">
                             </a>
                             <div class="media-body">
                                 <h5>
@@ -69,7 +69,7 @@
 
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
-                        <h4>Address</h4>
+                        <h4 class="section-title">Address</h4>
                         <h5>DigiZigs Web Technologies.</h5>
                         <p>@ : info@digizigs.com <br>P: (+91) 9712340450</p>
                         <h4>Newsletter</h4>
@@ -109,11 +109,11 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     <div class="footer-nav">
-                        <a href="#">Home</a>
+                        <a href="{{route('apphome')}}">Home</a>
                         <a href="#">Portfolio</a>
                         <a href="#">Pages</a>
                         <a href="#">Shortcode</a>
-                        <a href="#">Blog</a>
+                        <a href="{{route('app.blog')}}">Blog</a>
                     </div>
                 </div>
             </div>

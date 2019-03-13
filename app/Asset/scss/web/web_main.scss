@@ -36,19 +36,21 @@
 
 //@import '../../vendor/magnific-popup/magnific-popup.scss';
 //@import '../../vendor/normalize/normalize.scss';
-//@import '../../vendor/animate/css/animate.scss';
+@import '../../vendor/animate/css/animate.scss';
 
 @import './snippet/typography';
 @import './snippet/variables';
 @import './snippet/preloader';
+@import './snippet/scroll_top';
 @import './snippet/header-nav';
+@import './snippet/footer';
 @import './snippet/home-banner';
 
 //Effect
 //@import './effects/hover-1';
 
-//Home Page
-//@import './snippet/main-menu-area';
+// Pages
+@import './snippet/blog_page';
 //@import './snippet/header-area';
 //@import './snippet/feature-area';
 //@import './snippet/caption-slider';

@@ -1,10 +1,15 @@
+.footer-area{
 
+
+
+
+}
 .footer-area {
     //background-color: #272938;
     background-color: #1D262D;
     color: #7286a0;
     line-height: 24px;
-    z-index: -999;
+    //z-index: -999;
     a:hover{
       color: #1590C2;
     } 
@@ -21,6 +26,11 @@
     }
 
     .footer_widget{
+      .inner{
+        a:hover{
+          color: $primary-color;
+        }
+      }
       h5 {
         font-size: 16px; 
       }
@@ -29,8 +39,9 @@
       }
       h4{
         margin-bottom: 40px;
-          font-size: 18px;
+        font-size: 18px;
       }
+
 
       ul {
         list-style: none;
@@ -92,7 +103,7 @@
               color: #fff;
               padding: 0 15px;
               border-radius: 0 3px 3px 0;
-              background-color: #138FC2; 
+              background-color: $primary-color; 
           }
           button:hover {
               background-color: #138FC2; 
@@ -111,6 +122,8 @@
         color: #7286a0;
         padding: 0 10px;
         
+      }a:hover{
+        color: $primary-color;
       }
       span{
         

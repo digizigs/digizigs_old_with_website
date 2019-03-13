@@ -36,12 +36,12 @@ $(document).ready(function () {
 
     //------- Niceselect  js --------//  
 
-    if (document.getElementById("default-select")) {
+    /*if (document.getElementById("default-select")) {
         $('select').niceSelect();
     };
     if (document.getElementById("service-select")) {
         $('select').niceSelect();
-    };
+    };*/
 
     //------- Pre Loader --------//  
     $(window).on('load', function () {
@@ -163,7 +163,7 @@ $(document).ready(function () {
 
     //------- Mobile Nav  js --------//  
 
-    if ($('#nav-menu-container').length) {
+    /*if ($('#nav-menu-container').length) {
         var $mobile_nav = $('#nav-menu-container').clone().prop({
             id: 'mobile-nav'
         });
@@ -200,11 +200,11 @@ $(document).ready(function () {
         });
     } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
         $("#mobile-nav, #mobile-nav-toggle").hide();
-    }
+    }*/
 
     //------- Smooth Scroll  js --------//  
 
-    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function () {
+    /*$('.nav-menu a, #mobile-nav a, .scrollto').on('click', function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             if (target.length) {
@@ -235,7 +235,7 @@ $(document).ready(function () {
                 return false;
             }
         }
-    });
+    });*/
 
     $(document).ready(function () {
 

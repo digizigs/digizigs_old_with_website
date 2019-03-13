@@ -17,7 +17,10 @@
 
         @yield('content')
 
-		{{--@include('app.partials.footer')--}}
+		@include('app.partials.footer')
+
+        @include('app.partials.scrolltop')
+
     </div>
 	
     @include('app.partials.scripts')

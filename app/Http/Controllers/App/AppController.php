@@ -35,6 +35,12 @@ class AppController extends Controller {
     public function blog(){
         return view('app.pages.post');
     }
+    public function about(){
+        return view('app.pages.about');
+    }
+    public function portfolio(){
+        return view('app.pages.portfolio');
+    }
 
     public function contact(){
         return view('app.pages.contact');
