@@ -86,7 +86,7 @@
 		<div class="testi_slider owl-carousel">
 			<div class="item">
 				<div class="testi_item">
-					<img src="img/quote.png" alt="">
+					<img src="{{asset('public/images/quote.png')}}" alt="">
 					<h4>Fanny Spencer</h4>
 					<ul class="list">
 						<li><a href="#"><i class="fa fa-star"></i></a></li>

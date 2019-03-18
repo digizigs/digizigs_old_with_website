@@ -3,6 +3,10 @@
 $(document).ready(function () {
 
     
+    //------- Wow JS Initialized --------// 
+    
+    new WOW().init();
+
 
     var window_width = $(window).width(),
         window_height = window.innerHeight,
@@ -16,7 +20,7 @@ $(document).ready(function () {
 
     //------- Pre Loader --------//  
     $(window).on('load', function () {
-        $(".preloader-area").delay(500).fadeOut(500);
+        $(".preloader-area").delay(100).fadeOut(100);
     })
 
     //------- Go to Top --------// 
@@ -232,5 +236,30 @@ $(document).ready(function () {
         center: true,
     });
 
+
+    //------- Filter  js --------//  
+    $(window).on("load", function () {
+        $('.filters ul li').on("click", function () {
+            $('.filters ul li').removeClass('active');
+            $(this).addClass('active');
+
+            var data = $(this).attr('data-filter');
+            $grid.isotope({
+                filter: data
+            })
+        });
+
+
+        if (document.getElementById("work")) {
+            var $grid = $(".grid").isotope({
+                itemSelector: ".all",
+                percentPosition: true,
+                masonry: {
+                    columnWidth: ".all"
+                }
+            })
+        };
+    });
+    
     
 });

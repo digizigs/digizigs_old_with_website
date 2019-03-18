@@ -17,7 +17,9 @@
 
         @yield('content')
 
-		@include('app.partials.footer')
+		@include('app.partials.contact-form')
+
+        @include('app.partials.footer')
 
         @include('app.partials.scrolltop')
 

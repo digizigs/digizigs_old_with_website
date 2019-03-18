@@ -19,7 +19,11 @@
   position: fixed;
   box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
   background: #fff;
-  transition: all 0.9s; }
+  transition: all 0.9s; 
+  a{
+    color: #222222;
+  }
+}
   #header.header-scrolled #nav-menu-container {
     margin-left: auto; }
   #header.header-scrolled.dark {
@@ -127,7 +131,7 @@
   padding: 0px;
   text-decoration: none;
   display: inline-block;
-  color: #222222;
+  color: #fff;
   font-weight: 500;
   font-size: 16px;
   text-transform: capitalize;

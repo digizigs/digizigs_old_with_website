@@ -18857,6 +18857,10 @@ th {
   transition: all 0.9s;
 }
 
+#header.header-scrolled a {
+  color: #222222;
+}
+
 #header.header-scrolled #nav-menu-container {
   margin-left: auto;
 }
@@ -18987,7 +18991,7 @@ th {
   padding: 0px;
   text-decoration: none;
   display: inline-block;
-  color: #222222;
+  color: #fff;
   font-weight: 500;
   font-size: 16px;
   text-transform: capitalize;
@@ -19344,7 +19348,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-.home-banner-area {
+.Banner {
+  height: 100vh;
+}
+
+.home-banner-area .ban-img {
   background-size: cover;
 }
 
@@ -19433,10 +19441,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   position: relative;
   left: 260px;
   margin-bottom: 100px;
-}
-
-.home-banner-area .banner-img img {
-  padding-bottom: 100px;
+  margin-top: 200px;
 }
 
 @media (max-width: 1480px) {
@@ -19902,9 +19907,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: black;
 }
 
+/*--------- About Area -------------*/
+
 .about-area .section-title {
   margin-bottom: 0;
 }
+
+/*--------- About Area -------------*/
 
 offwhite {
   background: #f9f9ff;
@@ -20160,4 +20169,295 @@ section .section-title p {
 }
 
 /*--------- End Work Area -------------*/
+
+/*----------Contact Area-----------------*/
+
+.contact-page-area {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 80px 40px;
+  color: #fff;
+  background: #e45447;
+}
+
+.contact-page-area .section-title {
+  font-size: 62px;
+  font-weight: 600;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .contact-page-area {
+    margin-top: 40px;
+  }
+}
+
+.contact-page-area .single-contact-address {
+  margin-bottom: 20px;
+}
+
+.contact-page-area .single-contact-address .contact-details {
+  margin-top: 10px;
+}
+
+.contact-page-area .single-contact-address h5 {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.contact-page-area .single-contact-address .lnr {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  margin-right: 30px;
+}
+
+.contact-page-area .form-area input {
+  padding: 15px;
+}
+
+.contact-page-area .form-area input,
+.contact-page-area .form-area textarea {
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.contact-page-area .form-area input:focus,
+.contact-page-area .form-area textarea:focus {
+  border-color: #ced4da;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.contact-page-area .form-area textarea {
+  height: 154px;
+  margin-top: 0px;
+}
+
+.contact-page-area .form-area .primary-btn {
+  padding: 0 20px;
+  font-size: 13px;
+  background-color: #fff !important;
+}
+
+.contact-page-area .form-area .primary-btn span {
+  color: #e45447;
+}
+
+.contact-page-area .form-area .primary-btn:before {
+  color: #e45447;
+}
+
+.contact-page-area .form-area :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-weight: 500;
+}
+
+.contact-page-area .form-area ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-weight: 500;
+}
+
+.contact-page-area .form-area :-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-weight: 500;
+}
+
+.contact-page-area .form-area ::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-weight: 500;
+}
+
+.contact-page-area .contact-btns {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+/*----------Contact Area-----------------*/
+
+/*----------Service Area-----------------*/
+
+.service-area {
+  background: #f9f9ff;
+}
+
+.service-area .white {
+  background: #fff;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(1) .single-service {
+  background: #e2a599;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(2) .single-service {
+  background: #715f69;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(3) .single-service {
+  background: #e45447;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(4) .single-service {
+  background: #90acd1;
+}
+
+.service-area .single-service {
+  color: #fff;
+  padding: 60px 30px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.service-area .single-service .lnr {
+  font-size: 36px;
+  color: #fff;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.service-area .single-service h4 {
+  color: #fff;
+  font-size: 21px;
+  line-height: 27px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.service-area .single-service h4 span {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .service-area .single-service h4 .single-service h4 span {
+    display: inline-block;
+  }
+}
+
+.service-area .single-service:hover {
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+@media (max-width: 991px) {
+  .service-area .single-service {
+    margin-bottom: 30px;
+    padding: 60px 30px;
+  }
+}
+
+/*----------Service Area-----------------*/
+
+/*----------Testinomial  Area-----------------*/
+
+.testimonials_area {
+  position: relative;
+}
+
+.testimonials_area .owl-controls {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .testimonials_area .owl-controls {
+    display: none;
+  }
+}
+
+.testimonials_area .owl-controls .owl-nav {
+  position: relative;
+  top: 35px;
+}
+
+.testimonials_area .owl-controls .owl-nav .owl-prev,
+.testimonials_area .owl-controls .owl-nav .owl-next {
+  display: inline-block;
+  margin-right: 31px;
+  color: #000;
+}
+
+.testimonials_area .owl-controls .owl-nav .owl-prev {
+  margin-right: 80px;
+}
+
+.testimonials_area .owl-controls .owl-nav .owl-next {
+  margin-left: 80px;
+  margin-right: 0;
+}
+
+.testimonials_area .owl-controls .owl-dots .owl-dot {
+  height: 4px;
+  width: 40px;
+  background: #eeeeee;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.testimonials_area .owl-controls .owl-dots .owl-dot:last-child {
+  margin-right: 0px;
+}
+
+.testimonials_area .owl-controls .owl-dots .owl-dot:hover,
+.testimonials_area .owl-controls .owl-dots .owl-dot.active {
+  background: #e45447;
+}
+
+.testi_slider {
+  margin: auto;
+}
+
+.testi_slider .testi_item {
+  text-align: center;
+}
+
+.testi_slider .testi_item img {
+  width: auto;
+  margin: auto;
+}
+
+.testi_item {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 767px) {
+  .testi_item {
+    margin-bottom: 0;
+  }
+}
+
+.testi_item h4 {
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.testi_item .list {
+  margin-bottom: 35px;
+}
+
+.testi_item .list li {
+  display: inline-block;
+}
+
+.testi_item .list li a {
+  color: #ffc000;
+  font-size: 14px;
+}
+
+.testi_item p {
+  max-width: 570px;
+  margin: auto;
+}
+
+/*----------Testinomial  Area-----------------*/
 

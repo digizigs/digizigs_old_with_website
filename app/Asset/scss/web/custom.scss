@@ -1,8 +1,10 @@
+/*--------- About Area -------------*/
 .about-area{
   .section-title {
     margin-bottom: 0; 
   }
 }
+/*--------- About Area -------------*/
 
 offwhite {
   background: #f9f9ff; 
@@ -46,7 +48,6 @@ offwhite {
     } 
   }
 }
-
 .section-gap {
   padding: 150px 0; }
   @media (max-width: 1024px) {
@@ -102,6 +103,8 @@ section{
     } 
   }
 }
+
+
 /*--------- Start Work Area -------------*/
 .work-area {
   background: #f9f9ff; }
@@ -194,3 +197,238 @@ section{
     opacity: 1; }
 
 /*--------- End Work Area -------------*/
+
+
+/*----------Contact Area-----------------*/
+.contact-page-area{
+  //margin-top: 80px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  padding: 80px 40px;
+  color: #fff;
+  //margin-bottom: 30px;
+  background: #e45447;
+  
+  .section-title{
+    font-size: 62px;
+    font-weight: 600;
+    color: #fff
+  }
+  @media (max-width: 991px){
+    margin-top: 40px;
+  }
+
+   .single-contact-address {
+      margin-bottom: 20px;
+      .contact-details{
+        margin-top: 10px;
+      }
+      h5 {
+        font-weight: 700;
+        font-size: 15px;
+        margin-bottom: 5px;
+        color: #fff; 
+      }
+      .lnr {
+        font-size: 30px;
+        font-weight: 500;
+        color: #fff;
+        margin-right: 30px; 
+      } 
+    }
+
+  .form-area{
+    input {
+      padding: 15px; 
+    }
+    input,
+    textarea {
+      border-radius: 0;
+      font-size: 12px; 
+    }
+    input:focus,
+    textarea:focus {
+      border-color: #ced4da;
+      box-shadow: none; 
+    }
+    textarea {
+      height: 154px;
+      margin-top: 0px; 
+    }
+    .primary-btn {
+      padding: 0 20px;
+      font-size: 13px;
+      background-color: #fff !important;
+      
+      span{
+        color: #e45447;
+      }
+    }
+    .primary-btn:before{
+      color: #e45447;
+    }
+   
+    :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-weight: 500; }
+    ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-weight: 500; }
+    :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-weight: 500; }
+    ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-weight: 500; }
+  }
+
+
+
+  .contact-btns{
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 40px;
+    color: #fff;
+    margin-bottom: 30px;
+  }  
+}
+/*----------Contact Area-----------------*/
+
+
+/*----------Service Area-----------------*/
+.service-area{
+  background: #f9f9ff;
+  .white{
+    background: #fff;
+  }
+  .col-lg-3.col-md-6:nth-child(1) .single-service {
+    background: #e2a599; }
+  .col-lg-3.col-md-6:nth-child(2) .single-service {
+    background: #715f69; }
+  .col-lg-3.col-md-6:nth-child(3) .single-service {
+    background: #e45447; }
+  .col-lg-3.col-md-6:nth-child(4) .single-service {
+    background: #90acd1; }
+
+  .single-service{
+    color: #fff;
+    padding: 60px 30px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s; 
+    
+    .lnr {
+      font-size: 36px;
+      color: #fff;
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s; 
+    }
+
+    h4 {
+      color: #fff;
+      font-size: 21px;
+      line-height: 27px;
+      font-weight: 700;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      span {
+      display: block; }
+      @media (max-width: 767px) {
+        .single-service h4 span {
+        display: inline-block; 
+        } 
+      } 
+    }
+  }
+  .single-service:hover {
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    transform: translateY(-10px); 
+  }
+  @media (max-width: 991px) {
+    .single-service{
+      margin-bottom: 30px;
+      padding: 60px 30px;
+    }
+  }
+}
+/*----------Service Area-----------------*/
+
+
+
+/*----------Testinomial  Area-----------------*/
+.testimonials_area {
+  position: relative; 
+
+
+}
+  .testimonials_area .owl-controls {
+    text-align: center; }
+    @media (max-width: 767px) {
+      .testimonials_area .owl-controls {
+        display: none; } }
+    .testimonials_area .owl-controls .owl-nav {
+      position: relative;
+      top: 35px; }
+      .testimonials_area .owl-controls .owl-nav .owl-prev,
+      .testimonials_area .owl-controls .owl-nav .owl-next {
+        display: inline-block;
+        margin-right: 31px;
+        color: #000; }
+      .testimonials_area .owl-controls .owl-nav .owl-prev {
+        margin-right: 80px; }
+      .testimonials_area .owl-controls .owl-nav .owl-next {
+        margin-left: 80px;
+        margin-right: 0; }
+    .testimonials_area .owl-controls .owl-dots .owl-dot {
+      height: 4px;
+      width: 40px;
+      background: #eeeeee;
+      display: inline-block;
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s; }
+      .testimonials_area .owl-controls .owl-dots .owl-dot:last-child {
+        margin-right: 0px; }
+      .testimonials_area .owl-controls .owl-dots .owl-dot:hover, .testimonials_area .owl-controls .owl-dots .owl-dot.active {
+        background: #e45447; }
+
+.testi_slider {
+  margin: auto; }
+  .testi_slider .testi_item {
+    text-align: center; }
+    .testi_slider .testi_item img {
+      width: auto;
+      margin: auto; }
+
+.testi_item {
+  margin-bottom: 50px; }
+  @media (max-width: 767px) {
+    .testi_item {
+      margin-bottom: 0; } }
+  .testi_item h4 {
+    font-size: 21px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 10px; }
+  .testi_item .list {
+    margin-bottom: 35px; }
+    .testi_item .list li {
+      display: inline-block; }
+      .testi_item .list li a {
+        color: #ffc000;
+        font-size: 14px; }
+  .testi_item p {
+    max-width: 570px;
+    margin: auto; }
+
+/*----------Testinomial  Area-----------------*/
