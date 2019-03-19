@@ -14,18 +14,7 @@ Route::get('/blog', 'App\AppController@blog')->name('app.blog');
 Route::get('/about', 'App\AppController@about')->name('app.about');
 Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
-/*Route::get('{page}',function($slug){
 
-    $page = \App\Models\Page::findBySlug($slug);
-    $view = "app/pages/{$page->slug}";
-   
-
-    return view()->first([
-        "app/pages/{$page->slug}",
-        'app/page',     
-    ],compact('page'));
-   
-});*/
 
 
 //Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
@@ -136,4 +125,22 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         return view('admin.test');
     })->name('testlab');
 
+});
+
+Route::get('{page}',function($slug){
+
+    
+    $page = \App\Models\Page::findBySlug($slug);
+
+    return $page;
+
+
+    $view = "app/pages/{$page->slug}";
+   
+    if(view()->exists('app/page')){
+        return view("app/pages/{$page->slug}",compact($page));
+    }else{
+        return abort(404);
+    }
+   
 });    

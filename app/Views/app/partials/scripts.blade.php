@@ -10,4 +10,10 @@
 <script src="{{asset('public/vendor/magnific-popup/magnific-popup.min.js')}}"></script>
 <script src="{{asset('public/vendor/superfish/superfish.min.js')}}"></script>
 
+
+<script src="{{asset('public/vendor/typed/typed.js')}}"></script>
+<script src="{{asset('public/vendor/particle-js/particle-js.js')}}"></script>
+<script src="{{asset('public/vendor/particle-js/particle.js')}}"></script>
+
+
 <script src="{{asset('public/js/web_main.js')}}"></script>

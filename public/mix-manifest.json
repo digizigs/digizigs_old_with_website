@@ -1,8 +1,8 @@
 {
     "/js/admin_main.js": "/js/admin_main.js",
+    "/js/front_main.js": "/js/front_main.js",
     "/js/web_main.js": "/js/web_main.js",
     "/css/web_main.css": "/css/web_main.css",
     "/css/front_main.css": "/css/front_main.css",
-    "/css/admin_main.css": "/css/admin_main.css",
-    "/js/front_main.js": "/js/front_main.js"
+    "/css/admin_main.css": "/css/admin_main.css"
 }

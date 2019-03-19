@@ -1,5 +1,5 @@
 <!-- Start contact-page Area -->
-<section class="contact-page-area section-gap-top ">
+<section class="contact-page-area bdr">
 	<div class="container">
 		<h2 class="section-title">Write to us</h1>
 		<div class="row">

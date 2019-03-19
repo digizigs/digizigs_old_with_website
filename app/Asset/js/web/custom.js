@@ -20,7 +20,8 @@ $(document).ready(function () {
 
     //------- Pre Loader --------//  
     $(window).on('load', function () {
-        $(".preloader-area").delay(100).fadeOut(100);
+        jQuery(".loader").fadeOut();
+        $(".preloader-area").delay(100).fadeOut("slow");
     })
 
     //------- Go to Top --------// 
@@ -155,7 +156,17 @@ $(document).ready(function () {
         }
     });
 
-
+    // HOME TYPED JS
+    if ($('.element').length) {
+        $('.element').each(function () {
+            $(this).typed({
+                strings: [$(this).data('text1'), $(this).data('text2'), $(this).data('text3'), $(this).data('text4'), $(this).data('text5'), $(this).data('text6'), $(this).data('text7')], 
+                loop: $(this).data('loop') ? $(this).data('loop') : false ,
+                backDelay: $(this).data('backdelay') ? $(this).data('backdelay') : 2000 ,                
+                typeSpeed: 10,
+            });
+        });
+    }
 
     //1)======================Typing Effecct===================
     typing_effect();
