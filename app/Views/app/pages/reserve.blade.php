@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="wrapper" >
+<div class="wrapper">
 
     
     <!-- start banner Area -->
@@ -42,7 +42,7 @@
 
 
     <!-- Start Service Area -->
-    <section class="service-area sp-60">
+    <section class="service-area section-gap white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -82,40 +82,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="single-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
                         <span class="lnr lnr-chart-bars"></span>
-                        <h4><span>Logo </span> Design
-                        </h4>
-                        <p>If you’re looking blank casvsettes on the web, you may confuse.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-service wow fadeInUp" data-wow-duration="1s">
-                        <span class="lnr lnr-screen"></span>
-                        <h4>
-                            <span>Digital</span> Marketing
-                        </h4>
-                        <p>If you’re looking blank casvsettes on the web, you may confuse.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                        <span class="lnr lnr-laptop-phone"></span>
-                        <h4><span>Social</span> Marketing
-                        </h4>
-                        <p>If you’re looking blank casvsettes on the web, you may confuse.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <span class="lnr lnr-database"></span>
-                        <h4><span>Brand</span> Positioning
-                        </h4>
-                        <p>If you’re looking blank casvsettes on the web, you may confuse.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-service wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-                        <span class="lnr lnr-chart-bars"></span>
-                        <h4><span>Media</span> Design
+                        <h4><span>Logo &</span> Media
                         </h4>
                         <p>If you’re looking blank casvsettes on the web, you may confuse.</p>
                     </div>
@@ -125,9 +92,8 @@
     </section>
     <!-- End Service Area -->
 
-
     <!-- Start Work Area Area -->
-    <section class="work-area sp-60" id="work">
+    <section class="work-area" id="work">
         <div class="container">
             <div class="row d-flex justify-content-between align-items-end mb-80">
                 <div class="col-lg-6">
@@ -234,6 +200,9 @@
         </div>
     </section>
     <!-- End Work Area Area -->
+
+  
+
     
 </div>
 

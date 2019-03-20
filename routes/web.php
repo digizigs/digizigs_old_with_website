@@ -128,16 +128,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 });
 
 Route::get('{page}',function($slug){
-
-    
+   
     $page = \App\Models\Page::findBySlug($slug);
-
-    return $page;
-
 
     $view = "app/pages/{$page->slug}";
    
-    if(view()->exists('app/page')){
+    if(view()->exists($view)){
         return view("app/pages/{$page->slug}",compact($page));
     }else{
         return abort(404);

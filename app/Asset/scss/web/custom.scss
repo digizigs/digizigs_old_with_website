@@ -9,41 +9,111 @@ body{
     font-weight: 500;
 }
 
-.sec-pad{
-  padding:120px 0;
+/*------Section Padding-------*/
+.sp-20{
+  padding:20px 0;
+}
+.sp-40{
+  padding:40px 0;
+}
+.sp-60{
+  padding:60px 0;
+}
+.sp-80{
+  padding:80px 0;
 }
 
 .wrapper{
-    position: relative;
-    z-index: 1;
-    background: #fff;
-    overflow: hidden;
-    box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.10);
-    padding-bottom: 90px;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.10);
 }
 
 .tag-title{
-  font-size: 26px;
+  font-size: 30px;
   line-height: 32px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   letter-spacing: 1px;
 }
 .tag-description{
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 22px;
+  padding-bottom: 20px;
   letter-spacing: 1px;
 }
+
 
 #particles-js{
     position: absolute;
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     top: 0;
     left: 0;
     z-index: 6; 
 }
 
-.home{
+@media (max-width: 991px){
+    .home-banner{
+      padding: 20px;
+    }
+    .hero-title{
+      font-size: 100px !important;
+      font-weight: 700;
+      letter-spacing: -4px;
+      line-height: 800px;
+      margin-bottom: 50px;
+      span{
+        color:$primary-color; 
+      }
+    }
+    .social{
+      right: 20px !important;
+    }
+    .titlebar{
+      .page-title{
+        span{
+          font-size: 80px !important;
+        }
+        h1{
+          font-size: 80px !important;
+        }
+        font-size: 80px !important;
+      }
+    }
+  
+}
+
+
+.titlebar{
+  padding: 94px 0;
+  height: 350px;
+  text-align: center;
+  
+
+  .page-title{
+    font-size: 86px;
+    font-weight: 800;
+    letter-spacing: -2px;
+
+    span{
+      font-size: 86px;
+      font-weight: 800;
+      color:$primary-color; 
+    }
+  }
+  #particles-js {
+    height: 300px;
+  }
+
+}
+
+
+
+
+/*----------Start Home Banner---------------*/
+.home-banner{
   display: table;
   width: 100%;
   padding: 3%;
@@ -78,7 +148,7 @@ body{
       font-weight: 900;
     }
     .social{
-      right: 20px;
+      right: 40px;
       top: 0;
       position: absolute;
       top: 45%;
@@ -125,33 +195,86 @@ body{
 
   }
 }
+/*----------End Home Banner-----------------*/
 
+/*----------Start Service Area--------------*/
+.service-area{
+  background: #f9f9ff;
+  .white{
+    background: #fff;
+  }
+  .col-lg-3.col-md-6:nth-child(1) .single-service {
+    background: #e2a599; }
+  .col-lg-3.col-md-6:nth-child(2) .single-service {
+    background: #715f69; }
+  .col-lg-3.col-md-6:nth-child(3) .single-service {
+    background: #e45447; }
+  .col-lg-3.col-md-6:nth-child(4) .single-service {
+    background: #90acd1; }
+  .col-lg-3.col-md-6:nth-child(5) .single-service {
+    background: #90acd1; }
+  .col-lg-3.col-md-6:nth-child(6) .single-service {
+    background: #e45447; }
+  .col-lg-3.col-md-6:nth-child(7) .single-service {
+    background: #715f69; }
+  .col-lg-3.col-md-6:nth-child(8) .single-service {
+    background: #e2a599; }
 
+  .single-service{
+    color: #fff;
+    padding: 60px 30px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    margin-bottom: 40px; 
+    
+    .lnr {
+      font-size: 36px;
+      color: #fff;
+      -webkit-transition: all 0.3s ease 0s;
+      -moz-transition: all 0.3s ease 0s;
+      -o-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s; 
+    }
 
-
-
-
-.titlebar{
-  padding: 94px 0;
-  height: 300px;
-  text-align: center;
-  
-
-  .page-title{
-    font-size: 120px;
-    font-weight: 900;
-    letter-spacing: -2px;
-
-    span{
-      font-size: 120px;
-      font-weight: 900;
-      color:$primary-color; 
+    h4 {
+      color: #fff;
+      font-size: 21px;
+      line-height: 27px;
+      font-weight: 700;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      span {
+      display: block; }
+      @media (max-width: 767px) {
+        .single-service h4 span {
+        display: inline-block; 
+        } 
+      } 
     }
   }
-  #particles-js {
-    height: 300px;
+  .single-service:hover {
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
+    transform: translateY(-10px); 
+  }
+  @media (max-width: 991px) {
+    .single-service{
+      margin-bottom: 30px;
+      padding: 60px 30px;
+    }
   }
 }
+/*----------End Service Area----------------*/
+
+
+
+
+
 
 .tag-line{
   padding: 80px 0;
@@ -161,9 +284,14 @@ body{
 
 
 
-
-
-
+/*---------------Start About US---------------*/
+.about-us{
+  
+  .about-area{
+    text-align: center;
+  }
+}
+/*---------------Start About US---------------*/
 
 
 
@@ -185,9 +313,11 @@ body{
 
 /*--------- About Area -------------*/
 .about-area{
+  
   .section-title {
     margin-bottom: 0; 
   }
+
 }
 /*--------- About Area -------------*/
 
@@ -195,15 +325,15 @@ offwhite {
   background: #f9f9ff; 
 }
 
-.section-gap{
+.section-gap-del{
   padding: 150px 0;
 
   .section-title {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     h2 {
       font-size: 48px;
       font-weight: 700;
-      margin-bottom: 70px;
+      margin-bottom: 30px;
       text-transform: capitalize;
       position: relative;
       line-height: 44px; 
@@ -236,11 +366,11 @@ offwhite {
 
 section{
   .section-title {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
     h2 {
-      font-size: 48px;
+      font-size: 42px;
       font-weight: 700;
-      margin-bottom: 70px;
+      margin-bottom: 60px;
       text-transform: capitalize;
       position: relative;
       line-height: 44px; 
@@ -273,7 +403,7 @@ section{
 
 
 /*--------- Start Work Area -------------*/
-.work-area {
+.work-areas {
   background: #f9f9ff; }
   @media (max-width: 1024px) {
     .work-area .row.mb-80 {
@@ -318,7 +448,7 @@ section{
     border-radius: 10px;
     width: 100%; }
 
-.single-work {
+.single-works {
   border-radius: 5px;
   margin-bottom: 30px; }
   .single-work .thumb .overlay-bg {
@@ -464,70 +594,7 @@ section{
 /*----------Contact Area-----------------*/
 
 
-/*----------Service Area-----------------*/
-.service-area{
-  background: #f9f9ff;
-  .white{
-    background: #fff;
-  }
-  .col-lg-3.col-md-6:nth-child(1) .single-service {
-    background: #e2a599; }
-  .col-lg-3.col-md-6:nth-child(2) .single-service {
-    background: #715f69; }
-  .col-lg-3.col-md-6:nth-child(3) .single-service {
-    background: #e45447; }
-  .col-lg-3.col-md-6:nth-child(4) .single-service {
-    background: #90acd1; }
 
-  .single-service{
-    color: #fff;
-    padding: 60px 30px;
-    border-radius: 5px;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s; 
-    
-    .lnr {
-      font-size: 36px;
-      color: #fff;
-      -webkit-transition: all 0.3s ease 0s;
-      -moz-transition: all 0.3s ease 0s;
-      -o-transition: all 0.3s ease 0s;
-      transition: all 0.3s ease 0s; 
-    }
-
-    h4 {
-      color: #fff;
-      font-size: 21px;
-      line-height: 27px;
-      font-weight: 700;
-      margin-top: 30px;
-      margin-bottom: 20px;
-      span {
-      display: block; }
-      @media (max-width: 767px) {
-        .single-service h4 span {
-        display: inline-block; 
-        } 
-      } 
-    }
-  }
-  .single-service:hover {
-    -webkit-transform: translateY(-10px);
-    -moz-transform: translateY(-10px);
-    -ms-transform: translateY(-10px);
-    -o-transform: translateY(-10px);
-    transform: translateY(-10px); 
-  }
-  @media (max-width: 991px) {
-    .single-service{
-      margin-bottom: 30px;
-      padding: 60px 30px;
-    }
-  }
-}
-/*----------Service Area-----------------*/
 
 
 

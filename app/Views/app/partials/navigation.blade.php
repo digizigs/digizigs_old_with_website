@@ -17,7 +17,8 @@
                     
                     <li><a href="{{route('app.about')}}" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
                     <li><a href="{{route('app.portfolio')}}" class="{{ request()->is('portfolio') ? 'active' : '' }}">Portfolio</a></li>
-                    <li class="menu-has-children"><a href="#" >Services</a>
+                    <li><a href="{{url('/services')}}" class="{{ request()->is('services') ? 'active' : '' }}">Services</a></li>
+                    <!--li class="menu-has-children"><a href="#" >Services</a>
                         <ul class="child_menu">
                             <li><a href="elements.html">Web Design</a></li>
                             <li><a href="contact.html">Web Development</a></li>
@@ -25,8 +26,9 @@
                             <li><a href="services.html">UX/UI</a></li>
                             <li><a href="portfolio-details.html">Digital</a></li>
                             <li><a href="portfolio-details.html">Logo & Media</a></li>
-                        </ul>
+                        </ul-->
                     </li>
+                    <li><a href="{{url('/case-studies')}}" class="{{ request()->is('case-studies') ? 'active' : '' }}">Case Studies</a></li>
                     <li><a href="{{route('app.blog')}}" class="{{ request()->is('blog') ? 'active' : '' }}">Blog</a></li>
                     <li><a href="{{route('contact')}}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>
                     

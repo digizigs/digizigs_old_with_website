@@ -8,6 +8,9 @@ $(document).ready(function () {
     new WOW().init();
 
 
+    $('.page-title').parallax("10%", -0.1);
+
+
     var window_width = $(window).width(),
         window_height = window.innerHeight,
         header_height = $(".default-header").height(),

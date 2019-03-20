@@ -18957,7 +18957,7 @@ th {
 }
 
 .nav-menu ul li {
-  min-width: 180px;
+  min-width: 120px;
   text-align: left;
 }
 
@@ -18992,8 +18992,8 @@ th {
   text-decoration: none;
   display: inline-block;
   color: #222222;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 15px;
   text-transform: capitalize;
   outline: none;
   font-family: "Poppins", sans-serif;
@@ -19010,7 +19010,7 @@ th {
 }
 
 .nav-menu > li {
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
 .nav-menu > li:last-child {
@@ -19918,8 +19918,22 @@ body {
   font-weight: 500;
 }
 
-.sec-pad {
-  padding: 120px 0;
+/*------Section Padding-------*/
+
+.sp-20 {
+  padding: 20px 0;
+}
+
+.sp-40 {
+  padding: 40px 0;
+}
+
+.sp-60 {
+  padding: 60px 0;
+}
+
+.sp-80 {
+  padding: 80px 0;
 }
 
 .wrapper {
@@ -19929,45 +19943,103 @@ body {
   overflow: hidden;
   -webkit-box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.1);
-  padding-bottom: 90px;
 }
 
 .tag-title {
-  font-size: 26px;
+  font-size: 30px;
   line-height: 32px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   letter-spacing: 1px;
 }
 
 .tag-description {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 22px;
+  padding-bottom: 20px;
   letter-spacing: 1px;
 }
 
 #particles-js {
   position: absolute;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   top: 0;
   left: 0;
   z-index: 6;
 }
 
-.home {
+@media (max-width: 991px) {
+  .home-banner {
+    padding: 20px;
+  }
+
+  .hero-title {
+    font-size: 100px !important;
+    font-weight: 700;
+    letter-spacing: -4px;
+    line-height: 800px;
+    margin-bottom: 50px;
+  }
+
+  .hero-title span {
+    color: #E45447;
+  }
+
+  .social {
+    right: 20px !important;
+  }
+
+  .titlebar .page-title {
+    font-size: 80px !important;
+  }
+
+  .titlebar .page-title span {
+    font-size: 80px !important;
+  }
+
+  .titlebar .page-title h1 {
+    font-size: 80px !important;
+  }
+}
+
+.titlebar {
+  padding: 94px 0;
+  height: 350px;
+  text-align: center;
+}
+
+.titlebar .page-title {
+  font-size: 86px;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.titlebar .page-title span {
+  font-size: 86px;
+  font-weight: 800;
+  color: #E45447;
+}
+
+.titlebar #particles-js {
+  height: 300px;
+}
+
+/*----------Start Home Banner---------------*/
+
+.home-banner {
   display: table;
   width: 100%;
   padding: 3%;
   height: 100vh;
 }
 
-.home .home-content {
+.home-banner .home-content {
   position: relative;
   display: table-cell;
   vertical-align: middle;
 }
 
-.home .home-content .hero-title {
+.home-banner .home-content .hero-title {
   font-size: 140px;
   font-weight: 900;
   letter-spacing: -4px;
@@ -19975,28 +20047,28 @@ body {
   margin-bottom: 50px;
 }
 
-.home .home-content .hero-title span {
+.home-banner .home-content .hero-title span {
   color: #E45447;
 }
 
-.home .home-content .s-ttl {
+.home-banner .home-content .s-ttl {
   line-height: 46px;
 }
 
-.home .home-content p {
+.home-banner .home-content p {
   font-size: 28px;
   color: #b7b7b7;
   font-weight: 500;
   padding: 20px;
 }
 
-.home .home-content p span {
+.home-banner .home-content p span {
   color: #000;
   font-weight: 900;
 }
 
-.home .home-content .social {
-  right: 20px;
+.home-banner .home-content .social {
+  right: 40px;
   top: 0;
   position: absolute;
   top: 45%;
@@ -20008,7 +20080,7 @@ body {
   z-index: 6;
 }
 
-.home .home-content .social a {
+.home-banner .home-content .social a {
   display: block;
   color: #000;
   font-size: 13px;
@@ -20020,16 +20092,16 @@ body {
   font-weight: 600;
 }
 
-.home .home-content .social a.text {
+.home-banner .home-content .social a.text {
   margin-right: 0;
 }
 
-.home .home-content .social a i {
+.home-banner .home-content .social a i {
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 
-.home .home-content .social a:hover i {
+.home-banner .home-content .social a:hover i {
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
   -webkit-transition: all ease 0.3s;
@@ -20037,7 +20109,7 @@ body {
   color: #E45447;
 }
 
-.home .home-content .line {
+.home-banner .home-content .line {
   float: left;
   width: 72px;
   background: #bfbfbf;
@@ -20045,32 +20117,111 @@ body {
   margin: 22px 17px;
 }
 
-.titlebar {
-  padding: 94px 0;
-  height: 300px;
-  text-align: center;
+/*----------End Home Banner-----------------*/
+
+/*----------Start Service Area--------------*/
+
+.service-area {
+  background: #f9f9ff;
 }
 
-.titlebar .page-title {
-  font-size: 120px;
-  font-weight: 900;
-  letter-spacing: -2px;
+.service-area .white {
+  background: #fff;
 }
 
-.titlebar .page-title span {
-  font-size: 120px;
-  font-weight: 900;
-  color: #E45447;
+.service-area .col-lg-3.col-md-6:nth-child(1) .single-service {
+  background: #e2a599;
 }
 
-.titlebar #particles-js {
-  height: 300px;
+.service-area .col-lg-3.col-md-6:nth-child(2) .single-service {
+  background: #715f69;
 }
+
+.service-area .col-lg-3.col-md-6:nth-child(3) .single-service {
+  background: #e45447;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(4) .single-service {
+  background: #90acd1;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(5) .single-service {
+  background: #90acd1;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(6) .single-service {
+  background: #e45447;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(7) .single-service {
+  background: #715f69;
+}
+
+.service-area .col-lg-3.col-md-6:nth-child(8) .single-service {
+  background: #e2a599;
+}
+
+.service-area .single-service {
+  color: #fff;
+  padding: 60px 30px;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  margin-bottom: 40px;
+}
+
+.service-area .single-service .lnr {
+  font-size: 36px;
+  color: #fff;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.service-area .single-service h4 {
+  color: #fff;
+  font-size: 21px;
+  line-height: 27px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.service-area .single-service h4 span {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .service-area .single-service h4 .single-service h4 span {
+    display: inline-block;
+  }
+}
+
+.service-area .single-service:hover {
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+}
+
+@media (max-width: 991px) {
+  .service-area .single-service {
+    margin-bottom: 30px;
+    padding: 60px 30px;
+  }
+}
+
+/*----------End Service Area----------------*/
 
 .tag-line {
   padding: 80px 0;
   text-align: center;
 }
+
+/*---------------Start About US---------------*/
+
+.about-us .about-area {
+  text-align: center;
+}
+
+/*---------------Start About US---------------*/
 
 /*--------- About Area -------------*/
 
@@ -20084,24 +20235,24 @@ offwhite {
   background: #f9f9ff;
 }
 
-.section-gap {
+.section-gap-del {
   padding: 150px 0;
 }
 
-.section-gap .section-title {
-  margin-bottom: 80px;
+.section-gap-del .section-title {
+  margin-bottom: 40px;
 }
 
-.section-gap .section-title h2 {
+.section-gap-del .section-title h2 {
   font-size: 48px;
   font-weight: 700;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
   text-transform: capitalize;
   position: relative;
   line-height: 44px;
 }
 
-.section-gap .section-title p {
+.section-gap-del .section-title p {
   max-width: 535px;
   margin-bottom: 0;
 }
@@ -20137,13 +20288,13 @@ offwhite {
 }
 
 section .section-title {
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 section .section-title h2 {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
   text-transform: capitalize;
   position: relative;
   line-height: 44px;
@@ -20177,7 +20328,7 @@ section .section-title p {
 
 /*--------- Start Work Area -------------*/
 
-.work-area {
+.work-areas {
   background: #f9f9ff;
 }
 
@@ -20256,7 +20407,7 @@ section .section-title p {
   width: 100%;
 }
 
-.single-work {
+.single-works {
   border-radius: 5px;
   margin-bottom: 30px;
 }
@@ -20425,80 +20576,6 @@ section .section-title p {
 }
 
 /*----------Contact Area-----------------*/
-
-/*----------Service Area-----------------*/
-
-.service-area {
-  background: #f9f9ff;
-}
-
-.service-area .white {
-  background: #fff;
-}
-
-.service-area .col-lg-3.col-md-6:nth-child(1) .single-service {
-  background: #e2a599;
-}
-
-.service-area .col-lg-3.col-md-6:nth-child(2) .single-service {
-  background: #715f69;
-}
-
-.service-area .col-lg-3.col-md-6:nth-child(3) .single-service {
-  background: #e45447;
-}
-
-.service-area .col-lg-3.col-md-6:nth-child(4) .single-service {
-  background: #90acd1;
-}
-
-.service-area .single-service {
-  color: #fff;
-  padding: 60px 30px;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
-
-.service-area .single-service .lnr {
-  font-size: 36px;
-  color: #fff;
-  -webkit-transition: all 0.3s ease 0s;
-  transition: all 0.3s ease 0s;
-}
-
-.service-area .single-service h4 {
-  color: #fff;
-  font-size: 21px;
-  line-height: 27px;
-  font-weight: 700;
-  margin-top: 30px;
-  margin-bottom: 20px;
-}
-
-.service-area .single-service h4 span {
-  display: block;
-}
-
-@media (max-width: 767px) {
-  .service-area .single-service h4 .single-service h4 span {
-    display: inline-block;
-  }
-}
-
-.service-area .single-service:hover {
-  -webkit-transform: translateY(-10px);
-  transform: translateY(-10px);
-}
-
-@media (max-width: 991px) {
-  .service-area .single-service {
-    margin-bottom: 30px;
-    padding: 60px 30px;
-  }
-}
-
-/*----------Service Area-----------------*/
 
 /*----------Testinomial  Area-----------------*/
 

@@ -10,7 +10,7 @@
 <div class="wrapper">
 
 	<!-- start banner Area -->
-	<section class="titlebar">
+	<section class="titlebar" style="background: url({{asset('public/images/banner/curve-5.png')}}) no-repeat scroll center center / cover;">
 	    <h1 class="page-title">
 	    	<span>Our </span>
 	    	portfolio
@@ -19,10 +19,7 @@
 	</section>
 	<!-- End banner Area -->
 
-	<div class="bottom-line"></div>
 		
-	<hr class="col-md-6">
-
 	<section class="tag-line">
 		<div class="container">
 			<h2 class="tag-title">Real knowledge is to know the extent of one's ignorance</h2>
@@ -57,7 +54,7 @@
 
 			<div class="filters-content">
 				<div class="row grid">
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all creative wow fadeInUp" data-wow-duration="2s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all creative wow fadeInUp" data-wow-duration="2s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
@@ -70,7 +67,7 @@
 							<a class="overlay" href="portfolio-details.html"></a>
 						</div>
 					</div>
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all web-design branding wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all web-design branding wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
@@ -83,7 +80,7 @@
 							<a class="overlay" href="portfolio-details.html"></a>
 						</div>
 					</div>
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all branding web-design wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all branding web-design wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.4s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
@@ -96,7 +93,7 @@
 							<a class="overlay" href="portfolio-details.html"></a>
 						</div>
 					</div>
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all web-design wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all web-design wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.6s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
@@ -109,7 +106,7 @@
 							<a class="overlay" href="portfolio-details.html"></a>
 						</div>
 					</div>
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all creative wow fadeInUp" data-wow-duration="2s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all creative wow fadeInUp" data-wow-duration="2s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
@@ -122,7 +119,7 @@
 							<a class="overlay" href="portfolio-details.html"></a>
 						</div>
 					</div>
-					<div class="single-work col-lg-4 col-md-6 col-sm-12 all branding wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+					<div class="single-work col-lg-4 col-md-6 col-sm-6 col-xs-6 all branding wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
 						<div class="relative">
 							<div class="thumb">
 								<div class="overlay overlay-bg"></div>
