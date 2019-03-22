@@ -39,9 +39,11 @@
       }
       h4{
         margin-bottom: 40px;
-        font-size: 18px;
+        font-size: 16px;
       }
-
+      p{
+        font-size: 14px;
+      }
 
       ul {
         list-style: none;
@@ -50,7 +52,8 @@
 
         li a {
           color: #7286a0;
-          padding: 3px 0; 
+          padding: 3px 0;
+          font-size: 14px; 
         }
         
       }
@@ -141,7 +144,7 @@
       padding: 15px; 
   }
   .footer_widget h4 {
-      margin-bottom: 20px; 
+      margin-bottom: 18px; 
     }
     .footer-bottom {
       text-align: center; 

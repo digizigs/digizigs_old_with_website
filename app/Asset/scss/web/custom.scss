@@ -40,8 +40,8 @@ body{
   letter-spacing: 1px;
 }
 .tag-description{
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 28px;
   padding-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -406,7 +406,7 @@ section{
 
 .work-area{
 
-  background: red;
+  
 
 
 }
@@ -414,7 +414,7 @@ section{
 
 
 /*--------- Start Work Area -------------*/
-.work-areas {
+.work-area {
   background: #f9f9ff; }
   @media (max-width: 1024px) {
     .work-area .row.mb-80 {
@@ -459,7 +459,7 @@ section{
     border-radius: 10px;
     width: 100%; }
 
-.single-works {
+.single-work {
   border-radius: 5px;
   margin-bottom: 30px; }
   .single-work .thumb .overlay-bg {

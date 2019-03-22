@@ -69,15 +69,16 @@
 
                 <div class="col-md-6 col-lg-3 footer_widget">
                     <div class="inner">
-                        <h4 class="section-title">Address</h4>
+                        <h4 class="section-title">Contact</h4>
+
                         <h5>DigiZigs Web Technologies.</h5>
+                        <br>
                         <p>@ : info@digizigs.com <br>P: (+91) 9712340450</p>
                         <h4>Newsletter</h4>
 
 
                         @if (Session::has('subscription'))
                             <h4>You are successfully subscribed to our news letter,we will keep you posted</h4>              
-
                         @else
                             <form action="{{route('app.subscribe')}}" class="nw_form" method="post">
                                 {!! csrf_field() !!}
@@ -109,11 +110,10 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     <div class="footer-nav">
-                        <a href="{{route('apphome')}}">Home</a>
-                        <a href="#">Portfolio</a>
-                        <a href="#">Pages</a>
-                        <a href="#">Shortcode</a>
-                        <a href="{{route('app.blog')}}">Blog</a>
+                        <a href="{{url('/')}}">Home</a>
+                        <a href="{{url('/portfolio')}}">Portfolio</a>
+                        <a href="#">Pages</a>                     
+                        <a href="{{url('/blog')}}">Blog</a>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
 	<!-- End Tag Line -->
 
 	<!-- Start Service Area -->
-    <section class="service-area sec-pad">
+    <section class="service-area sp-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

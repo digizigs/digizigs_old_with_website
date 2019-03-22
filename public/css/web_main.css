@@ -19222,7 +19222,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .footer-area .footer-top .footer_widget h4 {
   margin-bottom: 40px;
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.footer-area .footer-top .footer_widget p {
+  font-size: 14px;
 }
 
 .footer-area .footer-top .footer_widget ul {
@@ -19234,6 +19238,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .footer-area .footer-top .footer_widget ul li a {
   color: #7286a0;
   padding: 3px 0;
+  font-size: 14px;
 }
 
 .footer-area .footer-top .footer_widget .media {
@@ -19335,7 +19340,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 
   .footer_widget h4 {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .footer-bottom {
@@ -19955,8 +19960,8 @@ body {
 }
 
 .tag-description {
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 28px;
   padding-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -20328,13 +20333,9 @@ section .section-title p {
   margin-bottom: 0;
 }
 
-.work-area {
-  background: red;
-}
-
 /*--------- Start Work Area -------------*/
 
-.work-areas {
+.work-area {
   background: #f9f9ff;
 }
 
@@ -20413,7 +20414,7 @@ section .section-title p {
   width: 100%;
 }
 
-.single-works {
+.single-work {
   border-radius: 5px;
   margin-bottom: 30px;
 }

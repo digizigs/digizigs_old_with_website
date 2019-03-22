@@ -5,11 +5,16 @@ use App\Models\Page;
 use Spatie\Analytics\Period;
 
 
+//Subscriptions and Inquiries
+Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
+Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
+
+
+
 //App
 Route::get('/', 'App\AppController@index')->name('apphome');
 Route::get('/contact', 'App\AppController@contact')->name('contact');
-Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
-Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
+
 Route::get('/blog', 'App\AppController@blog')->name('app.blog');
 Route::get('/about', 'App\AppController@about')->name('app.about');
 Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');

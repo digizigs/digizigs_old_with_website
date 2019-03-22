@@ -4,15 +4,14 @@ namespace App\Http\Controllers\App;
 
 use Alert;
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Inquiry;
-use App\Models\Subscription;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-
-use App\Models\Post;
 
 class AppController extends Controller {
    
@@ -58,15 +57,15 @@ class AppController extends Controller {
 
     	$email = $request->email;
 
-    	$connect = new Subscription;
+    	$connect = new Contact;
     	$connect->email = $email;
+        $connect->type = 'newsletter';
     	$is_save = $connect->save();
         
         //flash('Message')->important();
         
-    	if ($is_save){
-            Alert::message('Robots are working!');
-    		return redirect()->back()->with('subscription','Subscription done');
+    	if ($is_save){          
+    		return view('app.pages.newsletter_redirect');
     	}   
     }
 
@@ -75,14 +74,12 @@ class AppController extends Controller {
         $data = Validator::make($request->all(),[    
             'name'=>'required',
             'contact'=>'required',
-            'email'=>'required|max:255|email',       
-            'message'=>'required',          
+            'email'=>'required|max:255|email',                          
         ],[      
             'name.required' => 'Name is required',
             'contact.required' => 'Contact number is required',
             'email.required' => 'Email is required',
-            'email.required' => 'Email is required',
-            'message.email' => 'Please enter your query',          
+            'email.required' => 'Email is required',                    
         ])->Validate();
 
         $name = $request->name;
@@ -90,16 +87,17 @@ class AppController extends Controller {
         $email = $request->email;
         $message = $request->message;
 
-        $connect = new Inquiry;
+        $connect = new Contact;
         $connect->name = $name;
         $connect->contact = $contact;
         $connect->email = $email;
         $connect->message = $message;
+        $connect->type = 'inquiry';
         $is_save = $connect->save();
       
         
         if ($is_save){
-            return redirect()->back()->with('contact','Inquiry submited successfully');
+            return view('app.pages.contact_redirect');
         }   
     }
 
