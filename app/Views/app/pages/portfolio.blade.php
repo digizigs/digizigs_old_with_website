@@ -29,7 +29,7 @@
 
 	
 	<!-- Start Work Area Area -->
-	<section class="work-area section-gap-top section-gap-bottom-90" id="work">
+	<section class="work-area sp-60" id="work">
 		<div class="container">
 			<div class="row d-flex justify-content-between align-items-end mb-80">
 				<div class="col-lg-6">

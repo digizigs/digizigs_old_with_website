@@ -19909,7 +19909,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 /* --------------------------------- */
 
-/* Css Styles                        */
+/* Css Styles
+
+1.1-Typography                        */
 
 /*---------------------------------- */
 
@@ -19947,14 +19949,14 @@ body {
 
 .tag-title {
   font-size: 30px;
-  line-height: 32px;
+  line-height: 40px;
   padding-bottom: 20px;
   letter-spacing: 1px;
 }
 
 .tag-description {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 22px;
+  line-height: 32px;
   padding-bottom: 20px;
   letter-spacing: 1px;
 }
@@ -20324,6 +20326,10 @@ section .section-title h2:after {
 section .section-title p {
   max-width: 535px;
   margin-bottom: 0;
+}
+
+.work-area {
+  background: red;
 }
 
 /*--------- Start Work Area -------------*/

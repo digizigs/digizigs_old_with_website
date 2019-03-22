@@ -15,6 +15,7 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     
+                    <li><a href="{{url('/')}}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
                     <li><a href="{{route('app.about')}}" class="{{ request()->is('about') ? 'active' : '' }}">About</a></li>
                     <li><a href="{{route('app.portfolio')}}" class="{{ request()->is('portfolio') ? 'active' : '' }}">Portfolio</a></li>
                     <li><a href="{{url('/services')}}" class="{{ request()->is('services') ? 'active' : '' }}">Services</a></li>
