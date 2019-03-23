@@ -19,12 +19,12 @@
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
+                  <!--div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                  </div>
+                  </div-->
                 </div>
               </div>
             </div>
@@ -50,6 +50,11 @@
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
 	                    <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a>
+                      
+                      <span class="pull-right" style="margin-top: 10px;">
+                        <a href="">All</a> | <a href="">Published</a> | <a href="">Draft</a> | <a href="">Trash</a>
+                      </span>
+                                          
 	                    <div class="clearfix"></div>
 	                  </div>
 
@@ -58,10 +63,7 @@
 	                    <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
-                            <tr class="headings">
-                              <th>
-                                <input type="checkbox" id="check-all" class="flat">
-                              </th>
+                            <tr class="headings">                      
                               <th class="column-title"> Title </th>
                               <th class="column-title"> Author </th>
                               <th class="column-title"> Category </th>
@@ -79,13 +81,14 @@
                           <tbody>
               
                           @foreach($posts as $post)
-                            <tr class="even pointer">
-                              <td class="a-center ">
-                                <input type="checkbox" class="flat" name="table_records">
-                              </td>
+                            <tr class="even pointer">                             
                               <td class=" ">{{ $post -> title}}</td>
                               <td class=" ">{{ $post ->user->firstname}} </td>
-                              <td class=" ">Cat</td>
+                              <td class=" ">                               
+                                 @foreach($post->categories as $cat)                          
+                                    <span class="label label-info label-many" style="font-weight:300;">{{$cat->name}}</span>
+                                 @endforeach
+                              </td>
                               
                               <td class=" ">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
                               <td class=" "> {{ $post -> status}} </td>

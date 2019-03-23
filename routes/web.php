@@ -1,20 +1,34 @@
 <?php
 
 //use Analytics;
+use App\Models\Page;
 use Spatie\Analytics\Period;
 
 
-//App
-Route::get('', 'App\AppController@index')->name('apphome');
-Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
-Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
-Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
-
-Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
+//Subscriptions and Inquiries
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
+Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
+
+
+
+//App
+Route::get('/', 'App\AppController@index')->name('apphome');
+Route::get('/contact', 'App\AppController@contact')->name('contact');
+
+Route::get('/blog', 'App\AppController@blog')->name('app.blog');
+Route::get('/about', 'App\AppController@about')->name('app.about');
+Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
+
+
+
+
+//Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
+//Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
+//Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
+
 //Route::resource('/blog', 'App\BlogController');
-Route::resource('/blog', 'Blog\BlogController');
-Route::resource('/ecom', 'Ecom\EcomController');
+//Route::resource('/blog', 'Blog\BlogController');
+//Route::resource('/ecom', 'Ecom\EcomController');
 
 Auth::routes();
 
@@ -38,7 +52,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 	//Settings
     Route::resource('/settings', 'Admin\SettingController');
-    
+    //Route::post('/settings/general', 'Admin\SettingController@set_general_setting')->name('setting.general.save');
 
 
     //Posts
@@ -47,8 +61,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //Route::get('/getDestroy', 'Admin\Post\PostController@getallpost')->name('post.delete');
     //Route::get('/post/getallpost', 'Admin\Post\PostController@getallpost');
 
-
-
+    //PAge
+    Route::resource('/page', 'Admin\Page\PageController');
 
 
     //Catogery
@@ -58,6 +72,13 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //Route::get('/getcategory', 'Admin\CategoryController@getcategories')->name('post.getcategory');
     //Route::post('/savecategory', 'Admin\CategoryController@store')->name('post.category.save');
     //Route::resource('/updatecategory', 'Admin\CategoryController');
+
+
+    //Menu
+    Route::get('/menu', 'Admin\Menu\MenuController@index')->name('menu-index');
+    Route::get('/menu/all', 'Admin\Menu\MenuController@allmenu')->name('menu-all');
+    Route::post('/menu/add', 'Admin\Menu\MenuController@createnewmenu')->name('create-menu');
+
 
     //Tag
     Route::get('/tags', 'Admin\TagController@index')->name('tags');
@@ -109,4 +130,18 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         return view('admin.test');
     })->name('testlab');
 
+});
+
+Route::get('{page}',function($slug){
+   
+    $page = \App\Models\Page::findBySlug($slug);
+
+    $view = "app/pages/{$page->slug}";
+   
+    if(view()->exists($view)){
+        return view("app/pages/{$page->slug}",compact($page));
+    }else{
+        return abort(404);
+    }
+   
 });    

@@ -10,45 +10,47 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="">
+                  <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text"  required="Please ente a Role Name" v-model="service.name">
-                        <i><small>The name is how it appears.</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
+                        <i><small>Poduct Name</small></i>
+                        <input class="form-control input-sm" type="text"  v-model="service.name">
+                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span>
                       </div> 
-                    </div>
+                    </div><br>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Description</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="" cols="30" rows="5" required="" v-model="service.desc"></textarea>
-                        <i><small>Breif description of service</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12" >
+                        <i><small>Product description</small></i>
+                        <textarea class="form-control input-sm"  cols="30" rows="3"  v-model="service.desc"></textarea>
+                        <span v-if="errors.desc" :class="['label label-danger']">{{ errors.desc[0] }}</span>
                       </div> 
-                    </div>
+                    </div><br>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service Charge</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="service.bill">
-                        <i><small>Billing charge of service</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
+                        <i><small>Product Cost</small></i>
+                        <input class="form-control input-sm" type="text" v-model="service.bill">
+                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span>
                       </div> 
-                    </div>
+                    </div><br>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Duration</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="service.tat">
-                        <i><small>Expected Completion Time</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
+                        <i><small>Product Deadline</small></i>
+                        <input class="form-control input-sm" type="text" v-model="service.tat">
+                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span>
                       </div> 
                     </div>
                     
                     
+                    <div class="form-group">
+                      <button class="btn btn-dark btn-sm pull-right" @click="addservice">Add Service</button>  
+                    </div>
                     
                     
-                    <button class="btn btn-dark btn-sm" @click="addservice">Add Service</button>
                     
                   </form>
                   
@@ -69,7 +71,8 @@
 			return{
 				service:{name:'',desc:'',bill:'',tat:''},
 				success:'',
-				errors:'',
+				errors:[],
+        error_message:'',
 				services:{},
 			}
 		},
@@ -93,7 +96,10 @@
 						})
 
 					})
-					.catch((error) => console.log(error))
+					.catch((error) => {
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
+          })
 
 
 				
@@ -109,5 +115,6 @@
 
 <style type="text/css" Scoped>
 
+	
 
 </style>

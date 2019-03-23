@@ -28,10 +28,10 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add New Post</h3>
+                <h3>Edit Post</h3>
               </div>
 
-              <div class="title_right">
+              <!--div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
@@ -40,9 +40,10 @@
                     </span>
                   </div>
                 </div>
-              </div>
+              </div-->
             </div>
             <div class="clearfix"></div>
+            <hr>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
@@ -52,20 +53,20 @@
 
                   <div class="col-md-8">
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Title</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{$post->title}}">
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label for="usr">Post Description</label>
                       <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                     </div>
-              
-                    <div class="form-group">
+                   
+                    <div class="form-group glow-input">
                       <label for="editor1">Post Body</label>
-                      <textarea id="textarea" name="post_body" rows="15" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">
+                      <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{$post->body}}{{ old('post_body') }}">{{$post->body}}
                         
                       </textarea>
                       
@@ -182,12 +183,12 @@
                             </a>
                             <div id="collapsefour1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
                               <div class="panel-body">
-                                <div class="avatar-preview imgUp" style="background-image: url({{asset('public/uploads/' . $post->image_url)}});">
+                                <div class="avatar-preview imgUp img-thumbnail" style="background-image: url({{asset('public/uploads/' . $post->image_url)}});">
                                   
                                 </div>
                               </div>
                               <div class="panel-footer">
-                                <label class="btn btn-primary">
+                                <label class="btn btn-dark btn-sm">
                                     Browse Image
                                     <input type="file" id="imageUpload" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;" name="feature_image">
                                 </label>
@@ -269,6 +270,7 @@
 
 @section('javascript')
   <script src="{{asset('public/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+  <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
   <script>
       $("#tags_1").select2();
       $(".select2").select2();
@@ -279,4 +281,9 @@
       });
 
   </script>
+
+  <script>
+          CKEDITOR.replace( 'post_body' );
+  </script>
+
 @endsection

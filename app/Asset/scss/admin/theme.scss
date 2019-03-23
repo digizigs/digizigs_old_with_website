@@ -260,7 +260,7 @@ table.tile_info td p {
 
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1ABB9C
+    border-right: 1px solid #1ABB9C
 }
 
 .nav-sm .nav.side-menu li.active-sm ul ul,
@@ -315,14 +315,12 @@ table.tile_info td p {
 
 .menu_section h3 {
     padding-left: 15px;
-    color: #fff;
-    text-transform: uppercase;
+    color: #999999;
     letter-spacing: .5px;
-    font-weight: 700;
-    font-size: 11px;
+    font-weight: 500;
+    font-size: 13px;
     margin-bottom: 0;
     margin-top: 0;
-    text-shadow: 1px 1px #000
 }
 
 .menu_section>ul {
@@ -437,8 +435,7 @@ table.tile_info td p {
 }
 
 body .container.body .right_col {
-    /* background: #F7F7F7 */
-    background: #ffff;
+    background: #F7F7F7
 }
 
 .nav-md .container.body .right_col {
@@ -491,7 +488,7 @@ body .container.body .right_col {
 }
 
 .left_col .mCSB_scrollTools {
-    width: 60px
+    width: 6px
 }
 
 .left_col .mCSB_dragger {
@@ -603,7 +600,7 @@ body .container.body .right_col {
 
 body {
     color: #73879C;
-    /* background: #2A3F54; */
+    background: #2A3F54;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -1089,7 +1086,7 @@ a:visited {
 
 footer {
     background: #fff;
-    padding: 2px;
+    padding: 15px 20px;
     display: block
 }
 

@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
             }
         }
 
+        $database = env('DB_DATABASE', '1.0');
+
+        /*if($database <> 'digizigss'){
+            return view('admin.setting.app_setup');
+        }*/
 
     }
 

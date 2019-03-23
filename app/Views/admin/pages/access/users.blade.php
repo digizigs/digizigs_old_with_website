@@ -118,50 +118,45 @@
                             <form  role="form" class="form-horizontal" action=" {{ URL::route('users.store')}}" method="post">
                               {{ csrf_field() }}
 
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">First Name</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="text" name="firstname" required="Please ente a Role Name">
-                                  <i><small>The name is how it appears.</small></i>
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>First Name</small></i></b>
+                                  <input class="form-control input-sm" type="text" name="firstname" required="Please ente a Role Name">
                                 </div>                
                               </div>
 
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Last Name</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="text" name="lastname" required="Please ente a Role Name">
-                                  <i><small>The name is how it appears.</small></i>
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>Last Name</small></i></b>
+                                  <input class="form-control input-sm" type="text" name="lastname" required="Please ente a Role Name">
                                 </div>                
                               </div>
 
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="text" name="email" required="Please ente a Role Name">
-                                  <i><small>The name is how it appears.</small></i>
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>Email</small></i></b>
+                                  <input class="form-control input-sm" type="text" name="email" required="Please ente a Role Name">
                                 </div>                
                               </div>
 
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Password</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="password" name="password" required="Please ente a Role Name">
-                                  <i><small>The name is how it appears.</small></i>
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>Password</small></i></b>
+                                  <input class="form-control input-sm" type="password" name="password" required="Please ente a Role Name">
                                 </div>                
                               </div>
 
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Confirm Password</label>
-                                <div class="col-sm-10">
-                                  <input class="form-control" type="password" name="cpassword" required="Please ente a Role Name">
-                                  <i><small>The name is how it appears.</small></i>
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>Confirm Password</small></i></b>
+                                  <input class="form-control input-sm" type="password" name="cpassword" required="Please ente a Role Name">
                                 </div>                
                               </div>
                               
-                              <div class="form-group">
-                                <label class="col-sm-2 control-label">Roles</label>
-                                <div class="col-sm-10">
-                                  <select class="form-control select2 select2-hidden-accessible " multiple=""  style="width: 100%;" tabindex="-1" aria-hidden="true" name="roles[]">
+                              <div class="form-group glow-input">
+                                <div class="col-sm-12 col-xs-12">
+                                  <b><i><small>Roles</small></i></b>
+                                  <select class="form-control select2 select2-hidden-accessible input-sm" multiple=""  style="width: 100%;" tabindex="-1" aria-hidden="true" name="roles[]">
                                     @if (count($roles) > 0)
                                       @foreach ($roles as $role)
                                         <option>{{$role->name}}</option>

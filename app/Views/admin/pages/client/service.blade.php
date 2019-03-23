@@ -11,7 +11,7 @@
 
 	<div class="right_col" role="main">
       <services></services>     
-  </div>
+  	</div>
 
 
 

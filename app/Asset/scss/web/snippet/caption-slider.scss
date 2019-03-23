@@ -1,0 +1,98 @@
+/**
+*Caption-slider
+**/
+
+#case_study{
+    
+    color: #fff;
+    .wraper{
+        background-color: #18444E;
+        margin-top: -20px;
+        z-index: 900;
+        padding: 60px 0px;
+    }
+    
+    h2 {
+        margin-bottom: 20px;
+        font-size: 40px;
+        
+    }
+    .button {
+        margin-top: 30px;
+    }
+    .caption-photo {
+        display: inline-block;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.1);
+        //height: 300px;
+    }
+ 
+    .caption-photo.one {
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s
+    }
+    .caption-photo.two {
+        -webkit-animation-delay: 1.2s;
+        animation-delay: 1.2s
+    }
+
+    .caption-title {
+        -webkit-animation-delay: 0.4s;
+        animation-delay: 0.4s
+    }
+    .caption-desc {
+        -webkit-animation-delay: 0.6s;
+        animation-delay: 0.6s
+    }
+    .caption-button {
+        -webkit-animation-delay: 0.8s;
+        animation-delay: 0.8s
+    }
+
+    .carousel-indicators {
+        position: static;
+        margin: 30px auto 0 auto;
+        padding: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+         li {
+            float: right;
+            padding-top: 20px;
+            padding-right: 30px;
+            cursor: pointer;
+            position: relative;
+            list-style: none;
+        }
+        li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            opacity: 0;
+        }
+        li.active:before {
+            opacity: 1;
+        }
+        li strong {
+            display: block;
+        } 
+    }
+
+    @media only screen and (max-width: 768px) {
+        text-align: center;
+
+        .caption-button{
+            margin-bottom: 30px;
+        }
+    }
+
+}

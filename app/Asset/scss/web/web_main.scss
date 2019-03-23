@@ -1,11 +1,11 @@
 // Bootstrap 4
-//@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
 //Bootstrap 3.7
-@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+//@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
-@import './presets';
+//@import './presets';
 
 
 //Vendor
@@ -13,13 +13,53 @@
 @import '../../vendor/lightbox/css/lightbox';
 
 
-@import './typography';
+//@import './typography';/For old home
 
 
 
-@import './custom';
+//@import './custom'; //For old home
 
 //For new web page
 //@import './WebNew/main';
 
+///////////////////New Layout//////////////////////
 
+//Bootstrap 3.7
+//@import '../../vendor/bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
+
+//Vendors
+
+//@import '../../vendor/magnific-popup/magnific-popup.scss';
+//@import '../../vendor/normalize/normalize.scss';
+@import '../../vendor/animate/css/animate.scss';
+
+@import './snippet/typography';
+@import './snippet/variables';
+@import './snippet/preloader';
+@import './snippet/scroll_top';
+@import './snippet/header-nav';
+@import './snippet/footer';
+@import './snippet/home-banner';
+
+//Effect
+//@import './effects/hover-1';
+
+// Pages
+@import './snippet/blog_page';
+//@import './snippet/header-area';
+//@import './snippet/feature-area';
+//@import './snippet/caption-slider';
+//@import './snippet/process';
+//@import './snippet/case-study';
+//@import './snippet/footer';
+
+//Blog Page
+//@import './blog_main';
+
+//@import './navbar';
+@import './custom';

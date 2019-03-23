@@ -21,7 +21,7 @@ class PostController extends Controller
 
         //$posts = Post::paginate(10);
         //$posts = with('author')->find(1);
-        $posts = Post::orderby('created_at','desc')->with('user')->paginate(10);
+        $posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->paginate(10);
         //dd($posts);
         return view('admin.pages.post.posts',compact('posts'));
 
@@ -29,7 +29,7 @@ class PostController extends Controller
 
     public function getallpost(){
 
-        $posts = Post::orderby('created_at','desc')->with('user')->get();
+        $posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->get();
         return request()->json(200,$posts);
     }
    
@@ -62,7 +62,7 @@ class PostController extends Controller
         $post->body = $request->post_body;
         $post->slug = str_slug( $request->post_title );
         $post->status = $request->status;
-        
+        $post->type = 'post';
 
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
@@ -105,7 +105,7 @@ class PostController extends Controller
         //}
 
 
-        return redirect()->route('post.index')->with('message', 'Permission added successfully');
+        return redirect()->route('post.index')->with('message', 'New Post added successfully');
     }
 
    

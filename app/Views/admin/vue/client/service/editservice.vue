@@ -5,50 +5,48 @@
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
-                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title"><b>Update Service</b></h4>
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="">
+                  <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text"  required="Please ente a Role Name" v-model="recrd.name">
-                        <i><small>The name is how it appears.</small></i>
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
+                        <i><small>Title of Service</small></i>
+                        <input class="form-control input-sm" type="text" v-model="recrd.name">
+                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span> 
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Description</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="" cols="30" rows="5" required="" v-model="recrd.description"></textarea>
-                        <i><small>Breif description of service</small></i>
+                    <div class="form-group glow-input">                   
+                      <div class="col-md-12 col-xs-12">
+                        <i><small>Description Of service</small></i>
+                        <textarea class="form-control input-sm" id="" cols="30" rows="5" v-model="recrd.description"></textarea>
+                        <span v-if="errors.description" :class="['label label-danger']">{{ errors.description[0] }}</span> 
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Service Charge</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.charge">
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
                         <i><small>Billing charge of service</small></i>
+                        <input class="form-control input-sm" type="text" v-model="recrd.charge">
+                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span> 
                       </div> 
                     </div>
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Duration</label>
-                      <div class="col-sm-10">
-                        <input class="form-control" type="text" required="Please ente a Role Name" v-model="recrd.duration">
+                    <div class="form-group glow-input">
+                      <div class="col-md-12 col-xs-12">
                         <i><small>Expected Completion Time</small></i>
+                        <input class="form-control input-sm" type="text"  v-model="recrd.duration">
+                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span> 
                       </div> 
                     </div>
                     
                     
-                    <hr><br>
-                    
-                    <button class="btn btn-dark btn-sm" @click="updateservice">Update</button>
+                    <button class="btn btn-dark btn-sm pull-right" @click="updateservice">Update</button>
                     
                   </form>
                   
@@ -70,7 +68,7 @@
 			return{
 				service:{name:'',desc:'',bill:'',tat:''},
 				success:'',
-				errors:'',
+				errors:[],
         errormessage:'',
 				services:{},
 			}
@@ -95,10 +93,10 @@
           }) 
 
           .catch((error) => {
-            this.errors=error.response.data;
-            this.errormessage=this.errors.message;
+            this.errors = error.response.data.errors;
+            this.error_message = error.response.data.message;
           });
-			}
+			},
 		},
 		created(){
 		
