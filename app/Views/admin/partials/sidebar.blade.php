@@ -49,6 +49,10 @@
             <a href="{{route('menu-index')}}"><i class="fa fa-bars"></i> Menus </a>
           </li>
 
+          <li>
+            <a href="{{route('gallery.show')}}"><i class="fa fa-picture-o"></i> Media </a>
+          </li>
+
           <li><a><i class="fa fa-universal-access"></i>Access Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('users.index')}}">Users</a></li>
@@ -57,7 +61,7 @@
             </ul>
           </li>
 
-          <li><a><i class="fa fa-plug"></i>Connects<span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-plug"></i>Contacts<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('subscription.index')}}">Subscriptions</a></li>
               <li><a href="{{route('inquiry.index')}}">Inquiry</a></li>

@@ -59,8 +59,8 @@ Vue.component('detailclient', require('./client/client/detailclient.vue'));
 //menu
 Vue.component('menupage', require('./menu/menu.vue'));
 
-
-
+//Gallery
+Vue.component('gallery', require('./gallery/gallery.vue'));
 
 
 

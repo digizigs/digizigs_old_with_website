@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Connect;
+namespace App\Http\Controllers\Admin\Contact;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,8 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        $subscriptions=Subscription::orderby('created_at','desc')->paginate(10);
-        return view('admin.pages.connect.subscription',compact('subscriptions'));
+        $subscriptions=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+        return view('admin.pages.contact.subscription',compact('subscriptions'));
     }
 
     

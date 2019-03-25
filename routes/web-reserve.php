@@ -46,11 +46,14 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 	//Settings
     Route::resource('/settings', 'Admin\SettingController');
- 
+    //Route::post('/settings/general', 'Admin\SettingController@set_general_setting')->name('setting.general.save');
 
 
     //Posts
     Route::resource('/post', 'Admin\Post\PostController');
+    //Route::get('/allpost', 'Admin\Post\PostController@getallpost');
+    //Route::get('/getDestroy', 'Admin\Post\PostController@getallpost')->name('post.delete');
+    //Route::get('/post/getallpost', 'Admin\Post\PostController@getallpost');
 
     //PAge
     Route::resource('/page', 'Admin\Page\PageController');
@@ -58,26 +61,32 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
     //Catogery
     Route::resource('/category', 'Admin\CategoryController');
-  
+    //Route::get('/cat', 'Admin\CategoryController@cat')->name('cat');
+    //Route::get('/category', 'Admin\CategoryController@index')->name('categories');
+    //Route::get('/getcategory', 'Admin\CategoryController@getcategories')->name('post.getcategory');
+    //Route::post('/savecategory', 'Admin\CategoryController@store')->name('post.category.save');
+    //Route::resource('/updatecategory', 'Admin\CategoryController');
+
 
     //Menu
     Route::get('/menu', 'Admin\Menu\MenuController@index')->name('menu-index');
     Route::get('/menu/all', 'Admin\Menu\MenuController@allmenu')->name('menu-all');
     Route::post('/menu/add', 'Admin\Menu\MenuController@createnewmenu')->name('create-menu');
 
-    //Gallery
-    Route::get('/gallery','Admin\Gallery\GalleryController@index')->name('gallery.show');
-    Route::get('/gallery/create','Admin\Gallery\GalleryController@create');
-    Route::post('/formSubmit','Admin\Gallery\GalleryController@store');
 
-    //resource
+    //Tag
     Route::get('/tags', 'Admin\TagController@index')->name('tags');
 
+
+    //Subscription and Contacts
+    //Route::get('/connects/subscriptions', 'Admin\Connect\SubscriptionController@index')->name('subscriptions');
+    //Route::get('/connects/getsubscriptions', 'Admin\Connect\SubscriptionController@getSubscription')->name('get.subscriptions');
     
-    //Contact Management
-    Route::group(['prefix' => 'contact'], function(){
-        Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
-        Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
+    
+    //Access MAnagement
+    Route::group(['prefix' => 'connect'], function(){
+        Route::resource('/subscription', 'Admin\Connect\SubscriptionController'); //Contact
+        Route::resource('/inquiry', 'Admin\Connect\InquiryController'); //Contact
     });
 
     //Access MAnagement

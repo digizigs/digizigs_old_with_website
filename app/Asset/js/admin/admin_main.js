@@ -39,6 +39,8 @@ if (token) {
 //     encrypted: true
 // });
 
+//Vendor
+//require('../../vendor/dropzone/dropzone.js');
 
 //Include rest of the js files Vue,Admin theme js,customjs
 require('../../../Views/admin/vue/vue');
