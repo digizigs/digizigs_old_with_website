@@ -82,7 +82,7 @@
               
                           @foreach($posts as $post)
                             <tr class="even pointer">                             
-                              <td class=" ">{{ $post -> title}}</td>
+                              <td class=" "><a href="">{{ $post -> title}}</a></td>
                               <td class=" ">{{ $post ->user->firstname}} </td>
                               <td class=" ">                               
                                  @foreach($post->categories as $cat)                          

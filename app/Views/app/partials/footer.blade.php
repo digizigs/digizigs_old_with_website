@@ -71,9 +71,8 @@
                     <div class="inner">
                         <h4 class="section-title">Contact</h4>
 
-                        <h5>DigiZigs Web Technologies.</h5>
-                        <br>
-                        <p>@ : info@digizigs.com <br>P: (+91) 9712340450</p>
+                        <p>DigiZigs Web Technologies.</p>
+                        <p>info@digizigs.com <br>P: (+91) 9712340450</p>
                         <h4>Newsletter</h4>
 
 

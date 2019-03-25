@@ -14,8 +14,7 @@
 	<!-- start banner Area -->
 	<section class="titlebar" style="background: url({{asset('public/images/banner/curve-5.png')}}) no-repeat scroll center center / cover;">
 	    <h1 class="page-title">
-	    	<span>Our </span>
-	    	blogs
+	    	some <span>Blogs</span>
 	    </h1>
 	    <div id="particles-js"></div>
 

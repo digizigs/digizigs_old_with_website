@@ -22,9 +22,9 @@ if(!function_exists('active_menu')){
 
 
 //get post
-if(!function_exists('get_post')){
+if(!function_exists('get_posts')){
 	
-	function get_post($args = null){
+	function get_posts($args = null){
 
 		$defaults = array(
 	        'numberposts'      => 5,
@@ -39,9 +39,7 @@ if(!function_exists('get_post')){
 	        'suppress_filters' => true,
 	    );
 
-	    $posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->paginate(10);
-	    //dd($posts);
-	    //return 'posts';
+	    $posts = Post::where([['type','post'],['status','Published']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
 	    return $posts;
 
 	}

@@ -19132,7 +19132,8 @@ th {
 }
 
 #mobile-nav ul li a:hover {
-  color: #fff;
+  color: #E45447;
+  font-weight: 600;
 }
 
 #mobile-nav ul li li {
@@ -19182,7 +19183,16 @@ body.mobile-nav-active #mobile-nav {
 }
 
 body.mobile-nav-active #mobile-nav-toggle {
-  color: #fff;
+  color: #E45447;
+}
+
+#mobile-nav .active {
+  color: #E45447 !important;
+  font-weight: 700;
+}
+
+#mobile-nav .active a {
+  color: #E45447 !important;
 }
 
 .footer-area {
@@ -19277,7 +19287,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: #05181d;
   border-radius: 3px;
   height: 40px;
-  border: 1px solid #1f2131;
+  border: 0px solid #1f2131;
   color: #7286a0;
   text-indent: 20px;
 }
@@ -19925,6 +19935,10 @@ body {
   font-weight: 500;
 }
 
+input:focus {
+  outline: none;
+}
+
 /*------Section Padding-------*/
 
 .sp-20 {
@@ -20224,6 +20238,36 @@ body {
   text-align: center;
 }
 
+/*---------------why choose US---------------*/
+
+.why-choose-us-area {
+  position: relative;
+  z-index: 1;
+}
+
+.why-choose-us-area ul li {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #707070;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.why-choose-us-area ul li i {
+  color: #E45447;
+  margin-right: 15px;
+}
+
+.why-choose-us-area ul li:last-child {
+  margin-bottom: 0;
+}
+
+/*---------------why choose US---------------*/
+
 /*---------------Start About US---------------*/
 
 .about-us .about-area {
@@ -20232,68 +20276,148 @@ body {
 
 /*---------------Start About US---------------*/
 
-/*--------- About Area -------------*/
+/*---------------Latest blogpost area---------------*/
 
-.about-area .section-title {
+.latest-blog-post .blog-inner {
+  margin-top: 70px;
+}
+
+.latest-blog-post .single-blog {
+  border: 1px solid #eee;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.latest-blog-post .single-blog .blog-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.latest-blog-post .single-blog .blog-thumb:before {
+  position: absolute;
+  content: "";
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 999;
+  left: 110%;
+  top: -15px;
+  height: 100%;
+  width: 130%;
+  -webkit-transform: rotate(55deg);
+  transform: rotate(55deg);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.latest-blog-post .single-blog .blog-details {
+  padding: 25px;
+}
+
+.latest-blog-post .single-blog .blog-details {
+  padding: 25px;
+}
+
+.latest-blog-post .single-blog .blog-details .blog-meta {
+  margin-top: 15px;
+}
+
+.latest-blog-post .single-blog .blog-details .blog-meta span {
+  padding-right: 15px;
+  text-transform: uppercase;
+}
+
+.latest-blog-post .single-blog .blog-details .blog-meta span i.fa {
+  padding-right: 10px;
+}
+
+.latest-blog-post .single-blog .blog-details h5 {
+  font-size: 18px;
+  margin: 15px 0px 15px;
+}
+
+.latest-blog-post .single-blog .blog-details h5 a {
+  color: #222222;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.latest-blog-post .single-blog:hover {
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+
+.latest-blog-post .single-blog:hover .blog-thumb:hover:before {
+  left: -130%;
+  top: 10px;
+}
+
+/*---------------Latest blogpost area---------------*/
+
+/*---------------Newsletter area---------------*/
+
+.newsletter-area {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-area .border-line {
+  width: 100%;
+  height: 1px;
+  background-color: #e7f2fd;
+}
+
+.newsletter-area .nl-content {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-area .nl-content h2 {
+  font-size: 36px;
+  display: block;
   margin-bottom: 0;
 }
 
-/*--------- About Area -------------*/
+.newsletter-area .nl-form form {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-area .nl-form form input {
+  width: 100%;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #e7f2fd;
+  border: none;
+  font-size: 16px;
+  padding: 0 30px;
+}
+
+.newsletter-area .nl-form form button {
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: absolute;
+  padding: 0 30px;
+  border-radius: 0 50px 50px 0;
+  background-color: #E45447;
+  font-size: 16px;
+  color: #ffffff;
+  height: 50px;
+  top: 0;
+  right: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.newsletter-area .nl-form form button:hover,
+.newsletter-area .uza-newsletter-area .nl-form form button:focus {
+  background-color: #303030;
+  outline: none;
+}
+
+/*---------------Newsletter area---------------*/
 
 offwhite {
   background: #f9f9ff;
-}
-
-.section-gap-del {
-  padding: 150px 0;
-}
-
-.section-gap-del .section-title {
-  margin-bottom: 40px;
-}
-
-.section-gap-del .section-title h2 {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 30px;
-  text-transform: capitalize;
-  position: relative;
-  line-height: 44px;
-}
-
-.section-gap-del .section-title p {
-  max-width: 535px;
-  margin-bottom: 0;
-}
-
-.section-gap {
-  padding: 150px 0;
-}
-
-@media (max-width: 1024px) {
-  .section-gap {
-    padding: 60px 0;
-  }
-}
-
-.section-gap-top {
-  padding-top: 150px;
-}
-
-@media (max-width: 1024px) {
-  .section-gap-top {
-    padding: 60px 0;
-  }
-}
-
-.section-gap-bottom-90 {
-  padding-bottom: 130px;
-}
-
-@media (max-width: 1024px) {
-  .section-gap-bottom-90 {
-    padding-bottom: 30px;
-  }
 }
 
 section .section-title {
@@ -20489,12 +20613,6 @@ section .section-title p {
   font-size: 62px;
   font-weight: 600;
   color: #fff;
-}
-
-@media (max-width: 991px) {
-  .contact-page-area {
-    margin-top: 40px;
-  }
 }
 
 .contact-page-area .single-contact-address {

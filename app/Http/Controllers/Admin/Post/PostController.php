@@ -68,7 +68,8 @@ class PostController extends Controller
             $image = $request->file('feature_image');
             $filename = time().'.'. $image->getClientOriginalExtension();
             $location = public_path('uploads/' . $filename);
-            Image::make($image->getRealPath())->resize(250, 250)->save($location);      
+            //Image::make($image->getRealPath())->resize(250, 250)->save($location);
+            Image::make($image->getRealPath())->save($location);            
             $post->image_url = $filename;         
         }
 
@@ -150,7 +151,8 @@ class PostController extends Controller
             $image = $request->file('feature_image');
             $filename = time().'.'. $image->getClientOriginalExtension();
             $location = public_path('uploads/' . $filename);
-            Image::make($image->getRealPath())->resize(250, 250)->save($location);      
+            //Image::make($image->getRealPath())->resize(250, 250)->save($location);
+            Image::make($image->getRealPath())->save($location);      
             $post->image_url = $filename;         
         }
 

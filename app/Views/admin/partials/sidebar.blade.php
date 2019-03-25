@@ -2,10 +2,10 @@
   <div class="left_col scroll-view">
 
 
-    <div class="navbar nav_title" style="border: 0;">
+    <div class="navbar nav_title sidebar-brand" style="border: 0;">
       <a href="{{route('admin.home')}}" class="site_title" >
-        <!--img src="{{asset('public/images/DigiZigs_new_2.png')}}" style="width: 180px;" -->
-        <h3 style="text-align: center;">{{setting('app_name')}}</h3> 
+        <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-white.png')}}" class="hidden-xs">
+        <!--h3 style="text-align: center;">{{setting('app_name')}}</h3--> 
       </a>
     </div>
 

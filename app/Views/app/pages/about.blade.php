@@ -12,7 +12,7 @@
 	<!-- start banner Area -->
 	<section class="titlebar" style="background: url({{asset('public/images/banner/curve-5.png')}}) no-repeat scroll center center / cover;">
         <h1 class="page-title">
-        	a bit <span> about </span>
+        	a bit <span> About </span>
         	us
         </h1>
 

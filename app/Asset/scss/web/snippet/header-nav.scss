@@ -241,7 +241,9 @@
   font-weight: 400; }
 
 #mobile-nav ul li a:hover {
-  color: #fff; }
+  color: $primary-color; 
+  font-weight: 600;
+}
 
 #mobile-nav ul li li {
   padding-left: 30px; }
@@ -281,4 +283,14 @@ body.mobile-nav-active #mobile-nav {
   left: 0; }
 
 body.mobile-nav-active #mobile-nav-toggle {
-  color: #fff; }
+  color: $primary-color; }
+
+#mobile-nav{
+  .active{
+    color: $primary-color !important;
+    font-weight: 700;
+    a{
+      color: $primary-color !important;
+    }
+  }
+}

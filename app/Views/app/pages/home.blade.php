@@ -40,7 +40,55 @@
     </section>
     <!-- End banner Area -->
 
+    
+    {{ $posts = get_posts()}}
 
+    
+
+
+    @foreach($posts as $post)
+
+        {{ $post->title }}
+        {{ $post ->user->firstname }}
+        <br>
+
+    @endforeach
+
+    <!-- ***** Why Choose Us Area Start ***** -->
+    <section class="why-choose-us-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Choose Us Content -->
+                <div class="col-12 col-lg-6">
+                    <div class="choose-us-content mb-80">
+                        <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Why Choose Us</h2>
+                        <p>We’re Your Partner in Your Success</p>
+                    </div>
+                </div>
+                        <ul>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Distinctive Experts That Provide Effortless Expertise</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Enriched Outcomes Enabled By Experienced Professionals</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Wide-Ranging Thoughts Bread Exceptional Ideas</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Generating Best Results Through Open Communication</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> Extensive Marketing Research Generates Valuable Insights</li>
+                            <li><i class="fa fa-check" aria-hidden="true"></i> We are Results-Driven, Oriented, We deliver results</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Choose Us Thumbnail -->
+                <div class="col-12 col-lg-6">
+                    <div class="choose-us-thumbnail mb-80">
+                        <img class="w-100" src="{{asset('public\images\whyus.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Why Choose Us Area End ***** -->
+
+    
     <!-- Start Service Area -->
     <section class="service-area sp-60">
         <div class="container">
@@ -233,6 +281,107 @@
         </div>
     </section>
     <!-- End Work Area Area -->
+
+    <!-- Start Blog Post Area -->
+    <section class="latest-blog-post sp-60">
+        <div class="container">
+            <div class="row .blog-inner">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Latest Post from our blog</h2>
+                        <p>Exceptional websites and app experiences are a blend of the right message and the right technology. Our interactive design approach focuses on usability, impact, and achieving results.</p>
+                    </div>
+
+                    <div class="row blog-inner justify-content-center">
+                <!-- single-blog -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-blog">
+                        <div class="blog-thumb">
+                            <img class="img-fluid" src="{{asset('public/images/blog/feature-img1.jpg')}}" alt="">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span>25 june, 2018 | By Mark Wiens</span>
+                            </div>
+                            <h5><a href="#">Addiction When Gambling <br>
+                                    Becomes A Problem</a></h5>
+                            <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
+                                front of their desktops.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- single-blog -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-blog">
+                        <div class="blog-thumb">
+                            <img class="img-fluid" src="{{asset('public/images/blog/feature-img2.jpg')}}" alt="">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span>25 june, 2018 | By Mark Wiens</span>
+                            </div>
+                            <h5><a href="#">Addiction When Gambling <br>
+                                    Becomes A Problem</a></h5>
+                            <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
+                                front of their desktops.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- single-blog -->
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-blog">
+                        <div class="blog-thumb">
+                            <img class="img-fluid" src="{{asset('public/images/blog/feature-img3.jpg')}}" alt="">
+                        </div>
+                        <div class="blog-details">
+                            <div class="blog-meta">
+                                <span>25 june, 2018 | By Mark Wiens</span>
+                            </div>
+                            <h5><a href="#">Addiction When Gambling <br>
+                                    Becomes A Problem</a></h5>
+                            <p>Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in
+                                front of their desktops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Blog Post Area -->
+
+
+    <!-- ***** Newsletter Area Start ***** -->
+    <section class="newsletter-area sp-60">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <!-- Newsletter Content -->
+                <div class="col-12 col-md-6 col-lg-6">
+                    <div class="nl-content mb-80">
+                        <h2>Subscribe to our Newsletter</h2>
+                        <p>Subscribe our newsletter to get notification about new updates, etc...</p>
+                    </div>
+                </div>
+                <!-- Newsletter Form -->
+                <div class="col-12 col-md-6 col-lg-5">
+                    <div class="nl-form mb-80">
+                        <form action="{{route('app.subscribe')}}" method="post">
+                            @csrf
+                            <input type="email" name="email" value="" placeholder="Your Email">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Border Bottom -->
+            <div class="border-line"></div>
+        </div>
+    </section>
+    <!-- ***** Newsletter Area End ***** -->
+
+
+
     
 </div>
 

@@ -49,7 +49,7 @@
                 
                 <form class="form-horizontal form-label-left" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                   @csrf
-                  <div class="col-md-8">
+                  <div class="col-md-8 col-xs-12">
 
                     <div class="form-group glow-input">
                       <label for="usr">Post Title</label>
@@ -76,7 +76,7 @@
                     
                   </div>
                   
-                  <div class="col-md-4">
+                  <div class="col-md-4 col-xs-12">
                     <div class="x_panel">
                       <div class="x_title">
                         <h2><i class="fa fa-align-left"></i> Options <small>Post Options</small></h2>

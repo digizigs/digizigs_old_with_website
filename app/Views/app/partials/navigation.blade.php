@@ -29,7 +29,7 @@
                             <li><a href="portfolio-details.html">Logo & Media</a></li>
                         </ul-->
                     </li>
-                    <li><a href="{{url('/case-studies')}}" class="{{ request()->is('case-studies') ? 'active' : '' }}">Case Studies</a></li>
+                    <!--li><a href="{{url('/case-studies')}}" class="{{ request()->is('case-studies') ? 'active' : '' }}">Case Studies</a></li-->
                     <li><a href="{{route('app.blog')}}" class="{{ request()->is('blog') ? 'active' : '' }}">Blog</a></li>
                     <li><a href="{{route('contact')}}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>
                     
