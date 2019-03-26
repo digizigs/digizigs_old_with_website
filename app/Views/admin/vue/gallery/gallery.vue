@@ -11,11 +11,11 @@
 		<div class="col-md-12">
 			<div class="gal-area">
 				<div class="col-md-55" v-for="med,key in media.data">
-					{{med.uri}}
+					
                     <div class="thumbnail">
                       <div class="image view view-first">
 
-                        <img style="width: 100%; display: block;" src="" alt="image">
+                        <img style="width: 100%; display: block;" v-bind:src="med.uri" v-bind:alt="image">
                         <div class="mask">
                           <p>Your Text</p>
                           <div class="tools tools-bottom">
@@ -66,7 +66,9 @@
 		},
 		methods:{
 			sendingEvent(){
-				console.log('Completed')
+				axios.get('gallery/create')
+				.then((response) => {this.media=response.data})//this.appointments=response.data
+				.catch((error) => console.log(error))
 			}
 		},
 		created(){

@@ -50,7 +50,7 @@ class PostController extends Controller
         //return  $request->all();
      
         $data = Validator::make($request->all(),[
-            'post_title'=>'required|max:255',     
+            'post_title'=>'required|max:191',     
         ],[
             'post_title.required' => 'Post Title is required', 
         ])->Validate();

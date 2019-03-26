@@ -42,15 +42,17 @@ class GalleryController extends Controller
     {
       
         $image = $request->file('file');
-        $imageName = $image->getClientOriginalName();
+        $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path('uploads'),$imageName);
         
         $imageUpload = new Media();
         $imageUpload->user_id = Auth::user()->id;
         $imageUpload->filename = $imageName;
-        $imageUpload->uri = public_path('uploads') . '/'. time() . '_' . $imageName;
+        $imageUpload->uri = public_path('uploads') . '/' . $imageName;
         $imageUpload->save();
-        return response()->json(['success'=>'You have successfully upload file.']);
+        
+        $media = Media::orderby('created_at','desc')->paginate(10);
+        return request()->json(200,$media);
 
         
     }
