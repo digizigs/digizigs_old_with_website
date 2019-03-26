@@ -18,7 +18,8 @@ class GalleryController extends Controller
     public function index()
     {   
         
-        return view('admin.pages.gallery.gallery');
+        $media = Media::orderby('created_at','desc')->paginate(10);
+        return view('admin.pages.gallery.gallery',compact('media'));
     }
 
     /**

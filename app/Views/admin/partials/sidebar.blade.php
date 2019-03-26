@@ -83,6 +83,10 @@
               
             </ul>
           </li>
+
+          <li>
+            <a href="{{route('google.analytics')}}"><i class="fa fa-line-chart"></i> Analytics </a>
+          </li>
           
         
         </ul>

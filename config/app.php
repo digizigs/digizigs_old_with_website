@@ -236,6 +236,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
      
 
     ],

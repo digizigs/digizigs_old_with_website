@@ -1,7 +1,7 @@
 
 @extends('layouts.admin')
 
-@section('title','Gallery')
+@section('title','Analytics')
 
 
 
@@ -14,7 +14,7 @@
         <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3> Media Library <small></small></h3>
+                <h3> Google Analytics <small></small></h3>
               </div>
  
             </div>
@@ -31,11 +31,7 @@
                 <div class="x_panel">                   
                   <div class="x_content">
                     
-                    @foreach($media as $med)
-                      {{$med->uri}}
-                    @endforeach
-
-                    <gallery></gallery>
+                    
 
 
                   </div>

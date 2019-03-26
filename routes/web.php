@@ -108,12 +108,16 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
     //testlab
-    Route::get('/testlab/test', function(){
+    Route::get('/analytics', function(){
 
-        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(7));
+        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(180));
+        $visitors = Analytics::fetchVisitorsAndPageViews(Period::days(30));
+
+        
+
         dd($analyticsData);
-        return view('admin.test');
-    })->name('testlab');
+        return view('admin.pages.analytics.analytics');
+    })->name('google.analytics');
 
 });
 
