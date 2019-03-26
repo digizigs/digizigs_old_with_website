@@ -12273,13 +12273,15 @@ ul.project_files li a i {
 }
 
 .thumbnail .image {
-  height: 120px;
+  height: 150px;
   overflow: hidden;
 }
 
 .caption {
   padding: 9px 5px;
   background: #F7F7F7;
+  height: 100%;
+  text-align: center;
 }
 
 .caption p {

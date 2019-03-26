@@ -24,24 +24,27 @@ if(!function_exists('active_menu')){
 //get post
 if(!function_exists('get_posts')){
 	
-	function get_posts($args = null){
+	function get_posts(){
+		
+		
+	    /*$posts = Post::where([['type','post'],['status','Published']])	    		
+	    		->with('user')
+	    		->with(['categories' => function($q) use ($cat) {$q->where('slug',$cat);}])
+	    		->orderby('created_at','desc')
+	    		->paginate(10);
+	    return $posts;*/
 
-		$defaults = array(
-	        'numberposts'      => 5,
-	        'category'         => 0,
-	        'orderby'          => 'date',
-	        'order'            => 'DESC',
-	        'include'          => array(),
-	        'exclude'          => array(),
-	        'meta_key'         => '',
-	        'meta_value'       => '',
-	        'post_type'        => 'post',
-	        'suppress_filters' => true,
-	    );
-
-	    $posts = Post::where([['type','post'],['status','Published']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+	    $posts = Post::where([['type','post'],['status','Published']])
+	    		->with(['categories' => function($query) 
+				{
+					$query->where('slug', 'code');
+				}], 'user')
+				->orderBy('created_at', 'DESC')
+				->get();
 	    return $posts;
 
+	   
 	}
+
 
 }

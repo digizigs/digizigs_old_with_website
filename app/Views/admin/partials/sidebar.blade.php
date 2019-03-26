@@ -50,7 +50,7 @@
           </li>
 
           <li>
-            <a href="{{route('gallery.show')}}"><i class="fa fa-picture-o"></i> Media </a>
+            <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
           <li><a><i class="fa fa-universal-access"></i>Access Management<span class="fa fa-chevron-down"></span></a>

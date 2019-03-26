@@ -43,7 +43,7 @@
     
     {{ $posts = get_posts()}}
 
-    
+    {{dd($posts)}}
 
 
     @foreach($posts as $post)

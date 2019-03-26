@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\HttpFoundation\File\getClientOriginalName;
 
 class GalleryController extends Controller
@@ -17,7 +18,8 @@ class GalleryController extends Controller
      */
     public function index()
     {   
-        
+        /*$image_path = public_path(). '/uploads/1553603622_img.jpg';
+        dd($image_path);*/
         $media = Media::orderby('created_at','desc')->paginate(10);
         return view('admin.pages.gallery.gallery',compact('media'));
     }
@@ -49,7 +51,7 @@ class GalleryController extends Controller
         $imageUpload = new Media();
         $imageUpload->user_id = Auth::user()->id;
         $imageUpload->filename = $imageName;
-        $imageUpload->uri = public_path('uploads') . '/' . $imageName;
+        $imageUpload->uri = url('/public/uploads') . '/' . $imageName;
         $imageUpload->save();
         
         $media = Media::orderby('created_at','desc')->paginate(10);
@@ -100,6 +102,18 @@ class GalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $media = Media::find($id);
+        //dd($media);
+        $image_path = public_path(). '/uploads/' .$media->filename;
+
+        \File::delete($image_path);
+
+        $is_deleted = $media->delete();
+
+        if($is_deleted){
+            $media = Media::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$media);
+        }
     }
 }

@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="col-md-12">
-			<vue-dropzone id="dropzone" :options="dropzoneOptions" :useCustomSlot=true v-on:vdropzone-queue-complete="sendingEvent">
+			<vue-dropzone id="dropzone" :options="dropzoneOptions" :useCustomSlot=true v-on:vdropzone-queue-complete="sendingEvent" ref="dropzone">
 		      <div class="dropzone-custom-content">
 		        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>
 		        <div class="subtitle">...or click to select a file from your computer</div>
@@ -15,18 +15,13 @@
                     <div class="thumbnail">
                       <div class="image view view-first">
 
-                        <img style="width: 100%; display: block;" v-bind:src="med.uri" v-bind:alt="image">
+                        <img style="width: 100%; display: block;" v-bind:src="med.uri" alt="image">
                         <div class="mask">
-                          <p>Your Text</p>
-                          <div class="tools tools-bottom">
-                            <a href="#"><i class="fa fa-link"></i></a>
-                            <a href="#"><i class="fa fa-pencil"></i></a>
-                            <a href="#"><i class="fa fa-times"></i></a>
-                          </div>
+                          
                         </div>
                       </div>
                       <div class="caption">
-                        <p>Snow and Ice Incoming for the South</p>
+                        <p><a href="" v-on:click.prevent @click="deleteimage(med.id)">Remove <i class="fa fa-times" ></i></a></p>
                       </div>
                     </div>
                 </div>
@@ -40,7 +35,7 @@
 
 	import vue2Dropzone from 'vue2-dropzone'
 	import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-
+	var currentFile = null;
 
 	export default{
 		components: {
@@ -49,10 +44,9 @@
 		data(){
 			return{
 				dropzoneOptions: {
-			        url: 'formSubmit',
+			        url: 'gallery',
 			        thumbnailWidth: 200,
-			        thumbnailheight: 50,
-        			addRemoveLinks: true,
+			        thumbnailheight: 50,       			
         			dictDefaultMessage: "<i class='fa fa-cloud-upload'></i>UPLOAD ME",
         			headers: {
 		               "X-CSRF-TOKEN": document.head.querySelector("[name=csrf-token]").content
@@ -65,10 +59,46 @@
 
 		},
 		methods:{
+
 			sendingEvent(){
 				axios.get('gallery/create')
 				.then((response) => {this.media=response.data})//this.appointments=response.data
 				.catch((error) => console.log(error))
+
+				toast({
+                	type: 'success',
+                	title: 'Media added successfully'
+            	})
+            	//window.location.reload(true);
+            	//.removeFile(this.file)
+			},
+			deleteimage(id){
+				swalWithBootstrapButtons({
+		          title: 'Delete media?',
+		          text: "You won't be able to revert this!",
+		          type: 'warning',
+		          showCancelButton: true,
+		          confirmButtonText: 'Yes, delete it!',
+		          cancelButtonText: 'No, cancel!',
+		          reverseButtons: true
+		        }).then((result) => {
+		          if (result.value) {
+
+		            axios.delete('gallery/'+id)
+		            .then(response =>{
+		            	this.media=response.data  
+		            })
+		            .catch((error) => {
+		                           
+		            });
+
+		            swalWithBootstrapButtons(
+		              'Deleted!',
+		              'Client deleted successfully',
+		              'success'
+		            )
+		          } 
+		        })
 			}
 		},
 		created(){

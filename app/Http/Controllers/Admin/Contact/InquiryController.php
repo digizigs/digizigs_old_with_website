@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Admin\Contact;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class InquiryController extends Controller
 {
    
+
+    public $email;
+
+
     public function index()
     {   
 
@@ -58,12 +63,12 @@ class InquiryController extends Controller
     public function update(Request $request, $id)
     {
         //return $request->email;
-        $to_email = $request->email;
+        this.$email = $request->email;
         
         $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
         $beautymail->send('email.Beautymail', [], function($message)
         {
-            $email = Input::get('email');
+            //$email = Input::get('email');
             $message
                 ->from('info@digizigs.com','DigiZigs')
                 ->to($email, 'John Smith')
