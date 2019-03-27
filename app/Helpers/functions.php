@@ -35,10 +35,7 @@ if(!function_exists('get_posts')){
 	    return $posts;*/
 
 	    $posts = Post::where([['type','post'],['status','Published']])
-	    		->with(['categories' => function($query) 
-				{
-					$query->where('slug', 'code');
-				}], 'user')
+	    		->with('categories')
 				->orderBy('created_at', 'DESC')
 				->get();
 	    return $posts;
