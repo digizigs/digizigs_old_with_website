@@ -26,7 +26,7 @@ class CreatePostsTable extends Migration
             $table->text('meta_keywords')->nullable();
             $table->string('type')->nullable();
             $table->string('visiblity')->default('public')->nullable();
-            $table->enum('status', ['Published', 'Draft'])->default('Draft');
+            $table->enum('status', ['published', 'draft' ,'trashed'])->default('Draft');
             $table->boolean('featured')->default(0);
             $table->timestamps();
         });

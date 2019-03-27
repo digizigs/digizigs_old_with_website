@@ -50,9 +50,10 @@
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
 	                    <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a>
-                      
+
+                                       
                       <span class="pull-right" style="margin-top: 10px;">
-                        <a href="">All</a> | <a href="">Published</a> | <a href="">Draft</a> | <a href="">Trash</a>
+                        <a href="{{route('post.index')}}">All</a> | <a href="{{route('post.index',['posts_type'=>'published'])}}">Published</a> | <a href="{{route('post.index',['posts_type'=>'draft'])}}">Draft</a> | <a href="{{route('post.index',['posts_type'=>'trashed'])}}">Trash</a>
                       </span>
                                           
 	                    <div class="clearfix"></div>
@@ -91,7 +92,7 @@
                               </td>
                               
                               <td class=" ">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
-                              <td class=" "> {{ $post -> status}} </td>
+                              <td class=" "> {{ucfirst($post -> status)}} </td>
                               <td class="" style="width: 5%;">
                                 
                                 

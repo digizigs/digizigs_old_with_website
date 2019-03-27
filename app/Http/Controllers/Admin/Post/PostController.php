@@ -16,15 +16,42 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PostController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
 
         //$posts = Post::paginate(10);
         //$posts = with('author')->find(1);
-        $posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->paginate(10);
-        //dd($posts);
-        return view('admin.pages.post.posts',compact('posts'));
 
+        if($request->has('posts_type')){
+
+            $post_type = $request->posts_type;
+
+
+            if($post_type === 'published'){
+
+                $posts = Post::where([['type','post'],['status','=','published']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                return view('admin.pages.post.posts',compact('posts'));
+
+            }elseif($post_type === 'draft'){
+
+                $posts = Post::where([['type','post'],['status','=','draft']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                return view('admin.pages.post.posts',compact('posts'));
+
+            }elseif(($post_type === 'trashed')){
+
+                $posts = Post::where([['type','post'],['status','=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                return view('admin.pages.post.posts',compact('posts'));
+
+            }
+            
+            
+        }else{
+            $posts = Post::where([['type','post'],['status','!=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+            return view('admin.pages.post.posts',compact('posts')); 
+        }
+
+        
+      
     }
 
     public function getallpost(){

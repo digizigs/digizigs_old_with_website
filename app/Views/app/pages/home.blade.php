@@ -40,19 +40,7 @@
     </section>
     <!-- End banner Area -->
 
-    
-    {{ $posts = get_posts()}}
 
-    {{dd($posts)}}
-
-
-    @foreach($posts as $post)
-
-        {{ $post->title }}
-        {{ $post ->user->firstname }}
-        <br>
-
-    @endforeach
 
     <!-- ***** Why Choose Us Area Start ***** -->
     <section class="why-choose-us-area">
