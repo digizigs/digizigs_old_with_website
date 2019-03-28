@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Event\NewBlog;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
+use App\Notifications\ArticlePublished;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Gate;
 use Intervention\Image\ImageManagerStatic as Image;
+
 
 class PostController extends Controller
 {
-   
-    public function index(Request $request)
-    {
+    
+
+    public function index(Request $request){
 
         //$posts = Post::paginate(10);
         //$posts = with('author')->find(1);
@@ -48,10 +51,7 @@ class PostController extends Controller
         }else{
             $posts = Post::where([['type','post'],['status','!=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
             return view('admin.pages.post.posts',compact('posts')); 
-        }
-
-        
-      
+        }     
     }
 
     public function getallpost(){
@@ -60,14 +60,12 @@ class PostController extends Controller
         return request()->json(200,$posts);
     }
    
-    public function create()
-    {
+    public function create(){
         $categories = Category::orderby('created_at','desc')->get();
         return view('admin.pages.post.post_new',compact('categories'));
     }
 
-    public function publishpost(Request $request)
-    {
+    public function publishpost(Request $request){
         return $request->all();
         //return 'Publish';
     }
@@ -82,14 +80,17 @@ class PostController extends Controller
             'post_title.required' => 'Post Title is required', 
         ])->Validate();
 
-        $post = new Post;
-        $post->user_id = Auth::user()->id;
-        $post->title = $request->post_title;
-        $post->description = $request->post_desc;
-        $post->body = $request->post_body;
-        $post->slug = str_slug( $request->post_title );
-        $post->status = $request->status;
-        $post->type = 'post';
+        $post = Post::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->post_title,
+            'description' => $request->post_desc,
+            'body' => $request->post_body,
+            'slug' => str_slug( $request->post_title ),
+            'status' => $request->status,
+            'type' => 'post'
+        ]);
+
+     
 
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
@@ -132,6 +133,8 @@ class PostController extends Controller
             //return redirect()->back()->with('status','Category saved');
         //}
 
+        //New Blog Event listner
+        event(new NewBlog('New Blog Posted'));
 
         return redirect()->route('post.index')->with('message', 'New Post added successfully');
     }
@@ -143,8 +146,7 @@ class PostController extends Controller
     }
 
    
-    public function edit($id)
-    {   
+    public function edit($id){   
 
         if (! Gate::allows('edit_post')) {
             return abort(401);
@@ -213,8 +215,7 @@ class PostController extends Controller
         return redirect()->route('post.index')->with('success', 'Post Updated successfully');
     }    
    
-    public function destroy($id)
-    {
+    public function destroy($id){
         $post = Post::find($id);
         $is_deleted=$post->delete();
         if($is_deleted){
