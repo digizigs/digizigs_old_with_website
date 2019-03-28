@@ -23,6 +23,7 @@ Route::get('/blog', 'App\AppController@blog')->name('app.blog');
 Route::get('/about', 'App\AppController@about')->name('app.about');
 Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/email',function(){
     
