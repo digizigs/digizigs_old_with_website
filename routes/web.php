@@ -1,11 +1,7 @@
 <?php
 
 //use Analytics;
-use App\Jobs\NewBlogNotiJob;
-use App\Mail\NewBlog;
 use App\Models\Page;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Mail;
 use Spatie\Analytics\Period;
 
 
@@ -23,24 +19,8 @@ Route::get('/blog', 'App\AppController@blog')->name('app.blog');
 Route::get('/about', 'App\AppController@about')->name('app.about');
 Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
+
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-Route::get('/email',function(){
-    
-    $job = (new NewBlogNotiJob)->delay(Carbon::now()->addSeconds(10));
-    dispatch($job);
-    return 'MAil sent successfully'         ;
-
-
-});
-
-Route::get('newblogs',function(){
-    
-    event(new NewBlog('New Blog Posted'));
-    //return 'Event Created Successfully';
-
-});
-
 
 //Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
 //Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
@@ -124,20 +104,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
     //testlab
-    Route::get('/analytics', function(){
+    Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
 
-        $analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(180));
-        $most_visited_page = Analytics::fetchMostVisitedPages(Period::days(30));
-        $analytics = Analytics::getAnalyticsService();
-        $pages = Analytics::fetchMostVisitedPages(Period::days(7));
-        $trending = app('App\Services\Trending')->week(7,15);
+    //Logs
+    //Route::get('/logsss', 'Admin\Logs\LogsController@index')->name('app.logs');
 
-        //dd($most_visited_page);
-        
-        return view('admin.pages.analytics.analytics',compact('trending','analyticsData'));
-
-
-    })->name('google.analytics');
+    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
 
 });
 

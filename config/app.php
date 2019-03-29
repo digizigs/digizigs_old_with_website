@@ -172,7 +172,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        App\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,      
@@ -180,6 +180,7 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],

@@ -297,7 +297,7 @@ input:focus {
 
 
 /*---------------why choose US---------------*/
-.why-choose-us-area{
+.why-choose-us{
   position: relative;
   z-index: 1;
   ul li {
@@ -313,14 +313,59 @@ input:focus {
     i {
       color: $primary-color;
       margin-right: 15px; 
+    }
+    span{
+      font-size: 18px;
+      color: #1D262D;
+      margin-right: 10px;
     } 
   }
   ul li:last-child {
     margin-bottom: 0; 
   }
-
+  .tagline{
+    margin-top: 30px !important;
+  }
 }
 /*---------------why choose US---------------*/
+
+/*---------------What we do area---------------*/
+.what-we-do{
+  position: relative;
+  z-index: 1;
+  ul li {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #707070;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    i {
+      color: $primary-color;
+      margin-right: 15px; 
+    }
+    span{
+      font-size: 18px;
+      color: #1D262D;
+      margin-right: 10px;
+    }  
+  }
+  ul li:last-child {
+    margin-bottom: 0; 
+  }
+  .tagline{
+    margin-top: 30px !important;
+    line-height: 26px;
+    a{
+      color: $primary-color;
+      font-weight: 600;
+    }
+  }  
+}
+/*---------------What we do area---------------*/
 
 /*---------------Start About US---------------*/
 .about-us{

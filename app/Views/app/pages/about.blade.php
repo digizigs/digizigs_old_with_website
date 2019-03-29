@@ -32,14 +32,12 @@
 				<div class="col-lg-12 col-md-12 about-right">					
 					<div class="section-content wow fadeIn" data-wow-duration=".8s">
 						<h2 class="tag-title">
-							Approachable, curious and smart... <br>and that’s just the studio dog
+							We are innovative, creative, dedicated and mission oriented.
 						</h2>
 						<p class="tag-description">
-							What defines one company of service from any other? Whilst it can seem intangible in many ways, we know its more than a just a long client list, a fancy portfolio, a bunch of awards, or even a healthy profit.
-
+							Digizigs is a dynamic, customer focussed, outcome orientated Digital Agency, working with businesses to enable operational efficiencies, create non-traditional revenue streams and connecting the online and offline worlds in a seamless manner.
 							<br><br>
-
-							What’s facinate us is the relationships that we build with both our team and our clients – and it’s what happens day-in day-out between these interactions that really matters.For us personal touch to the client's requirement matters most.
+							The cornerstone to the Digizigs online offering is our own Enterprise Level E-commerce platform. Developed with the latest open source technologies and designed to be more configurable, portable, user friendly and powerful as a business tool. 
 						</p>
 						
 					</div>
@@ -49,6 +47,53 @@
 		</div>
 	</section>
 	<!-- End About Area -->
+
+	<!-- What we Do Area -->
+    <section class="what-we-do sp-60">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Choose Us Content -->
+                <div class="col-12 col-lg-12">
+                    <div class="choose-us-content mb-80">
+                        <div class="col-lg-12">
+                            <div class="section-title">
+                                <h2>What we do?</h2>
+                                <p>We’re Your Partner in Your Success</p>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>
+                            	<i class="fa fa-check" aria-hidden="true"></i> 
+                            	<span><b>Growth Driven Design : </b></span> GDD Sites for Ecommerce, Brochure and Custom applications.
+                            </li>
+                            <li>
+                            	<i class="fa fa-check" aria-hidden="true"></i>
+                            	<span><b>Inbound marketing : </b></span> Funnel Optimisation, Lead Generation, SEO. 
+                            </li>
+                            <li>
+                            	<i class="fa fa-check" aria-hidden="true"></i> 
+                            	<span><b>Content Marketing : </b></span> Content Creation, Content Planning, Content Optimisation. 
+                            </li>
+                            <li>
+                            	<i class="fa fa-check" aria-hidden="true"></i> 
+                           		<span><b>Digital Strategy : </b></span> Competitive Advantage/Intelligence.
+                        	</li>
+                            <li>
+                            	<i class="fa fa-check" aria-hidden="true"></i> 
+                            	<span><b>Measurement and Analysis : </b></span> Analytics, Split Testing, Conversion Tracking.  
+                            </li>
+                            
+                        </ul>
+                        <h4 class="tagline">
+							Learn more how Element 7 Digital can create a dynamic online presence, power up your online sales, or create a superior Digital Strategy by <span><a href="{{route('contact')}}">contacting us</a></span> today. .
+						</h2>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- What we Do Area -->
 
 	<!-- Start Testimonials Area -->
 	<section class="testimonials_area sp-60">

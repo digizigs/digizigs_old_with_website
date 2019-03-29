@@ -13753,6 +13753,10 @@ footer {
   margin: 20px;
 }
 
+.log-view .llv-active {
+  color: #A94442 !important;
+}
+
 .sidebar-brand a img {
   padding: 20px;
   width: 150px;

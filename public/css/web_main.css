@@ -20240,12 +20240,12 @@ input:focus {
 
 /*---------------why choose US---------------*/
 
-.why-choose-us-area {
+.why-choose-us {
   position: relative;
   z-index: 1;
 }
 
-.why-choose-us-area ul li {
+.why-choose-us ul li {
   font-size: 16px;
   margin-bottom: 15px;
   color: #707070;
@@ -20257,16 +20257,72 @@ input:focus {
   align-items: center;
 }
 
-.why-choose-us-area ul li i {
+.why-choose-us ul li i {
   color: #E45447;
   margin-right: 15px;
 }
 
-.why-choose-us-area ul li:last-child {
+.why-choose-us ul li span {
+  font-size: 18px;
+  color: #1D262D;
+  margin-right: 10px;
+}
+
+.why-choose-us ul li:last-child {
   margin-bottom: 0;
 }
 
+.why-choose-us .tagline {
+  margin-top: 30px !important;
+}
+
 /*---------------why choose US---------------*/
+
+/*---------------What we do area---------------*/
+
+.what-we-do {
+  position: relative;
+  z-index: 1;
+}
+
+.what-we-do ul li {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #707070;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.what-we-do ul li i {
+  color: #E45447;
+  margin-right: 15px;
+}
+
+.what-we-do ul li span {
+  font-size: 18px;
+  color: #1D262D;
+  margin-right: 10px;
+}
+
+.what-we-do ul li:last-child {
+  margin-bottom: 0;
+}
+
+.what-we-do .tagline {
+  margin-top: 30px !important;
+  line-height: 26px;
+}
+
+.what-we-do .tagline a {
+  color: #E45447;
+  font-weight: 600;
+}
+
+/*---------------What we do area---------------*/
 
 /*---------------Start About US---------------*/
 

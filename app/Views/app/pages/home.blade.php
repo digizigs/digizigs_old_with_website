@@ -43,18 +43,18 @@
 
 
     <!-- ***** Why Choose Us Area Start ***** -->
-    <section class="why-choose-us-area">
+    <section class="why-choose-us">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Choose Us Content -->
                 <div class="col-12 col-lg-6">
                     <div class="choose-us-content mb-80">
                         <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Why Choose Us</h2>
-                        <p>We’re Your Partner in Your Success</p>
-                    </div>
-                </div>
+                            <div class="section-title">
+                                <h2>Why Choose Us</h2>
+                                <p>We’re Your Partner in Your Success</p>
+                            </div>
+                        </div>
                         <ul>
                             <li><i class="fa fa-check" aria-hidden="true"></i> Distinctive Experts That Provide Effortless Expertise</li>
                             <li><i class="fa fa-check" aria-hidden="true"></i> Enriched Outcomes Enabled By Experienced Professionals</li>
