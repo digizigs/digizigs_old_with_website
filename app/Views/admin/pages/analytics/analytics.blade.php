@@ -518,7 +518,7 @@
       var visitors_type = {!! json_encode($visitor_type) !!}; //visitor_type
       var v_len = visitors_type.length;
       var v_data = { type : [], session :[] };
-      for(var i = 0; i < tc_len; i++){
+      for(var i = 0; i < v_len; i++){
           v_data.type.push(visitors_type[i].type);
           v_data.session.push(visitors_type[i].sessions);
       }    
