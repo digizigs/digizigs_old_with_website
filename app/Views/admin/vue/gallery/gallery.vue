@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="col-md-12">
+		<div class="col-md-12 col-xs-12">
 			<vue-dropzone id="dropzone" :options="dropzoneOptions" :useCustomSlot=true v-on:vdropzone-queue-complete="sendingEvent" ref="dropzone">
 		      <div class="dropzone-custom-content">
 		        <h3 class="dropzone-custom-title">Drag and drop to upload content!</h3>
@@ -8,7 +8,7 @@
 		      </div>
 		    </vue-dropzone>
 		</div>
-		<div class="col-md-12">
+		<div class="col-md-12 col-xs-12">
 			<div class="gal-area">
 				<div class="col-md-55" v-for="med,key in media.data">
 					
