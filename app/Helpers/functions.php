@@ -42,7 +42,10 @@ if(!function_exists('get_posts')){
 	function get_posts($category,$count){
 	
 		if($category == 'all'){
-			$posts = Post::where([['type','post'],['status','Published']])->paginate($count);
+			$posts = Post::where([['type','post'],['status','Published']])
+						->with('user')
+						->with('categories')
+						->paginate($count);
 			return $posts;
 		}else{
 			$posts = Post::where([['type','post'],['status','Published']])->with('user')

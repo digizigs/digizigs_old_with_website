@@ -87,214 +87,79 @@
 			<div class="row">
 
 				<div class="col-lg-8 posts-list">
-					<div class="single-post row">
-						<div class="col-lg-3  col-md-3 meta-details">
-							<ul class="tags">
-								<li><a href="#">Food,</a></li>
-								<li><a href="#">Technology,</a></li>
-								<li><a href="#">Politics,</a></li>
-								<li><a href="#">Lifestyle</a></li>
-							</ul>
-							<div class="user-details row">
-								<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-								<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-								<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-							</div>
-						</div>
-						<div class="col-lg-9 col-md-9 ">
-							<div class="feature-img">
-								<img class="img-fluid" src="{{asset('public/images/blog/feature-img1.jpg')}}" alt="">
-							</div>
-							<a class="posts-title" href="blog-single.html"><h3>Astronomy Binoculars A Great Alternative</h3></a>
-							<p class="excert">
-								MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-								on boot camp when you can get the MCSE study materials yourself at a fraction.
-							</p>
-							<a href="#" class="primary-btn" data-text="View More">
-								<span>V</span>
-								<span>i</span>
-								<span>e</span>
-								<span>w</span>
-								<span> </span>
-								<span>M</span>
-								<span>o</span>
-								<span>r</span>
-								<span>e</span>
-							</a>
-						</div>
-					</div>
-					<div class="single-post row">
-						<div class="col-lg-3  col-md-3 meta-details">
-							<ul class="tags">
-								<li><a href="#">Food,</a></li>
-								<li><a href="#">Technology,</a></li>
-								<li><a href="#">Politics,</a></li>
-								<li><a href="#">Lifestyle</a></li>
-							</ul>
-							<div class="user-details row">
-								<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-								<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-								<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-							</div>
-						</div>
-						<div class="col-lg-9 col-md-9 ">
-							<div class="feature-img">
-								<img class="img-fluid" src="{{asset('public/images/blog/feature-img2.jpg')}}" alt="">
-							</div>
-							<a class="posts-title" href="blog-single.html"><h3>The Basics Of Buying A Telescope</h3></a>
-							<p class="excert">
-								MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-								on boot camp when you can get the MCSE study materials yourself at a fraction.
-							</p>
-							<a href="#" class="primary-btn" data-text="View More">
-								<span>V</span>
-								<span>i</span>
-								<span>e</span>
-								<span>w</span>
-								<span> </span>
-								<span>M</span>
-								<span>o</span>
-								<span>r</span>
-								<span>e</span>
-							</a>
-						</div>
-					</div>
-					<div class="single-post row">
-						<div class="col-lg-3  col-md-3 meta-details">
-							<ul class="tags">
-								<li><a href="#">Food,</a></li>
-								<li><a href="#">Technology,</a></li>
-								<li><a href="#">Politics,</a></li>
-								<li><a href="#">Lifestyle</a></li>
-							</ul>
-							<div class="user-details row">
-								<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-								<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-								<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-							</div>
-						</div>
-						<div class="col-lg-9 col-md-9">
-							<div class="feature-img">
-								<img class="img-fluid" src="{{asset('public/images/blog/feature-img3.jpg')}}" alt="">
-							</div>
-							<a class="posts-title" href="blog-single.html"><h3>The Glossary Of Telescopes</h3></a>
-							<p class="excert">
-								MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-								on boot camp when you can get the MCSE study materials yourself at a fraction.
-							</p>
-							<a href="#" class="primary-btn" data-text="View More">
-								<span>V</span>
-								<span>i</span>
-								<span>e</span>
-								<span>w</span>
-								<span> </span>
-								<span>M</span>
-								<span>o</span>
-								<span>r</span>
-								<span>e</span>
-							</a>
-						</div>
-					</div>
-					<div class="single-post row">
-						<div class="col-lg-3  col-md-3 meta-details">
-							<ul class="tags">
-								<li><a href="#">Food,</a></li>
-								<li><a href="#">Technology,</a></li>
-								<li><a href="#">Politics,</a></li>
-								<li><a href="#">Lifestyle</a></li>
-							</ul>
-							<div class="user-details row">
-								<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-								<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-								<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-							</div>
-						</div>
-						<div class="col-lg-9 col-md-9">
-							<div class="feature-img">
-								<img class="img-fluid" src="{{asset('public/images/blog/feature-img4.jpg')}}" alt="">
-							</div>
-							<a class="posts-title" href="blog-single.html"><h3>The Night Sky</h3></a>
-							<p class="excert">
-								MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-								on boot camp when you can get the MCSE study materials yourself at a fraction.
-							</p>
-							<a href="#" class="primary-btn" data-text="View More">
-								<span>V</span>
-								<span>i</span>
-								<span>e</span>
-								<span>w</span>
-								<span> </span>
-								<span>M</span>
-								<span>o</span>
-								<span>r</span>
-								<span>e</span>
-							</a>
-						</div>
-					</div>
-					<div class="single-post row">
-						<div class="col-lg-3 col-md-3 meta-details">
-							<ul class="tags">
-								<li><a href="#">Food,</a></li>
-								<li><a href="#">Technology,</a></li>
-								<li><a href="#">Politics,</a></li>
-								<li><a href="#">Lifestyle</a></li>
-							</ul>
-							<div class="user-details row">
-								<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-								<p class="date col-lg-12 col-md-12 col-6"><a href="#">12 Dec, 2017</a> <span class="lnr lnr-calendar-full"></span></p>
-								<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
-								<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
-							</div>
-						</div>
-						<div class="col-lg-9 col-md-9">
-							<div class="feature-img">
-								<img class="img-fluid" src="{{asset('public/images/blog/feature-img5.jpg')}}" alt="">
-							</div>
-							<a class="posts-title" href="blog-single.html"><h3>Telescopes 101</h3></a>
-							<p class="excert">
-								MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-								on boot camp when you can get the MCSE study materials yourself at a fraction.
-							</p>
-							<a href="#" class="primary-btn" data-text="View More">
-								<span>V</span>
-								<span>i</span>
-								<span>e</span>
-								<span>w</span>
-								<span> </span>
-								<span>M</span>
-								<span>o</span>
-								<span>r</span>
-								<span>e</span>
-							</a>
-						</div>
-					</div>
+
+					@foreach($posts = get_posts('all',1) as $post)
+
+							<div class="single-post row">								
+								<div class="col-lg-12 col-md-12 ">
+									
+									<div class="post-heading">																							<div class="post-title">
+
+											<a class="posts-title" href="blog-single.html">
+												<h3>
+													{{$post->title}}
+												</h3>
+											</a>
+
+											<span class="post-meta post-date">
+												<a href="#">
+													{{ Carbon\Carbon::parse($post->created_at)->format('M d Y') }}
+													<span class="lnr lnr-calendar-full"></span>
+												</a>
+											</span>
+												
+											<span class="post-meta post-author">
+												<a href="#">{{$post->user->firstname}}
+													<span class="lnr lnr-user"></span>
+												</a>
+											</span>
+										
+											<span class="post-meta post-views">
+												<a href="#">1.2M Views</a> 
+												<span class="lnr lnr-eye"></span>
+											</span>
+
+											<span class="post-meta post-comments">
+												<a href="#">06 Comments</a>
+												<span class="lnr lnr-bubble"></span>
+											</span>
+
+											<span class="post-meta post-cat">
+												<ul class="tags">
+													@foreach($post->categories as $cat)							                
+														<li><a href="#">{{$cat->name}},</a></li>
+										            @endforeach										
+												</ul>
+											</span>
+										</div>
+									</div>
+
+									<div class="feature-img">
+										<img class="img-fluid" src="{{$post->image_url}}" alt="">
+									</div>
+
+									<p class="excert">
+										{!!Illuminate\Support\Str::words($post->body,40)!!}
+									</p>
+
+									<a href="#" class="primary-btn" data-text="View More">
+										<span>V</span>
+										<span>i</span>
+										<span>e</span>
+										<span>w</span>
+										<span> </span>
+										<span>M</span>
+										<span>o</span>
+										<span>r</span>
+										<span>e</span>
+									</a>
+								</div>
+							</div>            
+				    @endforeach
+					
 					<nav class="blog-pagination justify-content-center d-flex">
-						<ul class="pagination">
-							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Previous">
-									<span aria-hidden="true">
-										<span class="lnr lnr-chevron-left"></span>
-									</span>
-								</a>
-							</li>
-							<li class="page-item"><a href="#" class="page-link">01</a></li>
-							<li class="page-item active"><a href="#" class="page-link">02</a></li>
-							<li class="page-item"><a href="#" class="page-link">03</a></li>
-							<li class="page-item"><a href="#" class="page-link">04</a></li>
-							<li class="page-item"><a href="#" class="page-link">09</a></li>
-							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Next">
-									<span aria-hidden="true">
-										<span class="lnr lnr-chevron-right"></span>
-									</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+						{{ $posts->links() }}
+					</nav>					
 				</div>
 
 				<div class="col-lg-4 sidebar-widgets">

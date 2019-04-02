@@ -182,6 +182,7 @@ return [
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
     ],
 
@@ -237,6 +238,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
      
 
     ],

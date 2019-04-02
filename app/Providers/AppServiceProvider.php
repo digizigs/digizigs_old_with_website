@@ -6,6 +6,7 @@ use App\Models\Setting;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
         /*if($database <> 'digizigss'){
             return view('admin.setting.app_setup');
         }*/
+
+        Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
 
     }
 

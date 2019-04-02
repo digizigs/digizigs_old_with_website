@@ -93,13 +93,13 @@ class PostController extends Controller
 
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
-            $filename = time().'.'. $image->getClientOriginalExtension();
+            $filename = time().'_'. $image->getClientOriginalName();
             $location = public_path('uploads/' . $filename);
             //Image::make($image->getRealPath())->resize(250, 250)->save($location);
             Image::make($image->getRealPath())->save($location);            
-            $post->image_url = $filename;         
+            $post->image_url = url('/public/uploads') . '/' . $filename;           
         }
-
+        
         $post->save();
 
         //Sync categories
@@ -176,11 +176,11 @@ class PostController extends Controller
 
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
-            $filename = time().'.'. $image->getClientOriginalExtension();
+            $filename = time().'_'. $image->getClientOriginalName();
             $location = public_path('uploads/' . $filename);
             //Image::make($image->getRealPath())->resize(250, 250)->save($location);
             Image::make($image->getRealPath())->save($location);      
-            $post->image_url = $filename;         
+            $post->image_url = url('/public/uploads') . '/' . $filename;       
         }
 
         $post->save();

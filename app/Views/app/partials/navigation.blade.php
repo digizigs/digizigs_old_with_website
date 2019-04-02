@@ -32,6 +32,12 @@
                     <!--li><a href="{{url('/case-studies')}}" class="{{ request()->is('case-studies') ? 'active' : '' }}">Case Studies</a></li-->
                     <li><a href="{{route('app.blog')}}" class="{{ request()->is('blog') ? 'active' : '' }}">Blog</a></li>
                     <li><a href="{{route('contact')}}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a></li>
+                    @if (Auth::guest())
+
+                    @else
+                        <li><a href="{{route('admin.home')}}" class="{{ request()->is('contact') ? 'active' : '' }}">Admin</a></li>
+                    @endif
+
                     
                 </ul>
             </nav>
