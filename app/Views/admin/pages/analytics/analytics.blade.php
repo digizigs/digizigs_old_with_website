@@ -442,49 +442,7 @@
           }
       });
 
-      //----------Mobile_traffic ----------//
-      /*var mobile_traffic = {!! json_encode($mobile_traffic['rows'])!!}
-      console.log(mobile_traffic);
-      var mt_len = mobile_traffic.length;
-      var mt_data = { device : [], source :[], session :[], pageview :[], duration :[] };
-      for(var i = 0; i < mt_len; i++){
-          mt_data.device.push(mobile_traffic[i][0]);
-          mt_data.source.push(mobile_traffic[i][1]);
-          mt_data.session.push(mobile_traffic[i][2]);
-          mt_data.pageview.push(mobile_traffic[i][3]);
-          mt_data.duration.push(mobile_traffic[i][4]);
-      };
-      console.log(mt_data.device);
-      var chart = new Chart ($('#mobile_traffic'),{
-          type : 'bar',
-          data : {
-              labels : mt_data.device,
-              datasets : [
-                        {
-                          label: "Sessions",
-                          backgroundColor: getRandomColorEach(mt_len),
-                          borderColor: '#fff',
-                          data: mt_data.session,
-                        },
-                        {
-                          label: "Pageviews",
-                          backgroundColor: getRandomColorEach(mt_len),
-                          borderColor: '#fff',
-                          data: mt_data.pageview,
-                        },
-                        {
-                          label: "Duration",
-                          backgroundColor: getRandomColorEach(mt_len),
-                          borderColor: '#fff',
-                          data: mt_data.duration,
-                        }
-                      ]
-          },
-          options : {
-            responsive: true,
-          }
-      });*/
-
+      
 
       //----------Top Country Graph ----------//
       var top_countries = {!! json_encode($top_countries) !!}; //visitor_type
