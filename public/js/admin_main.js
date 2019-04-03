@@ -56993,7 +56993,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -57004,6 +57004,17 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -57234,7 +57245,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(function (error) {
                 _this.errors = error.response.data.errors;
                 _this.error_message = error.response.data.message;
-                //console.log(this.errors);           
+                //console.log(this.errors); 
+
+                /*toast({
+                    type: 'warning',
+                    title: 'Please fill the basic details'
+                })*/
+                new PNotify({
+                    title: 'New Thing',
+                    text: 'Just to let you know, something happened.',
+                    type: 'info',
+                    styling: 'bootstrap3'
+                });
             });
         }
     },
@@ -57277,32 +57299,29 @@ var render = function() {
                   _c(
                     "div",
                     {
+                      staticClass: "accordion",
                       attrs: {
-                        role: "tabpanel",
-                        "data-example-id": "togglable-tabs"
+                        id: "accordion",
+                        role: "tablist",
+                        "aria-multiselectable": "true"
                       }
                     },
                     [
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-content",
-                          attrs: { id: "myTabContent" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade active in",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content1",
-                                "aria-labelledby": "home-tab"
-                              }
-                            },
-                            [
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse in",
+                            attrs: {
+                              id: "collapseOne",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingOne"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -57529,20 +57548,28 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content2",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(6),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            staticStyle: { height: "0px" },
+                            attrs: {
+                              id: "collapseTwo",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingTwo",
+                              "aria-expanded": "false"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -57554,7 +57581,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(6),
+                                      _vm._m(7),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57595,7 +57622,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(7),
+                                      _vm._m(8),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57635,7 +57662,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(8),
+                                      _vm._m(9),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57674,7 +57701,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(9),
+                                      _vm._m(10),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57707,20 +57734,27 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content3",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(11),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseThree",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingThree",
+                              "aria-expanded": "false"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -57732,7 +57766,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(10),
+                                      _vm._m(12),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57777,7 +57811,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(11),
+                                      _vm._m(13),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57822,7 +57856,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(12),
+                                      _vm._m(14),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57867,7 +57901,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(13),
+                                      _vm._m(15),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57912,7 +57946,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(14),
+                                      _vm._m(16),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -57957,7 +57991,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(15),
+                                      _vm._m(17),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -58002,7 +58036,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(16),
+                                      _vm._m(18),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -58035,20 +58069,27 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content4",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(19),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapsefour",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingThree",
+                              "aria-expanded": "false"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -58060,7 +58101,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(17),
+                                      _vm._m(20),
                                       _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
@@ -58104,7 +58145,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(18),
+                                      _vm._m(21),
                                       _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
@@ -58136,10 +58177,10 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          )
-                        ]
-                      )
+                            ])
+                          ]
+                        )
+                      ])
                     ]
                   ),
                   _vm._v(" "),
@@ -58193,74 +58234,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "ul",
+      "a",
       {
-        staticClass: "nav nav-tabs bar_tabs",
-        attrs: { id: "myTab", role: "tablist" }
+        staticClass: "panel-heading",
+        attrs: {
+          role: "tab",
+          id: "headingOne",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion",
+          href: "#collapseOne",
+          "aria-expanded": "true",
+          "aria-controls": "collapseOne"
+        }
       },
       [
-        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content1",
-                id: "home-tab",
-                role: "tab",
-                "data-toggle": "tab",
-                "aria-expanded": "true"
-              }
-            },
-            [_vm._v("Details")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content2",
-                role: "tab",
-                id: "profile-tab",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Contacts")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content3",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Address")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content4",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Additional Info")]
-          )
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Client Basic Details")
         ])
       ]
     )
@@ -58293,6 +58282,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingTwo",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion",
+          href: "#collapseTwo",
+          "aria-expanded": "false",
+          "aria-controls": "collapseTwo"
+        }
+      },
+      [
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Contact Person Details")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("First Name")])])])
   },
   function() {
@@ -58312,6 +58326,27 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("Phone")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion",
+          href: "#collapseThree",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Client's Address")])]
+    )
   },
   function() {
     var _vm = this
@@ -58354,6 +58389,27 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("Country")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion",
+          href: "#collapsefour",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Additional Notes")])]
+    )
   },
   function() {
     var _vm = this
@@ -58463,7 +58519,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -58474,6 +58530,19 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -58764,32 +58833,29 @@ var render = function() {
                   _c(
                     "div",
                     {
+                      staticClass: "accordion",
                       attrs: {
-                        role: "tabpanel",
-                        "data-example-id": "togglable-tabs"
+                        id: "accordion1",
+                        role: "tablist",
+                        "aria-multiselectable": "true"
                       }
                     },
                     [
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-content",
-                          attrs: { id: "myTabContent" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade active in",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content11",
-                                "aria-labelledby": "home-tab"
-                              }
-                            },
-                            [
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse in",
+                            attrs: {
+                              id: "collapseOne1",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingOne"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -59016,20 +59082,26 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content22",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(5),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseTwo1",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingTwo"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -59041,7 +59113,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(5),
+                                      _vm._m(6),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59081,7 +59153,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(6),
+                                      _vm._m(7),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59121,7 +59193,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(7),
+                                      _vm._m(8),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59160,7 +59232,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(8),
+                                      _vm._m(9),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59193,20 +59265,26 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content33",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(10),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseThree1",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingThree"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -59218,7 +59296,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(9),
+                                      _vm._m(11),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59263,7 +59341,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(10),
+                                      _vm._m(12),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59308,7 +59386,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(11),
+                                      _vm._m(13),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59353,7 +59431,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(12),
+                                      _vm._m(14),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59398,7 +59476,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(13),
+                                      _vm._m(15),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59443,7 +59521,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(14),
+                                      _vm._m(16),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59488,7 +59566,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(15),
+                                      _vm._m(17),
                                       _vm._v(" "),
                                       _c("input", {
                                         directives: [
@@ -59521,20 +59599,26 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "tab-pane fade",
-                              attrs: {
-                                role: "tabpanel",
-                                id: "tab_content44",
-                                "aria-labelledby": "profile-tab"
-                              }
-                            },
-                            [
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "panel" }, [
+                        _vm._m(18),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-collapse collapse",
+                            attrs: {
+                              id: "collapseFour",
+                              role: "tabpanel",
+                              "aria-labelledby": "headingThree"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "panel-body" }, [
                               _c(
                                 "div",
                                 { staticClass: "form-group glow-input" },
@@ -59546,7 +59630,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(16),
+                                      _vm._m(19),
                                       _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
@@ -59590,7 +59674,7 @@ var render = function() {
                                         "col-sm-12 col-xs-12 col-xs-12"
                                     },
                                     [
-                                      _vm._m(17),
+                                      _vm._m(20),
                                       _vm._v(" "),
                                       _c("textarea", {
                                         directives: [
@@ -59622,10 +59706,10 @@ var render = function() {
                                   )
                                 ]
                               )
-                            ]
-                          )
-                        ]
-                      )
+                            ])
+                          ]
+                        )
+                      ])
                     ]
                   ),
                   _vm._v(" "),
@@ -59656,74 +59740,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "ul",
+      "a",
       {
-        staticClass: "nav nav-tabs bar_tabs",
-        attrs: { id: "myTab", role: "tablist" }
+        staticClass: "panel-heading",
+        attrs: {
+          role: "tab",
+          id: "headingOne1",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion1",
+          href: "#collapseOne1",
+          "aria-expanded": "true",
+          "aria-controls": "collapseOne"
+        }
       },
       [
-        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content11",
-                id: "home-tab",
-                role: "tab",
-                "data-toggle": "tab",
-                "aria-expanded": "true"
-              }
-            },
-            [_vm._v("Details")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content22",
-                role: "tab",
-                id: "profile-tab",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Contacts")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content33",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Address")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content44",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Additional Info")]
-          )
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Basic Client Detais")
         ])
       ]
     )
@@ -59756,6 +59788,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingTwo1",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion1",
+          href: "#collapseTwo1",
+          "aria-expanded": "false",
+          "aria-controls": "collapseTwo"
+        }
+      },
+      [
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Contact Person Details")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("First Name")])])])
   },
   function() {
@@ -59775,6 +59832,27 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("Phone")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree1",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion1",
+          href: "#collapseThree1",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Address")])]
+    )
   },
   function() {
     var _vm = this
@@ -59817,6 +59895,27 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("b", [_c("i", [_c("small", [_vm._v("Country")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree1",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion1",
+          href: "#collapseFour",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Additional Notes")])]
+    )
   },
   function() {
     var _vm = this
@@ -60041,6 +60140,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recrd'],
@@ -60119,33 +60231,30 @@ var render = function() {
               _c(
                 "div",
                 {
+                  staticClass: "accordion",
                   attrs: {
-                    role: "tabpanel",
-                    "data-example-id": "togglable-tabs"
+                    id: "accordion111",
+                    role: "tablist",
+                    "aria-multiselectable": "true"
                   }
                 },
                 [
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "tab-content",
-                      attrs: { id: "myTabContent" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade active in",
-                          staticStyle: { "margin-left": "25px" },
-                          attrs: {
-                            role: "tabpanel",
-                            id: "tab_content111",
-                            "aria-labelledby": "home-tab"
-                          }
-                        },
-                        [
+                  _c("div", { staticClass: "panel" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "panel-collapse collapse in",
+                        attrs: {
+                          id: "collapseOne111",
+                          role: "tabpanel",
+                          "aria-labelledby": "headingOne",
+                          "aria-expanded": "true"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "panel-body" }, [
                           _c("div", { staticClass: "project_detail" }, [
                             _vm._m(1),
                             _vm._v(" "),
@@ -60163,114 +60272,132 @@ var render = function() {
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.client_phone))])
                           ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "25px" },
-                          attrs: {
-                            role: "tabpanel",
-                            id: "tab_content222",
-                            "aria-labelledby": "profile-tab"
-                          }
-                        },
-                        [
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "panel-collapse collapse",
+                        attrs: {
+                          id: "collapseTwo111",
+                          role: "tabpanel",
+                          "aria-labelledby": "headingTwo",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "panel-body" }, [
                           _c("div", { staticClass: "project_detail" }, [
-                            _vm._m(5),
+                            _vm._m(6),
                             _vm._v(" "),
                             _c("p", [
                               _vm._v(_vm._s(_vm.recrd.contact_first_name))
                             ]),
                             _vm._v(" "),
-                            _vm._m(6),
+                            _vm._m(7),
                             _vm._v(" "),
                             _c("p", [
                               _vm._v(_vm._s(_vm.recrd.contact_last_name))
                             ]),
                             _vm._v(" "),
-                            _vm._m(7),
+                            _vm._m(8),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.contact_email))]),
                             _vm._v(" "),
-                            _vm._m(8),
+                            _vm._m(9),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.contact_phone))])
                           ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "25px" },
-                          attrs: {
-                            role: "tabpanel",
-                            id: "tab_content333",
-                            "aria-labelledby": "profile-tab"
-                          }
-                        },
-                        [
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel" }, [
+                    _vm._m(10),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "panel-collapse collapse",
+                        attrs: {
+                          id: "collapseThree111",
+                          role: "tabpanel",
+                          "aria-labelledby": "headingThree",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "panel-body" }, [
                           _c("div", { staticClass: "project_detail" }, [
-                            _vm._m(9),
+                            _vm._m(11),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_line_1))]),
                             _vm._v(" "),
-                            _vm._m(10),
+                            _vm._m(12),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_line_2))]),
                             _vm._v(" "),
-                            _vm._m(11),
+                            _vm._m(13),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_street))]),
                             _vm._v(" "),
-                            _vm._m(12),
+                            _vm._m(14),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_city))]),
                             _vm._v(" "),
-                            _vm._m(13),
+                            _vm._m(15),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_state))]),
                             _vm._v(" "),
-                            _vm._m(14),
+                            _vm._m(16),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_postal))]),
                             _vm._v(" "),
-                            _vm._m(15),
+                            _vm._m(17),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.address_country))])
                           ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "tab-pane fade",
-                          staticStyle: { "margin-left": "25px" },
-                          attrs: {
-                            role: "tabpanel",
-                            id: "tab_content444",
-                            "aria-labelledby": "profile-tab"
-                          }
-                        },
-                        [
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "panel" }, [
+                    _vm._m(18),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "panel-collapse collapse",
+                        attrs: {
+                          id: "collapsefour111",
+                          role: "tabpanel",
+                          "aria-labelledby": "headingThree",
+                          "aria-expanded": "false"
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "panel-body" }, [
                           _c("div", { staticClass: "project_detail" }, [
-                            _vm._m(16),
+                            _vm._m(19),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.private_note))]),
                             _vm._v(" "),
-                            _vm._m(17),
+                            _vm._m(20),
                             _vm._v(" "),
                             _c("p", [_vm._v(_vm._s(_vm.recrd.public_note))])
                           ])
-                        ]
-                      )
-                    ]
-                  )
+                        ])
+                      ]
+                    )
+                  ])
                 ]
               )
             ])
@@ -60286,74 +60413,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "ul",
+      "a",
       {
-        staticClass: "nav nav-tabs bar_tabs",
-        attrs: { id: "myTab", role: "tablist" }
+        staticClass: "panel-heading",
+        attrs: {
+          role: "tab",
+          id: "headingOne111",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion111",
+          href: "#collapseOne111",
+          "aria-expanded": "true",
+          "aria-controls": "collapseOne"
+        }
       },
       [
-        _c("li", { staticClass: "active", attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content111",
-                id: "home-tab",
-                role: "tab",
-                "data-toggle": "tab",
-                "aria-expanded": "true"
-              }
-            },
-            [_vm._v("Details")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content222",
-                role: "tab",
-                id: "profile-tab",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Contact")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content333",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Address")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { attrs: { role: "presentation" } }, [
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "#tab_content444",
-                role: "tab",
-                id: "profile-tab2",
-                "data-toggle": "tab",
-                "aria-expanded": "false"
-              }
-            },
-            [_vm._v("Notes")]
-          )
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Client Basic Details")
         ])
       ]
     )
@@ -60418,6 +60493,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingTwo111",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion111",
+          href: "#collapseTwo111",
+          "aria-expanded": "false",
+          "aria-controls": "collapseTwo"
+        }
+      },
+      [
+        _c("h4", { staticClass: "panel-title" }, [
+          _vm._v("Contact Person Details")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("b", [
       _c("i", { staticClass: "title" }, [
         _c("i", {
@@ -60469,6 +60569,27 @@ var staticRenderFns = [
         _vm._v(" Phone")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree111",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion111",
+          href: "#collapseThree111",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Address")])]
+    )
   },
   function() {
     var _vm = this
@@ -60565,6 +60686,27 @@ var staticRenderFns = [
         _vm._v("Country")
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "panel-heading collapsed",
+        attrs: {
+          role: "tab",
+          id: "headingThree111",
+          "data-toggle": "collapse",
+          "data-parent": "#accordion111",
+          href: "#collapsefour111",
+          "aria-expanded": "false",
+          "aria-controls": "collapseThree"
+        }
+      },
+      [_c("h4", { staticClass: "panel-title" }, [_vm._v("Additional Notes")])]
+    )
   },
   function() {
     var _vm = this
@@ -61829,7 +61971,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n#dropzone{\n\tborder: 2px dashed #00b782;\n\tpadding: 0;\n\tmargin: 0;\n\theight: 240px;\n}\n.dropzone-custom-content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  text-align: center;\n}\n.dropzone-custom-title {\n  margin-top: 0;\n  color: #00b782;\n}\n.subtitle {\n  color: #314b5f;\n}\n.dz-image{\n\tmargin: 0;\n\theight: 150px;\n}\n.gal-area{\n\tpadding: 20px 0;\n}\n\n", ""]);
+exports.push([module.i, "\n#dropzone{\n\tborder: 2px dashed #00b782;\n\tpadding: 0;\n\tmargin: 0;\n\theight: 240px;\n}\n.dropzone-custom-content {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  text-align: center;\n}\n.dropzone-custom-title {\n  margin-top: 0;\n  color: #00b782;\n}\n.subtitle {\n  color: #314b5f;\n}\n.dz-image{\n\tmargin: 0;\n\theight: 200px;\n}\n.gal-area{\n\tpadding: 20px 0;\n}\n\n", ""]);
 
 // exports
 
@@ -62058,6 +62200,7 @@ var render = function() {
             _c("div", { staticClass: "thumbnail" }, [
               _c("div", { staticClass: "image view view-first" }, [
                 _c("img", {
+                  staticClass: "img-thumbnail",
                   staticStyle: { width: "100%", display: "block" },
                   attrs: { src: med.uri, alt: "image" }
                 }),

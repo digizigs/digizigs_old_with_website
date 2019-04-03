@@ -10,35 +10,34 @@
                   <h4 class="modal-title green"><b>{{recrd.client_name}}</b></h4>
                 </div>
                 <div class="modal-body">
+                  
+                  <div class="accordion" id="accordion111" role="tablist" aria-multiselectable="true">
 
-
-              
-                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#tab_content111" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Details</a>
-                        </li>
-                        <li role="presentation" class=""><a href="#tab_content222" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Contact</a>
-                        </li>
-                        <li role="presentation" class=""><a href="#tab_content333" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Address</a>
-                        </li>
-                        <li role="presentation" class=""><a href="#tab_content444" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Notes</a>
-                        </li>
-                      </ul>
-                      <div id="myTabContent" class="tab-content">
-
-                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content111" aria-labelledby="home-tab" style="margin-left:25px;">
-                            <div class="project_detail">
-                              <b><i class="title"><i class="fa fa-user" aria-hidden="true"></i> Name</i></b>
-                              <p>{{recrd.client_name}}</p>
-                              <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i> Website</i></b>
-                              <p>{{recrd.client_website}}</p>
-                              <b><i class="title"><i class="fa fa-envelope" aria-hidden="true"></i> Email</i></b>
-                              <p>{{recrd.client_email}}</p>
-                              <b><i class="title"><i class="fa fa-phone" aria-hidden="true"></i> Phone</i></b>
-                              <p>{{recrd.client_phone}}</p>
-                            </div>
+                    <div class="panel">
+                      <a class="panel-heading" role="tab" id="headingOne111" data-toggle="collapse" data-parent="#accordion111" href="#collapseOne111" aria-expanded="true" aria-controls="collapseOne">
+                        <h4 class="panel-title">Client Basic Details</h4>
+                      </a>
+                      <div id="collapseOne111" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" style="">
+                        <div class="panel-body">
+                          <div class="project_detail">
+                            <b><i class="title"><i class="fa fa-user" aria-hidden="true"></i> Name</i></b>
+                            <p>{{recrd.client_name}}</p>
+                            <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i> Website</i></b>
+                            <p>{{recrd.client_website}}</p>
+                            <b><i class="title"><i class="fa fa-envelope" aria-hidden="true"></i> Email</i></b>
+                            <p>{{recrd.client_email}}</p>
+                            <b><i class="title"><i class="fa fa-phone" aria-hidden="true"></i> Phone</i></b>
+                            <p>{{recrd.client_phone}}</p>
+                          </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content222" aria-labelledby="profile-tab" style="margin-left:25px;">
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <a class="panel-heading collapsed" role="tab" id="headingTwo111" data-toggle="collapse" data-parent="#accordion111" href="#collapseTwo111" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4 class="panel-title">Contact Person Details</h4>
+                      </a>
+                      <div id="collapseTwo111" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
+                        <div class="panel-body">
                           <div class="project_detail">
                             <b><i class="title"><i class="fa fa-info" aria-hidden="true"></i> First Name</i></b>
                             <p>{{recrd.contact_first_name}}</p>
@@ -50,50 +49,64 @@
                             <p>{{recrd.contact_phone}}</p>
                           </div>
                         </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content333" aria-labelledby="profile-tab" style="margin-left:25px;">
-                          <div class="project_detail">
-                            
-                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 1</i></b>
-                              <p>{{recrd.address_line_1}}</p>
-
-                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 2</i></b>
-                              <p>{{recrd.address_line_2}}</p>
-                            
-                            
-                              <i class="title"><i class="fa fa-language" aria-hidden="true"></i>Street/Landmark</i>
-                              <p>{{recrd.address_street}}</p>
-                            
-                            
-                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>City</i></b>
-                              <p>{{recrd.address_city}}</p>
-                            
-                            
-                              <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>State/Province</i></b>
-                              <p>{{recrd.address_state}}</p>
-                            
-                            
-                              <b><i class="title"><i class="fa fa-map-pin" aria-hidden="true"></i>Postal Code</i></b>
-                              <p>{{recrd.address_postal}}</p>
-                            
-                            
-                              <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i>Country</i></b>
-                              <p>{{recrd.address_country}}</p>
-                            
-                            
-                          </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane fade" id="tab_content444" aria-labelledby="profile-tab" style="margin-left:25px;">
-                           <div class="project_detail">
-                            <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Public Note</i></b>
-                            <p>{{recrd.private_note}}</p>
-                            <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Private Note</i></b>
-                            <p>{{recrd.public_note}}</p>
-                          </div>
-                        </div>
-
                       </div>
                     </div>
+                    <div class="panel">
+                      <a class="panel-heading collapsed" role="tab" id="headingThree111" data-toggle="collapse" data-parent="#accordion111" href="#collapseThree111" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Address</h4>
+                      </a>
+                      <div id="collapseThree111" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                        <div class="panel-body">
+                          <div class="project_detail">
+                          
+                            <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 1</i></b>
+                            <p>{{recrd.address_line_1}}</p>
 
+                            <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>Line 2</i></b>
+                            <p>{{recrd.address_line_2}}</p>
+                          
+                          
+                            <i class="title"><i class="fa fa-language" aria-hidden="true"></i>Street/Landmark</i>
+                            <p>{{recrd.address_street}}</p>
+                          
+                          
+                            <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>City</i></b>
+                            <p>{{recrd.address_city}}</p>
+                          
+                          
+                            <b><i class="title"><i class="fa fa-map-o" aria-hidden="true"></i>State/Province</i></b>
+                            <p>{{recrd.address_state}}</p>
+                          
+                          
+                            <b><i class="title"><i class="fa fa-map-pin" aria-hidden="true"></i>Postal Code</i></b>
+                            <p>{{recrd.address_postal}}</p>
+                          
+                          
+                            <b><i class="title"><i class="fa fa-globe" aria-hidden="true"></i>Country</i></b>
+                            <p>{{recrd.address_country}}</p>
+                          
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <a class="panel-heading collapsed" role="tab" id="headingThree111" data-toggle="collapse" data-parent="#accordion111" href="#collapsefour111" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Additional Notes</h4>
+                      </a>
+                      <div id="collapsefour111" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                        <div class="panel-body">
+                            <div class="project_detail">
+                              <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Public Note</i></b>
+                              <p>{{recrd.private_note}}</p>
+                              <b><i class="title"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>Private Note</i></b>
+                              <p>{{recrd.public_note}}</p>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                   
                 </div>             
                 
               </div>

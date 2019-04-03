@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
             return view('admin.setting.app_setup');
         }*/
 
-        Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
+        //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
 
     }
 

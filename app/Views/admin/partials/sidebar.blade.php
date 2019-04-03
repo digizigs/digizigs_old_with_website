@@ -53,7 +53,9 @@
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-          <li><a><i class="fa fa-universal-access"></i>Access Management<span class="fa fa-chevron-down"></span></a>
+         
+
+          <li><a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('users.index')}}">Users</a></li>
               <li><a href="{{route('roles.index')}}">Roles</a></li>
@@ -61,10 +63,21 @@
             </ul>
           </li>
 
-          <li><a><i class="fa fa-plug"></i>Contacts<span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-user"></i>Contacts<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
+              <li><a href="{{route('contacts.index')}}">All Contacts</a></li>
               <li><a href="{{route('subscription.index')}}">Subscriptions</a></li>
               <li><a href="{{route('inquiry.index')}}">Inquiry</a></li>
+            </ul>
+          </li>
+
+          <li><a><i class="fa fa-cart-arrow-down"></i>Inventory<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('contacts.index')}}">Products</a></li>
+              <li><a href="{{route('contacts.index')}}">Services</a></li>
+              <li><a href="{{route('contacts.index')}}">Invoice</a></li>
+              <li><a href="{{route('contacts.index')}}">Sales Order</a></li>
+              <li><a href="{{route('contacts.index')}}">Purchase Order</a></li>
             </ul>
           </li>
 
@@ -91,8 +104,7 @@
           <li>
             <a href="{{route('app.logs')}}"><i class="fa fa-exclamation-triangle"></i> Logs </a>
           </li>
-          
-        
+       
         </ul>
 
 

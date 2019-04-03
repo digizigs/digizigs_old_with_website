@@ -44,10 +44,11 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::get('/theme/tables', 'Admin\AdminController@tables')->name('theme.tables');
 
 
-	//Settings
-    Route::resource('/settings', 'Admin\SettingController');
+	//Contacts
+    Route::resource('/contacts', 'Admin\Contact\ContactController');
  
-
+    //Settings
+    Route::resource('/settings', 'Admin\SettingController');
 
     //Posts
     Route::resource('/post', 'Admin\Post\PostController');

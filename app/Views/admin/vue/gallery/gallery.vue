@@ -15,7 +15,7 @@
                     <div class="thumbnail">
                       <div class="image view view-first">
 
-                        <img style="width: 100%; display: block;" v-bind:src="med.uri" alt="image">
+                        <img style="width: 100%; display: block;" v-bind:src="med.uri" alt="image" class="img-thumbnail">
                         <div class="mask">
                           
                         </div>
@@ -137,7 +137,7 @@
 
 	.dz-image{
 		margin: 0;
-		height: 150px;
+		height: 200px;
 	}
 	.gal-area{
 		padding: 20px 0;
