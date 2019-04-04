@@ -1285,7 +1285,7 @@ table.tile_info {
 }
 
 .x_title h2 {
-    margin: 5px 0 6px;
+    //margin: 5px 0 6px;
     float: left;
     display: block
 }
@@ -1294,8 +1294,21 @@ table.tile_info {
     margin-left: 10px
 }
 
+.x_title{
+    .title{     
+        color: #7B879C;
+        font-size: 18px;
+        font-weight: 600;
+        
+        small{
+            font-size: 14;
+            font-weight: 400;
+        }
+    }
+}
 .x_title span {
-    color: #BDBDBD
+    color: #3F5367;
+    
 }
 
 .x_content {

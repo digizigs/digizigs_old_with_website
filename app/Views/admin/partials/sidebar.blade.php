@@ -53,7 +53,13 @@
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-         
+          <li><a><i class="fa fa-user"></i>Contacts<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('contacts.index')}}"> Contacts </a></li>
+              <li><a href="{{route('subscription.index')}}"> Subscriptions </a></li>
+              <li><a href="{{route('inquiry.index')}}"> Inquiry </a></li>
+            </ul>
+          </li>
 
           <li><a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
@@ -63,39 +69,26 @@
             </ul>
           </li>
 
-          <li><a><i class="fa fa-user"></i>Contacts<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('contacts.index')}}">All Contacts</a></li>
-              <li><a href="{{route('subscription.index')}}">Subscriptions</a></li>
-              <li><a href="{{route('inquiry.index')}}">Inquiry</a></li>
-            </ul>
-          </li>
-
-          <li><a><i class="fa fa-cart-arrow-down"></i>Inventory<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('contacts.index')}}">Products</a></li>
-              <li><a href="{{route('contacts.index')}}">Services</a></li>
-              <li><a href="{{route('contacts.index')}}">Invoice</a></li>
-              <li><a href="{{route('contacts.index')}}">Sales Order</a></li>
-              <li><a href="{{route('contacts.index')}}">Purchase Order</a></li>
-            </ul>
-          </li>
-
           <li><a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('client.index')}}">Clients</a></li>
-              <li><a href="{{route('service.index')}}">Products</a></li>
-              <li><a href="{{route('project.index')}}">Projects</a></li>
-              <li><a href="{{route('project.index')}}">Tasks</a></li>
               <li><a href="{{route('project.index')}}">Vendors</a></li>
-              <li><a href="{{route('project.index')}}">Proposels</a></li>
-              <li><a href="{{route('project.index')}}">Quotations</a></li>
-              <li><a href="{{route('billing.index')}}">Payments</a></li>
-              <li><a href="{{route('billing.index')}}">Credits</a></li>
-              <li><a href="{{route('invoice.index')}}">Invoice</a></li>
-              
+              <li><a href="{{route('project.index')}}">Tasks</a></li>
+              <li><a href="{{route('project.index')}}">Projects</a></li>                            
             </ul>
           </li>
+          
+          <li><a><i class="fa fa-cart-arrow-down"></i>Inventory Management<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><a href="{{route('product.index')}}">Products</a></li>
+              <li><a href="{{route('service.index')}}">Services</a></li>
+              <li><a href="{{route('invoice.index')}}">Invoice</a></li>
+              <li><a href="{{route('project.index')}}">Quotations</a></li>
+              <li><a href="{{route('billing.index')}}">Credits</a></li>
+            </ul>
+          </li>
+
+          
 
           <li>
             <a href="{{route('google.analytics')}}"><i class="fa fa-line-chart"></i> Analytics </a>

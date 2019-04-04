@@ -21,6 +21,7 @@ class ContactsSeeder extends Seeder
     			'email' => $faker->email,
     			'contact' => $faker->phoneNumber,
     			'status' => 1,
+                'type' => 'contact',
     		]);
 
     		

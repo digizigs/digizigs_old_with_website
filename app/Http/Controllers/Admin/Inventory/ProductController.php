@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Contact;
+namespace App\Http\Controllers\Admin\Inventory;
 
-use App\Http\Controllers\Controller;
-use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ContactController extends Controller
+class ProductController extends Controller
 {
     
-    public function index(){
-
-        $contacts = Contact::orderby('created_at','desc')->where('type','contact')->paginate(10);
-
-        return view('admin.pages.contact.contact',compact('contacts'));
+    public function index()
+    {
+        //
     }
 
-   
+    
     public function create()
     {
         //
@@ -34,7 +31,7 @@ class ContactController extends Controller
         //
     }
 
-    
+   
     public function edit($id)
     {
         //
@@ -46,7 +43,7 @@ class ContactController extends Controller
         //
     }
 
-    
+   
     public function destroy($id)
     {
         //

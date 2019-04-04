@@ -50,20 +50,14 @@
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
 	                    
-                      <div class="col-md-4 wp-input">
-                        <select name="" id="" class="form-control">
-                        <option value="">--Select Category--</option>
-                        <option value="">1</option>
-                        <option value="">1</option>
-                      </select>
-                      </div>
+                      <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a> 
 
                                        
-                      <span class="pull-rightk" style="margin-top: 30px; padding: 20px;">
+                      <span class="pull-rightd" style="margin-top: 30px; padding: 20px;">
                         <a href="{{route('post.index')}}">All</a> | <a href="{{route('post.index',['posts_type'=>'published'])}}">Published</a> | <a href="{{route('post.index',['posts_type'=>'draft'])}}">Draft</a> | <a href="{{route('post.index',['posts_type'=>'trashed'])}}">Trash</a>
                       </span>
                       
-                      <a href="{{route('post.create')}}" class="btn btn-dark btn-sm pull-right">Add New Post</a>
+                      
 
                     
 	                    <div class="clearfix"></div>

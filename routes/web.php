@@ -46,6 +46,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 	//Contacts
     Route::resource('/contacts', 'Admin\Contact\ContactController');
+
  
     //Settings
     Route::resource('/settings', 'Admin\SettingController');
@@ -97,6 +98,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         Route::resource('/client', 'Admin\Client\ClientController'); //User
         Route::resource('/billing', 'Admin\Client\BillingController'); //User
         Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
+    });
+
+    //Inventory Management
+    Route::group(['prefix' => 'inventory'], function(){
+        Route::resource('/product', 'Admin\Inventory\ProductController'); //Product
+
     });
 
     //account-profile

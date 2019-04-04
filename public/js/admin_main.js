@@ -56471,23 +56471,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -56588,16 +56571,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", [
     _c("div", {}, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "clearfix" }),
-      _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "clearfix" }),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12" }, [
           _c("div", { staticClass: "x_panel" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "x_content" }, [
               _c(
@@ -56610,7 +56589,7 @@ var render = function() {
                       staticClass: "table table-striped jambo_table bulk_action"
                     },
                     [
-                      _vm._m(2),
+                      _vm._m(1),
                       _vm._v(" "),
                       _c(
                         "tbody",
@@ -56645,9 +56624,9 @@ var render = function() {
                               [_vm._v(" " + _vm._s(client.client_phone) + " ")]
                             ),
                             _vm._v(" "),
-                            _vm._m(3, true),
+                            _vm._m(2, true),
                             _vm._v(" "),
-                            _vm._m(4, true),
+                            _vm._m(3, true),
                             _vm._v(" "),
                             _c("td", { staticStyle: { width: "1%" } }, [
                               _c(
@@ -56767,47 +56746,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "page-title" }, [
-      _c("div", { staticClass: "title_left" }, [
-        _c("h3", [_vm._v(" Clients "), _c("small")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "title_right" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              "col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search"
-          },
-          [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Search for..." }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "input-group-btn" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-default", attrs: { type: "button" } },
-                  [_vm._v("Go!")]
-                )
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "x_title" }, [
+      _c("span", { staticClass: "title" }, [
+        _c("i", { staticClass: "fa fa-user" }),
+        _vm._v(" Contacts ")
+      ]),
+      _c("small", [_vm._v("All Contacts")]),
+      _vm._v(" "),
       _c(
         "a",
         {
-          staticClass: "btn btn-dark btn-sm",
+          staticClass: "btn btn-dark btn-sm pull-right",
           attrs: { href: "#addclient", "data-toggle": "modal" }
         },
         [
