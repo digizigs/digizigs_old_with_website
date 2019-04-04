@@ -109,7 +109,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
     //Logs
     //Route::get('/logsss', 'Admin\Logs\LogsController@index')->name('app.logs');
-
+    //Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.logs');
     Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
 
 });
