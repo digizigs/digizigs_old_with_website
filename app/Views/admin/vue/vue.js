@@ -63,7 +63,9 @@ Vue.component('menupage', require('./menu/menu.vue'));
 Vue.component('gallery', require('./gallery/gallery.vue'));
 
 
-
+//Product
+Vue.component('product', require('./product/product.vue'));
+Vue.component('newproduct', require('./product/new_product.vue'));
 
 //Posts
 

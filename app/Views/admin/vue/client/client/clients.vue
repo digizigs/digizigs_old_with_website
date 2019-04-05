@@ -88,10 +88,7 @@
           <newclient @recordupdated="refreshRecord"></newclient>
           <editclient :recrd="clientupdate" @recordupdated="refreshRecord"></editclient>
           <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
-          <!--quickapointment></quickapointment-->
-          <!--editapointment :recrd="apntupdate" @recordupdated="refreshRecord"></editapointment-->
-
-          <!--viewapointment></viewapointment-->
+         
         </div>
 
 	</section>
