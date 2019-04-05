@@ -34,7 +34,7 @@
 									<img class="content-image img-fluid d-block mx-auto" src="{{asset('public/images/blog/cat-widget1.jpg')}}" alt="">
 								</div>
 								<div class="content-details">
-									<h4 class="content-title mx-auto text-uppercase">Social life</h4>
+									<h4 class="content-title mx-auto text-uppercase">Social life  ui iuhhu  iu  huiuh oi iu iuh iuhiu iugugu </h4>
 									<span></span>
 									
 								</div>
