@@ -47515,8 +47515,8 @@ if (token) {
 
 //Include rest of the js files Vue,Admin theme js,customjs
 __webpack_require__(175);
-__webpack_require__(236);
-__webpack_require__(237);
+__webpack_require__(241);
+__webpack_require__(242);
 
 /***/ }),
 /* 175 */
@@ -47584,6 +47584,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('clients', __webpack_requi
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('newclient', __webpack_require__(203));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('editclient', __webpack_require__(208));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('detailclient', __webpack_require__(213));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('invoice', __webpack_require__(253));
 
 //menu
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('menupage', __webpack_require__(218));
@@ -47593,7 +47594,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('gallery', __webpack_requi
 
 //Product
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('product', __webpack_require__(231));
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('newproduct', __webpack_require__(248));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('newproduct', __webpack_require__(236));
 
 //Posts
 
@@ -62283,7 +62284,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.x_panel{\r\n  //border-radius: 1px;\r\n  //background: #fff;\r\n  //box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n  //transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);\r\n  ///max-width: 500px;\r\n  ///padding: 0;\r\n  ///margin: 50px auto;\n}\n.material{\n// Taken from https://codepen.io/jonnitto/project/editor/XRPjxx\r\n\r\n\r\n\r\n  .form-checkbox,\r\n  .form-radio {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\r\n    text-align: left;\n}\n.form-checkbox-inline .form-checkbox-label,\r\n  .form-radio-inline .form-radio-label {\r\n    display: inline-block;\r\n    margin-right: 1rem;\n}\n.form-checkbox-legend,\r\n  .form-radio-legend {\r\n    margin: 0 0 0.125rem 0;\r\n    font-weight: 500;\r\n    font-size: 1rem;\r\n    color: #333;\n}\n.form-checkbox-label,\r\n  .form-radio-label {\r\n    position: relative;\r\n    cursor: pointer;\r\n    padding-left: 1.5rem;\r\n    text-align: left;\r\n    color: #333;\r\n    display: block;\r\n    margin-bottom: 0.5rem;\n}\n.form-checkbox-label:hover i,\r\n  .form-radio-label:hover i {\r\n    color: #337ab7;\n}\n.form-checkbox-label span,\r\n  .form-radio-label span {\r\n    display: block;\n}\n.form-checkbox-label input,\r\n  .form-radio-label input {\r\n    width: auto;\r\n    opacity: 0.0001;\r\n    position: absolute;\r\n    left: 0.25rem;\r\n    top: 0.25rem;\r\n    margin: 0;\r\n    padding: 0;\n}\n.form-checkbox-button {\r\n    position: absolute;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    display: block;\r\n    color: #999;\r\n    left: 0;\r\n    top: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 0;\r\n    border: 0.125rem solid currentColor;\r\n    border-radius: 0.0625rem;\r\n    -webkit-transition: color 0.28s ease;\r\n    transition: color 0.28s ease;\r\n    will-change: color;\n}\n.form-checkbox-button::before,\r\n  .form-checkbox-button::after {\r\n    position: absolute;\r\n    height: 0;\r\n    width: 0.2rem;\r\n    background-color: #337ab7;\r\n    display: block;\r\n    -webkit-transform-origin: left top;\r\n            transform-origin: left top;\r\n    border-radius: 0.25rem;\r\n    content: \"\";\r\n    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    opacity: 0;\r\n    will-change: opacity, height;\n}\n.form-checkbox-button::before {\r\n    top: 0.65rem;\r\n    left: 0.38rem;\r\n    -webkit-transform: rotate(-135deg);\r\n            transform: rotate(-135deg);\r\n    -webkit-box-shadow: 0 0 0 0.0625rem #fff;\r\n            box-shadow: 0 0 0 0.0625rem #fff;\n}\n.form-checkbox-button::after {\r\n    top: 0.3rem;\r\n    left: 0;\r\n    -webkit-transform: rotate(-45deg);\r\n            transform: rotate(-45deg);\n}\n.form-checkbox-field:checked ~ .form-checkbox-button {\r\n    color: #337ab7;\n}\n.form-checkbox-field:checked ~ .form-checkbox-button::after,\r\n  .form-checkbox-field:checked ~ .form-checkbox-button::before {\r\n    opacity: 1;\r\n    -webkit-transition: height 0.28s ease;\r\n    transition: height 0.28s ease;\n}\n.form-checkbox-field:checked ~ .form-checkbox-button::after {\r\n    height: 0.5rem;\n}\n.form-checkbox-field:checked ~ .form-checkbox-button::before {\r\n    height: 1.2rem;\r\n    -webkit-transition-delay: 0.28s;\r\n            transition-delay: 0.28s;\n}\n.form-radio-button {\r\n    position: absolute;\r\n    left: 0;\r\n    cursor: pointer;\r\n    display: block;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: #999;\n}\n.form-radio-button::before,\r\n  .form-radio-button::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    margin: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    -webkit-transition: color 0.28s ease, -webkit-transform 0.28s ease;\r\n    transition: color 0.28s ease, -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease, color 0.28s ease;\r\n    transition: transform 0.28s ease, color 0.28s ease, -webkit-transform 0.28s ease;\r\n    border-radius: 50%;\r\n    border: 0.125rem solid currentColor;\r\n    will-change: transform, color;\n}\n.form-radio-button::after {\r\n    -webkit-transform: scale(0);\r\n            transform: scale(0);\r\n    background-color: #337ab7;\r\n    border-color: #337ab7;\n}\n.form-radio-field:checked ~ .form-radio-button::after {\r\n    -webkit-transform: scale(0.5);\r\n            transform: scale(0.5);\n}\n.form-radio-field:checked ~ .form-radio-button::before {\r\n    color: #337ab7;\n}\n.form-has-error .form-checkbox-button,\r\n  .form-has-error .form-radio-button {\r\n    color: #d9534f;\n}\n.form-card {\r\n    border-radius: 2px;\r\n    background: #fff;\r\n    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n    -webkit-transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);\r\n    transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);\r\n    max-width: 500px;\r\n    padding: 0;\r\n    margin: 50px auto;\n}\n.form-card:hover,\r\n  .form-card:focus {\r\n    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\r\n            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\n}\n.form-card:focus-within {\r\n    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\r\n            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\n}\n.form-actions {\r\n    position: relative;\r\n    display: -ms-flexbox;\r\n    display: -webkit-box;\r\n    display: flex;\r\n    margin-top: 2.25rem;\n}\n.form-actions .form-btn-cancel {\r\n    -ms-flex-order: -1;\r\n    -webkit-box-ordinal-group: 0;\r\n            order: -1;\n}\n.form-actions::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: #999;\r\n    opacity: 0.3;\n}\n.form-actions > * {\r\n    -ms-flex: 1;\r\n    -webkit-box-flex: 1;\r\n            flex: 1;\r\n    margin-top: 0;\n}\n.form-fieldset {\r\n    padding: 30px;\r\n    border: 0;\n}\n.form-fieldset + .form-fieldset {\r\n    margin-top: 15px;\n}\n.form-legend {\r\n    padding: 1em 0 0;\r\n    margin: 0 0 -0.5em;\r\n    font-size: 1.5rem;\r\n    text-align: center;\n}\n.form-legend + p {\r\n    margin-top: 1rem;\n}\n.form-element {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\n}\n.form-element-hint {\r\n    font-weight: 400;\r\n    font-size: 0.6875rem;\r\n    color: #a6a6a6;\r\n    display: block;\n}\n.form-element-bar {\r\n    position: relative;\r\n    height: 1px;\r\n    background: #999;\r\n    display: block;\n}\n.form-element-bar::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: #337ab7;\r\n    height: 2px;\r\n    display: block;\r\n    -webkit-transform: rotateY(90deg);\r\n            transform: rotateY(90deg);\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    will-change: transform;\n}\n.form-element-label {\r\n    position: absolute;\r\n    top: 0.75rem;\r\n    line-height: 1.5rem;\r\n    pointer-events: none;\r\n    padding-left: 0.125rem;\r\n    z-index: 1;\r\n    font-size: 1rem;\r\n    font-weight: normal;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    margin: 0;\r\n    color: #a6a6a6;\r\n    -webkit-transform: translateY(-50%);\r\n            transform: translateY(-50%);\r\n    -webkit-transform-origin: left center;\r\n            transform-origin: left center;\r\n    -webkit-transition: color 0.28s linear, opacity 0.28s linear, -webkit-transform 0.28s ease;\r\n    transition: color 0.28s linear, opacity 0.28s linear, -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease, color 0.28s linear, opacity 0.28s linear;\r\n    transition: transform 0.28s ease, color 0.28s linear, opacity 0.28s linear, -webkit-transform 0.28s ease;\r\n    will-change: transform, color, opacity;\n}\n.form-element-field {\r\n    outline: none;\r\n    height: 1.5rem;\r\n    display: block;\r\n    background: none;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    font-size: 1rem;\r\n    border: 0 solid transparent;\r\n    line-height: 1.5;\r\n    width: 100%;\r\n    color: #333;\r\n    -webkit-box-shadow: none;\r\n            box-shadow: none;\r\n    opacity: 0.001;\r\n    -webkit-transition: opacity 0.28s ease;\r\n    transition: opacity 0.28s ease;\r\n    will-change: opacity;\n}\n.form-element-field:-ms-input-placeholder {\r\n    color: #a6a6a6;\r\n    transform: scale(0.9);\r\n    transform-origin: left top;\n}\n.form-element-field::-webkit-input-placeholder {\r\n    color: #a6a6a6;\r\n    -webkit-transform: scale(0.9);\r\n            transform: scale(0.9);\r\n    -webkit-transform-origin: left top;\r\n            transform-origin: left top;\n}\n.form-element-field::-ms-input-placeholder {\r\n    color: #a6a6a6;\r\n    transform: scale(0.9);\r\n    transform-origin: left top;\n}\n.form-element-field::placeholder {\r\n    color: #a6a6a6;\r\n    -webkit-transform: scale(0.9);\r\n            transform: scale(0.9);\r\n    -webkit-transform-origin: left top;\r\n            transform-origin: left top;\n}\n.form-element-field:focus ~ .form-element-bar::after {\r\n    -webkit-transform: rotateY(0deg);\r\n            transform: rotateY(0deg);\n}\n.form-element-field:focus ~ .form-element-label {\r\n    color: #337ab7;\n}\n.form-element-field.-hasvalue,\r\n  .form-element-field:focus {\r\n    opacity: 1;\n}\n.form-element-field.-hasvalue ~ .form-element-label,\r\n  .form-element-field:focus ~ .form-element-label {\r\n    -webkit-transform: translateY(-100%) translateY(-0.5em) translateY(-2px) scale(0.9);\r\n            transform: translateY(-100%) translateY(-0.5em) translateY(-2px) scale(0.9);\r\n    cursor: pointer;\r\n    pointer-events: auto;\n}\n.form-has-error .form-element-label.form-element-label,\r\n  .form-has-error .form-element-hint {\r\n    color: #d9534f;\n}\n.form-has-error .form-element-bar,\r\n  .form-has-error .form-element-bar::after {\r\n    background: #d9534f;\n}\n.form-is-success .form-element-label.form-element-label,\r\n  .form-is-success .form-element-hint {\r\n    color: #259337;\n}\n.form-is-success .form-element-bar::after {\r\n    background: #259337;\n}\ninput.form-element-field:not(:placeholder-shown),\r\n  textarea.form-element-field:not(:placeholder-shown) {\r\n    opacity: 1;\n}\ninput.form-element-field:not(:placeholder-shown) ~ .form-element-label,\r\n  textarea.form-element-field:not(:placeholder-shown) ~ .form-element-label {\r\n    -webkit-transform: translateY(-100%) translateY(-0.5em) translateY(-2px) scale(0.9);\r\n            transform: translateY(-100%) translateY(-0.5em) translateY(-2px) scale(0.9);\r\n    cursor: pointer;\r\n    pointer-events: auto;\n}\ntextarea.form-element-field {\r\n    height: auto;\r\n    min-height: 3rem;\n}\nselect.form-element-field {\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    cursor: pointer;\n}\n.form-select-placeholder {\r\n    color: #a6a6a6;\r\n    display: none;\n}\n.form-select .form-element-bar::before {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 0.5em;\r\n    width: 0.5em;\r\n    border-bottom: 1px solid #999;\r\n    border-right: 1px solid #999;\r\n    display: block;\r\n    right: 0.5em;\r\n    bottom: 0;\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    -webkit-transform: translateY(-100%) rotateX(0deg) rotate(45deg);\r\n            transform: translateY(-100%) rotateX(0deg) rotate(45deg);\r\n    will-change: transform;\n}\n.form-select select:focus ~ .form-element-bar::before {\r\n    -webkit-transform: translateY(-50%) rotateX(180deg) rotate(45deg);\r\n            transform: translateY(-50%) rotateX(180deg) rotate(45deg);\n}\n.form-element-field[type=\"number\"] {\r\n    -moz-appearance: textfield;\n}\n.form-element-field[type=\"number\"]::-webkit-outer-spin-button,\r\n  .form-element-field[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\n}\nbody {\r\n    margin: 40px auto;\r\n    background-image: -webkit-gradient(linear, left bottom, left top, from(#a3bded), to(#6991c7));\r\n    background-image: linear-gradient(to top, #a3bded 0%, #6991c7 100%);\n}\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -62294,8 +62295,6 @@ exports.push([module.i, "\n.x_panel{\r\n  //border-radius: 1px;\r\n  //backgroun
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
 //
 //
 //
@@ -62531,6 +62530,473 @@ if (false) {
 
 /***/ }),
 /* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(237)
+}
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(239)
+/* template */
+var __vue_template__ = __webpack_require__(240)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "app/Views/admin/vue/product/new_product.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7942994c", Component.options)
+  } else {
+    hotAPI.reload("data-v-7942994c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(238);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("bbcf1bbe", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7942994c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./new_product.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7942994c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./new_product.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 238 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.modal-content{\n\tborder-radius: 1px !important;\n\tborder-radius: 4px !important;\n    -webkit-transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);\n    transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);\n    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);\n    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08) !important;\n}\n.form-block-container{\n\tmargin-bottom: 40px;\ninput{width:100%;height:auto!important;min-height:26px;padding:4px 20px 4px 5px;margin:0;outline:0;font-family:sans-serif;font-size:1em;border:1px solid #aaa;border-radius:0;-webkit-box-shadow:none;box-shadow:none;background:#fff;\n}\n}\ninput \t\t\t\t{\n  font-size:14px;\n  display:block;\t  \n  border:none;\n  border-bottom:1px solid #757575;\n  width: 100%;\n}\n.test{\n.woha{\n}\n}\nh4{\n\tfont-size: 16px !important;\n\tfont-weight: 600 !important;\n\tcolor: #2A3F54;\n}\n.fieldLabels {\n    width: 10%;\n    word-break: keep-all;\n    min-width: 30%;\n    vertical-align: top;\n    padding: 0 10px;\n}\n.fieldvalues{\n\twidth: 30%;\n\tmin-width: 30%;\n\tpadding: 0 10px;\n}\n.card-header{\n\tmargin-bottom: 0;\n    color: #505458;\n    font-size: 14px;\n    font-weight: 600;\n    display: inline-block;\n    margin-right: 10px;\n    line-height: 1.4\n}\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 239 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {};
+	},
+
+	watch: {},
+	methods: {},
+	created: function created() {}
+});
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: { id: "new-product", role: "dialog", "data-backdrop": "false" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header panel-heading" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" }
+                },
+                [_vm._v("×")]
+              ),
+              _vm._v(" "),
+              _c("h4", { staticClass: "modal-title" }, [
+                _c("i", {
+                  staticClass: "fa fa-user",
+                  attrs: { "aria-hidden": "true" }
+                }),
+                _vm._v(" Product")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body table-form" }, [
+              _c(
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: { role: "form", action: " ", method: "post" }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "block-container",
+                      staticStyle: { "margin-bottom": "40px" }
+                    },
+                    [
+                      _c("div", { staticClass: "block-heading" }, [
+                        _c("h4", [_vm._v("Product Details")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-group glow-input" }, [
+                            _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                              _c("b", [
+                                _c("i", [_c("small", [_vm._v("Product Name")])])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input-sm",
+                                attrs: {
+                                  type: "text",
+                                  name: "prod-name",
+                                  required: "Enter name of product"
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group glow-input" }, [
+                            _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                              _c("b", [
+                                _c("i", [_c("small", [_vm._v("Last Name")])])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input-sm",
+                                attrs: {
+                                  type: "text",
+                                  name: "lastname",
+                                  required: "Please ente a Role Name"
+                                }
+                              })
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-group glow-input" }, [
+                            _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                              _c("b", [
+                                _c("i", [_c("small", [_vm._v("Category")])])
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  staticClass: "form-control input-sm",
+                                  attrs: { name: "", id: "" }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("op-1")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("op-2")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("option", { attrs: { value: "" } }, [
+                                    _vm._v("op-3")
+                                  ])
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group glow-input" }, [
+                            _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                              _c("b", [
+                                _c("i", [_c("small", [_vm._v("Last Name")])])
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                staticClass: "form-control input-sm",
+                                attrs: {
+                                  type: "text",
+                                  name: "lastname",
+                                  required: "Please ente a Role Name"
+                                }
+                              })
+                            ])
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group glow-input" }, [
+                        _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                          _c("b", [_c("i", [_c("small", [_vm._v("status")])])]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control input-sm",
+                            attrs: {
+                              type: "checkbox",
+                              name: "firstname",
+                              required: "Please ente a Role Name"
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group glow-input" }, [
+                        _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                          _c("b", [_c("i", [_c("small", [_vm._v("Model")])])]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control input-sm",
+                            attrs: {
+                              type: "text",
+                              name: "lastname",
+                              required: "Please ente a Role Name"
+                            }
+                          })
+                        ])
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "block-container" }, [
+                    _c("div", { staticClass: "block-heading" }, [
+                      _c("h4", [_vm._v("Stock Details")])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group glow-input" }, [
+                        _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                          _c("b", [
+                            _c("i", [_c("small", [_vm._v("Unit Price")])])
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control input-sm",
+                            attrs: {
+                              type: "text",
+                              name: "firstname",
+                              required: "Please ente a Role Name"
+                            }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("div", { staticClass: "form-group glow-input" }, [
+                        _c("div", { staticClass: "col-sm-12 col-xs-12" }, [
+                          _c("b", [
+                            _c("i", [_c("small", [_vm._v("Quantity")])])
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control input-sm",
+                            attrs: {
+                              type: "text",
+                              name: "lastname",
+                              required: "Please ente a Role Name"
+                            }
+                          })
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "btn btn-dark btn-sm" }, [
+                    _vm._v("Add User")
+                  ])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7942994c", module.exports)
+  }
+}
+
+/***/ }),
+/* 241 */
 /***/ (function(module, exports) {
 
 /**
@@ -66787,79 +67253,79 @@ $(document).ready(function () {
 console.log('All js success');
 
 /***/ }),
-/* 237 */
+/* 242 */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
 
-				window.setTimeout(function () {
-								;
-								$("#successMessage").fadeTo(500, 0).slideUp(500, function () {
-												$(this).remove();
-								});
-				}, 2000);
+	window.setTimeout(function () {
+		;
+		$("#successMessage").fadeTo(500, 0).slideUp(500, function () {
+			$(this).remove();
+		});
+	}, 2000);
 
-				//New post image upload
+	//New post image upload
 
 
-				$("#imageUpload").change(function () {
+	$("#imageUpload").change(function () {
 
-								if (this.files && this.files[0]) {
-												var reader = new FileReader();
+		if (this.files && this.files[0]) {
+			var reader = new FileReader();
 
-												reader.onload = function (e) {
-																$('.avatar-preview').css('background-image', 'url(' + e.target.result + ')');
-																$('.avatar-preview').hide();
-																$('.avatar-preview').fadeIn(650);
-												};
-												reader.readAsDataURL(this.files[0]);
-								}
-				});
+			reader.onload = function (e) {
+				$('.avatar-preview').css('background-image', 'url(' + e.target.result + ')');
+				$('.avatar-preview').hide();
+				$('.avatar-preview').fadeIn(650);
+			};
+			reader.readAsDataURL(this.files[0]);
+		}
+	});
 
-				$('.del').click(function () {
-								alert('Delete clicked');
-				});
-				/*$(document).on("change",".uploadFile", function()
-    {
-     	var uploadFile = $(this);
-        var files = !!this.files ? this.files : [];
-         if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-          if (/^image/.test( files[0].type)){ // only image file
-            var reader = new FileReader(); // instance of the FileReader
-             reader.readAsDataURL(files[0]); // read the local file
-              reader.onloadend = function(){ // set image data as background of div
-                alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-    uploadFile.closest(".imgUp").find('#imagePreview').css("background-image", "url("+this.result+")");
-            }
-        }
-      
-    });*/
+	$('.del').click(function () {
+		alert('Delete clicked');
+	});
+	/*$(document).on("change",".uploadFile", function()
+ {
+   	var uploadFile = $(this);
+     var files = !!this.files ? this.files : [];
+       if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+        if (/^image/.test( files[0].type)){ // only image file
+         var reader = new FileReader(); // instance of the FileReader
+           reader.readAsDataURL(files[0]); // read the local file
+            reader.onloadend = function(){ // set image data as background of div
+             alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+ uploadFile.closest(".imgUp").find('#imagePreview').css("background-image", "url("+this.result+")");
+         }
+     }
+   
+ });*/
 });
 
 /***/ }),
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */,
-/* 242 */,
 /* 243 */,
 /* 244 */,
 /* 245 */,
 /* 246 */,
 /* 247 */,
-/* 248 */
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(249)
+  __webpack_require__(254)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(251)
+var __vue_script__ = __webpack_require__(256)
 /* template */
-var __vue_template__ = __webpack_require__(252)
+var __vue_template__ = __webpack_require__(257)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66876,7 +67342,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "app/Views/admin/vue/product/new_product.vue"
+Component.options.__file = "app/Views/admin/vue/client/invoice/invoice.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -66885,9 +67351,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7942994c", Component.options)
+    hotAPI.createRecord("data-v-feb05566", Component.options)
   } else {
-    hotAPI.reload("data-v-7942994c", Component.options)
+    hotAPI.reload("data-v-feb05566", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -66898,23 +67364,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 249 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(250);
+var content = __webpack_require__(255);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("bbcf1bbe", content, false, {});
+var update = __webpack_require__(3)("0649d625", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7942994c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./new_product.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7942994c\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./new_product.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feb05566\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./invoice.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feb05566\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./invoice.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -66924,7 +67390,7 @@ if(false) {
 }
 
 /***/ }),
-/* 250 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(false);
@@ -66932,13 +67398,13 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n\tborder-radius: 1px !important;\n}\n.form-block-container{\n\tmargin-bottom: 40px;\nh4{\n\t\tfont-size: 12px !important;\n\t\tfont-weight: 400 !important;\n}\ninput{width:100%;height:auto!important;min-height:26px;padding:4px 20px 4px 5px;margin:0;outline:0;font-family:sans-serif;font-size:1em;border:1px solid #aaa;border-radius:0;-webkit-box-shadow:none;box-shadow:none;background:#fff;\n}\n}\ninput \t\t\t\t{\n  font-size:14px;\n  display:block;\t  \n  border:none;\n  border-bottom:1px solid #757575;\n  width: 100%;\n}\nh4{\n\tfont-size: 16px !important;\n\tfont-weight: 500 !important;\n\tcolor: #2A3F54;\n}\n.fieldLabel {\n    width: 15%;\n    word-break: keep-all;\n    min-width: 30%;\n    vertical-align: top;\n    padding: 0 10px;\n}\n.fieldvalue{\n\twidth: 30%;\n\tmin-width: 30%;\n\tpadding: 0 10px;\n}\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67003,407 +67469,246 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+Vue.component('pagination', __webpack_require__(186));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
-		return {};
+		return {
+			invoices: {},
+			client: {},
+			success: '',
+			errors: ''
+		};
 	},
 
 	watch: {},
-	methods: {},
-	created: function created() {}
+	methods: {
+		paginationdata: function paginationdata(page) {
+			var _this = this;
+
+			if (typeof page === 'undefined') {
+				page = 1;
+			}
+			axios.get('service/create?page=' + page).then(function (response) {
+				return _this.services = response.data;
+			}).catch(function (error) {
+				return _this.errors = error.response.data.errors;
+			});
+		},
+		refreshRecord: function refreshRecord(record) {
+			this.services = record.data;
+		},
+		updateservice: function updateservice(id) {
+			var _this2 = this;
+
+			axios.get('service/' + id + '/edit').then(function (response) {
+				//console.log(response.data)
+				_this2.serviceupdate = response.data;
+			}) //this.apntupdate = response.data
+			.catch(function (error) {
+				return _this2.errors = error.response.data.errors;
+			});
+		},
+		deleteservice: function deleteservice(id) {
+			var _this3 = this;
+
+			swalWithBootstrapButtons({
+				title: 'Delete Service?',
+				text: "You won't be able to revert this!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, delete it!',
+				cancelButtonText: 'No, cancel!',
+				reverseButtons: true
+			}).then(function (result) {
+				if (result.value) {
+
+					axios.delete('service/' + id).then(function (response) {
+						_this3.services = response.data;
+						_this3.success = "Service Deleted Successfuly";
+					}) //this.categories=response.data
+					.catch(function (error) {
+						console.log(response.data);
+						_this3.errors = error.response.data.errors;
+						_this3.success = '';
+					});
+
+					swalWithBootstrapButtons('Deleted!', 'Service deleted successfully', 'success');
+				}
+			});
+		}
+	},
+	created: function created() {
+		var _this4 = this;
+
+		axios.get('invoice/create').then(function (response) {
+			_this4.invoices = response.data;
+		}) //this.appointments=response.data
+		.catch(function (error) {
+			return console.log(error);
+		});
+	}
 });
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", [
+    _c("div", { staticClass: "x_panel" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "x_content" }, [
+        _c("div", { staticClass: "table-responsive" }, [
+          _c(
+            "table",
+            { staticClass: "table table-striped jambo_table bulk_action" },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.invoices, function(invoice, key) {
+                  return _c("tr", { staticClass: "even pointer" }, [
+                    _vm._m(2, true),
+                    _vm._v(" "),
+                    _c("td", { staticClass: " " }, [
+                      _vm._v(_vm._s(invoice.client["client_name"]))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: " " }, [_vm._v("bb ")]),
+                    _vm._v(" "),
+                    _vm._m(3, true),
+                    _vm._v(" "),
+                    _c("td", { staticClass: " " }, [_vm._v("dd")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: " " }, [_vm._v("ee")]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "a-right a-right " }, [
+                      _vm._v("ff")
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(4, true)
+                  ])
+                }),
+                0
+              )
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: { id: "new-product", role: "dialog", "data-backdrop": "false" }
-      },
-      [
-        _c("div", { staticClass: "modal-dialog modal-lg" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _c("div", { staticClass: "modal-header panel-heading" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("×")]
-              ),
-              _vm._v(" "),
-              _c("h4", { staticClass: "modal-title" }, [
-                _c("i", {
-                  staticClass: "fa fa-user",
-                  attrs: { "aria-hidden": "true" }
-                }),
-                _vm._v(" Product")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body table-form" }, [
-              _c("div", { staticClass: "form-block-container" }, [
-                _c("h4", { staticClass: "block-title" }, [
-                  _vm._v("Product Details")
-                ]),
-                _vm._v(" "),
-                _c("table", { staticClass: "table value-table" }, [
-                  _c("tr", [
-                    _c(
-                      "td",
-                      {
-                        staticClass: "fieldLabel",
-                        staticStyle: { width: "25%" }
-                      },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t            \t\t\t\tProduct Name   \n\t\t\t\t            \t\t\t\t"
-                        ),
-                        _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", {
-                        attrs: {
-                          type: "text",
-                          autofocus: "autofocus",
-                          name: "",
-                          value: ""
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tModel No.   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", {
-                        attrs: {
-                          type: "text",
-                          autofocus: "autofocus",
-                          name: "",
-                          value: ""
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tActive   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "checkbox" } })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tCategory   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("select", { attrs: { name: "", id: "" } }, [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tVendor Name   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("select", { attrs: { name: "", id: "" } }, [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tManufacturer    \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("select", { attrs: { name: "", id: "" } }, [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("sdasda")
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tSales Start Date   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "date" } })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tSales End Date    \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "date" } })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "block-title" }, [
-                    _vm._v("Stock Information")
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tUnit Price   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "text" } })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tStock Count   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "number" } })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tProduct Image   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("input", { attrs: { type: "file" } })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "block-title" }, [
-                    _vm._v("Product Description")
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tProduct Description   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("textarea", {
-                        attrs: { name: "", id: "", cols: "50", rows: "3" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldLabel" }, [
-                      _vm._v(
-                        "\n\t\t\t\t            \t\t\t\tComments   \n\t\t\t\t            \t\t\t\t"
-                      ),
-                      _c("span", { staticClass: " f-r" }, [_vm._v("*")])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "fieldvalue" }, [
-                      _c("textarea", {
-                        attrs: { name: "", id: "", cols: "50", rows: "3" }
-                      })
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
+    return _c("div", { staticClass: "x_title" }, [
+      _c("span", { staticClass: "title" }, [
+        _c("i", { staticClass: "fa fa-cart-arrow-down" }),
+        _vm._v(" Invoices ")
+      ]),
+      _c("small", [_vm._v("All Invoices")]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-dark btn-sm pull-right",
+          attrs: { href: "#new-product", "data-toggle": "modal" }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-cart",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" \n              Add Product\n            ")
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticClass: "headings" }, [
+        _c("th", [
+          _c("input", {
+            staticClass: "flat",
+            attrs: { type: "checkbox", id: "check-all" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Name ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Email ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Contact ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Status ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Contact Type ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title" }, [_vm._v("Created ")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "column-title no-link last" }, [
+          _c("span", { staticClass: "nobr" }, [_vm._v("Last Active")])
+        ]),
+        _vm._v(" "),
+        _c("th", { staticClass: "bulk-actions", attrs: { colspan: "7" } }, [
+          _c(
+            "a",
+            {
+              staticClass: "antoo",
+              staticStyle: { color: "#fff", "font-weight": "500" }
+            },
+            [
+              _vm._v("Bulk Actions ( "),
+              _c("span", { staticClass: "action-cnt" }),
+              _vm._v(" ) "),
+              _c("i", { staticClass: "fa fa-chevron-down" })
+            ]
+          )
         ])
-      ]
-    )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "a-center " }, [
+      _c("input", {
+        staticClass: "flat",
+        attrs: { type: "checkbox", name: "table_records" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: " " }, [
+      _vm._v("cc "),
+      _c("i", { staticClass: "success fa fa-long-arrow-up" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: " last" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("gg")])
+    ])
   }
 ]
 render._withStripped = true
@@ -67411,7 +67716,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7942994c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-feb05566", module.exports)
   }
 }
 

@@ -122,7 +122,9 @@
                     
                     <form  role="form" class="form-horizontal" action=" {{ URL::route('roles.store')}}" method="post">
                       {{ csrf_field() }}
-                      <div class="form-group">
+
+
+                      <div class="form-group glow-input">
                         <label class="col-sm-2 control-label">Role Name</label>
                         <div class="col-sm-10">
                           <input class="form-control" type="text" name="name" required="Please ente a Role Name">

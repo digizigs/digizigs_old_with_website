@@ -126,7 +126,7 @@
                   
                   <form  role="form" class="form-horizontal" action="{{ URL::route('permissions.store') }}" method="post">
                     {{ csrf_field() }}
-                    <div class="form-group">
+                    <div class="form-group glow-input">
                       <label class="col-sm-2 control-label">Permission Name</label>
                       <div class="col-sm-10">
                         <input class="form-control" type="text" name="name" required="Please enter a Permission Name">
