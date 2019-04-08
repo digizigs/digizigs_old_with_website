@@ -5,7 +5,7 @@
             <span class="title"><i class="fa fa-cart-arrow-down"></i> Invoices </span><small>All Invoices</small>            
             <a href="#new-product" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
               <i class="fa fa-cart" aria-hidden="true"></i> 
-              Add Product
+              New Invoice
             </a>
             <div class="clearfix"></div>
           </div>
@@ -16,14 +16,16 @@
               <table class="table table-striped jambo_table bulk_action">
                 <thead>
                   <tr class="headings">
-                    <th><input type="checkbox" id="check-all" class="flat"></th>
-                    <th class="column-title">Name </th>
+                  	<th class="column-title">ID </th>                    
+                    <th class="column-title">CLient </th>
                     <th class="column-title">Email </th>
                     <th class="column-title">Contact </th>
-                    <th class="column-title">Status </th>
-                    <th class="column-title">Contact Type </th>
-                    <th class="column-title">Created </th>
-                    <th class="column-title no-link last"><span class="nobr">Last Active</span></th>
+                    <th class="column-title">Service </th>
+                    <th class="column-title">Bill Amount </th>
+                    <th class="column-title">Bill Date </th>   
+                    <th class="column-title">Bill Status </th>
+                    <th class="column-title">  </th>
+	                <th class="column-title">  </th>                   
                     <th class="bulk-actions" colspan="7">
                       <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                     </th>
@@ -31,18 +33,40 @@
                 </thead>
                 <tbody>
                   
-                  <tr class="even pointer" v-for="invoice,key in invoices">
-                    <td class="a-center ">
-                      <input type="checkbox" class="flat" name="table_records">
+                  <tr class="even pointer" v-for="(invoice,key) in invoices">
+                  	<td class=" " style="width:2%;">{{invoice.id}}{{invoice.client['id']}}</td>                   
+                    <td class=" ">
+                    	<a href="#detailclient" data-toggle="modal" @click="detailclient(invoice.client['id'])">
+                    		{{invoice.client['client_name']}}
+                    	</a>
                     </td>
-                    <td class=" ">{{invoice.client['client_name']}}</td>
-                    <td class=" ">bb </td>
-                    <td class=" ">cc <i class="success fa fa-long-arrow-up"></i></td>
-                    <td class=" ">dd</td>
-                    <td class=" ">ee</td>
-                    <td class="a-right a-right ">ff</td>
-                    <td class=" last"><a href="#">gg</a>
+                    <td class=" ">{{invoice.client['client_email']}} </td>
+                    <td class=" ">{{invoice.client['client_phone']}} </td>
+                    <td class=" ">
+                    	<span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
+                    		{{item.service['name']}}
+                    	</span>
                     </td>
+                    <td class=" ">
+                    	<i class="fa fa-inr" aria-hidden="true"></i>
+                    	{{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
+                    </td>
+                    <td class="a-right a-right ">
+                    	{{ invoice.created_at | vueDate }}
+                    	
+                    </td>
+                    <td class="a-right a-right ">{{invoice.status}}</td>
+                    <td style="width: 1%;">
+	                    <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
+	                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+	                    </a>
+	                  </td>
+	                  <td style="width: 1%;">
+	                    <a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
+	                      <i class="fa fa-eye" aria-hidden="true"></i>
+	                    </a>
+	                  </td>
+                    
                   </tr>
                   
                 
@@ -54,27 +78,37 @@
         
           </div>
     </div>
+		<div id="modal">
 
+         
+          <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
+          <invoiceview :rcrd="invoicedetail" @recordupdated="refreshRecord"></invoiceview>
+         
+        </div>
 	</section>
 </template>
 
 <script type="text/javascript">
-  Vue.component('pagination', require('laravel-vue-pagination'));
+  	Vue.component('pagination', require('laravel-vue-pagination'));
+	var moment = require('moment');
 
 	export default{
 		data(){
 			return{
-				invoices:{},
+				invoices:[],			
 				client:{},
+				clientdetail:{},
+				invoicedetail:{},
 				success:'',
 				errors:'',
+				moment:moment,
 			}
 		},
 		watch:{
 
-		},
+		},		
 		methods:{
-	      paginationdata(page){
+	      	paginationdata(page){
 	        if (typeof page === 'undefined'){
 	          page=1;
 	        } 
@@ -82,19 +116,34 @@
 	          .then(response => this.services = response.data)
 	          .catch(error => this.errors=error.response.data.errors);
 
-	      },
-		  refreshRecord(record){
-	        this.services=record.data;
-	      },
-	      updateservice(id){
+	      	},
+		  	refreshRecord(record){
+	        	this.services=record.data;
+	      	},
+	      	updateservice(id){
 	        axios.get('service/'+id+'/edit')
 	        .then((response) => {
 	          //console.log(response.data)
 	          this.serviceupdate=response.data
 	          })//this.apntupdate = response.data
 	        .catch(error => this.errors=error.response.data.errors);
-	      },
-	      deleteservice(id){
+	      	},
+	      	detailclient(id){
+	      		axios.get('client/'+id+'/edit')
+		        .then((response) => {
+		          this.clientdetail=response.data;		          
+		          })//this.apntupdate = response.data
+		        .catch(error => this.errors=error.response.data.errors);
+	      	},
+	      	invoiceview(id){
+	      		axios.get('invoice/'+id+'/edit')
+		        .then((response) => {
+		          this.invoicedetail=response.data;
+		          console.log(response.data);
+		          })//this.apntupdate = response.data
+		        .catch(error => this.errors=error.response.data.errors);
+	      	},
+	      	deleteservice(id){
 	        swalWithBootstrapButtons({
 	          title: 'Delete Service?',
 	          text: "You won't be able to revert this!",
@@ -130,7 +179,7 @@
 		created(){
 			axios.get('invoice/create')
 			.then((response) => {this.invoices=response.data})//this.appointments=response.data
-			.catch((error) => console.log(error))
+			.catch((error) => console.log(error))			
 		}
 	};
 

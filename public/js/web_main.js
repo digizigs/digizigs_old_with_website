@@ -60,23 +60,23 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 159);
+/******/ 	return __webpack_require__(__webpack_require__.s = 160);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 159:
+/***/ 160:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(160);
-__webpack_require__(163);
-__webpack_require__(166);
-module.exports = __webpack_require__(167);
+__webpack_require__(161);
+__webpack_require__(164);
+__webpack_require__(167);
+module.exports = __webpack_require__(168);
 
 
 /***/ }),
 
-/***/ 160:
+/***/ 161:
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -102,7 +102,7 @@ if (token) {
 //Vendors
 //require('../../vendor/modernizr/modernizr-2.8.3.min.js');
 ////require('../../vendor/magnific-popup/magnific-popup.min.js');
-__webpack_require__(161);
+__webpack_require__(162);
 //require('../../vendor/wow/wow.min.js');
 //require('../../vendor/isotope/isotope.pkgd.min.js');
 //require('../../vendor/owlcarousel/js/owl.carousel.min.js');
@@ -110,11 +110,11 @@ __webpack_require__(161);
 //require('../../vendor/superfish/superfish.min.js');
 
 
-__webpack_require__(162);
+__webpack_require__(163);
 
 /***/ }),
 
-/***/ 161:
+/***/ 162:
 /***/ (function(module, exports) {
 
 
@@ -177,7 +177,7 @@ __webpack_require__(162);
 
 /***/ }),
 
-/***/ 162:
+/***/ 163:
 /***/ (function(module, exports) {
 
 
@@ -453,14 +453,7 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 163:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 166:
+/***/ 164:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
@@ -468,6 +461,13 @@ $(document).ready(function () {
 /***/ }),
 
 /***/ 167:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 168:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

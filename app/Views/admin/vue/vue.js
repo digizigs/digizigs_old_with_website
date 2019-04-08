@@ -54,7 +54,10 @@ Vue.component('clients', require('./client/client/clients.vue'));
 Vue.component('newclient', require('./client/client/newclient.vue'));
 Vue.component('editclient', require('./client/client/editclient.vue'));
 Vue.component('detailclient', require('./client/client/detailclient.vue'));
+
+//INVOICE
 Vue.component('invoice', require('./client/invoice/invoice.vue'));
+Vue.component('invoiceview', require('./client/invoice/invoice_view.vue'));
 
 
 //menu
@@ -77,6 +80,6 @@ const app = new Vue({
     router,
 });
 
-Vue.filter('myDate',function(created){
-  return moment(created).utcOffset('IST').fromNow();
+Vue.filter('vueDate',function(created){
+  return moment(created).format('MMMM Do YYYY');
 })
