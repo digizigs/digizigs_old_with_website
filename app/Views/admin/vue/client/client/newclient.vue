@@ -29,7 +29,7 @@
                           </a>
                           <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
-                              <div class="form-group glow-input">
+                                <div class="form-group glow-input">
                                   <div class="col-sm-12 col-xs-12 col-xs-12">
                                     <b><i><small>Name</small></i></b>
                                     <input class="form-control input-sm" type="text"    v-model="client.client_name">

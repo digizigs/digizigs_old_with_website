@@ -62,7 +62,7 @@
     <script src="{{asset('public/vendor/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('public/vendor/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
     <script src="{{asset('public/vendor/select2/select2.full.min.js')}}"></script>
-    
+    <script src="{{asset('public/vendor/autocomplete/jquery.autocomplete.js')}}"></script>
     <!--script src="{{asset('public/build/js/custom.min.js')}}"></script-->
 
     <!--script src="{{asset('public/js/admin.js')}}"></script-->

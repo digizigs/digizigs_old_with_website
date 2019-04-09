@@ -97,6 +97,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         Route::resource('/project', 'Admin\Client\ProjectController'); //User
         Route::resource('/client', 'Admin\Client\ClientController'); //User
         Route::resource('/billing', 'Admin\Client\BillingController'); //User
+        
+        Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //User
         Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
     });
 
