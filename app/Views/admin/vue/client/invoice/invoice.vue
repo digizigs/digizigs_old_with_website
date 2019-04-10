@@ -50,7 +50,7 @@
                     </td>
                     <td class=" ">
                     	<i class="fa fa-inr" aria-hidden="true"></i>
-                    	{{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
+                    	k
                     </td>
                     <td class="a-right a-right ">
                     	{{ invoice.created_at | vueDate }}
@@ -76,9 +76,7 @@
                   
                 
                 </tbody>
-              </table>
-          
-              
+              </table>             
             </div>
         
           </div>

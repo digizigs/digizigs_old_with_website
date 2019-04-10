@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Invoice;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -26,10 +27,16 @@ class InvoiceController extends Controller
         return request()->json(200,$invoices);
     }
 
-     public function clients()
+    public function clients()
     {       
-        $clients = Client::orderby('created_at','desc')->paginate(8);
+        $clients = Client::orderby('created_at','desc')->get();
         return request()->json(200,$clients);
+    }
+
+    public function services()
+    {       
+        $services = Service::orderby('created_at','desc')->get();
+        return request()->json(200,$services);
     }
 
    

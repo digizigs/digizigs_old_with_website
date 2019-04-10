@@ -45,8 +45,7 @@
                               <th class="column-title"> Service </th>
                               <th class="column-title"> Description </th>
                               <th class="column-title"> Billing Charge </th>
-                              <th class="column-title"> TAT </th>
-                              <th class="column-title">  </th>
+                              <th class="column-title"> TAT </th>                              
                               <th class="column-title">  </th>
                               <th class="bulk-actions" colspan="7">
                                 <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -57,18 +56,15 @@
                           <tbody>
 
                             <tr class="even pointer" v-for="service,key in services.data">
-                              <td class=" "> {{key + 1}} </td>
-                              <td class=" "> {{service.name}} </td>
-                              <td class=" "> {{service.description}} </td>
-                              <td class=" "> Rs {{service.charge}} </td>
-                              <td class=" "> {{service.duration}} days </td>
-                              <td class="" style="width: 5%;">
-                                <a href="#editservices" class="disabled" data-toggle="modal" @click="updateservice(service.id)">
-                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                              <td class=" " style="width: 20%;"> {{key + 1}} </td>
+                              <td class=" ">
+                                <a href="#editservices" data-toggle="modal" @click="updateservice(service.id)">
+                                  {{service.name}}
                                 </a>
-                              
-                                
                               </td>
+                              <td class=" " style="width: 30%;"> {{service.description}} </td>
+                              <td class=" "> Rs {{service.charge}} </td>
+                              <td class=" "> {{service.duration}} days </td>                             
                               <td style="width: 5%;">
                                 <a href="" class="disabled" v-on:click.prevent @click="deleteservice(service.id)">
                                   <i class="fa fa-trash-o" aria-hidden="true"></i>
