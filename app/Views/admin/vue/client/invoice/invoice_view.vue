@@ -164,7 +164,7 @@
 
 <script type="text/javascript">
 	export default{
-		props:['rcrd','client'],
+		props:['rcrd'],
 		data(){
 			return{
 				invoice:[],

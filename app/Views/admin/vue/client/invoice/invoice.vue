@@ -82,7 +82,7 @@
 
          
           <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
-          <invoiceview :rcrd="invoicedetail" @recordupdated="refreshRecord"></invoiceview>
+          <invoiceview :rcrd="invoicedetail,client" @recordupdated="refreshRecord"></invoiceview>
          
         </div>
 	</section>
