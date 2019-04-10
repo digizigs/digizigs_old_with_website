@@ -3,8 +3,8 @@
 		<div class="x_panel">
           <div class="x_title">
             <span class="title"><i class="fa fa-cart-arrow-down"></i> Invoices </span><small>All Invoices</small>            
-            <a href="#new-product" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
-              <i class="fa fa-cart" aria-hidden="true"></i> 
+            <a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+              <i class="fa fa-plus" aria-hidden="true"></i> 
               New Invoice
             </a>
             <div class="clearfix"></div>
@@ -21,8 +21,9 @@
                     <th class="column-title">Email </th>
                     <th class="column-title">Contact </th>
                     <th class="column-title">Service </th>
-                    <th class="column-title">Bill Amount </th>
-                    <th class="column-title">Bill Date </th>   
+                    <th class="column-title">Billing</th>
+                    <th class="column-title">Bill Date </th>
+                    <th class="column-title">Due Date </th>    
                     <th class="column-title">Bill Status </th>
                     <th class="column-title">  </th>
 	                <th class="column-title">  </th>                   
@@ -49,10 +50,14 @@
                     </td>
                     <td class=" ">
                     	<i class="fa fa-inr" aria-hidden="true"></i>
-                    	{{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
+                    	k
                     </td>
                     <td class="a-right a-right ">
                     	{{ invoice.created_at | vueDate }}
+                    	
+                    </td>
+                    <td class="a-right a-right ">
+                    	{{ invoice.due_date | vueDate }}
                     	
                     </td>
                     <td class="a-right a-right ">{{invoice.status}}</td>
@@ -71,9 +76,7 @@
                   
                 
                 </tbody>
-              </table>
-          
-              
+              </table>             
             </div>
         
           </div>
@@ -82,7 +85,12 @@
 
          
           <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
+<<<<<<< HEAD
           <invoiceview :rcrd="invoicedetail,client" @recordupdated="refreshRecord"></invoiceview>
+=======
+          <invoiceview :invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></invoiceview>
+          <newinvoice :invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
+>>>>>>> e4e388ab4a9d0ee4364fb0435de127e26d268df4
          
         </div>
 	</section>
@@ -96,7 +104,7 @@
 		data(){
 			return{
 				invoices:[],			
-				client:{},
+				client:['asdadad'],
 				clientdetail:{},
 				invoicedetail:{},
 				success:'',

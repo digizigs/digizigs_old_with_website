@@ -31,7 +31,6 @@
 	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
-	                              <th class="column-title">  </th>
 	                              <th class="bulk-actions" colspan="7">
 	                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
 	                              </th>
@@ -41,8 +40,12 @@
 	                          <tbody>
 
 	                            <tr class="even pointer" v-for="client,key in clients.data">
-	                              <td class=" "> 1 </td>
-	                              <td class=" " style="width: 15%;"> {{client.client_name}} </td>
+	                              <td class=" "> {{client.id}} </td>
+	                              <td class=" " style="width: 15%;">
+	                              	<a href="#detailclient" data-toggle="modal" @click="detailclient(client.id)">
+	                              		{{client.client_name}}
+	                              	</a>
+	                              </td>
 	                              <td class=" " style="width: 15%;"> {{client.client_email}} </td>
 	                              <td class=" " style="width: 10%;"> {{client.client_phone}} </td>
 	                              <td class=" " style="width: 10%;"> <span class="label label-warning label-many">WIP</span> </td>
@@ -55,11 +58,6 @@
 	                              <td style="width: 1%;">
 	                                <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-	                                </a>
-	                              </td>
-	                              <td style="width: 1%;">
-	                                <a href="#detailclient" class="disabled" data-toggle="modal" @click="detailclient(client.id)">
-	                                  <i class="fa fa-eye" aria-hidden="true"></i>
 	                                </a>
 	                              </td>
 	                              <td style="width: 1%;">

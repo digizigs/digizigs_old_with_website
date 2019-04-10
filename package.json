@@ -30,6 +30,8 @@
         "sweetalert2": "^7.32.2",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.1",
-        "vue2-dropzone": "^3.5.8"
+        "vue-single-select": "^1.0.29",
+        "vue2-dropzone": "^3.5.8",
+        "vuejs-datepicker": "^1.5.4"
     }
 }

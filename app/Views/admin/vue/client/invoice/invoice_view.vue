@@ -164,7 +164,11 @@
 
 <script type="text/javascript">
 	export default{
+<<<<<<< HEAD
 		props:['rcrd'],
+=======
+		props:['invc','clt'],
+>>>>>>> e4e388ab4a9d0ee4364fb0435de127e26d268df4
 		data(){
 			return{
 				invoice:[],

@@ -13945,6 +13945,7 @@ footer {
   outline: 0;
   -webkit-transition: 50ms border-color ease-in-out;
   transition: 50ms border-color ease-in-out;
+  border-radius: 1px !important;
 }
 
 .glow-input input:focus,
