@@ -56,8 +56,8 @@
                           <tbody>
 
                             <tr class="even pointer" v-for="service,key in services.data">
-                              <td class=" " style="width: 20%;"> {{key + 1}} </td>
-                              <td class=" ">
+                              <td class=" " style="width: 5%;"> {{key + 1}} </td>
+                              <td class=" " style="width: 30%;">
                                 <a href="#editservices" data-toggle="modal" @click="updateservice(service.id)">
                                   {{service.name}}
                                 </a>

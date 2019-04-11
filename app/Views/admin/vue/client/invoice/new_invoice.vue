@@ -18,7 +18,7 @@
 
 		                        <div class="form-group glow-input">
 		                          	<div class="col-sm-12 col-xs-12 col-md-12">
-			                            <b><i><small>Select Client</small></i></b>
+			                            <i><small>Select Client</small></i>
 			                            <vue-single-select
 										        name="maybe"
 										        placeholder="Select Client"									     
@@ -38,7 +38,7 @@
 
 	                			<div class="form-group glow-input">
 		                          <div class="col-sm-12 col-xs-12 col-md-6">
-		                            <b><i><small>Due Date</small></i></b>
+		                            <i><small>Due Date</small></i>
 		                            <datepicker v-model="billdate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" :format="customFormatter"></datepicker>
 		                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
 		                          </div> 
@@ -46,8 +46,8 @@
 
 		                        <div class="form-group glow-input">
 		                          <div class="col-sm-12 col-xs-12 col-md-6">
-		                            <b><i><small>Due Date</small></i></b>
-		                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" ></datepicker>
+		                            <i><small>Due Date</small></i>
+		                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" :format="customFormatter"></datepicker>
 		                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
 		                          </div> 
 		                        </div>
@@ -60,7 +60,7 @@
 
 		                        <div class="form-group glow-input">
 		                          	<div class="col-sm-10 col-xs-10 col-md-10">
-			                            <b><i><small>Select Service</small></i></b>
+			                            <i><small>Select Service</small></i>
 			                            <vue-single-select
 										        name="maybe"
 										        placeholder="Select Service"									     
@@ -85,42 +85,58 @@
 							
 							<div class="box-container" v-if="serviceadded == true">
 								<div class="col-sm-12 col-xs-12 col-md-12">
-								<div class="table-responsive">
-						            <table class="table table-striped">
-						                <thead>
-						                  <tr class="headings">
-						                  	<th class="column-title">Service </th>                    
-						                    <th class="column-title">Description </th>
-						                    <th class="column-title">Charge </th>
-						                    <th class="column-title"></th>						                           
-						                    <th class="bulk-actions" colspan="7">
-						                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-						                    </th>
-						                  </tr>
-						                </thead>
+									<div class="table-responsive">
+							            <table class="table table-striped">
+							                <thead>
+							                  <tr class="headings">
+							                  	<th class="column-title">Service </th>                    
+							                    <th class="column-title">Description </th>
+							                    <th class="column-title">Charge </th>
+							                    <th class="column-title"></th>						                           
+							                    <th class="bulk-actions" colspan="7">
+							                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+							                    </th>
+							                  </tr>
+							                </thead>
 
-						                <tbody>						                  
-						                  <tr class="even pointer" v-for="service in servicelines">
-						                  	<td class=" " style="">{{service['name']}}</td>                   
-						                    <td class=" ">{{service['description']}}</td>
-						                    <td class=" ">{{service['charge']}}</td>
-						                    <td>
-						                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
-				                          			<i class="fa fa-trash" aria-hidden="true"></i>
-				                          		</a>
-						                    </td>
-						                  </tr>
-						                  <tr class="even pointer" >
-						                  	<th class="column-title">Total Charge </th>                    
-						                    <th class="column-title"> </th>
-						                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
-						                    <th class="column-title"> </th>		
-						                  </tr>						                  						  
-						                </tbody>
-						            </table>             
+							                <tbody>						                  
+							                  <tr class="even pointer" v-for="service in servicelines">
+							                  	<td class=" " style="">{{service['name']}}</td>                   
+							                    <td class=" ">{{service['description']}}</td>
+							                    <td class=" ">{{service['charge']}}</td>
+							                    <td>
+							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
+					                          			<i class="fa fa-trash" aria-hidden="true"></i>
+					                          		</a>
+							                    </td>
+							                  </tr>
+							                  <tr class="even pointer" >
+							                  	<th class="column-title">Subtotal </th>                    
+							                    <th class="column-title"> </th>
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+							                    <th class="column-title"> </th>		
+							                  </tr>
+							                  <tr class="even pointer" >
+							                  	<th class="column-title">Tax (6%) </th>                    
+							                    <th class="column-title"> </th>
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>1010</th>
+							                    <th class="column-title"> </th>		
+							                  </tr>
+							                  <tr class="even pointer" >
+							                  	<th class="column-title">Total Charge </th>                    
+							                    <th class="column-title"> </th>
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+							                    <th class="column-title"> </th>		
+							                  </tr>								                  						  
+							                </tbody>
+							            </table>             
+							        </div>
 						        </div>
-						        </div>
+						        
+						        <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent="createinvoice">Create Invoice</a>
 							</div>
+
+
 	                        		                    
 	                        	
 	                	</div>
@@ -142,7 +158,7 @@
 		data(){
 			return{
 				clients:[],
-				selectedclient:[],
+				selectedclient:null,
 				services:[],
 				selectedservices:null,
 				servicelines:[],
@@ -170,7 +186,7 @@
 			validateSelection(){ },
 			getDropdownValues(){ },
 			customFormatter(date) {
-      			return moment(date).format('MMMM Do YYYY');
+      			return moment(date).format('Do MMM YYYY');
     		},
     		addservice(){
     			if (this.selectedservices != null) {
@@ -183,6 +199,32 @@
     		clearmodal(){
     			this.servicelines=[];
     			this.serviceadded=false
+    		},
+    		createinvoice:function(){
+    			axios.post('invoice',{ 'selectedclient':this.selectedclient,
+    								   'dates':{'bill_date':moment(this.billdate).format('YYYY/MM/DD'),'due_date':moment(this.duedate).format('YYYY/MM/DD')},
+    								   'selectedservices':this.servicelines
+    								})
+	            .then(data => {
+	              	//console.log(data);
+	              	//this.services=response.data           
+	              	this.$emit('recordupdated',data),
+	              	this.success='Invoice Created successfully'
+	              	this.selectedclient=null;
+	              	this.selectedservices=null;
+	              	this.servicelines=[];
+	              	this.billdate='';
+	              	this.duedate='';
+	              	this.serviceadded=false;
+	            	$('#newinvoice').modal('hide');
+	            	
+		            toast({
+		                type: 'success',
+		                title: 'Invoice Created successfully'
+		            })
+
+	          	})
+	          	.catch((error) => this.errors=error)//this.errors=error
     		}
     		
 		},

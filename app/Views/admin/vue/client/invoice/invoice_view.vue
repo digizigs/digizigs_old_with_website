@@ -130,11 +130,7 @@
                                   <tr>
                                     <th>Tax (9.3%)</th>
                                     <td>$10.34</td>
-                                  </tr>
-                                  <tr>
-                                    <th>Shipping:</th>
-                                    <td>$5.80</td>
-                                  </tr>
+                                  </tr>                                 
                                   <tr>
                                     <th>Total:</th>
                                     <td>$265.24</td>
