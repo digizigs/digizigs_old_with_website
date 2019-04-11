@@ -87,24 +87,19 @@
               
                           @foreach($posts as $post)
                             <tr class="even pointer">                             
-                              <td class=" "><a href="">{{ $post -> title}}</a></td>
-                              <td class=" ">{{ $post ->user->firstname}} </td>
-                              <td class=" ">                               
+                              <td ><a href="">{{ $post -> title}}</a></td>
+                              <td >{{ $post ->user->firstname}} </td>
+                              <td >                               
                                  @foreach($post->categories as $cat)                          
                                     <span class="label label-info label-many" style="font-weight:300;">{{$cat->name}}</span>
                                  @endforeach
-                              </td>
-                              
-                              <td class=" ">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
-                              <td class=" "> {{ucfirst($post -> status)}} </td>
-                              <td class="" style="width: 5%;">
-                                
-                                
+                              </td>                              
+                              <td >{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
+                              <td > {{ucfirst($post -> status)}} </td>
+                              <td style="width: 5%;">                                                               
                                 <a href="{{ route('post.edit' , $post->id)}}" >
                                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </a>
-                             
-                                
+                                </a>                                                            
                               </td>
                               <td style="width: 5%;">
                                 <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">

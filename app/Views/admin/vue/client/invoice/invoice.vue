@@ -17,9 +17,7 @@
                 <thead>
                   <tr class="headings">
                   	<th class="column-title">ID </th>                    
-                    <th class="column-title">CLient </th>
-                    <th class="column-title">Email </th>
-                    <th class="column-title">Contact </th>
+                    <th class="column-title">CLient </th>                    
                     <th class="column-title">Service </th>
                     <th class="column-title">Billing</th>
                     <th class="column-title">Bill Date </th>
@@ -35,38 +33,35 @@
                 <tbody>
                   
                   <tr class="even pointer" v-for="(invoice,key) in invoices">
-                  	<td class=" " style="width:2%;">{{invoice.id}}{{invoice.client['id']}}</td>                   
-                    <td class=" ">
+                  	<td class=" " style="width: 2%;">{{invoice.id}}{{invoice.client['id']}}</td>                   
+                    <td class=" " style="min-width: 60% !important;">
                     	<a href="#detailclient" data-toggle="modal" @click="detailclient(invoice.client['id'])">
                     		{{invoice.client['client_name']}}
                     	</a>
-                    </td>
-                    <td class=" ">{{invoice.client['client_email']}} </td>
-                    <td class=" ">{{invoice.client['client_phone']}} </td>
-                    <td class=" ">
+                    </td>                  
+                    <td style="max-width:30% !important;;">
                     	<span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
                     		{{item.service['name']}}
                     	</span>
                     </td>
-                    <td class=" ">
+                    <td>
                     	<i class="fa fa-inr" aria-hidden="true"></i>
-                    	k
+                    	{{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
                     </td>
-                    <td class="a-right a-right ">
+                    <td>
                     	{{ invoice.created_at | vueDate }}
                     	
                     </td>
-                    <td class="a-right a-right ">
-                    	{{ invoice.due_date | vueDate }}
-                    	
+                    <td>
+                    	{{ invoice.due_date | vueDate }}                   	
                     </td>
                     <td class="a-right a-right ">{{invoice.status}}</td>
-                    <td style="width: 1%;">
+                    <td style="width:1%;">
 	                    <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	                    </a>
 	                  </td>
-	                  <td style="width: 1%;">
+	                  <td style="width:1%;">
 	                    <a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
 	                      <i class="fa fa-eye" aria-hidden="true"></i>
 	                    </a>
@@ -114,22 +109,22 @@
 		methods:{
 	      	paginationdata(page){
 	        if (typeof page === 'undefined'){
-	          page=1;
+	        	page=1;
 	        } 
 	        axios.get('service/create?page=' + page)
-	          .then(response => this.services = response.data)
-	          .catch(error => this.errors=error.response.data.errors);
+	          	.then(response => this.services = response.data)
+	          	.catch(error => this.errors=error.response.data.errors);
 
 	      	},
 		  	refreshRecord(record){
-	        	this.services=record.data;
+	        	this.invoices=record.data;
 	      	},
 	      	updateservice(id){
 	        axios.get('service/'+id+'/edit')
 	        .then((response) => {
-	          //console.log(response.data)
-	          this.serviceupdate=response.data
-	          })//this.apntupdate = response.data
+	          	//console.log(response.data)
+	          	this.serviceupdate=response.data
+	        })//this.apntupdate = response.data
 	        .catch(error => this.errors=error.response.data.errors);
 	      	},
 	      	detailclient(id){
@@ -183,7 +178,7 @@
 		created(){
 			axios.get('invoice/create')
 			.then((response) => {this.invoices=response.data})//this.appointments=response.data
-			.catch((error) => console.log(error))			
+			.catch((error) => this.errors = error)			
 		}
 	};
 

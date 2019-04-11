@@ -75,7 +75,7 @@
               <li><a href="{{route('project.index')}}">Projects</a></li> 
               <li><a href="{{route('service.index')}}">Services</a></li>
               <li><a href="{{route('invoice.index')}}">Invoice</a></li>
-              <li><a href="{{route('project.index')}}">Quotations</a></li>        
+              <li><a href="{{route('quotation.index')}}">Quotations</a></li>        
                                          
             </ul>
           </li>

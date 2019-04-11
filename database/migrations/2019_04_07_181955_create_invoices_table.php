@@ -15,10 +15,11 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('client_id');           
-            $table->date('due_date');
-            $table->enum('status', ['paid', 'pending'])->default('pending');
-            $table->text('comment');
+            $table->integer('client_id');
+            $table->date('bill_date')->nullable();           
+            $table->date('due_date')->nullable();
+            $table->enum('bill_status', ['paid', 'pending'])->default('pending');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
