@@ -38,7 +38,7 @@
 
 	                			<div class="form-group glow-input">
 		                          <div class="col-sm-12 col-xs-12 col-md-6">
-		                            <i><small>Due Date</small></i>
+		                            <i><small>Bill Date</small></i>
 		                            <datepicker v-model="billdate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" :format="customFormatter"></datepicker>
 		                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
 		                          </div> 
@@ -59,23 +59,28 @@
 	                				                		
 
 		                        <div class="form-group glow-input">
-		                          	<div class="col-sm-10 col-xs-10 col-md-10">
+		                          	<div class="col-sm-12 col-xs-12 col-md-12">
 			                            <i><small>Select Service</small></i>
 			                            <vue-single-select
 										        name="maybe"
-										        placeholder="Select Service"									     
+										        placeholder="Select Service to add to service list"									     
 										        v-model="selectedservices"									        
 										        :options="services"									        							        
 										        option-label="name"
-										></vue-single-select>
+										        v-on:change="onChange"										        
+										>
+											
+										</vue-single-select>
+										<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null">Add another item</a>
+	
 			                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>			                            
 		                          	</div>
 		                       
-		                          	<div class="col-sm-1 col-xs-1 col-md-1" style="padding:20px; font-size:18px;" v-if="selectedservices !== null">
+		                          	<!--div class="col-sm-1 col-xs-1 col-md-1" style="padding:20px; font-size:18px;" v-if="selectedservices !== null">
 		                          		<a href="" v-on:click.prevent="addservice" style="margin:0;" class="">
 		                          			<i class="fa fa-plus" aria-hidden="true"></i>
 		                          		</a>
-		                          	</div> 
+		                          	</div--> 
 		                        </div>
 
 								
@@ -86,7 +91,7 @@
 							<div class="box-container" v-if="serviceadded == true">
 								<div class="col-sm-12 col-xs-12 col-md-12">
 									<div class="table-responsive">
-							            <table class="table table-striped">
+							            <table class="table table-striped jambo_table">
 							                <thead>
 							                  <tr class="headings">
 							                  	<th class="column-title">Service </th>                    
@@ -104,7 +109,7 @@
 							                  	<td class=" " style="">{{service['name']}}</td>                   
 							                    <td class=" ">{{service['description']}}</td>
 							                    <td class=" ">{{service['charge']}}</td>
-							                    <td>
+							                    <td style="width: 1%;>
 							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
 					                          			<i class="fa fa-trash" aria-hidden="true"></i>
 					                          		</a>
@@ -173,7 +178,18 @@
 			}
 		},
 		watch:{
-
+			selectedservices:function(){
+				if (this.selectedservices != null) {
+    				this.servicelines.push(this.selectedservices);
+    				//this.selectedservices=null;
+    				this.serviceadded=true
+    			}
+    			  
+			},
+			servicelines:function(){
+				//console.log('Item added')
+				//this.selectedservices=null;
+			}
 		},
 		computed: {
 			totalcharge: function(){    			
@@ -188,6 +204,12 @@
 			customFormatter(date) {
       			return moment(date).format('Do MMM YYYY');
     		},
+    		onChange(){
+    			console.log('On change');
+    		},
+    		addmoreitem(){
+    			this.selectedservices=null;
+    		},
     		addservice(){
     			if (this.selectedservices != null) {
     				this.servicelines.push(this.selectedservices);
@@ -199,6 +221,10 @@
     		clearmodal(){
     			this.servicelines=[];
     			this.serviceadded=false
+    			this.selectedclient=null;
+	            this.selectedservices=null;
+	            this.billdate='';
+	            this.duedate='';
     		},
     		createinvoice:function(){
     			axios.post('invoice',{ 'selectedclient':this.selectedclient,
@@ -259,4 +285,8 @@
 .box-containers .box-title{
 	//padding: 10px;
 }
+
+
+
+
 </style>

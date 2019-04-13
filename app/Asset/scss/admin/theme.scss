@@ -1556,12 +1556,17 @@ div.DTTT_button {
 }
 
 table.jambo_table {
-    border: 1px solid rgba(221, 221, 221, .78)
+    border: .5px solid rgba(221, 221, 221, .78);
+     -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    transition: .2s ease-out;
 }
 
 table.jambo_table thead {
     background: rgba(52, 73, 94, .94);
-    color: #ECF0F1
+    color: #ECF0F1;
+    border: .5px solid rgba(52, 73, 94, .94);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 
 table.jambo_table tbody tr:hover td {

@@ -13,7 +13,7 @@
           <div class="x_content">
             
             <div class="table-responsive">
-              <table class="table table-striped jambo_table bulk_action">
+              <table class="table table-striped jambo_table">
                 <thead>
                   <tr class="headings">
                   	<th class="column-title">ID </th>                    
@@ -24,46 +24,50 @@
                     <th class="column-title">Due Date </th>    
                     <th class="column-title">Bill Status </th>
                     <th class="column-title">  </th>
-	                <th class="column-title">  </th>                   
-                    <th class="bulk-actions" colspan="7">
-                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                    </th>
+	                <th class="column-title">  </th>
+	                <th class="column-title">  </th>               
+                    
                   </tr>
                 </thead>
                 <tbody>
                   
                   <tr class="even pointer" v-for="(invoice,key) in invoices">
                   	<td class=" " style="width: 2%;">{{invoice.id}}{{invoice.client['id']}}</td>                   
-                    <td class=" " style="min-width: 60% !important;">
+                    <td class=" " style="width: 20% !important; min-width: 20% !important;">
                     	<a href="#detailclient" data-toggle="modal" @click="detailclient(invoice.client['id'])">
                     		{{invoice.client['client_name']}}
                     	</a>
                     </td>                  
-                    <td style="max-width:30% !important;;">
+                    <td style="width: 30% !important; max-width:30% !important;;">
                     	<span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
                     		{{item.service['name']}}
                     	</span>
                     </td>
-                    <td>
+                    <td style="width: 10% !important;">
                     	<i class="fa fa-inr" aria-hidden="true"></i>
                     	{{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
                     </td>
-                    <td>
+                    <td style="width: 10% !important;">
                     	{{ invoice.created_at | vueDate }}
                     	
                     </td>
-                    <td>
+                    <td style="width: 10% !important;">
                     	{{ invoice.due_date | vueDate }}                   	
                     </td>
                     <td class="a-right a-right ">{{invoice.status}}</td>
-                    <td style="width:1%;">
+                    <td>
 	                    <a href="#editclient" class="disabled" data-toggle="modal" @click="updateclient(client.id)">
 	                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 	                    </a>
 	                  </td>
-	                  <td style="width:1%;">
+	                  <td>
 	                    <a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
 	                      <i class="fa fa-eye" aria-hidden="true"></i>
+	                    </a>
+	                  </td>
+	                  <td>
+	                    <a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
+	                      <i class="fa fa-trash" aria-hidden="true"></i>
 	                    </a>
 	                  </td>
                     
@@ -72,7 +76,7 @@
                 
                 </tbody>
               </table>             
-            </div>
+            </div>           
         
           </div>
     </div>
@@ -189,6 +193,11 @@
 </script>
 
 <style type="text/css" Scoped>
-
-
+	
+.fa{
+	margin-right:5px !important;
+}
+.fa-inr{
+	margin-top: 3px !important;
+}
 </style>
