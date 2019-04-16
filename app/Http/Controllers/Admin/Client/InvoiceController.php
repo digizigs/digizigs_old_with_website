@@ -50,6 +50,13 @@ class InvoiceController extends Controller
         $due_date = $request->dates['due_date'];
         $selected_services = $request->selectedservices;
 
+        //$selected_lines = $selected_services->pluck('id');
+        $selected_lines= collect($selected_services)->only('id');
+        $service_array = $selected_lines; 
+        //dd($selected_lines);
+
+       
+
         $invoice = new Invoice;
         $invoice->client_id = $client_id;
         $invoice->bill_date = $bill_date;
@@ -57,9 +64,11 @@ class InvoiceController extends Controller
 
         $saved = $invoice->save();
 
+        //$invoice->services()->sync($request->selectedservices);
 
         //saving service lines
         foreach($selected_services as $service){
+            //$invoice->services()->sync($service['id']);
             $s_line = new Invoice_item;
             $s_line->invoice_id = $invoice->id;
             $s_line->service_id = $service['id'];
@@ -96,8 +105,16 @@ class InvoiceController extends Controller
     }
 
     
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        
+        $invoice = Invoice::find($id);
+        $is_deleted=$invoice->delete();
+
+        if($is_deleted){
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
+            //dd($invoices);
+            return request()->json(200,$invoices);
+        }
+
     }
 }
