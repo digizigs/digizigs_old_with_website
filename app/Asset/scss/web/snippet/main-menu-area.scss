@@ -1,0 +1,239 @@
+/**
+*Mainmenu-area
+**/
+
+
+
+.main-menu-area{
+
+    .navbar{
+        border-radius: 0 !important;
+        border: 0 !important;
+        margin-bottom: 0 !important;
+        background-color: transparent !important;
+        transition: background-color 1s ease 0s;
+     
+    }
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+
+    .logo {
+        //text-transform: uppercase;
+        letter-spacing: 5px;
+        height: inherit;
+        //margin-top: 8px;
+        padding-left: 0;
+        padding: 20px 15px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 26px;
+
+        span{
+            background-color: #D52F5B;
+            padding: 0px 5px 0px 12px;
+            color: #fff;
+            margin-right: 5px;
+        }
+    }
+
+
+    #primary-menu > ul > li > a {
+        background: none;
+        padding: 20px 15px;
+        position: relative;
+        border-top: 3px solid transparent;
+        text-align: center;
+        color: #fff;
+        font-weight: 500;
+    }
+    #primary-menu > ul > li > a:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        top: -10px;
+        width: 0;
+        height: 0;
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        border-top: 10px solid #fff;
+        opacity: 0;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    #primary-menu > ul > li > a:hover:before,
+    #primary-menu > ul > li.active > a:before {
+        opacity: 1;
+        top: 0;
+    }
+
+    #primary-menu ul li.active a,
+    #primary-menu ul li a:hover {
+        border-top: 3px solid #fff;
+        color: #fff;
+    }
+
+    .affix {
+        background-color: #138fc2 !important;
+    }
+}
+
+.nav-blue{
+    .navbar{
+        background-color: #0B333C !important;
+        transition: background-color 1s ease 0s;
+
+        .logo {
+            color: #fff;
+        }
+
+        #primary-menu > ul > li > a {
+            color:#fff;
+        }
+        #primary-menu > ul > li > a:before {
+            border-top: 10px solid #fff;
+        }
+        #primary-menu ul li.active a,
+        #primary-menu ul li a:hover {
+            border-top: 3px solid #fff;
+        }
+    }
+}
+
+@media only screen and  (max-width: 768px) {
+    .main-menu-area{
+        .navbar{
+            background-color: #138fc2 !important;
+            margin: 0;
+        }
+        .logo {
+            padding: 15px 15px;    
+        }
+
+        #primary-menu > ul > li > a {
+            padding: 10px 15px;
+        }
+
+        .navbar-toggle{
+            background-color: transparent !important;
+            border: 0;
+
+            span{
+                 background-color: #fff !important;
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mainmenu-area {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9999999;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.overlay,
+.overlay a,
+.mainmenu-area a {
+    //color: #ffffff;
+}
+
+.mainmenu-area .logo {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    height: inherit;
+    margin-top: 8px;
+    padding-left: 0;
+}
+
+.mainmenu-area .logo h2 {
+    margin-bottom: 0;
+}
+
+.mainmenu-area #primary-menu > ul > li > a {
+    background: none;
+    padding: 30px 15px;
+    position: relative;
+    border-top: 3px solid transparent;
+    text-align: center;
+}
+
+.mainmenu-area #primary-menu > ul > li > a:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-top: 10px solid #ffffff;
+    opacity: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.mainmenu-area #primary-menu > ul > li > a:hover:before,
+.mainmenu-area #primary-menu > ul > li.active > a:before {
+    opacity: 1;
+    top: 0;
+}
+
+.mainmenu-area #primary-menu ul li.active a,
+.mainmenu-area #primary-menu ul li a:hover {
+    border-top: 3px solid #ffffff;
+}
+
+.mainmenu-area.affix {
+    background-color: #138fc2;
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .mainmenu-area #primary-menu > ul > li > a {
+        padding: 30px 12px;
+    }
+
+    #primary-menu{
+        background-color: red;
+    }
+}

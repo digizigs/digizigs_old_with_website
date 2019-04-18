@@ -1,0 +1,212 @@
+
+body,html{
+  /* font-family: 'Roboto';
+  font-family: open sans, sans-serif;
+  font-size: 12px; */
+  //background-color: #f3f3f3;
+  font-size: .875em;
+  ///overflow-x: hidden;
+  color: #353c4e;
+  font-family: open sans, sans-serif;
+  //background-attachment: fixed
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  70% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes sonar {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+
+//@import './scrollbar';
+
+
+
+//========================Footer=========================
+footer {
+    background: #fff;
+    padding: 12px;
+    display: block;
+    text-align: center;
+
+}
+//=======================================================
+
+
+
+
+//====================table-action-font-icon ============
+
+.table-responsive{
+  .table-action-font-icon{
+    span {
+      margin-left: 10px;
+      margin-right:10px;
+    }
+
+  }
+
+  tr{
+    i{
+       font-size: 16px;
+    }
+  }
+  
+  tr:hover {
+    i::before {
+      display: inline-block;
+      animation: swing ease-in-out 0.5s 1 alternate;
+    }
+    i{
+      color:#16c7ff;
+     
+    }
+  }
+
+ 
+}
+//====================table-action-font-icon ============
+
+//============New Post image upload image preview box====
+.avatar-preview {
+        width: 250px;
+        height: 150px;
+        position: relative;
+        border-radius: 5px;
+        //border: 6px solid #F8F8F8;
+       //box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer; 
+      }
+
+.avatar-preview{
+
+  //background-image: url(http://localhost/digizigs/public/images/picture.jpg);
+}
+//============New Post image upload image preview box====
+
+
+
+//============================Form Errors===============
+.is-invalid{
+  border: 1px solid #e74c3c;
+}
+//============================Form Errors===============
+
+//Pagination active link background
+.page-link{
+  background-color: red;
+}
+
+.pagination{
+  .active{
+    background-color: red !important;
+  }
+}
+
+.delete-form{
+  margin: 0 !important;
+  padding: 0 !important;
+  button{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.panel-body{
+  background-color: #F2F5F7;
+}
+
+
+
+.alert{
+  position: absolute;
+  z-index: 999;
+  top: 20px;
+  right: 20px;
+}
+
+
+.right_col{
+  min-height: 2000px;
+  margin: 0;
+}
+
+
+//=========================Pagination==========================
+.pagination{
+
+  .active{
+    a{
+      background-color: #3F5367 !important;
+    }
+  }
+}
+//=========================Pagination==========================
+
+
+
+//========================Dropzone=============================
+.dropzone {
+    border: 2px dashed #0087F7;
+    background: white;
+    border-radius: 5px;
+    min-height: 200px;
+    height: 300px;
+    padding: 90px 0;
+    vertical-align: baseline;
+    margin: 20px;
+}
+//=======================Dropzone==============================
+
+
+//======================Log View===============================
+.log-view{
+  .llv-active{
+    
+        color: #A94442 !important;
+    
+  }
+}
+//======================Log View===============================
+
+

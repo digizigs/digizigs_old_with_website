@@ -15,7 +15,7 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        return view('admin.connect.subscription');
+        return view('admin.pages.connect.subscription');
     }
 
     

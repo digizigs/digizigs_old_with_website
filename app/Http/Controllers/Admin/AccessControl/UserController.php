@@ -18,8 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $roles = Role::get()->pluck('name', 'name');
-        return view('admin.accesscontroll.users', compact('users','roles'));
+        $roles = Role::orderby('created_at','desc')->paginate(10);
+        return view('admin.pages.access.users', compact('users','roles'));
       
     }
 
@@ -33,62 +33,66 @@ class UserController extends Controller
     public function store(UserStoreRequest $request) {   
         //dd($request);
 
-        if (! Gate::allows('users_manage')) {
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
 
         $user = User::create($request->all());
         $roles = $request->input('roles') ? $request->input('roles') : [];
         //dd($roles);
         $user->assignRole($roles);
 
-        return redirect()->route('user.index')->with('message', 'User added successfully');
+        return redirect()->route('users.index')->with('message', 'User added successfully');
     }
 
     
 
    
     public function edit($id) {
-        if (! Gate::allows('users_manage')) {
+
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
+
         $roles = Role::get()->pluck('name', 'name');
         $user = User::findOrFail($id);
-
-        return view('admin.accesscontroll.useredit', compact('user', 'roles'));
+        return view('admin.pages.access.user_edit', compact('user', 'roles'));
     }
 
     
-    public function update(UserUpdateRequest $request, $id)
-    {
-        if (! Gate::allows('users_manage')) {
+    public function update(UserUpdateRequest $request, $id){
+
+        /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
+
         $user = User::findOrFail($id);
         $user->update($request->all());
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->syncRoles($roles);
 
-        return redirect()->route('user.index')->with('message', 'User updated successfully');;;
+        return redirect()->route('users.index')->with('message', 'User updated successfully');;;
     }
 
    
-    public function destroy($id)
-    {
-        if (! Gate::allows('users_manage')) {
+    public function destroy($id) {
+
+      /*  if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
+
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('user.index')->with('deleted', 'User deleted successfully');;;
+        return redirect()->route('users.index')->with('deleted', 'User deleted successfully');;;
     }
 
-    public function massDestroy(Request $request)
-    {
-        if (! Gate::allows('users_manage')) {
+    public function massDestroy(Request $request) {
+        
+      /*  if (! Gate::allows('users_manage')) {
             return abort(401);
-        }
+        }*/
+
         if ($request->input('ids')) {
             $entries = User::whereIn('id', $request->input('ids'))->get();
 

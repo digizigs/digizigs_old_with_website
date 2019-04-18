@@ -12,7 +12,7 @@ class SettingSeed extends Seeder
      */
     public function run()
     {
-        Setting::create(['name' => 'app_name','val'=>'DigiCRM']);
+        Setting::create(['name' => 'app_name','val'=>'DigiZigs']);
         Setting::create(['name' => 'app_admin_url','val'=>'dz-admin']);
         Setting::create(['name' => 'app_email','val'=>'admin@admin.com']);
         Setting::create(['name' => 'app_description','val'=>'admin']);

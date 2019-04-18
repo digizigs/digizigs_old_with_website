@@ -55,6 +55,7 @@ $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
 
 https://www.cssmatic.com/noise-texture
+http://tavonline.net/html/gorge2/light/contact.html
 
 
 //Breadcrumb
@@ -104,3 +105,17 @@ https://itsolutionstuff.com/post/laravel-57-generate-pdf-from-html-exampleexampl
 
 //clear app config catch
 php artisan config:cache
+
+
+https://www.liquidlight.co.uk
+https://www.gravitatedesign.com
+
+
+https://packalyst.com/s/menu
+
+
+Digizigs Google Analytics View ID =>192179951
+
+https://sujipthapa.co/contactus
+
+https://simplestweb.in/blog

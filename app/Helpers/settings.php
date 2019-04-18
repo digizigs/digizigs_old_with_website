@@ -17,3 +17,22 @@ if (! function_exists('setting')) {
         return is_null($value) ? value($default) : $value;
     }
 }
+
+
+if (! function_exists('app_setting')) {
+
+    function app_setting($name){
+
+        if($name == 'app_name'){
+            return 'Digizigs New Setting';
+        }
+
+
+        if($name == 'app_name'){
+            return '1.0';
+        }
+
+        
+    }
+}
+

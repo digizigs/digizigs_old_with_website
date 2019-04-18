@@ -35,7 +35,11 @@ class InvoiceCreated extends Notification
     public function toDatabase($notifiable) {
         return [
             
+<<<<<<< HEAD
             'newinvoice' => $this->invoice;
+=======
+            'newinvoice' => $this->invoice
+>>>>>>> origin/master
         ];
     }
 }

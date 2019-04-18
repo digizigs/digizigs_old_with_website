@@ -12,4 +12,9 @@ class Category extends Model
         return $this->hasMany(self::class,'parent_id','id') ;
     }
 
+     public function posts()
+    {
+        return $this->belongsToMany('App\Models\Post','post_category');
+    }
+
 }

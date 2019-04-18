@@ -12,11 +12,14 @@ use Spatie\Permission\Models\Role;
 class RoleController extends Controller
 {
    
-    public function index(){       
+    public function index(){
+
+        
+        
         $roles = Role::all();
         $permissions = Permission::get()->pluck('name', 'name');
 
-        return view('admin.accesscontroll.roles', compact('roles','permissions'));
+        return view('admin.pages.access.roles', compact('roles','permissions'));
     }
 
 
@@ -35,11 +38,10 @@ class RoleController extends Controller
     }
 
    
-    public function store(StoreRolesRequest $request)
-    {
-        /*if (! Gate::allows('users_manage')) {
+    public function store(StoreRolesRequest $request) {
+        if (! Gate::allows('manage_role')) {
             return abort(401);
-        }*/
+        }
 
        
         $role = Role::create($request->except('permission'));
@@ -50,38 +52,39 @@ class RoleController extends Controller
 
         //$roles = Role::orderby('created_at','desc')->get();
         //return request()->json(200,$roles);
-        return redirect()->route('role.index')->with('message', 'Role added successfully');
+        return redirect()->route('roles.index')->with('message', 'Role added successfully');
     }
 
   
   
 
     
-    public function edit($id)
-    {
-        if (! Gate::allows('users_manage')) {
+    public function edit($id) {
+        if (! Gate::allows('manage_role')) {
             return abort(401);
         }
+
         $permissions = Permission::get()->pluck('name', 'name');
 
         $role = Role::findOrFail($id);
 
 
-        return view('admin.accesscontroll.roleedit', compact('role', 'permissions'));
+        return view('admin.pages.access.role_edit', compact('role', 'permissions'));
     }
 
   
     public function update(Request $request, $id)
     {
-         if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('manage_role')) {
             return abort(401);
         }
+
         $role = Role::findOrFail($id);
         $role->update($request->except('permission'));
         $permissions = $request->input('permission') ? $request->input('permission') : [];
         $role->syncPermissions($permissions);
 
-        return redirect()->route('role.index')->with('message', 'Role updated successfully');
+        return redirect()->route('roles.index')->with('message', 'Role updated successfully');
     }
 
    
@@ -95,7 +98,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $role->delete();
 
-         return redirect()->route('role.index')->with('deleted', 'Role deleted successfully');
+         return redirect()->route('roles.index')->with('deleted', 'Role deleted successfully');
         
     }
 }

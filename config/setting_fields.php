@@ -12,7 +12,7 @@ return [
     | create sections of settings with a type of input.
     */
 
-    'app' => [
+    'app' => [  
 
         'title' => 'General',
         'desc' => 'All the general settings for application.',
@@ -50,9 +50,126 @@ return [
                 'label' => 'Admin URL',
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input
-            ]
-        ]
+            ],        
+        ],
+
+
     ],
+    'reading' => [
+
+        'title' => 'Reading',
+        'desc' => 'Home page of website, Blog page or home page' ,
+        'icon' => 'fa fa-book',
+
+        'elements' => [
+            [
+                'type' => 'select',
+                    'name' => 'home_page',
+                    'label' => 'Home Page',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    'options' => [
+                        '-Select-',
+                        'Home',
+                        'Blog',                                         
+                    ]
+            ],
+            [
+                'type' => 'number',
+                    'name' => 'post_per_page',
+                    'label' => 'Post Per Page',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    
+            ]
+        ],
+
+
+    ],
+    'writing' => [
+
+        'title' => 'Writing',
+        'desc' => 'Home page of website, Blog page or home page' ,
+        'icon' => 'fa fa-pencil',
+
+        'elements' => [
+            [
+                'type' => 'select',
+                    'name' => 'default_post_category',
+                    'label' => 'Default Post Category',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    'options' => [
+                        '-Select-',
+                        'uncategorised',
+                        'Blog',                        
+                    ]
+            ],
+            [
+                'type' => 'select',
+                    'name' => 'default_post_format',
+                    'label' => 'Default Post Format',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    'options' => [
+                        '-Select-',
+                        'aside',
+                        'chat',
+                        'gallery',
+                        'link',
+                        'quote',
+                        'status',
+                        'video',
+                        'audio',                       
+                    ]
+            ]
+        ],
+
+
+    ],
+    'media' => [
+
+        'title' => 'Media',
+        'desc' => 'Media upload setting' ,
+        'icon' => 'fa fa-picture-o',
+
+        'elements' => [
+            [
+                'type' => 'select',
+                    'name' => 'default_post_category',
+                    'label' => 'Default Post Category',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    'options' => [
+                        '-Select-',
+                        'Uncategotised',
+                        'Blog',                        
+                    ]
+            ],
+            [
+                'type' => 'select',
+                    'name' => 'default_post_format',
+                    'label' => 'Default Post Format',
+                    'rules' => 'required',
+                    'class' => 'input-sm', // class for input
+                    'options' => [
+                        '-Select-',
+                        'aside',
+                        'chat',
+                        'gallery',
+                        'link',
+                        'quote',
+                        'status',
+                        'video',
+                        'audio',                       
+                    ]
+            ],
+            
+        ],
+
+
+    ],
+    
 
   
 ];
