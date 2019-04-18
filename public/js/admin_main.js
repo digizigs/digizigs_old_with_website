@@ -73204,11 +73204,11 @@ var moment = __webpack_require__(0);
 				return _this4.errors = error.response.data.errors;
 			});
 		},
-		deleteservice: function deleteservice(id) {
+		invoicedelete: function invoicedelete(id) {
 			var _this5 = this;
 
 			swalWithBootstrapButtons({
-				title: 'Delete Service?',
+				title: 'Delete Invoice?',
 				text: "You won't be able to revert this!",
 				type: 'warning',
 				showCancelButton: true,
@@ -73218,17 +73218,16 @@ var moment = __webpack_require__(0);
 			}).then(function (result) {
 				if (result.value) {
 
-					axios.delete('service/' + id).then(function (response) {
-						_this5.services = response.data;
-						_this5.success = "Service Deleted Successfuly";
-					}) //this.categories=response.data
-					.catch(function (error) {
+					axios.delete('invoice/' + id).then(function (response) {
+						_this5.invoices = response.data;
+						_this5.success = "Invoice Deleted Successfuly";
+					}).catch(function (error) {
 						console.log(response.data);
 						_this5.errors = error.response.data.errors;
 						_this5.success = '';
 					});
 
-					swalWithBootstrapButtons('Deleted!', 'Service deleted successfully', 'success');
+					swalWithBootstrapButtons('Deleted!', 'Invoice deleted successfully', 'success');
 				}
 			});
 		}
@@ -73414,11 +73413,16 @@ var render = function() {
                       "a",
                       {
                         staticClass: "disabled",
-                        attrs: { href: "#invoiceview", "data-toggle": "modal" },
+                        attrs: { href: "" },
                         on: {
-                          click: function($event) {
-                            _vm.invoiceview(invoice.id)
-                          }
+                          click: [
+                            function($event) {
+                              $event.preventDefault()
+                            },
+                            function($event) {
+                              _vm.invoicedelete(invoice.id)
+                            }
+                          ]
                         }
                       },
                       [
@@ -73615,7 +73619,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.vdp-datepicker input{\r\n\t\r\n\t\tbackground-color: #fff !important;\r\n\t\twidth: 160% !important;\r\n\t\tborder-radius: 1px !important;\r\n\t\tfont-size: 12px !important;\r\n\t\theight: 28px;\n}\n.box-containers{\r\n\tmargin-bottom: 40px;\n}\n.box-containers .box-title{\r\n\t//padding: 10px;\n}\r\n\r\n\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.vdp-datepicker input{\r\n\t\r\n\t\tbackground-color: #fff !important;\r\n\t\twidth: 245% !important;\r\n\t\tborder-radius: 1px !important;\r\n\t\tfont-size: 12px !important;\r\n\t\theight: 28px;\n}\n.box-container{\n}\n.box-title{\r\n\tfont-size: 14px;\r\n\tfont-weight: 550 ;\r\n\tpadding: 5px 10px;\r\n\tmargin: 0;\r\n\tborder: 1px solid grey;\n}\n.select2-container--default .select2-selection--single,\r\n.select2-container--default .select2-selection--multiple {\r\n    background-color: #fff;\r\n    border: 1px solid #ccc !important;\r\n    border-radius: 0;\r\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\r\n    color: #000;\r\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\r\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\r\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\r\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\r\n    margin-top: 2px;\r\n    border: none;\r\n    border-radius: 0;\r\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\r\n    border: 1px solid #ccc\n}\n.select2-selection__choice{\r\n\tbackground-color: #3F5367 !important;\r\n\tcolor: #fff;\r\n\tborder-radius: 3px !important;\r\n\t-webkit-tap-highlight-color: transparent;\r\n    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\r\n            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\r\n    letter-spacing: .5px;\r\n    -webkit-transition: .2s ease-out;\r\n    transition: .2s ease-out;\n}\n.select2-container{\r\n\tborder-radius: 1px solid #fff !important;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -73627,6 +73631,17 @@ exports.push([module.i, "\n.vdp-datepicker input{\r\n\t\r\n\t\tbackground-color:
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuejs_datepicker__ = __webpack_require__(235);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -73803,7 +73818,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			duedate: '',
 			disabledDates: {
 				days: [6, 0] // Disable Saturday's and Sunday's				    			    
-			}
+			},
+			tax: 6,
+			discount: 0
 		};
 	},
 
@@ -73828,6 +73845,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	methods: {
+		myChangeEvent: function myChangeEvent(val) {
+			console.log(val);
+		},
+		mySelectEvent: function mySelectEvent(_ref) {
+			var id = _ref.id,
+			    text = _ref.text;
+
+			console.log({ id: id, text: text });
+		},
 		validateSelection: function validateSelection() {},
 		getDropdownValues: function getDropdownValues() {},
 		customFormatter: function customFormatter(date) {
@@ -75409,7 +75435,7 @@ var render = function() {
         attrs: { id: "newinvoice", role: "dialog", "data-backdrop": "false" }
       },
       [
-        _c("div", { staticClass: "modal-dialog modal-md" }, [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
           _c("div", { staticClass: "modal-content" }, [
             _c("div", { staticClass: "modal-header" }, [
               _c(
@@ -75436,6 +75462,10 @@ var render = function() {
             _c("div", { staticClass: "modal-body" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "box-container" }, [
+                  _c("h4", { staticClass: "box-title" }, [
+                    _vm._v("Select Client")
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c(
                       "div",
@@ -75471,6 +75501,10 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-container" }, [
+                  _c("h4", { staticClass: "box-title" }, [
+                    _vm._v("Billing Dates")
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c(
                       "div",
@@ -75537,12 +75571,56 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-container" }, [
+                  _c("h4", { staticClass: "box-title" }, [
+                    _vm._v("Tax and Discounts")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12 col-md-6" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "number" },
+                        domProps: { value: _vm.tax }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.client_email
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.client_email[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group glow-input" }, [
+                    _c("div", { staticClass: "col-sm-12 col-xs-12 col-md-6" }, [
+                      _vm._m(4),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "form-control input-sm",
+                        attrs: { type: "number" },
+                        domProps: { value: _vm.discount }
+                      }),
+                      _vm._v(" "),
+                      _vm.errors.client_email
+                        ? _c("span", { class: ["label label-danger"] }, [
+                            _vm._v(_vm._s(_vm.errors.client_email[0]))
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "box-container" }, [
+                  _c("h4", { staticClass: "box-title" }, [_vm._v("Services")]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c(
                       "div",
                       { staticClass: "col-sm-12 col-xs-12 col-md-6" },
                       [
-                        _vm._m(3),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c("vue-single-select", {
                           attrs: {
@@ -75602,7 +75680,7 @@ var render = function() {
                                 staticClass: "table table-striped jambo_table"
                               },
                               [
-                                _vm._m(4),
+                                _vm._m(6),
                                 _vm._v(" "),
                                 _c(
                                   "tbody",
@@ -75682,7 +75760,7 @@ var render = function() {
                                       _c("th", { staticClass: "column-title" })
                                     ]),
                                     _vm._v(" "),
-                                    _vm._m(5),
+                                    _vm._m(7),
                                     _vm._v(" "),
                                     _c("tr", { staticClass: "even pointer" }, [
                                       _c(
@@ -75758,6 +75836,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("i", [_c("small", [_vm._v("Due Date")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("i", [_c("small", [_vm._v("Tax")])])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("b", [_c("i", [_c("small", [_vm._v("Discount")])])])
   },
   function() {
     var _vm = this

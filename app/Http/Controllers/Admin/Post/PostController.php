@@ -73,7 +73,7 @@ class PostController extends Controller
     }
    
     public function store(Request $request){
-        //dd($request);
+        //dd($request->categories);
         //return  $request->all();
      
         $data = Validator::make($request->all(),[

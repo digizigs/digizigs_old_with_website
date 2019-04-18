@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\Appointment;
 use App\Models\Option;
-use App\Models\User;
 use App\Models\Setting;
-
+use App\Models\User;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -28,7 +28,10 @@ class AdminController extends Controller
     }
 
 
-
+    public function markAllNotificationRead() {
+    	Auth::user()->notifications->markAsRead();
+    	return Redirect::back()->with('message', 'All notification marked as read');
+    }
 
     
 }

@@ -2,6 +2,9 @@
 
 //use Analytics;
 use App\Models\Page;
+use App\Notifications\InvoiceCreated;
+use App\User;
+use Illuminate\Support\Facades\Notification;
 use Spatie\Analytics\Period;
 
 
@@ -32,7 +35,15 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Auth::routes();
 
-
+Route::get('/notify',function(){
+   
+    //Notification 
+    $users = User::all();
+    $newinvoice = collect(['title'=>'New invoice Created','body'=>'New invoice created for client']);
+    Notification::send($users, new InvoiceCreated($newinvoice));
+    echo 'Notify Success';
+   
+}); 
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -125,6 +136,9 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //Route::get('/logsss', 'Admin\Logs\LogsController@index')->name('app.logs');
     //Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.logs');
     Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
+
+
+    Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');
 
 });
 

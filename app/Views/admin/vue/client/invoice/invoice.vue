@@ -66,7 +66,7 @@
 	                    </a>
 	                  </td>
 	                  <td>
-	                    <a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
+	                    <a href="" class="disabled" v-on:click.prevent @click="invoicedelete(invoice.id)">
 	                      <i class="fa fa-trash" aria-hidden="true"></i>
 	                    </a>
 	                  </td>
@@ -146,24 +146,24 @@
 		          })//this.apntupdate = response.data
 		        .catch(error => this.errors=error.response.data.errors);
 	      	},
-	      	deleteservice(id){
-	        swalWithBootstrapButtons({
-	          title: 'Delete Service?',
-	          text: "You won't be able to revert this!",
-	          type: 'warning',
-	          showCancelButton: true,
-	          confirmButtonText: 'Yes, delete it!',
-	          cancelButtonText: 'No, cancel!',
-	          reverseButtons: true
+	      	invoicedelete(id){
+	        	swalWithBootstrapButtons({
+	          	title: 'Delete Invoice?',
+	          	text: "You won't be able to revert this!",
+	          	type: 'warning',
+	          	showCancelButton: true,
+	          	confirmButtonText: 'Yes, delete it!',
+	          	cancelButtonText: 'No, cancel!',
+	          	reverseButtons: true
 	        }).then((result) => {
 	          if (result.value) {
 
-	            axios.delete('service/'+id)
+	            axios.delete('invoice/'+id)
 	            .then(response =>{
-	              this.services=response.data;
-	              this.success="Service Deleted Successfuly";
+	              this.invoices=response.data;
+	              this.success="Invoice Deleted Successfuly";
 
-	            })//this.categories=response.data
+	            })
 	            .catch((error) => {
 	              console.log(response.data);
 	                    this.errors=error.response.data.errors;
@@ -172,7 +172,7 @@
 
 	            swalWithBootstrapButtons(
 	              'Deleted!',
-	              'Service deleted successfully',
+	              'Invoice deleted successfully',
 	              'success'
 	            )
 	          } 
