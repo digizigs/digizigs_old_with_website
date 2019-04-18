@@ -47,12 +47,12 @@
               <li>                
                 <a>
                   <span>
-                    <span><b>{{$notification->data['newinvoice']['title']}}</b></span>
+                    <span><b>{{$notification->data['notify']['title']}}</b></span>
                     <span class="time">{{Carbon\Carbon::parse($notification->created_at)->diffForHumans()}}</span>
                     
                   </span>
                   <span class="message">
-                    {{$notification->data['newinvoice']['body']}}
+                    {{$notification->data['notify']['body']}}
                     <span>
                         <a href="">View</a>
                     </span>                    

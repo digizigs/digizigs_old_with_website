@@ -7,7 +7,7 @@ use App\Models\Client;
 use App\Models\Invoice;
 use App\Models\Invoice_item;
 use App\Models\Service;
-use App\Notifications\InvoiceCreated;
+use App\Notifications\NewInvoice;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -83,8 +83,8 @@ class InvoiceController extends Controller
         
         //Notification 
         $users = User::all();
-        $newinvoice = collect(['title'=>'New invoice for ' . $client_name,'body'=>'New invoice created for client','Invoice_id'=>$invoice_id]);
-        Notification::send($users, new InvoiceCreated($newinvoice));
+        $newinvoice = collect(['title'=>'New invoice','body'=>'New invoice created for ' . $client_name ,'id'=>$invoice_id]);
+        Notification::send($users, new NewInvoice($newinvoice));
 
 
         if($saved){

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class InvoiceCreated extends Notification
+class NewInvoice extends Notification
 {
     use Queueable;
     private $invoice;
@@ -35,11 +35,8 @@ class InvoiceCreated extends Notification
     public function toDatabase($notifiable) {
         return [
             
-<<<<<<< HEAD
-            'newinvoice' => $this->invoice;
-=======
-            'newinvoice' => $this->invoice
->>>>>>> origin/master
+           'notify' => $this->invoice
+
         ];
     }
 }
