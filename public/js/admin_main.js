@@ -75540,7 +75540,7 @@ var render = function() {
                   _c("div", { staticClass: "form-group glow-input" }, [
                     _c(
                       "div",
-                      { staticClass: "col-sm-12 col-xs-12 col-md-12" },
+                      { staticClass: "col-sm-12 col-xs-12 col-md-6" },
                       [
                         _vm._m(3),
                         _vm._v(" "),
@@ -75628,22 +75628,30 @@ var render = function() {
                                           _vm._v(" "),
                                           _c(
                                             "td",
-                                            {
-                                              staticStyle: { width: "1%" },
-                                              on: {
-                                                click: function($event) {
-                                                  $event.preventDefault()
-                                                  _vm.removeservice(
-                                                    service["name"]
-                                                  )
-                                                }
-                                              }
-                                            },
+                                            { staticStyle: { width: "1%" } },
                                             [
-                                              _c("i", {
-                                                staticClass: "fa fa-trash",
-                                                attrs: { "aria-hidden": "true" }
-                                              })
+                                              _c(
+                                                "a",
+                                                {
+                                                  attrs: { href: "" },
+                                                  on: {
+                                                    click: function($event) {
+                                                      $event.preventDefault()
+                                                      _vm.removeservice(
+                                                        service["name"]
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-trash",
+                                                    attrs: {
+                                                      "aria-hidden": "true"
+                                                    }
+                                                  })
+                                                ]
+                                              )
                                             ]
                                           )
                                         ]
@@ -76075,18 +76083,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['invc', 'clt'],
-	data: function data() {
-		return {
-			invoice: []
-		};
-	},
+  props: ['invc', 'clt'],
+  data: function data() {
+    return {
+      invoice: []
+    };
+  },
 
-	watch: {},
-	methods: {},
-	created: function created() {
-		this.invoice = this.rcrd;
-	}
+  watch: {},
+  methods: {},
+  created: function created() {
+    this.invoice = this.rcrd;
+  }
 });
 
 /***/ }),
@@ -76127,11 +76135,7 @@ var staticRenderFns = [
                 _c("i", {
                   staticClass: "fa fa-user-circle",
                   attrs: { "aria-hidden": "true" }
-                }),
-                _vm._v(" "),
-                _c("h4", { staticClass: "modal-title green" }, [
-                  _c("b", [_vm._v("Tile")])
-                ])
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "modal-body" }, [

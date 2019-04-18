@@ -1,7 +1,7 @@
 
 @extends('layouts.admin')
 
-@section('title','All Articles')
+@section('title','Services')
 
 
 

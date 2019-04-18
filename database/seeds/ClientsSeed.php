@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Client;
 use Illuminate\Database\Seeder;
+use App\Models\Client;
 
-class ClientSeed extends Seeder
+class ClientsSeed extends Seeder
 {
     /**
      * Run the database seeds.
@@ -24,6 +24,6 @@ class ClientSeed extends Seeder
     		]);
 
     		
-    	}  
+    	} 
     }
 }

@@ -59,7 +59,7 @@
 	                				                		
 
 		                        <div class="form-group glow-input">
-		                          	<div class="col-sm-12 col-xs-12 col-md-12">
+		                          	<div class="col-sm-12 col-xs-12 col-md-6">
 			                            <i><small>Select Service</small></i>
 			                            <vue-single-select
 										        name="maybe"
@@ -109,7 +109,7 @@
 							                  	<td class=" " style="">{{service['name']}}</td>                   
 							                    <td class=" ">{{service['description']}}</td>
 							                    <td class=" ">{{service['charge']}}</td>
-							                    <td style="width: 1%;>
+							                    <td style="width: 1%;">
 							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
 					                          			<i class="fa fa-trash" aria-hidden="true"></i>
 					                          		</a>

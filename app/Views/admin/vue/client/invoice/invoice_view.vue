@@ -6,7 +6,7 @@
 	                <div class="modal-header panel-heading">
 	                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
                   		<i class="fa fa-user-circle" aria-hidden="true"></i>
-                  		<h4 class="modal-title green"><b>Tile</b></h4>
+                  		
 	                </div>
 
 	                <div class="modal-body">
@@ -159,28 +159,22 @@
 </template>
 
 <script type="text/javascript">
-	export default{
-<<<<<<< HEAD
-		props:['rcrd'],
-=======
-		props:['invc','clt'],
->>>>>>> e4e388ab4a9d0ee4364fb0435de127e26d268df4
-		data(){
-			return{
-				invoice:[],
-			}
-		},
-		watch:{
-
-		},
-		methods:{
-		
-		},
-		created(){
-			this.invoice = this.rcrd;
-		}
-	};
-
+  export default{
+    props:['invc','clt'],
+    data(){
+      return{
+        invoice:[],
+      }
+    },
+    watch:{
+    },
+    methods:{
+    
+    },
+    created(){
+      this.invoice = this.rcrd;
+    }
+  };
 </script>
 
 <style type="text/css" Scoped>

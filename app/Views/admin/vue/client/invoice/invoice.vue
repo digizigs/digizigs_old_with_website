@@ -84,12 +84,8 @@
 
          
           <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
-<<<<<<< HEAD
-          <invoiceview :rcrd="invoicedetail,client" @recordupdated="refreshRecord"></invoiceview>
-=======
           <invoiceview :invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></invoiceview>
           <newinvoice :invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
->>>>>>> e4e388ab4a9d0ee4364fb0435de127e26d268df4
          
         </div>
 	</section>
