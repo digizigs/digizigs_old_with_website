@@ -7,9 +7,12 @@ use App\Models\Client;
 use App\Models\Invoice;
 use App\Models\Invoice_item;
 use App\Models\Service;
+use App\Notifications\InvoiceCreated;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class InvoiceController extends Controller
 {
@@ -64,6 +67,8 @@ class InvoiceController extends Controller
 
         $saved = $invoice->save();
 
+        $invoice_id = $invoice->id;
+        $client_name = $request->selectedclient['client_name'];    
         //$invoice->services()->sync($request->selectedservices);
 
         //saving service lines
@@ -75,13 +80,19 @@ class InvoiceController extends Controller
             $s_line->save();            
             //return request()->json(200,$service['id']);
         }
-             
+        
+        //Notification 
+        $users = User::all();
+        $newinvoice = collect(['title'=>'New invoice for ' . $client_name,'body'=>'New invoice created for client','Invoice_id'=>$invoice_id]);
+        Notification::send($users, new InvoiceCreated($newinvoice));
+
+
         if($saved){
             $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
             return request()->json(200,$invoices);
         }
-         
-       
+        
+
         
     }
 

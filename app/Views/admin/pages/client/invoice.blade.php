@@ -7,7 +7,13 @@
 
 @section('content')
 
-  
+  @if(Session::has('message'))
+    <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
+  @endif
+
+  @if(Session::has('deleted'))
+    <p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
+  @endif 
 
   <div class="right_col" role="main"> 	
       <invoice></invoice>     
