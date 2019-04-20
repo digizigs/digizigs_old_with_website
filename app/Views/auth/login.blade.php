@@ -31,7 +31,6 @@
           @endif
         </div>
 
-        {!! NoCaptcha::display() !!}
 
         <div>
           <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="filled-in chk-col-pink">

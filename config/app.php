@@ -63,7 +63,7 @@ return [
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
 
     ],
 
