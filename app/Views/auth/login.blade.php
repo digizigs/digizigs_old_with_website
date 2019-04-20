@@ -30,7 +30,8 @@
              </span>
           @endif
         </div>
-
+  
+        @captcha()
 
         <div>
           <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="filled-in chk-col-pink">

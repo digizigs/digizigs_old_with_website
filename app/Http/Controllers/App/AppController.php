@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Inquiry;
 use App\Models\Post;
+use App\Notifications\NewInquiry;
+use App\Notifications\Subscription;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use PDF;
 use Spatie\Permission\Models\Permission;
@@ -47,6 +51,10 @@ class AppController extends Controller {
 
     public function subscribe(Request $request){
 
+        $this->validate($request,[
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+
     	$data = Validator::make($request->all(),[           
             'email'=>'required|max:255|email',          
         ],[          
@@ -62,7 +70,13 @@ class AppController extends Controller {
         $connect->type = 'newsletter';
     	$is_save = $connect->save();
         
-        //flash('Message')->important();
+        
+        //Notification
+        $connect_id = $connect->id; 
+        $users = User::all();
+        $subscription = collect(['title'=>'New Subscription','body'=>'New Subscription from ' . $email,'id'=>$connect_id]);
+        Notification::send($users, new Subscription($subscription));
+
         
     	if ($is_save){          
     		return view('app.pages.newsletter_redirect');
@@ -70,6 +84,10 @@ class AppController extends Controller {
     }
 
     public function inquiry(Request $request){
+
+        /*$this->validate($request,[
+            'g-recaptcha-response' => 'required|captcha'
+        ]);*/
 
         $data = Validator::make($request->all(),[    
             'name'=>'required',
@@ -96,6 +114,15 @@ class AppController extends Controller {
         $is_save = $connect->save();
       
         
+        //Notification
+        $inquiry_id = $connect->id;
+        $inquiry_name =  $request->name;
+        $users = User::all();
+        $inquir = collect(['title'=>'New Inquiry','body'=>'New Inquiry from ' . $inquiry_name,'id'=>$inquiry_id]);
+        //dd($inquir);
+        Notification::send($users, new NewInquiry($inquir));
+
+
         if ($is_save){
             return view('app.pages.contact_redirect');
         }   

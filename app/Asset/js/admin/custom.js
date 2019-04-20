@@ -1,6 +1,14 @@
 $(document).ready(function(){
 
 	
+	//Pusher notification receive
+    let userId = document.head.querySelector('meta[name="user-id"]').content;
+    Echo.private('App.User.' + userId)
+    .notification((notification) => {
+        console.log(notification.type);
+    });
+
+
 	window.setTimeout(function() {;
 	    $("#successMessage").fadeTo(500, 0).slideUp(500, function(){
 	        $(this).remove(); 

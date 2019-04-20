@@ -358,6 +358,7 @@
                             @csrf
                             <input type="email" name="email" value="" placeholder="Your Email">
                             <button type="submit">Subscribe</button>
+                            @captcha
                         </form>
                     </div>
                 </div>

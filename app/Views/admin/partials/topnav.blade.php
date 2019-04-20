@@ -1,4 +1,4 @@
-<div class="top_nav">
+  <div class="top_nav">
   <div class="nav_menu">
     <nav>
       <div class="nav toggle">
@@ -43,16 +43,16 @@
           
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list to_do" role="menu">
             
-            @foreach(Auth::user()->unreadNotifications as $notification)
+            @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
               <li>                
                 <a>
                   <span>
-                    <span><b>{{$notification->data['newinvoice']['title']}}</b></span>
+                    <span><b>{{$notification->data['notify']['title']}}</b></span>
                     <span class="time">{{Carbon\Carbon::parse($notification->created_at)->diffForHumans()}}</span>
                     
                   </span>
                   <span class="message">
-                    {{$notification->data['newinvoice']['body']}}
+                    {{$notification->data['notify']['body']}}
                     <span>
                         <a href="">View</a>
                     </span>                    

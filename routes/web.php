@@ -1,6 +1,8 @@
 <?php
 
 //use Analytics;
+use App\Events\TaskEvent;
+use App\Mail\testMail;
 use App\Models\Page;
 use App\Notifications\InvoiceCreated;
 use App\User;
@@ -25,13 +27,11 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-//Route::get('/homenew', 'App\AppController@home2')->name('apphome2');
-//Route::get('/registrationsuccess','Auth\Registercontroller@registerSuccess')->name('registrationsuccess');    //After registration  verify msg
-//Route::get('/verifyAccount/{verifyToken}','Auth\Registercontroller@verifyAccount')->name('verifyAccount');    //After registration  verify msg
+Route::get('/mail',function(){
 
-//Route::resource('/blog', 'App\BlogController');
-//Route::resource('/blog', 'Blog\BlogController');
-//Route::resource('/ecom', 'Ecom\EcomController');
+    Mail::to('jaysvishwa@gmail.com')->send(new testMail());
+    return 'Mail sent successfully';
+});
 
 Auth::routes();
 
@@ -44,6 +44,21 @@ Route::get('/notify',function(){
     echo 'Notify Success';
    
 }); 
+
+Route::get('/taskevent',function(){
+
+    //Event Fire
+    event(new TaskEvent('Hello How are you'));
+    echo 'TaskEvent Fiered';
+
+});
+
+Route::get('/taskeventlisten',function(){
+
+    //Event Listner
+    return view('test.test');
+
+});
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

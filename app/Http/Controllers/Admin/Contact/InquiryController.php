@@ -63,7 +63,7 @@ class InquiryController extends Controller
     public function update(Request $request, $id)
     {
         //return $request->email;
-        this.$email = $request->email;
+        $email = $request->email;
         
         $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
         $beautymail->send('email.Beautymail', [], function($message)
