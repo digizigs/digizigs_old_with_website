@@ -2,10 +2,12 @@
 
 //use Analytics;
 use App\Events\TaskEvent;
+use App\Jobs\testmailjob;
 use App\Mail\testMail;
 use App\Models\Page;
 use App\Notifications\InvoiceCreated;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Analytics\Period;
 
@@ -29,7 +31,8 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/mail',function(){
 
-    Mail::to('jaysvishwa@gmail.com')->send(new testMail());
+    $job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
+    dispatch($job);
     return 'Mail sent successfully';
 });
 

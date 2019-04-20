@@ -2,13 +2,15 @@
 
 namespace App\Jobs;
 
+use App\Mail\testMail;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
-class sendemail implements ShouldQueue
+class testmailjob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -21,7 +23,7 @@ class sendemail implements ShouldQueue
     {
         //
     }
-
+ 
     /**
      * Execute the job.
      *
@@ -29,6 +31,6 @@ class sendemail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to('jaysvishwa@gmail.com')->send(new testMail());
     }
 }
