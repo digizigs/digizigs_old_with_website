@@ -1,6 +1,7 @@
 <?php
 
 //use Analytics;
+use App\Events\TaskEvent;
 use App\Models\Page;
 use App\Notifications\InvoiceCreated;
 use App\User;
@@ -44,6 +45,21 @@ Route::get('/notify',function(){
     echo 'Notify Success';
    
 }); 
+
+Route::get('/taskevent',function(){
+
+    //Event Fire
+    event(new TaskEvent('Hello How are you'));
+    echo 'TaskEvent Fiered';
+
+});
+
+Route::get('/taskeventlisten',function(){
+
+    //Event Listner
+    return view('test.test');
+
+});
 
 
 //Route::get('/home', 'HomeController@index')->name('home');

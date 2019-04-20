@@ -1,4 +1,4 @@
-<div class="top_nav">
+  <div class="top_nav">
   <div class="nav_menu">
     <nav>
       <div class="nav toggle">
@@ -43,7 +43,7 @@
           
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list to_do" role="menu">
             
-            @foreach(Auth::user()->unreadNotifications as $notification)
+            @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
               <li>                
                 <a>
                   <span>
