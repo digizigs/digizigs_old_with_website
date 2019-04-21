@@ -10,7 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel="stylesheet">
     <!-- <![endif]-->
 
-    <title>Material Design for Bootstrap</title>
+    <title>Digizigs</title>
 
     <style type="text/css">
         body {
@@ -139,17 +139,7 @@
 
 
 <body class="respond" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <!-- pre-header -->
-    <table style="display:none!important;">
-        <tr>
-            <td>
-                <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
-                    Pre-header for the newsletter template
-                </div>
-            </td>
-        </tr>
-    </table>
-    <!-- pre-header end -->
+    
     <!-- header -->
     <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff">
 
@@ -167,7 +157,7 @@
                             <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
 
                                 <tr>
-                                    <td align="center" height="70" style="height:70px;">
+                                    <td align="" height="70" style="height:70px;">
                                         <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="http://www.digizigs.com/public/images/brand_assets/DZ-Logo Orange-black.png" alt="" /></a>
                                     </td>
                                 </tr>

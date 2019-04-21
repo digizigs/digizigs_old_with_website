@@ -1,0 +1,6 @@
+//Corn Jobs
+
+
+1)php -f /home/u963219395/public_html/artisan digizigs:log
+
+2)php -f /home/u963219395/public_html/artisan queue:work --tries=3

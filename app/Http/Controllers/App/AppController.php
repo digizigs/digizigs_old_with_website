@@ -4,12 +4,15 @@ namespace App\Http\Controllers\App;
 
 use Alert;
 use App\Http\Controllers\Controller;
+use App\Jobs\SubscribtionMailJob;
+use App\Jobs\testmailjob;
 use App\Models\Contact;
 use App\Models\Inquiry;
 use App\Models\Post;
 use App\Notifications\NewInquiry;
 use App\Notifications\Subscription;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
@@ -76,6 +79,11 @@ class AppController extends Controller {
         $users = User::all();
         $subscription = collect(['title'=>'New Subscription','body'=>'New Subscription from ' . $email,'id'=>$connect_id]);
         Notification::send($users, new Subscription($subscription));
+
+
+        //Sending mail to subscriber
+        $job = (new SubscribtionMailJob($email))->delay(Carbon::now()->addSeconds(10));
+        dispatch($job);
 
         
     	if ($is_save){          

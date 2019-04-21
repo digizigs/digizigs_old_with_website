@@ -41,7 +41,7 @@
        
 
         <div>
-          <button class="btn btn-default submit btn-sm" style="margin-top: 5px;">Log in</button>
+          <button class="btn btn-default submit btn-sm pull-left" style="margin-top: 5px;">Log in</button>
           <a class="reset_pass" href="{{ route('password.request') }}">Lost your password?</a>
         </div>
 
