@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Leading Web Design and Devlopment Agency')
+@section('title', setting('app_name') .' | Contact')
 
 
 

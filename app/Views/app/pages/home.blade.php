@@ -55,7 +55,7 @@
                                 <p>We’re Your Partner in Your Success</p>
                             </div>
                         </div>
-                        <ul>
+                        <ul class="col-lg-12">                         
                             <li><i class="fa fa-check" aria-hidden="true"></i> Distinctive Experts That Provide Effortless Expertise</li>
                             <li><i class="fa fa-check" aria-hidden="true"></i> Enriched Outcomes Enabled By Experienced Professionals</li>
                             <li><i class="fa fa-check" aria-hidden="true"></i> Wide-Ranging Thoughts Bread Exceptional Ideas</li>

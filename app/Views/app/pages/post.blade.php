@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Blog')
+@section('title', setting('app_name') .' | Blog')
 
 
 
@@ -22,7 +22,7 @@
 	<!-- End banner Area -->
 
 	<!-- Start top-category-widget Area -->
-	<section class="top-category-widget-area pt-90 pb-90 ">
+	<!--section class="top-category-widget-area pt-90 pb-90 ">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4">
@@ -78,7 +78,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section-->
 	<!-- End top-category-widget Area -->
 
 	<!-- Start post-content Area -->
@@ -87,15 +87,15 @@
 			<div class="row">
 
 				<div class="col-lg-8 posts-list">
-
-					@foreach($posts = get_posts('all',1) as $post)
+					
+					@foreach($posts as $post)
 
 							<div class="single-post row">								
 								<div class="col-lg-12 col-md-12 ">
 									
 									<div class="post-heading">																							<div class="post-title">
 
-											<a class="posts-title" href="blog-single.html">
+											<a class="posts-title" href="{{route('app.blog.detail',$post->slug)}}">
 												<h3>
 													{{$post->title}}
 												</h3>
@@ -109,8 +109,8 @@
 											</span>
 												
 											<span class="post-meta post-author">
-												<a href="#">{{$post->user->firstname}}
-													<span class="lnr lnr-user"></span>
+												<a href="{{route('app.blog.author',$post->user->id)}}">
+													{{$post->user->firstname}}<span class="lnr lnr-user"></span>
 												</a>
 											</span>
 										
@@ -128,6 +128,7 @@
 												<ul class="tags">
 													@foreach($post->categories as $cat)							                
 														<li><a href="#">{{$cat->name}},</a></li>
+														{{$cat->count()}}
 										            @endforeach										
 												</ul>
 											</span>
@@ -139,10 +140,10 @@
 									</div>
 
 									<p class="excert">
-										{!!Illuminate\Support\Str::words($post->body,40)!!}
+										{!!Illuminate\Support\Str::words($post->body,60)!!}
 									</p>
 
-									<a href="#" class="primary-btn" data-text="View More">
+									<a href="{{route('app.blog.detail',$post->slug)}}" class="primary-btn" data-text="View More" id="{{$post->id}}">
 										<span>V</span>
 										<span>i</span>
 										<span>e</span>

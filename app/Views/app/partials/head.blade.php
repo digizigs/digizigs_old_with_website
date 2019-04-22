@@ -5,7 +5,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="icon" href="{{asset('public/images/brand_assets/d-fevi-orange.png')}}" type="image/ico" />
-<title>{{setting('app_name')}} | @yield('title')</title>
+<title>@yield('title')</title>
 
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
