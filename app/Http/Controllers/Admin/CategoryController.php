@@ -13,7 +13,8 @@ class CategoryController extends Controller
     
     public function index()
     {   
-        $categories = Category::orderby('created_at','desc')->with('posts')->get();
+        //$categories = Category::orderby('created_at','desc')->with('posts')->get();
+        $categories = Category::with('childrenRecursive')->where('parent_id', '=', 0)->with('child')->get();
         //dd($categories);
         return view('admin.pages.category.category',compact('categories'));
     }
@@ -35,18 +36,16 @@ class CategoryController extends Controller
    
     public function store(Request $request)
     {
-        //return $request->all();
+        //dd($request->all());
 
         $data = Validator::make($request->all(),[
-            'category_name'=>'required|max:255',
-            'category_type'=>'required|max:255',      
+            'category_name'=>'required|max:255',   
         ],[
             'category_name.required' => 'Category name is required',
-            'category_type.required' => 'Category Type is required',  
         ])->Validate();
 
         $category = new Category;
-        $category->type = $request->category_type;
+        $category->parent_id = $request->parent_id;
         $category->name = $request->category_name;
         $category->slug = str_slug( $request->category_name );
         

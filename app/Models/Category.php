@@ -11,12 +11,17 @@ class Category extends Model
 
 	public function parent()
     {
-        return $this->belongsTo('App\Models\Category', 'parent_id');
+        return $this->belongsTo('App\Models\Category', 'parent_id',0);
     }
 
     public function child()
     {
         return $this->hasMany('App\Models\Category', 'parent_id');
+    }
+
+    public function childrenRecursive()
+    {
+       return $this->child()->with('childrenRecursive');
     }
 
     public function posts()

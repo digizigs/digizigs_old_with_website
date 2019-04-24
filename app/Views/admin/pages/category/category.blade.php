@@ -50,11 +50,6 @@
 
                             <!--catagory-->
 
-                            <div class="form-group glow-input">
-                              <label for="usr">Category Type</label>
-                              <input type="text" class="form-control input-sm" name="category_type" value="{{ old('category_type') }}">
-                              <small><i>This will identify type of category.</i></small>
-                            </div>
 
                             <div class="form-group glow-input">
                               <label for="usr">Category Name</label>
@@ -63,17 +58,20 @@
                             </div>
 
                             <!--Parent category dropdown-->
-                            <!-- <div class="form-group glow-input">
+                            <div class="form-group glow-input">
                               <label for="sel1">Parent Catagory</label>
                               <select class="form-control input-sm" name="parent_id">
                                 <option value="0">None</option>
                                 @foreach($categories as $category)
                                   <option value="{{$category->id}}" >{{$category->name}}</option>
+                                  @foreach ($category->child as $child)
+                                    <option value="{{$child->id}}" >--{{ $child->name }}</option>
+                                  @endforeach
                                 @endforeach
                                 
                               </select>
                               <small><i>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</i></small>
-                            </div> -->
+                            </div>
 
                             <div>
                               <button type="submit" class="btn btn-dark btn-sm" style="margin-bottom: 20px;" >
@@ -95,8 +93,8 @@
 
                               <thead>
                                 <tr class="headings">                             
-                                  <th class="column-title"> Category Type </th>
-                                  <th class="column-title hidden-xs"> Category Name </th>
+                                  <th class="column-title"> Category Name </th>
+                                  <th class="column-title hidden-xs"> Parent </th>
                                   <th class="column-title" > Used Count </th>
                                   <th class="column-title"> Edit </th>
                                   <th class="column-title"> Delete </th> 
@@ -108,7 +106,7 @@
                   
                                   @foreach($categories as $category)
                                     <tr id="">
-                                      <td style="width: 35%;"> {{$category->type}} </td>
+                                      <td style="width: 35%;"> {{$category->name}} </td>
                                       <td style="width: 35%;"> {{$category->name}} </td>
                                       <td style="width: 20%" style="margin-left: 20px;">
                                         {{ $category->posts->count() }}
@@ -137,17 +135,16 @@
 
 
                         @foreach ($categories as $category)
-                          
-                              Parent=>{{ $category->name }} <br>
+                             
+                             Parent= {{$category->name}} <br>
 
                               @foreach ($category->child as $child)
-                                <tr>
-                                  <td>{{ $child->name }}</td>                               
-                                  <td>{{ $child->slug }}</td>
-                                  <td></td>
-                                </tr>
+                                
+                                 Child= {{ $child->name }} <br>
+                                
+                                
                               @endforeach
-                         
+                            
                         @endforeach
 
 
