@@ -34,12 +34,12 @@
             </ul>
           </li>
 
-          <li><a><i class="fa fa-file-text-o"></i> Pages <span class="fa fa-chevron-down"></span></a>
+          <!-- <li><a><i class="fa fa-file-text-o"></i> Pages <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('page.index')}}">All Pages</a></li>
               <li><a href="{{route('page.create')}}">Add Page</a></li>
             </ul>
-          </li>
+          </li> -->
           
           <li>
             <a href="{{route('category.index')}}"><i class="fa fa-object-group"></i> Category </a>

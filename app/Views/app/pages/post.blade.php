@@ -101,41 +101,39 @@
 												</h3>
 											</a>
 
-											<span class="post-meta post-date">
-												<a href="#">
-													{{ Carbon\Carbon::parse($post->created_at)->format('M d Y') }}
-													<span class="lnr lnr-calendar-full"></span>
-												</a>
+											<span class="post-meta post-date">												
+												{{ Carbon\Carbon::parse($post->created_at)->format('M d Y') }}
+												<i class="fa fa-calendar" aria-hidden="true"></i>											
 											</span>
 												
 											<span class="post-meta post-author">
 												<a href="{{route('app.blog.author',$post->user->id)}}">
-													{{$post->user->firstname}}<span class="lnr lnr-user"></span>
+													{{$post->user->firstname}}
+													<i class="fa fa-user" aria-hidden="true"></i>
 												</a>
 											</span>
 										
-											<span class="post-meta post-views">
-												<a href="#">1.2M Views</a> 
-												<span class="lnr lnr-eye"></span>
+											<span class="post-meta post-views">												
+												{{$post->views}} Views												 
+												<i class="fa fa-eye" aria-hidden="true"></i>
 											</span>
 
 											<span class="post-meta post-comments">
-												<a href="#">06 Comments</a>
-												<span class="lnr lnr-bubble"></span>
+												06 Comments
+												<i class="fa fa-comments" aria-hidden="true"></i>
 											</span>
 
 											<span class="post-meta post-cat">
 												<ul class="tags">
 													@foreach($post->categories as $cat)							                
-														<li><a href="#">{{$cat->name}},</a></li>
-														{{$cat->count()}}
+														<li><a href="{{route('app.blog.category',$cat->name)}}" >{{$cat->name}}</a></li>
 										            @endforeach										
 												</ul>
 											</span>
 										</div>
 									</div>
 
-									<div class="feature-img">
+									<div class="feature-img">										
 										<img class="img-fluid" src="{{$post->image_url}}" alt="">
 									</div>
 
@@ -170,118 +168,49 @@
 						<div class="single-sidebar-widget popular-post-widget">
 							<h4 class="popular-title">Popular Posts</h4>
 							<div class="popular-post-list">
-								<div class="single-post-list d-flex flex-row align-items-center">
-									<div class="thumb">
-										<img class="img-fluid" src="{{asset('public/images/blog/pp1.jpg')}}" alt="">
+
+								@foreach($popular_post as $popular)
+
+									<div class="single-post-list d-flex flex-row align-items-center">
+										<div class="thumb">
+											<img class="img-fluid" src="{{$popular->image_url}}" alt="" style="width: 100px;">
+										</div>
+										<div class="details">
+											<a href="{{route('app.blog.detail',$popular->slug)}}"><h6>{{$popular->title}}</h6></a>
+											<p>{{ Carbon\Carbon::parse($popular->created_at)->diffForHumans() }}</p>
+										</div>
 									</div>
-									<div class="details">
-										<a href="blog-single.html"><h6>Space The Final Frontier</h6></a>
-										<p>02 Hours ago</p>
-									</div>
-								</div>
-								<div class="single-post-list d-flex flex-row align-items-center">
-									<div class="thumb">
-										<img class="img-fluid" src="{{asset('public/images/blog/pp2.jpg')}}" alt="">
-									</div>
-									<div class="details">
-										<a href="blog-single.html"><h6>The Amazing Hubble</h6></a>
-										<p>02 Hours ago</p>
-									</div>
-								</div>
-								<div class="single-post-list d-flex flex-row align-items-center">
-									<div class="thumb">
-										<img class="img-fluid" src="{{asset('public/images/blog/pp3.jpg')}}" alt="">
-									</div>
-									<div class="details">
-										<a href="blog-single.html"><h6>Astronomy Or Astrology</h6></a>
-										<p>02 Hours ago</p>
-									</div>
-								</div>
-								<div class="single-post-list d-flex flex-row align-items-center">
-									<div class="thumb">
-										<img class="img-fluid" src="{{asset('public/images/blog/pp4.jpg')}}" alt="">
-									</div>
-									<div class="details">
-										<a href="blog-single.html"><h6>Asteroids telescope</h6></a>
-										<p>02 Hours ago</p>
-									</div>
-								</div>
+
+								@endforeach
+								
+								
 							</div>
 						</div>					
 
 						<div class="single-sidebar-widget post-category-widget">
 							<h4 class="category-title">Post Catgories</h4>
 							<ul class="cat-list">
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Technology</p>
-										<p>37</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Lifestyle</p>
-										<p>24</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Fashion</p>
-										<p>59</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Art</p>
-										<p>29</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Food</p>
-										<p>15</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Architecture</p>
-										<p>09</p>
-									</a>
-								</li>
-								<li>
-									<a href="#" class="d-flex justify-content-between">
-										<p>Adventure</p>
-										<p>44</p>
-									</a>
-								</li>
+
+								@foreach($categories as $category)
+
+									<li>
+										<a href="#" class="d-flex justify-content-between">
+											<p>{{ucfirst($category->name)}}</p>
+											<p>{{ $category->posts->count() }}</p>
+										</a>
+									</li>
+
+								@endforeach
+								
 							</ul>
 						</div>
 
 						<div class="single-sidebar-widget tag-cloud-widget">
 							<h4 class="tagcloud-title">Tag Clouds</h4>
 							<ul>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Architecture</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Art</a></li>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Architecture</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Adventure</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Adventure</a></li>
-								<li><a href="#">Technology</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Architecture</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Food</a></li>
+								@foreach($tags as $tag)
+									<li><a href="#">{{ ucfirst($tag->name)}}</a></li>
+								@endforeach								
 							</ul>
 						</div>
 					</div>

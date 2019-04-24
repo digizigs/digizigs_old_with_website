@@ -38,24 +38,24 @@ class CategoryController extends Controller
         //return $request->all();
 
         $data = Validator::make($request->all(),[
-            'category_name'=>'required|max:255',     
+            'category_name'=>'required|max:255',
+            'category_type'=>'required|max:255',      
         ],[
-            'category_name.required' => 'Category name is required', 
+            'category_name.required' => 'Category name is required',
+            'category_type.required' => 'Category Type is required',  
         ])->Validate();
 
         $category = new Category;
-        $category->parent_id = $request->parent_id;
+        $category->type = $request->category_type;
         $category->name = $request->category_name;
         $category->slug = str_slug( $request->category_name );
-        $category->description = $request->description;
+        
         $cat_save = $category->save();
 
         if($cat_save){
             return redirect()->route('category.index')->with('message', 'Category added successfully');
         }
 
-
-        //return redirect()->back()->with('status','Category saved');
     }
 
    
@@ -87,10 +87,10 @@ class CategoryController extends Controller
         ])->Validate();
        
         $category = Category::find($id);
-        $category->parent_id = $request->parent_id;
+        
         $category->name = $request->name;
         $category->slug = str_slug( $request->name );
-        $category->description = $request->description;
+       
         $cat_save = $category->save();
 
         $cat_save = $category->save();

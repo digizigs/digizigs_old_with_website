@@ -24,8 +24,9 @@ Route::get('/', 'App\AppController@index')->name('apphome');
 Route::get('/contact', 'App\AppController@contact')->name('contact');
 
 Route::get('/blog', 'App\PostController@allPosts')->name('app.blog');
-Route::get('/blog/author/{author}', 'App\PostController@postByAuthor')->name('app.blog.author');
 Route::get('/blog/{slug}', 'App\PostController@detailPosts')->name('app.blog.detail');
+Route::get('/blog/author/{author}', 'App\PostController@postByAuthor')->name('app.blog.author');
+Route::get('/blog/category/{category}', 'App\PostController@postByCategory')->name('app.blog.category');
 
 
 Route::get('/about', 'App\AppController@about')->name('app.about');

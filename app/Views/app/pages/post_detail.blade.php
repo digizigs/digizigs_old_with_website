@@ -26,7 +26,8 @@
 				<div class="single-post row">
 					<div class="col-lg-12 col-md-12 ">
 						
-						<div class="post-heading">																							<div class="post-title">
+						<div class="post-heading">
+							<div class="post-title">
 
 								<a class="posts-title" href="blog-single.html">
 									<h3>
@@ -37,31 +38,37 @@
 								<span class="post-meta post-date">
 									<a href="#">
 										{{ Carbon\Carbon::parse($post->created_at)->format('M d Y') }}
-										<span class="lnr lnr-calendar-full"></span>
+										<i class="fa fa-calendar" aria-hidden="true"></i>
 									</a>
 								</span>
 									
 								<span class="post-meta post-author">
 									<a href="#">
-										{{$post->user->firstname}}<span class="lnr lnr-user"></span>
+										{{$post->user->firstname}}
+										<i class="fa fa-user" aria-hidden="true"></i>
 									</a>
 								</span>
 							
 								<span class="post-meta post-views">
-									<a href="#">1.2M Views</a> 
-									<span class="lnr lnr-eye"></span>
+									<a href="#">
+										{{$post->views}} Views
+										<i class="fa fa-eye" aria-hidden="true"></i>
+									</a> 
+									
 								</span>
 
 								<span class="post-meta post-comments">
-									<a href="#">06 Comments</a>
-									<span class="lnr lnr-bubble"></span>
+									<a href="#">
+										06 Comments
+										<i class="fa fa-comments" aria-hidden="true"></i>
+									</a>
+									
 								</span>
 
 								<span class="post-meta post-cat">
 									<ul class="tags">
 										@foreach($post->categories as $cat)							                
-											<li><a href="#">{{$cat->name}},</a></li>
-											{{$cat->count()}}
+											<li><a href="#">{{$cat->name}}</a></li>											
 							            @endforeach										
 									</ul>
 								</span>

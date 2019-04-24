@@ -106,27 +106,24 @@ class PostController extends Controller
         $post->categories()->sync($request->categories);
 
         //Saving Tags
+        $tagIds = [];
         if($request->tags){
+
             $tags = $request->tags;
             foreach($tags as $tag){
 
-                $itag = Tag::where('name', '=', $tag)->first();
-
-
-                if ($itag != null) {
-                    //return $itag->id;
-                    //$post->tags()->sync($itag->id);
-                }else{
-                    $ntag = new Tag;
-                    $ntag->post_id = $post->id;
-                    $ntag->name = $tag;
-                    $ntag->slug = str_slug( $tag);
-                    $ntag->save();
+                $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
+                if($tag)
+                {
+                  $tagIds[] = $ntag->id;
                 }
+
 
             }
         }
-        
+
+        //dd($tagIds);
+        $post->tags()->sync($tagIds);
 
         //if($save_post){
             //return redirect()->back()->with('status','Category saved');
@@ -153,7 +150,7 @@ class PostController extends Controller
         $post = Post::with('categories','tags')->find($id);
         $categories = Category::orderby('created_at','desc')->get();
         $tags = Tag::orderby('created_at','desc')->get();
-        return view('admin.pages.post.post_edit',compact('categories','post'));
+        return view('admin.pages.post.post_edit',compact('categories','post','tags'));
     }
 
    
@@ -189,26 +186,35 @@ class PostController extends Controller
         
      
         //Saving Tags
+        $tagIds = [];
         if($request->tags){
             $tags = $request->tags;
             foreach($tags as $tag){
 
-                $itag = Tag::where('name', '=', $tag)->first();
+                /*$itag = Tag::where('name', '=', $tag)->first();
 
 
                 if ($itag != null) {
-                    //return $itag->id;
-                    //$post->tags()->sync($itag->id);
+                    $tagIds[] = $itag->id;
                 }else{
                     $ntag = new Tag;
                     $ntag->post_id = $post->id;
                     $ntag->name = $tag;
                     $ntag->slug = str_slug( $tag);
                     $ntag->save();
+                    $tagIds[] = $ntag->id;
+                }*/
+
+                $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
+                if($tag)
+                {
+                  $tagIds[] = $ntag->id;
                 }
 
             }
         }
+        
+        $post->tags()->sync($tagIds);
 
         return redirect()->route('post.index')->with('success', 'Post Updated successfully');
     }    

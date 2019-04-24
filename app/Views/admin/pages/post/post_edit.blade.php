@@ -135,13 +135,14 @@
                                       @foreach($categories as $category)
                                         <option value="{{$category->id}}"
                                         
-                                        @foreach($post->categories as $postCat)
-                                          @if($postCat->id == $category->id)
-                                            selected
-                                          @endif
-                                        @endforeach
+                                          @foreach($post->categories as $postCat)
+                                            @if($postCat->id == $category->id)
+                                              selected
+                                            @endif
+                                          @endforeach
     
-                                        >{{$category->name}}</option>
+                                          >{{$category->name}}
+                                        </option>
                                       @endforeach
                                               
                                   </select>
@@ -164,7 +165,15 @@
                                 <div class="col-md-12" >
                                   <select class="form-control tags" multiple=""  style="width: 100%; height: 200px;" tabindex="-1" aria-hidden="true" name="tags[]" >
 
-                                   
+                                  @foreach($tags as $tag)
+                                    <option value="{{$tag->name}}"
+                                      @foreach($post->tags as $posttag)
+                                        @if($posttag->name == $tag->name)
+                                          selected
+                                        @endif
+                                      @endforeach
+                                      >{{$tag->name}}</option>  
+                                  @endforeach
 
                                   </select>                               
                                 </div>

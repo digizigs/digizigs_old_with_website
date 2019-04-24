@@ -10,10 +10,10 @@ $(document).ready(function(){
 
 
 	window.setTimeout(function() {;
-	    $("#successMessage").fadeTo(500, 0).slideUp(500, function(){
+	    $("#successMessage").fadeTo(2000, 0).slideUp(2000, function(){
 	        $(this).remove(); 
 	    });
-	}, 2000);
+	}, 5000);
 
 
 

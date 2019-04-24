@@ -61,7 +61,7 @@
                                 <p>We’re Your Partner in Your Success</p>
                             </div>
                         </div>
-                        <ul>
+                        <ul class="col-lg-12">
                             <li>
                             	<i class="fa fa-check" aria-hidden="true"></i> 
                             	<span><b>Growth Driven Design : </b></span> GDD Sites for Ecommerce, Brochure and Custom applications.
@@ -84,9 +84,12 @@
                             </li>
                             
                         </ul>
-                        <h4 class="tagline">
-							Learn more how Element 7 Digital can create a dynamic online presence, power up your online sales, or create a superior Digital Strategy by <span><a href="{{route('contact')}}">contacting us</a></span> today. .
-						</h2>
+                        <br><br>
+                        <div style="padding: 20px;">
+                        	<h4 class="tagline">
+								Learn more how Element 7 Digital can create a dynamic online presence, power up your online sales, or create a superior Digital Strategy by <span><a href="{{route('contact')}}">contacting us</a></span> today. .
+							</h4>
+                        </div>
                     </div>
                 </div>
                 

@@ -28,6 +28,7 @@ class CreatePostsTable extends Migration
             $table->string('visiblity')->default('public')->nullable();
             $table->enum('status', ['published', 'draft' ,'trashed'])->default('Draft');
             $table->boolean('featured')->default(0);
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }

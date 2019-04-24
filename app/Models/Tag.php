@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     
+    protected $fillable = [
+        'name','slug',
+    ];
+
     public function posts()
     {
-        return $this->belongsTo('App\Models\Post');
-        
+        return $this->belongsToMany('App\Models\Post','post_tag');
     }
 
 
