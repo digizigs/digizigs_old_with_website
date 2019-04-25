@@ -13,9 +13,17 @@ class CategoryController extends Controller
     
     public function index()
     {   
+
+        //$Menu =new Category;
+        //$allCategories=$Menu->tree();    
+        //dd($allCategories);
+
+
         //$categories = Category::orderby('created_at','desc')->with('posts')->get();
-        $categories = Category::with('childrenRecursive')->where('parent_id', '=', 0)->with('child')->get();
-        //dd($categories);
+        $categories = Category::with('child')->where('parent_id',0)->get();
+        //dd(json_encode($categories));
+        //return $categories;
+        //return json_encode($categories);
         return view('admin.pages.category.category',compact('categories'));
     }
 
@@ -30,7 +38,8 @@ class CategoryController extends Controller
   
     public function create()
     {
-        //
+        $categories = Category::with('child')->where('parent_id',0)->get();
+        return request()->json(200,$categories);
     }
 
    

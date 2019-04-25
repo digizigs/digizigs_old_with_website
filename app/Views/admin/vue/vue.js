@@ -75,11 +75,36 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 
 //Posts
 
-
+//Category
+Vue.component('category', require('./category/Category.vue'));
 
 const app = new Vue({
-    el: '#app',
-    router,
+   el: '#app',
+   router,
+
+   data(){
+      return{
+         //fsdfsdfsdfsdfsff
+         testmsg:'This is test msg',
+         cat:'',
+
+         //dasdasdasdadasdasd
+      }
+   },
+   watch:{
+
+   },
+   methods:{
+      catsubmit(){
+         alert('Category submited')
+      }
+   },
+   created(){
+      console.log('vue js created')
+   }
+
+
+
 });
 
 Vue.filter('vueDate',function(created){

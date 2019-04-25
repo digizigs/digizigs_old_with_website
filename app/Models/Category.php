@@ -11,18 +11,24 @@ class Category extends Model
 
 	public function parent()
     {
-        return $this->belongsTo('App\Models\Category', 'parent_id',0);
+        return $this->belongsTo($this,'id', 'parent_id');
     }
 
     public function child()
     {
-        return $this->hasMany('App\Models\Category', 'parent_id');
+        return $this->hasMany($this, 'parent_id','id');
     }
 
-    public function childrenRecursive()
+    public function subchild()
     {
-       return $this->child()->with('childrenRecursive');
+       return $this->child()->with('subchild');
     }
+
+    public static function tree() {
+
+		return static::with(implode('.', array_fill(0, 100, 'child')))->where('parent_id', '=', '0')->get();
+
+	}
 
     public function posts()
     {
