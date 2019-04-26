@@ -45,7 +45,7 @@
                       
                            <div class="col-md-4 col-xs-12">
                  
-                             <form method="post" action="{{route('category.store')}}"  v-on:submit.prevent="catsubmit">
+                             <form method="post" action="{{route('category.store')}}" >
                                @csrf
 
                                <!--catagory-->
