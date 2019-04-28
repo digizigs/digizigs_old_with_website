@@ -1,11 +1,8 @@
 <?php
 
-namespace Rap2hpoutre\LaravelLogViewer;
+namespace App\Services\LogViewer;
 
-/**
- * Class Level
- * @package Rap2hpoutre\LaravelLogViewer
- */
+
 class Level
 {
     /**

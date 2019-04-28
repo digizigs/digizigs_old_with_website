@@ -14,7 +14,9 @@ use Spatie\Analytics\Period;
 
 //Subscriptions and Inquiries
 Route::post('/subscribe', 'App\AppController@subscribe')->name('app.subscribe');
+Route::get('/unsubscribe', 'App\AppController@unsubscribe')->name('app.unsubscribe');
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
+
 
 
 
@@ -41,8 +43,14 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 //=========================================Test Routes=============================================//
 Route::get('/mail',function(){
 
-    $job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
-    dispatch($job);
+    $contact = App\Models\Contact::where('email','jaysvishwa@gmail.com')->first();
+    //$job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
+    //$job = (new testmailjob($contact));
+    //dispatch($job);
+
+    Mail::to('jaysvishwa@gmail.com')
+            ->send(new testMail($contact));
+
     return 'Mail sent successfully';
 });
 
@@ -162,7 +170,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
 
     //Logs
-    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
+    //Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
+    Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.logs');
 
 
     Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');

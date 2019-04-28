@@ -14,14 +14,10 @@ class testmailjob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $contact;
+    public function __construct($contact)
     {
-        //
+        $this->contact = $contact;
     }
  
     /**
@@ -30,8 +26,13 @@ class testmailjob implements ShouldQueue
      * @return void
      */
     public function handle()
-    {
+    {   
+
+        $user = \Auth::loginUsingId(1);
+        $email = 'jaysvishwa@gmail.com';
+
+        
         Mail::to('jaysvishwa@gmail.com')
-            ->send(new testMail());
+            ->send(new testMail($this->contact));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rap2hpoutre\LaravelLogViewer;
+namespace App\Http\Controllers\Admin\LogViewer;
 
 use Illuminate\Support\Facades\Crypt;
 

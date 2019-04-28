@@ -1,52 +1,26 @@
 <?php
 
-namespace Rap2hpoutre\LaravelLogViewer;
+namespace App\Services\LogViewer;
 
-/**
- * Class LaravelLogViewer
- * @package Rap2hpoutre\LaravelLogViewer
- */
+use App\Services\LogViewer\Level;
+use App\Services\LogViewer\Pattern;
+
+
 class LaravelLogViewer
 {
-    /**
-     * @var string file
-     */
+   
     private $file;
-
-    /**
-     * @var string folder
-     */
     private $folder;
-
-    /**
-     * @var string storage_path
-     */
     private $storage_path;
-
-    /**
-     * Why? Uh... Sorry
-     */
     const MAX_FILE_SIZE = 52428800;
-
-    /**
-     * @var Level level
-     */
     private $level;
-
-    /**
-     * @var Pattern pattern
-     */
     private $pattern;
 
-    /**
-     * LaravelLogViewer constructor.
-     */
     public function __construct()
     {
         $this->level = new Level();
         $this->pattern = new Pattern();
         $this->storage_path = function_exists('config') ? config('logviewer.storage_path', storage_path('logs')) : storage_path('logs');
-
     }
 
     /**
