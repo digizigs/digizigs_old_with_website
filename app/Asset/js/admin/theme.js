@@ -5043,4 +5043,4 @@ if (typeof NProgress != 'undefined') {
 		init_autocomplete();
 				
 	});	
-	console.log('All js success');
+	

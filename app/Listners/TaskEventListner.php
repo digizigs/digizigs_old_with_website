@@ -26,7 +26,6 @@ class TaskEventListner
      */
     public function handle(TaskEvent $event)
     {   
-        dd($event);
         return $event;
     }
 }

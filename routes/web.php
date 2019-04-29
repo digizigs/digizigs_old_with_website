@@ -69,7 +69,7 @@ Route::get('/notify',function(){
 Route::get('/taskevent',function(){
 
     //Event Fire
-    event(new TaskEvent('Hello How are you'));
+    event(new TaskEvent('Hello How are you bro'));
     echo 'TaskEvent Fiered';
 
 });

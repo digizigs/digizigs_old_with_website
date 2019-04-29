@@ -17833,10 +17833,9 @@ module.exports = __webpack_require__(169);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(34);
 
-window._ = __webpack_require__(14);
+/*window._ = require('lodash');
+
 
 try {
     //window.Popper = require('popper.js').default;    //Popper
@@ -17844,17 +17843,19 @@ try {
     //require('bootstrap-sass');						 // bootstrap.min
 } catch (e) {}
 
-window.axios = __webpack_require__(15);
+
+window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-var token = document.head.querySelector('meta[name="csrf-token"]');
+
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+}*/
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -17862,16 +17863,18 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-
-
-window.Pusher = __webpack_require__(35);
-
-window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+/*import Echo from 'laravel-echo'
+window.Pusher = require('pusher-js');
+window.Echo = new Echo({
+	authEndpoint :'/digizigs/broadcasting/auth',
     broadcaster: 'pusher',
-    key: "954d7af63071f842d10e",
-    cluster: "ap2",
+    key: process.env.MIX_PUSHER_APP_KEY,
+    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     encrypted: true
-});
+});*/
+
+//Bootstrap
+__webpack_require__(278);
 
 //Vendors
 //require('../../vendor/modernizr/modernizr-2.8.3.min.js');
@@ -18759,6 +18762,65 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 
 module.exports = InterceptorManager;
 
+
+/***/ }),
+
+/***/ 278:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(34);
+
+window._ = __webpack_require__(14);
+
+try {
+    //window.Popper = require('popper.js').default;
+    //window.$ = window.jQuery = require('jquery');
+    //require('bootstrap-sass');
+} catch (e) {}
+
+window.axios = __webpack_require__(15);
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+/**
+ * Next we will register the CSRF Token as a common header with Axios so that
+ * all outgoing HTTP requests automatically have it attached. This is just
+ * a simple convenience so we don't have to attach every token manually.
+ */
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+/**
+ * Echo exposes an expressive API for subscribing to channels and listening
+ * for events that are broadcast by Laravel. Echo and event broadcasting
+ * allows your team to easily build robust real-time web applications.
+ */
+
+
+
+window.Pusher = __webpack_require__(35);
+
+window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+    authEndpoint: '/digizigs/broadcasting/auth',
+    broadcaster: 'pusher',
+    key: "954d7af63071f842d10e",
+    cluster: "ap2",
+    encrypted: true
+});
+
+var userId = document.head.querySelector('meta[name="user-id"]').content;
+
+window.Echo.private('App.User.' + userId).notification(function (notification) {
+    document.querySelector('.bg-orange').innerText = notification.count;
+    //console.log(notification.count);
+});
 
 /***/ }),
 

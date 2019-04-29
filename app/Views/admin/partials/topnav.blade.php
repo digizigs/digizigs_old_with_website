@@ -34,11 +34,11 @@
         <li role="presentation" class="dropdown">
           
           <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-            @if(Auth::user()->unreadNotifications->count())
+           
             <i class="fa fa-bell"></i>
-            
-              <span class="badge bg-orange">{{Auth::user()->unreadNotifications->count()}}</span>
-            @endif
+              @if(Auth::user()->unreadNotifications->count())  
+                <span class="badge bg-orange">{{Auth::user()->unreadNotifications->count()}}</span>
+              @endif
           </a>
           
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list to_do" role="menu">

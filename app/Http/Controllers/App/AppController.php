@@ -76,14 +76,14 @@ class AppController extends Controller {
         
         //Notification
         $connect_id = $connect->id; 
-        $users = User::all();
+        $users = User::all();     
         $subscription = collect(['title'=>'New Subscription','body'=>'New Subscription from ' . $email,'id'=>$connect_id]);
         Notification::send($users, new Subscription($subscription));
 
 
         //Sending mail to subscriber
-        $job = (new SubscribtionMailJob($email))->delay(Carbon::now()->addSeconds(10));
-        dispatch($job);
+        //$job = (new SubscribtionMailJob($email))->delay(Carbon::now()->addSeconds(10));
+        //dispatch($job);
 
         
     	if ($is_save){          
