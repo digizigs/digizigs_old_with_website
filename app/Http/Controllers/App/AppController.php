@@ -91,6 +91,12 @@ class AppController extends Controller {
     	}   
     }
 
+    public function unsubscribe(Request $request){
+
+        return 'You are successfully unsubscribed to the newsletter ' . '' . $request ;
+
+    }
+
     public function inquiry(Request $request){
 
         /*$this->validate($request,[

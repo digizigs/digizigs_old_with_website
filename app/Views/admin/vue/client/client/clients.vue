@@ -31,6 +31,7 @@
 	                              <th class="column-title"> Service </th>
 	                              <th class="column-title">  </th>
 	                              <th class="column-title">  </th>
+	                              <th class="column-title">  </th>
 	                              <th class="bulk-actions" colspan="7">
 	                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
 	                              </th>
@@ -64,6 +65,22 @@
 	                                <a href="" class="disabled" v-on:click.prevent @click="deleteclient(client.id)">
 	                                  <i class="fa fa-trash" aria-hidden="true"></i>
 	                                </a>
+	                              </td>
+	                              <td style="width: 1%;">	                                
+	                                <a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="true">
+		                                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+		                            </a>
+	                                <ul id="menu3" class="dropdown-menu animated fadeInDown" role="menu" aria-labelledby="drop6">
+				                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Action</a>
+				                        </li>
+				                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Another action</a>
+				                        </li>
+				                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Something else here</a>
+				                        </li>
+				                        <li role="presentation" class="divider"></li>
+				                        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/fat">Separated link</a>
+				                        </li>
+				                      </ul>
 	                              </td>
 	                             
 	                            </tr>

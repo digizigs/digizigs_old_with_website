@@ -2,45 +2,28 @@
 
 namespace App\Http\Controllers\Admin\LogViewer;
 
-use Illuminate\Support\Facades\Crypt;
-
-if (class_exists("\\Illuminate\\Routing\\Controller")) {
-    class BaseController extends \Illuminate\Routing\Controller {}
-} elseif (class_exists("Laravel\\Lumen\\Routing\\Controller")) {
-    class BaseController extends \Laravel\Lumen\Routing\Controller {}
-}
-
-/**
- * Class LogViewerController
- * @package Rap2hpoutre\LaravelLogViewer
- */
-class LogViewerController extends BaseController
+use App\Http\Controllers\Controller;
+use App\Services\LogViewer\LaravelLogViewer;
+use Illuminate\Http\Request;
+use Crypt;
+class LogViewerController extends Controller
 {
-    /**
-     * @var
-     */
-    protected $request;
-    /**
-     * @var LaravelLogViewer
-     */
+
+	protected $request;
+
     private $log_viewer;
 
-    /**
-     * LogViewerController constructor.
-     */
+
     public function __construct()
     {
         $this->log_viewer = new LaravelLogViewer();
         $this->request = app('request');
     }
+    
+    public function index(){
+    	//return 'Log View';
 
-    /**
-     * @return array|mixed
-     * @throws \Exception
-     */
-    public function index()
-    {
-        $folderFiles = [];
+    	$folderFiles = [];
         if ($this->request->input('f')) {
             $this->log_viewer->setFolder(Crypt::decrypt($this->request->input('f')));
             $folderFiles = $this->log_viewer->getFolderFiles(true);
@@ -74,15 +57,11 @@ class LogViewerController extends BaseController
             }
         }
 
+        //return view('admin.pages.logs.logs',' data');
         return app('view')->make('admin.pages.logs.logs', $data);
     }
 
-    /**
-     * @return bool|mixed
-     * @throws \Exception
-     */
-    private function earlyReturn()
-    {
+    private function earlyReturn(){
         if ($this->request->input('f')) {
             $this->log_viewer->setFolder(Crypt::decrypt($this->request->input('f')));
         }
@@ -107,22 +86,13 @@ class LogViewerController extends BaseController
         return false;
     }
 
-    /**
-     * @param string $input_string
-     * @return string
-     * @throws \Exception
-     */
-    private function pathFromInput($input_string)
-    {
+
+    private function pathFromInput($input_string){
         return $this->log_viewer->pathToLogFile(Crypt::decrypt($this->request->input($input_string)));
     }
 
-    /**
-     * @param $to
-     * @return mixed
-     */
-    private function redirect($to)
-    {
+    
+    private function redirect($to){
         if (function_exists('redirect')) {
             return redirect($to);
         }
@@ -130,12 +100,8 @@ class LogViewerController extends BaseController
         return app('redirect')->to($to);
     }
 
-    /**
-     * @param string $data
-     * @return mixed
-     */
-    private function download($data)
-    {
+
+    private function download($data){
         if (function_exists('response')) {
             return response()->download($data);
         }
@@ -143,4 +109,5 @@ class LogViewerController extends BaseController
         // For laravel 4.2
         return app('\Illuminate\Support\Facades\Response')->download($data);
     }
+
 }
