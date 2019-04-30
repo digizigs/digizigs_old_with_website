@@ -44,11 +44,5 @@ window.Echo = new Echo({
     encrypted: true
 });
 
-let userId = document.head.querySelector('meta[name="user-id"]').content;
 
-window.Echo.private('App.User.' + userId)
-    .notification((notification) => {
-        document.querySelector('.bg-orange').innerText = notification.count;
-        //console.log(notification.count);
-    });
 

@@ -10,7 +10,8 @@
     
   
 
-    <div id="app">  
+    <div id="app">
+      
         @include('app.partials.preloader')
 
         @include('app.partials.navigation')

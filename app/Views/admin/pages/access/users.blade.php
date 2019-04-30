@@ -15,18 +15,7 @@
             <div class="page-title">
               <div class="title_left">
                 <h3>User Management <small></small></h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              </div>       
             </div>
 
             <div class="clearfix"></div>
@@ -49,7 +38,7 @@
               	<div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
-	                    <a href="#adduser" class="btn btn-dark btn-sm" data-toggle="modal">Add User</a>
+	                    <a href="#adduser" class="btn btn-dark btn-sm pull-right" data-toggle="modal">Add User</a>
                       <div class="clearfix"></div>
 	                  </div>
 
@@ -188,7 +177,7 @@
 @endsection
 
 @section('javascript')
-  <script src="{{asset('public/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+  
   <script>
       $("#tags_1").select2();
       $(".select2").select2();

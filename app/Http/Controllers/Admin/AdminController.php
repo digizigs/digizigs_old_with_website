@@ -11,15 +11,17 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Events\TaskEvent;
 
 class AdminController extends Controller
 {
 
-  
-  
+    
     public function index(){
+        event(new TaskEvent('Hello How are you bro'));
     	return view('admin.pages.dashboard');
     	//return view('admin.pages.adminminty');
+        
     } 
 
 

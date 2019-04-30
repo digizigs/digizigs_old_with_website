@@ -1,7 +1,7 @@
 
 @extends('layouts.admin')
 
-@section('title','All Articles')
+@section('title','Clients')
 
 
 
@@ -9,9 +9,9 @@
 
 	
 
-	<div class="right_col" role="main">
+<div class="right_col" role="main">
         <clients></clients>
-  </div>
+</div>
 
 
 

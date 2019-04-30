@@ -2,12 +2,19 @@ $(document).ready(function(){
 
 	
 	//Pusher notification receive
+    
     let userId = document.head.querySelector('meta[name="user-id"]').content;
-    Echo.private('App.User.' + userId)
-    .notification((notification) => {
-        console.log(notification.type);
-    });
+	window.Echo.private('App.User.' + userId).notification((notification) => {
 
+	        //document.querySelector('.bg-orange').innerText = notification.count;
+	        console.log(notification.count);
+
+	});
+
+    Echo.private('testChannel')
+    .listen('TaskEvent', (e) => {
+        console.log(e);
+    });
 
 	window.setTimeout(function() {;
 	    $("#successMessage").fadeTo(2000, 0).slideUp(2000, function(){
