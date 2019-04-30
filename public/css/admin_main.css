@@ -13689,6 +13689,12 @@ html {
   }
 }
 
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 footer {
   background: #fff;
   padding: 12px;

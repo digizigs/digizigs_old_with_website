@@ -44,6 +44,36 @@
 
 	                  <div class="x_content">
 
+                    <div class="col-md-12 col-xs-12">
+                      <div class="panel-group">
+                        @foreach ($users as $user)
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <tbody>
+                              <tr>
+                              <td>
+                                <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;color: green;"></i>{{ $user->firstname }},{{ $user->lastname }}
+                              </td>
+                              <td>
+                                <i class="fa fa-pencil actionicon" aria-hidden="true" class="pull-right"></i>
+                              </td>
+                            </tr>
+                            </tbody>
+                            
+                            
+
+                          </div>
+                        </div>
+                        @endforeach
+
+                      </div>
+                    </div>
+                    
+                    
+
+
+
+
 	                    <div class="table-responsive">
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
