@@ -104,6 +104,27 @@ footer {
 
  
 }
+
+.pannel-line-group{
+ 
+  i{
+    margin-right: 10px;
+  }
+}
+.pannel-line-group{
+  
+  .pannel-line:hover{
+     i::before {
+      display: inline-block;
+      animation: swing ease-in-out 0.5s 1 alternate;
+    }
+    i{
+      color:#16c7ff;
+     
+    }
+  }
+ 
+}
 //====================table-action-font-icon ============
 
 //============New Post image upload image preview box====
@@ -154,6 +175,7 @@ footer {
     margin: 0 !important;
     padding: 0 !important;
   }
+  display: inline-flex;
 }
 
 .panel-body{
@@ -214,3 +236,15 @@ footer {
 //======================Log View===============================
 
 
+.pagination {
+  -webkit-tap-highlight-color: transparent;
+  //box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  letter-spacing: .5px;
+  transition: .2s ease-out;
+  .page-item{
+
+    .page-link{
+      border-radius:1px !important;
+    }
+  }
+}

@@ -13721,6 +13721,20 @@ footer {
   color: #16c7ff;
 }
 
+.pannel-line-group i {
+  margin-right: 10px;
+}
+
+.pannel-line-group .pannel-line:hover i::before {
+  display: inline-block;
+  -webkit-animation: swing ease-in-out 0.5s 1 alternate;
+          animation: swing ease-in-out 0.5s 1 alternate;
+}
+
+.pannel-line-group .pannel-line:hover i {
+  color: #16c7ff;
+}
+
 .avatar-preview {
   width: 250px;
   height: 150px;
@@ -13748,6 +13762,9 @@ footer {
 .delete-form {
   margin: 0 !important;
   padding: 0 !important;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .delete-form button {
@@ -13788,6 +13805,17 @@ footer {
 
 .log-view .llv-active {
   color: #A94442 !important;
+}
+
+.pagination {
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: .5px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+.pagination .page-item .page-link {
+  border-radius: 1px !important;
 }
 
 .sidebar-brand a img {
@@ -13919,6 +13947,7 @@ footer {
   z-index: 999;
   top: 20px;
   right: 20px;
+  opacity: 1 !important;
 }
 
 .glow-input ::-webkit-input-placeholder {

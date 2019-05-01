@@ -44,87 +44,51 @@
 
 	                  <div class="x_content">
 
-                    <div class="col-md-12 col-xs-12">
-                      <div class="panel-group">
-                        @foreach ($users as $user)
-                        <div class="panel panel-default">
-                          <div class="panel-body">
-                            <tbody>
-                              <tr>
-                              <td>
-                                <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;color: green;"></i>{{ $user->firstname }},{{ $user->lastname }}
-                              </td>
-                              <td>
-                                <i class="fa fa-pencil actionicon" aria-hidden="true" class="pull-right"></i>
-                              </td>
-                            </tr>
-                            </tbody>
-                            
-                            
+                      <div class="col-md-12 col-xs-12">
+                        
+                        <div class="panel-group pannel-line-group">
+                          @foreach ($users as $user)
 
+
+                          <div class="panel panel-default pannel-line" style="padding: 0 !important;">
+                            <div class="panel-body" style="padding: 8px !important;">
+                              <span class="user-name" >
+                                
+                                <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;color: green;"></i>
+                                
+                                <a href="">{{ $user->firstname }},{{ $user->lastname }}</a>
+                              </span>
+                              <span style="margin-left:10px; width: 20%;">
+                                @foreach ($user->roles()->pluck('name') as $role)
+                                  <a href=""><span class="label label-info label-many">{{ $role }}</span></a>
+                                @endforeach
+                              </span>
+                              <span class="action-icons pull-right">
+                                <a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                  <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+                                </a>
+                                
+                                <form action="{{ route('users.destroy' , $user->id ) }}" method="POST" class="delete-form">
+                                  {{ csrf_field() }}
+                                  {{ method_field('DELETE') }}
+                                  <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
+                                </form>
+                              </span>
+                              
+                            </div>
                           </div>
-                        </div>
-                        @endforeach
-
-                      </div>
-                    </div>
-                    
-                    
-
-
-
-
-	                    <div class="table-responsive">
-                        <table class="table table-striped jambo_table bulk_action">
-                          <thead>
-                            <tr class="headings">                             
-                              <th class="column-title"> User </th>
-                              <th class="column-title"> Email </th>
-                              <th class="column-title"> Roles </th>
-                              <th class="column-title"> Edit </th>                             
-                              <th class="column-title"> Delete </th>                                                   
-                            </tr>
-                          </thead>
-
-                          <tbody>
-              
-                            @if (count($users) > 0)
-                              @foreach ($users as $user)
-                                <tr id="{{ $user->id }}">
-                                  <td style="width: 20%;">{{ $user->firstname }},{{ $user->lastname }}</td>
-                                  <td style="width: 20%;">{{ $user->email }}</td>
-                                  <td style="width: 50%">
-                                    @foreach ($user->roles()->pluck('name') as $role)
-                                        <span class="label label-info label-many">{{ $role }}</span>
-                                    @endforeach
-                                  </td>
-                                  <td style="width: 5%;"> 
-                                    <a href="{{ route('users.edit',$user->id) }}" data-toggle="tooltip" data-placement="top" title="Edit">
-                                      <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
-                                    </a>
-                                  </td>  
-                                  <td style="width: 5%;">
-                                   
-                                    <form action="{{ route('users.destroy' , $user->id ) }}" method="POST" class="delete-form">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
-                                    </form>
-                                  </td>
-                                </tr>
-                              @endforeach
-                            @endif        
-                            
                           
-
-                          </tbody>
-                        </table>
+                          @endforeach
+                        </div>
                       </div>
-                      							     
+
+                      {{ $users->links() }}
+                    
+                                         							     
 	                  </div>
 
 
-                    <!--Add User-->
+                    <!--Add User mODAL-->
                     <div class="modal fade" id="adduser" role="dialog"  data-backdrop="false">
                       <div class="modal-dialog modal-md">
                         <div class="modal-content">

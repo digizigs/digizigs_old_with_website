@@ -15,18 +15,7 @@
             <div class="page-title">
               <div class="title_left">
                 <h3>User Management <small></small></h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control input-sm" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              </div>             
             </div>
 
             <div class="clearfix"></div>
@@ -45,18 +34,18 @@
 
               	<div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="x_panel">
-	                  <div class="x_title">	                   
+	                           
 	                    <div class="x_title">
                         <h2>User Management <small>Assign role to user</small></h2>
                         <div class="clearfix"></div>
-                      </div>
+               
 	                  </div>
 
 	                  <div class="x_content">
 
 	                     {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update', $user->id]]) !!}
                         <div class="row">       
-                          <div class="col-xs-12 form-group">
+                          <div class="col-xs-12 form-group glow-input">
                                 {!! Form::label('firstname', 'Name*', ['class' => 'control-label']) !!}
                                 {!! Form::text('firstname', old('firstname'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                                 <p class="help-block"></p>
@@ -69,7 +58,7 @@
                           </div>
 
                           <div class="row">       
-                          <div class="col-xs-12 form-group">
+                          <div class="col-xs-12 form-group glow-input">
                                 {!! Form::label('lastname', 'Name*', ['class' => 'control-label']) !!}
                                 {!! Form::text('lastname', old('lastname'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                                 <p class="help-block"></p>
@@ -82,7 +71,7 @@
                           </div>
                         
                         <div class="row">       
-                          <div class="col-xs-12 form-group">
+                          <div class="col-xs-12 form-group glow-input">
                                 {!! Form::label('email', 'Email*', ['class' => 'control-label']) !!}
                                 {!! Form::text('email', old('email'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                                 <p class="help-block"></p>
@@ -95,7 +84,7 @@
                           </div>
 
                           <div class="row">
-                              <div class="col-xs-12 form-group">
+                              <div class="col-xs-12 form-group glow-input">
                                   {!! Form::label('roles', 'Roles*', ['class' => 'control-label']) !!}
                                   {!! Form::select('roles[]', $roles, old('roles') ? old('roles') : $user->roles()->pluck('name', 'name'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'required' => '']) !!}
                                   <p class="help-block"></p>
