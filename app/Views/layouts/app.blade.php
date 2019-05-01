@@ -22,7 +22,9 @@
 
         @include('app.partials.footer')
 
-        @include('app.partials.scrolltop')
+        @include('app.partials.chat')
+
+        
 
     </div>
 	
