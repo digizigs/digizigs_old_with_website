@@ -18,6 +18,8 @@ Route::get('/unsubscribe', 'App\AppController@unsubscribe')->name('app.unsubscri
 Route::post('/inquiry', 'App\AppController@inquiry')->name('app.inquiry');
 
 
+Route::post('/send', 'App\ChatController@send');
+
 
 
 //============================================App Routes===========================================//

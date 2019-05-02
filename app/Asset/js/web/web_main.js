@@ -12,7 +12,7 @@ require('../../vendor/parallex/parallax-1.1.3.js');
 //require('../../vendor/owlcarousel/js/owl.carousel.min.js');
 
 //require('../../vendor/superfish/superfish.min.js');
-
+require('../../../Views/app/vue/vue');
 
 
 

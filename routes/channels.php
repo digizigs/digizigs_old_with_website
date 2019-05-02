@@ -21,3 +21,8 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('online', function ($user) {
     return $user;
 });
+
+
+Broadcast::channel('chat', function () {
+    return true ;
+});
