@@ -12,8 +12,8 @@ $(document).ready(function () {
     });*/
 
 
-    Echo.private('testChannel')
-    .listen('TaskEvent', (e) => {
+    Echo.channel('guestchat')
+    .listen('GuestChatEvent', (e) => {
         console.log(e);
     });
     

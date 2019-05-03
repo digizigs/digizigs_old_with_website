@@ -14,6 +14,8 @@ import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
 
 
+//Vue Toaster
+
 
 //Sweet Alert
 import Swal from 'sweetalert2';
@@ -50,6 +52,7 @@ Vue.component('vue-single-select', VueSingleSelect);
 
 //Chat
 Vue.component('chat', require('./chat/chat.vue'));
+Vue.component('guestchat', require('./chat/guestchat.vue'));
 
 
 

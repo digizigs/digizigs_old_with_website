@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Events\ChatEvent;
+
+use App\Events\GuestChatEvent;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -12,13 +13,13 @@ class ChatController extends Controller
 {
     //
 
-	public function __construct()
+	/*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
 
-    public function send(Request $request){
+    public function chatSend(Request $request){
 
     	//return $request->message;
     	//$message = 'Test chat message';
@@ -27,11 +28,20 @@ class ChatController extends Controller
 
     }
 
-    /*public function send(){
+    public function guestChatSend(Request $request){
 
+    	//return $request->message;
+    	//$message = 'Test chat message';
+    	//$user = User::find(Auth::id());
+    	event(new GuestChatEvent($request->message));
+
+    }
+
+    /*public function guestChatSend(){
+    	//return $request->message;
     	$message = 'Test chat message';
     	$user = User::find(Auth::id());
-    	event(new ChatEvent($message,$user));
+    	event(new GuestChatEvent($message));
 
     }*/
 }

@@ -10,9 +10,7 @@
 | used to check if an authenticated user can listen to the channel.
 |
 */
-Broadcast::channel('testChannel', function () {
-    return true;
-});
+
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
@@ -23,6 +21,15 @@ Broadcast::channel('online', function ($user) {
 });
 
 
-Broadcast::channel('chat', function () {
+Broadcast::channel('testChannel', function () {
+    return true;
+});
+
+
+Broadcast::channel('chat', function ($user) {
+    return ['name'=> $user->firstname . '' . $user->lastname] ;
+});
+
+Broadcast::channel('guestchat', function () {
     return true ;
 });

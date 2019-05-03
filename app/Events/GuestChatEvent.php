@@ -11,24 +11,25 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ChatEvent implements ShouldBroadcast
+class GuestChatEvent implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
     public $user;
 
 
-    public function __construct($message, User $user)
+    public function __construct($message)
     {
         $this->message = $message;
-        $this->user = $user->firstname . ',' . $user->lastname;
+        //$this->user = $user->firstname . ',' . $user->lastname;
         $this->dontBroadcastToCurrentUser();
     }
 
     
     public function broadcastOn()
     {
-        return new PrivateChannel('chat');
+        return new Channel('guestchat');
+        //return new use Illuminate\Broadcasting\Channel('guestchat');
     }
 }
