@@ -138,7 +138,9 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
     //Chat
     Route::get('/chat', 'Admin\Chat\ChatController@index')->name('chat');
-    Route::get('/chatusers', 'Admin\Chat\ChatController@chatUsers')->name('chatusers');
+    Route::get('/chatusers', 'Admin\Chat\ChatController@chatUsers');
+    Route::get('/conversation/{id}', 'Admin\Chat\ChatController@getMessagesFor');
+    Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     
     //Contact Management

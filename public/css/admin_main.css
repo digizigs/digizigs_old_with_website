@@ -13918,7 +13918,6 @@ footer {
   border-radius: 0px;
 }
 
-/*
 ::-webkit-scrollbar-button {
   width: 0px;
   height: 0px;
@@ -13927,6 +13926,7 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #525965;
 }
+
 ::-webkit-scrollbar-thumb:active {
   background: #525965;
 }
@@ -13934,13 +13934,14 @@ footer {
 ::-webkit-scrollbar-track:hover {
   background: transparent;
 }
+
 ::-webkit-scrollbar-track:active {
   background: transparent;
 }
+
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
-*/
 
 .alert {
   position: absolute;

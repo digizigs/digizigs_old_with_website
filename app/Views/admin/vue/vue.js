@@ -9,6 +9,10 @@ Vue.use(VueRouter)
 
 import VueSingleSelect from "vue-single-select";
 
+//V-Chat scroll
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
+
 //Sweet Alert
 import Swal from 'sweetalert2';
 window.swal = Swal;

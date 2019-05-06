@@ -1,20 +1,23 @@
 <template>
 	<div class="contacts-list">
-        <ul>
-            <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
-                <div class="avatar">
-                    <img :src="contact.profile_image" :alt="contact.name">
+
+        <ul class="list-group">
+            <li v-for="contact in sortedContacts" class="list-group-item" :key="contact.id" @click="selectContact(contact)" :class="{ 'selected': contact == selected }">
+                <div class="avatar active">
+                    <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" :alt="contact.name">
                 </div>
+
                 <div class="contact">
-                    <p class="name">{{ contact.name }}</p>
+                    <p class="name">{{ contact.firstname }},{{ contact.lastname }}  </p>
                     <p class="email">{{ contact.email }}</p>
                 </div>
-                <span class="unread" v-if="contact.unread">{{ contact.unread }}</span>
+
+                <span class="unread" v-if="contact.unread">
+                	{{ contact.unread }}
+                </span>
+                
             </li>
-
-
             
-
         </ul>
     </div>
 </template>
@@ -25,7 +28,8 @@
             contacts: {
                 type: Array,
                 default: []
-            }
+            },
+            
         },
 		data(){
 			return{
@@ -37,6 +41,7 @@
 		},
 		methods:{
 			selectContact(contact) {
+				//console.log(contact)
                 this.selected = contact;
                 this.$emit('selected', contact);
             }
@@ -59,12 +64,12 @@
 </script>
 
 <style lang="scss" Scoped>
-
+	
 	.contacts-list {
-	    flex: 2;
-	    max-height: 600px;
+	 
+	    height: 65vh;
 	    overflow: scroll;
-	    border-left: 1px solid #a6a6a6;
+	    //border-left: 1px solid #a6a6a6;
 	    
 	    ul {
 	        list-style-type: none;
@@ -73,7 +78,7 @@
 	            display: flex;
 	            padding: 2px;
 	            border-bottom: 1px solid #aaaaaa;
-	            height: 80px;
+	            height: 60px;
 	            position: relative;
 	            cursor: pointer;
 	            &.selected {
@@ -83,27 +88,41 @@
 	                background: #82e0a8;
 	                color: #fff;
 	                position: absolute;
-	                right: 11px;
-	                top: 20px;
+	                right: 5px;
+	                top: 5px;
 	                display: flex;
-	                font-weight: 700;
+	                font-weight: 500;
 	                min-width: 20px;
 	                justify-content: center;
 	                align-items: center;
 	                line-height: 20px;
-	                font-size: 12px;
-	                padding: 0 4px;
-	                border-radius: 3px;
+	                font-size: 8px;
+	                padding: 0 2px;
+	                border-radius: 25%;
 	            }
 	            .avatar {
 	                flex: 1;
 	                display: flex;
 	                align-items: center;
-	                img {
-	                    width: 35px;
+	                img {	                    
 	                    border-radius: 50%;
 	                    margin: 0 auto;
+	                    margin-top: 0px;
+	                    height: 32px;
+	    				width: 32px;
+	    				display:inline-flex;
+	    				
 	                }
+
+	                &active{
+	                	border:3px solid green;
+	                }
+	            }
+
+	            .avatar.active{
+	            	img{
+	            		border:2px solid green;
+	            	}
 	            }
 	            .contact {
 	                flex: 3;
@@ -121,5 +140,8 @@
 	            }
 	        }
 	    }
+	}
+	.list-group{
+		margin:0 !important;
 	}
 </style>
