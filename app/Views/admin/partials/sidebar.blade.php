@@ -61,6 +61,10 @@
             </ul>
           </li>
 
+          <li>
+            <a href="{{route('chat')}}"><i class="fa fa-comments-o"></i> Chat </a>
+          </li>
+
           <li><a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="{{route('users.index')}}">Users</a></li>

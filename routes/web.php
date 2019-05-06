@@ -135,6 +135,11 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     //resource
     Route::get('/tags', 'Admin\TagController@index')->name('tags');
 
+
+    //Chat
+    Route::get('/chat', 'Admin\Chat\ChatController@index')->name('chat');
+    Route::get('/chatusers', 'Admin\Chat\ChatController@chatUsers')->name('chatusers');
+
     
     //Contact Management
     Route::group(['prefix' => 'contact'], function(){

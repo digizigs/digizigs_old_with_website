@@ -1,1 +1,1 @@
-<guestchat></guestchat>
+<chat></chat>

@@ -61,6 +61,11 @@ Vue.component('invoice', require('./client/invoice/invoice.vue'));
 Vue.component('newinvoice', require('./client/invoice/new_invoice.vue'));
 Vue.component('invoiceview', require('./client/invoice/invoice_view.vue'));
 
+//Chat
+Vue.component('chat-app', require('./chat/ChatApp.vue'));
+Vue.component('Conversation', require('./chat/Conversation.vue'));
+Vue.component('ContactsList', require('./chat/ContactsList.vue'));
+
 
 //menu
 Vue.component('menupage', require('./menu/menu.vue'));

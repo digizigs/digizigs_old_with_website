@@ -19,6 +19,42 @@
 
 	                  <div class="x_content">
 
+	                  	<div class="panel-group pannel-line-group">
+                          
+
+                          <div v-for="client,key in clients.data" class="panel panel-default pannel-line" style="padding: 0 !important;">
+                            <div class="panel-body" style="padding: 8px !important;">
+                              <span class="user-name" >
+                                
+                                <i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;color: green;"></i>
+                                
+                                <a href="#detailclient" data-toggle="modal" @click="detailclient(client.id)">
+                              		{{client.client_name}}
+                              	</a>
+                              </span>
+                              <span style="margin-left:10px; width: 20%;">
+                                
+                                  <a href=""><span class="label label-info label-many">ROle</span></a>
+                                
+
+                              </span>
+                              <span class="action-icons pull-right">
+                                <a href="" data-toggle="tooltip" data-placement="top" title="Edit">
+                                  <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+                                </a>
+                                
+                                <form action="" method="POST" class="delete-form">
+                                  
+                                  <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
+                                </form>
+                              </span>
+                              
+                            </div>
+                          </div>
+                          
+                        
+                        </div>
+
 	                     <div class="table-responsive">
 	                        <table class="table table-striped jambo_table bulk_action">
 	                          <thead>

@@ -12,10 +12,10 @@ $(document).ready(function () {
     });*/
 
 
-    Echo.channel('guestchat')
+    /*Echo.private('guestchat')
     .listen('GuestChatEvent', (e) => {
         console.log(e);
-    });
+    });*/
     
 
     //Live Chat

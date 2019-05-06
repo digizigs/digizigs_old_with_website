@@ -19,17 +19,17 @@ class GuestChatEvent implements ShouldBroadcast
     public $user;
 
 
-    public function __construct($message)
+    public function __construct($message,$user)
     {
         $this->message = $message;
-        //$this->user = $user->firstname . ',' . $user->lastname;
+        $this->user = $user->firstname . ',' . $user->lastname;
         $this->dontBroadcastToCurrentUser();
     }
 
     
     public function broadcastOn()
     {
-        return new Channel('guestchat');
+        return new PrivateChannel('guestchat');
         //return new use Illuminate\Broadcasting\Channel('guestchat');
     }
 }

@@ -88,7 +88,7 @@
 			send(){
 				if(this.message.length != 0){
 
-					
+					//Console.log('Geust chat msg send')
 					this.chat.message.push(this.message)
 					this.chat.user.push('Me')
 					this.chat.time.push(this.getTime())	
@@ -112,16 +112,16 @@
 			}
 		},
 		mounted(){
-			Echo.channel('guestchat')
+			Echo.private('guestchat')
 			    .listen('GuestChatEvent', (e) => {
 
 			    	
-			    	//this.chat.message.push(e.message)
-			    	//this.chat.user.push(e.user)
-			    	//this.chat.time.push(this.getTime())	
+			    	this.chat.message.push(e.message)
+			    	this.chat.user.push(e.user)
+			    	this.chat.time.push(this.getTime())	
 
 			    	
-			        console.log(e);
+			        //console.log(e);
 			    });
 
 			    /*.listenForWhisper('typing', (e) => {

@@ -59,9 +59,6 @@
 </template>
 
 <script type="text/javascript">
-
-	
-
 	export default{
 		data(){
 			return{
@@ -75,12 +72,12 @@
 			}
 		},
 		watch:{
-			message(){
+			/*message(){
 				Echo.private('chat')
 			    .whisper('typing', {
 			        name: this.message
 			    });
-			}
+			}*/
 		},
 		computed: {
 		    now () {
@@ -91,12 +88,12 @@
 			send(){
 				if(this.message.length != 0){
 
-					
+					//Console.log('Geust chat msg send')
 					this.chat.message.push(this.message)
 					this.chat.user.push('Me')
 					this.chat.time.push(this.getTime())	
 
-					axios.post('send',{
+					axios.post('guestsend',{
 						message : this.message
 					})
 					.then(response => {
@@ -115,8 +112,8 @@
 			}
 		},
 		mounted(){
-			Echo.private('chat')
-			    .listen('ChatEvent', (e) => {
+			Echo.private('guestchat')
+			    .listen('GuestChatEvent', (e) => {
 
 			    	
 			    	this.chat.message.push(e.message)
@@ -125,9 +122,9 @@
 
 			    	
 			        //console.log(e);
-			    })
+			    });
 
-			    .listenForWhisper('typing', (e) => {
+			    /*.listenForWhisper('typing', (e) => {
 			    	if(e.name != '' ){
 			    		this.typing='typing...'
 			    	}else{
@@ -135,7 +132,7 @@
 			    	}
 			        
 
-			    });
+			    });*/
 
 			Echo.join(`chat`)
 			    .here((users) => {
@@ -143,11 +140,9 @@
 			    })
 			    .joining((user) => {
 			        console.log(user.name + ' Joined');
-			        
 			    })
 			    .leaving((user) => {
 			        console.log(user.name + ' Left');
-			        
 			    });
 		}
 	};

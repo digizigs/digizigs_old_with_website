@@ -30,6 +30,6 @@ Broadcast::channel('chat', function ($user) {
     return ['name'=> $user->firstname . '' . $user->lastname] ;
 });
 
-Broadcast::channel('guestchat', function () {
-    return true ;
+Broadcast::channel('guestchat', function ($user) {
+    return ['name'=> $user->firstname . '' . $user->lastname] ;
 });
