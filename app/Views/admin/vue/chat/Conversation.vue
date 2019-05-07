@@ -4,11 +4,8 @@
         <!--h4>{{ contact ? contact.firstname : 'Select a user to start conversation' }}</h4-->
 
         <div class="feed" ref="feed">
-
            
-
-
-            <ul v-if="contact" class="chat-history" v-chat-scroll>
+            <ul v-if="contact" class="chat-history">
                 <!-- <li v-for="message in messages" :class="`message${message.to == contact.id ? ' sent' : ' received'}`" :key="message.id">
                     <div class="text">
                         {{ message.text }}
@@ -19,8 +16,8 @@
                     
                     <div v-if="message.to !== contact.id">
                         <div class="message-data">
-                          <span class="message-data-name"><i class="fa fa-circle online"></i>{{contact.firstname}}</span>
-                          <span class="message-data-time">Time</span>
+                          <span class="message-data-name">{{contact.firstname}}</span>
+                          <span class="message-data-time">{{ message.created_at | vueAgoTime }}</span>
                         </div>
                         <div class="message my-message">
                           {{ message.text }}
@@ -29,8 +26,8 @@
 
                     <div v-else class="clearfix chat-message">
                         <div class="message-data align-right">
-                            <span class="message-data-time" >Time</span> &nbsp; &nbsp;
-                            <span class="message-data-name" >{{user.firstname}}</span> <i class="fa fa-circle me"></i>     
+                            <span class="message-data-time" >{{ message.created_at | vueAgoTime }}</span> &nbsp; &nbsp;
+                            <span class="message-data-name" >{{user.firstname}}</span></i>     
                         </div>
                         <div class="message other-message float-right">
                            {{ message.text }}
@@ -42,6 +39,7 @@
                 </li>              
 
             </ul>
+
         </div>
 
         <div class="composer">
@@ -66,13 +64,8 @@
         },
         data(){
             return{
-                message: '',
-                chat:{
-                    messages:[],
-                    user:[],
-                    time:[],                
-                },
-                typing:''
+                sendmsg:'',
+                message: '',              
             }
         },
         watch:{
@@ -88,26 +81,21 @@
                 let time = new Date();
                 return time.getHours()+':'+time.getMinutes();
             },            
-            sendMessage(e) {
-                
+            sendMessage(e) {               
                 e.preventDefault();
-
                 
-                
-
                 if (!this.contact) {
                     return;
                 }
                  
-                this.chat.messages.push(this.message)
-                this.chat.user.push('Me')
-                this.chat.time.push(this.getTime())            
+                this.sendmsg=this.message
+                this.message = ''
                 
-                axios.post('conversation/send', {contact_id: this.contact.id,text: this.message})
+                axios.post('conversation/send', {contact_id: this.contact.id,text: this.sendmsg})
                 .then((response) => {
-                    console.log(response);
+                    //console.log(response);
                     this.$emit('new', response.data);
-                    this.message = '';
+                    this.sendmsg = '';
                 })
             },
             scrollToBottom() {
@@ -207,9 +195,9 @@
             overflow-y: scroll; */
 
             padding: 30px 30px 20px;
-            border-bottom: 2px solid white;
-            overflow-y: scroll;
-            height: 252px;
+            //border-bottom: 2px solid white;
+            //overflow-y: scroll;
+            //height: 252px;
 
             .chat-message {
                 margin: 16px 0;
@@ -276,7 +264,7 @@
                 width: 0;
                 position: absolute;
                 pointer-events: none;
-                border-bottom-color: $green;
+                border-bottom-color: $blue;
                 border-width: 5px;
                 margin-left: -5px;
               }
@@ -291,7 +279,7 @@
               background: $green;
               
               &:after {
-                border-bottom-color: $blue;
+                border-bottom-color: $green;
                 left: 93%;
               }
             }

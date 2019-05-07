@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Chat;
 
+use App\Events\AppChatEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Chat;
 use App\User;
@@ -65,7 +66,7 @@ class ChatController extends Controller
             'text' => $request->text
         ]);
 
-        //broadcast(new NewMessage($message));
+        broadcast(new AppChatEvent($message));
 
         return response()->json($message);
     }

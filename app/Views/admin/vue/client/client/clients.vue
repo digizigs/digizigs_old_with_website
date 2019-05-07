@@ -50,9 +50,7 @@
                               </span>
                               
                             </div>
-                          </div>
-                          
-                        
+                          </div>                                                
                         </div>
 
 	                     <div class="table-responsive">

@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
 	import ContactsList from './ContactsList';
-	//import Conversation from './Conversation';
+	import Conversation from './Conversation';
 
 	export default{
 		props: {
@@ -79,10 +79,25 @@
 			}
 		},
 		mounted(){
-			/*Echo.private(`messages.${this.user.id}`)
-                .listen('NewMessage', (e) => {
-                    this.hanleIncoming(e.message);
-                });*/
+			Echo.private(`appchat.${this.user.id}`)
+                .listen('AppChatEvent', (e) => {
+                    this.hanleIncoming(e.chat);
+                    //console.log(e.chat)
+                });
+
+            Echo.join(`appchat.${this.user.id}`)
+
+			    .here((users) => {
+			        console.log(users.length)
+			    })
+			    .joining((user) => {
+			    	console.log('asdasdasdasd')
+			        //console.log(user.name + ' Joined');
+			    })
+			    .leaving((user) => {
+			    	console.log('asdasdasdasd')
+			        //console.log(user.name + ' Left');
+			    });
 
 			axios.get('chatusers')
                 .then((response) => {
@@ -91,7 +106,7 @@
                 });
 		
 		},
-		components: {ContactsList}
+		components: {ContactsList,Conversation}
 	};
 
 </script>

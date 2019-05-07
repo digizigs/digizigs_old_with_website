@@ -29,24 +29,24 @@ class PostController extends Controller
 
             if($post_type === 'published'){
 
-                $posts = Post::where([['type','post'],['status','=','published']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                $posts = Post::where([['type','post'],['status','=','published']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
                 return view('admin.pages.post.posts',compact('posts'));
 
             }elseif($post_type === 'draft'){
 
-                $posts = Post::where([['type','post'],['status','=','draft']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                $posts = Post::where([['type','post'],['status','=','draft']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
                 return view('admin.pages.post.posts',compact('posts'));
 
             }elseif(($post_type === 'trashed')){
 
-                $posts = Post::where([['type','post'],['status','=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+                $posts = Post::where([['type','post'],['status','=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
                 return view('admin.pages.post.posts',compact('posts'));
 
             }
             
             
         }else{
-            $posts = Post::where([['type','post'],['status','!=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(10);
+            $posts = Post::where([['type','post'],['status','!=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
             return view('admin.pages.post.posts',compact('posts')); 
         }
 
@@ -103,7 +103,12 @@ class PostController extends Controller
         $post->save();
 
         //Sync categories
-        $post->categories()->sync($request->categories);
+        if(!$request->categories){           
+            $post->categories()->sync([0]);
+        }else{
+            $post->categories()->sync($request->categories);
+        }
+        
 
         //Saving Tags
         $tagIds = [];
@@ -181,8 +186,13 @@ class PostController extends Controller
         }
 
         $post->save();
-        $post->categories()->sync($request->categories);
-
+        //$post->categories()->sync($request->categories);
+        //Sync categories
+        if(!$request->categories){           
+            $post->categories()->sync([0]);
+        }else{
+            $post->categories()->sync($request->categories);
+        }
         
      
         //Saving Tags

@@ -26,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\GuestChatEvent'=>[
             'App\Listners\GuestChatListner',
+        ],
+        'App\Events\AppChatEvent'=>[
+            'App\Listners\AppChatListner',
         ]
     ];
 

@@ -33,3 +33,7 @@ Broadcast::channel('chat', function ($user) {
 Broadcast::channel('guestchat', function ($user) {
     return ['name'=> $user->firstname . '' . $user->lastname] ;
 });
+
+Broadcast::channel('appchat.{id}', function ($user, $id) {
+    return $user->id === (int) $id;
+});

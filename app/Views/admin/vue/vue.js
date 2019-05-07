@@ -119,3 +119,11 @@ const app = new Vue({
 Vue.filter('vueDate',function(created){
   return moment(created).format('DD-MM-YYYY');
 })
+
+Vue.filter('vueAgoTime',function(created){
+  return moment(created).calendar();
+})
+
+Vue.filter('vueMoment',function(created){
+  return moment(created).fromNow();
+})

@@ -65,63 +65,116 @@
 
 	                  <div class="x_content">
 
-	                    <div class="table-responsive">
-                        <table class="table table-striped jambo_table bulk_action">
-                          <thead>
-                            <tr class="headings">                      
-                              <th class="column-title"> Title </th>
-                              <th class="column-title"> Author </th>
-                              <th class="column-title"> Category </th>
-                              
-                              <th class="column-title"> Date </th>
-                              <th class="column-title"> Status </th>
-                              <th class="column-title"> Edit </th>
-                              <th class="column-title no-link last"> Delete </th>
-                              <th class="bulk-actions" colspan="7">
-                                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                              </th>
-                            </tr>
-                          </thead>
+                        <div class="panel-group pannel-line-group" id="accordion">
+                           
+                           @foreach($posts as $post)  
+                           <div class="panel panel-default pannel-line">
+                              <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
+                                 
+                                 <span class="post-title">
+                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                 
+                                    <a href="#{{$post->id}}" data-toggle="collapse" data-parent="#accordion">
+                                      <b>{{ $post -> title}}</b> 
+                                    </a>
+                                    by 
+                                    <i>
+                                       <a href="{{route('post.index',['author_id'=>$post ->user->id])}}">
+                                          {{ $post ->user->firstname}}
+                                       </a>
+                                    </i>
+                                    <a href=""></a>
+                                    <span>{{ucfirst($post -> status)}} at {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
+                                    in
+                                    @foreach($post->categories as $cat)                          
+                                       <a href="{{route('post.index',['category'=>$cat->slug])}}">
+                                          <span class="label label-info label-many" style="font-weight:300; margin:2px;">
+                                             {{$cat->name}}
+                                          </span>
+                                       </a>
+                                    @endforeach 
+                                 </span>
+                                                                  
+                              </div>
+                              <div id="{{$post->id}}" class="panel-collapse collapse">
+                                 <div class="panel-body" style="padding: 8px !important;">
 
-                          <tbody>
-              
-                          @foreach($posts as $post)
-                            <tr class="even pointer">                             
-                              <td ><a href="">{{ $post -> title}}</a></td>
-                              <td >{{ $post ->user->firstname}} </td>
-                              <td >                               
-                                 @foreach($post->categories as $cat)                          
-                                    <span class="label label-info label-many" style="font-weight:300;">{{$cat->name}}</span>
-                                 @endforeach
-                              </td>                              
-                              <td >{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</td>
-                              <td > {{ucfirst($post -> status)}} </td>
-                              <td style="width: 5%;">                                                               
-                                <a href="{{ route('post.edit' , $post->id)}}" >
-                                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </a>                                                            
-                              </td>
-                              <td style="width: 5%;">
-                                <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
-                                    @csrf
-                                    {{ method_field('DELETE') }}
-                                    <button style="background: none;border: none;"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                </form>
-                              </td>
-                            </tr>
-                           @endforeach
+                                    <div class="post-meta" style="margin-bottom:15px;">
 
-                          </tbody>
-                        </table>
-                      </div>
-								      
-                      {{ $posts->links() }}
+                                        <!-- Post Description -->
+                                        <span>
+                                          <b>{{ $post ->description}}</b>
+                                        </span>
+                                        <!-- Post Description -->
 
+                                        <!-- <span>
+                                          <i class="fa fa-user" aria-hidden="true"></i>
+                                          <a href="">{{ $post ->user->firstname}}</a>
+                                        </span> -->
 
+                                        <!-- Post Category
+                                        @if($post->categories)
+                                        <span>
+                                          <i class="fa fa-tag" aria-hidden="true"></i>                              
+                                          
+                                          @foreach($post->categories as $cat)
+                                             <a href="">                          
+                                                <span class="label label-info label-many" style="font-weight:300; margin: 0">{{$cat->name}}</span>
+                                             </a>   
+                                          @endforeach
+                                                                    
+                                        </span>
+                                        @endif
+                                        Post Category -->
 
-                       
-							     
-	                  </div>
+                                        <!-- Post time -->
+                                        <!-- <span>
+                                          <i class="fa fa-calendar" aria-hidden="true"></i>
+                                          <a href="">
+                                             {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                          </a>
+                                        </span> -->
+                                        <!-- Post time -->
+
+                                        <!-- Post Status
+                                        <span>
+                                          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                          <a href="">
+                                             {{ucfirst($post -> status)}}
+                                          </a>
+                                        </span>
+                                        Post Status -->
+
+                                        <!-- Action Icons -->
+                                        <span class="action-icons pull-right">
+                                          <a href="{{ route('post.edit' , $post->id)}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
+                                          </a>
+                                       
+                                          <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
+                                             @csrf
+                                             {{ method_field('DELETE') }}
+                                            <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
+                                          </form>
+                                        </span>
+                                        <!-- Action Icons -->
+
+                                    </div>
+
+                                    
+                                    <div class="post-body">
+                                       {!!$post->body!!}
+                                    </div>
+
+                                 </div>                                 
+                              </div>
+                           </div>
+                           @endforeach                          
+
+                        </div>
+                        {{ $posts->links() }}
+
+   	               </div>
 	                </div>
               	</div>
             </div>
