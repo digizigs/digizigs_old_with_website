@@ -117,7 +117,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
     //Catogery
-    Route::resource('/category', 'Admin\CategoryController');
+    Route::resource('/category', 'Admin\Category\CategoryController');
   
 
     //Menu

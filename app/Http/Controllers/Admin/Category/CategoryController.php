@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
@@ -21,10 +21,11 @@ class CategoryController extends Controller
 
         //$categories = Category::orderby('created_at','desc')->with('posts')->get();
         $categories = Category::with('child')->where('parent_id',0)->get();
+        $cat = Category::with('child')->where('parent_id',0)->get();
         //dd(json_encode($categories));
         //return $categories;
         //return json_encode($categories);
-        return view('admin.pages.category.category',compact('categories'));
+        return view('admin.pages.category.category',compact('categories','cat'));
     }
 
     public function getcategories(){

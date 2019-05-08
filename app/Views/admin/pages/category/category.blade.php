@@ -41,7 +41,7 @@
 
 	                  <div class="x_content">
 
-	                     <div class="row">
+	                    <div class="row">
                       
                            <div class="col-md-4 col-xs-12">
                  
@@ -84,7 +84,7 @@
                              </form>
                            </div>
 
-                           @{{testmsg}}
+                           
                            <div class="col-md-8 col-xs-12">                        
                               <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -138,12 +138,22 @@
                                     @endif
                                  @endforeach                             
                               </div>                                               
-                           </div>
-                           
+                           </div>                                          
 
+                      </div> 
 
-                          
-                        </div> 
+                      <ul>
+
+                        @foreach($categories as $category)
+
+                          <li>
+                            {!!$category->name!!}
+                            @include('admin.pages.category.childItems')
+                          </li>
+
+                        @endforeach
+
+                      </ul>
 							     
 	                  </div>
 
