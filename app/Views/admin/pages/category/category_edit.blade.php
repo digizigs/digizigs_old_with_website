@@ -58,8 +58,8 @@
                             <div class="form-group">
                               <label for="sel1">Parent Catagory</label>
                               <select class="form-control input-sm" name="parent_id">
-                                <option value="0">None</option>
-                                @foreach($categories as $category)
+                                <option value="{{$parent->id}}" selected>{{$parent->name}}</option>
+                                @foreach($categories as $category)                                  
                                   <option value="{{$category->id}}" >{{$category->name}}</option>
                                 @endforeach
                                 

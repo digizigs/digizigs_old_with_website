@@ -11,26 +11,13 @@ class Category extends Model
 
 	public function parent()
     {
-        return $this->belongsTo($this,'id', 'parent_id');
+        return $this->belongsTo($this,'parent_id');
     }
 
     public function child()
     {
         return $this->hasMany($this, 'parent_id','id');
     }
-
-    //Delete
-    public function subchild()
-    {
-       return $this->child()->with('subchild');
-    }
-
-    //Delete
-    public static function tree() {
-
-		return static::with(implode('.', array_fill(0, 100, 'child')))->where('parent_id', '=', '0')->get();
-
-	}
 
     //Delete
     public function posts()

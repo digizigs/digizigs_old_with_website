@@ -13736,6 +13736,18 @@ footer {
   margin-right: 3px;
 }
 
+.pannel-line-group .panel-heading {
+  padding: 8px !important;
+  background-color: #F2F5F7;
+  margin: 0 !important;
+}
+
+.pannel-line-group .panel-body {
+  padding: 8px !important;
+  padding-bottom: 0 !important;
+  background-color: #fff;
+}
+
 .pannel-line-group .pannel-line:hover i::before {
   display: inline-block;
   -webkit-animation: swing ease-in-out 0.5s 1 alternate;
@@ -13744,6 +13756,33 @@ footer {
 
 .pannel-line-group .pannel-line:hover i {
   color: #16c7ff;
+}
+
+.pannel-line-group .action-text {
+  margin: 0 10px;
+}
+
+.pannel-line-group .action-text a {
+  color: #2980B9;
+  font-weight: 500;
+}
+
+.pannel-line-group .action-text button {
+  color: #2980B9;
+  font-weight: 500;
+}
+
+.pannel-line-group .count {
+  color: #fff;
+  font-weight: 500;
+}
+
+.pannel-line-group li {
+  list-style: none;
+}
+
+.pannel-line-group .list-group {
+  margin-bottom: 10px !important;
 }
 
 .avatar-preview {

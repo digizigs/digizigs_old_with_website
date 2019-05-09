@@ -78,20 +78,21 @@ class CategoryController extends Controller
     {   
 
         $category = Category::find($id);
-        $categories = Category::orderby('created_at','desc')->get();
-        return view('admin.pages.category.category_edit',compact('category','categories'));
+        $parent = Category::find($category->parent_id);
+        $categories = Category::with('child')->where('parent_id',0)->get();
+        return view('admin.pages.category.category_edit',compact('category','parent','categories'));
     }
 
    
     public function update(Request $request, $id){
 
-        //return $request->all();
+       
 
         $data = Validator::make($request->all(),[
             'name'=>'required|unique:tags',
                  
         ],[
-            'name.required' => 'Category already avaliable  ',
+            'name.required' => 'Category already avaliable',
            
         ])->Validate();
        
@@ -99,12 +100,10 @@ class CategoryController extends Controller
         
         $category->name = $request->name;
         $category->slug = str_slug( $request->name );
-       
+        $category->parent_id = $request->parent_id;
         $cat_save = $category->save();
 
-        $cat_save = $category->save();
-        if($cat_save){
-           
+        if($cat_save){           
             return redirect()->route('category.index')->with('success', 'Category Updated successfully');
         }
 

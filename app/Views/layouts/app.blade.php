@@ -22,10 +22,6 @@
 
         @include('app.partials.footer')
 
-        @include('app.partials.chat')
-
-        
-
     </div>
 	
     @include('app.partials.scripts')

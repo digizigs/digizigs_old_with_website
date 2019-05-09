@@ -83,78 +83,85 @@
 
                              </form>
                            </div>
-
                            
-                           <div class="col-md-8 col-xs-12">                        
-                              <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                          <div class="col-md-8 col-xs-12">
+                              
+                            <div class="panel-group pannel-line-group" id="accordion">
 
-                                 @foreach($categories as $parent)
+                                  @foreach($categories as $category)
 
-                                    @if($parent->child->count() > 0)
-                                        
-                                    
-                                    
-                                    <div class="panel">
-                                      <a class="panel-heading collapsed" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#{{$parent->slug}}" aria-expanded="false" aria-controls="collapseOne">
-                                       <span><b>{{$parent->name}}</b></span>
-                                       <span class="pull-right"><b>{{ $parent->posts->count() }}</b></span>
-                                       </a>
-                                       <div id="{{$parent->slug}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-                                          <div class="panel-body">
-                                             
-                                             <div class="table-responsive">
-                                                <table class="table table-striped jambo_table bulk_action">
-                                                      <tbody>
-                                                         @foreach($parent->child as $cat)
-                                                         <tr id="">
-                                                           
-                                                           <td style="width: 35%;"> <a href="">{{$cat->name}}</a> </td>
-                                                           <td style="width: 20%" style="margin-left: 20px;">
-                                                             {{ $cat->posts->count() }}
-                                                           </td>
-                                                            <td style="width: 2%;"> 
-                                                             <a href="{{route('category.edit',$category->id)}}" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                               <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
-                                                             </a>
-                                                           </td>  
-                                                           
-                                                           <td style="width: 2%;">
-                                                            
-                                                             <form action="{{route('category.destroy',$category->id)}}" method="POST" class="delete-form">
-                                                                 {{ csrf_field() }}
-                                                                 {{ method_field('DELETE') }}
-                                                                 <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
-                                                             </form>
-                                                           </td>
-                                                         </tr>
-                                                         @endforeach 
-                                                      </tbody>
-                                                </table>
-                                             </div>                                    
-                                             
-                                          </div>
-                                       </div>
+                                    <!-- Panel -->
+                                    <div class="panel panel-default pannel-line">
+                                      <!-- Panel Heading -->
+                                      <div class="panel-heading">
+                                          <a href="#{{$category->slug}}" data-toggle="collapse" data-parent="#accordion">
+                                            <b>{{$category->name}}</b>
+                                          </a>
+                                          <span class="action-text">
+                                            <a href="{{route('category.edit',$category->id)}}"><small>Edit</small></a>
+                                             |                                             
+                                             <form action="{{route('category.destroy',$category->id)}}" method="POST" class="delete-form">
+                                                 @csrf
+                                                 {{ method_field('DELETE') }}
+                                                <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><small>Delete</small></button>
+                                              </form>
+
+                                          </span>
+
+                                          <span class="pull-right badge">
+                                            <b class="count">{{$category->child->count()}}</b>
+                                          </span>
+
+                                      </div>
+                                      <!-- Panel Heading -->
+                                      
+                                      @if($category->child->count() > 0)
+                                      <!-- Panel Body -->
+                                      <div id="{{$category->slug}}" class="panel-collapse collapse">                                      
+                                         <div class="panel-body">
+                                          <ul class="list-group">
+                                            @foreach($category->child as $child)
+                                              <li class="list-group-item">
+                                                  <b>{{$child->name}}</b>
+                                                  <span class="action-text">
+                                                    <a href="{{route('category.edit',$child->id)}}"><small>Edit</small></a>
+                                                     |                                             
+                                                     <form action="{{route('category.destroy',$child->id)}}" method="POST" class="delete-form">
+                                                         @csrf
+                                                         {{ method_field('DELETE') }}
+                                                        <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><small>Delete</small></button>
+                                                      </form>
+                                                  </span>
+                                                  <span class="count pull-right badge">
+                                                    {{$child->posts->count()}}
+                                                  </span>
+                                              </li>
+                                            @endforeach
+                                          </ul>
+                                            
+                                         </div>                                                                 
+                                      </div>
+                                      <!-- Panel Body -->
+                                      @endif
+
                                     </div>
-                                    @endif
-                                 @endforeach                             
-                              </div>                                               
-                           </div>                                          
+                                    <!-- Panel -->
+
+                                  @endforeach
+        
+                            </div>
+                              
+                            <b><i>Note:</i></b>
+                            <p>
+                              <i>
+                                Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the category <b>Uncategorized</b>.
+                              </i>
+                            </p>  
+                                                
+                          </div>     
 
                       </div> 
-
-                      <ul>
-
-                        @foreach($categories as $category)
-
-                          <li>
-                            {!!$category->name!!}
-                            @include('admin.pages.category.childItems')
-                          </li>
-
-                        @endforeach
-
-                      </ul>
-							     
+                      							     
 	                  </div>
 
 	                </div>

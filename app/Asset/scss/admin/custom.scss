@@ -129,6 +129,16 @@ footer {
   i{
     margin-right: 3px;
   }
+  .panel-heading{
+    padding: 8px !important; 
+    background-color: #F2F5F7; 
+    margin: 0!important;
+  }
+  .panel-body{
+    padding: 8px !important;
+    padding-bottom: 0 !important;
+    background-color: #fff;
+  }
   .pannel-line:hover{
      i::before {
       display: inline-block;
@@ -139,7 +149,27 @@ footer {
      
     }
   }
- 
+  .action-text{
+    margin: 0 10px;
+    a{
+      color: #2980B9;
+      font-weight: 500;
+    }
+    button{
+      color: #2980B9;
+      font-weight: 500;
+    }
+  }
+  .count{
+    color: #fff;
+    font-weight: 500;
+  }
+  li{
+    list-style: none;
+  }
+  .list-group{
+    margin-bottom: 10px !important;
+  }
 }
 //====================table-action-font-icon ============
 
