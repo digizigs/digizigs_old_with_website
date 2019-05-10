@@ -14,25 +14,15 @@ class ProfileController extends Controller
 {
     
     public function index() {
-
-        //dd(config('app.url'));
+      
 
         $user = User::find(auth()->user());
-        $profile = User::find(auth()->user())->profile();
-        //$user = Auth::getUser();
-        dd($user );
-
-
-        //$userprofile =Profile::where('user_id',auth()->user()->id)->get();
-
-        //$avatars =Auth::getUser()->getMedia('avatar');
-
-        //return base_url();
-        //$publicFullUrl = Auth::getUser()->getFullUrl();
-
-        //return $avatars = Auth::getUser()->getMedia('avatars')->first()->getUrl('thumb');
         
-        return view('admin.pages.profile.profile',compact('user'));
+        $userprofile =Profile::with('user')->where('user_id',auth()->user()->id)->first();
+
+        //dd($userprofile);
+       
+        return view('admin.pages.profile.profile',compact('userprofile'));
     }
 
     

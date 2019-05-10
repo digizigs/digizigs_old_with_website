@@ -17,6 +17,7 @@
    
     <!-- Font Awesome -->
     <link href="{{asset('public/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- NProgress -->
     <link href="{{asset('public/vendor/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
