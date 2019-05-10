@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -16,9 +17,10 @@ class ProfileController extends Controller
 
         //dd(config('app.url'));
 
-        $user = auth()->user();
+        $user = User::find(auth()->user());
+        $profile = User::find(auth()->user())->profile();
         //$user = Auth::getUser();
-
+        dd($user );
 
 
         //$userprofile =Profile::where('user_id',auth()->user()->id)->get();
