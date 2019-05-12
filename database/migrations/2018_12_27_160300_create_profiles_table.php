@@ -20,7 +20,10 @@ class CreateProfilesTable extends Migration
             $table->string('designation')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();
+            $table->text('experience')->nullable();
+            $table->text('skills')->nullable();
             $table->string('avatar_url')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

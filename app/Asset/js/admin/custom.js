@@ -117,7 +117,6 @@ $(document).ready(function(){
                 $(this).parents('.form-line').addClass('focused');
             }
         });
-    	alert('woha');
     };
 
 });

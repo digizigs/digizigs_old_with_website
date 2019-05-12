@@ -47,31 +47,32 @@
             <div class="row" >
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
-                <form class="form-horizontal form-label-left" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
+
+                <form class="" method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                   @csrf
                   <div class="col-md-8 col-xs-12">
 
-                    <div class="form-group glow-input">
-                      <label for="usr">Post Title</label>
-                      <input type="text" class="form-control input-sm {{ $errors->has('post_title') ? ' is-invalid' : '' }}" name="post_title" value="{{ old('post_title') }}">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="post_title" value="{{ old('post_title') }}">
+                            <label class="form-label">Post Title</label>
+                        </div>
                     </div>
-
-
                     
-
-
-                    <div class="form-group glow-input">
-                      <label for="usr">Post Description</label>
-                      <input type="text" class="form-control input-sm {{ $errors->has('post_desc') ? ' is-invalid' : '' }}"  name="post_desc" value="{{ old('post_desc') }}">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="post_desc" value="{{ old('post_desc') }}">
+                            <label class="form-label">Post Description</label>
+                        </div>
                     </div>
+                    
               
                     <div class="form-group glow-input">
-                      <label for="editor1">Post Body</label>
+                      <label for="editor1">Post Content</label>
                       <textarea id="editor1" name="post_body" rows="9" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">
                         
                       </textarea>
                       
-                      <small><b>Word Count</b> 12</small>
                     </div>
                     
                   </div>

@@ -170,6 +170,7 @@
 
 		    },
 			refreshRecord(record){
+				console.log('client updated')
 	        	this.clients=record.data;
 	      	},
 	      	updateclient(id){

@@ -21,9 +21,9 @@
               </a>
             </li>
             
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
               </form>
 
