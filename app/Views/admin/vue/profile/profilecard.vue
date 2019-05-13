@@ -3,30 +3,57 @@
         <div class="profile-header">&nbsp;</div>
         <div class="profile-body">
             <div class="image-area">
-                <img :src=profile.avatar_url />
+                <img :src=user.avatar_url @error="noimageurl" >
+               
             </div>                                       
             <div class="content-area">
                 <h3>{{user.firstname}} {{user.lastname}}</h3>
-                <p>{{profile.designation}}</p>
+                <p>{{user.designation}}</p>
                 <span v-for="role in roles" class="label label-info label-many">{{role}}</span>
             </div>
+
+            <div class="body description-area">
+                <ul>                  
+                    <li>
+                        <div class="title">
+                            <i class="material-icons">grade</i>
+                            Skills
+                        </div>
+                        <div class="content">
+                            {{user.skills}}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <i class="material-icons">notes</i>
+                            Description
+                        </div>
+                        <div class="content">
+                            {{user.description}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </template>
 
 <script type="text/javascript">
 	export default{
-        props:['user','profile','roles'],
+        props:['user','roles'],
 		data(){
 			return{
-               
+              
 			}
 		},
 		watch:{
 
 		},
 		methods:{
-		
+		  noimageurl(){
+            this.user.avatar_url ='/digizigs/public/uploads/avatars/avatar.png' 
+          }
 		},
 		mounted(){
 		    
@@ -84,6 +111,41 @@
                 .label-many{
                     margin-right: 5px;
                 } 
+            }
+
+            .body.description-area{
+                padding: 20px;
+                ul{
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li {
+                        border-bottom: 1px solid #eee;
+                        margin-bottom: 10px;
+                        padding-bottom: 15px;
+
+                        .title {
+                            font-weight: bold;
+                            color: #666;
+
+                            i {
+                                margin-right: 2px;
+                                position: relative;
+                                top: 7px; 
+                            } 
+                        }
+                        .content {
+                            margin-top: 10px;
+                            color: #999;
+                            font-size: 13px; 
+                        } 
+                    }
+                    li:last-child {
+                        border: none;
+                        margin-bottom: 0;
+                        padding-bottom: 0; 
+                    } 
+                }
             }
         }
 

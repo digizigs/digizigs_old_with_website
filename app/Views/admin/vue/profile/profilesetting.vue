@@ -21,23 +21,13 @@
 	                </div>
 	            </div>
 	        </div>
-
-	        <!-- Email -->
-	        <div class="form-group">
-	            <label for="Email" class="col-sm-2 control-label">Email</label>
-	            <div class="col-sm-10">
-	                <div class="form-line">
-	                    <input type="email" class="form-control" placeholder="Email" required v-model="user_update.email">
-	                </div>
-	            </div>
-	        </div>
-
+	        
 	        <!-- Designation -->
 	        <div class="form-group">
 	            <label for="Email" class="col-sm-2 control-label">Designation</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" placeholder="Designation" required v-model="user_update.designation">
+	                    <input type="text" class="form-control" placeholder="Designation" v-model="user_update.designation">
 	                </div>
 	            </div>
 	        </div>
@@ -48,7 +38,7 @@
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="3" placeholder="Experience" v-model="user_update.experience"></textarea>
+	                    <textarea class="form-control" rows="2" placeholder="Experience" v-model="user_update.experience"></textarea>
 	                </div>
 	            </div>
 	        </div>
@@ -58,8 +48,19 @@
 	            <label for="InputSkills" class="col-sm-2 control-label">Skills</label>
 
 	            <div class="col-sm-10">
+	                <div class="form-line">	                   
+	                    <textarea class="form-control" rows="2" placeholder="Skills" v-model="user_update.skills"></textarea>
+	                </div>
+	            </div>
+	        </div>
+
+	        <!-- description -->
+	        <div class="form-group">
+	            <label for="InputSkills" class="col-sm-2 control-label">About me</label>
+
+	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" placeholder="Skills" v-model="user_update.skills">
+	                    <textarea class="form-control" rows="2" placeholder="About Me" v-model="user_update.description"></textarea>
 	                </div>
 	            </div>
 	        </div>
@@ -73,8 +74,7 @@
 	                    <input type="file" class="form-control" v-on:change="onImageChange">
 	                </div>
 	            </div>
-	        </div>
-			
+	        </div>			
 	       
 	        <!-- Submit Button -->
 	        <div class="form-group">
@@ -102,6 +102,7 @@
 			    	'designation':'',
 			    	'experience':'',
 			    	'skills':'',
+			    	'description':'',
 			    	'avatar':null
 			    },
 			}
@@ -122,9 +123,8 @@
 			},
 			updateprofile(id){
 				axios.put('profile/'+id,this.user_update)
-					.then((response) => {
-						console.log(response.data)
-						this.$emit('profileupdated',response.data)
+					.then((data) => {						
+						this.$emit('profileupdated',data)
 						toast({
 			                type: 'success',
 			                title: 'Profile updated successfully'
@@ -135,11 +135,13 @@
 		},
 		mounted(){
 			this.user_update.firstname = this.user.firstname;
-                    this.user_update.lastname = this.user.lastname;
-                    this.user_update.email = this.user.email;
-                    this.user_update.designation = this.profile.designation;
-                    this.user_update.experience = this.profile.experience;
-                    this.user_update.skills = this.profile.skills;
+            this.user_update.lastname = this.user.lastname;
+            this.user_update.email = this.user.email;
+            this.user_update.designation = this.user.designation;
+            this.user_update.experience = this.user.experience;
+            this.user_update.skills = this.user.skills;
+            this.user_update.description = this.user.description;
+
 			axios.get('profile/create')
                 .then((response) => {
 
@@ -151,9 +153,10 @@
                     this.user_update.firstname = this.user.firstname;
                     this.user_update.lastname = this.user.lastname;
                     this.user_update.email = this.user.email;
-                    this.user_update.designation = this.profile.designation;
-                    this.user_update.experience = this.profile.experience;
-                    this.user_update.skills = this.profile.skills;
+                    this.user_update.designation = this.user.designation;
+                    this.user_update.experience = this.user.experience;
+                    this.user_update.skills = this.user.skills;
+                    this.user_update.description = this.user.description;
                     //this.user_update.avatar_url = this.profile.avatar_url;
 
                 })

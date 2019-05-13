@@ -12,11 +12,7 @@
                     <div class="row clearfix">
 
                         <div class="col-xs-12 col-sm-3">
-
-                            <profilecard :user="user" :profile="profile" :roles="roles" ></profilecard>
-							
-							<aboutme :profile="profile"></aboutme>
-                            
+                            <profilecard :user="user" :roles="roles" ></profilecard>                           
                         </div>
 
                         <div class="col-xs-12 col-sm-9">
@@ -32,7 +28,7 @@
                                             
                                             <!--User Details edit area-->
                                             <div role="tabpanel" class="tab-pane fade in active" id="profile_settings">
-                                                <profilesetting :user="user" :profile="profile" @profileupdated="profileupdate"></profilesetting>
+                                                <profilesetting :user="user" @profileupdated="profileupdate"></profilesetting>
                                             </div>
                                             <!--User Details edit area-->
                                             
@@ -59,7 +55,6 @@
 		data(){
 			return{
 				user:'',
-			    profile:'',
                 roles:[]
 			}
 		},
@@ -67,16 +62,14 @@
 
 		},
 		methods:{
-			profileupdate(record){
-				
-				this.profile=record.profile
-				this.user=record.user
+			profileupdate(record){				
+				//this.profile=record.profile
+				this.user=record.data
 			}	
 		},
 		mounted(){
 			axios.get('profile/create')
-                .then((response) => {
-                    this.profile = response.data.profile;
+                .then((response) => {                    
                     this.user = response.data.user[0];
                     this.roles = response.data.roles
                 })

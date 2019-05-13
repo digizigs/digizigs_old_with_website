@@ -79,29 +79,27 @@ class ProfileController extends Controller
                 return request()->json(200,'false');
             }
         }
+
         
         $user = User::find($id);
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
         $user->email = $request->email;
-        $user->save();
-
-        $profile = Profile::where('user_id',$id)->firstOrFail();
-        $profile->experience = $request->experience;
-        $profile->skills = $request->skills;
+        $user->experience = $request->experience;
+        $user->designation = $request->designation;
+        $user->skills = $request->skills;
+        $user->description = $request->description;
         
         if($request->get('avatar')){
             $image = $id . '_' .time() . '.' . explode('/', explode(':', substr($request->get('avatar'), 0, strpos($request->get('avatar'), ';')))[1])[1];
             $location = public_path('uploads/avatars/' . $image);
             Image::make($request->get('avatar'))->save($location);            
-            $profile->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
+            $user->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
         }
 
-        $profile->save();
+        $user->save();     
+        return request()->json(200,$user);
 
-        $data = ['user'=>$user,'profile'=>$profile];
-
-        return $data;
     }
 
    

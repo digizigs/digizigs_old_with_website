@@ -90,7 +90,6 @@ Vue.component('category', require('./category/Category.vue'));
 //Profile
 Vue.component('profile', require('./profile/profile.vue'));
 Vue.component('profilecard', require('./profile/profilecard.vue'));
-Vue.component('aboutme', require('./profile/aboutme.vue'));
 Vue.component('profilesetting', require('./profile/profilesetting.vue'));
 Vue.component('passwordchange', require('./profile/passwordchange.vue'));
 

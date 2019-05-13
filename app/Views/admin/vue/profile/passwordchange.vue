@@ -66,8 +66,7 @@
 
 				axios.put('profile/'+id,this.password)
 					.then((response) => {
-						this.status = response.data
-						console.log(response.data)
+						this.status = response.data						
 						if(response.data === false){
 							toast({
 			                type: 'warning',
@@ -81,13 +80,7 @@
 			            	this.password.oldpass = '';
 			            	this.password.newpass = '';
 			            	this.password.cnfpass = '';
-						}
-						//console.log(response.data)
-						//this.$emit('profileupdated',response.data)
-						/*toast({
-			                type: 'success',
-			                title: 'Profile updated successfully'
-			            })*/
+						}						
 					})
 			}
 		},

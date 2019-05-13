@@ -41,7 +41,6 @@
     <link href="{{asset('public/vendor/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/vendor/starrr/dist/starrr.css')}}" rel="stylesheet">
 
-
     
     
     <!-- Custom Theme Style -->

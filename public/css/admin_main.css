@@ -9870,7 +9870,7 @@ h2 {
   column-break-inside: avoid;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
-  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* .x_panel:hover,
@@ -14906,19 +14906,13 @@ footer {
   -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border-radius: 2px;
-}
-
-.card .body {
-  font-size: 14px;
-  color: #555;
-  padding: 20px;
 }
 
 .card .header {
   color: #555;
-  padding: 20px;
+  padding: 5px 10px;
   position: relative;
   border-bottom: 1px solid rgba(204, 204, 204, 0.35);
 }
@@ -14951,8 +14945,8 @@ footer {
 
 .card .header h2 {
   margin: 0;
-  font-size: 18px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: 500;
   color: #111;
 }
 
@@ -14967,6 +14961,22 @@ footer {
 .card .header h2 small a {
   font-weight: bold;
   color: #777;
+}
+
+.card .body {
+  font-size: 12px;
+  color: #555;
+  padding: 10px 10px;
+}
+
+.card button {
+  margin-top: 20px;
+}
+
+.card .title {
+  font-size: 16px;
+  color: #2980B9;
+  font-weight: 500;
 }
 
 .card .card-inside-title {
@@ -15684,6 +15694,24 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 .form-group input:focus ~ .form-line::before {
   width: 100%;
   border-bottom: 2px solid #1f91f3;
+}
+
+.panel-group .panel {
+  border-radius: 1px !important;
+  padding: 0 !important;
+}
+
+.panel-group .panel h4 {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.panel-group .panel .panel-heading {
+  border-radius: 2px !important;
+}
+
+.panel-group .panel .panel-footer {
+  padding: 0 !important;
 }
 
 .is-invalid {

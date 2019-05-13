@@ -1,0 +1,21 @@
+.panel-group{
+	
+	.panel{
+		border-radius:1px !important;
+		padding: 0 !important;
+
+
+		h4{
+			font-size: 12px;
+			font-weight: 500;
+		}
+
+		.panel-heading{
+			border-radius:2px !important;
+		}
+
+		.panel-footer{
+			padding: 0 !important;
+		}
+	}
+}
