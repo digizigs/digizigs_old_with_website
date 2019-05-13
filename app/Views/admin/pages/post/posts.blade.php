@@ -49,64 +49,11 @@
                 @endif
 
               	<div class="col-md-12 col-sm-12 col-xs-12">
-
-                  <div class="card">
-                        <div class="header">
-                            <h2>
-                                CONTEXTUAL CLASSES WITH LINKED ITEMS
-                                <small>Use contextual classes to style list items, default or linked. Also includes <code>.active</code> state.</small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="list-group">
-                                <a href="javascript:void(0);" class="list-group-item active">
-                                    <h4 class="list-group-item-heading">List group item heading</h4>
-                                    <p class="list-group-item-text">
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <h4 class="list-group-item-heading">List group item heading</h4>
-                                    <p class="list-group-item-text">
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <h4 class="list-group-item-heading">List group item heading</h4>
-                                    <p class="list-group-item-text">
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                     
 	                <div class="x_panel">
 	                  <div class="x_title">	                   
 	                    
-                      <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">Add New Post</a> 
+                      <a href="{{route('post.create')}}" class="btn btn-dark btn-sm">New Article</a> 
 
                                        
                       <span class="pull-rightd" style="margin-top: 30px; padding: 20px;">
@@ -120,8 +67,6 @@
 	                  </div>
 
 	                  <div class="x_content">
-
-
 
                         <div class="panel-group pannel-line-group" id="accordion">
                            
@@ -152,6 +97,17 @@
                                        </a>
                                     @endforeach 
                                  </span>
+                                 <span class="action-icons">
+                                    <a href="{{ route('post.edit' , $post->id)}}" data-toggle="tooltip" data-placement="top" title="Edit">
+                                      <i>Edit</i>
+                                    </a>
+                                    |
+                                    <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
+                                       @csrf
+                                       {{ method_field('DELETE') }}
+                                      <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i>Delete</i></button>
+                                    </form>
+                                  </span>
                                                                   
                               </div>
                               <div id="{{$post->id}}" class="panel-collapse collapse">
@@ -164,58 +120,6 @@
                                           <b>{{ $post ->description}}</b>
                                         </span>
                                         <!-- Post Description -->
-
-                                        <!-- <span>
-                                          <i class="fa fa-user" aria-hidden="true"></i>
-                                          <a href="">{{ $post ->user->firstname}}</a>
-                                        </span> -->
-
-                                        <!-- Post Category
-                                        @if($post->categories)
-                                        <span>
-                                          <i class="fa fa-tag" aria-hidden="true"></i>                              
-                                          
-                                          @foreach($post->categories as $cat)
-                                             <a href="">                          
-                                                <span class="label label-info label-many" style="font-weight:300; margin: 0">{{$cat->name}}</span>
-                                             </a>   
-                                          @endforeach
-                                                                    
-                                        </span>
-                                        @endif
-                                        Post Category -->
-
-                                        <!-- Post time -->
-                                        <!-- <span>
-                                          <i class="fa fa-calendar" aria-hidden="true"></i>
-                                          <a href="">
-                                             {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
-                                          </a>
-                                        </span> -->
-                                        <!-- Post time -->
-
-                                        <!-- Post Status
-                                        <span>
-                                          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                                          <a href="">
-                                             {{ucfirst($post -> status)}}
-                                          </a>
-                                        </span>
-                                        Post Status -->
-
-                                        <!-- Action Icons -->
-                                        <span class="action-icons pull-right">
-                                          <a href="{{ route('post.edit' , $post->id)}}" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="fa fa-pencil actionicon" aria-hidden="true"></i>
-                                          </a>
-                                       
-                                          <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
-                                             @csrf
-                                             {{ method_field('DELETE') }}
-                                            <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash-o actionicon" aria-hidden="true"></i></button>
-                                          </form>
-                                        </span>
-                                        <!-- Action Icons -->
 
                                     </div>
 

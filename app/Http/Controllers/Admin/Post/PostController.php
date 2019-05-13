@@ -103,13 +103,12 @@ class PostController extends Controller
         $post->save();
 
         //Sync categories
-        if(!$request->categories){           
-            $post->categories()->sync([0]);
+        if(!$request->categories){          
+            $post->categories()->sync([1]);
         }else{
             $post->categories()->sync($request->categories);
         }
         
-
         //Saving Tags
         $tagIds = [];
         if($request->tags){

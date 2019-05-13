@@ -173,9 +173,9 @@
 @section('javascript')
   <!--script src="{{asset('public/vendor/dropzone/dist/min/dropzone.min.js')}}"></script-->
   <!--script src="{{asset('public/vendor/ck-editor/ck-editor.js')}}"></script-->
-  <!--script src="https://cdn.ckeditor.com/4.11.2/standard-all/ckeditor.js"></script-->
+  <script src="https://cdn.ckeditor.com/4.11.2/standard-all/ckeditor.js"></script>
 
-  <script src="{{asset('public/vendor/ckeditor/ckeditor.js')}}"></script>
+  <!--script src="{{asset('public/vendor/ckeditor/ckeditor.js')}}"></script-->
 
 
   <script>

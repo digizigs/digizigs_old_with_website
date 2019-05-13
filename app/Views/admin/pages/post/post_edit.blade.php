@@ -201,8 +201,8 @@
 @endsection
 
 @section('javascript')
-  <script src="{{asset('public/vendor/ckeditor/ckeditor.js')}}"></script>
-  <!--script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script-->
+  <!--script src="{{asset('public/vendor/ckeditor/ckeditor.js')}}"></script-->
+  <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
   <script>
       $("#tags_1").select2();
       $(".select2").select2();

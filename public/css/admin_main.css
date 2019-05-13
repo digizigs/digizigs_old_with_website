@@ -14948,6 +14948,7 @@ footer {
   font-size: 14px;
   font-weight: 500;
   color: #111;
+  padding: 10px;
 }
 
 .card .header h2 small {
@@ -15691,11 +15692,6 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   border-bottom: 2px solid #1f91f3;
 }
 
-.form-group input:focus ~ .form-line::before {
-  width: 100%;
-  border-bottom: 2px solid #1f91f3;
-}
-
 .panel-group .panel {
   border-radius: 1px !important;
   padding: 0 !important;
@@ -15712,6 +15708,14 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
 .panel-group .panel .panel-footer {
   padding: 0 !important;
+}
+
+.list-group .list-group-item {
+  border-radius: 1px !important;
+}
+
+.list-group .list-group-item-heading.active a {
+  color: #fff;
 }
 
 .is-invalid {

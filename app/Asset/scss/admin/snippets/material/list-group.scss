@@ -1,0 +1,11 @@
+.list-group{
+	.list-group-item{
+		border-radius: 1px !important;
+	}
+
+	.list-group-item-heading.active{
+		a{
+			color: #fff;
+		}
+	}
+}
