@@ -50,18 +50,19 @@
 
                                <!--catagory-->
 
-
-                               <div class="form-group glow-input">
-                                 <label for="usr">Category Name</label>
-                                 <input type="text" class="form-control input-sm" name="category_name" value="{{ old('category_name') }}" v-model="cat">
-                                 <small><i>The name is how it appears on your site.</i></small>
-                               </div>
+                                <div class="form-group form-float">
+                                   <div class="form-line">
+                                       <input type="text" class="form-control" name="category_name" value="{{ old('category_name') }}">
+                                       <label class="form-label">Category</label>
+                                   </div>
+                                   <small><i>The name is how it appears on your site.</i></small>
+                                </div>
 
                                <!--Parent category dropdown-->
-                               <div class="form-group glow-input">
+                               <div class="form-group">
                                  <label for="sel1">Parent Catagory</label>
-                                 <select class="form-control input-sm" name="parent_id">
-                                   <option value="0">None</option>
+                                 <select class="form-control input-sm" name="parent_id" style="border-bottom: 1px solid #ddd;">
+                                   <option value="0">--None--</option>
                                    @foreach($categories as $category)
                                      <option value="{{$category->id}}" >{{$category->name}}</option>
                                      <!-- @foreach ($category->child as $child)
@@ -72,6 +73,8 @@
                                  </select>
                                  <small><i>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</i></small>
                                </div>
+
+
 
                                <div>
                                  <button type="submit" class="btn btn-dark btn-sm" style="margin-bottom: 20px;">

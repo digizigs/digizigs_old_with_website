@@ -77,9 +77,11 @@
                                  <span class="post-title">
                                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                  
-                                    <a href="#{{$post->id}}" data-toggle="collapse" data-parent="#accordion">
-                                      <b>{{ $post -> title}}</b> 
-                                    </a>
+                                    <span class="title">
+                                      <a href="#{{$post->id}}" data-toggle="collapse" data-parent="#accordion">
+                                        <b class="title">{{ $post -> title}}</b> 
+                                      </a>
+                                    </span>
                                     by 
                                     <i>
                                        <a href="{{route('post.index',['author_id'=>$post ->user->id])}}">
@@ -87,7 +89,9 @@
                                        </a>
                                     </i>
                                     <a href=""></a>
-                                    <span>{{ucfirst($post -> status)}} at {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
+
+                                    <span class="time">{{ucfirst($post -> status)}}</span> at
+                                    <span class="time">{{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
                                     in
                                     @foreach($post->categories as $cat)                          
                                        <a href="{{route('post.index',['category'=>$cat->slug])}}">
@@ -97,15 +101,15 @@
                                        </a>
                                     @endforeach 
                                  </span>
-                                 <span class="action-icons">
+                                 <span class="action-text">
                                     <a href="{{ route('post.edit' , $post->id)}}" data-toggle="tooltip" data-placement="top" title="Edit">
-                                      <i>Edit</i>
+                                      Edit
                                     </a>
                                     |
                                     <form action="{{ route('post.destroy' , $post->id)}}" method="POST" class="delete-form">
                                        @csrf
                                        {{ method_field('DELETE') }}
-                                      <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete"><i>Delete</i></button>
+                                      <button style="background: none;border: none;" class="del" data-toggle="tooltip" data-placement="top" title="Delete">Delete</button>
                                     </form>
                                   </span>
                                                                   

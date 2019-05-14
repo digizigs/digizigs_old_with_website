@@ -12,6 +12,35 @@
 
 		.panel-heading{
 			border-radius:2px !important;
+
+			.title{
+				color: #2980B9;
+			    font-weight: 500;
+			}
+
+			.time{
+				font-weight: 500;
+			}
+
+			.action-text{
+			    margin: 0 10px;
+			    a{
+			      color: #2980B9;
+			      font-weight: 500;
+			    }
+			    button{
+			      color: #2980B9;
+			      font-weight: 500;
+			    }
+			}
+			.action-text.subscription{
+				.unsubscribe{
+					color: #FF9600;
+				}
+				.subscribe{
+					color: #2B982B;
+				}
+			}
 		}
 
 		.panel-footer{

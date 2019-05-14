@@ -72,7 +72,7 @@
 						                    </div>
 							                <div class="x_content">
 							                    @foreach($fields['elements'] as $field) 
-				                                    <div class="col-md-offset-3 col-md-6">@includeIf('admin.setting.fields.' . $field['type'] )</div>
+				                                    <div class="col-md-offset-1 col-md-8">@includeIf('admin.setting.fields.' . $field['type'] )</div>
 				                                @endforeach
 							                </div>
 						                </div>

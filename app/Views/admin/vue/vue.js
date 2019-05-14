@@ -49,6 +49,12 @@ Vue.component('vue-single-select', VueSingleSelect);
 
 //=======================Client Management==================================//
 
+//Contacts
+Vue.component('subscription', require('./contacts/Subscriptions.vue'));
+Vue.component('inquiry', require('./contacts/Inquiry.vue'));
+Vue.component('inquiryview', require('./contacts/Inquiry_view.vue'));
+
+
 //Service
 Vue.component('services', require('./client/service/services.vue'));
 Vue.component('newservice', require('./client/service/newservice.vue'));

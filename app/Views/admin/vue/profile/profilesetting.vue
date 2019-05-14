@@ -7,7 +7,7 @@
 	            <label for="firstname" class="col-sm-2 control-label">First Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" placeholder="First Name" v-model="user_update.firstname">
+	                    <input type="text" class="form-control"  v-model="user_update.firstname">
 	                </div>
 	            </div>
 	        </div>
@@ -17,7 +17,7 @@
 	            <label for="lastname" class="col-sm-2 control-label">Last Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" placeholder="Last Name" v-model="user_update.lastname">
+	                    <input type="text" class="form-control"  v-model="user_update.lastname">
 	                </div>
 	            </div>
 	        </div>
@@ -27,7 +27,7 @@
 	            <label for="Email" class="col-sm-2 control-label">Designation</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" placeholder="Designation" v-model="user_update.designation">
+	                    <input type="text" class="form-control" v-model="user_update.designation">
 	                </div>
 	            </div>
 	        </div>
@@ -38,18 +38,18 @@
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="2" placeholder="Experience" v-model="user_update.experience"></textarea>
+	                    <textarea class="form-control" rows="2"  v-model="user_update.experience"></textarea>
 	                </div>
 	            </div>
 	        </div>
 
 	        <!-- Skills -->
 	        <div class="form-group">
-	            <label for="InputSkills" class="col-sm-2 control-label">Skills</label>
+	            <label for="Skills" class="col-sm-2 control-label">My Skills</label>
 
 	            <div class="col-sm-10">
-	                <div class="form-line">	                   
-	                    <textarea class="form-control" rows="2" placeholder="Skills" v-model="user_update.skills"></textarea>
+	                <div class="form-line">
+	                    <textarea class="form-control" rows="2"  v-model="user_update.skills"></textarea>
 	                </div>
 	            </div>
 	        </div>
@@ -60,7 +60,7 @@
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="2" placeholder="About Me" v-model="user_update.description"></textarea>
+	                    <textarea class="form-control" rows="2"  v-model="user_update.description"></textarea>
 	                </div>
 	            </div>
 	        </div>
@@ -79,7 +79,7 @@
 	        <!-- Submit Button -->
 	        <div class="form-group">
 	            <div class="col-sm-offset-2 col-sm-10">
-	                <button type="submit" class="btn btn-danger">Update</button>
+	                <button type="submit" class="btn btn-info waves-effect">Update</button>
 	            </div>
 	        </div>
 

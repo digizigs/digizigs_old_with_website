@@ -46,12 +46,12 @@ class GalleryController extends Controller
       
         $image = $request->file('file');
         $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('uploads'),$imageName);
+        $image->move(public_path('uploads/gallery'),$imageName);
         
         $imageUpload = new Media();
         $imageUpload->user_id = Auth::user()->id;
         $imageUpload->filename = $imageName;
-        $imageUpload->uri = url('/public/uploads') . '/' . $imageName;
+        $imageUpload->uri = url('/public/uploads/gallery') . '/' . $imageName;
         $imageUpload->save();
         
         $media = Media::orderby('created_at','desc')->paginate(10);
