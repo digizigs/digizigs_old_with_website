@@ -30,14 +30,14 @@ class InquiryController extends Controller
         });*/
 
         //return 'Inquiry';
-        $inquiries = Contact::orderby('created_at','desc')->where('type','inquiry')->paginate(10);
+        $inquiries = Contact::orderby('created_at','desc')->where('type','inquiry')->paginate(8);
         return view('admin.pages.contact.inquiry',compact('inquiries'));
     }
 
     
     public function create()
     {
-        $inquiry=Contact::orderby('created_at','desc')->where('type','inquiry')->paginate(10);
+        $inquiry=Contact::orderby('created_at','desc')->where('type','inquiry')->paginate(8);
         return request()->json(200,$inquiry);
     }
 
@@ -84,6 +84,12 @@ class InquiryController extends Controller
     
     public function destroy($id)
     {
-        //
+        $inquiry = Contact::find($id);
+        $is_deleted=$inquiry->delete();
+        if($is_deleted){
+            $inquiries = Contact::orderby('created_at','desc')->where('type','inquiry')->paginate(8);
+            return request()->json(200,$inquiries);
+        }
+      
     }
 }

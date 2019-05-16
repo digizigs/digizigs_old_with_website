@@ -28,7 +28,7 @@ class SubscriptionController extends Controller
 
     public function create()
     {
-        $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+        $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
         return request()->json(200,$subscription);
     }
 
@@ -59,7 +59,7 @@ class SubscriptionController extends Controller
             $subscription->status = 1;
             $subscription->save();
 
-            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
             return request()->json(200,$subscription);
 
          }else{
@@ -67,7 +67,7 @@ class SubscriptionController extends Controller
             $subscription->status = 0;
             $subscription->save();
 
-            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
             return request()->json(200,$subscription);
          }
         

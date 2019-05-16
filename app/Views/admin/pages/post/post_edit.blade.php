@@ -91,10 +91,10 @@
                                        <div class="panel-body">
                                           <div class="">
                                              <input name="status" type="radio" id="radio_1" checked="" value="published" @if($post->status == 'published') checked  @endif>
-                                             <label for="status">Published</label>
+                                             <label for="radio_1">Published</label>
 
                                              <input name="status" type="radio" id="radio_2" value="Draft" @if($post->status == 'draft') checked  @endif>
-                                             <label for="status">Draft</label>                                    
+                                             <label for="radio_2">Draft</label>                                    
                                           </div>
                                        </div>
                                     </div>

@@ -86,10 +86,12 @@
                                       <div id="collapseOne_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_1" aria-expanded="false" style="height: 0px;">
                                           <div class="panel-body">
                                              <div class="">
+
                                                 <input name="status" type="radio" id="radio_1" checked="" value="published">
-                                                <label for="status">Published</label>
+                                                <label for="radio_1">Published</label>
                                                 <input name="status" type="radio" id="radio_2" value="Draft">
-                                                <label for="status">Draft</label>                                    
+                                                <label for="radio_2">Draft</label>
+
                                              </div>
                                           </div>
                                       </div>

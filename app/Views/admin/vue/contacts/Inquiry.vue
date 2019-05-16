@@ -10,6 +10,7 @@
 		                </div>
 
 		                <div class="x_content">
+
 		                	<div class="panel-group pannel-line-group" id="accordion">
 	                           	                           
 	                           <div v-for="inq,key in inquiries.data" class="panel panel-default pannel-line">
@@ -44,6 +45,10 @@
 	                           </div>	                           
 	                          
 	                        </div>
+	                        <pagination :data="inquiries" @pagination-change-page="paginationdata" ></pagination>
+		                    <div>		                    	
+		                    	Showing {{inquiries.from}} to {{inquiries.to}} of total {{inquiries.total}}	                    	
+		                    </div>	
 		                </div>
             		</div>
             	</div>
@@ -60,13 +65,24 @@
 		data(){
 			return{
 				inquiries:{},
-				inquiry:''
+				inquiry:'',
+				errors:''
 			}
 		},
 		watch:{
 
 		},
 		methods:{
+			paginationdata(page){
+				if (typeof page === 'undefined'){
+		          page=1;
+		        } 
+		        axios.get('inquiry/create?page=' + page)
+		          .then(response => {
+		          	this.inquiries = response.data
+		          })
+		          .catch(error => this.errors=error.response.data.errors);
+			},
 			view(id){				
 				axios.get('inquiry/'+id+'/edit')
 			        .then((response) => {		        	
@@ -75,7 +91,37 @@
 			        //.catch(error => this.errors=error.response.data.errors);
 			},
 			delet(id){
-				console.log('delete')
+				swalWithBootstrapButtons({
+					//position: 'top-end',
+		          	title: 'Delete Inquiry?',
+		          	text: "You won't be able to revert this!",
+		          	type: 'warning',
+		          	showCancelButton: true,
+		          	confirmButtonText: 'Yeah, delete it!',
+		          	cancelButtonText: 'Noooooo!',
+		          	reverseButtons: true
+		        }).then((result) => {
+		          if (result.value) {
+
+		            axios.delete('inquiry/'+id)
+		            .then(response =>{
+		            	this.inquiries=response.data;
+		            	toast({
+		                	type: 'success',
+		                	title: 'Inquiry deleted'
+		                	
+		            	})
+		            	
+		            })
+		            .catch((error) => {
+		              console.log(response.data);
+		                    this.errors=error.response.data.errors;
+		                    this.success='';                
+		              });
+
+		            
+		          } 
+		        })
 
 			}
 		},

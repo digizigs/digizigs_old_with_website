@@ -77581,7 +77581,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77639,25 +77639,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			subscriptions: {},
-			status: { 'action': '' }
+			status: { 'action': '' },
+			errors: '',
+			prevpage: '',
+			nextpage: ''
 		};
 	},
 
 	watch: {},
 	methods: {
-		subscribe: function subscribe(id) {
+		paginationdata: function paginationdata(page) {
 			var _this = this;
+
+			if (typeof page === 'undefined') {
+				page = 1;
+			}
+			axios.get('subscription/create?page=' + page).then(function (response) {
+				_this.subscriptions = response.data;
+			}).catch(function (error) {
+				return _this.errors = error.response.data.errors;
+			});
+		},
+		subscribe: function subscribe(id) {
+			var _this2 = this;
 
 			this.status.action = 'subscribe';
 			axios.put('subscription/' + id, this.status).then(function (response) {
-				_this.subscriptions = response.data;
+				_this2.subscriptions = response.data;
 				toast({
 					type: 'success',
 					title: 'Subscribed successfully '
@@ -77666,11 +77679,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			});
 		},
 		unsubscribe: function unsubscribe(id) {
-			var _this2 = this;
+			var _this3 = this;
 
 			this.status.action = 'unsubscribe';
 			axios.put('subscription/' + id, this.status).then(function (response) {
-				_this2.subscriptions = response.data;
+				_this3.subscriptions = response.data;
 				toast({
 					type: 'success',
 					title: 'Unsubscribed successfully '
@@ -77680,10 +77693,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		}
 	},
 	mounted: function mounted() {
-		var _this3 = this;
+		var _this4 = this;
 
 		axios.get('subscription/create').then(function (response) {
-			_this3.subscriptions = response.data;
+			_this4.subscriptions = response.data;
+		}).catch(function (error) {
+			return _this4.errors = error.response.data.errors;
 		});
 	}
 });
@@ -77703,99 +77718,121 @@ var render = function() {
           _c("div", { staticClass: "x_panel" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "x_content" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "panel-group pannel-line-group",
-                  attrs: { id: "accordion" }
-                },
-                _vm._l(_vm.subscriptions.data, function(subs) {
-                  return _c(
-                    "div",
-                    { staticClass: "panel panel-default pannel-line" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "panel-heading",
-                          staticStyle: {
-                            padding: "8px !important",
-                            "background-color": "#F2F5F7",
-                            margin: "0!important"
-                          }
-                        },
-                        [
-                          _c("span", { staticClass: "title" }, [
-                            _vm._v(_vm._s(subs.email))
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "time" }, [
-                            _vm._v(
-                              "at  " +
-                                _vm._s(_vm._f("vueAgoTime")(subs.created_at))
+            _c(
+              "div",
+              { staticClass: "x_content" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "panel-group pannel-line-group",
+                    attrs: { id: "accordion" }
+                  },
+                  _vm._l(_vm.subscriptions.data, function(subs) {
+                    return _c(
+                      "div",
+                      { staticClass: "panel panel-default pannel-line" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            staticStyle: {
+                              padding: "8px !important",
+                              "background-color": "#F2F5F7",
+                              margin: "0!important"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "title" }, [
+                              _vm._v(_vm._s(subs.email))
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "time" }, [
+                              _vm._v(
+                                "at  " +
+                                  _vm._s(_vm._f("vueAgoTime")(subs.created_at))
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              { staticClass: "action-text subscription" },
+                              [
+                                subs.status == "0"
+                                  ? _c(
+                                      "a",
+                                      {
+                                        staticClass: "unsubscribe",
+                                        attrs: { href: "" },
+                                        on: {
+                                          click: [
+                                            function($event) {
+                                              $event.preventDefault()
+                                            },
+                                            function($event) {
+                                              _vm.subscribe(subs.id)
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t                                 \tSubscribe\n\t\t                                "
+                                        )
+                                      ]
+                                    )
+                                  : _c(
+                                      "a",
+                                      {
+                                        staticClass: "subscribe",
+                                        attrs: { href: "" },
+                                        on: {
+                                          click: [
+                                            function($event) {
+                                              $event.preventDefault()
+                                            },
+                                            function($event) {
+                                              _vm.unsubscribe(subs.id)
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n\t\t                                \tUnSubscribe\n\t\t                                "
+                                        )
+                                      ]
+                                    )
+                              ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            { staticClass: "action-text subscription" },
-                            [
-                              subs.status == "0"
-                                ? _c(
-                                    "a",
-                                    {
-                                      staticClass: "subscribe",
-                                      attrs: { href: "" },
-                                      on: {
-                                        click: [
-                                          function($event) {
-                                            $event.preventDefault()
-                                          },
-                                          function($event) {
-                                            _vm.subscribe(subs.id)
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t                                 \tSubscribe\n\t\t                                "
-                                      )
-                                    ]
-                                  )
-                                : _c(
-                                    "a",
-                                    {
-                                      staticClass: "unsubscribe",
-                                      attrs: { href: "" },
-                                      on: {
-                                        click: [
-                                          function($event) {
-                                            $event.preventDefault()
-                                          },
-                                          function($event) {
-                                            _vm.unsubscribe(subs.id)
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n\t\t                                \tUnSubscribe\n\t\t                                "
-                                      )
-                                    ]
-                                  )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("pagination", {
+                  attrs: { data: _vm.subscriptions },
+                  on: { "pagination-change-page": _vm.paginationdata }
                 }),
-                0
-              )
-            ])
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\t\t                    \t\n\t\t                    \tShowing " +
+                      _vm._s(_vm.subscriptions.from) +
+                      " to " +
+                      _vm._s(_vm.subscriptions.to) +
+                      " of total " +
+                      _vm._s(_vm.subscriptions.total) +
+                      "\t                    \t\n\t\t                    "
+                  )
+                ])
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -77913,7 +77950,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -77981,34 +78018,79 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
 			inquiries: {},
-			inquiry: ''
+			inquiry: '',
+			errors: ''
 		};
 	},
 
 	watch: {},
 	methods: {
-		view: function view(id) {
+		paginationdata: function paginationdata(page) {
 			var _this = this;
 
+			if (typeof page === 'undefined') {
+				page = 1;
+			}
+			axios.get('inquiry/create?page=' + page).then(function (response) {
+				_this.inquiries = response.data;
+			}).catch(function (error) {
+				return _this.errors = error.response.data.errors;
+			});
+		},
+		view: function view(id) {
+			var _this2 = this;
+
 			axios.get('inquiry/' + id + '/edit').then(function (response) {
-				_this.inquiry = response.data;
+				_this2.inquiry = response.data;
 			}); //this.apntupdate = response.data
 			//.catch(error => this.errors=error.response.data.errors);
 		},
 		delet: function delet(id) {
-			console.log('delete');
+			var _this3 = this;
+
+			swalWithBootstrapButtons({
+				//position: 'top-end',
+				title: 'Delete Inquiry?',
+				text: "You won't be able to revert this!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yeah, delete it!',
+				cancelButtonText: 'Noooooo!',
+				reverseButtons: true
+			}).then(function (result) {
+				if (result.value) {
+
+					axios.delete('inquiry/' + id).then(function (response) {
+						_this3.inquiries = response.data;
+						toast({
+							type: 'success',
+							title: 'Inquiry deleted'
+
+						});
+					}).catch(function (error) {
+						console.log(response.data);
+						_this3.errors = error.response.data.errors;
+						_this3.success = '';
+					});
+				}
+			});
 		}
 	},
 	mounted: function mounted() {
-		var _this2 = this;
+		var _this4 = this;
 
 		axios.get('inquiry/create').then(function (response) {
-			_this2.inquiries = response.data;
+			_this4.inquiries = response.data;
 			//this.roles = response.data.roles
 			//console.log(response.data)
 		});
@@ -78030,118 +78112,140 @@ var render = function() {
           _c("div", { staticClass: "x_panel" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "x_content" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "panel-group pannel-line-group",
-                  attrs: { id: "accordion" }
-                },
-                _vm._l(_vm.inquiries.data, function(inq, key) {
-                  return _c(
-                    "div",
-                    { staticClass: "panel panel-default pannel-line" },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "panel-heading",
-                          staticStyle: {
-                            padding: "8px !important",
-                            "background-color": "#F2F5F7",
-                            margin: "0!important"
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "",
-                                "data-toggle": "collapse",
-                                "data-parent": "#accordion"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n\t                                     Inquiry by \n\t                                     "
-                              ),
-                              _c("span", { staticClass: "title" }, [
-                                _vm._v(_vm._s(inq.name))
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("email:-" + _vm._s(inq.email))]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "time" }, [
-                            _vm._v(
-                              "at " +
-                                _vm._s(_vm._f("vueAgoTime")(inq.created_at))
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "action-text" }, [
+            _c(
+              "div",
+              { staticClass: "x_content" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "panel-group pannel-line-group",
+                    attrs: { id: "accordion" }
+                  },
+                  _vm._l(_vm.inquiries.data, function(inq, key) {
+                    return _c(
+                      "div",
+                      { staticClass: "panel panel-default pannel-line" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            staticStyle: {
+                              padding: "8px !important",
+                              "background-color": "#F2F5F7",
+                              margin: "0!important"
+                            }
+                          },
+                          [
                             _c(
                               "a",
                               {
                                 attrs: {
-                                  href: "#inqview",
-                                  "data-toggle": "modal"
+                                  href: "",
+                                  "data-toggle": "collapse",
+                                  "data-parent": "#accordion"
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n\t                                     Inquiry by \n\t                                     "
+                                ),
+                                _c("span", { staticClass: "title" }, [
+                                  _vm._v(_vm._s(inq.name))
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("span", [_vm._v("email:-" + _vm._s(inq.email))]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "time" }, [
+                              _vm._v(
+                                "at " +
+                                  _vm._s(_vm._f("vueAgoTime")(inq.created_at))
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "action-text" }, [
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: "#inqview",
+                                    "data-toggle": "modal"
+                                  },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        $event.preventDefault()
+                                      },
+                                      function($event) {
+                                        _vm.view(inq.id)
+                                      }
+                                    ]
+                                  }
                                 },
-                                on: {
-                                  click: [
-                                    function($event) {
-                                      $event.preventDefault()
-                                    },
-                                    function($event) {
-                                      _vm.view(inq.id)
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t                                 \tView\n\t\t                                 "
-                                )
-                              ]
-                            ),
-                            _vm._v(
-                              "  |                               \n\t                                      "
-                            ),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "subscribe",
-                                attrs: { href: "" },
-                                on: {
-                                  click: [
-                                    function($event) {
-                                      $event.preventDefault()
-                                    },
-                                    function($event) {
-                                      _vm.delet(inq.id)
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\t\t                                 \tDelete\n\t\t                                 "
-                                )
-                              ]
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _vm._m(1, true)
-                    ]
-                  )
+                                [
+                                  _vm._v(
+                                    "\n\t\t                                 \tView\n\t\t                                 "
+                                  )
+                                ]
+                              ),
+                              _vm._v(
+                                "  |                               \n\t                                      "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "subscribe",
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        $event.preventDefault()
+                                      },
+                                      function($event) {
+                                        _vm.delet(inq.id)
+                                      }
+                                    ]
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n\t\t                                 \tDelete\n\t\t                                 "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._m(1, true)
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("pagination", {
+                  attrs: { data: _vm.inquiries },
+                  on: { "pagination-change-page": _vm.paginationdata }
                 }),
-                0
-              )
-            ])
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\t\t                    \t\n\t\t                    \tShowing " +
+                      _vm._s(_vm.inquiries.from) +
+                      " to " +
+                      _vm._s(_vm.inquiries.to) +
+                      " of total " +
+                      _vm._s(_vm.inquiries.total) +
+                      "\t                    \t\n\t\t                    "
+                  )
+                ])
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -80099,46 +80203,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -80244,211 +80308,113 @@ var render = function() {
         _c("div", { staticClass: "clearfix" }),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12" }, [
-          _c("div", { staticClass: "x_panel" }, [
+          _c("div", { staticClass: "card" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "x_content" }, [
+            _c("div", { staticClass: "body" }, [
               _c(
                 "div",
-                { staticClass: "panel-group pannel-line-group" },
-                _vm._l(_vm.clients.data, function(client, key) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass: "panel panel-default pannel-line",
-                      staticStyle: { padding: "0 !important" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "panel-body",
-                          staticStyle: { padding: "8px !important" }
-                        },
-                        [
-                          _c("span", { staticClass: "user-name" }, [
-                            _c("i", {
-                              staticClass: "fa fa-user",
-                              staticStyle: {
-                                "margin-right": "10px",
-                                color: "green"
-                              },
-                              attrs: { "aria-hidden": "true" }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                attrs: {
-                                  href: "#detailclient",
-                                  "data-toggle": "modal"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.detailclient(client.id)
-                                  }
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                              \t\t" +
-                                    _vm._s(client.client_name) +
-                                    "\n                              \t"
-                                )
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(1, true),
-                          _vm._v(" "),
-                          _vm._m(2, true)
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "table-responsive" },
+                { staticClass: "list-group" },
                 [
-                  _c(
-                    "table",
-                    {
-                      staticClass: "table table-striped jambo_table bulk_action"
-                    },
-                    [
-                      _vm._m(3),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.clients.data, function(client, key) {
-                          return _c("tr", { staticClass: "even pointer" }, [
-                            _c("td", { staticClass: " " }, [
-                              _vm._v(" " + _vm._s(client.id) + " ")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: " ",
-                                staticStyle: { width: "15%" }
-                              },
-                              [
-                                _c(
-                                  "a",
-                                  {
-                                    attrs: {
-                                      href: "#detailclient",
-                                      "data-toggle": "modal"
-                                    },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.detailclient(client.id)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n\t                              \t\t" +
-                                        _vm._s(client.client_name) +
-                                        "\n\t                              \t"
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: " ",
-                                staticStyle: { width: "15%" }
-                              },
-                              [_vm._v(" " + _vm._s(client.client_email) + " ")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass: " ",
-                                staticStyle: { width: "10%" }
-                              },
-                              [_vm._v(" " + _vm._s(client.client_phone) + " ")]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(4, true),
-                            _vm._v(" "),
-                            _vm._m(5, true),
-                            _vm._v(" "),
-                            _c("td", { staticStyle: { width: "1%" } }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "disabled",
-                                  attrs: {
-                                    href: "#editclient",
-                                    "data-toggle": "modal"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.updateclient(client.id)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-pencil-square-o",
-                                    attrs: { "aria-hidden": "true" }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticStyle: { width: "1%" } }, [
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "disabled",
-                                  attrs: { href: "" },
-                                  on: {
-                                    click: [
-                                      function($event) {
-                                        $event.preventDefault()
-                                      },
-                                      function($event) {
-                                        _vm.deleteclient(client.id)
-                                      }
-                                    ]
-                                  }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-trash",
-                                    attrs: { "aria-hidden": "true" }
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(6, true)
-                          ])
-                        }),
-                        0
-                      )
-                    ]
-                  ),
+                  _vm._l(_vm.clients.data, function(client, key) {
+                    return _c(
+                      "a",
+                      {
+                        staticClass: "list-group-item",
+                        attrs: { href: "javascript:void(0);" }
+                      },
+                      [
+                        _c("span", { staticClass: "badge bg-cyan" }, [
+                          _vm._v("14 New")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "title" }, [
+                          _vm._v(_vm._s(client.client_name))
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(1, true)
+                      ]
+                    )
+                  }),
                   _vm._v(" "),
-                  _c("pagination", {
-                    attrs: { data: _vm.clients },
-                    on: { "pagination-change-page": _vm.paginationdata }
-                  })
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5)
                 ],
-                1
+                2
               )
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "x_panel" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "x_content" },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "panel-group pannel-line-group",
+                    attrs: { id: "accordion" }
+                  },
+                  _vm._l(_vm.clients.data, function(client) {
+                    return _c(
+                      "div",
+                      { staticClass: "panel panel-default pannel-line" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "panel-heading",
+                            staticStyle: {
+                              padding: "8px !important",
+                              "background-color": "#F2F5F7",
+                              margin: "0!important"
+                            }
+                          },
+                          [
+                            _c("span", { staticClass: "title" }, [
+                              _vm._v(_vm._s(client.client_name))
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "time" }, [
+                              _vm._v("at  Time")
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(7, true)
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("pagination", {
+                  attrs: { data: _vm.clients },
+                  on: { "pagination-change-page": _vm.paginationdata }
+                }),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\t\t                    \t\n\t\t                    Showing " +
+                      _vm._s(_vm.clients.from) +
+                      " to " +
+                      _vm._s(_vm.clients.to) +
+                      " of total " +
+                      _vm._s(_vm.clients.total) +
+                      "\t                    \t\n\t\t                "
+                  )
+                ])
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -80479,11 +80445,150 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x_title" }, [
-      _c("span", { staticClass: "title" }, [
-        _c("i", { staticClass: "fa fa-user" }),
-        _vm._v(" Contacts ")
+    return _c("div", { staticClass: "header" }, [
+      _c("h2", [
+        _vm._v(
+          "\n                                Clients\n                                "
+        ),
+        _c("small")
       ]),
+      _vm._v(" "),
+      _c("ul", { staticClass: "header-dropdown m-r--5" }, [
+        _c("li", { staticClass: "dropdown" }, [
+          _c(
+            "a",
+            {
+              staticClass: "dropdown-toggle",
+              attrs: {
+                href: "javascript:void(0);",
+                "data-toggle": "dropdown",
+                role: "button",
+                "aria-haspopup": "true",
+                "aria-expanded": "true"
+              }
+            },
+            [_c("i", { staticClass: "material-icons" }, [_vm._v("more_vert")])]
+          ),
+          _vm._v(" "),
+          _c("ul", { staticClass: "dropdown-menu pull-right" }, [
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: " waves-effect waves-block",
+                  attrs: { href: "javascript:void(0);" }
+                },
+                [_vm._v("Action")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: " waves-effect waves-block",
+                  attrs: { href: "javascript:void(0);" }
+                },
+                [_vm._v("Another action")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c(
+                "a",
+                {
+                  staticClass: " waves-effect waves-block",
+                  attrs: { href: "javascript:void(0);" }
+                },
+                [_vm._v("Something else here")]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "action-text" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("View")]),
+      _vm._v(" | "),
+      _c("a", { attrs: { href: "" } }, [_vm._v("Delete")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item",
+        attrs: { href: "javascript:void(0);" }
+      },
+      [
+        _c("span", { staticClass: "badge bg-cyan" }, [_vm._v("99 Unread")]),
+        _vm._v("Dapibus ac facilisis in\n                                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item",
+        attrs: { href: "javascript:void(0);" }
+      },
+      [
+        _c("span", { staticClass: "badge bg-teal" }, [_vm._v("99+")]),
+        _vm._v("Morbi leo risus\n                                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item",
+        attrs: { href: "javascript:void(0);" }
+      },
+      [
+        _c("span", { staticClass: "badge bg-orange" }, [_vm._v("21")]),
+        _vm._v("Porta ac consectetur ac\n                                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "list-group-item",
+        attrs: { href: "javascript:void(0);" }
+      },
+      [
+        _c("span", { staticClass: "badge bg-purple" }, [_vm._v("18")]),
+        _vm._v("Vestibulum at eros\n                                ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x_title" }, [
+      _c("i", { staticClass: "fa fa-align-left" }),
+      _vm._v(" Contacts "),
       _c("small", [_vm._v("All Contacts")]),
       _vm._v(" "),
       _c(
@@ -80508,234 +80613,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "span",
-      { staticStyle: { "margin-left": "10px", width: "20%" } },
-      [
-        _c("a", { attrs: { href: "" } }, [
-          _c("span", { staticClass: "label label-info label-many" }, [
-            _vm._v("ROle")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "action-icons pull-right" }, [
-      _c(
-        "a",
-        {
-          attrs: {
-            href: "",
-            "data-toggle": "tooltip",
-            "data-placement": "top",
-            title: "Edit"
-          }
-        },
-        [
-          _c("i", {
-            staticClass: "fa fa-pencil actionicon",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
+    return _c("span", { staticClass: "action-text subscription" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("View")]),
+      _vm._v(
+        "\n\t\t                            |\n\t\t                            "
       ),
-      _vm._v(" "),
-      _c(
-        "form",
-        { staticClass: "delete-form", attrs: { action: "", method: "POST" } },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "del",
-              staticStyle: { background: "none", border: "none" },
-              attrs: {
-                "data-toggle": "tooltip",
-                "data-placement": "top",
-                title: "Delete"
-              }
-            },
-            [
-              _c("i", {
-                staticClass: "fa fa-trash-o actionicon",
-                attrs: { "aria-hidden": "true" }
-              })
-            ]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { staticClass: "headings" }, [
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Id ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Client ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Email ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Contact ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Status ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }, [_vm._v(" Service ")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }),
-        _vm._v(" "),
-        _c("th", { staticClass: "column-title" }),
-        _vm._v(" "),
-        _c("th", { staticClass: "bulk-actions", attrs: { colspan: "7" } }, [
-          _c(
-            "a",
-            {
-              staticClass: "antoo",
-              staticStyle: { color: "#fff", "font-weight": "500" }
-            },
-            [
-              _vm._v("Bulk Actions ( "),
-              _c("span", { staticClass: "action-cnt" }),
-              _vm._v(" ) "),
-              _c("i", { staticClass: "fa fa-chevron-down" })
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: " ", staticStyle: { width: "10%" } }, [
-      _c("span", { staticClass: "label label-warning label-many" }, [
-        _vm._v("WIP")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: " ", staticStyle: { width: "40%" } }, [
-      _c(
-        "span",
-        {
-          staticClass: "label label-info label-many",
-          staticStyle: { "font-weight": "300" }
-        },
-        [_vm._v("Logo Design")]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "label label-info label-many" }, [
-        _vm._v("Pakage Upload")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "label label-info label-many" }, [
-        _vm._v("Seo")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticStyle: { width: "1%" } }, [
-      _c(
-        "a",
-        {
-          staticClass: "dropdown-toggle",
-          attrs: {
-            id: "drop6",
-            href: "#",
-            "data-toggle": "dropdown",
-            "aria-haspopup": "true",
-            role: "button",
-            "aria-expanded": "true"
-          }
-        },
-        [
-          _c("i", {
-            staticClass: "fa fa-ellipsis-v",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "ul",
-        {
-          staticClass: "dropdown-menu animated fadeInDown",
-          attrs: { id: "menu3", role: "menu", "aria-labelledby": "drop6" }
-        },
-        [
-          _c("li", { attrs: { role: "presentation" } }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  role: "menuitem",
-                  tabindex: "-1",
-                  href: "https://twitter.com/fat"
-                }
-              },
-              [_vm._v("Action")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { attrs: { role: "presentation" } }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  role: "menuitem",
-                  tabindex: "-1",
-                  href: "https://twitter.com/fat"
-                }
-              },
-              [_vm._v("Another action")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { attrs: { role: "presentation" } }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  role: "menuitem",
-                  tabindex: "-1",
-                  href: "https://twitter.com/fat"
-                }
-              },
-              [_vm._v("Something else here")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "divider", attrs: { role: "presentation" } }),
-          _vm._v(" "),
-          _c("li", { attrs: { role: "presentation" } }, [
-            _c(
-              "a",
-              {
-                attrs: {
-                  role: "menuitem",
-                  tabindex: "-1",
-                  href: "https://twitter.com/fat"
-                }
-              },
-              [_vm._v("Separated link")]
-            )
-          ])
-        ]
-      )
+      _c("a", { attrs: { href: "" } }, [_vm._v("Delete")])
     ])
   }
 ]
@@ -84673,7 +84556,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.fa{\r\n\tmargin-right:5px !important;\n}\n.fa-inr{\r\n\tmargin-top: 3px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.fa{\n\tmargin-right:5px !important;\n}\n.fa-inr{\n\tmargin-top: 3px !important;\n}\n", ""]);
 
 // exports
 
@@ -85258,7 +85141,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.vdp-datepicker input{\r\n\t\r\n\t\tbackground-color: #fff !important;\r\n\t\twidth: 245% !important;\r\n\t\tborder-radius: 1px !important;\r\n\t\tfont-size: 12px !important;\r\n\t\theight: 28px;\n}\n.box-container{\n}\n.box-title{\r\n\tfont-size: 14px;\r\n\tfont-weight: 550 ;\r\n\tpadding: 5px 10px;\r\n\tmargin: 0;\r\n\tborder: 1px solid grey;\n}\n.select2-container--default .select2-selection--single,\r\n.select2-container--default .select2-selection--multiple {\r\n    background-color: #fff;\r\n    border: 1px solid #ccc !important;\r\n    border-radius: 0;\r\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\r\n    color: #000;\r\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\r\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\r\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\r\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\r\n    margin-top: 2px;\r\n    border: none;\r\n    border-radius: 0;\r\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\r\n    border: 1px solid #ccc\n}\n.select2-selection__choice{\r\n\tbackground-color: #3F5367 !important;\r\n\tcolor: #fff;\r\n\tborder-radius: 3px !important;\r\n\t-webkit-tap-highlight-color: transparent;\r\n    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\r\n            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\r\n    letter-spacing: .5px;\r\n    -webkit-transition: .2s ease-out;\r\n    transition: .2s ease-out;\n}\n.select2-container{\r\n\tborder-radius: 1px solid #fff !important;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.vdp-datepicker input{\n\t\n\t\tbackground-color: #fff !important;\n\t\twidth: 245% !important;\n\t\tborder-radius: 1px !important;\n\t\tfont-size: 12px !important;\n\t\theight: 28px;\n}\n.box-container{\n}\n.box-title{\n\tfont-size: 14px;\n\tfont-weight: 550 ;\n\tpadding: 5px 10px;\n\tmargin: 0;\n\tborder: 1px solid grey;\n}\n.select2-container--default .select2-selection--single,\n.select2-container--default .select2-selection--multiple {\n    background-color: #fff;\n    border: 1px solid #ccc !important;\n    border-radius: 0;\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\n    color: #000;\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\n    margin-top: 2px;\n    border: none;\n    border-radius: 0;\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\n    border: 1px solid #ccc\n}\n.select2-selection__choice{\n\tbackground-color: #3F5367 !important;\n\tcolor: #fff;\n\tborder-radius: 3px !important;\n\t-webkit-tap-highlight-color: transparent;\n    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n    letter-spacing: .5px;\n    -webkit-transition: .2s ease-out;\n    transition: .2s ease-out;\n}\n.select2-container{\n\tborder-radius: 1px solid #fff !important;\n}\n\n", ""]);
 
 // exports
 
@@ -87639,7 +87522,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.modal-content{\r\n\tborder-radius: 2px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.modal-content{\n\tborder-radius: 2px !important;\n}\n", ""]);
 
 // exports
 

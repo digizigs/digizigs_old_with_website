@@ -53,9 +53,8 @@
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-          <li><a><i class="fa fa-user"></i>Contacts<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('contacts.index')}}"> Contacts </a></li>
+          <li><a><i class="fa fa-user"></i>Subscriptions & Inquiry<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">            
               <li><a href="{{route('subscription.index')}}"> Subscriptions </a></li>
               <li><a href="{{route('inquiry.index')}}"> Inquiry </a></li>
             </ul>

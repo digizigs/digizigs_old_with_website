@@ -13877,6 +13877,35 @@ footer {
   border-radius: 1px !important;
 }
 
+.swal2-title {
+  border-radius: 50px !important;
+}
+
+.swal2-cancel {
+  border-radius: 1px !important;
+}
+
+.swal2-actions button {
+  border-radius: 2px !important;
+  border: none;
+  font-size: 13px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.swal2-actions .btn-danger {
+  background-color: #FF5722;
+}
+
+.swal2-actions .btn-success {
+  background-color: #4CAF50;
+}
+
+.badge {
+  font-size: 10px;
+  border-radius: 2px;
+}
+
 .sidebar-brand a img {
   padding: 20px;
   width: 150px;
@@ -15859,19 +15888,25 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 .panel-group .panel .panel-heading .action-text a {
   color: #2980B9;
   font-weight: 500;
+  font-size: 10px;
 }
 
 .panel-group .panel .panel-heading .action-text button {
   color: #2980B9;
   font-weight: 500;
+  font-size: 10px;
 }
 
 .panel-group .panel .panel-heading .action-text.subscription .unsubscribe {
   color: #FF9600;
+  font-weight: 400;
+  font-size: 11px;
 }
 
 .panel-group .panel .panel-heading .action-text.subscription .subscribe {
   color: #2B982B;
+  font-weight: 400;
+  font-size: 11px;
 }
 
 .panel-group .panel .panel-footer {
@@ -15880,6 +15915,31 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
 .list-group .list-group-item {
   border-radius: 1px !important;
+}
+
+.list-group .list-group-item span {
+  margin-right: 10px;
+}
+
+.list-group .list-group-item .title {
+  font-size: 12px;
+  color: #2980B9;
+  font-weight: 4500;
+}
+
+.list-group .list-group-item .action-text {
+  margin: 0 10px;
+}
+
+.list-group .list-group-item .action-text a {
+  color: #F44336;
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.list-group .list-group-item .action-text button {
+  color: #F44336;
+  font-weight: 400;
 }
 
 .list-group .list-group-item-heading.active a {
@@ -16038,6 +16098,216 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 
 .waves-effect.waves-white .waves-ripple {
   background: rgba(255, 255, 255, 0.5);
+}
+
+.bg-red {
+  background-color: #F44336 !important;
+  color: #fff;
+}
+
+.bg-red .content .text,
+.bg-red .content .number {
+  color: #fff !important;
+}
+
+.bg-pink {
+  background-color: #E91E63 !important;
+  color: #fff;
+}
+
+.bg-pink .content .text,
+.bg-pink .content .number {
+  color: #fff !important;
+}
+
+.bg-purple {
+  background-color: #9C27B0 !important;
+  color: #fff;
+}
+
+.bg-purple .content .text,
+.bg-purple .content .number {
+  color: #fff !important;
+}
+
+.bg-deep-purple {
+  background-color: #673AB7 !important;
+  color: #fff;
+}
+
+.bg-deep-purple .content .text,
+.bg-deep-purple .content .number {
+  color: #fff !important;
+}
+
+.bg-indigo {
+  background-color: #3F51B5 !important;
+  color: #fff;
+}
+
+.bg-indigo .content .text,
+.bg-indigo .content .number {
+  color: #fff !important;
+}
+
+.bg-blue {
+  background-color: #2196F3 !important;
+  color: #fff;
+}
+
+.bg-blue .content .text,
+.bg-blue .content .number {
+  color: #fff !important;
+}
+
+.bg-light-blue {
+  background-color: #03A9F4 !important;
+  color: #fff;
+}
+
+.bg-light-blue .content .text,
+.bg-light-blue .content .number {
+  color: #fff !important;
+}
+
+.bg-cyan {
+  background-color: #00BCD4 !important;
+  color: #fff;
+}
+
+.bg-cyan .content .text,
+.bg-cyan .content .number {
+  color: #fff !important;
+}
+
+.bg-teal {
+  background-color: #009688 !important;
+  color: #fff;
+}
+
+.bg-teal .content .text,
+.bg-teal .content .number {
+  color: #fff !important;
+}
+
+.bg-green {
+  background-color: #4CAF50 !important;
+  color: #fff;
+}
+
+.bg-green .content .text,
+.bg-green .content .number {
+  color: #fff !important;
+}
+
+.bg-light-green {
+  background-color: #8BC34A !important;
+  color: #fff;
+}
+
+.bg-light-green .content .text,
+.bg-light-green .content .number {
+  color: #fff !important;
+}
+
+.bg-lime {
+  background-color: #CDDC39 !important;
+  color: #fff;
+}
+
+.bg-lime .content .text,
+.bg-lime .content .number {
+  color: #fff !important;
+}
+
+.bg-yellow {
+  background-color: #ffe821 !important;
+  color: #fff;
+}
+
+.bg-yellow .content .text,
+.bg-yellow .content .number {
+  color: #fff !important;
+}
+
+.bg-amber {
+  background-color: #FFC107 !important;
+  color: #fff;
+}
+
+.bg-amber .content .text,
+.bg-amber .content .number {
+  color: #fff !important;
+}
+
+.bg-orange {
+  background-color: #FF9800 !important;
+  color: #fff;
+}
+
+.bg-orange .content .text,
+.bg-orange .content .number {
+  color: #fff !important;
+}
+
+.bg-deep-orange {
+  background-color: #FF5722 !important;
+  color: #fff;
+}
+
+.bg-deep-orange .content .text,
+.bg-deep-orange .content .number {
+  color: #fff !important;
+}
+
+.bg-brown {
+  background-color: #795548 !important;
+  color: #fff;
+}
+
+.bg-brown .content .text,
+.bg-brown .content .number {
+  color: #fff !important;
+}
+
+.bg-grey {
+  background-color: #9E9E9E !important;
+  color: #fff;
+}
+
+.bg-grey .content .text,
+.bg-grey .content .number {
+  color: #fff !important;
+}
+
+.bg-blue-grey {
+  background-color: #607D8B !important;
+  color: #fff;
+}
+
+.bg-blue-grey .content .text,
+.bg-blue-grey .content .number {
+  color: #fff !important;
+}
+
+.bg-black {
+  background-color: #000000 !important;
+  color: #fff;
+}
+
+.bg-black .content .text,
+.bg-black .content .number {
+  color: #fff !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+  color: #fff;
+}
+
+.bg-white .content .text,
+.bg-white .content .number {
+  color: #fff !important;
 }
 
 .is-invalid {

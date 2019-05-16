@@ -3,6 +3,7 @@
 	.panel{
 		border-radius:1px !important;
 		padding: 0 !important;
+	
 
 
 		h4{
@@ -27,18 +28,24 @@
 			    a{
 			      color: #2980B9;
 			      font-weight: 500;
+			      font-size:10px;
 			    }
 			    button{
 			      color: #2980B9;
 			      font-weight: 500;
+			      font-size:10px;
 			    }
 			}
 			.action-text.subscription{
 				.unsubscribe{
 					color: #FF9600;
+					font-weight: 400;
+					font-size:11px;
 				}
 				.subscribe{
 					color: #2B982B;
+					font-weight: 400;
+					font-size:11px;
 				}
 			}
 		}

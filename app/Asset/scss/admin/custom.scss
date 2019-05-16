@@ -303,3 +303,34 @@ footer {
     }
   }
 }
+.swal2-title{
+  border-radius: 50px !important;
+}
+.swal2-cancel{
+  border-radius: 1px !important;
+}
+.swal2-actions{
+  button{
+    border-radius: 2px !important;
+    border:none;
+    font-size: 13px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  .btn-danger{
+    background-color: #FF5722
+  }
+  .btn-success{
+    background-color: #4CAF50
+  }
+
+}
+
+//Material design badge
+.badge {
+  font-size: 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px; 
+}
