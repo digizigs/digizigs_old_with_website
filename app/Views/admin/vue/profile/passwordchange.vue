@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button type="submit" class="btn btn-info btn-sm waves-effect">Update</button>
+                    <button class="btn btn-primary btn-sm waves-ef">Update</button>
                 </div>
             </div>
         </form>

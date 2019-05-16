@@ -79,9 +79,10 @@
 	        <!-- Submit Button -->
 	        <div class="form-group">
 	            <div class="col-sm-offset-2 col-sm-10">
-	                <button type="submit" class="btn btn-info waves-effect">Update</button>
+	                <button class="btn btn-primary btn-sm waves-ef">Update</button>
 	            </div>
 	        </div>
+
 
 	    </form>
     </div>

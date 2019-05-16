@@ -54,9 +54,9 @@ class AppController extends Controller {
 
     public function subscribe(Request $request){
 
-        $this->validate($request,[
+        /*$this->validate($request,[
             'g-recaptcha-response' => 'required|captcha'
-        ]);
+        ]);*/
 
     	$data = Validator::make($request->all(),[           
             'email'=>'required|max:255|email',          
