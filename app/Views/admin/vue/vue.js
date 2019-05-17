@@ -99,6 +99,10 @@ Vue.component('profilecard', require('./profile/profilecard.vue'));
 Vue.component('profilesetting', require('./profile/profilesetting.vue'));
 Vue.component('passwordchange', require('./profile/passwordchange.vue'));
 
+//Filter
+Vue.component('search', require('./Filter.vue'));
+
+
 
 const app = new Vue({
    el: '#app',

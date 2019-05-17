@@ -5,7 +5,18 @@
             	<div class="col-md-12 col-sm-12 col-xs-12">
             		<div class="x_panel">
             			<div class="x_title">	                   
-	                    <h2><i class="fa fa-align-left"></i> Chat <small>Chat with register users</small></h2>
+	                    <h2><i class="fa fa-align-left"></i> Chat <small></small>
+	                    	<span class="search">
+	                  			<i class="fa fa-search"></i>
+	                  			<div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control" placeholder="Search here...">
+
+                                    </div>
+
+                                </div>
+                            </span>	
+	                    </h2>
 	                    <div class="clearfix"></div>
 	                </div>
 

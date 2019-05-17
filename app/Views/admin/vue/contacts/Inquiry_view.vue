@@ -16,7 +16,7 @@
                     <div class="modal-body">
                         {{inqiry.message}}
 						<br><br>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <div class="form-line">
                                     <textarea rows="4" class="form-control no-resize" placeholder="Please type response..."></textarea>

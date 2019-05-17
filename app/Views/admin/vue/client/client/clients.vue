@@ -9,55 +9,23 @@
 
               	<div class="clearfix"></div>
 
-              	<div class="col-md-12 col-sm-12 col-xs-12">
-
-              		<div class="card">
-                        <div class="header">
-                            <h2>
-                                Clients
-                                <small></small>
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <div class="list-group">
-                                <a v-for="client,key in clients.data" href="javascript:void(0);" class="list-group-item">
-                                    <span class="badge bg-cyan">14 New</span>
-                                    <span class="title">{{client.client_name}}</span>
-                                    <span class="action-text">
-                                    	<a href="">View</a> | <a href="">Delete</a>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <span class="badge bg-cyan">99 Unread</span>Dapibus ac facilisis in
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <span class="badge bg-teal">99+</span>Morbi leo risus
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <span class="badge bg-orange">21</span>Porta ac consectetur ac
-                                </a>
-                                <a href="javascript:void(0);" class="list-group-item">
-                                    <span class="badge bg-purple">18</span>Vestibulum at eros
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+              	<div class="col-md-12 col-sm-12 col-xs-12">             	
 
 	                <div class="x_panel">
-	                  <div class="x_title">	 
-	                  	<i class="fa fa-align-left"></i> Contacts <small>All Contacts</small>                  
+	                  <div class="x_title">	 	                  	
+	                  	<h2>
+	                  		<i class="fa fa-align-left"></i>
+	                  		Contacts <small></small> 
+	                  		<span class="search">
+								<i class="fa fa-search"></i>
+								<div class="form-group">
+							        <div class="form-line">
+							            <input type="text" class="form-control" placeholder="Search here..." v-model="search">
+							        </div>
+
+							    </div>
+							</span>	
+	                  	</h2>	                              	                 
 	                    <a href="#addclient" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> New Client</a>
 	                    <div class="clearfix"></div>
 	                  </div>
@@ -70,17 +38,19 @@
 		                        <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
 		                        
 		                          <span class="title">{{client.client_name}}</span>                             
-		                          <span class="time">at  Time</span>
+		                          
 			
 		                          <span class="action-text subscription">
-		                            <a href="">View</a>
+		                            <a href="" data-toggle="tooltip" title="Hooray!"><i class="fa fa-eye" aria-hidden="true"></i></a>
 		                            |
-		                            <a href="">Delete</a>
+		                            <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 		                               		                               
 		                          </span>
 		                                                            
 		                        </div>                            
-		                    </div>		                         		                         
+		                    </div>
+
+							{{this.filteredList}}
 		                </div>
 	                  	<pagination :data="clients" @pagination-change-page="paginationdata" ></pagination>
 						<div>		                    	
@@ -110,14 +80,26 @@
 		data(){
 			return{
 				clients:{},
+				clientsnew:{},
 				clientupdate:{},
 				clientdetail:{},
+				search:'',
 				success:'',
 				errors:'',
+				
 			}
 		},
-		watch:{
+		computed:{
+			filteredList(){
+				var self=this;
 
+				return this.clients.data.filter(function(cust){
+					return cust.client_name.toLowerCase().indexOf(self.search.toLowerCase())>=0;
+				});
+
+				
+			},
+			
 		},
 		methods:{
 			paginationdata(page){
@@ -182,7 +164,10 @@
 		},
 		created(){
 			axios.get('client/create')
-			.then((response) => {this.clients=response.data})//this.appointments=response.data
+			.then((response) => {
+				this.clients=response.data
+				this.clientsnew = response.data
+			})
 			.catch((error) => console.log(error))
 		}
 	};

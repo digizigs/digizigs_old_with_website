@@ -77,7 +77,7 @@
 	        li {
 	            display: flex;
 	            padding: 2px;
-	            border-bottom: 1px solid #aaaaaa;
+	            border-bottom: none !important;
 	            height: 60px;
 	            position: relative;
 	            cursor: pointer;
@@ -108,14 +108,14 @@
 	                    border-radius: 50%;
 	                    margin: 0 auto;
 	                    margin-top: 0px;
-	                    height: 32px;
-	    				width: 32px;
+	                    height: 40px;
+	    				width: 40px;
 	    				display:inline-flex;
 	    				
 	                }
 
 	                &active{
-	                	border:3px solid green;
+	                	border:2px solid green;
 	                }
 	            }
 
@@ -126,7 +126,7 @@
 	            }
 	            .contact {
 	                flex: 3;
-	                font-size: 10px;
+	                font-size: 12px;
 	                overflow: hidden;
 	                display: flex;
 	                flex-direction: column;

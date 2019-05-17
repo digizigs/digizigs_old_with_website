@@ -1,8 +1,10 @@
 //Nav Tab
 .material-tab-pane{
-
+	margin: 0 !important;
+	
 	.nav-tabs {
 		border-bottom: 2px solid #eee;
+		margin-bottom: 10px;
 
 		li {
 	    	position: relative;

@@ -112,11 +112,11 @@ $(document).ready(function(){
         });
 
         //Not blank form
-        $parentSelector.find('.form-control').each(function () {
+        /*$parentSelector.find('.form-control').each(function () {
             if ($(this).val() !== '') {
                 $(this).parents('.form-line').addClass('focused');
             }
-        });
+        });*/
     };
 
 });

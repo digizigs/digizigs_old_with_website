@@ -5,7 +5,19 @@
             	<div class="col-md-12 col-sm-12 col-xs-12">
             		<div class="x_panel">
             			<div class="x_title">	                   
-		                    <h2><i class="fa fa-align-left"></i> Inquiry <small></small></h2>
+		                    <h2>
+		                    	<i class="fa fa-align-left"></i> Inquiry <small></small>
+		                    	<span class="search">
+		                  			<i class="fa fa-search"></i>
+		                  			<div class="form-group">
+	                                    <div class="form-line">
+	                                        <input type="text" class="form-control" placeholder="Search here...">
+
+	                                    </div>
+
+	                                </div>
+	                            </span>	
+		                    </h2>
 		                    <div class="clearfix"></div>
 		                </div>
 
@@ -15,24 +27,21 @@
 	                           	                           
 	                           <div v-for="inq,key in inquiries.data" class="panel panel-default pannel-line">
 	                              <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
-	                                    
-	                                   <a href="" data-toggle="collapse" data-parent="#accordion" >
-	                                     Inquiry by 
-	                                     <span class="title">{{inq.name}}</span> 
-	                                   </a>
+	                                   	                                   	                                  
+	                                   	<span class="title">{{inq.name}}</span> 
+	                                
+	                                   	<span>email:-{{inq.email}}</span>
 
-	                                   <span>email:-{{inq.email}}</span>
+	                                   	<span class="time">at {{inq.created_at | vueAgoTime }}</span>
 
-	                                   <span class="time">at {{inq.created_at | vueAgoTime }}</span>
-
-	                                   <span class="action-text">
-	                                     <a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
-		                                 	View
-		                                 </a>  |                               
-	                                      <a  href="" class="subscribe" v-on:click.prevent @click="delet(inq.id)">
-		                                 	Delete
-		                                 </a> 
-	                                   </span>
+	                                    <span class="action-text">
+	                                    	<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
+		                                 		View
+		                                 	</a>  |                               
+	                                      	<a href="" class="subscribe" v-on:click.prevent @click="delet(inq.id)">
+		                                 		Delete
+		                                 	</a> 
+	                                    </span>
 	                                                                  
 	                              </div>
 

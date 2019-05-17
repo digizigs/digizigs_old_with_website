@@ -41,8 +41,10 @@
     <link href="{{asset('public/vendor/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/vendor/starrr/dist/starrr.css')}}" rel="stylesheet">
 
-    
-    
+    <!-- Bootstrap select -->
+    <link href="{{asset('public/vendor/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
+
+
     <!-- Custom Theme Style -->
     <link href="{{asset('public/css/admin_main.css')}}" rel="stylesheet">
 

@@ -285,7 +285,7 @@ table.tile_info td p {
 }
 
 .nav-sm .nav.side-menu li a i {
-    font-size: 25px!important;
+    font-size: 15px!important;
     text-align: center;
     width: 100%!important;
     margin-bottom: 5px
@@ -836,7 +836,7 @@ a:visited {
 
 .top_nav .dropdown-menu li a {
     width: 100%;
-    padding: 12px 20px
+    padding: 12px 15px
 }
 
 .top_nav li a i {
@@ -1042,7 +1042,7 @@ a:visited {
 }
 
 .toggle a i {
-    font-size: 26px
+    font-size: 20px
 }
 
 .nav.child_menu>li>a {
@@ -1241,7 +1241,28 @@ h2 {
 
 .x_panel,
 .x_title {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    h2{
+        margin: 0 !important;
+    }
+    .search{
+        display: inline-flex;
+        margin-left: 30px;
+        margin-bottom: 0 !important;
+        padding: 0;
+        //border: 1px solid grey;
+        i{
+            margin-top: 10px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        input{
+            margin: 0 !important;
+        }
+        .form-group{
+            margin-bottom: 0px !important;
+        }
+    }
 }
 
 .accordion .panel-heading {
@@ -1263,7 +1284,7 @@ h2 {
     //-webkit-column-break-inside: avoid;
     //-moz-column-break-inside: avoid;
     column-break-inside: avoid;
-    border-radius: 4px;
+    border-radius: 1px;
     //transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);
     -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
