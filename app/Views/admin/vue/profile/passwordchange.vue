@@ -2,7 +2,7 @@
 	<div>
 		<form class="form-horizontal" v-on:submit.prevent="updatepassword(user.id)">
             <div class="form-group">
-                <label for="OldPassword" class="col-sm-3 control-label">Old Password</label>
+                <label for="OldPassword" class="col-sm-3 ">Old Password</label>
                 <div class="col-sm-9">
                     <div class="form-line">
                         <input type="password" class="form-control" placeholder="Old Password" required v-model="password.oldpass">
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="NewPassword" class="col-sm-3 control-label">New Password</label>
+                <label for="NewPassword" class="col-sm-3 ">New Password</label>
                 <div class="col-sm-9">
                     <div class="form-line">
                         <input type="password" class="form-control" placeholder="New Password" required v-model="password.newpass">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="NewPasswordConfirm" class="col-sm-3 control-label">New Password (Confirm)</label>
+                <label for="NewPasswordConfirm" class="col-sm-3">New Password (Confirm)</label>
                 <div class="col-sm-9">
                     <div class="form-line">
                         <input type="password" class="form-control" placeholder="New Password (Confirm)" required v-model="password.cnfpass">

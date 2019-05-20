@@ -16,17 +16,31 @@ class ClientController extends Controller
     }
 
    
-    public function create() {
+    public function create(Request $request) {
 
-        $clients = Client::orderby('created_at','desc')->paginate(8);
-        return request()->json(200,$clients);
+       
+
+        if($request->search_string == ''){
+            $clients = Client::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$clients);
+        }else{
+            $clients = Client::where('client_name','like', '%'.$request->search_string.'%')
+                                ->orWhere('client_email','like', '%'.$request->search_string.'%')
+                                ->orWhere('client_phone','like', '%'.$request->search_string.'%')
+                                ->orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$clients);
+        }
+
+        //$clients = Client::orderby('created_at','desc')->paginate(8);
+        //return request()->json(200,$clients);
     }
 
    
     public function store(Request $request) {   
 
+        //return $request->all();
         
-        $data = Validator::make($request->all(),[
+        /*$data = Validator::make($request->all(),[
 
             'client_name'=>'required|max:255',
             'client_email'=>'required|max:255|email',
@@ -36,7 +50,13 @@ class ClientController extends Controller
             'client_email.required' => 'Email of client is required', 
             'client_phone.required' => 'Phone of client is required', 
 
-        ])->Validate();
+        ])->Validate();*/
+
+        $this->validate($request, [
+            'client_email' => 'required|string|email|max:200',
+            'client_name' => 'required|string|max:200',
+            'client_phone' => 'required|numeric|min:7'
+        ]);
 
 
         $client = new Client;

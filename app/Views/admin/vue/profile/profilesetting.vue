@@ -4,7 +4,7 @@
 
 			<!-- Firstname -->
 	        <div class="form-group">
-	            <label for="firstname" class="col-sm-2 control-label">First Name</label>
+	            <label for="firstname" class="col-sm-2 ">First Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
 	                    <input type="text" class="form-control"  v-model="user_update.firstname">
@@ -14,7 +14,7 @@
 
 	        <!-- Lastname -->
 	        <div class="form-group">
-	            <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+	            <label for="lastname" class="col-sm-2 ">Last Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
 	                    <input type="text" class="form-control"  v-model="user_update.lastname">
@@ -24,7 +24,7 @@
 	        
 	        <!-- Designation -->
 	        <div class="form-group">
-	            <label for="Email" class="col-sm-2 control-label">Designation</label>
+	            <label for="Email" class="col-sm-2 ">Designation</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
 	                    <input type="text" class="form-control" v-model="user_update.designation">
@@ -34,7 +34,7 @@
 
 	        <!--Experience-->
 	        <div class="form-group">
-	            <label for="InputExperience" class="col-sm-2 control-label">Experience</label>
+	            <label for="InputExperience" class="col-sm-2 ">Experience</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
@@ -45,7 +45,7 @@
 
 	        <!-- Skills -->
 	        <div class="form-group">
-	            <label for="Skills" class="col-sm-2 control-label">My Skills</label>
+	            <label for="Skills" class="col-sm-2 ">My Skills</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
@@ -56,7 +56,7 @@
 
 	        <!-- description -->
 	        <div class="form-group">
-	            <label for="InputSkills" class="col-sm-2 control-label">About me</label>
+	            <label for="InputSkills" class="col-sm-2">About me</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
@@ -67,7 +67,7 @@
 			
 			<!-- Avtar Image -->
 	        <div class="form-group">
-	            <label for="InputSkills" class="col-sm-2 control-label">Avatar Image</label>
+	            <label for="InputSkills" class="col-sm-2">Avatar Image</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
