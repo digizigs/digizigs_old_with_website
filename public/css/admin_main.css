@@ -15772,10 +15772,6 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
   border-bottom: 2px solid #1f91f3;
 }
 
-form-error {
-  color: red;
-}
-
 /* Input Group =================================
 .input-group {
 	width: 100%;
@@ -15938,13 +15934,13 @@ form-error {
 .panel-group .panel .panel-heading .action-text a {
   color: #2980B9;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .panel-group .panel .panel-heading .action-text button {
   color: #2980B9;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .panel-group .panel .panel-heading .action-text.subscription .unsubscribe {

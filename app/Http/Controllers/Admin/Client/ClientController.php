@@ -18,16 +18,15 @@ class ClientController extends Controller
    
     public function create(Request $request) {
 
-       
 
         if($request->search_string == ''){
             $clients = Client::orderby('created_at','desc')->paginate(8);
             return request()->json(200,$clients);
         }else{
-            $clients = Client::where('client_name','like', '%'.$request->search_string.'%')
+            $clients['data'] = Client::where('client_name','like', '%'.$request->search_string.'%')
                                 ->orWhere('client_email','like', '%'.$request->search_string.'%')
                                 ->orWhere('client_phone','like', '%'.$request->search_string.'%')
-                                ->orderby('created_at','desc')->paginate(8);
+                                ->orderby('created_at','desc')->get();
             return request()->json(200,$clients);
         }
 
@@ -41,7 +40,7 @@ class ClientController extends Controller
         //return $request->all();
         
         /*$data = Validator::make($request->all(),[
-
+e 
             'client_name'=>'required|max:255',
             'client_email'=>'required|max:255|email',
             'client_phone'=>'required|numeric',
@@ -65,8 +64,7 @@ class ClientController extends Controller
         $client->client_website = $request->client_website;
         $client->client_phone = $request->client_phone;
 
-        $client->contact_first_name = $request->contact_first_name;
-        $client->contact_last_name = $request->contact_last_name;
+        $client->contact_name = $request->contact_name;    
         $client->contact_email = $request->contact_email;
         $client->contact_phone = $request->contact_phone;
         
@@ -106,6 +104,12 @@ class ClientController extends Controller
  
     public function update(Request $request, $id) {
 
+        $this->validate($request, [
+            'client_email' => 'required|string|email|max:200',
+            'client_name' => 'required|string|max:200',
+            'client_phone' => 'required|min:10|numeric'
+        ]);
+
         $client = Client::find($id);
         
         $client->client_name = $request->client_name;
@@ -113,19 +117,18 @@ class ClientController extends Controller
         $client->client_website = $request->client_website;
         $client->client_phone = $request->client_phone;
 
-        $client->contact_first_name = $request->contact_first_name;
-        $client->contact_last_name = $request->contact_last_name;
+        $client->contact_name = $request->contact_name;
         $client->contact_email = $request->contact_email;
         $client->contact_phone = $request->contact_phone;
         
 
-        $client->address_line_1 = $request->address_line_1;
-        $client->address_line_2 = $request->address_line_2;
-        $client->address_street = $request->address_street;
-        $client->address_city = $request->address_city;
-        $client->address_state = $request->address_state;
-        $client->address_postal = $request->address_postal;
-        $client->address_country = $request->address_country;
+        //$client->address_line_1 = $request->address_line_1;
+        //$client->address_line_2 = $request->address_line_2;
+        //$client->address_street = $request->address_street;
+        //$client->address_city = $request->address_city;
+        //$client->address_state = $request->address_state;
+        //$client->address_postal = $request->address_postal;
+        //$client->address_country = $request->address_country;
 
         $client->public_note = $request->public_note;
         $client->private_note = $request->private_note;

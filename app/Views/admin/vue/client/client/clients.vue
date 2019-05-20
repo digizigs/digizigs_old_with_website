@@ -12,7 +12,7 @@
 	                  	<div class="x_title">
 		                  	<h2>
 		                  		<i class="fa fa-align-left"></i>
-		                  		Contacts <small></small> 
+		                  		Clients <small></small> 
 		                  		<span class="search">
 									<i class="fa fa-search"></i>
 									<div class="form-group">
@@ -38,9 +38,9 @@
 			                          
 										<!-- Action icons -->
 			                          	<span class="action-text subscription pull-right">
-			                            	<a href="" data-toggle="tooltip" title="Hooray!"><i class="fa fa-eye" aria-hidden="true"></i></a>
+			                            	<a href="#editclient" v-on:click.prevent data-toggle="modal" @click="detailclient(client.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
 			                            	|
-			                            	<a href="" v-on:click.prevent @click="deleteclient(client.id)""><i class="fa fa-trash-o" aria-hidden="true"></i></a>  		                               
+			                            	<a href="" v-on:click.prevent @click="deleteclient(client.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>  		                               
 			                          	</span>
 			                          	<!-- Action icons -->                                    
 			                        </div>
@@ -50,7 +50,9 @@
 					
 		                	</div>
 
+		                	
 	                  		<pagination :data="clients" @pagination-change-page="paginationdata" ></pagination>
+
 
 							<div>		                    	
 			                    Showing {{clients.from}} to {{clients.to}} of total {{clients.total}}	                    	
@@ -64,8 +66,7 @@
 
 		<div id="modal">
           <newclient @recordupdated="refreshRecord"></newclient>
-          <editclient :recrd="clientupdate" @recordupdated="refreshRecord"></editclient>
-          <detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient>
+          <editclient :selClient="clientdetail" @recordupdated="refreshRecord"></editclient>
          
         </div>
 
@@ -83,35 +84,23 @@
 				search:'',
 				success:'',
 				errors:'',
+				pagination: {}
 				
 			}
 		},
 		watch:{
 			search:function(){
-				axios.get('client/create',{params:{search_string:this.search}})
-				.then((response) => {
-					//console.log(response.data)
-					this.clients=response.data
-					//this.clientsnew = response.data
-				})
-				.catch((error) => console.log(error))
+				if(this.search.length >= 0){
+					axios.get('client/create',{params:{search_string:this.search}})
+					.then((response) => {						
+						this.clients=response.data					
+					})
+					.catch((error) => console.log(error))
+				}
 			}
 		},
 		computed:{
-			filteredList(){
-				var self=this;
-
-				return this.clients.data.filter(function(cust){
-					return cust.client_name.toLowerCase().indexOf(self.search.toLowerCase())>=0;
-				});	
-			},
-			filterClient:function(){
-				this.clients.data.filter(function(cust){
-					let clientname = cust.client_name.toLowerCase();
-					let filters = this.search.toLowerCase();
-					return clientname.includes(filters);
-				});
-			}			
+				
 		},
 		methods:{
 			paginationdata(page){
@@ -122,23 +111,15 @@
 		          .then(response => this.clients = response.data)
 		          //	.catch(error => this.errors=error.response.data.errors);
 
-		    },
-			refreshRecord(record){
-				console.log('client updated')
+		    },		    
+			refreshRecord(record){				
 	        	this.clients=record.data;
-	      	},
-	      	updateclient(id){
-	      		axios.get('client/'+id+'/edit')
-		        .then((response) => {
-		          this.clientupdate=response.data
-		          })//this.apntupdate = response.data
-		        .catch(error => this.errors=error.response.data.errors);
-	      	},
+	      	},      	
 	      	detailclient(id){
 	      		axios.get('client/'+id+'/edit')
-		        .then((response) => {
-		          this.clientdetail=response.data
-		          })//this.apntupdate = response.data
+		        .then((response) => {		        	
+		          	this.clientdetail=response.data
+		          })
 		        .catch(error => this.errors=error.response.data.errors);
 	      	},
 	      	deleteclient(id){
@@ -174,13 +155,9 @@
 	      	}
 		},
 		created(){
-			axios.get('client/create',{params:{search_string:this.search}})
-			.then((response) => {
-				//console.log(response.data)
-				this.clients=response.data
-				//this.clientsnew = response.data
-			})
-			.catch((error) => console.log(error))
+			
+			this.paginationdata();
+
 		}
 	};
 

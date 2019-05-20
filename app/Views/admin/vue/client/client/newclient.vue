@@ -30,12 +30,12 @@
                                         <div class="form-group">
                                           <label for="" class="col-sm-3" >Name</label> 
                                             <div class="col-sm-9">
-                                              <div class="form-line error">
+                                              <div class="form-line">
                                                 <input type="text" class="form-control" v-model="newclient.client_name">
                                               </div>
-                                              <form-error v-if="errors.client_name" :errors="errors">
+                                              <div class="error-message" v-if="errors.client_name">
                                                 {{ errors.client_name[0] }}
-                                              </form-error>
+                                              </div>
                                             </div>
                                         </div>
 
@@ -52,11 +52,11 @@
                                           <label for="" class="col-sm-3">Email</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="email" class="form-control" v-model="newclient.client_email">
+                                                <input type="text" class="form-control" v-model="newclient.client_email">
                                               </div>
-                                              <form-error v-if="errors.client_email" :errors="errors">
+                                              <div class="error-message" v-if="errors.client_email" >
                                                 {{ errors.client_email[0] }}
-                                              </form-error>
+                                              </div>
                                             </div>
                                             
                                         </div>
@@ -67,9 +67,9 @@
                                               <div class="form-line">
                                                 <input type="text" class="form-control" v-model="newclient.client_phone">
                                               </div>
-                                              <form-error v-if="errors.client_phone" :errors="errors">
+                                              <div class="error-message" v-if="errors.client_phone">
                                                 {{ errors.client_phone[0] }}
-                                              </form-error>
+                                              </div>
                                             </div>
                                         </div>
 
@@ -86,7 +86,7 @@
                                           <label for="" class="col-sm-3">Name</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="text" name="" value="" id="" class="form-control">
+                                                <input type="text"  class="form-control" v-model="newclient.contact_name">
                                               </div>
                                             </div>
                                         </div>
@@ -95,7 +95,7 @@
                                           <label for="" class="col-sm-3">Email</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="email" name="" value="" id="" class="form-control">
+                                                <input type="email" class="form-control" v-model="newclient.contact_email">
                                               </div>
                                             </div>
                                         </div>
@@ -104,7 +104,7 @@
                                           <label for="" class="col-sm-3">Contact Number</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="text" name="" value="" id="" class="form-control">
+                                                <input type="text" class="form-control" v-model="newclient.contact_phone">
                                               </div>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                           <label for="" class="col-sm-3 ">Address</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="text" name="" value="" id="" class="form-control">
+                                                <input type="text" class="form-control">
                                               </div>
                                             </div>
                                         </div>                                  
@@ -130,7 +130,7 @@
                                           <label for="" class="col-sm-3 ">Landmark</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="text" name="" value="" id="" class="form-control">
+                                                <input type="text" class="form-control">
                                               </div>
                                             </div>
                                         </div>
@@ -165,7 +165,7 @@
                                           <label for="" class="col-sm-3">Postal Code</label> 
                                             <div class="col-sm-9">
                                               <div class="form-line">
-                                                <input type="text" name="" value="" id="" class="form-control">
+                                                <input type="text" class="form-control">
                                               </div>
                                             </div>
                                         </div>
@@ -195,23 +195,23 @@
                                   
 
                                     <div class="form-group">
-                                      <label for="" class="col-sm-3 control-label">Public Note</label> 
+                                      <label for="" class="col-sm-3">Public Note</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <textarea rows="2" class="form-control no-resize"></textarea>
+                                            <textarea rows="2" class="form-control no-resize"  v-model="newclient.public_note"></textarea>
                                           </div>
                                         </div>
                                     </div>
 
 
                                     <div class="form-group">
-                                      <label for="" class="col-sm-3 control-label">Private Note</label> 
+                                      <label for="" class="col-sm-3">Private Note</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <textarea rows="2" class="form-control no-resize"></textarea>
+                                            <textarea rows="2" class="form-control no-resize" v-model="newclient.private_note"></textarea>
                                           </div>
                                         </div>
-                                    </div>
+                                    </div>                              
 
 
                                   </div>
@@ -241,26 +241,7 @@
 	export default{
 		data(){
 			return{
-        newclient:{},
-				client:{
-          client_name:'',
-          client_website:'',
-          client_phone:'',
-          client_email:'',
-          contact_first_name:'',
-          contact_last_name:'',
-          contact_email:'',
-          contact_phone:'',
-          address_line_1:'',
-          address_line_2:'',
-          address_street:'',
-          address_city:'',
-          address_state:'',
-          address_postal:'',
-          address_country:'',
-          public_note:'',
-          private_note:''
-        },
+        newclient:{},				
 				success:'',
 				errors:[],
         error_message:'',
@@ -280,15 +261,10 @@
 		methods:{
 		  addclient(){
         axios.post('client',this.newclient)
-            .then(data => {
-              console.log(data);
-              //this.services=response.data           
-              this.$emit('recordupdated',data),
-              
-              this.client={}
-            $('#addclient').modal('hide');
-            this.client={};
-            this.newclient = {};
+            .then(data => {                    
+              this.$emit('recordupdated',data),                            
+              $('#addclient').modal('hide');             
+              this.newclient = {};
             toast({
                 type: 'success',
                 title: 'New Client added successfully'
@@ -297,21 +273,10 @@
           })
           .catch((error) => {
             this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;
-            //console.log(this.errors); 
-
-            /*toast({
-                type: 'warning',
-                title: 'Please fill the basic details'
-            })*/
-            
-
+            this.error_message = error.response.data.message;           
           })
       }
 		},
-		created(){
-		
-		}
 	};
 
 </script>

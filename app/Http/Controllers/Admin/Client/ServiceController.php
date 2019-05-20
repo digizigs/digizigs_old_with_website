@@ -11,36 +11,50 @@ class ServiceController extends Controller
 {
    
     public function index() {
-        $services = Service::orderby('created_at','desc')->paginate(10);
-        return view('admin.pages.client.service',compact('services'));
+        
+        return view('admin.pages.client.service');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        $services = Service::orderby('created_at','desc')->paginate(8);
-        return request()->json(200,$services);
+  
+    public function create(Request $request) {
+
+       
+
+        if($request->search_string == ''){
+
+            $services = Service::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$services);
+
+        }else{
+
+            $services['data'] = Service::where('name','like', '%'.$request->search_string.'%')
+                                ->orWhere('description','like', '%'.$request->search_string.'%')                               
+                                ->orderby('created_at','desc')->get();
+            return request()->json(200,$services);
+
+        }
+
+
+        
     }
 
   
     public function store(Request $request) {
 
-       
-        $data = Validator::make($request->all(),[
+        
+
+        $this->validate($request,[
             'name'=>'required|max:255',
             'desc'=>'required|max:255',
-            'bill'=>'required|max:255',
-            'tat'=>'required|max:255',     
+            'bill'=>'required|numeric',
+            'tat'=>'required|numeric',     
         ],[
             'name.required' => 'Name of service is required', 
             'desc.required' => 'Description of service is required', 
             'bill.required' => 'Billing Charge of service is required', 
             'tat.required' => 'Duration for complition of service is required', 
 
-        ])->Validate();
+        ]);
 
         $service = new Service;
         $service->name = $request->name;
@@ -72,18 +86,20 @@ class ServiceController extends Controller
    
     public function update(Request $request, $id) {
 
-        $data = Validator::make($request->all(),[
+        
+
+        $this->validate($request,[
             'name'=>'required|max:255',
             'description'=>'required|max:255',
-            'charge'=>'required|max:255',
-            'duration'=>'required|max:255',     
+            'charge'=>'required|numeric',
+            'duration'=>'required|numeric',     
         ],[
             'name.required' => 'Name of service is required', 
             'description.required' => 'Description of service is required', 
             'charge.required' => 'Billing Charge of service is required', 
             'duration.required' => 'Duration for complition of service is required', 
 
-        ])->Validate();
+        ]);
 
         $service = Service::find($id);
         $service->name = $request->name;
