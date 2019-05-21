@@ -11,72 +11,69 @@
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
                   		<div class="col-md-12">
 
-                  			<div class="form-group">
-                              	<label for="" class="col-sm-3" >First name</label> 
-                                <div class="col-sm-9">
-                                  <div class="form-line">
+                           <div class="form-group">
+                              <label for="" class="col-sm-3" >First name</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
                                     <input type="text" class="form-control" v-model="newuser.name">
-                                  </div>
-                                  <div class="error-message" v-if="errors.name">
+                                 </div>
+                                 <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
-                                  </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                              	<label for="" class="col-sm-3" >Last name</label> 
-                                <div class="col-sm-9">
-                                  <div class="form-line">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="" class="col-sm-3" >Last name</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
                                     <input type="text" class="form-control" v-model="newuser.name">
-                                  </div>
-                                  <div class="error-message" v-if="errors.name">
+                                 </div>
+                                 <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
-                                  </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                              	<label for="" class="col-sm-3" >Email</label> 
-                                <div class="col-sm-9">
-                                  <div class="form-line">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="" class="col-sm-3" >Email</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
                                     <input type="text" class="form-control" v-model="newuser.name">
-                                  </div>
-                                  <div class="error-message" v-if="errors.name">
+                                 </div>
+                                 <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
-                                  </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                              	<label for="" class="col-sm-3" >Password</label> 
-                                <div class="col-sm-9">
-                                  <div class="form-line">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="" class="col-sm-3" >Password</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
                                     <input type="text" class="form-control" v-model="newuser.name">
-                                  </div>
-                                  <div class="error-message" v-if="errors.name">
+                                 </div>
+                                 <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
-                                  </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                              	<label for="" class="col-sm-3" >Confirm Password</label> 
-                                <div class="col-sm-9">
-                                  <div class="form-line">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="" class="col-sm-3" >Confirm Password</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
                                     <input type="text" class="form-control" v-model="newuser.name">
-                                  </div>
-                                  <div class="error-message" v-if="errors.name">
+                                 </div>
+                                 <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
-                                  </div>
-                                </div>
-                            </div>
+                                 </div>
+                              </div>
+                           </div>
 
-                            <div class="form-group">
-								<label for="" class="col-sm-3">Roles</label>
-								<div class="col-sm-9">
-									<multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a role" label="name" track-by="name" :options="roles" :multiple="true" :taggable="true" ></multiselect>
-								</div>							  								  	
-							</div>
+                           <div class="form-group">
+      								<label for="" class="col-sm-3">Roles</label>
+      								<div class="col-sm-9">
+      									<multiselect v-model="value" tag-placeholder="Add this as new tag" placeholder="Search or add a role" label="name" track-by="name" :options="rolearray" :multiple="true" :taggable="true" ></multiselect>
+                                 <pre>{{value}}</pre>
+      								</div>							  								  	
+      							</div>
 
 
                   		</div>
@@ -115,6 +112,11 @@
 		watch:{
 
 		},
+      computed:{
+         rolearray(){
+            return _.map(this.roles,function(num, key){return num.name})
+         }
+      },
 		methods:{
 			adduser(){
 
@@ -122,7 +124,7 @@
 			addTag (newTag) {
 			    const tag = {
 			        name: newTag,
-			        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+			        code: newTag,
 			    }
 			    this.options.push(tag)
 			    this.value.push(tag)
@@ -136,11 +138,27 @@
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss">
-	.multiselect{
-		font-size:12px;
-		border:none !important;
-		input{
-			border:none !important;
-		}
-	}
+
+	.multiselect__tags{
+      border-radius: 1px;
+      border: none important;
+      border-bottom: 1px solid #e8e8e8;
+
+   }
+   .multiselect__single {
+       font-family: inherit;
+       font-size: 12px;
+       -ms-touch-action: manipulation;
+       touch-action: manipulation
+   }
+   .multiselect__tags {
+       min-height: 40px;
+       display: block;
+       padding: 8px 40px 0 8px;
+       border-radius: 1px;
+       border: 1px solid #e8e8e8;
+       background: #fff;
+       font-size: 12px;
+       
+   }
 </style>
