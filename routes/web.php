@@ -129,10 +129,6 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::post('/menu/add', 'Admin\Menu\MenuController@createnewmenu')->name('create-menu');
 
     //Gallery
-    //Route::get('/gallery','Admin\Gallery\GalleryController@index')->name('gallery.show');
-    //Route::get('/gallery/create','Admin\Gallery\GalleryController@create');
-    //Route::post('/formSubmit','Admin\Gallery\GalleryController@store');
-    //Route::get('/gallery/delete','Admin\Gallery\GalleryController@destroy');
     Route::resource('/gallery','Admin\Gallery\GalleryController');
 
     //resource

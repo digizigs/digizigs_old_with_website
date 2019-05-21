@@ -24,9 +24,19 @@ class UserController extends Controller
     }
 
     
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $roles = Role::orderby('created_at','desc')->get()->toArray();
+
+        if($request->search_string == ''){
+            $users = User::orderby('created_at','desc')->paginate(8);
+            //$data = ['roles'=$roles,'users'=>$users];          
+            return request()->json(200,['roles'=>$roles,'users'=>$users]);
+        }else{
+            $users['data'] = User::where('name','like', '%'.$request->search_string.'%')                               
+                                ->orderby('created_at','desc')->get();
+            return request()->json(200,$users);
+        }
     }
 
     

@@ -43,6 +43,13 @@ const router = new VueRouter({
 })
 
 Vue.component('vue-single-select', VueSingleSelect);
+
+
+//Select 2
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
+
+
 //Posts
 //Vue.component('posts', require('./components/post/PostLists.vue'));
 //Vue.component('editposts', require('./components/post/EditPostModal.vue'));
@@ -99,9 +106,20 @@ Vue.component('profilecard', require('./profile/profilecard.vue'));
 Vue.component('profilesetting', require('./profile/profilesetting.vue'));
 Vue.component('passwordchange', require('./profile/passwordchange.vue'));
 
+//Access Management
+Vue.component('permission', require('./access management/permission/Permission.vue'));
+Vue.component('newpermission', require('./access management/permission/newpermission.vue'));
+Vue.component('editpermission', require('./access management/permission/editpermission.vue'));
+Vue.component('users', require('./access management/user/Users.vue'));
+Vue.component('newuser', require('./access management/user/NewUser.vue'));
+
+
+
+
+
+
 //Filter
 Vue.component('search', require('./Filter.vue'));
-
 
 
 const app = new Vue({
@@ -144,3 +162,4 @@ Vue.filter('vueAgoTime',function(created){
 Vue.filter('vueMoment',function(created){
   return moment(created).fromNow();
 })
+
