@@ -1,5 +1,5 @@
 <div class="col-md-3 left_col">
-  <div class="left_col scroll-view">
+  <div class="left_col ">
 
 
     <div class="navbar nav_title sidebar-brand" style="border: 0;">

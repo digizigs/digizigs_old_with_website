@@ -92690,7 +92690,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -92763,7 +92763,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			search: '',
 			users: {},
-			roles: {}
+			roles: {},
+			errors: ''
 		};
 	},
 
@@ -92783,8 +92784,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			//	.catch(error => this.errors=error.response.data.errors);
 		},
 		detailuser: function detailuser(id) {},
-		deleteuser: function deleteuser(id) {},
-		refreshRecord: function refreshRecord(record) {}
+		deleteuser: function deleteuser(id) {
+			var _this2 = this;
+
+			swalWithBootstrapButtons({
+				title: 'Delete User?',
+				text: "You won't be able to revert this!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonText: 'Yes, delete it!',
+				cancelButtonText: 'No, cancel!',
+				reverseButtons: true
+			}).then(function (result) {
+				if (result.value) {
+
+					axios.delete('users/' + id).then(function (response) {
+						_this2.users = response.data;
+
+						toast({
+							type: 'success',
+							title: 'User  deleted successfully'
+						});
+					}) //this.categories=response.data
+					.catch(function (error) {
+						console.log(response.data);
+
+						_this2.errors = error.response.data.errors;
+					});
+				}
+			});
+		},
+		refreshRecord: function refreshRecord(record) {
+			this.users = record.data;
+		}
 	},
 	created: function created() {
 		this.paginationdata();
@@ -93130,7 +93162,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.multiselect .multiselect__tags {\n  font-size: 12px;\n  border: none;\n  border-bottom: 1px solid #e8e8e8;\n}\n.multiselect .multiselect__content-wrapper .multiselect__content .multiselect__element .multiselect__option {\n  font-size: 12px !important;\n}\n", ""]);
+exports.push([module.i, "\n.multiselect .multiselect__tags {\n  font-size: 12px;\n  border: none;\n  border-bottom: 1px solid #e8e8e8;\n  border-radius: 0px;\n}\n.multiselect .multiselect__content-wrapper .multiselect__content .multiselect__element .multiselect__option {\n  font-size: 12px !important;\n}\n", ""]);
 
 // exports
 
@@ -93258,12 +93290,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	computed: {
 		rolearray: function rolearray() {
 			return _.map(this.roles, function (num, key) {
-				return num.name;
+				num.name;
 			});
 		}
 	},
 	methods: {
-		adduser: function adduser() {},
+		adduser: function adduser() {
+			var _this = this;
+
+			axios.post('users', this.newuser).then(function (data) {
+				console.log(data);
+				_this.$emit('recordupdated', data), $('#addnewuser').modal('hide');
+				_this.newuser = {};
+				toast({
+					type: 'success',
+					title: 'New Permission added successfully'
+				});
+			}).catch(function (error) {
+				_this.errors = error.response.data.errors;
+			});
+		},
 		addTag: function addTag(newTag) {
 			var tag = {
 				name: newTag,
@@ -93329,13 +93375,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.newuser.name,
-                                expression: "newuser.name"
+                                value: _vm.newuser.firstname,
+                                expression: "newuser.firstname"
                               }
                             ],
                             staticClass: "form-control",
                             attrs: { type: "text" },
-                            domProps: { value: _vm.newuser.name },
+                            domProps: { value: _vm.newuser.firstname },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -93343,7 +93389,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.newuser,
-                                  "name",
+                                  "firstname",
                                   $event.target.value
                                 )
                               }
@@ -93351,11 +93397,11 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _vm.errors.name
+                        _vm.errors.firstname
                           ? _c("div", { staticClass: "error-message" }, [
                               _vm._v(
                                 "\n                                    " +
-                                  _vm._s(_vm.errors.name[0]) +
+                                  _vm._s(_vm.errors.firstname[0]) +
                                   "\n                                 "
                               )
                             ])
@@ -93377,13 +93423,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.newuser.name,
-                                expression: "newuser.name"
+                                value: _vm.newuser.lastname,
+                                expression: "newuser.lastname"
                               }
                             ],
                             staticClass: "form-control",
                             attrs: { type: "text" },
-                            domProps: { value: _vm.newuser.name },
+                            domProps: { value: _vm.newuser.lastname },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -93391,7 +93437,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.newuser,
-                                  "name",
+                                  "lastname",
                                   $event.target.value
                                 )
                               }
@@ -93399,11 +93445,11 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _vm.errors.name
+                        _vm.errors.lastname
                           ? _c("div", { staticClass: "error-message" }, [
                               _vm._v(
                                 "\n                                    " +
-                                  _vm._s(_vm.errors.name[0]) +
+                                  _vm._s(_vm.errors.lastname[0]) +
                                   "\n                                 "
                               )
                             ])
@@ -93425,13 +93471,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.newuser.name,
-                                expression: "newuser.name"
+                                value: _vm.newuser.email,
+                                expression: "newuser.email"
                               }
                             ],
                             staticClass: "form-control",
                             attrs: { type: "text" },
-                            domProps: { value: _vm.newuser.name },
+                            domProps: { value: _vm.newuser.email },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -93439,7 +93485,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.newuser,
-                                  "name",
+                                  "email",
                                   $event.target.value
                                 )
                               }
@@ -93447,11 +93493,11 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _vm.errors.name
+                        _vm.errors.email
                           ? _c("div", { staticClass: "error-message" }, [
                               _vm._v(
                                 "\n                                    " +
-                                  _vm._s(_vm.errors.name[0]) +
+                                  _vm._s(_vm.errors.email[0]) +
                                   "\n                                 "
                               )
                             ])
@@ -93473,13 +93519,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.newuser.name,
-                                expression: "newuser.name"
+                                value: _vm.newuser.password,
+                                expression: "newuser.password"
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.newuser.name },
+                            attrs: { type: "password" },
+                            domProps: { value: _vm.newuser.password },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -93487,7 +93533,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.newuser,
-                                  "name",
+                                  "password",
                                   $event.target.value
                                 )
                               }
@@ -93495,11 +93541,11 @@ var render = function() {
                           })
                         ]),
                         _vm._v(" "),
-                        _vm.errors.name
+                        _vm.errors.password
                           ? _c("div", { staticClass: "error-message" }, [
                               _vm._v(
                                 "\n                                    " +
-                                  _vm._s(_vm.errors.name[0]) +
+                                  _vm._s(_vm.errors.password[0]) +
                                   "\n                                 "
                               )
                             ])
@@ -93521,13 +93567,13 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.newuser.name,
-                                expression: "newuser.name"
+                                value: _vm.newuser.cpassword,
+                                expression: "newuser.cpassword"
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.newuser.name },
+                            attrs: { type: "password" },
+                            domProps: { value: _vm.newuser.cpassword },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -93535,7 +93581,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.newuser,
-                                  "name",
+                                  "cpassword",
                                   $event.target.value
                                 )
                               }
@@ -93572,7 +93618,7 @@ var render = function() {
                               placeholder: "Search or add a role",
                               label: "name",
                               "track-by": "id",
-                              options: _vm.roles,
+                              options: _vm.options,
                               multiple: true,
                               taggable: true
                             },
@@ -93584,9 +93630,7 @@ var render = function() {
                               },
                               expression: "value"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("pre", [_vm._v(_vm._s(_vm.value))])
+                          })
                         ],
                         1
                       )

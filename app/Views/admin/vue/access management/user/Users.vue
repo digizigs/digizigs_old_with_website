@@ -60,7 +60,8 @@
 			return{
 				search:'',
 				users:{},
-				roles:{}
+				roles:{},
+				errors:''
 			}
 		},
 		watch:{
@@ -84,10 +85,37 @@
 
 		    },
 		    deleteuser(id){
+		    	swalWithBootstrapButtons({
+		          title: 'Delete User?',
+		          text: "You won't be able to revert this!",
+		          type: 'warning',
+		          showCancelButton: true,
+		          confirmButtonText: 'Yes, delete it!',
+		          cancelButtonText: 'No, cancel!',
+		          reverseButtons: true
+		        }).then((result) => {
+		          if (result.value) {
 
+		            axios.delete('users/'+id)
+		            .then(response =>{
+		              this.users=response.data;
+		              
+		              toast({
+		                	type: 'success',
+		                	title: 'User  deleted successfully'	                	
+		            	})
+
+		            })//this.categories=response.data
+		            .catch((error) => {
+		              console.log(response.data);
+		              	
+		                    this.errors=error.response.data.errors;		                                  
+		              });
+		          } 
+		        })
 		    },
 		    refreshRecord(record){
-
+		    	this.users = record.data
 		    }
 		
 		},
