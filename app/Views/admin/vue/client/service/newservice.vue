@@ -5,47 +5,65 @@
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
-                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" @click="modal_close" >&times;</button>
                   <h4 class="modal-title"><b>New Service</b></h4>
                 </div>
                 <div class="modal-body">
                   
                   <form  role="form" @submit.prevent="" class="form-horizontal">
                    
-
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Poduct Name</small></i>
-                        <input class="form-control input-sm" type="text"  v-model="service.name">
-                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span>
-                      </div> 
-                    </div><br>
-
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12" >
-                        <i><small>Product description</small></i>
-                        <textarea class="form-control input-sm"  cols="30" rows="3"  v-model="service.desc"></textarea>
-                        <span v-if="errors.desc" :class="['label label-danger']">{{ errors.desc[0] }}</span>
-                      </div> 
-                    </div><br>
-
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Product Cost</small></i>
-                        <input class="form-control input-sm" type="text" v-model="service.bill">
-                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span>
-                      </div> 
-                    </div><br>
-
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Product Deadline</small></i>
-                        <input class="form-control input-sm" type="text" v-model="service.tat">
-                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span>
-                      </div> 
+                  
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Service Name</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="newservice.name">
+                          </div>
+                          <div class="error-message" v-if="errors.name">
+                            {{ errors.name[0] }}
+                          </div>
+                        </div>
                     </div>
-                    
-                    
+
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3">Service Description</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <textarea rows="2" class="form-control no-resize"  v-model="newservice.desc"></textarea>
+                          </div>
+                          <div class="error-message" v-if="errors.desc">
+                            {{ errors.desc[0] }}
+                          </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Service Charge</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="newservice.bill">
+                          </div>
+                          <div class="error-message" v-if="errors.bill">
+                            {{ errors.bill[0] }}
+                          </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Product Deadline</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="newservice.tat">
+                          </div>
+                          <div class="error-message" v-if="errors.tat">
+                            {{ errors.tat[0] }}
+                          </div>
+                        </div>
+                    </div>
+                   
                     <div class="form-group">
                       <button class="btn btn-dark btn-sm pull-right" @click="addservice">Add Service</button>  
                     </div>
@@ -69,36 +87,32 @@
 	export default{
 		data(){
 			return{
-				service:{name:'',desc:'',bill:'',tat:''},
+        newservice:{},				
 				success:'',
-				errors:[],
-        error_message:'',
-				services:{},
+				errors:'',		
 			}
 		},
 		watch:{
 
 		},
 		methods:{
+      modal_close(){
+        this.errors=''
+      },
 			addservice(){
-				axios.post('service',this.service)
-		          	.then(data => {
-		          		//console.log(response.data);
-						//this.services=response.data						
-						this.$emit('recordupdated',data),
-						this.success='Service added successfully'
-			            this.service={}
-						$('#addservices').modal('hide');
-
-						toast({
-				  			type: 'success',
-				  			title: 'New Service added successfully'
-						})
+				axios.post('service',this.newservice)
+		        .then(data => {		        
+						  this.$emit('recordupdated',data),					 
+			        this.newservice={}
+						  $('#addservices').modal('hide');
+  						toast({
+  				  			type: 'success',
+  				  			title: 'New Service added successfully'
+  						})
 
 					})
 					.catch((error) => {
-            this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;
+            this.errors = error.response.data.errors;         
           })
 
 

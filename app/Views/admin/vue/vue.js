@@ -43,11 +43,24 @@ const router = new VueRouter({
 })
 
 Vue.component('vue-single-select', VueSingleSelect);
+
+
+//Select 2
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
+
+
 //Posts
 //Vue.component('posts', require('./components/post/PostLists.vue'));
 //Vue.component('editposts', require('./components/post/EditPostModal.vue'));
 
 //=======================Client Management==================================//
+
+//Contacts
+Vue.component('subscription', require('./contacts/Subscriptions.vue'));
+Vue.component('inquiry', require('./contacts/Inquiry.vue'));
+Vue.component('inquiryview', require('./contacts/Inquiry_view.vue'));
+
 
 //Service
 Vue.component('services', require('./client/service/services.vue'));
@@ -58,7 +71,7 @@ Vue.component('editservice', require('./client/service/editservice.vue'));
 Vue.component('clients', require('./client/client/clients.vue'));
 Vue.component('newclient', require('./client/client/newclient.vue'));
 Vue.component('editclient', require('./client/client/editclient.vue'));
-Vue.component('detailclient', require('./client/client/detailclient.vue'));
+
 
 //INVOICE
 Vue.component('invoice', require('./client/invoice/invoice.vue'));
@@ -86,6 +99,28 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 
 //Category
 Vue.component('category', require('./category/Category.vue'));
+
+//Profile
+Vue.component('profile', require('./profile/profile.vue'));
+Vue.component('profilecard', require('./profile/profilecard.vue'));
+Vue.component('profilesetting', require('./profile/profilesetting.vue'));
+Vue.component('passwordchange', require('./profile/passwordchange.vue'));
+
+//Access Management
+Vue.component('permission', require('./access management/permission/Permission.vue'));
+Vue.component('newpermission', require('./access management/permission/newpermission.vue'));
+Vue.component('editpermission', require('./access management/permission/editpermission.vue'));
+Vue.component('users', require('./access management/user/Users.vue'));
+Vue.component('newuser', require('./access management/user/NewUser.vue'));
+
+
+
+
+
+
+//Filter
+Vue.component('search', require('./Filter.vue'));
+
 
 const app = new Vue({
    el: '#app',
@@ -127,3 +162,4 @@ Vue.filter('vueAgoTime',function(created){
 Vue.filter('vueMoment',function(created){
   return moment(created).fromNow();
 })
+

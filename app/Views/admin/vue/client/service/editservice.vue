@@ -6,43 +6,62 @@
               <div class="modal-content">
                 <div class="modal-header panel-heading">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title"><b>Update Service</b></h4>
+                  <h4 class="modal-title"><b>{{service.name}}</b></h4>
                 </div>
                 <div class="modal-body">
                   
                   <form  role="form" @submit.prevent="" class="form-horizontal">
                    
 
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Title of Service</small></i>
-                        <input class="form-control input-sm" type="text" v-model="recrd.name">
-                        <span v-if="errors.name" :class="['label label-danger']">{{ errors.name[0] }}</span> 
-                      </div> 
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Service Name</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="service.name">
+                          </div>
+                          <div class="error-message" v-if="errors.name">
+                            {{ errors.name[0] }}
+                          </div>
+                        </div>
                     </div>
 
-                    <div class="form-group glow-input">                   
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Description Of service</small></i>
-                        <textarea class="form-control input-sm" id="" cols="30" rows="5" v-model="recrd.description"></textarea>
-                        <span v-if="errors.description" :class="['label label-danger']">{{ errors.description[0] }}</span> 
-                      </div> 
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3">Service Description</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <textarea rows="2" class="form-control no-resize"  v-model="service.description"></textarea>
+                          </div>
+                          <div class="error-message" v-if="errors.description">
+                            {{ errors.description[0] }}
+                          </div>
+                        </div>
                     </div>
 
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Billing charge of service</small></i>
-                        <input class="form-control input-sm" type="text" v-model="recrd.charge">
-                        <span v-if="errors.bill" :class="['label label-danger']">{{ errors.bill[0] }}</span> 
-                      </div> 
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Service Charge</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="service.charge">
+                          </div>
+                          <div class="error-message" v-if="errors.charge">
+                            {{ errors.charge[0] }}
+                          </div>
+                        </div>
                     </div>
 
-                    <div class="form-group glow-input">
-                      <div class="col-md-12 col-xs-12">
-                        <i><small>Expected Completion Time</small></i>
-                        <input class="form-control input-sm" type="text"  v-model="recrd.duration">
-                        <span v-if="errors.tat" :class="['label label-danger']">{{ errors.tat[0] }}</span> 
-                      </div> 
+
+                    <div class="form-group">
+                      <label for="" class="col-sm-3" >Product Deadline</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control" v-model="service.duration">
+                          </div>
+                          <div class="error-message" v-if="errors.duration">
+                            {{ errors.duration[0] }}
+                          </div>
+                        </div>
                     </div>
                     
                     
@@ -63,10 +82,9 @@
 
 <script type="text/javascript">
 	export default{
-		props:['recrd'],
+		props:['service'],
 		data(){
-			return{
-				service:{name:'',desc:'',bill:'',tat:''},
+			return{				
 				success:'',
 				errors:[],
         errormessage:'',
@@ -78,23 +96,20 @@
 		},
 		methods:{
 			updateservice(){
-         axios.put('service/'+this.recrd.id,this.recrd)
-          .then(data=>{
-            this.success='Appointment Updated successfully'
+         axios.put('service/'+this.service.id,this.service)
+          .then(data=>{      
             this.$emit('recordupdated',data)
-            this.service={}
             $('#editservices').modal('hide');
 
             toast({
-                type: 'success',
-                title: 'Service Updated successfully'
+              type: 'success',
+              title: 'Service Updated successfully'
             })
 
           }) 
 
           .catch((error) => {
-            this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;
+            this.errors = error.response.data.errors;          
           });
 			},
 		},

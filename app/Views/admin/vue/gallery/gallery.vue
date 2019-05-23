@@ -68,9 +68,10 @@
 				toast({
                 	type: 'success',
                 	title: 'Media added successfully'
+                	
             	})
-            	//window.location.reload(true);
-            	//.removeFile(this.file)
+            	window.location.reload(true);
+            	this.removeAllFiles();
 			},
 			deleteimage(id){
 				swalWithBootstrapButtons({

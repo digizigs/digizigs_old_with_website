@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
-{
-
+class Profile extends Model{
 
     public function user(){
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\User','id','user_id');
     }
+    
 }

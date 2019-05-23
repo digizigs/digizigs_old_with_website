@@ -11,18 +11,11 @@
 
 	<div class="right_col" role="main">
 
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>User Management <small></small></h3>
-              </div>       
-            </div>
-
-            <div class="clearfix"></div>
+          <div class="">            
 
             <div class="row">
               
-
+                
               
 
               	<div class="clearfix"></div>
@@ -36,15 +29,23 @@
                 @endif
 
               	<div class="col-md-12 col-sm-12 col-xs-12">
+
+                  <users></users>
+
 	                <div class="x_panel">
-	                  <div class="x_title">	                   
+	                  <div class="x_title">
+                     <h3>User Management <small></small></h3>	                   
 	                    <a href="#adduser" class="btn btn-dark btn-sm pull-right" data-toggle="modal">Add User</a>
                       <div class="clearfix"></div>
 	                  </div>
 
 	                  <div class="x_content">
 
+
+
                       <div class="col-md-12 col-xs-12">
+
+                    
                         
                         <div class="panel-group pannel-line-group">
                           @foreach ($users as $user)
@@ -82,7 +83,9 @@
                         </div>
                       </div>
 
-                      {{ $users->links() }}
+                      <div class="lara-pagination">
+                        {{ $users->links() }}
+                      </div>
                     
                                          							     
 	                  </div>

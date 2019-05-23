@@ -73,7 +73,7 @@ class PostController extends Controller
     }
    
     public function store(Request $request){
-        //dd($request->categories);
+        //dd($request->all());
         //return  $request->all();
      
         $data = Validator::make($request->all(),[
@@ -94,22 +94,21 @@ class PostController extends Controller
         if($request->hasFile('feature_image')){
             $image = $request->file('feature_image');
             $filename = time().'_'. $image->getClientOriginalName();
-            $location = public_path('uploads/' . $filename);
+            $location = public_path('uploads/posts/' . $filename);
             //Image::make($image->getRealPath())->resize(250, 250)->save($location);
             Image::make($image->getRealPath())->save($location);            
-            $post->image_url = url('/public/uploads') . '/' . $filename;           
+            $post->image_url = url('/public/uploads/posts') . '/' . $filename;           
         }
         
         $post->save();
 
         //Sync categories
-        if(!$request->categories){           
-            $post->categories()->sync([0]);
+        if(!$request->categories){          
+            $post->categories()->sync([1]);
         }else{
             $post->categories()->sync($request->categories);
         }
         
-
         //Saving Tags
         $tagIds = [];
         if($request->tags){

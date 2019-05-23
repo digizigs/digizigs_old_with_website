@@ -24,25 +24,43 @@ class UserController extends Controller
     }
 
     
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $roles = Role::orderby('created_at','desc')->get()->toArray();
+
+        if($request->search_string == ''){
+            $users = User::orderby('created_at','desc')->paginate(8);
+            //$data = ['roles'=$roles,'users'=>$users];          
+            return request()->json(200,['roles'=>$roles,'users'=>$users]);
+        }else{
+            $users['data'] = User::where('name','like', '%'.$request->search_string.'%')                               
+                                ->orderby('created_at','desc')->get();
+            return request()->json(200,$users);
+        }
     }
 
     
-    public function store(UserStoreRequest $request) {   
-        //dd($request);
+    public function store(Request $request) { 
+
+        $this->validate($request, [          
+            'firstname' => 'required|string|max:200',
+            'lastname' => 'required|string|max:200',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+        ]);  
+        //return $request->all();
 
         /*if (! Gate::allows('users_manage')) {
             return abort(401);
         }*/
 
         $user = User::create($request->all());
-        $roles = $request->input('roles') ? $request->input('roles') : [];
+        //$roles = $request->input('roles') ? $request->input('roles') : [];
         //dd($roles);
-        $user->assignRole($roles);
-
-        return redirect()->route('users.index')->with('message', 'User added successfully');
+        //$user->assignRole($roles);
+        $users = User::orderby('created_at','desc')->paginate(8);
+        return request()->json(200,$users);
+       
     }
 
     
@@ -71,20 +89,24 @@ class UserController extends Controller
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->syncRoles($roles);
 
-        return redirect()->route('users.index')->with('message', 'User updated successfully');;;
+        return redirect()->route('users.index')->with('message', 'User updated successfully');
     }
 
    
     public function destroy($id) {
 
-      /*  if (! Gate::allows('users_manage')) {
+      /*if (! Gate::allows('users_manage')) {
             return abort(401);
-        }*/
+        } */      
 
-        $user = User::findOrFail($id);
-        $user->delete();
+        $user = User::find($id);
+        $is_deleted=$user->delete();
+        if($is_deleted){
+            $users = User::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$users);
+        }
 
-        return redirect()->route('users.index')->with('deleted', 'User deleted successfully');;;
+
     }
 
     public function massDestroy(Request $request) {

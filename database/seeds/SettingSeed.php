@@ -16,5 +16,7 @@ class SettingSeed extends Seeder
         Setting::create(['name' => 'app_admin_url','val'=>'dz-admin']);
         Setting::create(['name' => 'app_email','val'=>'admin@admin.com']);
         Setting::create(['name' => 'app_description','val'=>'admin']);
+        Setting::create(['name' => 'home_page','val'=>1]);
+        Setting::create(['name' => 'post_per_page','val'=>10]);
     }
 }

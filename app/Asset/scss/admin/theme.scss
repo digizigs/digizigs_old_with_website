@@ -285,7 +285,7 @@ table.tile_info td p {
 }
 
 .nav-sm .nav.side-menu li a i {
-    font-size: 25px!important;
+    font-size: 15px!important;
     text-align: center;
     width: 100%!important;
     margin-bottom: 5px
@@ -406,11 +406,12 @@ table.tile_info td p {
 
 .nav_menu {
     float: left;
-    background: #EDEDED;
+    background: #FAFBFC;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
-    position: relative
+    position: relative;
+    font-weight: bold;
 }
 
 @media (min-width:480px) {
@@ -435,7 +436,7 @@ table.tile_info td p {
 }
 
 body .container.body .right_col {
-    background: #F7F7F7
+    background: #EAEDF2
 }
 
 .nav-md .container.body .right_col {
@@ -836,7 +837,7 @@ a:visited {
 
 .top_nav .dropdown-menu li a {
     width: 100%;
-    padding: 12px 20px
+    padding: 12px 15px
 }
 
 .top_nav li a i {
@@ -1042,7 +1043,7 @@ a:visited {
 }
 
 .toggle a i {
-    font-size: 26px
+    font-size: 20px
 }
 
 .nav.child_menu>li>a {
@@ -1085,7 +1086,7 @@ a:visited {
 }
 
 footer {
-    background: #fff;
+    background: #FAFBFC;
     padding: 15px 20px;
     display: block
 }
@@ -1241,7 +1242,30 @@ h2 {
 
 .x_panel,
 .x_title {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    h2{
+        margin: 0 !important;
+        color: #2A5D84;
+        font-weight: 500;
+    }
+    .search{
+        display: inline-flex;
+        margin-left: 30px;
+        margin-bottom: 0 !important;
+        padding: 0;
+        //border: 1px solid grey;
+        i{
+            margin-top: 10px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        input{
+            margin: 0 !important;
+        }
+        .form-group{
+            margin-bottom: 0px !important;
+        }
+    }
 }
 
 .accordion .panel-heading {
@@ -1263,10 +1287,15 @@ h2 {
     //-webkit-column-break-inside: avoid;
     //-moz-column-break-inside: avoid;
     column-break-inside: avoid;
-    border-radius: 4px;
+    border-radius: 1px;
     //transition: all 0.56s cubic-bezier(0.25, 0.8, 0.25, 1);
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
-    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
+    //-webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
+    //box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+    box-shadow: 0 0.46875rem 2.1875rem rgba(4,9,20,0.03), 0 0.9375rem 1.40625rem rgba(4,9,20,0.03), 0 0.25rem 0.53125rem rgba(4,9,20,0.05), 0 0.125rem 0.1875rem rgba(4,9,20,0.03);
+    border-width: 0;
+
+
 
 }
 
@@ -4307,12 +4336,13 @@ div[data-role=editor-toolbar] {
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #73879C;
+    color: #ffff;
     padding-top: 5px
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
-    padding-top: 3px
+    padding-top: 3px;
+    color: #ffff;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -4323,13 +4353,16 @@ div[data-role=editor-toolbar] {
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
     margin-top: 2px;
     border: none;
-    border-radius: 0;
-    padding: 3px 5px
+    border-radius: 2px;
+    padding: 3px 5px;
+    background-color: #2A3F54;
+    color: #ffff;
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
     border: 1px solid #ccc
 }
+
 
 .switchery {
     width: 32px;
@@ -4907,3 +4940,7 @@ ul.notifications {
 .dataTables_wrapper>.row {
     overflow: auto!important
 }
+
+//Material design new profile page
+
+

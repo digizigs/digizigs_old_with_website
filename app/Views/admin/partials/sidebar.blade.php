@@ -1,5 +1,5 @@
 <div class="col-md-3 left_col">
-  <div class="left_col scroll-view">
+  <div class="left_col ">
 
 
     <div class="navbar nav_title sidebar-brand" style="border: 0;">
@@ -27,10 +27,10 @@
           <li class=""><a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
           </li>
 
-          <li><a><i class="fa fa-edit"></i> Posts <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
-              <li><a href="{{route('post.index')}}">All Posts</a></li>
-              <li><a href="{{route('post.create')}}">Add Post</a></li>
+              <li><a href="{{route('post.index')}}">All Article</a></li>
+              <li><a href="{{route('post.create')}}">New Article</a></li>
             </ul>
           </li>
 
@@ -53,9 +53,8 @@
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-          <li><a><i class="fa fa-user"></i>Contacts<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('contacts.index')}}"> Contacts </a></li>
+          <li><a><i class="fa fa-user"></i>Subscriptions & Inquiry<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">            
               <li><a href="{{route('subscription.index')}}"> Subscriptions </a></li>
               <li><a href="{{route('inquiry.index')}}"> Inquiry </a></li>
             </ul>

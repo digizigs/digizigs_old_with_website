@@ -16,8 +16,7 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-        $subscriptions=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
-        return view('admin.pages.contact.subscription',compact('subscriptions'));
+        return view('admin.pages.contact.subscription');
     }
 
     
@@ -29,7 +28,7 @@ class SubscriptionController extends Controller
 
     public function create()
     {
-        $subscription=Subscription::orderby('created_at','desc')->get();
+        $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
         return request()->json(200,$subscription);
     }
 
@@ -48,13 +47,51 @@ class SubscriptionController extends Controller
     
     public function edit($id)
     {
-        //
+        return 'edit';
     }
 
     
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        if($request->action == 'subscribe'){
+
+            $subscription = Contact::find($id);
+            $subscription->status = 1;
+            $subscription->save();
+
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
+            return request()->json(200,$subscription);
+
+         }else{
+            $subscription = Contact::find($id);
+            $subscription->status = 0;
+            $subscription->save();
+
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(8);
+            return request()->json(200,$subscription);
+         }
+        
+       
+        /*if($request->action == 'subscribe'){
+            
+            $subscription = Contact::find($id);
+            $subscription->status = 1;
+            $subscription->save();
+
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+            return request()->json(200,$subscription);
+
+        }else{
+            
+            $subscription = Contact::find($id);
+            $subscription->status = 0;
+            $subscription->save();
+
+            $subscription=Contact::orderby('created_at','desc')->where('type','newsletter')->paginate(10);
+            return request()->json(200,$subscription);
+
+        }*/
+       
     }
 
     

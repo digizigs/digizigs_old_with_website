@@ -1,4 +1,4 @@
-  <div class="top_nav">
+<div class="top_nav">
   <div class="nav_menu">
     <nav>
       <div class="nav toggle">
@@ -9,7 +9,7 @@
 
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="{{asset('public/images/img.jpg')}}" alt="">{{Auth::user()->firstname }}, {{ Auth::user()->lastname}}
+            <img src="{{ Auth::user()->avatar_url}}" alt="">{{Auth::user()->firstname }}, {{ Auth::user()->lastname}}
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -21,9 +21,9 @@
               </a>
             </li>
             
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
               </form>
 
@@ -34,7 +34,6 @@
         <li role="presentation" class="dropdown">
           
           <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-           
             <i class="fa fa-bell"></i>
               @if(Auth::user()->unreadNotifications->count())  
                 <span class="badge bg-orange">{{Auth::user()->unreadNotifications->count()}}</span>
@@ -43,7 +42,7 @@
           
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list to_do" role="menu">
             
-            @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
+              @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
               <li>                
                 <a>
                   <span>
@@ -57,27 +56,24 @@
                         <a href="">View</a>
                     </span>                    
                   </span>
-                </a>
-                               
-                
-              </li>
-          
-            @endforeach                      
-              <div class="text-center">
+                </a>                                            
+              </li>          
+              @endforeach
 
+              <div class="text-center">
                 @if(Auth::user()->unreadNotifications->count())
                   <a class="pull-left" style="padding:5px 10px;">
                     See All Alerts
                   </a>
                   <a href="{{route('marknotificationread')}}" class="pull-right" style="padding:5px 10px;">
                     Mark all as read
-                  </a>
-                
+                  </a>                
                 @endif
-
               </div>
-            </li>
+
+            
           </ul>
+
         </li>
 
       </ul>

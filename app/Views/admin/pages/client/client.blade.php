@@ -17,3 +17,9 @@
 
     
 @endsection
+
+
+@section('javascript')
+ 
+                
+@endsection

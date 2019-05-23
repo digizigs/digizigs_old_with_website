@@ -17,6 +17,7 @@
    
     <!-- Font Awesome -->
     <link href="{{asset('public/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- NProgress -->
     <link href="{{asset('public/vendor/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
@@ -40,9 +41,10 @@
     <link href="{{asset('public/vendor/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/vendor/starrr/dist/starrr.css')}}" rel="stylesheet">
 
+    <!-- Bootstrap select -->
+    <link href="{{asset('public/vendor/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
 
-    
-    
+
     <!-- Custom Theme Style -->
     <link href="{{asset('public/css/admin_main.css')}}" rel="stylesheet">
 

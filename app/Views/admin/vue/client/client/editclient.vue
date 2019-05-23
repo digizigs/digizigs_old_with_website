@@ -1,259 +1,284 @@
 <template>
-	<section>
-		<!--Add service-->
+  <section>
+    <!--Add service-->
         <div class="modal fade" id="editclient" role="dialog"  data-backdrop="false">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
-                  <button type="button" class="close" data-dismiss="modal" @close="colosemodal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
                   <i class="fa fa-user-circle" aria-hidden="true"></i>
-                  <h4 class="modal-title green"><b>{{recrd.client_name}}</b></h4>
+                  <h4 class="modal-title"><b>{{selClient.client_name}}</b></h4>
                 </div>
                 <div class="modal-body">
-
-
-                  
                   <form  role="form" @submit.prevent="" class="form-horizontal">
 
-                    <div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                    <div class="material-tab-pane">
+                      <ul class="nav nav-tabs" role="tablist">
+                          <li role="presentation" class="active"><a href="#basic_details2" aria-controls="settings" role="tab" data-toggle="tab">Basic Details</a></li>
+                          <li role="presentation"><a href="#contact_person2" aria-controls="settings" role="tab" data-toggle="tab">Contact Person</a></li>
+                          <li role="presentation"><a href="#contact_address2" aria-controls="settings" role="tab" data-toggle="tab">Address</a></li>
+                          <li role="presentation"><a href="#notes2" aria-controls="settings" role="tab" data-toggle="tab">Notes</a></li>
+                      </ul>
 
-                      <div class="panel">
-                        <a class="panel-heading" role="tab" id="headingOne1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
-                          <h4 class="panel-title">Basic Client Detais</h4>
-                        </a>
-                        <div id="collapseOne1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body">
 
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Name</small></i></b>
-                                <input class="form-control input-sm" type="text"    v-model="recrd.client_name">
-                                <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
-                              </div> 
+                      <div class="tab-content">
+                        
+                        <!--Basic Details-->
+                        <div role="tabpanel" class="tab-pane fade in active" id="basic_details2">
+                            <div class="row">
+                                <div class="col-md-12">                                   
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3" >Name</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control" v-model="selClient.client_name">
+                                          </div>
+                                           <div class="error-message" v-if="errors.client_name">
+                                            {{ errors.client_name[0] }}
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3">Website</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text"  class="form-control" v-model="selClient.client_website">
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3">Email</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control" v-model="selClient.client_email">
+                                          </div>
+                                          <div class="error-message" v-if="errors.client_email" >
+                                            {{ errors.client_email[0] }}
+                                          </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3">Contact Number</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control" v-model="selClient.client_phone">
+                                          </div>
+                                          <div class="error-message" v-if="errors.client_phone">
+                                            {{ errors.client_phone[0] }}
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12">
-                                <b><i><small>Website</small></i></b>
-                                <input class="form-control input-sm" type="text"    v-model="recrd.client_website">
-                                <span v-if="errors.client_website" :class="['label label-danger']">{{ errors.client_website[0] }}</span>                               
-                              </div> 
-                            </div>
-
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12">
-                                <b><i><small>Email</small></i></b>
-                                <input class="form-control input-sm" type="text"    v-model="recrd.client_email"> 
-                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
-                              </div> 
-                            </div>
-
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12">
-                                <b><i><small>Phone Number</small></i></b>
-                                <input class="form-control input-sm" type="text"   v-model="recrd.client_phone">
-                                <span v-if="errors.client_phone" :class="['label label-danger']">{{ errors.client_phone[0] }}</span>
-                              </div> 
-                            </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingTwo1" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1" aria-expanded="false" aria-controls="collapseTwo">
-                          <h4 class="panel-title">Contact Person Details</h4>
-                        </a>
-                        <div id="collapseTwo1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>First Name</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.contact_first_name">
-                              </div>
 
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Last Name</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.contact_last_name">
-                              </div> 
+                        <!--Contact info-->
+                        <div role="tabpanel" class="tab-pane fade in" id="contact_person2">
+                            <div class="row">
+                              <div class="col-md-12">                                 
 
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Email</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.contact_email">
-                              </div> 
+                                  <div class="form-group">
+                                      <label for="" class="col-sm-3">Name</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text"  class="form-control" v-model="selClient.contact_name">
+                                          </div>
+                                        </div>
+                                    </div>
 
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Phone</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.contact_phone">
-                              </div>  
+                                  <div class="form-group">
+                                      <label for="" class="col-sm-3">Email</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="email" class="form-control" v-model="selClient.contact_email">
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                  <div class="form-group">
+                                      <label for="" class="col-sm-3">Contact Number</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control" v-model="selClient.contact_phone">
+                                          </div>
+                                        </div>
+                                    </div>
+                              </div>                                  
                             </div>
-                          </div>
+                        </div> 
+
+                        <!-- Address -->
+                        <div role="tabpanel" class="tab-pane fade in" id="contact_address2">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3 ">Address</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control">
+                                          </div>
+                                        </div>
+                                    </div>                                  
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3 ">Landmark</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control">
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="default_post_category" class="col-sm-3">City</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line" style="text-align: center;">
+                                            <select name="" class="form-control input-sm" >
+                                              <option selected="selected" value="0">-Select-</option> 
+                                              <option value="1">uncategorised</option> 
+                                              <option value="2">Blog</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="default_post_category" class="col-sm-3">State</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line" style="text-align: center;">
+                                            <select name="" class="form-control input-sm" >
+                                              <option selected="selected" value="0">-Select-</option> 
+                                              <option value="1">uncategorised</option> 
+                                              <option value="2">Blog</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="" class="col-sm-3">Postal Code</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line">
+                                            <input type="text" class="form-control">
+                                          </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <label for="default_post_category" class="col-sm-3">Country</label> 
+                                        <div class="col-sm-9">
+                                          <div class="form-line" style="text-align: center;">
+                                            <select name="" class="form-control input-sm" >
+                                              <option selected="selected" value="0">-Select-</option> 
+                                              <option value="1">uncategorised</option> 
+                                              <option value="2">Blog</option>
+                                            </select>
+                                          </div>
+                                        </div>
+                                    </div>                                
+                                                             
+                                </div>
+                                                              
+                            </div>
                         </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree">
-                          <h4 class="panel-title">Address</h4>
-                        </a>
-                        <div id="collapseThree1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
+                        
+                        <!-- Notes -->
+                        <div role="tabpanel" class="tab-pane fade in" id="notes2">
+                            <div class="row">                                
+                              <div class="col-md-12">
+                              
 
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Line 1</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_line_1">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Line 2</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_line_2">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Street/Landmark</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_street">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>City</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_city">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                               <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>State/Province</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_state">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Postal Code</small></i></b>
-                                <input class="form-control input-sm" type="text" v-model="recrd.address_postal">
-                              </div>
-                            </div>
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Country</small></i></b>
-                                <input class="form-control input-sm" type="text"    v-model="recrd.address_country">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel">
-                        <a class="panel-heading collapsed" role="tab" id="headingThree1" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                          <h4 class="panel-title">Additional Notes</h4>
-                        </a>
-                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
-                            
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Public Note</small></i></b>
-                                <textarea class="form-control input-sm"  v-model="recrd.public_note"></textarea>
-                              </div>
-                            </div>
+                                <div class="form-group">
+                                  <label for="" class="col-sm-3">Public Note</label> 
+                                    <div class="col-sm-9">
+                                      <div class="form-line">
+                                        <textarea rows="2" class="form-control no-resize"  v-model="selClient.public_note"></textarea>
+                                      </div>
+                                    </div>
+                                </div>
 
-                            <div class="form-group glow-input">
-                              <div class="col-sm-12 col-xs-12 col-xs-12">
-                                <b><i><small>Private Note</small></i></b>
-                                <textarea class="form-control input-sm"  v-model="recrd.private_note"></textarea>
+
+                                <div class="form-group">
+                                  <label for="" class="col-sm-3">Private Note</label> 
+                                    <div class="col-sm-9">
+                                      <div class="form-line">
+                                        <textarea rows="2" class="form-control no-resize" v-model="selClient.private_note"></textarea>
+                                      </div>
+                                    </div>
+                                </div>                              
+
+
                               </div>
                             </div>
-                            
-                          </div>
                         </div>
+
                       </div>
+
 
                     </div>
-                                                                        
-                    <hr>
-                   
+
                     <div class="form-group">
-                      <button class="btn btn-dark btn-sm pull-right" @click="updateclient" >Update</button>
+                      <button class="btn btn-dark btn-sm pull-right" @click="updateclient" >Update Client</button>
                     </div>
 
-                  </form>
-                  
-                  
-                </div>
 
-              
+                  </form>                                   
+                   
+                </div>             
                 
               </div>
             </div>
         </div>
-	</section>
+  </section>
 </template>
 
 <script type="text/javascript">
-	export default{
-    props:['recrd'],
-		data(){
-			return{
-				client:{
-          client_name:'',
-          client_website:'',
-          client_phone:'',
-          client_email:'',
-          contact_first_name:'',
-          contact_last_name:'',
-          contact_email:'',
-          contact_phone:'',
-          address_line_1:'',
-          address_line_2:'',
-          address_street:'',
-          address_city:'',
-          address_state:'',
-          address_postal:'',
-          address_country:'',
-          public_note:'',
-          private_note:''
-        },
-				success:'',
-				errors:[],
-        errormessage:'',
-				clients:{},
-			}
-		},
-		watch:{
+  export default{
+    props:['selClient'],
+    data(){
+      return{       
+        success:'',
+        errors:'',
+        clients:{},
+      }
+    },
+    watch:{
 
-		},
-		methods:{
-		  updateclient(){
-         axios.put('client/'+this.recrd.id,this.recrd)
-          .then(data=>{
-            this.success='Client Updated successfully'
-            this.$emit('recordupdated',data)
-            this.client={}
+    },
+    methods:{
+      updateclient(){
+        axios.put('client/'+this.selClient.id,this.selClient)
+         .then(data=>{
+            this.$emit('recordupdated',data),
             $('#editclient').modal('hide');
-
             toast({
-              type: 'success',
-              title: 'Client Updated successfully',
+                type: 'success',
+                title: 'Client Updated successfully'
             })
-
-          }) 
-
-          .catch((error) => {
-            this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;
-            //console.log(this.errors);
-          });
+            this.errors=''
+         })
+         .catch((error) => {
+            this.errors=error.response.data.errors;           
+          })
       },
-      colosemodal(){
-        this.client={};
-        this.recrd=null;
-      }  
-		},
-		created(){
-		
-		}
-	};
+    },
+    created(){
+    
+    }
+  };
 
 </script>
 
 <style type="text/css" Scoped>
-
+  .fa{
+    margin-right: 10px;
+  }
 
 </style>
