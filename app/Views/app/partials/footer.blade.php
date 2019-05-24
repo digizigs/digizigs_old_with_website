@@ -102,19 +102,19 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="copyright-txt">
+                <div class="col-lg-12">
+                    <div class="copyright-txt" style="text-align: center;">
                         <span>© 2018</span> <a href="{{url('/')}}">DigiZigs Web Technologies.</a> <span>All Rights Reserved.</span>
                     </div>
                 </div>
-                <div class="col-lg-6 text-right">
+                <!-- <div class="col-lg-6 text-right">
                     <div class="footer-nav">
                         <a href="{{url('/')}}">Home</a>
                         <a href="{{url('/portfolio')}}">Portfolio</a>
                         <a href="#">Pages</a>                     
                         <a href="{{url('/blog')}}">Blog</a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

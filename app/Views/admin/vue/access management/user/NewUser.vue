@@ -66,7 +66,6 @@
                                  </div>
                               </div>
                            </div>
-
                            <div class="form-group">
             								<label for="" class="col-sm-3">Roles</label>
             								<div class="col-sm-9">
@@ -81,10 +80,10 @@
                                             @input="updateSelected"
                                             @tag="addTag">
                                           
-                              </multiselect>
-                              <!--pre>{{value}}</pre-->
+                                       </multiselect>
+                                    <!--pre>{{value}}</pre-->
             								</div>							  								  	
-            							</div>
+            					</div>
 
 
                   		</div>
