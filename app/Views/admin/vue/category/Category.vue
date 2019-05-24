@@ -12,11 +12,13 @@
 		                <div class="x_content">
 		                	<div class="col-md-4 col-xs-12">
 
-		                		<div class="form-group glow-input">
+		                		<div class="form-group">
 	                                <label for="usr">Category Name</label>
 	                                <input type="text" class="form-control input-sm" v-model="category">
 	                                <small><i>The name is how it appears on your site.</i></small>
 	                            </div>
+
+	                            
 
 	                            <!--Parent category dropdown-->
                                	<div class="form-group glow-input">

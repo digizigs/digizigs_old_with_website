@@ -53,11 +53,11 @@
                                 <div class="form-group form-float">
                                    <div class="form-line">
                                        <input type="text" class="form-control" name="category_name" value="{{ old('category_name') }}">
-                                       <label class="form-label">Category</label>
+                                       <label class="form-label error">Category</label>
                                    </div>
                                    <small><i>The name is how it appears on your site.</i></small>
                                 </div>
-
+                                
                                <!--Parent category dropdown-->
                                <div class="form-group">
                                  <label for="sel1">Parent Catagory</label>
@@ -71,7 +71,7 @@
                                    @endforeach
                                    
                                  </select>
-                                 <small><i>Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</i></small>
+                                 <small><i style="color:#aaa">Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have children categories for Bebop and Big Band. Totally optional.</i></small>
                                </div>
 
 
@@ -154,9 +154,9 @@
         
                             </div>
                               
-                            <b><i>Note:</i></b>
+                            <b><i style="color:#aaa">Note:</i></b>
                             <p>
-                              <i>
+                              <i style="color:#aaa">
                                 Deleting a category does not delete the posts in that category. Instead, posts that were only assigned to the deleted category are set to the category <b>Uncategorized</b>.
                               </i>
                             </p>  

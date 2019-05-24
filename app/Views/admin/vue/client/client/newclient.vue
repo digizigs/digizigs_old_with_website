@@ -5,11 +5,13 @@
             <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   
                   <h4 class="modal-title" id="defaultModalLabel">New Client</h4>
                 </div>
                 <div class="modal-body">
+
+
                   <form  role="form" @submit.prevent="" class="form-horizontal">
 
                     <div class="material-tab-pane">
@@ -34,7 +36,7 @@
                                                 <input type="text" class="form-control" v-model="newclient.client_name">
                                               </div>
                                               <div class="error-message" v-if="errors.client_name">
-                                                {{ errors.client_name[0] }}
+                                                <small><i>{{ errors.client_name[0] }}</i></small>
                                               </div>
                                             </div>
                                         </div>
@@ -55,7 +57,7 @@
                                                 <input type="text" class="form-control" v-model="newclient.client_email">
                                               </div>
                                               <div class="error-message" v-if="errors.client_email" >
-                                                {{ errors.client_email[0] }}
+                                                <small><i>{{ errors.client_email[0] }}</i></small>
                                               </div>
                                             </div>
                                             
@@ -68,7 +70,7 @@
                                                 <input type="text" class="form-control" v-model="newclient.client_phone">
                                               </div>
                                               <div class="error-message" v-if="errors.client_phone">
-                                                {{ errors.client_phone[0] }}
+                                                <small><i>{{ errors.client_phone[0] }}</i></small>
                                               </div>
                                             </div>
                                         </div>
@@ -226,11 +228,8 @@
                     </div>
                   
                   </form>
-
                 </div>
-
               
-                
               </div>
             </div>
         </div>
@@ -244,7 +243,6 @@
         newclient:{},				
 				success:'',
 				errors:[],
-        error_message:'',
 				clients:{},
 			}
 		},
@@ -259,7 +257,13 @@
       }
     },
 		methods:{
+      modalclose(){
+        NProgress.done();
+        this.newclient = {};
+        this.errors = []
+      },
 		  addclient(){
+        NProgress.start();
         axios.post('client',this.newclient)
             .then(data => {                    
               this.$emit('recordupdated',data),                            
@@ -269,11 +273,11 @@
                 type: 'success',
                 title: 'New Client added successfully'
             })
+            NProgress.done();
 
           })
           .catch((error) => {
-            this.errors = error.response.data.errors;
-            this.error_message = error.response.data.message;           
+            this.errors = error.response.data.errors;          
           })
       }
 		},

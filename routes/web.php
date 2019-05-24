@@ -52,15 +52,15 @@ Route::get('/taskeventlisten',function(){
 //=========================================Test Routes=============================================//
 Route::get('/mail',function(){
 
-    $contact = App\Models\Contact::where('email','jaysvishwa@gmail.com')->first();
+    return new App\Mail\testmail('test mail');
+    //$contact = App\Models\Contact::where('email','jaysvishwa@gmail.com')->first();
     //$job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
     //$job = (new testmailjob($contact));
     //dispatch($job);
 
-    Mail::to('jaysvishwa@gmail.com')
-            ->send(new testMail($contact));
+    //Mail::to('jaysvishwa@gmail.com') ->send(new testMail($contact));
 
-    return 'Mail sent successfully';
+    //return 'Mail sent successfully';
 });
 
 Auth::routes();

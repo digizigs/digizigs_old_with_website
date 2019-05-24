@@ -6,62 +6,63 @@
               <div class="modal-content">
                 <div class="modal-header panel-heading">
                   <button type="button" class="close" data-dismiss="modal" @click="modal_close" >&times;</button>
-                  <h4 class="modal-title"><b>New Service</b></h4>
+                  <h4 class="modal-title"><b>Add New Service</b></h4>
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="" class="form-horizontal">
-                   
-                  
-                    <div class="form-group">
-                      <label for="" class="col-sm-3" >Service Name</label> 
-                        <div class="col-sm-9">
-                          <div class="form-line">
-                            <input type="text" class="form-control" v-model="newservice.name">
-                          </div>
-                          <div class="error-message" v-if="errors.name">
-                            {{ errors.name[0] }}
-                          </div>
-                        </div>
+                  <form  role="form" @submit.prevent="" class="form-horizontal">                
+
+                    <div class="form-group form-float">
+                      <div class="form-line">
+                         <input type="text" class="form-control" v-model="newservice.name">
+                         <label class="form-label error">Service Name</label>
+                      </div>
+                      <div class="error-message" v-if="errors.name">
+                        <small><i>{{ errors.name[0] }}</i></small>
+                      </div>
+                      <div v-else>
+                        <small><i>Name of the service</i></small>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-float">
+                      <div class="form-line">
+                         <input type="text" class="form-control" v-model="newservice.desc">
+                         <label class="form-label error">Service Description</label>
+                      </div>
+                      <div class="error-message" v-if="errors.desc">
+                        <small><i>{{ errors.desc[0] }}</i></small>
+                      </div>
+                      <div v-else>
+                        <small><i>Breif description about service</i></small>
+                      </div>
+                    </div>
+
+                    <div class="form-group form-float">
+                      <div class="form-line">
+                         <input type="text" class="form-control" v-model="newservice.bill">
+                         <label class="form-label error">Service Charge</label>
+                      </div>
+                      <div class="error-message" v-if="errors.bill">
+                        <small><i>{{ errors.bill[0] }}</i></small>
+                      </div>
+                      <div v-else>
+                        <small><i>Billing amount for each service</i></small>
+                      </div>
                     </div>
 
 
-                    <div class="form-group">
-                      <label for="" class="col-sm-3">Service Description</label> 
-                        <div class="col-sm-9">
-                          <div class="form-line">
-                            <textarea rows="2" class="form-control no-resize"  v-model="newservice.desc"></textarea>
-                          </div>
-                          <div class="error-message" v-if="errors.desc">
-                            {{ errors.desc[0] }}
-                          </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                      <label for="" class="col-sm-3" >Service Charge</label> 
-                        <div class="col-sm-9">
-                          <div class="form-line">
-                            <input type="text" class="form-control" v-model="newservice.bill">
-                          </div>
-                          <div class="error-message" v-if="errors.bill">
-                            {{ errors.bill[0] }}
-                          </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                      <label for="" class="col-sm-3" >Product Deadline</label> 
-                        <div class="col-sm-9">
-                          <div class="form-line">
-                            <input type="text" class="form-control" v-model="newservice.tat">
-                          </div>
-                          <div class="error-message" v-if="errors.tat">
-                            {{ errors.tat[0] }}
-                          </div>
-                        </div>
+                    <div class="form-group form-float">
+                      <div class="form-line" >
+                         <input type="text" class="form-control" v-model="newservice.tat">
+                         <label class="form-label error">Product Deadline</label>
+                      </div>
+                      <div class="error-message" v-if="errors.tat">
+                        <small><i>{{ errors.tat[0] }}</i></small>
+                      </div>
+                      <div v-else>
+                        <small><i>Time for project completion</i></small>
+                      </div>
                     </div>
                    
                     <div class="form-group">
@@ -93,13 +94,19 @@
 			}
 		},
 		watch:{
-
+      newservice(){
+        
+       
+      }
 		},
 		methods:{
       modal_close(){
-        this.errors=''
+        this.errors = ''
+        this.newservice = {}
+        NProgress.done();
       },
 			addservice(){
+        NProgress.start();
 				axios.post('service',this.newservice)
 		        .then(data => {		        
 						  this.$emit('recordupdated',data),					 
@@ -109,6 +116,7 @@
   				  			type: 'success',
   				  			title: 'New Service added successfully'
   						})
+              NProgress.done();
 
 					})
 					.catch((error) => {
@@ -127,8 +135,11 @@
 
 </script>
 
-<style type="text/css" Scoped>
-
-	
+<style lang="scss">
+  .error-message{
+    i{
+      color: #E45447;
+    }
+  }
 
 </style>

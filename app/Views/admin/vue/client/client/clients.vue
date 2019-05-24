@@ -123,6 +123,7 @@
 		        .catch(error => this.errors=error.response.data.errors);
 	      	},
 	      	deleteclient(id){
+	      		NProgress.start();
 	      		swalWithBootstrapButtons({
 		          title: 'Delete Client?',
 		          text: "You won't be able to revert this!",
@@ -143,10 +144,10 @@
 		                	type: 'success',
 		                	title: 'Client  deleted successfully'	                	
 		            	})
+		              NProgress.done();
 
 		            })//this.categories=response.data
-		            .catch((error) => {
-		              console.log(response.data);
+		            .catch((error) => {	              
 		                    this.errors=error.response.data.errors;
 		                    this.success='';                
 		              });

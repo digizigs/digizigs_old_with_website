@@ -100,6 +100,7 @@
 			        //.catch(error => this.errors=error.response.data.errors);
 			},
 			delet(id){
+				NProgress.start();
 				swalWithBootstrapButtons({
 					//position: 'top-end',
 		          	title: 'Delete Inquiry?',
@@ -120,6 +121,7 @@
 		                	title: 'Inquiry deleted'
 		                	
 		            	})
+		            	NProgress.done();
 		            	
 		            })
 		            .catch((error) => {

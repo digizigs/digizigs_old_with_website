@@ -83,6 +83,7 @@
 		          .catch(error => this.errors=error.response.data.errors);
 			},
 			subscribe(id){
+				NProgress.start();
 				this.status.action = 'subscribe'
 				axios.put('subscription/'+id,this.status)
 	                .then((response) => {	                	         
@@ -91,10 +92,12 @@
 		                	type: 'success',
 		                	title: 'Subscribed successfully '
 		                	
-		            	})	                    
+		            	})
+		            	NProgress.done();	                    
 	                })
 			},
 			unsubscribe(id){
+				NProgress.start();
 				this.status.action = 'unsubscribe'
 				axios.put('subscription/'+id,this.status)
 	                .then((response) => {                   
@@ -103,7 +106,8 @@
 		                	type: 'success',
 		                	title: 'Unsubscribed successfully '
 		                	
-		            	})	                    
+		            	})
+		            	NProgress.done();	                    
 	                })
 			}
 		},

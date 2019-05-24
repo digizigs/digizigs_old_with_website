@@ -122,6 +122,7 @@
           .catch(error => this.errors=error.response.data.errors);
       },
       deleteservice(id){
+        NProgress.start();
         swalWithBootstrapButtons({
           title: 'Delete Service?',
           text: "You won't be able to revert this!",
@@ -137,6 +138,12 @@
             .then(response =>{
               this.services=response.data;
               this.success="Service Deleted Successfuly";
+
+              toast({
+                  type: 'success',
+                  title: 'Service  deleted successfully'                   
+              })
+              NProgress.done();
 
             })
             .catch((error) => {
