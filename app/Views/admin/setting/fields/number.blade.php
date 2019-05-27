@@ -19,7 +19,7 @@
        			    name="{{ $field['name'] }}" 
        		    	value="{{ old($field['name'], \setting($field['name'])) }}"
        			    class="form-control {{ array_get( $field, 'class') }} input-sm"
-                    id="{{ $field['name'] }}">
+                id="{{ $field['name'] }}">
         </div>
     </div>
     @if ($errors->has($field['name'])) <small class="help-block">{{ $errors->first($field['name']) }}</small> @endif

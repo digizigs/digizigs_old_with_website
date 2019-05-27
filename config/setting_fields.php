@@ -127,42 +127,44 @@ return [
 
 
     ],
-    'media' => [
+    'tax' => [
 
-        'title' => 'Media',
-        'desc' => 'Media upload setting' ,
+        'title' => 'Tax Info',
+        'desc' => 'Tax and GST info' ,
         'icon' => 'fa fa-picture-o',
 
         'elements' => [
             [
-                'type' => 'select',
-                    'name' => 'default_post_category',
-                    'label' => 'Default Post Category',
-                    'rules' => 'required',
-                    'class' => 'input-sm', // class for input
-                    'options' => [
-                        '-Select-',
-                        'Uncategotised',
-                        'Blog',                        
-                    ]
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'registration_number',
+                'label' => 'Registration Number',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
             ],
             [
-                'type' => 'select',
-                    'name' => 'default_post_format',
-                    'label' => 'Default Post Format',
-                    'rules' => 'required',
-                    'class' => 'input-sm', // class for input
-                    'options' => [
-                        '-Select-',
-                        'aside',
-                        'chat',
-                        'gallery',
-                        'link',
-                        'quote',
-                        'status',
-                        'video',
-                        'audio',                       
-                    ]
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'gst_number',
+                'label' => 'GST Number',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'gst',
+                'label' => 'GST %',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'number',
+                'data' => 'string',
+                'name' => 'invoice_due_days',
+                'label' => 'Invoice Due Days',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
             ],
             
         ],

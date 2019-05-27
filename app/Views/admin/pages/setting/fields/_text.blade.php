@@ -1,4 +1,4 @@
-<div class="form-group {{ $errors->has($field['name']) ? ' has-error' : '' }}">
+<div class="form-group {{ $errors->has($field['name']) ? ' has-error' : '' }} wp-input">
     <label for="{{ $field['name'] }}">{{ $field['label'] }}</label>
     <input type="{{ $field['type'] }}"
            name="{{ $field['name'] }}"

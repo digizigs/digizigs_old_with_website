@@ -9855,7 +9855,7 @@ h2 {
 .x_panel h2,
 .x_title h2 {
   margin: 0 !important;
-  color: #23282D;
+  color: #2A5D84;
   font-weight: 500;
   font-size: 26px;
   padding: 10px;
@@ -14162,6 +14162,7 @@ footer {
   outline: none;
   -webkit-transition: 0.05s border-color ease-in-out;
   transition: 0.05s border-color ease-in-out;
+  font-size: 12px;
 }
 
 .wp-input input[type="text"]:focus,
@@ -14315,8 +14316,8 @@ footer {
 .wp-input textarea,
 .wp-input input,
 .wp-input select {
-  font-size: 14px;
-  padding: 3px 5px;
+  font-size: 12px;
+  padding: 5px 5px;
   border-radius: 0;
   /* Reset mobile webkit's default element styling */
 }
@@ -16107,10 +16108,10 @@ footer {
 }
 
 .modal .modal-content {
-  border-radius: 1;
-  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.31) !important;
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.31) !important;
+  border-radius: 1px !important;
   border: none;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .modal .modal-content .modal-header {

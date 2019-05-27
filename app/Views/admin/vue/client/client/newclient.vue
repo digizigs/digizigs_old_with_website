@@ -285,5 +285,7 @@
 
 <style type="text/css" Scoped>
 
-
+  .modal-content{
+    border-radius: 1px;
+  }
 </style>

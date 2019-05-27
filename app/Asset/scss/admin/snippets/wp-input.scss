@@ -38,6 +38,7 @@ textarea {
 	color: #32373c;
 	outline: none;
 	transition: 0.05s border-color ease-in-out;
+	font-size: 12px;
 }
 
 input[type="text"]:focus,
@@ -191,8 +192,8 @@ button {
 textarea,
 input,
 select {
-	font-size: 14px;
-	padding: 3px 5px;
+	font-size: 12px;
+	padding: 5px 5px;
 	border-radius: 0; /* Reset mobile webkit's default element styling */
 }
 

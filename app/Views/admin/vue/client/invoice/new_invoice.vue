@@ -14,7 +14,7 @@
 	                	<div class="row">
 							
 							<!-- CLient -->
-							<div class="form-group wp-input">
+							<div class="form-group wp-input mb10">
 	                		 	<div class="col-sm-12 col-xs-12 col-md-12">
 		                            <i><small ><b></b></small></i>
 		                            <label for="" >Select Client</label>
@@ -24,7 +24,8 @@
 									        v-model="selectedclient"									        
 									        :options="clients"									        							        
 									        option-label="client_name"
-									></vue-single-select>	                            
+									></vue-single-select>
+									<small><a href=""><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
 		                            <div class="error-message" v-if="errors.client_name">
                                         {{ errors.client_name[0] }}
                                     </div>    
@@ -40,7 +41,7 @@
 	                        </div>														
 
 							<!-- Discount -->
-                            <div class="form-group wp-input">
+                            <div class="form-group wp-input mb10">
                               <div class="col-sm-12 col-xs-12 col-md-6">
                                 <label for="">Discount</label>
                                 <input class="form-control input-sm" type="number" v-model="invoice.discount"> 
@@ -49,7 +50,7 @@
                             </div>
 
 							<!-- Services -->
-                            <div class="form-group wp-input">
+                            <div class="form-group wp-input mb10">
 	                          	<div class="col-sm-12 col-xs-12 col-md-12">
 		                            <label for="" style="margin-top: 10px;">Service</label>
 		                            <vue-single-select
@@ -62,10 +63,15 @@
 									>
 										
 									</vue-single-select>
-									<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">Add another item</a>
+									<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">
+										<i class="fa fa-plus" aria-hidden="true"></i>
+										Add another item
+									</a>
 		                            
 	                          	</div>		                       
 	                        </div>
+
+	                        
 	                                       		                
 						</div>
 
@@ -264,8 +270,8 @@
 	              	this.selectedclient=null;
 	              	this.selectedservices=null;
 	              	this.servicelines=[];
-	              	this.billdate='';
-	              	this.duedate='';
+	              	//this.billdate='';
+	              	//this.duedate='';
 	              	this.serviceadded=false;
 	            	$('#newinvoice').modal('hide');
 	            	
@@ -321,10 +327,11 @@
 		font-size: 12px !important;
 		height: 28px;
 		border: 1px solid #aaa;
-		margin-bottom: 5px;
+		margin-bottom: 5px !important;
 		//border-bottom: 1px solid #aaa	 !important;
 }
 .single-select-wrapper{
+	margin-bottom:0px !important;
 	input{
 		//border: none;
 		//border-bottom: 1px solid #aaa	 !important;
@@ -395,5 +402,10 @@
 .select2-container{
 	border-radius: 1px solid #fff !important;
 }
+
+
  */
+ .mb10{
+ 	margin-bottom: 10px;
+ }
 </style>
