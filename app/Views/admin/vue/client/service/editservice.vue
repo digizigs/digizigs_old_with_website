@@ -96,6 +96,7 @@
 		},
 		methods:{
 			updateservice(){
+        NProgress.start()
          axios.put('service/'+this.service.id,this.service)
           .then(data=>{      
             this.$emit('recordupdated',data)
@@ -105,6 +106,7 @@
               type: 'success',
               title: 'Service Updated successfully'
             })
+            NProgress.done()
 
           }) 
 

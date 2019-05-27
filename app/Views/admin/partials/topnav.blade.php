@@ -13,15 +13,15 @@
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li><a href="{{route('profile.index')}}"> Profile</a></li>
+            <li><a href="{{route('profile.index')}}"><i class="fa fa-user" aria-hidden="true"></i><span> Profile</span></a></li>
             <li>
               <a href="{{route('settings.index')}}">
-                <span class="badge bg-red pull-right">50%</span>
+                <i class="fa fa-cog" aria-hidden="true"></i>
                 <span>Settings</span>
               </a>
             </li>
             
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-sign-out"></i> <span>Log Out</span></a>
 
               <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}

@@ -9,7 +9,7 @@
 </div> -->
 
 
-<div class="form-group">
+<div class="form-group wp-input">
     <label for="{{ $field['name'] }}" class="col-sm-2 control-label">{{ $field['label'] }}</label>
     <div class="col-sm-10">
         <div class="form-line" style="text-align: center;">

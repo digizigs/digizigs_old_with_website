@@ -96,9 +96,7 @@
 
 
       </div>
-      <div class="menu_section">
-       
-      </div>
+    
 
     </div>
     <!-- /sidebar menu -->

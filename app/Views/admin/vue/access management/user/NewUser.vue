@@ -67,23 +67,23 @@
                               </div>
                            </div>
                            <div class="form-group">
-            								<label for="" class="col-sm-3">Roles</label>
-            								<div class="col-sm-9">
-            									<multiselect  v-model="value" 
-                                            tag-placeholder="Add this as new tag" 
-                                            placeholder="Search or add a role" 
-                                            label="name"
-                                            track-by="id"                                      
-                                            :options="options" 
-                                            :multiple="true" 
-                                            :taggable="true" 
-                                            @input="updateSelected"
-                                            @tag="addTag">
-                                          
-                                       </multiselect>
-                                    <!--pre>{{value}}</pre-->
-            								</div>							  								  	
-            					</div>
+              								<label for="" class="col-sm-3">Roles</label>
+              								<div class="col-sm-9">
+              									<multiselect  v-model="value" 
+                                              tag-placeholder="Add this as new tag" 
+                                              placeholder="Search or add a role" 
+                                              label="name"
+                                              track-by="id"                                      
+                                              :options="options" 
+                                              :multiple="true" 
+                                              :taggable="true" 
+                                              @input="updateSelected"
+                                              @tag="addTag">
+                                            
+                                         </multiselect>
+                                      <!--pre>{{value}}</pre-->
+              								</div>							  								  	
+            					     </div>
 
 
                   		</div>

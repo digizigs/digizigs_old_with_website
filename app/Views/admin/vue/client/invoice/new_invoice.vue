@@ -4,110 +4,116 @@
 	        <div class="modal-dialog modal-lg">
 	            <div class="modal-content">
 	                <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" @click="clearmodal"><span aria-hidden="true">×</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">New Invoice</h4>
-                        </div>
+                    	<button type="button" class="close" data-dismiss="modal" @click="clearmodal"><span aria-hidden="true">×</span>
+                      	</button>
+                      	<h4 class="modal-title" id="myModalLabel">New Invoice</h4>
+                    </div>
 
 	                <div class="modal-body">
 	                	
 	                	<div class="row">
 							
-							<!-- Client selection -->
-	                		<div class="box-container">
-	                			<h4 class="box-title">Select Client</h4>
-		                        <div class="form-group glow-input">
-		                          	<div class="col-sm-12 col-xs-12 col-md-12">
-			                            <i><small>Select Client</small></i>
-			                            <vue-single-select
-										        name="maybe"
-										        placeholder="Select Client"									     
-										        v-model="selectedclient"									        
-										        :options="clients"									        							        
-										        option-label="client_name"
-										></vue-single-select>
-			                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
-		                          	</div> 
-		                        </div>		                		
-	                		</div>
+
+							<!-- CLient -->
+							<div class="form-group wp-input">
+	                		 	<div class="col-sm-12 col-xs-12 col-md-12">
+		                            <i><small ><b></b></small></i>
+		                            <label for="" >Select Client</label>
+		                            <vue-single-select
+									        name="maybe"
+									        placeholder="Select Client"									     
+									        v-model="selectedclient"									        
+									        :options="clients"									        							        
+									        option-label="client_name"
+									></vue-single-select>	                            
+		                            <div class="error-message" v-if="errors.client_name">
+                                        {{ errors.client_name[0] }}
+                                    </div>    
+	                          	</div> 
+		                    </div>
 							
 
-							<!-- Bill and Due Dates -->
-							<div class="box-container">
-								<h4 class="box-title">Billing Dates</h4>
-	                			<div class="form-group glow-input">
-		                          <div class="col-sm-12 col-xs-12 col-md-6">
-		                            <i><small>Bill Date</small></i>
-		                            <datepicker v-model="billdate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" :format="customFormatter"></datepicker>
-		                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
-		                          </div> 
-		                        </div>
-
-		                        <div class="form-group glow-input">
-		                          <div class="col-sm-12 col-xs-12 col-md-6">
-		                            <i><small>Due Date</small></i>
-		                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="" :bootstrap-styling="true" :format="customFormatter"></datepicker>
-		                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>    
-		                          </div> 
-		                        </div>
-	                		</div>
-	                		
-							
-							<!-- Tax and discounts -->
-							<div class="box-container">
-								<h4 class="box-title">Tax and Discounts</h4>
-								<div class="form-group glow-input">
-                                  <div class="col-sm-12 col-xs-12 col-md-6">
-                                    <b><i><small>Tax</small></i></b>
-                                    <input class="form-control input-sm" type="number" :value="tax"> 
-                                    <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
-                                  </div> 
-                                </div>
-
-                                <div class="form-group glow-input">
-                                  <div class="col-sm-12 col-xs-12 col-md-6">
-                                    <b><i><small>Discount</small></i></b>
-                                    <input class="form-control input-sm" type="number" :value="discount"> 
-                                    <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
-                                  </div> 
-                                </div>
-							</div>
+							<!-- Bill Date -->
+		                    <div class="form-group wp-input">
+	                          <div class="col-sm-12 col-xs-12 col-md-6">
+	                            <label for="">Bill Date</label>
+	                            <datepicker v-model="billdate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>
+	                            <div class="error-message" v-if="errors.client_name">
+                                    {{ errors.client_name[0] }}
+                                </div> 
+	                          </div> 
+	                        </div>
 
 
-							<!-- Service Selector -->	
-	                        <div class="box-container">
-	                        	<h4 class="box-title">Services</h4>
-		                        <div class="form-group glow-input">
-		                          	<div class="col-sm-12 col-xs-12 col-md-6">
-			                            <i><small>Select Service</small></i>
-			                            <vue-single-select
-										        name="maybe"
-										        placeholder="Select Service to add to service list"									     
-										        v-model="selectedservices"									        
-										        :options="services"									        							        
-										        option-label="name"
-										        v-on:change="onChange"										        
-										>
-											
-										</vue-single-select>
-										<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null">Add another item</a>
-			                            <span v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</span>
-		                          	</div>		                       
-		                        </div>
-	                		</div>
-							
-							
+							<!-- Due Date -->
+	                        <div class="form-group wp-input">
+	                          <div class="col-sm-12 col-xs-12 col-md-6">
+	                            <label for="">Due Date</label>
+	                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>
+	                            <div class="error-message" v-if="errors.client_name">
+	                                {{ errors.client_name[0] }}
+	                            </div>   
+	                          </div> 
+	                        </div>
 							
 
-							<div class="box-container" v-if="serviceadded == true">
+							<!-- Tax -->
+	                        <div class="form-group wp-input">
+                              <div class="col-sm-12 col-xs-12 col-md-6">
+                                <label for="">Tax</label>
+                                <input class="form-control input-sm" type="number" v-model="tax"> 
+                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
+                              </div> 
+                            </div>
+
+
+							<!-- Discount -->
+                            <div class="form-group wp-input">
+                              <div class="col-sm-12 col-xs-12 col-md-6">
+                                <label for="">Discount</label>
+                                <input class="form-control input-sm" type="number" v-model="discount"> 
+                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
+                              </div> 
+                            </div>
+
+
+							<!-- Services -->
+                            <div class="form-group wp-input">
+	                          	<div class="col-sm-12 col-xs-12 col-md-12">
+		                            <label for="" style="margin-top: 10px;">Service</label>
+		                            <vue-single-select
+									        name="maybe"
+									        placeholder="Select Service to add to service list"									     
+									        v-model="selectedservices"									        
+									        :options="services"									        							        
+									        option-label="name"
+									        v-on:change="onChange"										        
+									>
+										
+									</vue-single-select>
+									<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">Add another item</a>
+		                            <p v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</p>
+	                          	</div>		                       
+	                        </div>
+
+	                        
+               	
+	                	
+
+						</div>
+
+						<div class="row">
+							<div class="service-line" v-if="serviceadded == true" style="margin-top: 20px;">
 								<div class="col-sm-12 col-xs-12 col-md-12">
-									<div class="table-responsive">
-							            <table class="table table-striped jambo_table">
+									<div class="">
+							            <table class="table">
 							                <thead>
 							                  <tr class="headings">
 							                  	<th class="column-title">Service </th>                    
-							                    <th class="column-title">Description </th>
-							                    <th class="column-title">Charge </th>
+							                    <th class="column-title">Charge</th>
+							                    <th class="column-title">Tax</th>
+							                    <th class="column-title">Discount</th>
+							                    <th class="column-title">Net Charge</th>
 							                    <th class="column-title"></th>						                           
 							                    <th class="bulk-actions" colspan="7">
 							                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -117,8 +123,10 @@
 
 							                <tbody>						                  
 							                  <tr class="even pointer" v-for="service in servicelines">
-							                  	<td class=" " style="">{{service['name']}}</td>                   
-							                    <td class=" ">{{service['description']}}</td>
+							                  	<td class=" " style="">{{service['name']}}</td>
+							                  	<td class=" " style="">{{service['charge']}}</td>
+							                  	<td class=" " style="">{{ctax}}</td>                   
+							                    <td class=" ">{{cdiscount}}</td>
 							                    <td class=" ">{{service['charge']}}</td>
 							                    <td style="width: 1%;">
 							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
@@ -127,19 +135,25 @@
 							                    </td>
 							                  </tr>
 							                  <tr class="even pointer" >
-							                  	<th class="column-title">Subtotal </th>                    
+							                  	<th class="column-title">Subtotal </th>
+							                  	<th class="column-title"> </th>
+							                  	<th class="column-title"> </th>                    
 							                    <th class="column-title"> </th>
 							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
 							                    <th class="column-title"> </th>		
 							                  </tr>
 							                  <tr class="even pointer" >
-							                  	<th class="column-title">Tax (6%) </th>                    
+							                  	<th class="column-title">Tax (6%) </th> 
+							                  	<th class="column-title"> </th>
+							                  	<th class="column-title"> </th>                   
 							                    <th class="column-title"> </th>
 							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>1010</th>
 							                    <th class="column-title"> </th>		
 							                  </tr>
 							                  <tr class="even pointer" >
-							                  	<th class="column-title">Total Charge </th>                    
+							                  	<th class="column-title">Total Charge </th> 
+							                  	<th class="column-title"> </th>
+							                  	<th class="column-title"> </th>                   
 							                    <th class="column-title"> </th>
 							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
 							                    <th class="column-title"> </th>		
@@ -150,12 +164,8 @@
 						        </div>
 						        
 						        <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent="createinvoice">Create Invoice</a>
-							</div>
-
-
-	                        		                    
-	                        	
-	                	</div>
+						</div>
+						</div>
 
 	                </div>
 	            </div>
@@ -174,6 +184,9 @@
 		 },
 		data(){
 			return{
+				multipleSelections:'',
+				selected:'',
+				value:[],
 				clients:[],
 				selectedclient:null,
 				services:[],
@@ -193,6 +206,8 @@
 		},
 		watch:{
 			selectedservices:function(){
+				//console.log(this.selectedservices)
+				//this.selectedservices=null;
 				if (this.selectedservices != null) {
     				this.servicelines.push(this.selectedservices);
     				//this.selectedservices=null;
@@ -201,7 +216,7 @@
     			  
 			},
 			servicelines:function(){
-				//console.log('Item added')
+				console.log('Item added')
 				//this.selectedservices=null;
 			}
 		},
@@ -210,6 +225,15 @@
     			return this.servicelines.reduce(function (total, service) {
                 	return total + Number(service['charge']);  					
             	}, 0);
+    		},
+    		ctax:function(){
+    			return this.tax
+    		},
+    		cdiscount:function(){
+    			return this.discount
+    		},
+    		ccharge:function(){
+
     		}
 		},
 		methods:{
@@ -271,7 +295,18 @@
 
 	          	})
 	          	.catch((error) => this.errors=error)//this.errors=error
-    		}
+    		},
+    		addTag (newTag) {
+			    const tag = {
+			        name: newTag,
+			        id: newTag,
+			    }
+			    this.options.push(tag)
+			    this.value.push(tag)
+			},
+		    updateSelected(){
+		        console.log('@input')
+		    }
     		
 		},
 		created(){
@@ -287,15 +322,29 @@
 
 </script>
 
-<style type="text/css" Scoped>
+<style lang="scss">
 
 .vdp-datepicker input{
 	
 		background-color: #fff !important;
-		width: 245% !important;
+		width: 100% !important;
 		border-radius: 1px !important;
 		font-size: 12px !important;
 		height: 28px;
+		border: 1px solid #aaa;
+		margin-bottom: 5px;
+		//border-bottom: 1px solid #aaa	 !important;
+}
+.single-select-wrapper{
+	input{
+		//border: none;
+		//border-bottom: 1px solid #aaa	 !important;
+		border-radius: 1px !important;
+
+	}
+	label{
+		margin-top: 10px;
+	}
 }
 
 .box-container{
@@ -310,7 +359,11 @@
 	border: 1px solid grey;
 }
 
-.select2-container--default .select2-selection--single,
+.add-new-item{
+	color: #1f91f3;
+	font-weight: 500;
+}
+/* .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {
     background-color: #fff;
     border: 1px solid #ccc !important;
@@ -350,5 +403,5 @@
 .select2-container{
 	border-radius: 1px solid #fff !important;
 }
-
+ */
 </style>

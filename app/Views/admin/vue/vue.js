@@ -49,6 +49,9 @@ Vue.component('vue-single-select', VueSingleSelect);
 import Multiselect from 'vue-multiselect'
 Vue.component('multiselect', Multiselect)
 
+import vueMultiSelect from 'vue-multi-select'
+//import 'vue-multi-select/dist/lib/vue-multi-select.min.css'
+
 
 //Posts
 //Vue.component('posts', require('./components/post/PostLists.vue'));

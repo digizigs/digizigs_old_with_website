@@ -12,11 +12,11 @@
               	<div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
                   		<div class="col-md-12">
-                  			<div class="form-group">
+                  			<div class="form-group wp-input">
                               	<label for="" class="col-sm-3" >Permission name</label> 
                                 <div class="col-sm-9">
                                   <div class="form-line">
-                                    <input type="text" class="form-control" v-model="permission.name">
+                                    <input type="text" class="form-control input-sm" v-model="permission.name">
                                   </div>
                                   <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}

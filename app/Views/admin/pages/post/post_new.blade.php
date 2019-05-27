@@ -39,21 +39,21 @@
                      <!-- Post editor area -->
                      <div class="col-md-8 col-xs-12">
 
-                        <div class="form-group form-float">
+                        <div class="form-group wp-input">
                            <div class="form-line">
-                               <input type="text" class="form-control" name="post_title" value="{{ old('post_title') }}">
-                               <label class="form-label">Post Title</label>
+                              <label class="form-label">Post Title</label>
+                              <input type="text" class="form-control" name="post_title" value="{{ old('post_title') }}"> 
                            </div>
                         </div>
 
-                        <div class="form-group form-float">
+                        <div class="form-group wp-input">
                            <div class="form-line">
-                               <input type="text" class="form-control" name="post_desc" value="{{ old('post_desc') }}">
-                               <label class="form-label">Post Description</label>
+                              <label class="form-label">Post Description</label>
+                              <input type="text" class="form-control" name="post_desc" value="{{ old('post_desc') }}">
                            </div>
                         </div>
 
-                        <div class="form-group glow-input">
+                        <div class="form-group wp-input">
                             <label for="editor1">Post Content</label>
                             <textarea id="editor1" name="post_body" rows="15" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">                                
                             </textarea>                              

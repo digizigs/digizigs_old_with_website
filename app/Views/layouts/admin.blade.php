@@ -6,7 +6,7 @@
 
   <body class="nav-md">
     <div class="container body" id="app">
-      <div class="main_container">
+      <div class="main_container" style="margin-bottom: -20px; height: 90vh">
 
         <!-- sidebar -->
         @include('admin.partials.sidebar')

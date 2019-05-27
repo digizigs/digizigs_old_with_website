@@ -25,14 +25,14 @@
    @if ($errors->has($field['name'])) <small class="help-block">{{ $errors->first($field['name']) }}</small> @endif
 </div> -->
 
-<div class="form-group">
+<div class="form-group wp-input">
     <label for="{{ $field['name'] }}" class="col-sm-2 control-label">{{ $field['label'] }}</label>
     <div class="col-sm-10">
         <div class="form-line">
-            <input type="{{ $field['type'] }}" 
+            <input type="{{ $field['type'] }} " 
               name="{{ $field['name'] }}" 
               value="{{ old($field['name'], \setting($field['name'])) }}"
-              class="form-control"
+              class="form-control input-sm"
               id="{{ $field['name'] }}">
         </div>
     </div>

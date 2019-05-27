@@ -113,6 +113,7 @@
 		    	this.permissions=record.data;
 		    },
 		    deletepermission(id){
+		    	NProgress.start();
 	      		swalWithBootstrapButtons({
 		          title: 'Delete Permission?',
 		          text: "You won't be able to revert this!",
@@ -132,6 +133,7 @@
 		                	type: 'success',
 		                	title: 'Permission  deleted successfully'	                	
 		            	})
+		              NProgress.done();
 
 		            })//this.categories=response.data
 		            .catch((error) => {

@@ -19,16 +19,26 @@ class InvoiceController extends Controller
     
     public function index()
     {
-        $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
-        //dd($invoices);
+       
         return view('admin/pages.client.invoice');
     }
 
     
     public function create()
     {
-        //return 'ok';
-        $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
+        
+        /*if($request->search_string == ''){
+            $invoices = Client::orderby('created_at','desc')->paginate(8);
+            return request()->json(200,$clients);
+        }else{
+            $invoices['data'] = Client::where('client_name','like', '%'.$request->search_string.'%')
+                                ->orWhere('client_email','like', '%'.$request->search_string.'%')
+                                ->orWhere('client_phone','like', '%'.$request->search_string.'%')
+                                ->orderby('created_at','desc')->get();
+            return request()->json(200,$clients);
+        }*/
+
+        $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
         //dd($invoices);
         return request()->json(200,$invoices);
     }
