@@ -12,39 +12,41 @@
                   
                   <form  role="form" @submit.prevent="" class="form-horizontal">                
 
-                    <div class="form-group form-float">
+                    <div class="form-group wp-input">
                       <div class="form-line">
-                         <input type="text" class="form-control" v-model="newservice.name">
                          <label class="form-label error">Service Name</label>
+                         <input type="text" class="form-control input-sm" v-model="newservice.name">
+                         
                       </div>
                       <div class="error-message" v-if="errors.name">
-                        <small><i>{{ errors.name[0] }}</i></small>
+                        {{ errors.name[0] }}
                       </div>
                       <div v-else>
                         <small><i>Name of the service</i></small>
                       </div>
                     </div>
 
-                    <div class="form-group form-float">
+                    <div class="form-group wp-input">
                       <div class="form-line">
-                         <input type="text" class="form-control" v-model="newservice.desc">
                          <label class="form-label error">Service Description</label>
+                        
+                         <textarea class="form-control input-sm" cols="30" rows="3" v-model="newservice.desc"></textarea>
                       </div>
                       <div class="error-message" v-if="errors.desc">
-                        <small><i>{{ errors.desc[0] }}</i></small>
+                        {{ errors.desc[0] }}
                       </div>
                       <div v-else>
                         <small><i>Breif description about service</i></small>
                       </div>
                     </div>
 
-                    <div class="form-group form-float">
+                    <div class="form-group wp-input">
                       <div class="form-line">
-                         <input type="text" class="form-control" v-model="newservice.bill">
                          <label class="form-label error">Service Charge</label>
+                         <input type="text" class="form-control input-sm" v-model="newservice.bill">
                       </div>
                       <div class="error-message" v-if="errors.bill">
-                        <small><i>{{ errors.bill[0] }}</i></small>
+                        {{ errors.bill[0] }}
                       </div>
                       <div v-else>
                         <small><i>Billing amount for each service</i></small>
@@ -52,13 +54,13 @@
                     </div>
 
 
-                    <div class="form-group form-float">
+                    <div class="form-group wp-input">
                       <div class="form-line" >
-                         <input type="text" class="form-control" v-model="newservice.tat">
                          <label class="form-label error">Product Deadline</label>
+                         <input type="text" class="form-control input-sm" v-model="newservice.tat">
                       </div>
                       <div class="error-message" v-if="errors.tat">
-                        <small><i>{{ errors.tat[0] }}</i></small>
+                        {{ errors.tat[0] }}
                       </div>
                       <div v-else>
                         <small><i>Time for project completion</i></small>

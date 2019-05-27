@@ -34,7 +34,7 @@
                         <div v-for="service,key in services.data" class="panel panel-default pannel-line">
                           <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
                             <span class="title">{{service.name}}</span>
-                            
+                            <span><small><i>{{service.description}}</i></small></span>
 
                             <!-- Action icons -->
                             <span class="action-text subscription pull-right">

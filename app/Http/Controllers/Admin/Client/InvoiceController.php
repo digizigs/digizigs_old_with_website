@@ -56,37 +56,41 @@ class InvoiceController extends Controller
     }
 
    
-    public function store(Request $request)
-    {   
-        $client_id = $request->selectedclient['id'];
-        $bill_date = $request->dates['bill_date'];
-        $due_date = $request->dates['due_date'];
-        $selected_services = $request->selectedservices;
+    public function store(Request $request) {
 
-        //$selected_lines = $selected_services->pluck('id');
-        $selected_lines= collect($selected_services)->only('id');
-        $service_array = $selected_lines; 
-        //dd($selected_lines);
+      
+        //$selected_services = $request->selectedservices;
+        //$selected_lines= collect($request->selectedservices)->only('id');
+        //$service_array = $selected_lines;
+        /*$client_name = $request->selectedclient['client_name'];
 
-       
-
+        $this->validate($request, [
+           'selectedclient['client_name']' => 'required|string|max:200',
+        ]);
+*/
+   
         $invoice = new Invoice;
-        $invoice->client_id = $client_id;
-        $invoice->bill_date = $bill_date;
-        $invoice->due_date = $due_date;
+        $invoice->client_id = $request->selectedclient['id'];
 
+        $invoice->tax = $request->invoice['tax'];
+        $invoice->discount = $request->invoice['discount'];
+        $invoice->bill_amount = $request->invoice['totalbill'];
+        $invoice->bill_date = $request->dates['bill_date'];
+        $invoice->due_date = $request->dates['due_date'];
         $saved = $invoice->save();
 
         $invoice_id = $invoice->id;
         $client_name = $request->selectedclient['client_name'];    
         //$invoice->services()->sync($request->selectedservices);
-
+        
         //saving service lines
-        foreach($selected_services as $service){
+        foreach($request->selectedservices as $service){
             //$invoice->services()->sync($service['id']);
             $s_line = new Invoice_item;
             $s_line->invoice_id = $invoice->id;
             $s_line->service_id = $service['id'];
+            $s_line->service_name = $service['name'];
+            $s_line->service_charge = $service['charge'];
             $s_line->save();            
             //return request()->json(200,$service['id']);
         }
@@ -98,12 +102,10 @@ class InvoiceController extends Controller
 
 
         if($saved){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
             return request()->json(200,$invoices);
         }
-        
-
-        
+               
     }
 
     
@@ -132,7 +134,7 @@ class InvoiceController extends Controller
         $is_deleted=$invoice->delete();
 
         if($is_deleted){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
             //dd($invoices);
             return request()->json(200,$invoices);
         }

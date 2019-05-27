@@ -3,17 +3,17 @@
 		<div class="x_panel">
           <div class="x_title">
           	<h2>
-          		<i class="fa fa-align-left"></i>
-          		Clients <small></small> 
-          		<span class="search">
-					<i class="fa fa-search"></i>
-					<div class="form-group">
+          	<i class="fa fa-align-left"></i>
+          		Invoices <small></small> 
+          	<span class="search">
+					   <i class="fa fa-search"></i>
+					   <div class="form-group wp-input">
 				        <div class="form-line">
-				            <input type="text" class="form-control" placeholder="Search here..." v-model="search">
+				            <input type="text" class="form-control input-sm" placeholder="Search here..." v-model="search">
 				        </div>
 
-				    </div>
-				</span>	
+				      </div>
+				    </span>	
           	</h2>	                              	                 
         	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Invoice</a>
         	<div class="clearfix"></div>
@@ -35,13 +35,13 @@
                      	<span class="label label-success">
                      		Total Bill:
                      		<i class="fa fa-inr" aria-hidden="true"></i>
-                     		 {{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}}
+                     		 <!-- {{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}} -->{{invoice.bill_amount}}
                      	</span>
 
                      	<span style="margin-left: 10px;"> creatred on </span> <span class="time">{{ invoice.created_at | vueDate }}</span> due on
                      	<span class="time">{{ invoice.due_date | vueDate }}</span> 
 						
-						<span class="label label-warning">Pending</span>	
+						          <span class="label label-warning">Pending</span>	
 
                       	<span class="action-text subscription">
                       		<a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
@@ -58,15 +58,17 @@
                 </div>
 
 	
-        	</div>
+        	  </div>
 
         	
-      		<pagination :data="invoices" @pagination-change-page="paginationdata" ></pagination>
+      		  <pagination :data="invoices" @pagination-change-page="paginationdata" ></pagination>
 
 
-			<div>		                    	
-                Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}}	                    	
-            </div>	
+  			    <div v-if="invoices.total > 0">	          
+              Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}}              	                    	
+            </div>
+
+            <div v-else> No Data is avaliable</div>	
 
             
             <!-- <div class="table-responsive">
@@ -228,11 +230,10 @@
 	                    this.success='';                
 	              });
 
-	            swalWithBootstrapButtons(
-	              'Deleted!',
-	              'Invoice deleted successfully',
-	              'success'
-	            )
+	            toast({
+                    type: 'success',
+                    title: 'Invoice deleted successfully'
+                })
 	          } 
 	        })
 	      }

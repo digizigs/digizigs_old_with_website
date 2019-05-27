@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="modal fade" id="newinvoice" role="dialog"  data-backdrop="false">
-	        <div class="modal-dialog modal-lg">
+	        <div class="modal-dialog modal-md">
 	            <div class="modal-content">
 	                <div class="modal-header">
                     	<button type="button" class="close" data-dismiss="modal" @click="clearmodal"><span aria-hidden="true">×</span>
@@ -13,7 +13,6 @@
 	                	
 	                	<div class="row">
 							
-
 							<!-- CLient -->
 							<div class="form-group wp-input">
 	                		 	<div class="col-sm-12 col-xs-12 col-md-12">
@@ -31,51 +30,23 @@
                                     </div>    
 	                          	</div> 
 		                    </div>
-							
-
-							<!-- Bill Date -->
-		                    <div class="form-group wp-input">
-	                          <div class="col-sm-12 col-xs-12 col-md-6">
-	                            <label for="">Bill Date</label>
-	                            <datepicker v-model="billdate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>
-	                            <div class="error-message" v-if="errors.client_name">
-                                    {{ errors.client_name[0] }}
-                                </div> 
-	                          </div> 
-	                        </div>
-
 
 							<!-- Due Date -->
 	                        <div class="form-group wp-input">
 	                          <div class="col-sm-12 col-xs-12 col-md-6">
 	                            <label for="">Due Date</label>
-	                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>
-	                            <div class="error-message" v-if="errors.client_name">
-	                                {{ errors.client_name[0] }}
-	                            </div>   
+	                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
 	                          </div> 
-	                        </div>
-							
-
-							<!-- Tax -->
-	                        <div class="form-group wp-input">
-                              <div class="col-sm-12 col-xs-12 col-md-6">
-                                <label for="">Tax</label>
-                                <input class="form-control input-sm" type="number" v-model="tax"> 
-                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
-                              </div> 
-                            </div>
-
+	                        </div>														
 
 							<!-- Discount -->
                             <div class="form-group wp-input">
                               <div class="col-sm-12 col-xs-12 col-md-6">
                                 <label for="">Discount</label>
-                                <input class="form-control input-sm" type="number" v-model="discount"> 
+                                <input class="form-control input-sm" type="number" v-model="invoice.discount"> 
                                 <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
                               </div> 
                             </div>
-
 
 							<!-- Services -->
                             <div class="form-group wp-input">
@@ -92,14 +63,10 @@
 										
 									</vue-single-select>
 									<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">Add another item</a>
-		                            <p v-if="errors.client_name" :class="['label label-danger']">{{ errors.client_name[0] }}</p>
+		                            
 	                          	</div>		                       
 	                        </div>
-
-	                        
-               	
-	                	
-
+	                                       		                
 						</div>
 
 						<div class="row">
@@ -110,10 +77,8 @@
 							                <thead>
 							                  <tr class="headings">
 							                  	<th class="column-title">Service </th>                    
-							                    <th class="column-title">Charge</th>
-							                    <th class="column-title">Tax</th>
-							                    <th class="column-title">Discount</th>
-							                    <th class="column-title">Net Charge</th>
+							                    <th class="column-title">Description</th>						                  
+							                    <th class="column-title">Price</th>
 							                    <th class="column-title"></th>						                           
 							                    <th class="bulk-actions" colspan="7">
 							                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
@@ -124,9 +89,7 @@
 							                <tbody>						                  
 							                  <tr class="even pointer" v-for="service in servicelines">
 							                  	<td class=" " style="">{{service['name']}}</td>
-							                  	<td class=" " style="">{{service['charge']}}</td>
-							                  	<td class=" " style="">{{ctax}}</td>                   
-							                    <td class=" ">{{cdiscount}}</td>
+							                  	<td class=" " style="">{{service['description']}}</td>	                 
 							                    <td class=" ">{{service['charge']}}</td>
 							                    <td style="width: 1%;">
 							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
@@ -134,28 +97,30 @@
 					                          		</a>
 							                    </td>
 							                  </tr>
-							                  <tr class="even pointer" >
-							                  	<th class="column-title">Subtotal </th>
-							                  	<th class="column-title"> </th>
-							                  	<th class="column-title"> </th>                    
-							                    <th class="column-title"> </th>
+
+							                   <tr class="even pointer" >
+							                  	<th class="column-title">Sub-Total </th> 
+							                  	<th class="column-title"> </th>                
 							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
 							                    <th class="column-title"> </th>		
 							                  </tr>
+							                  
 							                  <tr class="even pointer" >
-							                  	<th class="column-title">Tax (6%) </th> 
-							                  	<th class="column-title"> </th>
-							                  	<th class="column-title"> </th>                   
-							                    <th class="column-title"> </th>
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>1010</th>
+							                  	<th class="column-title">GST @ {{this.invoice.tax}}% </th> 
+							                  	<th class="column-title"> </th>                
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ctax}}</th>
 							                    <th class="column-title"> </th>		
 							                  </tr>
 							                  <tr class="even pointer" >
-							                  	<th class="column-title">Total Charge </th> 
-							                  	<th class="column-title"> </th>
-							                  	<th class="column-title"> </th>                   
-							                    <th class="column-title"> </th>
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+							                  	<th class="column-title">Discount @ {{this.invoice.discount}}% </th> 
+							                  	<th class="column-title"> </th>                  
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{cdiscount}}</th>
+							                    <th class="column-title"> </th>		
+							                  </tr>
+							                  <tr class="even pointer" >
+							                  	<th class="column-title">Net Charge </th> 
+							                  	<th class="column-title"> </th>                 
+							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ccharge}}</th>
 							                    <th class="column-title"> </th>		
 							                  </tr>								                  						  
 							                </tbody>
@@ -184,6 +149,12 @@
 		 },
 		data(){
 			return{
+				invoice:{
+					tax:'10',
+					discount:'10',
+					totalbill:'',
+				},
+				invoice_item:{},
 				multipleSelections:'',
 				selected:'',
 				value:[],
@@ -194,14 +165,13 @@
 				servicelines:[],
 				serviceadded:false,
 				success:'',
-				errors:'',					
-				billdate:'',
-				duedate:'',				
+				errors:[],					
+				billdate:new Date(),
+				duedate:new Date().addDays(4),				
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
 				},
-				tax:6,
-				discount:0
+				error:''
 			}
 		},
 		watch:{
@@ -221,19 +191,27 @@
 			}
 		},
 		computed: {
-			totalcharge: function(){    			
-    			return this.servicelines.reduce(function (total, service) {
+			totalcharge: function(){
+			
+    			return this.servicelines.reduce(function (total, service) { 
                 	return total + Number(service['charge']);  					
             	}, 0);
     		},
     		ctax:function(){
-    			return this.tax
+    			return (this.totalcharge * this.invoice.tax )/100;
     		},
     		cdiscount:function(){
-    			return this.discount
+    			return (this.totalcharge * this.invoice.discount )/100;
     		},
     		ccharge:function(){
 
+    			/*var tax = this.ctax;
+    			var discount = 	this.cdiscount
+
+    			var scharge = this.servicelines.reduce(function (charge,service) {
+                	return charge = service['charge']; 			
+            	}, 0);*/
+    			return (this.totalcharge - this.cdiscount) + this.ctax ;
     		}
 		},
 		methods:{
@@ -257,6 +235,7 @@
     		addservice(){
     			if (this.selectedservices != null) {
     				this.servicelines.push(this.selectedservices);
+    				this.invoice.services.push(this.selectedservices);
     				this.selectedservices=null;
     				this.serviceadded=true
     			}              	   			
@@ -271,12 +250,14 @@
 	            this.duedate='';
     		},
     		createinvoice:function(){
+    			this.invoice.totalbill = this.totalcharge
+    			NProgress.start();
     			axios.post('invoice',{ 'selectedclient':this.selectedclient,
     								   'dates':{'bill_date':moment(this.billdate).format('YYYY/MM/DD'),'due_date':moment(this.duedate).format('YYYY/MM/DD')},
-    								   'selectedservices':this.servicelines
+    								   'selectedservices':this.servicelines,'invoice':this.invoice
     								})
 	            .then(data => {
-	              	//console.log(data);
+	              	console.log(data);
 	              	//this.services=response.data           
 	              	this.$emit('recordupdated',data),
 	              	this.success='Invoice Created successfully'
@@ -292,9 +273,17 @@
 		                type: 'success',
 		                title: 'Invoice Created successfully'
 		            })
+		            NProgress.done();
 
 	          	})
-	          	.catch((error) => this.errors=error)//this.errors=error
+	          	.catch((error) => {
+	          		NProgress.done();
+	          		this.errors=error.response.data.errors
+	          		toast({
+		                type: 'warning',
+		                title: 'Error creatinng invoice'
+		            })
+	          	})
     		},
     		addTag (newTag) {
 			    const tag = {
@@ -340,7 +329,7 @@
 		//border: none;
 		//border-bottom: 1px solid #aaa	 !important;
 		border-radius: 1px !important;
-
+		margin-bottom:0px !important;
 	}
 	label{
 		margin-top: 10px;
@@ -362,6 +351,9 @@
 .add-new-item{
 	color: #1f91f3;
 	font-weight: 500;
+}
+.error-message{
+	margin-top:-5px;
 }
 /* .select2-container--default .select2-selection--single,
 .select2-container--default .select2-selection--multiple {

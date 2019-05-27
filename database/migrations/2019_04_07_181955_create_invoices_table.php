@@ -16,6 +16,9 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('client_id');
+            $table->integer('tax');
+            $table->integer('discount');
+            $table->integer('bill_amount');
             $table->date('bill_date')->nullable();           
             $table->date('due_date')->nullable();
             $table->enum('bill_status', ['paid', 'pending'])->default('pending');
