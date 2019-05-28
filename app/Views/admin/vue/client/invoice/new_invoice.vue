@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="modal fade" id="newinvoice" role="dialog"  data-backdrop="false">
-	        <div class="modal-dialog modal-md">
+	        <div class="modal-dialog modal-lg">
 	            <div class="modal-content">
 	                <div class="modal-header">
                     	<button type="button" class="close" data-dismiss="modal" @click="clearmodal"><span aria-hidden="true">×</span>
@@ -14,8 +14,8 @@
 	                	<div class="row">
 							
 							<!-- CLient -->
-							<div class="form-group wp-input mb10">
-	                		 	<div class="col-sm-12 col-xs-12 col-md-12">
+							<div class="form-group wp-input form-invalid">
+	                		 	<div class="col-sm-12 col-xs-12 col-md-6" v-bind:class="{ 'form-invalid': clienterror }">
 		                            <i><small ><b></b></small></i>
 		                            <label for="" >Select Client</label>
 		                            <vue-single-select
@@ -25,7 +25,7 @@
 									        :options="clients"									        							        
 									        option-label="client_name"
 									></vue-single-select>
-									<small><a href=""><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
+									<small><a href="#addclient" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
 		                            <div class="error-message" v-if="errors.client_name">
                                         {{ errors.client_name[0] }}
                                     </div>    
@@ -33,18 +33,18 @@
 		                    </div>
 
 							<!-- Due Date -->
-	                        <div class="form-group wp-input">
-	                          <div class="col-sm-12 col-xs-12 col-md-6">
+	                        <div class="form-group wp-input mt20">
+	                          <div class="col-sm-12 col-xs-12 col-md-3">
 	                            <label for="">Due Date</label>
 	                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
 	                          </div> 
 	                        </div>														
 
 							<!-- Discount -->
-                            <div class="form-group wp-input mb10">
-                              <div class="col-sm-12 col-xs-12 col-md-6">
-                                <label for="">Discount</label>
-                                <input class="form-control input-sm" type="number" v-model="invoice.discount"> 
+                            <div class="form-group wp-input mt20">
+                              <div class="col-sm-12 col-xs-12 col-md-3">
+                                <label for="">Discount(%)</label>
+                                <input class="form-control input-sm" type="number" v-model="discount"> 
                                 <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
                               </div> 
                             </div>
@@ -93,42 +93,44 @@
 							                </thead>
 
 							                <tbody>						                  
-							                  <tr class="even pointer" v-for="service in servicelines">
-							                  	<td class=" " style="">{{service['name']}}</td>
-							                  	<td class=" " style="">{{service['description']}}</td>	                 
-							                    <td class=" ">{{service['charge']}}</td>
-							                    <td style="width: 1%;">
-							                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
-					                          			<i class="fa fa-trash" aria-hidden="true"></i>
-					                          		</a>
-							                    </td>
-							                  </tr>
+							                	<tr class="even pointer" v-for="service in servicelines">
+								                  	<td class=" " style="">{{service['name']}}</td>
+								                  	<td class=" " style="">{{service['description']}}</td>	                 
+								                    <td class=" ">{{service['charge']}}</td>
+								                    <td style="width: 1%;">
+								                    	<a href="" v-on:click.prevent="removeservice(service['name'])">
+						                          			<i class="fa fa-trash" aria-hidden="true"></i>
+						                          		</a>
+								                    </td>
+							                  	</tr>
 
-							                   <tr class="even pointer" >
-							                  	<th class="column-title">Sub-Total </th> 
-							                  	<th class="column-title"> </th>                
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
-							                    <th class="column-title"> </th>		
-							                  </tr>
+							                   	<tr class="even pointer" >
+								                  	<th class="column-title">Sub-Total </th> 
+								                  	<th class="column-title"> </th>                
+								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+								                    <th class="column-title"> </th>		
+							                  	</tr>
+
+							                  	<tr class="even pointer" >
+								                  	<th class="column-title">Discount @ {{this.discount}}% </th> 
+								                  	<th class="column-title"> </th>                
+								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+								                    <th class="column-title"> </th>		
+							                  	</tr>
 							                  
-							                  <tr class="even pointer" >
-							                  	<th class="column-title">GST @ {{this.invoice.tax}}% </th> 
-							                  	<th class="column-title"> </th>                
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ctax}}</th>
-							                    <th class="column-title"> </th>		
-							                  </tr>
-							                  <tr class="even pointer" >
-							                  	<th class="column-title">Discount @ {{this.invoice.discount}}% </th> 
-							                  	<th class="column-title"> </th>                  
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{cdiscount}}</th>
-							                    <th class="column-title"> </th>		
-							                  </tr>
-							                  <tr class="even pointer" >
-							                  	<th class="column-title">Net Charge </th> 
-							                  	<th class="column-title"> </th>                 
-							                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ccharge}}</th>
-							                    <th class="column-title"> </th>		
-							                  </tr>								                  						  
+							                  	<tr class="even pointer" >
+								                  	<th class="column-title">GST @ {{this.qgst}}% </th> 
+								                  	<th class="column-title"> </th>                
+								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ctax}}</th>
+								                    <th class="column-title"> </th>		
+							                  	</tr>
+							                 
+							                  	<tr class="even pointer" >
+								                  	<th class="column-title">Net Charge </th> 
+								                  	<th class="column-title"> </th>                 
+								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ccharge}}</th>
+								                    <th class="column-title"> </th>		
+							                  	</tr>								                  						  
 							                </tbody>
 							            </table>             
 							        </div>
@@ -142,6 +144,10 @@
 	            </div>
 	        </div>
 	    </div>
+	    <div id="modal">
+          <newclient @recordupdated="refreshRecord"></newclient>       
+        </div>
+
 	</section>
 </template>
 
@@ -150,16 +156,20 @@
 
 
 	export default{
+		props:['qgst','qduedate'],
 		components: {
 		    Datepicker
 		 },
 		data(){
-			return{
+			return{	
+				clienterror: false,			
 				invoice:{
-					tax:'10',
-					discount:'10',
+					tax:'',
+					discount:'',
 					totalbill:'',
 				},
+				gst:this.qgst,
+				discount:'0',
 				invoice_item:{},
 				multipleSelections:'',
 				selected:'',
@@ -173,7 +183,7 @@
 				success:'',
 				errors:[],					
 				billdate:new Date(),
-				duedate:new Date().addDays(4),				
+				duedate:new Date().addDays(this.qduedate),				
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
 				},
@@ -192,8 +202,13 @@
     			  
 			},
 			servicelines:function(){
-				console.log('Item added')
+				//console.log('Item added')
 				//this.selectedservices=null;
+			},
+			selectedclient:function(){
+				if (this.selectedclient != null) {
+					this.clienterror = false
+				}
 			}
 		},
 		computed: {
@@ -204,23 +219,19 @@
             	}, 0);
     		},
     		ctax:function(){
-    			return (this.totalcharge * this.invoice.tax )/100;
+    			return (this.totalcharge * this.qgst )/100;
     		},
     		cdiscount:function(){
-    			return (this.totalcharge * this.invoice.discount )/100;
+    			return (this.totalcharge * this.discount )/100;
     		},
-    		ccharge:function(){
-
-    			/*var tax = this.ctax;
-    			var discount = 	this.cdiscount
-
-    			var scharge = this.servicelines.reduce(function (charge,service) {
-                	return charge = service['charge']; 			
-            	}, 0);*/
+    		ccharge:function(){    			
     			return (this.totalcharge - this.cdiscount) + this.ctax ;
     		}
 		},
-		methods:{
+		methods:{		
+			refreshRecord(){
+
+			},
 			myChangeEvent(val){
             	console.log(val);
 	        },
@@ -256,6 +267,12 @@
 	            this.duedate='';
     		},
     		createinvoice:function(){
+
+    			if(this.selectedclient == null){
+    				this.clienterror = true
+    				return
+    			}
+
     			this.invoice.totalbill = this.totalcharge
     			NProgress.start();
     			axios.post('invoice',{ 'selectedclient':this.selectedclient,
@@ -263,16 +280,16 @@
     								   'selectedservices':this.servicelines,'invoice':this.invoice
     								})
 	            .then(data => {
-	              	console.log(data);
-	              	//this.services=response.data           
+	                  
 	              	this.$emit('recordupdated',data),
 	              	this.success='Invoice Created successfully'
 	              	this.selectedclient=null;
 	              	this.selectedservices=null;
 	              	this.servicelines=[];
-	              	//this.billdate='';
-	              	//this.duedate='';
+	              	this.billdate = new Date();
+	              	this.duedate = new Date().addDays(this.qduedate);
 	              	this.serviceadded=false;
+	              	this.clienterror = false;
 	            	$('#newinvoice').modal('hide');
 	            	
 		            toast({
@@ -319,93 +336,106 @@
 
 <style lang="scss">
 
-.vdp-datepicker input{
-	
-		background-color: #fff !important;
-		width: 100% !important;
-		border-radius: 1px !important;
-		font-size: 12px !important;
-		height: 28px;
-		border: 1px solid #aaa;
-		margin-bottom: 5px !important;
-		//border-bottom: 1px solid #aaa	 !important;
-}
-.single-select-wrapper{
-	margin-bottom:0px !important;
-	input{
-		//border: none;
-		//border-bottom: 1px solid #aaa	 !important;
-		border-radius: 1px !important;
+	.vdp-datepicker input{
+		
+			background-color: #fff !important;
+			width: 100% !important;
+			border-radius: 1px !important;
+			font-size: 12px !important;
+			height: 28px;
+			border: 1px solid #aaa;
+			margin-bottom: 5px !important;
+			//border-bottom: 1px solid #aaa	 !important;
+	}
+	.single-select-wrapper{
 		margin-bottom:0px !important;
+		input{
+			//border: none;
+			//border-bottom: 1px solid #aaa	 !important;
+			border-radius: 1px !important;
+			border: 1px solid #ddd;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+			background-color: #fff;
+			color: #32373c;
+			outline: none;
+			transition: 0.05s border-color ease-in-out;
+			font-size: 12px;
+		}
+		input:focus{
+			border-color: #5b9dd9;
+		}
+		label{
+			margin-top: 10px;
+		}
 	}
-	label{
-		margin-top: 10px;
+
+	.box-container{
+		
+
 	}
-}
+	.box-title{
+		font-size: 14px;
+		font-weight: 550 ;
+		padding: 5px 10px;
+		margin: 0;
+		border: 1px solid grey;
+	}
 
-.box-container{
-	
+	.add-new-item{
+		color: #1f91f3;
+		font-weight: 500;
+	}
+	.error-message{
+		margin-top:-5px;
+	}
+	/* .select2-container--default .select2-selection--single,
+	.select2-container--default .select2-selection--multiple {
+	    background-color: #fff;
+	    border: 1px solid #ccc !important;
+	    border-radius: 0;
+	    min-height: 30px
+	}
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+	    color: #000;
+	    padding-top: 3px
+	}
+	.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+	    padding-top: 3px
+	}
+	.select2-container--default .select2-selection--single .select2-selection__arrow {
+	    height: 30px
+	}
+	.select2-container--default .select2-selection--multiple .select2-selection__choice,
+	.select2-container--default .select2-selection--multiple .select2-selection__clear {
+	    margin-top: 2px;
+	    border: none;
+	    border-radius: 0;
+	    padding: 3px 5px
+	}
+	.select2-container--default.select2-container--focus .select2-selection--multiple {
+	    border: 1px solid #ccc
+	}
 
-}
-.box-title{
-	font-size: 14px;
-	font-weight: 550 ;
-	padding: 5px 10px;
-	margin: 0;
-	border: 1px solid grey;
-}
-
-.add-new-item{
-	color: #1f91f3;
-	font-weight: 500;
-}
-.error-message{
-	margin-top:-5px;
-}
-/* .select2-container--default .select2-selection--single,
-.select2-container--default .select2-selection--multiple {
-    background-color: #fff;
-    border: 1px solid #ccc !important;
-    border-radius: 0;
-    min-height: 30px
-}
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #000;
-    padding-top: 3px
-}
-.select2-container--default .select2-selection--multiple .select2-selection__rendered {
-    padding-top: 3px
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 30px
-}
-.select2-container--default .select2-selection--multiple .select2-selection__choice,
-.select2-container--default .select2-selection--multiple .select2-selection__clear {
-    margin-top: 2px;
-    border: none;
-    border-radius: 0;
-    padding: 3px 5px
-}
-.select2-container--default.select2-container--focus .select2-selection--multiple {
-    border: 1px solid #ccc
-}
-
-.select2-selection__choice{
-	background-color: #3F5367 !important;
-	color: #fff;
-	border-radius: 3px !important;
-	-webkit-tap-highlight-color: transparent;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-    letter-spacing: .5px;
-    transition: .2s ease-out;
-}
-.select2-container{
-	border-radius: 1px solid #fff !important;
-}
+	.select2-selection__choice{
+		background-color: #3F5367 !important;
+		color: #fff;
+		border-radius: 3px !important;
+		-webkit-tap-highlight-color: transparent;
+	    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	    letter-spacing: .5px;
+	    transition: .2s ease-out;
+	}
+	.select2-container{
+		border-radius: 1px solid #fff !important;
+	}
 
 
- */
- .mb10{
- 	margin-bottom: 10px;
- }
+	 */
+	 .mb10{
+	 	margin-bottom: 10px;
+	 }
+
+	 .mt20{
+	 	margin-top: -20px;
+	 }
 </style>

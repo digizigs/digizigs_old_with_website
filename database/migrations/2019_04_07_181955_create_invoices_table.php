@@ -19,6 +19,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('tax');
             $table->integer('discount');
             $table->integer('bill_amount');
+            $table->integer('net_bill_amount');
             $table->date('bill_date')->nullable();           
             $table->date('due_date')->nullable();
             $table->enum('bill_status', ['paid', 'pending'])->default('pending');

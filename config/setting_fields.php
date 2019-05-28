@@ -153,7 +153,7 @@ return [
             [
                 'type' => 'text',
                 'data' => 'string',
-                'name' => 'gst',
+                'name' => 'gst_tax',
                 'label' => 'GST %',
                 'rules' => 'required|min:2|max:50',
                 'class' => 'input-sm', // class for input

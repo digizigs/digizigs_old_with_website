@@ -15,7 +15,7 @@
                           <div class="col-xs-12 invoice-header">
                             <h1>
 	                            <i class="fa fa-globe"></i> Invoice.
-	                            <small class="pull-right">Date: 16/08/2016</small>
+	                            <small class="pull-right">Date: {{invoice.bill_date}}</small>
 	                        </h1>
                           </div>
                           <!-- /.col -->
@@ -36,7 +36,7 @@
                           <div class="col-sm-4 invoice-col">
                             To
                             <address>
-                                <strong>John Doe</strong>
+                                <strong>{{client.client_name}}</strong>
                                 <br>795 Freedom Ave, Suite 600
                                 <br>New York, CA 94107
                                 <br>Phone: 1 (804) 123-9876
@@ -50,7 +50,7 @@
                             <br>
                             <b>Order ID:</b> 4F3S8J
                             <br>
-                            <b>Payment Due:</b> 2/22/2014
+                            <b>Payment Due:</b> {{invoice.due_date}}
                             <br>
                             <b>Account:</b> 968-34567
                           </div>
@@ -65,42 +65,21 @@
                               <thead>
                                 <tr>
                                   <th>Qty</th>
-                                  <th>Product</th>
-                                  <th>Serial #</th>
+                                  <th>Service</th>
+                                  
                                   <th style="width: 59%">Description</th>
                                   <th>Subtotal</th>
                                 </tr>
                               </thead>
                               <tbody>
-                                <tr>
+
+                                <tr v-for="item in items">
                                   <td>1</td>
-                                  <td>Call of Duty</td>
-                                  <td>455-981-221</td>
-                                  <td>El snort testosterone trophy driving gloves handsome gerry Richardson helvetica tousled street art master testosterone trophy driving gloves handsome gerry Richardson
-                                  </td>
-                                  <td>$64.50</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Need for Speed IV</td>
-                                  <td>247-925-726</td>
-                                  <td>Wes Anderson umami biodiesel</td>
-                                  <td>$50.00</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Monsters DVD</td>
-                                  <td>735-845-642</td>
-                                  <td>Terry Richardson helvetica tousled street art master, El snort testosterone trophy driving gloves handsome letterpress erry Richardson helvetica tousled</td>
-                                  <td>$10.70</td>
-                                </tr>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Grown Ups Blue Ray</td>
-                                  <td>422-568-642</td>
-                                  <td>Tousled lomo letterpress erry Richardson helvetica tousled street art master helvetica tousled street art master, El snort testosterone</td>
-                                  <td>$25.99</td>
-                                </tr>
+                                  <td>{{item.service_name}}</td>                             
+                                  <td>{{item.service_description}}</td>
+                                  <td>{{item.service_charge}}</td>
+                                </tr>                               
+
                               </tbody>
                             </table>
                           </div>
@@ -119,21 +98,28 @@
                           </div>
                           <!-- /.col -->
                           <div class="col-xs-6">
-                            <p class="lead">Amount Due 2/22/2014</p>
+                            <p class="lead">Amount Due by {{invoice.due_date}}</p>
                             <div class="table-responsive">
                               <table class="table">
                                 <tbody>
                                   <tr>
                                     <th style="width:50%">Subtotal:</th>
-                                    <td>$250.30</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{totalbill}}</td>
                                   </tr>
+
                                   <tr>
-                                    <th>Tax (9.3%)</th>
-                                    <td>$10.34</td>
-                                  </tr>                                 
+                                    <th>Promo/Discount ({{invoice.discount}}%)</th>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{discount}}</td>
+                                  </tr>  
+
+                                  <tr>
+                                    <th>GST ({{invoice.tax}}%)</th>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{gst}}</td>
+                                  </tr>
+                                                                   
                                   <tr>
                                     <th>Total:</th>
-                                    <td>$265.24</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{grandtotal}}</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -160,19 +146,39 @@
 
 <script type="text/javascript">
   export default{
-    props:['invc','clt'],
+    props:['invoice','client','items'],
     data(){
       return{
-        invoice:[],
+       listitem:[]
+      
       }
     },
     watch:{
+    },
+    computed: {
+      totalbill: function(){      
+        if(this.items !== ''){
+          return this.items.reduce(function (total, item) { 
+            return total + item.service_charge;
+          },0)
+        }
+      },
+      gst:function(){
+        return ((this.totalbill-this.discount) * this.invoice.tax )/100;
+      },
+      discount:function(){
+        return (this.totalbill * this.invoice.discount )/100;
+      },
+      grandtotal:function(){
+        return ((this.totalbill-this.discount) + this.gst );
+      },
+      
     },
     methods:{
     
     },
     created(){
-      this.invoice = this.rcrd;
+      this.listitem = this.items;
     }
   };
 </script>

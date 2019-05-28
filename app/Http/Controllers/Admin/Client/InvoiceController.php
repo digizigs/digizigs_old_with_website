@@ -90,6 +90,7 @@ class InvoiceController extends Controller
             $s_line->invoice_id = $invoice->id;
             $s_line->service_id = $service['id'];
             $s_line->service_name = $service['name'];
+            $s_line->service_description = $service['description'];
             $s_line->service_charge = $service['charge'];
             $s_line->save();            
             //return request()->json(200,$service['id']);
@@ -111,14 +112,25 @@ class InvoiceController extends Controller
     
     public function show($id)
     {
-        //
+        $invoicea = Invoice::where('id',$id)->with('client','invoice_item')->first();
+        $items = Invoice::where('id',$id)->with('invoice_item')->get();
+        //dd($invoice->client->client_name);
+
+        $invoice = Invoice::where('id',$id)->first();
+        $client = Invoice::find($id)->client()->first();
+        $items = Invoice::find($id)->invoice_item()->get();
+
+        $data = ['invoice'=>$invoice , 'client'=> $client , 'items'=>$items];
+   
+
+        return request()->json(200,$data);
     }
 
     
     public function edit($id)
     {          
-        $invoice = Invoice::where('id',$id)->with('client','invoice_item.service')->first();
-        return request()->json(200,$invoice);
+        //$invoice = Invoice::where('id',$id)->with('client','invoice_item.service')->first();
+        //return request()->json(200,$invoice);
     }
 
    

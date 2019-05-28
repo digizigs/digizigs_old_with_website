@@ -15,8 +15,8 @@
     <p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
   @endif 
 
-  <div class="right_col" role="main"> 	
-      <invoice></invoice>     
+  <div class="right_col" role="main">
+      <invoice gst="{{setting('gst_tax')}}" due_date="{{setting('invoice_due_days')}}"></invoice>     
   </div>
 
 
