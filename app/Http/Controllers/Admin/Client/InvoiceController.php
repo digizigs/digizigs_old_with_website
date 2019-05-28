@@ -58,7 +58,7 @@ class InvoiceController extends Controller
    
     public function store(Request $request) {
 
-      
+        return $request->all();
         //$selected_services = $request->selectedservices;
         //$selected_lines= collect($request->selectedservices)->only('id');
         //$service_array = $selected_lines;

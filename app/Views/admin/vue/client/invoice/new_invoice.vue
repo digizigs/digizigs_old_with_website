@@ -13,70 +13,68 @@
 	                	
 	                	<div class="row">
 							
-							<!-- CLient -->
-							<div class="form-group wp-input form-invalid">
-	                		 	<div class="col-sm-12 col-xs-12 col-md-6" v-bind:class="{ 'form-invalid': clienterror }">
-		                            <i><small ><b></b></small></i>
-		                            <label for="" >Select Client</label>
-		                            <vue-single-select
-									        name="maybe"
-									        placeholder="Select Client"									     
-									        v-model="selectedclient"									        
-									        :options="clients"									        							        
-									        option-label="client_name"
-									></vue-single-select>
-									<small><a href="#addclient" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
-		                            <div class="error-message" v-if="errors.client_name">
-                                        {{ errors.client_name[0] }}
-                                    </div>    
-	                          	</div> 
-		                    </div>
+							<div class="col-xs-12 col-md-12">
+								<!-- CLient -->
+								<div class="form-group wp-input form-invalid">
+		                		 	<div class="col-sm-12 col-xs-12 col-md-12" v-bind:class="{ 'form-invalid': clienterror }">
+			                            <i><small ><b></b></small></i>
+			                            <label for="" >Select Client</label>
+			                            <vue-single-select
+										        name="maybe"
+										        placeholder="Select Client"									     
+										        v-model="invoice.client"									        
+										        :options="clients"									        							        
+										        option-label="client_name"
+										></vue-single-select>
+										<small><a href="#addclient" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
+			                            <div class="error-message" v-if="errors.client_name">
+	                                        {{ errors.client_name[0] }}
+	                                    </div>    
+		                          	</div> 
+			                    </div>
 
-							<!-- Due Date -->
-	                        <div class="form-group wp-input mt20">
-	                          <div class="col-sm-12 col-xs-12 col-md-3">
-	                            <label for="">Due Date</label>
-	                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
-	                          </div> 
-	                        </div>														
+								<!-- Due Date -->
+		                        <div class="form-group wp-input mt20">
+		                          <div class="col-sm-12 col-xs-12 col-md-12">
+		                            <label for="">Due Date</label>
+		                            <datepicker v-model="invoice.duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
+		                          </div> 
+		                        </div>														
 
-							<!-- Discount -->
-                            <div class="form-group wp-input mt20">
-                              <div class="col-sm-12 col-xs-12 col-md-3">
-                                <label for="">Discount(%)</label>
-                                <input class="form-control input-sm" type="number" v-model="discount"> 
-                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
-                              </div> 
-                            </div>
+								<!-- Discount -->
+	                            <div class="form-group wp-input mt20">
+	                              <div class="col-sm-12 col-xs-12 col-md-12">
+	                                <label for="">Discount(%)</label>
+	                                <input class="form-control input-sm" type="number" v-model="invoice.discount"> 
+	                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
+	                              </div> 
+	                            </div>
 
-							<!-- Services -->
-                            <div class="form-group wp-input mb10">
-	                          	<div class="col-sm-12 col-xs-12 col-md-12">
-		                            <label for="" style="margin-top: 10px;">Service</label>
-		                            <vue-single-select
-									        name="maybe"
-									        placeholder="Select Service to add to service list"									     
-									        v-model="selectedservices"									        
-									        :options="services"									        							        
-									        option-label="name"
-									        v-on:change="onChange"										        
-									>
-										
-									</vue-single-select>
-									<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">
-										<i class="fa fa-plus" aria-hidden="true"></i>
-										Add another item
-									</a>
-		                            
-	                          	</div>		                       
+								<!-- Services -->
+	                            <div class="form-group wp-input mb10">
+		                          	<div class="col-sm-12 col-xs-12 col-md-12">
+			                            <label for="" style="margin-top: 10px;">Service</label>
+			                            <vue-single-select
+										        name="maybe"
+										        placeholder="Select Service to add to service list"									     
+										        v-model="selectedservices"									        
+										        :options="services"									        							        
+										        option-label="name"
+										        v-on:change="onChange"										        
+										>
+											
+										</vue-single-select>
+										<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">
+											<i class="fa fa-plus" aria-hidden="true"></i>
+											Add another item
+										</a>
+			                            
+		                          	</div>		                       
+		                        </div>
 	                        </div>
 
-	                        
-	                                       		                
-						</div>
-
-						<div class="row">
-							<div class="service-line" v-if="serviceadded == true" style="margin-top: 20px;">
+	                        <div class="col-xs-12 col-md-12">
+	                        	<div class="service-line" v-if="serviceadded == true" style="margin-top: 20px;">
 								<div class="col-sm-12 col-xs-12 col-md-12">
 									<div class="">
 							            <table class="table">
@@ -137,7 +135,13 @@
 						        </div>
 						        
 						        <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent="createinvoice">Create Invoice</a>
+							</div>
+	                        </div>
+	                                       		                
 						</div>
+
+						<div class="row">
+							
 						</div>
 
 	                </div>
@@ -164,9 +168,10 @@
 			return{	
 				clienterror: false,			
 				invoice:{
-					tax:'',
-					discount:'',
-					totalbill:'',
+					//client
+					//tax:null,
+					//discount:null,
+					//totalbill:null,
 				},
 				gst:this.qgst,
 				discount:'0',
@@ -273,6 +278,7 @@
     				return
     			}
 
+
     			this.invoice.totalbill = this.totalcharge
     			NProgress.start();
     			axios.post('invoice',{ 'selectedclient':this.selectedclient,
@@ -280,7 +286,7 @@
     								   'selectedservices':this.servicelines,'invoice':this.invoice
     								})
 	            .then(data => {
-	                  
+	                console.log(response.data)  
 	              	this.$emit('recordupdated',data),
 	              	this.success='Invoice Created successfully'
 	              	this.selectedclient=null;
