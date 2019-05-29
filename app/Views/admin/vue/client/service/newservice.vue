@@ -10,62 +10,57 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form  role="form" @submit.prevent="" class="form-horizontal">                
+                  <form  role="form" @submit.prevent="" class="form-horizontal">                                   
 
                     <div class="form-group wp-input">
-                      <div class="form-line">
-                         <label class="form-label error">Service Name</label>
-                         <input type="text" class="form-control input-sm" v-model="newservice.name">
-                         
-                      </div>
-                      <div class="error-message" v-if="errors.name">
-                        {{ errors.name[0] }}
-                      </div>
-                      <div v-else>
-                        <small><i>Name of the service</i></small>
-                      </div>
+                      <label for="" class="col-sm-3 control-label">Service Name</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control input-sm" v-model="newservice.name">
+                          </div>
+                          <div class="error-message" v-if="errors.name">
+                            {{ errors.name[0] }}
+                          </div>
+                        </div>
                     </div>
 
                     <div class="form-group wp-input">
-                      <div class="form-line">
-                         <label class="form-label error">Service Description</label>
-                        
-                         <textarea class="form-control input-sm" cols="30" rows="3" v-model="newservice.desc"></textarea>
-                      </div>
-                      <div class="error-message" v-if="errors.desc">
-                        {{ errors.desc[0] }}
-                      </div>
-                      <div v-else>
-                        <small><i>Breif description about service</i></small>
-                      </div>
+                      <label for="" class="col-sm-3 control-label">Service Description</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <textarea class="form-control input-sm" cols="30" rows="3" v-model="newservice.desc"></textarea>
+                          </div>
+                          <div class="error-message" v-if="errors.desc">
+                            {{ errors.desc[0] }}
+                          </div>
+                        </div>
                     </div>
 
                     <div class="form-group wp-input">
-                      <div class="form-line">
-                         <label class="form-label error">Service Charge</label>
-                         <input type="text" class="form-control input-sm" v-model="newservice.bill">
-                      </div>
-                      <div class="error-message" v-if="errors.bill">
-                        {{ errors.bill[0] }}
-                      </div>
-                      <div v-else>
-                        <small><i>Billing amount for each service</i></small>
-                      </div>
+                      <label for="" class="col-sm-3 control-label">Service Charge</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control input-sm" v-model="newservice.bill">
+                          </div>
+                          <div class="error-message" v-if="errors.bill">
+                            {{ errors.bill[0] }}
+                          </div>
+                        </div>
                     </div>
-
 
                     <div class="form-group wp-input">
-                      <div class="form-line" >
-                         <label class="form-label error">Product Deadline</label>
-                         <input type="text" class="form-control input-sm" v-model="newservice.tat">
-                      </div>
-                      <div class="error-message" v-if="errors.tat">
-                        {{ errors.tat[0] }}
-                      </div>
-                      <div v-else>
-                        <small><i>Time for project completion</i></small>
-                      </div>
+                      <label for="" class="col-sm-3 control-label">Product Deadline</label> 
+                        <div class="col-sm-9">
+                          <div class="form-line">
+                            <input type="text" class="form-control input-sm" v-model="newservice.tat">
+                          </div>
+                          <div class="error-message" v-if="errors.tat">
+                            {{ errors.tat[0] }}
+                          </div>
+                        </div>
                     </div>
+
+
                    
                     <div class="form-group">
                       <button class="btn btn-dark btn-sm pull-right" @click="addservice">Add Service</button>  

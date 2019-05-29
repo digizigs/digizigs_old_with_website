@@ -75,6 +75,7 @@
                 text-align: center;
                 margin-top: -64px;
                 border-radius: 50%;
+                overflow:hidden;
                 
                 img {
                     border: 2px solid #ad1455;
@@ -85,7 +86,7 @@
                     -ms-border-radius: 50%;
                     border-radius: 50%;
                     height: 200px;
-                    width: 200px; 
+                    width: 200px;
                 } 
             }
 

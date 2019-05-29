@@ -44,14 +44,14 @@
                         <div class="form-group wp-input">
                            <div class="form-line">
                               <label class="form-label">Post Title</label>
-                              <input type="text" class="form-control" name="post_title" value="{{$post->title}}{{ old('post_title') }}">                              
+                              <input type="text" class="form-control input-sm" name="post_title" value="{{$post->title}}{{ old('post_title') }}">                              
                            </div>
                         </div>
 
                         <div class="form-group wp-input">
                            <div class="form-line">
                               <label class="form-label">Post Description</label>
-                              <input type="text" class="form-control" name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
+                              <input type="text" class="form-control input-sm" name="post_desc" value="{{$post->description}}{{ old('post_desc') }}">
                            </div>
                         </div>
 

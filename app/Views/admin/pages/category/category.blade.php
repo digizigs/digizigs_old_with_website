@@ -53,7 +53,7 @@
                                 <div class="form-group wp-input">
                                    <div class="form-line">
                                       <label class="form-label error">Category</label>
-                                      <input type="text" class="form-control" name="category_name" value="{{ old('category_name') }}">
+                                      <input type="text" class="form-control input-sm" name="category_name" value="{{ old('category_name') }}">
                                    </div>
                                    <small><i>The name is how it appears on your site.</i></small>
                                 </div>

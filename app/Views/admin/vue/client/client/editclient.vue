@@ -28,11 +28,11 @@
                             <div class="row">
                                 <div class="col-md-12">                                   
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3" >Name</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label" >Name</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control" v-model="selClient.client_name">
+                                            <input type="text" class="form-control input-sm" v-model="selClient.client_name">
                                           </div>
                                            <div class="error-message" v-if="errors.client_name">
                                             {{ errors.client_name[0] }}
@@ -40,20 +40,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3">Website</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Website</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text"  class="form-control" v-model="selClient.client_website">
+                                            <input type="text"  class="form-control input-sm" v-model="selClient.client_website">
                                           </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3">Email</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Email</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control" v-model="selClient.client_email">
+                                            <input type="text" class="form-control input-sm" v-model="selClient.client_email">
                                           </div>
                                           <div class="error-message" v-if="errors.client_email" >
                                             {{ errors.client_email[0] }}
@@ -62,11 +62,11 @@
                                         
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3">Contact Number</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Contact Number</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control" v-model="selClient.client_phone">
+                                            <input type="text" class="form-control input-sm" v-model="selClient.client_phone">
                                           </div>
                                           <div class="error-message" v-if="errors.client_phone">
                                             {{ errors.client_phone[0] }}
@@ -83,29 +83,29 @@
                             <div class="row">
                               <div class="col-md-12">                                 
 
-                                  <div class="form-group">
-                                      <label for="" class="col-sm-3">Name</label> 
+                                  <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Name</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text"  class="form-control" v-model="selClient.contact_name">
+                                            <input type="text"  class="form-control input-sm" v-model="selClient.contact_name">
                                           </div>
                                         </div>
                                     </div>
 
-                                  <div class="form-group">
-                                      <label for="" class="col-sm-3">Email</label> 
+                                  <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Email</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="email" class="form-control" v-model="selClient.contact_email">
+                                            <input type="email" class="form-control input-sm" v-model="selClient.contact_email">
                                           </div>
                                         </div>
                                     </div>
 
-                                  <div class="form-group">
-                                      <label for="" class="col-sm-3">Contact Number</label> 
+                                  <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Contact Number</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control" v-model="selClient.contact_phone">
+                                            <input type="text" class="form-control input-sm" v-model="selClient.contact_phone">
                                           </div>
                                         </div>
                                     </div>
@@ -118,26 +118,26 @@
                             <div class="row">
                                 <div class="col-md-12">
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3 ">Address</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Address</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control input-sm">
                                           </div>
                                         </div>
                                     </div>                                  
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3 ">Landmark</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Landmark</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control input-sm">
                                           </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="default_post_category" class="col-sm-3">City</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="default_post_category" class="col-sm-3 control-label">City</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line" style="text-align: center;">
                                             <select name="" class="form-control input-sm" >
@@ -149,8 +149,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="default_post_category" class="col-sm-3">State</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="default_post_category" class="col-sm-3 control-label">State</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line" style="text-align: center;">
                                             <select name="" class="form-control input-sm" >
@@ -162,17 +162,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="" class="col-sm-3">Postal Code</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="" class="col-sm-3 control-label">Postal Code</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control input-sm">
                                           </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                      <label for="default_post_category" class="col-sm-3">Country</label> 
+                                    <div class="form-group wp-input">
+                                      <label for="default_post_category" class="col-sm-3 control-label">Country</label> 
                                         <div class="col-sm-9">
                                           <div class="form-line" style="text-align: center;">
                                             <select name="" class="form-control input-sm" >
@@ -195,21 +195,21 @@
                               <div class="col-md-12">
                               
 
-                                <div class="form-group">
-                                  <label for="" class="col-sm-3">Public Note</label> 
+                                <div class="form-group wp-input">
+                                  <label for="" class="col-sm-3 control-label">Public Note</label> 
                                     <div class="col-sm-9">
                                       <div class="form-line">
-                                        <textarea rows="2" class="form-control no-resize"  v-model="selClient.public_note"></textarea>
+                                        <textarea rows="3" class="form-control input-sm"  v-model="selClient.public_note"></textarea>
                                       </div>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group">
-                                  <label for="" class="col-sm-3">Private Note</label> 
+                                <div class="form-group wp-input">
+                                  <label for="" class="col-sm-3 control-label">Private Note</label> 
                                     <div class="col-sm-9">
                                       <div class="form-line">
-                                        <textarea rows="2" class="form-control no-resize" v-model="selClient.private_note"></textarea>
+                                        <textarea rows="3" class="form-control input-sm" v-model="selClient.private_note"></textarea>
                                       </div>
                                     </div>
                                 </div>                              

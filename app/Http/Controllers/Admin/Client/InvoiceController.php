@@ -58,34 +58,24 @@ class InvoiceController extends Controller
    
     public function store(Request $request) {
 
-        return $request->all();
-        //$selected_services = $request->selectedservices;
-        //$selected_lines= collect($request->selectedservices)->only('id');
-        //$service_array = $selected_lines;
-        /*$client_name = $request->selectedclient['client_name'];
-
-        $this->validate($request, [
-           'selectedclient['client_name']' => 'required|string|max:200',
-        ]);
-*/
-   
+        
         $invoice = new Invoice;
-        $invoice->client_id = $request->selectedclient['id'];
-
-        $invoice->tax = $request->invoice['tax'];
-        $invoice->discount = $request->invoice['discount'];
-        $invoice->bill_amount = $request->invoice['totalbill'];
-        $invoice->bill_date = $request->dates['bill_date'];
-        $invoice->due_date = $request->dates['due_date'];
+        $invoice->client_id = $request->client['id'];
+        $invoice->tax = $request->tax;
+        $invoice->discount = $request->discount;
+        $invoice->bill_amount = $request->totalbill;
+        $invoice->net_bill_amount = $request->netbill;
+        $invoice->bill_date = $request->billdate;
+        $invoice->due_date = $request->duedate;
         $saved = $invoice->save();
 
-        $invoice_id = $invoice->id;
-        $client_name = $request->selectedclient['client_name'];    
-        //$invoice->services()->sync($request->selectedservices);
         
-        //saving service lines
-        foreach($request->selectedservices as $service){
-            //$invoice->services()->sync($service['id']);
+
+        $invoice_id = $invoice->id;
+        $client_name = $request->client['client_name'];    
+       
+        foreach($request->services as $service){
+            
             $s_line = new Invoice_item;
             $s_line->invoice_id = $invoice->id;
             $s_line->service_id = $service['id'];
@@ -93,7 +83,7 @@ class InvoiceController extends Controller
             $s_line->service_description = $service['description'];
             $s_line->service_charge = $service['charge'];
             $s_line->save();            
-            //return request()->json(200,$service['id']);
+            
         }
         
         //Notification 

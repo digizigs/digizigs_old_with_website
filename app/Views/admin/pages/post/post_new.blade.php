@@ -42,20 +42,20 @@
                         <div class="form-group wp-input">
                            <div class="form-line">
                               <label class="form-label">Post Title</label>
-                              <input type="text" class="form-control" name="post_title" value="{{ old('post_title') }}"> 
+                              <input type="text" class="form-control input-sm" name="post_title" value="{{ old('post_title') }}"> 
                            </div>
                         </div>
 
                         <div class="form-group wp-input">
                            <div class="form-line">
                               <label class="form-label">Post Description</label>
-                              <input type="text" class="form-control" name="post_desc" value="{{ old('post_desc') }}">
+                              <input type="text" class="form-control input-sm" name="post_desc" value="{{ old('post_desc') }}">
                            </div>
                         </div>
 
                         <div class="form-group wp-input">
                             <label for="editor1">Post Content</label>
-                            <textarea id="editor1" name="post_body" rows="15" cols="80" class="form-control {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">                                
+                            <textarea id="editor1" name="post_body" rows="15" cols="80" class="form-control input-sm {{ $errors->has('post_body') ? ' is-invalid' : '' }}" value="{{ old('post_body') }}">                                
                             </textarea>                              
                         </div>
                      </div>

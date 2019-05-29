@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="modal fade" id="invoiceview" role="dialog"  data-backdrop="false">
-	        <div class="modal-dialog modal-lg">
+	        <div class="modal-dialog modal-md">
 	            <div class="modal-content">
 	                <div class="modal-header panel-heading">
 	                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
@@ -25,11 +25,11 @@
                           <div class="col-sm-4 invoice-col">
                             From
                             <address>
-                                <strong>Digizigs Web technologies</strong>
-                                <br>202-Rajeshwer Planet
-                                <br>Baroda, Gujarat
+                                <strong>Digizigs Web technologies</strong>                              
                                 <br>Phone: (+91) 97123 40450
                                 <br>Email: info@digizigs.com
+                                <br>GST No: {{gstno}}
+                                <br>Reg No: {{regno}}
                             </address>
                           </div>
                           <!-- /.col -->
@@ -37,22 +37,18 @@
                             To
                             <address>
                                 <strong>{{client.client_name}}</strong>
-                                <br>795 Freedom Ave, Suite 600
-                                <br>New York, CA 94107
-                                <br>Phone: 1 (804) 123-9876
-                                <br>Email: jon@ironadmin.com
+                                <br>Phone: {{client.client_phone}}
+                                <br>Email: {{client.client_email}}
                             </address>
                           </div>
                           <!-- /.col -->
                           <div class="col-sm-4 invoice-col">
-                            <b>Invoice #007612</b>
                             <br>
-                            <br>
-                            <b>Order ID:</b> 4F3S8J
+                            <b>Invoice #{{invoice.id}}{{client.id}}</b>                            
                             <br>
                             <b>Payment Due:</b> {{invoice.due_date}}
                             <br>
-                            <b>Account:</b> 968-34567
+                            <b> CLient ID:</b> {{client.id}}
                           </div>
                           <!-- /.col -->
                         </div>
@@ -93,7 +89,11 @@
                           <div class="col-xs-6">
                             
                             <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                              Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
+                              Payment of each invoiced amount is due within 30 days of the invoice date.
+                              subject to a ½ of 1% discount if paid within ten (10) days of the date of this invoice. Any
+                              payments not made within thirty (30) days of the date of this invoice shall be
+                              subject to a late payment charge of 1½% per month (compounded) on the unpaid
+                              balance of any amount then passed due
                             </p>
                           </div>
                           <!-- /.col -->
@@ -104,22 +104,22 @@
                                 <tbody>
                                   <tr>
                                     <th style="width:50%">Subtotal:</th>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{totalbill}}</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.bill_amount}}</td>
                                   </tr>
 
                                   <tr>
-                                    <th>Promo/Discount ({{invoice.discount}}%)</th>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{discount}}</td>
+                                    <th>Promo/Discount</th>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.discount}}</td>
                                   </tr>  
 
                                   <tr>
-                                    <th>GST ({{invoice.tax}}%)</th>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{gst}}</td>
+                                    <th>GST@({{qgst}}%)</th>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.tax}}</td>
                                   </tr>
                                                                    
                                   <tr>
                                     <th>Total:</th>
-                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{grandtotal}}</td>
+                                    <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.net_bill_amount}}</td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -146,7 +146,7 @@
 
 <script type="text/javascript">
   export default{
-    props:['invoice','client','items'],
+    props:['invoice','client','items','qgst','regno','gstno'],
     data(){
       return{
        listitem:[]

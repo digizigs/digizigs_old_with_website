@@ -75,9 +75,15 @@
     </div>
 		<div id="modal">
 
-         
-          <!--detailclient :recrd="clientdetail" @recordupdated="refreshRecord"></detailclient-->
-          <invoiceview :client="client" :invoice="invoice" :items="items" :invc="invoicedetail" @recordupdated="refreshRecord"></invoiceview>
+          <invoiceview  :regno="regno"
+                        :gstno="gstno"
+                        :qgst="gst" 
+                        :client="client" 
+                        :invoice="invoice" 
+                        :items="items" 
+                        :invc="invoicedetail" 
+                        @recordupdated="refreshRecord">                
+          </invoiceview>
           <newinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
          
         </div>
@@ -89,7 +95,7 @@
 	var moment = require('moment');
 
 	export default{
-    props:['gst','due_date'],
+    props:['regno','gstno','gst','due_date'],
 		data(){
 			return{
 				search:'',

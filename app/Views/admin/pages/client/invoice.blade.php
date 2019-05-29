@@ -16,7 +16,11 @@
   @endif 
 
   <div class="right_col" role="main">
-      <invoice gst="{{setting('gst_tax')}}" due_date="{{setting('invoice_due_days')}}"></invoice>     
+      <invoice  regno="{{setting('registration_number')}}"
+                gstno="{{setting('gst_number')}}"
+                gst="{{setting('gst_tax')}}" 
+                due_date="{{setting('invoice_due_days')}}">            
+          
   </div>
 
 

@@ -22,8 +22,8 @@
 			                            <vue-single-select
 										        name="maybe"
 										        placeholder="Select Client"									     
-										        v-model="invoice.client"									        
-										        :options="clients"									        							        
+										        v-model="client"									        
+										        :options="ClientList"     
 										        option-label="client_name"
 										></vue-single-select>
 										<small><a href="#addclient" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Client</a></small>	                            
@@ -35,17 +35,17 @@
 
 								<!-- Due Date -->
 		                        <div class="form-group wp-input mt20">
-		                          <div class="col-sm-12 col-xs-12 col-md-12">
+		                          <div class="col-sm-12 col-xs-12 col-md-6">
 		                            <label for="">Due Date</label>
-		                            <datepicker v-model="invoice.duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
+		                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
 		                          </div> 
 		                        </div>														
 
 								<!-- Discount -->
 	                            <div class="form-group wp-input mt20">
-	                              <div class="col-sm-12 col-xs-12 col-md-12">
+	                              <div class="col-sm-12 col-xs-12 col-md-6">
 	                                <label for="">Discount(%)</label>
-	                                <input class="form-control input-sm" type="number" v-model="invoice.discount"> 
+	                                <input class="form-control input-sm" type="number" v-model="discount"> 
 	                                <span v-if="errors.client_email" :class="['label label-danger']">{{ errors.client_email[0] }}</span>                   
 	                              </div> 
 	                            </div>
@@ -57,14 +57,14 @@
 			                            <vue-single-select
 										        name="maybe"
 										        placeholder="Select Service to add to service list"									     
-										        v-model="selectedservices"									        
-										        :options="services"									        							        
+										        v-model="service"									        
+										        :options="servicelist"     
 										        option-label="name"
-										        v-on:change="onChange"										        
+										       								        
 										>
 											
 										</vue-single-select>
-										<a href="" v-on:click.prevent="addmoreitem" v-if="selectedservices !== null" class="add-new-item">
+										<a href="" v-on:click.prevent="addmoreitem" v-if="service !== null" class="add-new-item">
 											<i class="fa fa-plus" aria-hidden="true"></i>
 											Add another item
 										</a>
@@ -82,16 +82,13 @@
 							                  <tr class="headings">
 							                  	<th class="column-title">Service </th>                    
 							                    <th class="column-title">Description</th>						                  
-							                    <th class="column-title">Price</th>
-							                    <th class="column-title"></th>						                           
-							                    <th class="bulk-actions" colspan="7">
-							                      <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-							                    </th>
+							                    <th class="column-title">Price (<i class="fa fa-inr" aria-hidden="true"></i>)</th>
+							                    <th class="column-title"></th>							                    
 							                  </tr>
 							                </thead>
 
 							                <tbody>						                  
-							                	<tr class="even pointer" v-for="service in servicelines">
+							                	<tr class="table-data" v-for="service in invoice.services">
 								                  	<td class=" " style="">{{service['name']}}</td>
 								                  	<td class=" " style="">{{service['description']}}</td>	                 
 								                    <td class=" ">{{service['charge']}}</td>
@@ -105,28 +102,28 @@
 							                   	<tr class="even pointer" >
 								                  	<th class="column-title">Sub-Total </th> 
 								                  	<th class="column-title"> </th>                
-								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+								                    <th class="column-title">{{subtotal}}</th>
 								                    <th class="column-title"> </th>		
 							                  	</tr>
 
 							                  	<tr class="even pointer" >
 								                  	<th class="column-title">Discount @ {{this.discount}}% </th> 
 								                  	<th class="column-title"> </th>                
-								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{totalcharge}}</th>
+								                    <th class="column-title">{{cdiscount}}</th>
 								                    <th class="column-title"> </th>		
 							                  	</tr>
 							                  
 							                  	<tr class="even pointer" >
 								                  	<th class="column-title">GST @ {{this.qgst}}% </th> 
 								                  	<th class="column-title"> </th>                
-								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ctax}}</th>
+								                    <th class="column-title">{{ctax}}</th>
 								                    <th class="column-title"> </th>		
 							                  	</tr>
 							                 
 							                  	<tr class="even pointer" >
 								                  	<th class="column-title">Net Charge </th> 
 								                  	<th class="column-title"> </th>                 
-								                    <th class="column-title"><i class="fa fa-inr" aria-hidden="true"></i>{{ccharge}}</th>
+								                    <th class="column-title">{{ccharge}}</th>
 								                    <th class="column-title"> </th>		
 							                  	</tr>								                  						  
 							                </tbody>
@@ -168,151 +165,141 @@
 			return{	
 				clienterror: false,			
 				invoice:{
-					//client
-					//tax:null,
-					//discount:null,
-					//totalbill:null,
-				},
-				gst:this.qgst,
-				discount:'0',
-				invoice_item:{},
-				multipleSelections:'',
-				selected:'',
-				value:[],
-				clients:[],
-				selectedclient:null,
-				services:[],
-				selectedservices:null,
-				servicelines:[],
-				serviceadded:false,
-				success:'',
-				errors:[],					
-				billdate:new Date(),
-				duedate:new Date().addDays(this.qduedate),				
+					client:null,
+					discount:0,
+					tax:0,
+					totalbill:0,
+					netbill:0,
+					billdate:moment(new Date()).format('YYYY/MM/DD'),
+					duedate:moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD'),
+					services:[]
+				},			
+				tax:this.qgst,
+				discount:0,
+				client:null,
+				service:null,
+				duedate:moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD'),
+				ClientList:[],
+				servicelist:[],
+				serviceadded:false,		
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
 				},
-				error:''
+				errors:''
 			}
 		},
 		watch:{
-			selectedservices:function(){
-				//console.log(this.selectedservices)
-				//this.selectedservices=null;
-				if (this.selectedservices != null) {
-    				this.servicelines.push(this.selectedservices);
-    				//this.selectedservices=null;
-    				this.serviceadded=true
-    			}
-    			  
-			},
-			servicelines:function(){
-				//console.log('Item added')
-				//this.selectedservices=null;
-			},
-			selectedclient:function(){
-				if (this.selectedclient != null) {
+			client(){
+				if (this.client != null) {
+					this.invoice.client = this.client
 					this.clienterror = false
 				}
+			},
+			service(){
+				if (this.service != null) {
+    				this.invoice.services.push(this.service);
+    				this.serviceadded=true
+    			}
+			},
+			duedate(){
+				this.invoice.duedate = moment(this.duedate).format('YYYY/MM/DD')
+			},
+			selectedservices(){
+				if (this.selectedservices != null) {
+    				
+    			}	  
+			},			
+			subtotal(){
+				this.invoice.totalbill = this.subtotal
+			},
+			cdiscount(){
+				this.invoice.discount = this.cdiscount
+			},
+			ctax(){
+				this.invoice.tax = this.ctax
+			},
+			ccharge(){
+				this.invoice.netbill = this.ccharge
 			}
+
 		},
 		computed: {
-			totalcharge: function(){
-			
-    			return this.servicelines.reduce(function (total, service) { 
+			subtotal(){
+				return this.invoice.services.reduce(function (total, service) { 
                 	return total + Number(service['charge']);  					
             	}, 0);
-    		},
+			},
     		ctax:function(){
-    			return (this.totalcharge * this.qgst )/100;
+    			return ((this.subtotal - this.cdiscount) * this.qgst )/100;
     		},
     		cdiscount:function(){
-    			return (this.totalcharge * this.discount )/100;
+    			return (this.subtotal * this.discount )/100;
     		},
     		ccharge:function(){    			
-    			return (this.totalcharge - this.cdiscount) + this.ctax ;
+    			return (this.subtotal - this.cdiscount) + this.ctax ;
     		}
 		},
 		methods:{		
 			refreshRecord(){
 
 			},
-			myChangeEvent(val){
-            	console.log(val);
-	        },
-	        mySelectEvent({id, text}){
-	            console.log({id, text})
-	        },
-			validateSelection(){ },
-			getDropdownValues(){ },
 			customFormatter(date) {
-      			return moment(date).format('Do MMM YYYY');
-    		},
-    		onChange(){
-    			console.log('On change');
+      			return moment(date).format('YYYY/MM/DD');
     		},
     		addmoreitem(){
-    			this.selectedservices=null;
+    			this.service=null;
     		},
     		addservice(){
     			if (this.selectedservices != null) {
-    				this.servicelines.push(this.selectedservices);
     				this.invoice.services.push(this.selectedservices);
     				this.selectedservices=null;
     				this.serviceadded=true
     			}              	   			
     		},
-    		removeservice(id){this. servicelines.splice(id, 1)},
+    		removeservice(id){this.invoice.services.splice(id, 1)},
     		clearmodal(){
-    			this.servicelines=[];
-    			this.serviceadded=false
-    			this.selectedclient=null;
-	            this.selectedservices=null;
-	            this.billdate='';
-	            this.duedate='';
+    			this.invoice.services = [];
+              	this.serviceadded=false;
+              	this.client = null;
+              	this.service = null;
+              	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
+              	this.discount = 0;
     		},
     		createinvoice:function(){
 
-    			if(this.selectedclient == null){
+    			if(this.client == null){
     				this.clienterror = true
     				return
     			}
-
-
-    			this.invoice.totalbill = this.totalcharge
+  
     			NProgress.start();
-    			axios.post('invoice',{ 'selectedclient':this.selectedclient,
-    								   'dates':{'bill_date':moment(this.billdate).format('YYYY/MM/DD'),'due_date':moment(this.duedate).format('YYYY/MM/DD')},
-    								   'selectedservices':this.servicelines,'invoice':this.invoice
-    								})
-	            .then(data => {
-	                console.log(response.data)  
-	              	this.$emit('recordupdated',data),
-	              	this.success='Invoice Created successfully'
-	              	this.selectedclient=null;
-	              	this.selectedservices=null;
-	              	this.servicelines=[];
-	              	this.billdate = new Date();
-	              	this.duedate = new Date().addDays(this.qduedate);
-	              	this.serviceadded=false;
-	              	this.clienterror = false;
-	            	$('#newinvoice').modal('hide');
-	            	
-		            toast({
-		                type: 'success',
-		                title: 'Invoice Created successfully'
-		            })
-		            NProgress.done();
+    			axios.post('invoice',this.invoice)
+		            .then(data => {
+		                
+		              	this.$emit('recordupdated',data);
+		              	this.invoice.services = [];
+		              	this.serviceadded=false;
+		              	this.client = null;
+		              	this.service = null;
+		              	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
+		              	this.discount = 0;
+		            	$('#newinvoice').modal('hide');
+		            	
+			            toast({
+			                type: 'success',
+			                title: 'Invoice Created successfully'
+			            })
+			            NProgress.done();
 
-	          	})
-	          	.catch((error) => {
-	          		NProgress.done();
-	          		this.errors=error.response.data.errors
-	          		toast({
-		                type: 'warning',
-		                title: 'Error creatinng invoice'
-		            })
-	          	})
+		          	})
+		          	.catch((error) => {
+		          		NProgress.done();
+		          		this.errors=error.response.data//.errors
+		          		toast({
+			                type: 'warning',
+			                title: 'Error creatinng invoice'
+			            })
+		          	})
     		},
     		addTag (newTag) {
 			    const tag = {
@@ -329,11 +316,11 @@
 		},
 		created(){
 			axios.get('invoice/allclient')
-			.then((response) => {this.clients=response.data})
+			.then((response) => {this.ClientList=response.data})
 			.catch((error) => console.log(error))
 
 			axios.get('invoice/allservice')
-			.then((response) => {this.services=response.data})
+			.then((response) => {this.servicelist=response.data})
 			.catch((error) => console.log(error))
 		}
 	};
@@ -341,7 +328,9 @@
 </script>
 
 <style lang="scss">
-
+	.fa-inr{
+		margin-left: 5px;
+	}
 	.vdp-datepicker input{
 		
 			background-color: #fff !important;
@@ -390,6 +379,9 @@
 	.add-new-item{
 		color: #1f91f3;
 		font-weight: 500;
+	}
+	.table-data{
+		color: #1f91f3;
 	}
 	.error-message{
 		margin-top:-5px;
