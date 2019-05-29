@@ -35,7 +35,7 @@
                      	<span class="label label-success">
                      		Total Bill:
                      		<i class="fa fa-inr" aria-hidden="true"></i>
-                     		 <!-- {{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}} -->{{invoice.bill_amount}}
+                     		 <!-- {{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}} -->{{invoice.net_bill_amount}}
                      	</span>
 
                      	<span style="margin-left: 10px;"> creatred on </span> <span class="time">{{ invoice.created_at | vueDate }}</span> due on

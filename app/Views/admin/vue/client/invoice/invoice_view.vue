@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="modal fade" id="invoiceview" role="dialog"  data-backdrop="false">
-	        <div class="modal-dialog modal-md">
+	        <div class="modal-dialog modal-lg">
 	            <div class="modal-content">
 	                <div class="modal-header panel-heading">
 	                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
@@ -60,7 +60,6 @@
                             <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <th>Qty</th>
                                   <th>Service</th>
                                   
                                   <th style="width: 59%">Description</th>
@@ -70,7 +69,6 @@
                               <tbody>
 
                                 <tr v-for="item in items">
-                                  <td>1</td>
                                   <td>{{item.service_name}}</td>                             
                                   <td>{{item.service_description}}</td>
                                   <td>{{item.service_charge}}</td>
