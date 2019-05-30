@@ -816,13 +816,27 @@ a:visited {
 .top_nav .navbar-right {
     margin: 0;
     width: 70%;
-    float: right
+    float: right;
+    height: 45px;
+    .user{
+        a{
+            margin-top: -5px;
+        }
+    }
 }
 
 .top_nav .navbar-right li {
     display: inline-block;
     float: right;
-    position: static
+    position: static;
+    height: 45px;
+
+    a{
+       height: 45px;
+    }
+    a:hover{
+       height: 45px; 
+    }
 }
 
 @media (min-width:480px) {
@@ -973,7 +987,7 @@ a:visited {
 .navbar-brand,
 .navbar-nav>li>a {
     font-weight: 500;
-    line-height: 32px
+    line-height: 15px;
 }
 
 .site_title {
@@ -1286,7 +1300,7 @@ h2 {
 
 .x_panel {
     width: 100%;
-    padding: 10px 17px;
+    //padding: 10px 17px;
     display: inline-block;
     background: #EAEDF2;
     //-webkit-column-break-inside: avoid;

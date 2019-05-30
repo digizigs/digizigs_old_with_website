@@ -48,7 +48,7 @@
                      	        <i class="fa fa-file-text" aria-hidden="true"></i>
                      	    </a>
                       		|
-                        	<a href="#editclient" v-on:click.prevent data-toggle="modal" @click="detailclient(invoice.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        	<a href="#editinvoice" v-on:click.prevent data-toggle="modal" @click="invoiceedit(invoice.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         	|
                         	<a href="" v-on:click.prevent @click="invoicedelete(invoice.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                             
                       	</span>
@@ -75,7 +75,7 @@
     </div>
 		<div id="modal">
 
-          <invoiceview  :regno="regno"
+          <viewinvoice  :regno="regno"
                         :gstno="gstno"
                         :qgst="gst" 
                         :client="client" 
@@ -83,8 +83,9 @@
                         :items="items" 
                         :invc="invoicedetail" 
                         @recordupdated="refreshRecord">                
-          </invoiceview>
+          </viewinvoice>
           <newinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
+          <editinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></editinvoice>
          
         </div>
 	</section>
@@ -151,6 +152,9 @@
           })//this.apntupdate = response.data
         .catch(error => this.errors=error.response.data.errors);
     	},
+      invoiceedit(id){
+        console.log(id)
+      },
     	invoicedelete(id){
       	swalWithBootstrapButtons({
         	title: 'Delete Invoice?',

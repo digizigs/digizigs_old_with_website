@@ -7,7 +7,7 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-        <li class="">
+        <li class="user" >
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="{{ Auth::user()->avatar_url}}" alt="">{{Auth::user()->firstname }}, {{ Auth::user()->lastname}}
             <span class=" fa fa-angle-down"></span>
@@ -73,7 +73,6 @@
 
             
           </ul>
-
         </li>
 
       </ul>

@@ -78,8 +78,9 @@ Vue.component('editclient', require('./client/client/editclient.vue'));
 
 //INVOICE
 Vue.component('invoice', require('./client/invoice/invoice.vue'));
-Vue.component('newinvoice', require('./client/invoice/new_invoice.vue'));
-Vue.component('invoiceview', require('./client/invoice/invoice_view.vue'));
+Vue.component('newinvoice', require('./client/invoice/newinvoice.vue'));
+Vue.component('viewinvoice', require('./client/invoice/viewinvoice.vue'));
+Vue.component('editinvoice', require('./client/invoice/editinvoice.vue'));
 
 //Chat
 Vue.component('chat-app', require('./chat/ChatApp.vue'));

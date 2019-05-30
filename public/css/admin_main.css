@@ -9419,12 +9419,26 @@ a:visited {
   margin: 0;
   width: 70%;
   float: right;
+  height: 45px;
+}
+
+.top_nav .navbar-right .user a {
+  margin-top: -5px;
 }
 
 .top_nav .navbar-right li {
   display: inline-block;
   float: right;
   position: static;
+  height: 45px;
+}
+
+.top_nav .navbar-right li a {
+  height: 45px;
+}
+
+.top_nav .navbar-right li a:hover {
+  height: 45px;
 }
 
 @media (min-width: 480px) {
@@ -9575,7 +9589,7 @@ a:visited {
 .navbar-brand,
 .navbar-nav > li > a {
   font-weight: 500;
-  line-height: 32px;
+  line-height: 15px;
 }
 
 .site_title {
@@ -9901,7 +9915,6 @@ h2 {
 
 .x_panel {
   width: 100%;
-  padding: 10px 17px;
   display: inline-block;
   background: #EAEDF2;
   column-break-inside: avoid;
@@ -13606,7 +13619,7 @@ html {
   font-smoothing: antialiased;
   font-weight: 400;
   font-size: 12px;
-  color: #212529;
+  color: #455A64;
 }
 
 input:-webkit-autofill,
@@ -13878,11 +13891,6 @@ footer {
   right: 20px;
 }
 
-.right_col {
-  min-height: 2000px;
-  margin: 0;
-}
-
 .pagination .active a {
   background-color: #3F5367 !important;
 }
@@ -13949,62 +13957,60 @@ footer {
   font-style: italic;
 }
 
-/*******************************
-* MODAL AS LEFT/RIGHT SIDEBAR
-* Add "left" or "right" in modal parent div, after class="modal".
-* Get free snippets on bootpen.com
-*******************************/
-
-.modal.left .modal-dialog,
-.modal.right .modal-dialog {
+.modal-right-slide .modal-dialog,
+.modal-left-slide .modal-dialog {
   position: fixed;
   margin: auto;
-  width: 320px;
+  width: 50%;
   height: 100%;
   -webkit-transform: translate3d(0%, 0, 0);
   transform: translate3d(0%, 0, 0);
 }
 
-.modal.left .modal-content,
-.modal.right .modal-content {
+@media (max-width: 768px) {
+  .modal-right-slide .modal-dialog,
+  .modal-left-slide .modal-dialog {
+    width: 100%;
+  }
+}
+
+.modal-right-slide .modal-content,
+.modal-left-slide .modal-content {
   height: 100%;
   overflow-y: auto;
 }
 
-.modal.left .modal-body,
-.modal.right .modal-body {
-  padding: 15px 15px 80px;
-}
-
-Left .modal.left.fade .modal-dialog {
-  left: -320px;
-  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
-  transition: opacity 0.3s linear, left 0.3s ease-out;
-}
-
-.modal.left.fade.in .modal-dialog {
-  left: 0;
-}
-
-Right .modal.right.fade .modal-dialog {
-  right: -320px;
+.modal-right-slide.fade .modal-dialog {
+  right: -50%;
   -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
   transition: opacity 0.3s linear, right 0.3s ease-out;
 }
 
-.modal.right.fade.in .modal-dialog {
+@media (max-width: 768px) {
+  .modal-right-slide.fade .modal-dialog {
+    right: 100%;
+  }
+}
+
+.modal-right-slide.fade.in .modal-dialog {
   right: 0;
 }
 
-/*  .modal-content {
-   border-radius: 0;
-   border: none;
- }
- 
- .modal-header {
-   border-bottom-color: #EEEEEE;
-   background-color: #FAFAFA;
- } */
+.modal-left-slide.fade .modal-dialog {
+  left: -50%;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+@media (max-width: 768px) {
+  .modal-left-slide.fade .modal-dialog {
+    left: 100%;
+  }
+}
+
+.modal-left-slide.fade.in .modal-dialog {
+  left: 0;
+}
 
 .sidebar-brand a img {
   padding: 20px;
@@ -16174,6 +16180,12 @@ Right .modal.right.fade .modal-dialog {
 .modal .modal-content .modal-header {
   border: none;
   padding: 20px 20px 5px 20px;
+  background-color: #F8F9FA;
+}
+
+.modal .modal-content .modal-header button {
+  color: #2A5D84;
+  margin-top: -5px;
 }
 
 .modal .modal-content .modal-header .modal-title {
@@ -16181,6 +16193,7 @@ Right .modal.right.fade .modal-dialog {
   font-size: 16px;
   color: #2A5D84;
   font-weight: 500;
+  margin-top: -5px;
 }
 
 .modal .modal-content .modal-body {

@@ -12,11 +12,17 @@
 		.modal-header{
 			border: none;
 	  		padding: 20px 20px 5px 20px;
+	  		background-color: #F8F9FA;
+	  		button{
+	  			color: #2A5D84;
+	  			margin-top: -5px;
+	  		}
 	  		.modal-title {
 	    		font-weight: bold;
 	    		font-size: 16px;
 	    		color: #2A5D84;
-				font-weight: 500; 
+				font-weight: 500;
+				margin-top: -5px; 
 			}
 			
 		}

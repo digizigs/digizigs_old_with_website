@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="modal fade slide-right" id="newinvoice" role="dialog"  data-backdrop="false">
+		<div class="modal fade modal-right-slide" id="newinvoice" role="dialog"  data-backdrop="false">
 	        <div class="modal-dialog modal-lg">
 	            <div class="modal-content">
 	                <div class="modal-header">

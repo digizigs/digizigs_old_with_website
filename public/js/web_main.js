@@ -65127,9 +65127,13 @@ $(document).ready(function () {
     $(".fitscreen").css("height", fitscreen);
 
     //------- Pre Loader --------//  
-    $(window).on('load', function () {
+    /*$(window).on('load', function () {
         jQuery(".loader").fadeOut();
         $(".preloader-area").delay(100).fadeOut("slow");
+    })*/
+
+    $(".preloader-area").fadeOut("slow", function () {
+        $(this).remove();
     });
 
     //------- Go to Top --------// 

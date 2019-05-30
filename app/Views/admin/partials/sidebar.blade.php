@@ -1,8 +1,8 @@
-<div class="col-md-3 left_col">
-  <div class="left_col ">
+<div class="col-md-3 left_col ">
+  <div class="left_col scroll">
 
 
-    <div class="navbar nav_title sidebar-brand" style="border: 0;">
+    <div class="navbar nav_title sidebar-brand hidden-xs" style="border: 0;">
       <a href="{{route('admin.home')}}" class="site_title" >
         <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-white.png')}}" class="hidden-xs">
         <!--h3 style="text-align: center;">{{setting('app_name')}}</h3--> 
@@ -15,7 +15,6 @@
     
     <!-- /menu profile quick info -->
 
-    <br />
 
     <!-- sidebar menu -->
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu menu_fixed">
@@ -90,6 +89,7 @@
           <li>
             <a href="{{route('app.logs')}}"><i class="fa fa-exclamation-triangle"></i> Logs </a>
           </li>
+
        
         </ul>
 
@@ -119,7 +119,7 @@
       </a>
     </div>
     <!-- /menu footer buttons -->
-
+    
     
   </div>
 </div>
