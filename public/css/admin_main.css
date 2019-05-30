@@ -16181,6 +16181,8 @@ footer {
   border: none;
   padding: 20px 20px 5px 20px;
   background-color: #F8F9FA;
+  height: 45px;
+  border-bottom: 1px solid #D9DEE4;
 }
 
 .modal .modal-content .modal-header button {

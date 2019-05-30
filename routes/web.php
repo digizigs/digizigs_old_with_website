@@ -91,6 +91,12 @@ Route::get('/taskevent',function(){
 });*/
 //=========================================Test Routes=============================================//
 
+Route::get('/admin2',function(){
+
+    //Event Listner
+    return view('admin2.dashboard');
+
+});
 
 
 //=========================================Admin Routes=============================================//
