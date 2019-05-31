@@ -101,7 +101,7 @@
     <!-- /sidebar menu -->
 
     <!-- /menu footer buttons -->
-    <div class="sidebar-footer hidden-small">
+    <!--div class="sidebar-footer hidden-small">
       <a href="{{route('settings.index')}}" data-toggle="tooltip" data-placement="top" title="Settings">
         <i class="fa fa-cog" aria-hidden="true"></i>
       </a>
@@ -117,7 +117,7 @@
           {{ csrf_field() }}
         </form>
       </a>
-    </div>
+    </div-->
     <!-- /menu footer buttons -->
     
     
