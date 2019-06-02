@@ -1,8 +1,8 @@
-<div class="col-md-3 left_col ">
-  <div class="left_col scroll">
+<div class="col-md-3 left_col">
+  <div class="sidebar">
 
 
-    <div class="navbar nav_title sidebar-brand hidden-xs" style="border: 0;">
+    <div class="nav_title sidebar-brand hidden-xs" style="border: 0;">
       <a href="{{route('admin.home')}}" class="site_title" >
         <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-white.png')}}" class="hidden-xs">
         <!--h3 style="text-align: center;">{{setting('app_name')}}</h3--> 
@@ -11,68 +11,70 @@
 
     <div class="clearfix"></div>
 
-    <!-- menu profile quick info -->
-    
-    <!-- /menu profile quick info -->
-
+  
 
     <!-- sidebar menu -->
-    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu menu_fixed">
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
       <div class="menu_section">
 
+        <ul class="pcoded-item pcoded-left-item">
+          <li>
+            <a href=""></a>
+          </li>
+        </ul>
+
         <h3>General</h3>
         <ul class="nav side-menu">
-          <li class=""><a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
+
+          <li class="menu-item">
+            <a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
           </li>
 
-          <li><a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">
               <li><a href="{{route('post.index')}}">All Article</a></li>
               <li><a href="{{route('post.create')}}">New Article</a></li>
             </ul>
           </li>
-
-          <!-- <li><a><i class="fa fa-file-text-o"></i> Pages <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
-              <li><a href="{{route('page.index')}}">All Pages</a></li>
-              <li><a href="{{route('page.create')}}">Add Page</a></li>
-            </ul>
-          </li> -->
           
-          <li>
+          <li class="menu-item">
             <a href="{{route('category.index')}}"><i class="fa fa-object-group"></i> Category </a>
           </li>
 
-          <li>
+          <li class="menu-item">
             <a href="{{route('menu-index')}}"><i class="fa fa-bars"></i> Menus </a>
           </li>
 
-          <li>
+          <li class="menu-item">
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-          <li><a><i class="fa fa-user"></i>Subscriptions & Inquiry<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">            
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-user"></i>Subscriptions & Inquiry<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">            
               <li><a href="{{route('subscription.index')}}"> Subscriptions </a></li>
               <li><a href="{{route('inquiry.index')}}"> Inquiry </a></li>
             </ul>
           </li>
 
-          <li>
+          <li class="menu-item">
             <a href="{{route('chat')}}"><i class="fa fa-comments-o"></i> Chat </a>
           </li>
 
-          <li><a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">
               <li><a href="{{route('users.index')}}">Users</a></li>
               <li><a href="{{route('roles.index')}}">Roles</a></li>
               <li><a href="{{route('permissions.index')}}">Permission</a></li>
             </ul>
           </li>
 
-          <li><a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu">
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">
               <li><a href="{{route('service.index')}}">Services</a></li> 
               <li><a href="{{route('client.index')}}">Clients</a></li>
               <li><a href="{{route('quotation.index')}}">Quotations</a></li>        
@@ -82,11 +84,11 @@
           </li>
          
         
-          <li>
+          <li class="menu-item">
             <a href="{{route('google.analytics')}}"><i class="fa fa-line-chart"></i> Analytics </a>
           </li>
 
-          <li>
+          <li class="menu-item">
             <a href="{{route('app.logs')}}"><i class="fa fa-exclamation-triangle"></i> Logs </a>
           </li>
 

@@ -3,6 +3,7 @@ body {
     font-size: 12px;
     overflow-x: hidden;
     color: #353c4e;
+    color: #455A64;
     font-family: open sans, sans-serif;
     background-attachment: fixed
 }
@@ -7648,6 +7649,10 @@ table tbody .border-bottom-info td {
     width: 240px;
     padding: 10px;
     color:#fff !important;
+}
+.header-navbar .navbar-wrapper .navbar-logo img {
+    max-height: 30px;
+    margin-left: 40px;
 }
 
 @media only screen and (max-width:992px) {

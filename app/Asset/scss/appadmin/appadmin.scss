@@ -1,0 +1,19 @@
+//Fonts
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+
+//Bootstrap 4
+@import '../../vendor/bootstrap4/css/bootstrap.min.css';
+
+
+//Admin Theme Css
+@import './theme';
+
+//Custom Css
+@import './custom';
+
+//Snippet css
+@import './snippets/scrollbar';
+//@import './snippets/wp-input';

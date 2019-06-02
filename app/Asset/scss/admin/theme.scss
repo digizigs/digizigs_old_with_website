@@ -221,7 +221,7 @@ table.tile_info td p {
 }
 
 .nav-sm .container.body .right_col {
-    padding: 5px 10px;
+    //padding: 5px 10px;
     margin-left: 70px;
     z-index: 2
 }
@@ -440,7 +440,7 @@ body .container.body .right_col {
 }
 
 .nav-md .container.body .right_col {
-    padding: 5px 10px;
+    //padding: 5px 10px;
     margin-left: 230px
 }
 
@@ -610,7 +610,7 @@ body {
 
 .main_container .top_nav {
     display: block;
-    margin-left: 230px
+    //margin-left: 230px
 }
 
 .no-padding {
@@ -944,7 +944,8 @@ a:visited {
 .nav li li.current-page a,
 .nav.child_menu li li a.active,
 .nav.child_menu li li a:hover {
-    color: #fff
+    color: #FE8A7D;
+    font-weight: 600 !important;
 }
 
 .nav.child_menu li li.active,
@@ -962,7 +963,10 @@ a:visited {
 }
 
 .nav li.current-page {
-    background: rgba(255, 255, 255, .05)
+    //background: rgba(255, 255, 255, .05);
+    a{
+        font-weight: 600;
+    }
 }
 
 .nav li li li.current-page {
@@ -978,10 +982,10 @@ a:visited {
 
 
 .nav.side-menu>li.active>a {
-    text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
-    box-shadow: rgba(0, 0, 0, .25) 0 1px 0, inset rgba(255, 255, 255, .16) 0 1px 0
-
+    //text-shadow: rgba(0, 0, 0, .25) 0 -1px 0;
+    //background: linear-gradient(#334556, #2C4257), #2A3F54;
+    //box-shadow: rgba(0, 0, 0, .25) 0 1px 0, inset rgba(255, 255, 255, .16) 0 1px 0
+    font-weight: 600 !important;
 }
 
 .navbar-brand,

@@ -91,14 +91,6 @@ Route::get('/taskevent',function(){
 });*/
 //=========================================Test Routes=============================================//
 
-Route::get('/admin2',function(){
-
-    //Event Listner
-    return view('admin2.dashboard');
-
-});
-
-
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
 Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){

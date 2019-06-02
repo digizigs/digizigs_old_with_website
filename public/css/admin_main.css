@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);/*
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);/*
  * The MIT License
  * Copyright (c) 2012 Matias Meno <m@tias.me>
  */
@@ -8818,7 +8818,6 @@ table.tile_info td p {
 }
 
 .nav-sm .container.body .right_col {
-  padding: 5px 10px;
   margin-left: 70px;
   z-index: 2;
 }
@@ -9038,7 +9037,6 @@ body .container.body .right_col {
 }
 
 .nav-md .container.body .right_col {
-  padding: 5px 10px;
   margin-left: 230px;
 }
 
@@ -9212,7 +9210,6 @@ body {
 
 .main_container .top_nav {
   display: block;
-  margin-left: 230px;
 }
 
 .no-padding {
@@ -9546,7 +9543,8 @@ a:visited {
 .nav li li.current-page a,
 .nav.child_menu li li a.active,
 .nav.child_menu li li a:hover {
-  color: #fff;
+  color: #FE8A7D;
+  font-weight: 600 !important;
 }
 
 .nav.child_menu li li.active,
@@ -9563,8 +9561,8 @@ a:visited {
   border-right: 0px solid #1ABB9C;
 }
 
-.nav li.current-page {
-  background: rgba(255, 255, 255, 0.05);
+.nav li.current-page a {
+  font-weight: 600;
 }
 
 .nav li li li.current-page {
@@ -9579,11 +9577,7 @@ a:visited {
 }
 
 .nav.side-menu > li.active > a {
-  text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#334556), to(#2C4257)), #2A3F54;
-  background: linear-gradient(#334556, #2C4257), #2A3F54;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
-          box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
+  font-weight: 600 !important;
 }
 
 .navbar-brand,
@@ -13612,14 +13606,26 @@ ul.notifications {
 
 body,
 html {
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 400;
-  font-size: 12px;
+  background-color: #2A3F54;
+  font-size: 13px;
   color: #455A64;
+  font-family: open sans, sans-serif;
+  background-attachment: fixed;
+}
+
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  font-size: 13px;
+  color: #404E67;
 }
 
 input:-webkit-autofill,
@@ -14017,13 +14023,52 @@ footer {
   width: 150px;
 }
 
-.menu_section .side-menu {
-  margin-top: 10px;
+.menu_section .side-menu li.current-page a {
+  font-weight: 600 !important;
+}
+
+.menu_section .side-menu li.current-page a:before {
+  border-left-color: #FE8A7D !important;
+}
+
+.menu_section .side-menu li.active a:before {
+  border-left-color: #FE8A7D !important;
+}
+
+.menu_section .side-menu .menu-item {
+  border: none !important;
+}
+
+.menu_section .side-menu .menu-item a {
+  border: none !important;
+}
+
+.menu_section .side-menu .menu-item > a:before {
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: transparent;
+  content: " ";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.menu_section .side-menu .menu-item-submenu > a:before {
+  border-left-style: solid;
+  border-left-width: 3px;
+  border-left-color: transparent !important;
+  content: " ";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
 }
 
 .menu_section .side-menu li a {
+  font-size: 13 px !important;
   padding: 10px 10px;
-  font-weight: 400;
+  font-weight: 500 !important;
 }
 
 .menu_section .side-menu li a .fa-chevron-down {
@@ -14045,24 +14090,6 @@ footer {
   display: inline-block;
   -webkit-animation: swing ease-in-out 0.5s 1 alternate;
           animation: swing ease-in-out 0.5s 1 alternate;
-}
-
-#sidebar-menu ul li a:hover i {
-  color: #16c7ff;
-  text-shadow: 0px 0px 10px rgba(22, 199, 255, 0.5);
-}
-
-#sidebar-menu ul .active i,
-#sidebar-menu ul .current-page i {
-  color: #16c7ff;
-}
-
-#sidebar-menu ul ul .current-page i {
-  color: #16c7ff;
-}
-
-#sidebar-menu .child-menu .current-page i {
-  color: #16c7ff;
 }
 
 .sidebar-footer a:hover i::before {

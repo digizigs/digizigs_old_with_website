@@ -8,7 +8,6 @@
     <div class="container body" id="app">
       <div class="main_container">
 
-        <!-- sidebar -->
         @include('admin.partials.sidebar')
 
         <!-- top navigation -->
@@ -21,7 +20,6 @@
 
         <!-- footer content -->
         @include('admin.partials.footer')
-        <!-- /footer content -->
       </div>
     </div>
 
