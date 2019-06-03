@@ -281,18 +281,18 @@
     			}
   				
     			NProgress.start();
-    			console.log(this.invoice)
-    			/*axios.post('invoice',this.invoice)
+    			//console.log(this.invoice)
+    			axios.put('invoice/'+this.edtinvoice.id,this.invoice)
 		            .then(data => {
-		                
-		              	this.$emit('recordupdated',data);
-		              	this.invoice.services = [];
-		              	this.serviceadded=false;
-		              	this.client = null;
-		              	this.service = null;
-		              	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
-		              	this.discount = 0;
-		            	$('#newinvoice').modal('hide');
+		                console.log(data)
+		              	//this.$emit('recordupdated',data);
+		              	//this.invoice.services = [];
+		              	//this.serviceadded=false;
+		              	//this.client = null;
+		              	//this.service = null;
+		              	//this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
+		              	//this.discount = 0;
+		            	//$('#editinvoice').modal('hide');
 		            	
 			            toast({
 			                type: 'success',
@@ -304,11 +304,12 @@
 		          	.catch((error) => {
 		          		NProgress.done();
 		          		this.errors=error.response.data//.errors
+		          		console.log(error.response.data)
 		          		toast({
 			                type: 'warning',
 			                title: 'Error creatinng invoice'
 			            })
-		          	})*/
+		          	})
     		},
     		addTag (newTag) {
 			    const tag = {

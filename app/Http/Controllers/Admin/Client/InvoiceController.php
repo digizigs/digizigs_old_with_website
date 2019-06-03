@@ -137,7 +137,25 @@ class InvoiceController extends Controller
    
     public function update(Request $request, $id)
     {
-        //
+        $invoice = Invoice::find($id);
+        $invoice->client_id = $request->client['id'];
+        $invoice->tax = $request->tax;
+        $invoice->discount = $request->discount;
+        $invoice->bill_amount = $request->totalbill;
+        $invoice->net_bill_amount = $request->netbill;
+        $invoice->bill_date = $request->billdate;
+        $invoice->due_date = $request->duedate;
+        $saved = $invoice->save();
+        
+        $service = $request->services;
+        return $service->pluck('id');
+        //Deleting invoiice lines
+        //$lines = Invoice_item::whereIn('invoice_id', $invoice->id)->get()->delete();
+
+        if($saved){
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
+            return request()->json(200,$invoices);
+        }
     }
 
     
