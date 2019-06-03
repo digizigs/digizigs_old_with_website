@@ -4,17 +4,18 @@
   		-webkit-border-radius: 0;
   		-moz-border-radius: 0;
   		-ms-border-radius: 0;
-  		border-radius: 1px !important;
+  		border-radius: 0px !important;
   		//box-shadow: 0 5px 20px rgba(0, 0, 0, 0.31) !important;
   		border: none;
-		box-shadow:0 2px 10px rgba(0, 0, 0, 0.2);
-
+		//box-shadow:0 2px 10px rgba(0, 0, 0, 0.2);
+		background-color: $container_background_color;
 		.modal-header{
 			border: none;
 	  		padding: 20px 20px 5px 20px;
 	  		background-color: #F8F9FA;
 	  		height: 45px;
-	  		border-bottom: 1px solid #D9DEE4;
+	  		-webkit-box-shadow: 0 2px 30px 6px rgba(0, 0, 0, .1);
+  			box-shadow: 0 1px 30px 6px rgba(0, 0, 0, .1);
 	  		button{
 	  			color: #2A5D84;
 	  			margin-top: -5px;
@@ -32,11 +33,12 @@
   		.modal-body {
 		    color: #777;
 		    padding: 15px 25px;
-		    
+		    background-color: $container_background_color;
 		}
 
 		.modal-footer {
-			border: none; 
+			border: none;
+			background-color: $container_background_color; 
 		} 
 	}
 	

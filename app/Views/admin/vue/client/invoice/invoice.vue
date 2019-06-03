@@ -5,16 +5,9 @@
           	<h2>
           	<i class="fa fa-align-left"></i>
           		Invoices <small></small> 
-          	<span class="search">
-					   <i class="fa fa-search"></i>
-					   <div class="form-group wp-input">
-				        <div class="form-line">
-				            <input type="text" class="form-control input-sm" placeholder="Search here..." v-model="search">
-				        </div>
+          	
+          	</h2>	
 
-				      </div>
-				    </span>	
-          	</h2>	                              	                 
         	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Invoice</a>
         	<div class="clearfix"></div>
 
@@ -84,8 +77,16 @@
                         :invc="invoicedetail" 
                         @recordupdated="refreshRecord">                
           </viewinvoice>
+          <editinvoice  :qgst="gst" 
+                        :qduedate="due_date"
+                        :invc="invoicedetail" 
+                        :clt="client"
+                        :edtclient="client" 
+                        :edtinvoice="invoice" 
+                        :edtitems="items"  
+                        @recordupdated="refreshRecord">
+          </editinvoice>
           <newinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
-          <editinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></editinvoice>
          
         </div>
 	</section>
@@ -153,7 +154,15 @@
         .catch(error => this.errors=error.response.data.errors);
     	},
       invoiceedit(id){
-        console.log(id)
+        axios.get('invoice/'+id+'edit')
+        .then((response) => {
+          this.invoicedetail=response.data;
+          this.client = response.data.client
+          this.invoice = response.data.invoice
+          this.items = response.data.items
+          //console.log(response.data);
+          })//this.apntupdate = response.data
+        .catch(error => this.errors=error.response.data.errors);
       },
     	invoicedelete(id){
       	swalWithBootstrapButtons({

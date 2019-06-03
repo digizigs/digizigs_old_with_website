@@ -69,9 +69,9 @@
                               <tbody>
 
                                 <tr v-for="item in items">
-                                  <td>{{item.service_name}}</td>                             
-                                  <td>{{item.service_description}}</td>
-                                  <td>{{item.service_charge}}</td>
+                                  <td>{{item.name}}</td>                             
+                                  <td>{{item.description}}</td>
+                                  <td>{{item.charge}}</td>
                                 </tr>                               
 
                               </tbody>
@@ -157,7 +157,7 @@
       totalbill: function(){      
         if(this.items !== ''){
           return this.items.reduce(function (total, item) { 
-            return total + item.service_charge;
+            return total + item.charge;
           },0)
         }
       },

@@ -10,16 +10,13 @@
 
         @include('admin.partials.sidebar')
 
-        <!-- top navigation -->
         @include('admin.partials.topnav')
-        <!-- /top navigation -->
 
-        <!-- page content -->
-        @yield('content')
-        <!-- /page content -->
+         @yield('content')
 
-        <!-- footer content -->
         @include('admin.partials.footer')
+
+
       </div>
     </div>
 

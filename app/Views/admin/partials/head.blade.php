@@ -43,7 +43,9 @@
 
     <!-- Bootstrap select -->
     <link href="{{asset('public/vendor/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet">
-
+    
+    <!--Scroll BAr-->
+    <link href="{{asset('public/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('public/css/admin_main.css')}}" rel="stylesheet">

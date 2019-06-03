@@ -37,7 +37,7 @@
 		                        <div class="form-group wp-input mt20">
 		                          <div class="col-sm-12 col-xs-12 col-md-6">
 		                            <label for="">Due Date</label>
-		                            <datepicker v-model="duedate" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
+		                            <datepicker v-model="edtinvoice.due_date" :disabledDates="disabledDates" class="wp-input" :bootstrap-styling="false" :format="customFormatter"></datepicker>	                            
 		                          </div> 
 		                        </div>														
 
@@ -88,7 +88,7 @@
 							                </thead>
 
 							                <tbody>						                  
-							                	<tr class="table-data" v-for="service in invoice.services">
+							                	<tr class="table-data" v-for="service in edtitems">
 								                  	<td class=" " style="">{{service['name']}}</td>
 								                  	<td class=" " style="">{{service['description']}}</td>	                 
 								                    <td class=" ">{{service['charge']}}</td>
@@ -131,7 +131,7 @@
 							        </div>
 						        </div>
 						        
-						        <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent="createinvoice">Create Invoice</a>
+						        <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent="createinvoice">Update Invoice</a>
 							</div>
 	                        </div>
 	                                       		                
@@ -157,7 +157,7 @@
 
 
 	export default{
-		props:['qgst','qduedate'],
+		props:['edtinvoice','edtclient','edtitems','qgst'],
 		components: {
 		    Datepicker
 		 },
@@ -181,7 +181,7 @@
 				duedate:moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD'),
 				ClientList:[],
 				servicelist:[],
-				serviceadded:false,		
+				serviceadded:true,		
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
 				},
@@ -189,6 +189,12 @@
 			}
 		},
 		watch:{
+			edtinvoice(){
+				this.client = this.edtclient
+				this.discount = (this.edtinvoice.discount / this.edtinvoice.bill_amount) * 100
+				this.duedate = this.edtinvoice.due_date
+				this.invoice.services = this.edtitems		
+			},
 			client(){
 				if (this.client != null) {
 					this.invoice.client = this.client
@@ -225,9 +231,11 @@
 		},
 		computed: {
 			subtotal(){
-				return this.invoice.services.reduce(function (total, service) { 
-                	return total + Number(service['charge']);  					
-            	}, 0);
+				if(this.edtitems !== ''){
+					return this.edtitems.reduce(function (total, item) { 
+	                	return total + Number(item.charge);  					
+	            	}, 0);
+	            }
 			},
     		ctax:function(){
     			return ((this.subtotal - this.cdiscount) * this.qgst )/100;
@@ -259,7 +267,7 @@
     		removeservice(id){this.invoice.services.splice(id, 1)},
     		clearmodal(){
     			this.invoice.services = [];
-              	this.serviceadded=false;
+              	//this.serviceadded=false;
               	this.client = null;
               	this.service = null;
               	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
@@ -271,9 +279,10 @@
     				this.clienterror = true
     				return
     			}
-  
+  				
     			NProgress.start();
-    			axios.post('invoice',this.invoice)
+    			console.log(this.invoice)
+    			/*axios.post('invoice',this.invoice)
 		            .then(data => {
 		                
 		              	this.$emit('recordupdated',data);
@@ -299,7 +308,7 @@
 			                type: 'warning',
 			                title: 'Error creatinng invoice'
 			            })
-		          	})
+		          	})*/
     		},
     		addTag (newTag) {
 			    const tag = {
@@ -322,6 +331,11 @@
 			axios.get('invoice/allservice')
 			.then((response) => {this.servicelist=response.data})
 			.catch((error) => console.log(error))
+
+			var totalbill = this.edtinvoice.bill_amount
+    		var dis = this.edtinvoice.discount
+    		var per = (dis / totalbill) * 100
+    		this.discount = per
 		}
 	};
 

@@ -1,9 +1,19 @@
 
 .sidebar-brand{
+  height: 45px;
+  padding: 0;
+  margin: 0;
+  border:0 !important;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 30px 6px rgba(0, 0, 0, .1);
+  box-shadow: 0 2px 30px 6px rgba(0, 0, 0, .1);
     a{
+      display: inline-block;
       img{
-        padding: 20px;
-        width: 150px;
+        //padding: 20px;
+        //width: 150px;
+        height: 25px !important;
+        margin-top: -20px;
       }
     }
 }

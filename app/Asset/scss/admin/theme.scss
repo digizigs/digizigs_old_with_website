@@ -221,7 +221,7 @@ table.tile_info td p {
 }
 
 .nav-sm .container.body .right_col {
-    //padding: 5px 10px;
+    padding: 5px 10px;
     margin-left: 70px;
     z-index: 2
 }
@@ -407,7 +407,7 @@ table.tile_info td p {
 .nav_menu {
     float: left;
     background: #FAFBFC;
-    border-bottom: 1px solid #D9DEE4;
+    //border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
     position: relative;
@@ -436,11 +436,11 @@ table.tile_info td p {
 }
 
 body .container.body .right_col {
-    background: #EAEDF2
+    background: $container_background_color;
 }
 
 .nav-md .container.body .right_col {
-    //padding: 5px 10px;
+    padding: 5px 10px;
     margin-left: 230px
 }
 
@@ -449,7 +449,7 @@ body .container.body .right_col {
     float: left;
     background: #2A3F54;
     border-radius: 0;
-    height: 57px
+    //height: 57px
 }
 
 @media (max-width:991px) {
@@ -610,7 +610,9 @@ body {
 
 .main_container .top_nav {
     display: block;
-    //margin-left: 230px
+    -webkit-box-shadow: 0 2px 30px 6px rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 30px 6px rgba(0, 0, 0, .1);
+    border-bottom:0 !important
 }
 
 .no-padding {
@@ -1107,7 +1109,7 @@ a:visited {
 
 footer {
     background: #FAFBFC;
-    padding: 15px 20px;
+    //padding: 15px 20px;
     display: block
 }
 
@@ -1268,7 +1270,7 @@ h2 {
         //color: #23282D;
         color: #2A5D84;
         font-weight: 500;
-        font-size: 26px;
+        font-size: 20px;
         padding: 10px;
     }
     .search{
@@ -1306,7 +1308,7 @@ h2 {
     width: 100%;
     //padding: 10px 17px;
     display: inline-block;
-    background: #EAEDF2;
+    background: $container_background_color;
     //-webkit-column-break-inside: avoid;
     //-moz-column-break-inside: avoid;
     column-break-inside: avoid;

@@ -1,12 +1,12 @@
 <div class="col-md-3 left_col">
-  <div class="sidebar">
+  <div class="left_col">
 
 
-    <div class="nav_title sidebar-brand hidden-xs" style="border: 0;">
+    <div class="nav_title sidebar-brand hidden-xs">
       <a href="{{route('admin.home')}}" class="site_title" >
         <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-white.png')}}" class="hidden-xs">
-        <!--h3 style="text-align: center;">{{setting('app_name')}}</h3--> 
       </a>
+     
     </div>
 
     <div class="clearfix"></div>
@@ -103,7 +103,7 @@
     <!-- /sidebar menu -->
 
     <!-- /menu footer buttons -->
-    <!--div class="sidebar-footer hidden-small">
+    <div class="sidebar-footer hidden-small">
       <a href="{{route('settings.index')}}" data-toggle="tooltip" data-placement="top" title="Settings">
         <i class="fa fa-cog" aria-hidden="true"></i>
       </a>
@@ -119,7 +119,7 @@
           {{ csrf_field() }}
         </form>
       </a>
-    </div-->
+    </div>
     <!-- /menu footer buttons -->
     
     

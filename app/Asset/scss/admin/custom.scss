@@ -3,11 +3,13 @@ body,html{
  
 
   background-color: #2A3F54;
-  font-size: 13px;
+  font-size: 12px;
   //overflow-x: hidden;
     //color: #353c4e;
+  font-weight: 500;
   color: #455A64;
   font-family: open sans, sans-serif;
+  //font-family: 'Nunito Sans', sans-serif;
   background-attachment: fixed;
  
   
@@ -90,7 +92,7 @@ input:-webkit-autofill:active {
 //========================Footer=========================
 footer {
     background: #fff;
-    padding: 12px;
+    padding: 5px;
     display: block;
     text-align: center;
 
@@ -407,3 +409,51 @@ footer {
 }
 //=========================Sliding Modal===================//
 
+.main-search {
+    padding: 13px 0;
+    display: block;
+
+    .input-group {
+      margin-bottom: 0;
+      background-color: transparent;
+      border-radius: 20px;
+
+        .form-control {
+          padding: 0.3rem 0.75rem;
+          width: 0;
+          border: none;
+          color: #353c4e;
+          background-color: transparent
+        }
+        .input-group-addon {
+            padding: 0.45rem 0.75rem 0.3rem 0;
+            background-color: transparent;
+            color: #353c4e;
+            border: none
+        }
+        .input-group-addon.search-close {
+            padding: 0.3rem 0 0.3rem 0.75rem;
+            display: none
+        }
+        .input-group-addon.search-close {
+            padding: 0.3rem 0 0.3rem 0.75rem;
+            display: none
+        }
+
+    }
+    .open {
+      color: #353c4e
+    }
+}
+.main-search.open .input-group {
+    background-color: #dcdcdc
+}
+.main-search.open .input-group .form-control {
+    display: block
+}
+.main-search.open .input-group .input-group-addon {
+    color: #353c4e
+}
+.main-search.open .input-group .input-group-addon.search-close {
+    display: block
+}

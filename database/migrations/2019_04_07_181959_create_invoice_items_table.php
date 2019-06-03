@@ -13,9 +13,10 @@ class CreateInvoiceItemsTable extends Migration
             $table->increments('id');
             $table->integer('invoice_id')->unsigned();
             $table->integer('service_id')->unsigned();
-            $table->string('service_name');
-            $table->text('service_description');
-            $table->integer('service_charge');
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('charge', 8, 2)->nullable();
+            $table->decimal('tax', 8, 2)->nullable();
             $table->timestamps();
             $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade')->onUpdate('cascade');
         });
