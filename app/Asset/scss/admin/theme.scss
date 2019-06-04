@@ -1291,6 +1291,29 @@ h2 {
             margin-bottom: 0px !important;
         }
     }
+    .options{
+        margin-right: 20px !important;
+        .option-item{
+            color: #01A9DB;
+            font-size: 12px;
+            font-weight: 600;
+            //margin:0 !important; 
+            margin-right:5px;
+            transition: .2s;
+        }
+        .option-item.active{
+            font-size: 13px;
+            color: #086A87;
+            transition: .2s;
+        }
+        .option-item:hover{
+            //text-decoration: underline;
+            color: #086A87;
+        }
+        .title-search{
+            margin: 0 10px;
+        }
+    }
 }
 
 .accordion .panel-heading {

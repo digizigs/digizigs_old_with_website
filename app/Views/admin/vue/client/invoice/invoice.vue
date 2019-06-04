@@ -5,12 +5,19 @@
           	<h2>
           	<i class="fa fa-align-left"></i>
           		Invoices <small></small> 
-          	
+
           	</h2>	
 
         	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Invoice</a>
-        	<div class="clearfix"></div>
 
+        	<div class="clearfix"></div>
+          <span class="options">
+             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
+             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
+             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
+             <a href="" class="option-item" :class="{active: dt === 'partial'}" v-on:click.prevent @click="invoicedataview('partial')">Partially Paid</a>
+             <input class="title-search" type="search" v-model="filter" placeholder="Search...">
+            </span>
           </div>
 
           <div class="x_content">
@@ -34,17 +41,33 @@
                      	<span style="margin-left: 10px;"> creatred on </span> <span class="time">{{ invoice.created_at | vueDate }}</span> due on
                      	<span class="time">{{ invoice.due_date | vueDate }}</span> 
 						
-						          <span class="label label-warning">Pending</span>	
+						          <span class="label label-success" v-if="invoice.bill_status == 'paid'">Paid</span>
+                      <span class="label label-danger" v-if="invoice.bill_status == 'pending'">Pending</span>	
 
-                      	<span class="action-text subscription">
-                      		<a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)">
-                     	        <i class="fa fa-file-text" aria-hidden="true"></i>
-                     	    </a>
-                      		|
-                        	<a href="#editinvoice" v-on:click.prevent data-toggle="modal" @click="invoiceedit(invoice.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        	|
-                        	<a href="" v-on:click.prevent @click="invoicedelete(invoice.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>                             
-                      	</span>
+                    	<span class="action-text subscription">
+                    		<a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)" title="View Invoice">
+                   	        <i class="fa fa-file-text" aria-hidden="true"></i>
+                   	    </a>
+                    		
+                      	<a href="#editinvoice" v-on:click.prevent data-toggle="modal" @click="invoiceedit(invoice.id)" title="Edit Invoice">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+
+                      	<a href="" v-on:click.prevent @click="invoicedelete(invoice.id)" title="Delete Invoice">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+
+                        
+                        <a href="" v-if="invoice.bill_status == 'paid'" v-on:click.prevent @click="paymenttoggle(invoice.id)" title="Delete received">
+                          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        </a>
+
+                        
+                        <a href="" v-if="invoice.bill_status == 'pending'" v-on:click.prevent @click="paymenttoggle(invoice.id)" title="Payment Pending">
+                          <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                        </a>
+
+                    	</span>
                       	<!-- Action icons -->                                    
                     </div>
 
@@ -61,7 +84,12 @@
               Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}}              	                    	
             </div>
 
-            <div v-else> No Data is avaliable</div>	
+            <div v-else>
+              <span v-if="invoices.data.total">
+                Data is there
+              </span>
+              No Data is avaliable
+            </div>	
         
         
           </div>
@@ -100,7 +128,8 @@
     props:['regno','gstno','gst','due_date'],
 		data(){
 			return{
-				search:'',
+        dt:'all',
+				filter:'',
 				invoices:{},			
 				clientdetail:{},
 				invoicedetail:{},
@@ -113,6 +142,9 @@
 			}
 		},
 		watch:{
+      filter(){
+        this.paginationdata()
+      }
 
 		},		
 		methods:{
@@ -120,13 +152,26 @@
         if (typeof page === 'undefined'){
         	page=1;
         } 
-        axios.get('invoice/create?page=' + page)
-          	.then(response => this.invoices = response.data)
+        axios.get('invoice/create?page=' + page,{params:{filter:this.filter}})       
+          	.then((response) => {
+              //console.log(response.data)
+              this.invoices = response.data
+            })
           	.catch(error => this.errors=error.response.data.errors);
     	},
   	  refreshRecord(record){
       	this.invoices=record.data;
     	},
+      paymenttoggle(id){
+
+      },
+      invoicedataview(data){
+          
+        this.dt = data
+        this.filter = data
+        //this.paginationdata()
+
+      },
     	updateservice(id){
         axios.get('service/'+id+'/edit')
         .then((response) => {

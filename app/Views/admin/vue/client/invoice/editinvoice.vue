@@ -181,6 +181,7 @@
 				duedate:moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD'),
 				ClientList:[],
 				servicelist:[],
+				serviceitem:{},
 				serviceadded:true,		
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
@@ -203,7 +204,15 @@
 			},
 			service(){
 				if (this.service != null) {
-    				this.invoice.services.push(this.service);
+
+					this.serviceitem.service_id = this.service.id
+					this.serviceitem.name = this.service.name
+					this.serviceitem.description = this.service.description
+					this.serviceitem.charge = this.service.charge
+					this.serviceitem.tax = this.service.tax
+
+
+    				this.invoice.services.push(this.serviceitem);
     				this.serviceadded=true
     			}
 			},
@@ -258,11 +267,11 @@
     			this.service=null;
     		},
     		addservice(){
-    			if (this.selectedservices != null) {
+    			/*if (this.selectedservices != null) {
     				this.invoice.services.push(this.selectedservices);
     				this.selectedservices=null;
     				this.serviceadded=true
-    			}              	   			
+    			}  */            	   			
     		},
     		removeservice(id){this.invoice.services.splice(id, 1)},
     		clearmodal(){
@@ -270,7 +279,7 @@
               	//this.serviceadded=false;
               	this.client = null;
               	this.service = null;
-              	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
+              	this.duedate = moment(new Date().addDays(this.qduedate));
               	this.discount = 0;
     		},
     		createinvoice:function(){
@@ -285,14 +294,13 @@
     			axios.put('invoice/'+this.edtinvoice.id,this.invoice)
 		            .then(data => {
 		                console.log(data)
-		              	//this.$emit('recordupdated',data);
-		              	//this.invoice.services = [];
-		              	//this.serviceadded=false;
-		              	//this.client = null;
-		              	//this.service = null;
-		              	//this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
-		              	//this.discount = 0;
-		            	//$('#editinvoice').modal('hide');
+		              	this.$emit('recordupdated',data);
+		              	this.invoice.services = [];		              	
+		              	this.client = null;
+		              	this.service = null;
+		              	this.duedate = moment(new Date().addDays(this.qduedate));
+		              	this.discount = 0;
+		            	$('#editinvoice').modal('hide');
 		            	
 			            toast({
 			                type: 'success',

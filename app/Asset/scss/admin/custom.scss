@@ -152,13 +152,34 @@ footer {
     background-color: #fff;
   }
   .pannel-line:hover{
-     i::before {
-      display: inline-block;
-      animation: swing ease-in-out 0.5s 1 alternate;
-    }
-    i{
-      color:#16c7ff;
-    }
+
+    .action-text{
+      i::before {
+        display: inline-block;
+        animation: swing ease-in-out 0.5s 1 alternate;
+      }
+      i{
+        //color:#16c7ff;
+      }
+      .fa-trash-o{
+        color: #FF3352;
+      }
+      .fa-pencil{
+        color:#1C871A;
+      }
+      .fa-eye{
+        color:#1C871A;
+      }
+      .fa-file-text{
+        color: #478DE6;
+      }
+      .fa-thumbs-up{
+        color: #1C871A;
+      }
+      .fa-thumbs-down{
+        color: #FF3352;
+      }
+    }  
   }
   .action-text{
     margin: 0 10px;
@@ -180,6 +201,9 @@ footer {
   }
   .list-group{
     margin-bottom: 10px !important;
+  }
+  .fa{
+    color: #56575A;
   }
 }
 //====================table-action-font-icon ============

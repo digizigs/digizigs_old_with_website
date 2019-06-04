@@ -19,14 +19,64 @@ class InvoiceController extends Controller
     
     public function index()
     {
-       
+        //$invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->get();
+        //dd($invoices['client']);
         return view('admin/pages.client.invoice');
     }
 
     
-    public function create()
+    public function create(Request $request)
     {
         
+        $data = $request->filter;
+
+        if($data == ''){
+
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(7);
+            return request()->json(200,$invoices);
+
+        } elseif($data == 'pending'){
+
+            $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->orderby('created_at','desc')
+                                ->with('client','invoice_item.service')
+                                ->get();
+            return request()->json(200,$invoices);
+
+        }elseif($data == 'paid'){
+
+            $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->orderby('created_at','desc')
+                                ->with('client','invoice_item.service')
+                                ->get();
+            return request()->json(200,$invoices);
+
+        }elseif($data == 'partial'){
+
+            $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->orderby('created_at','desc')
+                                ->with('client','invoice_item.service')
+                                ->get();
+            return request()->json(200,$invoices);
+            
+        }else{
+            $invoices['data'] = Invoice::with('client','invoice_item.service')
+                                ->whereHas('client', function ($query) use ($data) {
+                                    $query->where('client_name','like', '%'.$data.'%')
+                                          ->orWhere('client_email','like', '%'.$data.'%')
+                                          ->orWhere('client_phone','like', '%'.$data.'%')
+                                          ->orWhere('id','like', '%'.$data.'%');
+                                    })
+                                ->orderBy('created_at', 'DESC')
+                                ->get();//$request->filter;
+            return request()->json(200,$invoices);
+        }
+
+
+
+
+
+
         /*if($request->search_string == ''){
             $invoices = Client::orderby('created_at','desc')->paginate(8);
             return request()->json(200,$clients);
@@ -147,10 +197,23 @@ class InvoiceController extends Controller
         $invoice->due_date = $request->duedate;
         $saved = $invoice->save();
         
-        $service = $request->services;
-        return $service->pluck('id');
-        //Deleting invoiice lines
-        //$lines = Invoice_item::whereIn('invoice_id', $invoice->id)->get()->delete();
+       
+        $lines = Invoice_item::where('invoice_id',$invoice->id)->delete();
+
+        //return $request->services;
+
+        foreach($request->services as $service){
+            
+            $s_line = new Invoice_item;
+            $s_line->invoice_id = $invoice->id;
+            $s_line->service_id = $service['service_id'];
+            $s_line->name = $service['name'];
+            $s_line->description = $service['description'];
+            $s_line->charge = $service['charge'];
+            $s_line->tax = $service['tax'];
+            $s_line->save();            
+            
+        }
 
         if($saved){
             $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
