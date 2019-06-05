@@ -118,12 +118,12 @@
                                   </tr>
 
                                   <tr>
-                                    <th>Promo/Discount</th>
+                                    <th>Promo/Discount @ {{discount}}</th>
                                     <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.discount}}</td>
                                   </tr>  
 
                                   <tr>
-                                    <th>GST@({{qgst}}%)</th>
+                                    <th>GST @ ({{qgst}}%)</th>
                                     <td><i class="fa fa-inr" aria-hidden="true"></i>{{invoice.tax}}</td>
                                   </tr>
                                                                    
@@ -177,7 +177,7 @@
         return ((this.totalbill-this.discount) * this.invoice.tax )/100;
       },
       discount:function(){
-        return (this.totalbill * this.invoice.discount )/100;
+        return (this.invoice.discount / this.invoice.bill_amount) * 100;
       },
       grandtotal:function(){
         return ((this.totalbill-this.discount) + this.gst );

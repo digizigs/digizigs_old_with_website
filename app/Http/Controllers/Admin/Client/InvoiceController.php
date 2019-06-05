@@ -144,7 +144,7 @@ class InvoiceController extends Controller
 
 
         if($saved){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
+            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(7);
             return request()->json(200,$invoices);
         }
                

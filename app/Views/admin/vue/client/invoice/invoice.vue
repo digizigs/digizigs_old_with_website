@@ -12,10 +12,12 @@
 
         	<div class="clearfix"></div>
           <span class="options">
-             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All Invoices</a>
-             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending Invoices</a>
-             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid Invoices</a>
-             <input class="title-search" type="search" v-model="filter" placeholder="Search...">
+             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
+             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
+             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
+             <span class="title-search">
+                <input type="search" v-model="filter">
+             </span>
             </span>
           </div>
 
@@ -25,13 +27,15 @@
 			                        		                         
                 <div v-for="(invoice,key) in invoices.data" class="panel panel-default pannel-line">
 
-                    <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">		                        
+                    <div class="panel-heading" >
+                      <i v-if="invoice.bill_status == 'paid'" class="fa fa-thumbs-up" aria-hidden="true"></i>
+                      <i v-if="invoice.bill_status == 'pending'" class="fa fa-thumbs-down" aria-hidden="true"></i>	                        
                       <span class="title">{{invoice.client.client_name}}</span>                             
                       
                       
-                        <span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
+                        <!-- <span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
                           {{item.service['name']}}
-                        </span>
+                        </span> -->
                     
 
                      	<span class="label label-success">
@@ -57,17 +61,7 @@
 
                       	<a href="" v-on:click.prevent @click="invoicedelete(invoice.id)" title="Delete Invoice">
                           <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
-
-                        
-                        <a href="" v-if="invoice.bill_status == 'paid'" v-on:click.prevent @click="paymenttoggle(invoice.id)" title="Delete received">
-                          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                        </a>
-
-                        
-                        <a href="" v-if="invoice.bill_status == 'pending'" v-on:click.prevent @click="paymenttoggle(invoice.id)" title="Payment Pending">
-                          <i class="fa fa-thumbs-down" aria-hidden="true"></i>
-                        </a>
+                        </a>    
 
                     	</span>
                       	<!-- Action icons -->                                    
@@ -78,23 +72,6 @@
 	
         	  </div>
 
-        	
-      		  
-
-
-  			    <!-- <div v-if="invoices.total > 0">            
-                          Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}} 
-                          <span class="">
-                            
-                            <a href="">Prev</a>
-                            <a href="">Next</a>
-            
-                          </span>                                      
-                        </div> -->
-
-            <!-- <div v-else>
-              Showing All Data
-            </div> -->
             <vuepagination :input="invoices" @pagechange="pagination"></vuepagination>
             
         
@@ -154,7 +131,15 @@
         this.paginationdata()
       }
 
-		},		
+		},
+    computed:{
+      servicecount(){
+      //return this.invoice.invoice_item 
+          /*return this.invoice.client.reduce(function (total, id) { 
+                    return 4;           
+               }, 0);*/ 
+      }
+    },	
 		methods:{
     	paginationdata(page){
 
@@ -280,4 +265,6 @@
 .fa-inr{
 	margin-top: 3px !important;
 }
+
+
 </style>
