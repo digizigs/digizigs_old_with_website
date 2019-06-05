@@ -124,7 +124,7 @@ Vue.component('newuser', require('./access management/user/NewUser.vue'));
 
 //Filter
 Vue.component('search', require('./Filter.vue'));
-
+Vue.component('vuepagination', require('./vuepagination'));
 
 const app = new Vue({
    el: '#app',

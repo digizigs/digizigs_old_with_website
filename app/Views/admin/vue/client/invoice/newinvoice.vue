@@ -74,7 +74,7 @@
 	                        </div>
 
 	                        <div class="col-xs-12 col-md-12">
-	                        	<div class="service-line" v-if="serviceadded == true" style="margin-top: 20px;">
+	                        	<div class="service-line" style="margin-top: 20px;">
 								<div class="col-sm-12 col-xs-12 col-md-12">
 									<div class="">
 							            <table class="table">
@@ -181,8 +181,7 @@
 				service:null,
 				duedate:moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD'),
 				ClientList:[],
-				servicelist:[],
-				serviceadded:false,		
+				servicelist:[],	
 				disabledDates: {			   
 			    	days: [6, 0], // Disable Saturday's and Sunday's				    			    
 				},
@@ -254,13 +253,11 @@
     			if (this.selectedservices != null) {
     				this.invoice.services.push(this.selectedservices);
     				this.selectedservices=null;
-    				this.serviceadded=true
     			}              	   			
     		},
     		removeservice(id){this.invoice.services.splice(id, 1)},
     		clearmodal(){
     			this.invoice.services = [];
-              	this.serviceadded=false;
               	this.client = null;
               	this.service = null;
               	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');
@@ -279,7 +276,6 @@
 		                
 		              	this.$emit('recordupdated',data);
 		              	this.invoice.services = [];
-		              	this.serviceadded=false;
 		              	this.client = null;
 		              	this.service = null;
 		              	this.duedate = moment(new Date().addDays(this.qduedate)).format('YYYY/MM/DD');

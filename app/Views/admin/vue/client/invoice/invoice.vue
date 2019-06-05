@@ -12,10 +12,9 @@
 
         	<div class="clearfix"></div>
           <span class="options">
-             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
-             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
-             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
-             <a href="" class="option-item" :class="{active: dt === 'partial'}" v-on:click.prevent @click="invoicedataview('partial')">Partially Paid</a>
+             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All Invoices</a>
+             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending Invoices</a>
+             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid Invoices</a>
              <input class="title-search" type="search" v-model="filter" placeholder="Search...">
             </span>
           </div>
@@ -27,10 +26,13 @@
                 <div v-for="(invoice,key) in invoices.data" class="panel panel-default pannel-line">
 
                     <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">		                        
-                      	<span class="title">{{invoice.client.client_name}}</span>                             
-                      	<span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
-                     		{{item.service['name']}}
-                     	</span>
+                      <span class="title">{{invoice.client.client_name}}</span>                             
+                      
+                      
+                        <span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
+                          {{item.service['name']}}
+                        </span>
+                    
 
                      	<span class="label label-success">
                      		Total Bill:
@@ -77,19 +79,24 @@
         	  </div>
 
         	
-      		  <pagination :data="invoices" @pagination-change-page="paginationdata" ></pagination>
+      		  
 
 
-  			    <div v-if="invoices.total > 0">	          
-              Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}}              	                    	
-            </div>
+  			    <!-- <div v-if="invoices.total > 0">            
+                          Showing {{invoices.from}} to {{invoices.to}} of total {{invoices.total}} 
+                          <span class="">
+                            
+                            <a href="">Prev</a>
+                            <a href="">Next</a>
+            
+                          </span>                                      
+                        </div> -->
 
-            <div v-else>
-              <span v-if="invoices.data.total">
-                Data is there
-              </span>
-              No Data is avaliable
-            </div>	
+            <!-- <div v-else>
+              Showing All Data
+            </div> -->
+            <vuepagination :input="invoices" @pagechange="pagination"></vuepagination>
+            
         
         
           </div>
@@ -138,7 +145,8 @@
 				moment:moment,
 				client:'',
         invoice:'',
-        items:''
+        items:'',
+        invoicetest:{}
 			}
 		},
 		watch:{
@@ -149,6 +157,7 @@
 		},		
 		methods:{
     	paginationdata(page){
+
         if (typeof page === 'undefined'){
         	page=1;
         } 
@@ -159,6 +168,17 @@
             })
           	.catch(error => this.errors=error.response.data.errors);
     	},
+      pagination(page){
+
+        if (typeof page === 'undefined'){
+          page=1;
+        } 
+         axios.get('invoice/create?page=' + page,{params:{filter:this.filter}})       
+            .then((response) => {
+              this.invoices = response.data
+            })
+            .catch(error => this.errors=error.response.data.errors);
+      },
   	  refreshRecord(record){
       	this.invoices=record.data;
     	},
@@ -245,7 +265,8 @@
 			/*axios.get('invoice/create')
 			.then((response) => {this.invoices=response.data})//this.appointments=response.data
 			.catch((error) => this.errors = error)	*/
-			this.paginationdata();		
+			this.paginationdata();
+      this.pagination();		
 		}
 	};
 

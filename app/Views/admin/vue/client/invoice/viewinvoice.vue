@@ -1,15 +1,27 @@
 <template>
-	<section>
+	<section id="">
 		<div class="modal fade modal-right-slide" id="invoiceview" role="dialog"  data-backdrop="false">
 	        <div class="modal-dialog modal-lg">
 	            <div class="modal-content">
 	                <div class="modal-header panel-heading">
+
 	                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
-                  		<i class="fa fa-user-circle" aria-hidden="true"></i>
+
+                  	<span class="action_buttons" style="margin-top:-20px">
+                      <a href="" id="printinvoice">
+                       <i class="fa fa-print" aria-hidden="true"></i>Print  
+                      </a>
+                      <a href="">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF
+                      </a>
+                      <a href="">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i>Payment
+                      </a> 
+                    </span>
                   		
 	                </div>
 
-	                <div class="modal-body">
+	                <div id="printThis" class="modal-body">
 	                	<!-- title row -->
                         <div class="row">
                           <div class="col-xs-12 invoice-header">
@@ -130,7 +142,7 @@
                         <!-- this row will not appear when printing -->
                         <div class="row no-print">
                           <div class="col-xs-12">
-                            <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                            <button  class="btn btn-default" onclick="javascript.printinvoice();"><i class="fa fa-print"></i> Print</button>
                             <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
                             <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
                           </div>
@@ -181,9 +193,22 @@
   };
 </script>
 
-<style type="text/css" Scoped>
+<style lan="scss">
 
-.modal-content{
-	border-radius: 2px !important;
-}
+  
+
+  .action_buttons{
+    margin-top: -10px !important;
+    a{
+      margin-left: 10px !important;
+    }
+  }
+  .modal-header i{
+    margin-left: 10px !important;
+    margin-top: -10px !important;
+    .action_buttons{
+      margin-top: -10px !important;
+    }
+  }
+
 </style>

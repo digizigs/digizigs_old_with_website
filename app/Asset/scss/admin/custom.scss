@@ -481,3 +481,25 @@ footer {
 .main-search.open .input-group .input-group-addon.search-close {
     display: block
 }
+
+//========================App Print options----Invoice printing=================//
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+//========================App Print options----Invoice printing=================//
