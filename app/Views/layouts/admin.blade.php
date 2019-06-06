@@ -4,7 +4,7 @@
     @include('admin.partials.head')
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md ">
     <div class="container body" id="app">
       <div class="main_container">
 

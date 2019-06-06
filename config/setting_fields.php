@@ -129,8 +129,8 @@ return [
     ],
     'tax' => [
 
-        'title' => 'Tax Info',
-        'desc' => 'Tax and GST info' ,
+        'title' => 'Registration and Tax info',
+        'desc' => 'Registration and Tax info' ,
         'icon' => 'fa fa-picture-o',
 
         'elements' => [

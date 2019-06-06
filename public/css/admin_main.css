@@ -14121,62 +14121,6 @@ footer {
   left: 0;
 }
 
-.main-search {
-  padding: 13px 0;
-  display: block;
-}
-
-.main-search .input-group {
-  margin-bottom: 0;
-  background-color: transparent;
-  border-radius: 20px;
-}
-
-.main-search .input-group .form-control {
-  padding: 0.3rem 0.75rem;
-  width: 0;
-  border: none;
-  color: #353c4e;
-  background-color: transparent;
-}
-
-.main-search .input-group .input-group-addon {
-  padding: 0.45rem 0.75rem 0.3rem 0;
-  background-color: transparent;
-  color: #353c4e;
-  border: none;
-}
-
-.main-search .input-group .input-group-addon.search-close {
-  padding: 0.3rem 0 0.3rem 0.75rem;
-  display: none;
-}
-
-.main-search .input-group .input-group-addon.search-close {
-  padding: 0.3rem 0 0.3rem 0.75rem;
-  display: none;
-}
-
-.main-search .open {
-  color: #353c4e;
-}
-
-.main-search.open .input-group {
-  background-color: #dcdcdc;
-}
-
-.main-search.open .input-group .form-control {
-  display: block;
-}
-
-.main-search.open .input-group .input-group-addon {
-  color: #353c4e;
-}
-
-.main-search.open .input-group .input-group-addon.search-close {
-  display: block;
-}
-
 @media screen {
   #printSection {
     display: none;
@@ -14255,6 +14199,78 @@ footer {
   color: #000;
   background-color: #fff;
   cursor: auto;
+}
+
+.ui-pnotify {
+  top: 36px;
+  right: 36px;
+  position: absolute;
+  height: auto;
+  z-index: 2;
+}
+
+#toasty {
+  max-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 1px;
+  position: fixed;
+  z-index: 1;
+  right: 20px;
+  top: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+#toasty #desc {
+  color: #fff;
+  padding: 15px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.x_title .head-search {
+  line-height: 0.6rem !important;
+}
+
+.x_title .head-search input {
+  border: none !important;
+}
+
+.x_title .head-search .fa {
+  font-weight: 200 !important;
+}
+
+.x_title .head-search .form-control {
+  /* padding: 0.3rem 0.75rem;
+    width: 0;
+    border: none;
+    color: #353c4e;
+    background-color: transparent; */
+  border: none;
+  background-color: #dcdcdc;
+}
+
+.x_title .head-search .main-search {
+  padding: 13px 0;
+  display: block;
+}
+
+.x_title .head-search .input-group {
+  background-color: transparent;
+  background-color: #dcdcdc;
+  border-radius: 20px;
+}
+
+.x_title .head-search .input-group-addon {
+  background-color: transparent;
+  border: none !important;
+}
+
+.x_title .head-search .input-group-addon .search-close {
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  display: none;
 }
 
 .sidebar-brand {

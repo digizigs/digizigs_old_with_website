@@ -1,24 +1,43 @@
 <template>
 	<section>
+
+    
+
+
 		<div class="x_panel">
           <div class="x_title">
+            
           	<h2>
-          	<i class="fa fa-align-left"></i>
-          		Invoices <small></small> 
+          	   <i class="fa fa-align-left"></i>
+          		 Invoices <small></small> 
 
           	</h2>	
 
-        	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i>New Invoice</a>
+          	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+              <i class="fa fa-plus" aria-hidden="true"></i>New Invoice
+            </a>
 
-        	<div class="clearfix"></div>
-          <span class="options">
-             <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
-             <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
-             <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
-             <span class="title-search">
-                <input type="search" v-model="filter">
-             </span>
+        	  <div class="clearfix"></div>
+
+            <span class="options">
+               <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
+               <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
+               <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
+               <span class="title-search">
+                  <input type="search" v-model="filter">
+               </span>
             </span>
+
+            <span class="head-search" >
+                <div class="main-search morphsearch-search">
+                  <div class="input-group">
+                      <span class="input-group-addon search-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control">
+                      <span class="input-group-addon search-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+                  </div>
+                </div>
+            </span>
+
           </div>
 
           <div class="x_content">
@@ -266,5 +285,8 @@
 	margin-top: 3px !important;
 }
 
+.ui-pnotify-icon{
+
+}
 
 </style>

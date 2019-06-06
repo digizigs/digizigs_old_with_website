@@ -8,18 +8,20 @@
 	                	<button type="button" class="close" data-dismiss="modal" >&times;</button>
 
                   	<span class="action_buttons" style="margin-top:-20px">
-                      <a href="" id="printinvoice">
+                      <a href="javascript:void(0)" id="printinvoice">
                        <i class="fa fa-print" aria-hidden="true"></i>Print  
                       </a>
-                      <a href="">
+                      <a href="javascript:void(0)">
                         <i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF
                       </a>
-                      <a href="">
+                      <a href="javascript:void(0)">
                         <i class="fa fa-credit-card" aria-hidden="true"></i>Payment
                       </a> 
                     </span>
                   		
 	                </div>
+
+                  
 
 	                <div id="printThis" class="modal-body">
 	                	<!-- title row -->

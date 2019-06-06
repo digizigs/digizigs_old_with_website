@@ -12,24 +12,7 @@
 	<div class="right_col" role="main">
 
         <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>App Setting <small></small></h3>
-              </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <!-- <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div> -->
-                </div>
-              </div>
-            </div>
-
-            <div class="clearfix"></div>
+            
 
             <div class="row">
               
@@ -72,7 +55,7 @@
 						                    </div>
 							                <div class="x_content">
 							                    @foreach($fields['elements'] as $field) 
-				                                    <div class="col-md-offset-1 col-md-8">@includeIf('admin.setting.fields.' . $field['type'] )</div>
+				                                    <div class="col-md-8">@includeIf('admin.setting.fields.' . $field['type'] )</div>
 				                                @endforeach
 							                </div>
 						                </div>

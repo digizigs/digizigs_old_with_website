@@ -12,7 +12,7 @@ class SettingController extends Controller
 	{
 		$setting = setting('admin_url');
 
-    	return view('admin.setting.setting');
+    	return view('admin.pages.setting.setting');
 	}
 
 

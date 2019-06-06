@@ -17,11 +17,16 @@ $(document).ready(function(){
     });
 
 	window.setTimeout(function() {;
-	    $("#successMessage").fadeTo(2000, 0).slideUp(2000, function(){
+	    $("#successMessage").fadeOut(1000, 0).slideUp(500, function(){
 	        $(this).remove(); 
 	    });
 	}, 5000);
 
+	window.setTimeout(function() {;
+	    $("#toasty").fadeOut(3000, function(){
+	        $(this).remove(); 
+	    });
+	}, 5000);
 
 
 	//New post image upload

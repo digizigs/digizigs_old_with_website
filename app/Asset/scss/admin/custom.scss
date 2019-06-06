@@ -477,54 +477,6 @@ footer {
 }
 //=========================Sliding Modal===================//
 
-.main-search {
-    padding: 13px 0;
-    display: block;
-
-    .input-group {
-      margin-bottom: 0;
-      background-color: transparent;
-      border-radius: 20px;
-
-        .form-control {
-          padding: 0.3rem 0.75rem;
-          width: 0;
-          border: none;
-          color: #353c4e;
-          background-color: transparent
-        }
-        .input-group-addon {
-            padding: 0.45rem 0.75rem 0.3rem 0;
-            background-color: transparent;
-            color: #353c4e;
-            border: none
-        }
-        .input-group-addon.search-close {
-            padding: 0.3rem 0 0.3rem 0.75rem;
-            display: none
-        }
-        .input-group-addon.search-close {
-            padding: 0.3rem 0 0.3rem 0.75rem;
-            display: none
-        }
-
-    }
-    .open {
-      color: #353c4e
-    }
-}
-.main-search.open .input-group {
-    background-color: #dcdcdc
-}
-.main-search.open .input-group .form-control {
-    display: block
-}
-.main-search.open .input-group .input-group-addon {
-    color: #353c4e
-}
-.main-search.open .input-group .input-group-addon.search-close {
-    display: block
-}
 
 //========================App Print options----Invoice printing=================//
 @media screen {
@@ -608,3 +560,81 @@ footer {
   }
 }
 //========================X-title-search========================================//
+.ui-pnotify{
+  top: 36px;
+  right: 36px;
+  position: absolute;
+  height: auto;
+  z-index: 2
+}
+
+//========================Notification Flash Message=============================//
+
+#toasty{
+  max-width: 250px;
+  //height: 50px;
+  //margin: auto;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 1px;
+  position: fixed;
+  z-index: 1;
+  right:20px;
+  top: 30px;
+  font-size: 17px;
+  white-space: nowrap;
+ 
+
+  #desc{
+
+      color: #fff;
+      padding: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+  }
+}
+
+ 
+//========================Notification Flash Message=============================//
+
+.x_title .head-search{
+  line-height: 0.6rem !important;
+
+  input{
+    border:none !important;
+  }
+
+  .fa{
+    font-weight: 200 !important;
+  }
+  .form-control {
+    /* padding: 0.3rem 0.75rem;
+    width: 0;
+    border: none;
+    color: #353c4e;
+    background-color: transparent; */
+    border: none;
+    background-color: #dcdcdc;
+  }
+  .main-search {
+      padding: 13px 0;
+      display: block
+  }
+
+  .input-group{
+     background-color: transparent;
+     background-color: #dcdcdc;
+     border-radius: 20px;
+  }
+
+  .input-group-addon{
+    background-color: transparent;
+    border: none !important;
+    .search-close {
+      padding: 0.3rem 0 0.3rem 0.75rem;
+      display: none
+    }
+  }
+
+}
