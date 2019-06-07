@@ -1,12 +1,11 @@
 <template>
   <section>
     <!--Add service-->
-        <div class="modal fade" id="editclient" role="dialog"  data-backdrop="false">
+        <div class="modal fade modal-right-slide" id="editclient" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header panel-heading">
                   <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                  <i class="fa fa-user-circle" aria-hidden="true"></i>
                   <h4 class="modal-title"><b>{{selClient.client_name}}</b></h4>
                 </div>
                 <div class="modal-body">

@@ -28,11 +28,15 @@
 		data(){
 			return{
 				prevactive:true,
-				nextactive:true
+				nextactive:true,
+				totalpage:'',
+				currentpage:1
 			}
 		},
 		watch:{
 			input(){
+				this.totalpage = this.input.last_page
+				this.currentpage =  this.input.current_page
 				if(this.input.next_page_url === null){
 					this.nextactive=false
 				}else{
@@ -51,11 +55,19 @@
 			pagechange(data){		
 
 				if(data == 'nextpage'){
-					this.$emit('pagechange',2);
+					
+					if(this.currentpage > this.totalpage){
+						//this.currentpage + 1
+					}
+					
+					this.$emit('pagechange',this.currentpage + 1);
 					this.buttons()
+
 				}else{
-					this.$emit('pagechange',1);
+					
+					this.$emit('pagechange',this.currentpage - 1);
 					this.buttons()
+
 				}
 				
 			},

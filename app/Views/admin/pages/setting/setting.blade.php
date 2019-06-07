@@ -21,22 +21,9 @@
 
               	<div class="clearfix"></div>
 
-                <!-- @if(Session::has('message'))
-                  <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
-                @endif -->
-               
-				@if(Session::has('message'))
-	                <div id="toasty" class="show">
-	                	<div id="desc">{{ Session::get('message') }}</div>
-	                </div>
-				@endif
+                 @include('admin.partials.alerts')
 				
-			
-
-                @if(Session::has('deleted'))
-                  <p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
-                @endif
-
+             
               	<div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="x_panel">
 	                	<div class="x_content">

@@ -13,24 +13,11 @@
 
          <div class="">
                       
-            <div class="row">
-                          
-                @if(Session::has('message'))
-                  <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
-                @endif
+            <div class="row">                          
+                
+                @include('admin.partials.alerts')
 
-                @if(Session::has('deleted'))
-                  <p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
-                @endif
-
-                @if ($errors->any())
-                  <p class="alert alert-danger " id="successMessage">
-                    @foreach($errors->all() as $error)
-                      {{$error}} <br>
-                    @endforeach
-                  </p>
-                @endif
-
+               
               	<div class="col-md-12 col-sm-12 col-xs-12">
                   
 	                <div class="x_panel">

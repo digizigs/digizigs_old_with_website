@@ -9,6 +9,7 @@
                   
                   <h4 class="modal-title" id="defaultModalLabel">New Client</h4>
                 </div>
+                
                 <div class="modal-body">
 
 

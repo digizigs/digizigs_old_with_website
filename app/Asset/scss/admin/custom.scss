@@ -502,76 +502,16 @@ footer {
 
 
 //========================X-title-search========================================//
-.title-search{
-  input{
-    outline: none;
-  }
-  input[type=search] {
-    -webkit-appearance: textfield;
-    -webkit-box-sizing: content-box;
-    font-family: inherit;
-    font-size: 100%;
-  }
-  input::-webkit-search-decoration,
-  input::-webkit-search-cancel-button {
-    display: none; 
-  }
-  input[type=search] {
-    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-    border: solid 1px #ccc;
-    padding: 9px 10px 9px 32px;
-    width: 40px;
-    
-    -webkit-border-radius: 10em;
-    -moz-border-radius: 10em;
-    border-radius: 10em;
-    
-    -webkit-transition: all .5s;
-    -moz-transition: all .5s;
-    transition: all .5s;
-  }
-  input[type=search]:focus {
-    width: 130px;
-    background-color: #fff;
-    border-color: #66CC75;
-    
-    -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
-    -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
-    box-shadow: 0 0 5px rgba(109,207,246,.5);
-  }
-  input:-moz-placeholder {
-    color: #999;
-  }
-  input::-webkit-input-placeholder {
-    color: #999;
-  }
-  input[type=search] {
-    width: 15px;
-    padding-left: 10px;
-    color: transparent;
-    cursor: pointer;
-  }
-  input[type=search]:focus {
-    width: 130px;
-    padding-left: 32px;
-    color: #000;
-    background-color: #fff;
-    cursor: auto;
-  }
-}
+
 //========================X-title-search========================================//
-.ui-pnotify{
-  top: 36px;
-  right: 36px;
-  position: absolute;
-  height: auto;
-  z-index: 2
-}
+
+
+
 
 //========================Notification Flash Message=============================//
 
 #toasty{
-  max-width: 250px;
+  //max-width: 250px;
   //height: 50px;
   //margin: auto;
   background-color: #333;
@@ -582,63 +522,47 @@ footer {
   z-index: 1;
   right:20px;
   top: 30px;
-  font-size: 17px;
+  font-size: 18px;
+  font-weight: 600;
   white-space: nowrap;
- 
-
+ // padding:0 20px;
   #desc{
-
       color: #fff;
       padding: 15px;
       overflow: hidden;
       white-space: nowrap;
+      i{
+        margin-right: 10px;
+      }
+  }
+}
+#toasty.success{
+  background-color: #27AE60;
+  #desc{
+    color: #fff;
+  }
+}
+#toasty.info{
+  background-color: #2E86C1;
+  #desc{
+    color: #fff;
+  }
+}
+#toasty.warning{
+  background-color: #F39C12;
+  #desc{
+    color: #2A3F54;
+  }
+}
+#toasty.danger{
+  background-color: #C70039;
+   #desc{
+    color: #fff;
   }
 }
 
  
 //========================Notification Flash Message=============================//
 
-.x_title .head-search{
-  line-height: 0.6rem !important;
 
-  input{
-    border:none !important;
-  }
 
-  .fa{
-    font-weight: 200 !important;
-  }
-  .form-control {
-    /* padding: 0.3rem 0.75rem;
-    width: 0;
-    border: none;
-    color: #353c4e;
-    background-color: transparent; */
-    border: none;
-    background-color: #dcdcdc;
-    display: none;
-  }
-  .main-search {
-      padding: 13px 0;
-      display: block
-  }
-
-  .input-group{
-     background-color: transparent;
-     background-color: #dcdcdc;
-     border-radius: 20px;
-  }
-
-  .input-group-addon{
-    background-color: transparent;
-    border: none !important;
-    .search-close {
-      padding: 0.3rem 0 0.3rem 0.75rem;
-      display: none
-    }
-  }
-  .input-group-addon.search-close{
-    display: none;
-  }
-
-}

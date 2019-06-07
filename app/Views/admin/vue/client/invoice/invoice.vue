@@ -1,42 +1,48 @@
 <template>
 	<section>
 
-    
-
-
 		<div class="x_panel">
           <div class="x_title">
             
-          	<h2>
-          	   <i class="fa fa-align-left"></i>
-          		 Invoices <small></small> 
+            <span class="panel-title">
+              <i class="fa fa-align-left"></i>
+               Invoices <small></small> 
+            </span>
 
-          	</h2>	
+          	
 
           	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
               <i class="fa fa-plus" aria-hidden="true"></i>New Invoice
             </a>
 
-        	  <div class="clearfix"></div>
+        	  
 
-            <span class="options">
-               <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
-               <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
-               <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
-               <span class="title-search">
-                  <input type="search" v-model="filter">
-               </span>
+            <span class="x-title-option">
+              <ul>
+                <li>
+                  <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
+                </li>
+                <li>
+                  <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
+                </li>
+                <li>
+                  <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
+                </li>
+                <li>
+                  <span id="x-title-search" class="title-searchs x-title-search c">
+                      <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                      <input type="text" v-model="filter">
+                      <span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
+                   </span>
+                </li>
+              </ul>
+               
+               
+               
+               
             </span>
 
-            <span class="head-search" >
-                <div class="main-search morphsearch-search">
-                  <div class="input-group">
-                      <span class="input-group-addon search-close"><i class="fa fa-times" aria-hidden="true"></i></span>
-                      <input type="text" class="form-control">
-                      <span class="input-group-addon search-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
-                  </div>
-                </div>
-            </span>
+          
 
           </div>
 
@@ -91,12 +97,13 @@
 	
         	  </div>
 
-            <vuepagination :input="invoices" @pagechange="pagination"></vuepagination>
+            <vuepagination :input="invoices" @pagechange="paginationdata"></vuepagination>
             
         
         
           </div>
     </div>
+
 		<div id="modal">
 
           <viewinvoice  :regno="regno"
@@ -118,8 +125,8 @@
                         @recordupdated="refreshRecord">
           </editinvoice>
           <newinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
-         
-        </div>
+    </div>
+
 	</section>
 </template>
 
@@ -172,20 +179,13 @@
             })
           	.catch(error => this.errors=error.response.data.errors);
     	},
-      pagination(page){
-
-        if (typeof page === 'undefined'){
-          page=1;
-        } 
-         axios.get('invoice/create?page=' + page,{params:{filter:this.filter}})       
-            .then((response) => {
-              this.invoices = response.data
-            })
-            .catch(error => this.errors=error.response.data.errors);
-      },
+     
   	  refreshRecord(record){
       	this.invoices=record.data;
     	},
+      closesearch(){
+        this.filter=''
+      },
       paymenttoggle(id){
 
       },
@@ -261,6 +261,12 @@
                 type: 'success',
                 title: 'Invoice deleted successfully'
             })
+          Swal.fire({
+  title: 'Error!',
+  text: 'Do you want to continue',
+  type: 'error',
+  confirmButtonText: 'Cool'
+})
         } 
         })
       }
@@ -269,8 +275,7 @@
 			/*axios.get('invoice/create')
 			.then((response) => {this.invoices=response.data})//this.appointments=response.data
 			.catch((error) => this.errors = error)	*/
-			this.paginationdata();
-      this.pagination();		
+			this.paginationdata();	
 		}
 	};
 

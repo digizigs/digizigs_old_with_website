@@ -12,7 +12,7 @@
 
         @include('admin.partials.topnav')
 
-         @yield('content')
+        @yield('content')
 
         @include('admin.partials.footer')
 

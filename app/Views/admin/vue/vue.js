@@ -20,7 +20,7 @@ const toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000
+  timer: 5000
 });
 
 const swalWithBootstrapButtons = Swal.mixin({

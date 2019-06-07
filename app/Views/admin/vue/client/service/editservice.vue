@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<!--Add service-->
-        <div class="modal fade" id="editservices" role="dialog"  data-backdrop="false">
+        <div class="modal fade modal-right-slide" id="editservices" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md">
               <div class="modal-content" >
                 <div class="modal-header panel-heading">
@@ -14,8 +14,8 @@
                    
 
                     <div class="form-group wp-input">
-                      <label for="" class="col-sm-3 control-label">Service Name</label> 
-                        <div class="col-sm-9">
+                      <label for="" class="col-sm-3 col-xs-3 control-label">Service Name</label> 
+                        <div class="col-sm-9 col-xs-9 col-md-9">
                           <div class="form-line">
                             <input type="text" class="form-control input-sm" v-model="service.name">
                           </div>
@@ -26,8 +26,8 @@
                     </div>
 
                     <div class="form-group wp-input">
-                      <label for="" class="col-sm-3 control-label">Service Description</label> 
-                        <div class="col-sm-9">
+                      <label for="" class="col-sm-3 col-xs-3 control-label">Service Description</label> 
+                        <div class="col-sm-9 col-xs-9 col-md-9">
                           <div class="form-line">
                             <textarea class="form-control input-sm" cols="30" rows="3" v-model="service.description"></textarea>
                           </div>
@@ -38,8 +38,8 @@
                     </div>
 
                     <div class="form-group wp-input">
-                      <label for="" class="col-sm-3 control-label">Service Charge</label> 
-                        <div class="col-sm-9">
+                      <label for="" class="col-sm- col-xs-3 control-label">Service Charge</label> 
+                        <div class="col-sm-9 col-xs-9 col-md-9">
                           <div class="form-line">
                             <input type="text" class="form-control input-sm" v-model="service.charge">
                           </div>
@@ -48,25 +48,10 @@
                           </div>
                         </div>
                     </div>
-
-
-                    <!-- 
-                    <div class="form-group wp-input">
-                      <div class="form-line" >
-                         <label class="form-label error">Product Deadline</label>
-                         <input type="text" class="form-control input-sm" v-model="service.duration">
-                      </div>
-                      <div class="error-message" v-if="errors.duration">
-                        {{ errors.duration[0] }}
-                      </div>
-                      <div v-else>
-                        <small><i>Time for project completion</i></small>
-                      </div>
-                    </div> -->
                     
                     <div class="form-group wp-input">
-                      <label for="" class="col-sm-3 control-label">Product Deadline</label> 
-                        <div class="col-sm-9">
+                      <label for="" class="col-sm-3 col-xs-3 control-label">Product Deadline</label> 
+                        <div class="col-sm-9 col-xs-9 col-md-9">
                           <div class="form-line">
                             <input type="text" class="form-control input-sm" v-model="service.duration">
                           </div>

@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $cat_save = $category->save();
 
         if($cat_save){
-            return redirect()->route('category.index')->with('message', 'Category added successfully');
+            return redirect()->route('category.index')->with('success', 'Category added successfully');
         }
 
     }
@@ -116,7 +116,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $is_deleted=$category->delete();
         if($is_deleted){
-            return redirect()->route('category.index')->with('deleted', 'Category deleted successfully');
+            return redirect()->route('category.index')->with('danger', 'Category deleted successfully');
         }
     }
 }

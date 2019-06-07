@@ -16,8 +16,10 @@ $(document).ready(function(){
         console.log(e);
     });
 
+
+    //===================Alert Message==============================//
 	window.setTimeout(function() {;
-	    $("#successMessage").fadeOut(1000, 0).slideUp(500, function(){
+	    $("#successMessage").fadeOut(3000, function(){
 	        $(this).remove(); 
 	    });
 	}, 5000);
@@ -208,5 +210,12 @@ $(document).ready(function(){
             $(".main-search").removeClass('open');
         }, 300);
     });
+
+	 $(".close-icon").on('click',function(){
+	 	$("#x-title-search").removeClass('o').addClass('c')
+	 })
+	 $(".search-icon").on('click',function(){
+	 	$("#x-title-search").removeClass('c').addClass('o')
+	 })
 
 });

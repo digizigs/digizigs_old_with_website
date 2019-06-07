@@ -615,6 +615,20 @@ body {
     border-bottom:0 !important
 }
 
+@media (max-width:780px) {
+    .main_container {
+        min-height: 100vh !important;
+        height: 100vh !important
+    }
+}
+@media (min-width:768px) {
+   .main_container {
+        min-height: 100vh !important;
+        height: 100vh !important
+    } 
+}
+
+
 .no-padding {
     padding: 0!important
 }
@@ -1264,7 +1278,7 @@ h2 {
 
 .x_panel,
 .x_title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     h2{
         margin: 0 !important;
         //color: #23282D;
@@ -1273,25 +1287,7 @@ h2 {
         font-size: 20px;
         padding: 10px;
     }
-    .search{
-        display: inline-flex;
-        margin-left: 30px;
-        margin-bottom: 0 !important;
-        padding: 0;
-        //border: 1px solid grey;
-        i{
-            margin-top: 10px;
-            margin-right: 10px;
-            font-size: 14px;
-        }
-        input{
-            margin: 0 !important;
-        }
-        .form-group{
-            margin-bottom: 0px !important;
-        }
-    }
-    .options{
+    .x-title-option{
         margin-right: 20px !important;
         .option-item{
             color: #01A9DB;
@@ -1313,6 +1309,61 @@ h2 {
         .title-search{
             margin: 0 10px;
         }
+    }
+
+    .x-title-search{
+      input{
+        border:none;
+        background:#DCDCDC;
+        border-radius:20px;
+        //font-size: 13px;
+        padding: 0 30px 0 20px;
+      }
+      i{
+        cursor: pointer;
+      }
+    }
+    .x-title-search.c{
+      -webkit-transition: all .5s ease;
+       -moz-transition: all .5s ease;
+       transition: all .5s ease;
+
+      .search-icon{
+        display: inline-block;
+      }
+      .close-icon{
+        display: none;
+      }
+      input{
+        width: 0;
+        //display: none;
+        transition: all .5s ease;
+        padding:0 15px;
+        background-color: transparent;
+      }
+      
+    }
+    .x-title-search.o{
+      transition: 5s all;
+      .search-icon{
+        display: none;
+      }
+      .close-icon{
+        display: inline-block;
+        margin-left: -25px;
+      }
+      input{
+        width: 250px;
+        display: inline-block;
+        transition: all .5s ease;
+      }
+    }
+
+    .x-title-option{
+      li{
+        display: inline;
+        line-height: 28px;
+      }
     }
 }
 
@@ -1358,8 +1409,17 @@ h2 {
 } */
 
 .x_title {
-    border-bottom: 2px solid #E6E9ED;
-    padding: 1px 5px 6px
+    //border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    .panel-title{
+        color: #2A5D84;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    ul{
+        margin: 0!important;
+    }
 }
 
 .x_title .filter {

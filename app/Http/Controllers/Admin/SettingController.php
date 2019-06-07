@@ -29,7 +29,7 @@ class SettingController extends Controller
 	        }
 	    }
 
-	    return redirect()->back()->with('message', 'Settings has been saved.');
+	    return redirect()->back()->with('success', 'Settings has been saved.');
 	}
 
 
