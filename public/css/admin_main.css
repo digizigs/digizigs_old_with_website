@@ -14250,6 +14250,7 @@ footer {
     background-color: transparent; */
   border: none;
   background-color: #dcdcdc;
+  display: none;
 }
 
 .x_title .head-search .main-search {
@@ -14270,6 +14271,10 @@ footer {
 
 .x_title .head-search .input-group-addon .search-close {
   padding: 0.3rem 0 0.3rem 0.75rem;
+  display: none;
+}
+
+.x_title .head-search .input-group-addon.search-close {
   display: none;
 }
 

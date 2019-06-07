@@ -616,6 +616,7 @@ footer {
     background-color: transparent; */
     border: none;
     background-color: #dcdcdc;
+    display: none;
   }
   .main-search {
       padding: 13px 0;
@@ -635,6 +636,9 @@ footer {
       padding: 0.3rem 0 0.3rem 0.75rem;
       display: none
     }
+  }
+  .input-group-addon.search-close{
+    display: none;
   }
 
 }

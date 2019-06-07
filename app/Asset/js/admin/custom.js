@@ -192,6 +192,21 @@ $(document).ready(function(){
 	    window.print();
 	}
 
-
+	// title search bar 
+	 $(".search-btn").on('click', function() {
+	 	//alert('search click')
+	 	$(".main-search").addClass('open');
+        $('.main-search .form-control').animate({
+            'width': '200px',
+        });
+	 });
+	 $(".search-close").on('click', function() {
+        $('.main-search .form-control').animate({
+            'width': '0',
+        });
+        setTimeout(function() {
+            $(".main-search").removeClass('open');
+        }, 300);
+    });
 
 });
