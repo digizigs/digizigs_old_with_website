@@ -32,12 +32,16 @@ class InvoiceController extends Controller
 
         if($data == ''){
 
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(7);
+            $invoices = Invoice::orderby('created_at','desc')
+                                ->where('type','invoice')
+                                ->with('client','invoice_item.service')
+                                ->paginate(7);
             return request()->json(200,$invoices);
 
         } elseif($data == 'pending'){
 
             $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->where('type','invoice')
                                 ->orderby('created_at','desc')
                                 ->with('client','invoice_item.service')
                                 ->get();
@@ -46,6 +50,7 @@ class InvoiceController extends Controller
         }elseif($data == 'paid'){
 
             $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->where('type','invoice')
                                 ->orderby('created_at','desc')
                                 ->with('client','invoice_item.service')
                                 ->get();
@@ -54,13 +59,15 @@ class InvoiceController extends Controller
         }elseif($data == 'partial'){
 
             $invoices['data'] = Invoice::where('bill_status',$data)
+                                ->where('type','invoice')
                                 ->orderby('created_at','desc')
                                 ->with('client','invoice_item.service')
                                 ->get();
             return request()->json(200,$invoices);
             
         }else{
-            $invoices['data'] = Invoice::with('client','invoice_item.service')
+            $invoices['data'] = Invoice::where('type','invoice')
+                                ->with('client','invoice_item.service')
                                 ->whereHas('client', function ($query) use ($data) {
                                     $query->where('client_name','like', '%'.$data.'%')
                                           ->orWhere('client_email','like', '%'.$data.'%')
@@ -88,7 +95,10 @@ class InvoiceController extends Controller
             return request()->json(200,$clients);
         }*/
 
-        $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(7);
+        $invoices = Invoice::orderby('created_at','desc')
+                            ->where('type','invoice')
+                            ->with('client','invoice_item.service')
+                            ->paginate(7);
         //dd($invoices);
         return request()->json(200,$invoices);
     }
@@ -117,6 +127,7 @@ class InvoiceController extends Controller
         $invoice->net_bill_amount = $request->netbill;
         $invoice->bill_date = $request->billdate;
         $invoice->due_date = $request->duedate;
+        $invoice->type = 'invoice';
         $saved = $invoice->save();
 
         
@@ -144,16 +155,16 @@ class InvoiceController extends Controller
 
 
         if($saved){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(7);
+            $invoices = Invoice::orderby('created_at','desc')->where('type','invoice')->with('client','invoice_item.service')->paginate(7);
             return request()->json(200,$invoices);
         }
                
     }
 
     
-    public function show($id)
-    {
-        $invoicea = Invoice::where('id',$id)->with('client','invoice_item')->first();
+    public function show($id) {
+
+        $invoicea = Invoice::where('id',$id)->where('type','invoice')->with('client','invoice_item')->first();
         $items = Invoice::where('id',$id)->with('invoice_item')->get();
         //dd($invoice->client->client_name);
 
@@ -168,8 +179,8 @@ class InvoiceController extends Controller
     }
 
     
-    public function edit($id)
-    {          
+    public function edit($id) {
+              
         $invoicea = Invoice::where('id',$id)->with('client','invoice_item')->first();
         $items = Invoice::where('id',$id)->with('invoice_item')->get();
         //dd($invoice->client->client_name);
@@ -216,7 +227,10 @@ class InvoiceController extends Controller
         }
 
         if($saved){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
+            $invoices = Invoice::orderby('created_at','desc')
+                                ->where('type','invoice')
+                                ->with('client','invoice_item.service')
+                                ->paginate(8);
             return request()->json(200,$invoices);
         }
     }
@@ -228,7 +242,10 @@ class InvoiceController extends Controller
         $is_deleted=$invoice->delete();
 
         if($is_deleted){
-            $invoices = Invoice::orderby('created_at','desc')->with('client','invoice_item.service')->paginate(8);
+            $invoices = Invoice::orderby('created_at','desc')
+                                ->where('type','invoice')
+                                ->with('client','invoice_item.service')
+                                ->paginate(8);
             //dd($invoices);
             return request()->json(200,$invoices);
         }

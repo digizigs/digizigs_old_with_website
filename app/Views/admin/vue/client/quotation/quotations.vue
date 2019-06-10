@@ -6,28 +6,19 @@
             
             <span class="panel-title">
               <i class="fa fa-align-left"></i>
-               Invoices <small></small> 
+               Quotations <small></small> 
             </span>
 
           	
 
-          	<a href="#newinvoice" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
-              <i class="fa fa-plus" aria-hidden="true"></i>New Invoice
+          	<a href="#newquotation" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+              <i class="fa fa-plus" aria-hidden="true"></i>New Quotation
             </a>
 
         	  
 
             <span class="x-title-option">
               <ul>
-                <li>
-                  <a href="" class="option-item" :class="{active: dt === 'all'}" v-on:click.prevent @click="invoicedataview('')">All</a>
-                </li>
-                <li>
-                  <a href="" class="option-item" :class="{active: dt === 'pending'}" v-on:click.prevent @click="invoicedataview('pending')">Pending</a>
-                </li>
-                <li>
-                  <a href="" class="option-item" :class="{active: dt === 'paid'}" v-on:click.prevent @click="invoicedataview('paid')">Paid</a>
-                </li>
                 <li>
                   <span id="x-title-search" class="title-searchs x-title-search c">
                       <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
@@ -69,19 +60,20 @@
                      		 <!-- {{invoice.invoice_item.reduce((a, c) => a + parseInt(c.service['charge']), 0)}} -->{{invoice.net_bill_amount}}
                      	</span>
 
-                     	<span style="margin-left: 10px;"> creatred on </span> <span class="time">{{ invoice.created_at | vueDate }}</span> due on
-                     	<span class="time">{{ invoice.due_date | vueDate }}</span> 
+                     	<span style="margin-left: 10px;"> creatred on </span> <span class="time">{{ invoice.created_at | vueDate }}</span>
 						
-						          <span class="label label-success" v-if="invoice.bill_status == 'paid'">Paid</span>
-                      <span class="label label-danger" v-if="invoice.bill_status == 'pending'">Pending</span>	
 
                     	<span class="action-text subscription">
-                    		<a href="#invoiceview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)" title="View Invoice">
+                    		<a href="#quotationview" class="disabled" data-toggle="modal" @click="invoiceview(invoice.id)" title="View Invoice">
                    	        <i class="fa fa-file-text" aria-hidden="true"></i>
                    	    </a>
                     		
-                      	<a href="#editinvoice" v-on:click.prevent data-toggle="modal" @click="invoiceedit(invoice.id)" title="Edit Invoice">
+                      	<a href="#editquotation" v-on:click.prevent data-toggle="modal" @click="invoiceedit(invoice.id)" title="Edit Invoice">
                           <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="" v-on:click.prevent  @click="sendreminder(invoice.id)" title="Send Reminder">
+                          <i class="fa fa-bell" aria-hidden="true"></i>
                         </a>
 
                       	<a href="" v-on:click.prevent @click="invoicedelete(invoice.id)" title="Delete Invoice">
@@ -106,25 +98,25 @@
 
 		<div id="modal">
 
-          <viewinvoice  :regno="regno"
-                        :gstno="gstno"
-                        :qgst="gst" 
-                        :client="client" 
-                        :invoice="invoice" 
-                        :items="items" 
-                        :invc="invoicedetail" 
+          <viewquotation  :regno="regno"
+                          :gstno="gstno"
+                          :qgst="gst" 
+                          :client="client" 
+                          :invoice="invoice" 
+                          :items="items" 
+                          :invc="invoicedetail" 
                         @recordupdated="refreshRecord">                
-          </viewinvoice>
-          <editinvoice  :qgst="gst" 
-                        :qduedate="due_date"
-                        :invc="invoicedetail" 
-                        :clt="client"
-                        :edtclient="client" 
-                        :edtinvoice="invoice" 
-                        :edtitems="items"  
-                        @recordupdated="refreshRecord">
-          </editinvoice>
-          <newinvoice :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newinvoice>
+          </viewquotation>
+          <editquotation  :qgst="gst" 
+                          :qduedate="due_date"
+                          :invc="invoicedetail" 
+                          :clt="client"
+                          :edtclient="client" 
+                          :edtinvoice="invoice" 
+                          :edtitems="items"  
+                          @recordupdated="refreshRecord">
+          </editquotation>
+          <newquotation :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newquotation>
     </div>
 
 	</section>
@@ -160,10 +152,7 @@
 		},
     computed:{
       servicecount(){
-      //return this.invoice.invoice_item 
-          /*return this.invoice.client.reduce(function (total, id) { 
-                    return 4;           
-               }, 0);*/ 
+      
       }
     },	
 		methods:{
@@ -172,11 +161,10 @@
         if (typeof page === 'undefined'){
         	page=1;
         } 
-        axios.get('invoice/create?page=' + page,{params:{filter:this.filter}})       
+        axios.get('quotation/create?page=' + page,{params:{filter:this.filter}})       
           	.then((response) => {
               //console.log(response.data)
               this.invoices = response.data
-              NProgress.done();
             })
           	.catch(error => this.errors=error.response.data.errors);
     	},
@@ -191,7 +179,7 @@
 
       },
       invoicedataview(data){
-        NProgress.start();
+          
         this.dt = data
         this.filter = data
         //this.paginationdata()
@@ -213,7 +201,7 @@
         .catch(error => this.errors=error.response.data.errors);
     	},
     	invoiceview(id){
-    		axios.get('invoice/'+id)
+    		axios.get('quotation/'+id)
         .then((response) => {
           this.invoicedetail=response.data;
           this.client = response.data.client
@@ -224,7 +212,7 @@
         .catch(error => this.errors=error.response.data.errors);
     	},
       invoiceedit(id){
-        axios.get('invoice/'+id+'edit')
+        axios.get('quotation/'+id+'/edit')
         .then((response) => {
           this.invoicedetail=response.data;
           this.client = response.data.client
@@ -234,9 +222,12 @@
           })//this.apntupdate = response.data
         .catch(error => this.errors=error.response.data.errors);
       },
+      sendreminder(id){
+        Console.log('Reminder')
+      },
     	invoicedelete(id){
       	swalWithBootstrapButtons({
-        	title: 'Delete Invoice?',
+        	title: 'Delete Quotation?',
         	text: "You won't be able to revert this!",
         	type: 'warning',
         	showCancelButton: true,
@@ -244,25 +235,26 @@
         	cancelButtonText: 'No, cancel!',
         	reverseButtons: true
          }).then((result) => {
-        if (result.value) {
+          if (result.value) {
 
-          axios.delete('invoice/'+id)
-          .then(response =>{
-            this.invoices=response.data;
-            this.success="Invoice Deleted Successfuly";
+            axios.delete('quotation/'+id)
+            .then(response =>{
+              this.invoices=response.data;
+              this.success="Invoice Deleted Successfuly";
 
-          })
-          .catch((error) => {
-            console.log(response.data);
-                  this.errors=error.response.data.errors;
-                  this.success='';                
-            });
-
-          toast({
-                type: 'success',
-                title: 'Invoice deleted successfully'
             })
-        } 
+            .catch((error) => {
+              console.log(response.data);
+                    this.errors=error.response.data.errors;
+                    this.success='';                
+              });
+
+            toast({
+                  type: 'success',
+                  title: 'Quotation deleted successfully'
+              })
+          
+          } 
         })
       }
 		},

@@ -3,12 +3,13 @@ body,html{
  
 
   background-color: #2A3F54;
-  font-size: 12px;
+  font-size: 13px;
   //overflow-x: hidden;
     //color: #353c4e;
   font-weight: 500;
   color: #455A64;
   font-family: open sans, sans-serif;
+  //font-family: "Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;
   //font-family: 'Nunito Sans', sans-serif;
   background-attachment: fixed;
  
@@ -95,6 +96,9 @@ footer {
     padding: 5px;
     display: block;
     text-align: center;
+    a{
+      color: #FE8A7D ;
+    }
 
 }
 //=======================================================
@@ -232,23 +236,26 @@ footer {
     //color: #56575A;
   }
   .fa-trash-o{
-        color: #FF3352;
-      }
-      .fa-pencil{
-        color:#1C871A;
-      }
-      .fa-eye{
-        color:#1C871A;
-      }
-      .fa-file-text{
-        color: #478DE6;
-      }
-      .fa-thumbs-up{
-        color: #1C871A;
-      }
-      .fa-thumbs-down{
-        color: #FF3352;
-      }
+    color: #FF3352;
+  }
+  .fa-pencil{
+    color:#1C871A;
+  }
+  .fa-eye{
+    color:#1C871A;
+  }
+  .fa-file-text{
+    color: #478DE6;
+  }
+  .fa-thumbs-up{
+    color: #1C871A;
+  }
+  .fa-thumbs-down{
+    color: #FF3352;
+  }
+  .fa-bell{
+    color: #E45447; 
+  }
 }
 //====================table-action-font-icon ============
 

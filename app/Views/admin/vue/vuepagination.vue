@@ -1,18 +1,18 @@
 <template>
 	<div class="vue-pagination" v-if="input.total > 0">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 col-xs-4">
 				<span class="prev pull-left" :class="{ 'active': prevactive }" @click="pagechange('prevpage')">
 			        <i class="fa fa-arrow-left" aria-hidden="true"></i>
 			        Prev
 			    </span>
 			</div>
-		    <div class="col-md-4 data">
+		    <div class="col-md-4  col-xs-4 data">
 		    	<span class="">
 			        Showing {{input.from}} to {{input.to}} of total {{input.total}} 
 			    </span>
 		    </div>
-		    <div class="col-md-4">
+		    <div class="col-md-4  col-xs-4">
 		    	<span class="next pull-right" :class="{ 'active': nextactive }" @click="pagechange('nextpage')">
 			        Next
 			        <i class="fa fa-arrow-right" aria-hidden="true"></i>
@@ -37,6 +37,7 @@
 			input(){
 				this.totalpage = this.input.last_page
 				this.currentpage =  this.input.current_page
+
 				if(this.input.next_page_url === null){
 					this.nextactive=false
 				}else{
@@ -55,10 +56,6 @@
 			pagechange(data){		
 
 				if(data == 'nextpage'){
-					
-					if(this.currentpage > this.totalpage){
-						//this.currentpage + 1
-					}
 					
 					this.$emit('pagechange',this.currentpage + 1);
 					this.buttons()

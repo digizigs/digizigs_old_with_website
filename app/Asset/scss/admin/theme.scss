@@ -437,6 +437,7 @@ table.tile_info td p {
 
 body .container.body .right_col {
     background: $container_background_color;
+    min-height: 100vh;
 }
 
 .nav-md .container.body .right_col {

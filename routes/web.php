@@ -160,12 +160,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         Route::resource('/client', 'Admin\Client\ClientController'); //User
         Route::resource('/billing', 'Admin\Client\BillingController'); //User
         
-        Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //CLient
-        Route::get('/invoice/allservice', 'Admin\Client\InvoiceController@services')->name('invoice.services'); //Service
-        Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
+        Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //Invoice
+        Route::get('/invoice/allservice', 'Admin\Client\InvoiceController@services')->name('invoice.services'); //Invoice
+        Route::resource('/invoice', 'Admin\Client\InvoiceController'); //Invoice
 
-        Route::resource('/quotation', 'Admin\Client\quotationController'); //User
-
+        Route::get('/quotation/pdf', 'Admin\Client\QuotationController@pdf')->name('quotation.pdf'); //Invoice
+        Route::resource('/quotation', 'Admin\Client\QuotationController'); //User
 
     });
 

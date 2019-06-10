@@ -9034,6 +9034,7 @@ table.tile_info td p {
 
 body .container.body .right_col {
   background: #F2F3F8;
+  min-height: 100vh;
 }
 
 .nav-md .container.body .right_col {
@@ -13707,7 +13708,7 @@ ul.notifications {
 body,
 html {
   background-color: #2A3F54;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: #455A64;
   font-family: open sans, sans-serif;
@@ -13873,6 +13874,10 @@ footer {
   text-align: center;
 }
 
+footer a {
+  color: #FE8A7D;
+}
+
 .table-responsive .table-action-font-icon span {
   margin-left: 10px;
   margin-right: 10px;
@@ -14015,6 +14020,10 @@ footer {
 
 .pannel-line-group .fa-thumbs-down {
   color: #FF3352;
+}
+
+.pannel-line-group .fa-bell {
+  color: #E45447;
 }
 
 .avatar-preview {
@@ -14287,6 +14296,7 @@ footer {
 
 .menu_section .side-menu li.current-page a {
   font-weight: 600 !important;
+  font-size: 14px;
 }
 
 .menu_section .side-menu li.current-page a:before {
@@ -14328,7 +14338,7 @@ footer {
 }
 
 .menu_section .side-menu li a {
-  font-size: 13 px !important;
+  font-size: 13px !important;
   padding: 10px 10px;
   font-weight: 500 !important;
 }
@@ -16383,9 +16393,8 @@ footer {
 
 .panel-group .panel .panel-heading .title {
   color: #000;
-  font-weight: 500;
   color: #2A5D84;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .panel-group .panel .panel-heading .time {
