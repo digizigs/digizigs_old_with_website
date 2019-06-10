@@ -1,4 +1,4 @@
-/*
+
 import moment from 'moment'
 import Vue from 'vue'
 
@@ -91,4 +91,4 @@ Vue.filter('vueDate',function(created){
 
 Vue.filter('vueTime',function(){
   return moment().calendar();
-})*/
+})

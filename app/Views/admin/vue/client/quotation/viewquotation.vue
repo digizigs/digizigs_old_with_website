@@ -185,8 +185,8 @@
 </template>
 
 <script type="text/javascript">
-  import jsPDF from 'jspdf';
-  import html2canvas from 'html2canvas';
+  //import jsPDF from 'jspdf';
+  //import html2canvas from 'html2canvas';
   export default{
     props:['invoice','client','items','qgst','regno','gstno'],
     data(){
@@ -233,14 +233,14 @@
             width: 170
           });
           doc.save("sample.pdf");*/
-          const doc = new jsPDF();
-          var canvasElement = document.createElement('canvas');
+          //const doc = new jsPDF();
+          /*var canvasElement = document.createElement('canvas');
           html2canvas(this.$refs.content, { canvas: canvasElement 
             }).then(function (canvas) {
           const img = canvas.toDataURL("image/png");
           doc.addImage(img,'JPEG',20,20);
           doc.save("sample.pdf");
-         });
+         });*/
 
 
       }

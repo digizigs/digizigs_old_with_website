@@ -10,8 +10,8 @@ Vue.use(VueRouter)
 import VueSingleSelect from "vue-single-select";
 
 //V-Chat scroll
-//import VueChatScroll from 'vue-chat-scroll'
-//Vue.use(VueChatScroll)
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll)
 
 //Sweet Alert
 import Swal from 'sweetalert2';
@@ -82,7 +82,7 @@ Vue.component('newinvoice', require('./client/invoice/newinvoice.vue'));
 Vue.component('viewinvoice', require('./client/invoice/viewinvoice.vue'));
 Vue.component('editinvoice', require('./client/invoice/editinvoice.vue'));
 
-/*
+
 
 //Quotation
 Vue.component('quotation', require('./client/quotation/quotations.vue'));
@@ -126,13 +126,13 @@ Vue.component('users', require('./access management/user/Users.vue'));
 Vue.component('newuser', require('./access management/user/NewUser.vue'));
 
 
-*/
+
 
 
 
 //Filter
-//Vue.component('search', require('./Filter.vue'));
-//Vue.component('vuepagination', require('./vuepagination'));
+Vue.component('search', require('./Filter.vue'));
+Vue.component('vuepagination', require('./vuepagination'));
 
 const app = new Vue({
    el: '#app',
