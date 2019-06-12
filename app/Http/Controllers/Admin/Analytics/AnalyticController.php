@@ -22,7 +22,7 @@ class AnalyticController extends Controller
     public function index(){
 
     	//Top Country
-    	$top_countries = GoogleAnalytics::topCountries(20);
+    	$top_countries = GoogleAnalytics::topCountries(180);
 
         //Top Browsers
         $top_browser = Analytics::fetchTopBrowsers(Period::days(180));

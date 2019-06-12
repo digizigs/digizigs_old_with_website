@@ -126,8 +126,8 @@ Vue.component('users', require('./access management/user/Users.vue'));
 Vue.component('newuser', require('./access management/user/NewUser.vue'));
 
 
-
-
+//Analytics
+Vue.component('topcountries', require('./analytics/TopCountries.vue'));
 
 
 //Filter

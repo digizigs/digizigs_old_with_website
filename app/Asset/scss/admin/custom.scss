@@ -572,4 +572,37 @@ footer {
 //========================Notification Flash Message=============================//
 
 
+//=========================Material Card Design==================================//
+.mat-card {
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    border: none;
+    margin-bottom: 30px;
+  background-color: #FFFFFF;
+    .card-header{
+      background-color: transparent;
+      border-bottom: none;
+      padding: 10px 10px;
 
+      h5 {
+        margin-bottom: 0;
+        color: #505458;
+        font-size: 14px;
+        font-weight: 600;
+        display: inline-block;
+        margin-right: 10px;
+        line-height: 1.4;
+    }
+    span {
+        color: #919aa3;
+        display: block;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+  }
+  .card-block{
+    padding: 10px 10px;
+  }
+}
+//=========================Material Card Design==================================//
