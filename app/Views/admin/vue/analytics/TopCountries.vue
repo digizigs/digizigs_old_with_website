@@ -68,22 +68,6 @@
                         legend: {
                             display: false,
                         },
-                        tooltips: {
-                            mode: 'nearest'
-                        },
-                        animation: {
-                            onComplete:function(animation){
-                                var ctx = this.chart.ctx;
-                                this.data.datasets.forEach(function (dataset) {
-                                    for (var i = 0; i < dataset.data.length; i++) {
-                                        for(var key in dataset._meta){
-                                            var model = dataset._meta[key].data[i]._model;
-                                            ctx.fillText(dataset.data[i], model.x+12, model.y+5);
-                                        }
-                                    }
-                                });
-                            },
-                        }
                     }
                 });
             }
