@@ -14287,7 +14287,7 @@ footer a {
 .mat-card .card-header {
   background-color: transparent;
   border-bottom: none;
-  padding: 10px 10px;
+  padding: 5px 15px;
 }
 
 .mat-card .card-header h5 {
@@ -14308,7 +14308,7 @@ footer a {
 }
 
 .mat-card .card-block {
-  padding: 10px 10px;
+  padding: 5px 15px;
 }
 
 .sidebar-brand {

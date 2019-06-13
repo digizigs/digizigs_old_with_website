@@ -116,7 +116,8 @@ class AnalyticController extends Controller
         );
 
         //MObile Traffic
-        $mobile_traffic = GoogleAnalytics::moblileTraffic(180);       
+        $mobile_traffic = GoogleAnalytics::moblileTraffic(180);
+        //dd(serialize($mobile_traffic));
         
         //Browser and Operating System
         $browser_operating_system = GoogleAnalytics::browser_operatuing_system(180);       
@@ -132,4 +133,14 @@ class AnalyticController extends Controller
                             'browser_operating_system','traffic_source','trending','analyticsData'));
      
     }
+
+    public function topCountries(Request $request){
+        $top_countries = GoogleAnalytics::topCountries($request->period);
+        return request()->json(200,$top_countries);
+    }
+
+
+
+
+
 }

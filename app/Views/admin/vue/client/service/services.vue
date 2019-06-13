@@ -62,79 +62,79 @@ Vue.component('pagination', require('laravel-vue-pagination'));
       data(){
          return{
             services:{},
-service:{},
+            service:{},
             success:'',
             errors:'',
-search:''
+            search:''
          }
       },
       watch:{
-search:function(){
-if(this.search.length >= 0){
-axios.get('service/create',{params:{search_string:this.search}})
-.then((response) => {
-this.services=response.data
-})
-.catch((error) => console.log(error))
-}
-}
+         search:function(){
+         if(this.search.length >= 0){
+            axios.get('service/create',{params:{search_string:this.search}})
+               .then((response) => {
+               this.services=response.data
+               })
+               .catch((error) => console.log(error))
+            }
+         }
       },
       methods:{
-paginationdata(page){
-if (typeof page === 'undefined'){
-page=1;
-}
-axios.get('service/create?page=' + page)
-.then(response => this.services = response.data)
-.catch(error => this.errors=error.response.data.errors);
-},
-      refreshRecord(record){
-this.services=record.data;
-},
-closesearch(){
-this.filter=''
-},
-detailservice(id){
-axios.get('service/'+id+'/edit')
-.then((response) => {
-this.service=response.data
-})
-.catch(error => this.errors=error.response.data.errors);
-},
-deleteservice(id){
-NProgress.start();
-swalWithBootstrapButtons({
-title: 'Delete Service?',
-text: "You won't be able to revert this!",
-type: 'warning',
-showCancelButton: true,
-confirmButtonText: 'Yes, delete it!',
-cancelButtonText: 'No, cancel!',
-reverseButtons: true
-}).then((result) => {
-if (result.value) {
-axios.delete('service/'+id)
-.then(response =>{
-this.services=response.data;
-this.success="Service Deleted Successfuly";
-toast({
-type: 'success',
-title: 'Service  deleted successfully'
-})
-NProgress.done();
-})
-.catch((error) => {
-console.log(response.data);
-this.errors=error.response.data.errors;
-this.success='';
-});
+         paginationdata(page){
+         if (typeof page === 'undefined'){
+            page=1;
+         }
+            axios.get('service/create?page=' + page)
+            .then(response => this.services = response.data)
+            .catch(error => this.errors=error.response.data.errors);
+         },
+         refreshRecord(record){
+            this.services=record.data;
+         },
+         closesearch(){
+            this.filter=''
+         },
+         detailservice(id){
+            axios.get('service/'+id+'/edit')
+            .then((response) => {
+            this.service=response.data
+            })
+            .catch(error => this.errors=error.response.data.errors);
+         },
+         deleteservice(id){
+            NProgress.start();
+            swalWithBootstrapButtons({
+               title: 'Delete Service?',
+               text: "You won't be able to revert this!",
+               type: 'warning',
+               showCancelButton: true,
+               confirmButtonText: 'Yes, delete it!',
+               cancelButtonText: 'No, cancel!',
+               reverseButtons: true
+            }).then((result) => {
+               if (result.value) {
+                  axios.delete('service/'+id)
+                  .then(response =>{
+                  this.services=response.data;
+                  this.success="Service Deleted Successfuly";
+                  toast({
+                     type: 'success',
+                     title: 'Service  deleted successfully'
+                  })
+                  NProgress.done();
+               })
+               .catch((error) => {
+                  console.log(response.data);
+               this.errors=error.response.data.errors;
+               this.success='';
+            });
 
-}
-})
-}
+            }
+         })
+      }
       },
       created(){
-this.paginationdata();
+         this.paginationdata();
       }
    };
 </script>

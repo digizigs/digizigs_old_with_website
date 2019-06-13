@@ -180,8 +180,11 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
 
-    //testlab
+    //Google Analytics
     Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
+    Route::get('/analytics/topcountries', 'Admin\Analytics\AnalyticController@topCountries')->name('google.topCountries');
+
+
 
     //Logs
     //Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');

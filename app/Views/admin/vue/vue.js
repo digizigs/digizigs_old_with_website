@@ -127,7 +127,13 @@ Vue.component('newuser', require('./access management/user/NewUser.vue'));
 
 
 //Analytics
+Vue.component('googleanalytics', require('./analytics/GoogleAnalytics.vue'));
 Vue.component('topcountries', require('./analytics/TopCountries.vue'));
+Vue.component('topbrowser', require('./analytics/TopBrowser.vue'));
+Vue.component('visitor', require('./analytics/Visitors.vue'));
+Vue.component('referrer', require('./analytics/Referrer.vue'));
+Vue.component('mobiletraffic', require('./analytics/MobileTraffic.vue'));
+Vue.component('trafficsource', require('./analytics/TrafficSource.vue'));
 
 
 //Filter
