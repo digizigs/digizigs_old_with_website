@@ -22,7 +22,7 @@
 
 		</div>
 		<div class="x_content">
-			<topcountries  :data ="topcountries"></topcountries>
+			<topcountries :topcountries="topcountries"></topcountries>
 		</div>
 	</div>
 </template>
@@ -34,6 +34,7 @@
 				search:'',
 				duration:'7',
 				topcountries:[],
+				renderComponent:true
 			}
 		},
 		watch:{
@@ -42,12 +43,15 @@
 			}
 		},
 		methods:{
+			adddata(){
+
+			},
 			request(){
 				NProgress.start();
 				axios.get('analytics/topcountries',{params:{period:this.duration}})
             	.then((response) => {
             		this.topcountries = response.data
-            		console.log(response.data)
+            		//console.log(response.data)
             		NProgress.done();
             	})
             	.catch((error) => {

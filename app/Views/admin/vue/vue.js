@@ -136,9 +136,14 @@ Vue.component('mobiletraffic', require('./analytics/MobileTraffic.vue'));
 Vue.component('trafficsource', require('./analytics/TrafficSource.vue'));
 
 
-//Filter
+
+//Components 
 Vue.component('search', require('./Filter.vue'));
 Vue.component('vuepagination', require('./vuepagination'));
+Vue.component('vuechartjs', require('./components/charts/vuechartjs.vue'));
+Vue.component('vuechart', require('./components/charts/VueChart.vue'));
+
+
 
 const app = new Vue({
    el: '#app',

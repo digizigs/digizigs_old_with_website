@@ -14,28 +14,21 @@
 
 <script type="text/javascript">
 	export default{
-		props:['topcountries'],
 		data(){
 			return {
+				duration:'7',
 		        datacollection: null,
 		        chartOptions:null,
 		      }
 		},
 		mounted(){
-			//console.log(this.topcountries)
 			this.fillData()
 			
 		},
 		watch:{
-			topcountries:function(){
-				console.log(this.topcountries)
-			}
-				
-		},
-		methods:{
-			getdata(){
+			duration:function(){
 				NProgress.start();
-				axios.get('analytics/topcountries',{params:{period:this.period}})
+				axios.get('analytics/topcountries',{params:{period:this.duration}})
 		        	.then((response) => {
 		        		//this.topcountries = response.data
 		        		console.log(response.data)
@@ -45,7 +38,9 @@
 		        		//this.errors=error.response.data.errors
 		        		NProgress.done();
 		        	});
-			},
+			}
+		},
+		methods:{
 			fillData(){
 				this.datacollection = {
 		          labels: [this.getRandomInt(), this.getRandomInt()],
@@ -64,8 +59,10 @@
 			getRandomInt () {
 		        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
 		    },
-		},
-			
+		    updated(){
+		    	Console.log("Wola chart updated")
+		    }
+		}
 	};
 
 </script>
