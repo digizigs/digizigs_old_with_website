@@ -14311,6 +14311,11 @@ footer a {
   padding: 5px 15px;
 }
 
+.bg-c-yellow {
+  background: -webkit-gradient(linear, left top, right top, from(#fe9365), to(#feb798));
+  background: linear-gradient(to right, #fe9365, #feb798);
+}
+
 .sidebar-brand {
   height: 45px;
   padding: 0;

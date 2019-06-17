@@ -134,6 +134,7 @@ Vue.component('visitor', require('./analytics/Visitors.vue'));
 Vue.component('referrer', require('./analytics/Referrer.vue'));
 Vue.component('mobiletraffic', require('./analytics/MobileTraffic.vue'));
 Vue.component('trafficsource', require('./analytics/TrafficSource.vue'));
+Vue.component('trending', require('./analytics/Trending.vue'));
 
 
 
@@ -142,6 +143,11 @@ Vue.component('search', require('./Filter.vue'));
 Vue.component('vuepagination', require('./vuepagination'));
 Vue.component('vuechartjs', require('./components/charts/vuechartjs.vue'));
 Vue.component('vuechart', require('./components/charts/VueChart.vue'));
+Vue.component('barchartjs', require('./components/charts/barchartjs.vue'));
+Vue.component('horizontalbarchartjs', require('./components/charts/horizontalbarchartjs.vue'));
+Vue.component('doughnutchartjs', require('./components/charts/doughnutchartjs.vue'));
+Vue.component('linechartjs', require('./components/charts/linechartjs.vue'));
+Vue.component('barlinechartjs', require('./components/charts/barlinechartjs.vue'));
 
 
 

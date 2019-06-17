@@ -2,37 +2,64 @@
 	<div class="mat-card">
         <div class="card-header">
             <h5>Top Countries</h5>
+            <a href="" v-on:click.prevent @click="type('pie')"><i class="fa fa-pie-chart" aria-hidden="true"></i></a>
+            <a href="" v-on:click.prevent @click="type('bar')"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>
+            <a href="" v-on:click.prevent @click="type('line')"><i class="fa fa-area-chart" aria-hidden="true"></i></a>
             <span>Hits from countries</span>
 
         </div>
         <div id="blockchart" class="card-block">
-            <vuechartjs :chartData="datacollection" :options="chartOptions"></vuechartjs>
-            <button @click="fillData">add data</button>
+            <horizontalbarchartjs v-if="this.charttype == 'bar'" :chartData="datacollection" :options="chartOptions"></horizontalbarchartjs>
+            <doughnutchartjs v-if="this.charttype == 'pie'" :chartData="datacollection" :options="chartOptions"></doughnutchartjs>
+            <linechartjs v-if="this.charttype == 'line'" :chartData="datacollection" :options="chartOptions"></linechartjs>
         </div>
     </div>
 </template>
 
 <script type="text/javascript">
 	export default{
-		props:['topcountries'],
+		props:['dataset'],
 		data(){
 			return {
 		        datacollection: null,
 		        chartOptions:null,
+                labels:[],
+                values:[],
+                background:[],
+                border:[],
+                charttype:'bar'
 		      }
 		},
 		mounted(){
 			//console.log(this.topcountries)
-			this.fillData()
+			//this.fillData()
 			
 		},
 		watch:{
-			topcountries:function(){
-				console.log(this.topcountries)
+			dataset:function(){
+				//console.log(this.topcountries)
+                this.labels = this.dataset.map(x => x.country)
+                this.values = this.dataset.map(x => x.sessions)
+                this.random_rgba(this.values.length)
+                this.fillData()
 			}
 				
 		},
 		methods:{
+            random_rgba(count) {
+                var o = Math.round, r = Math.random, s = 255;                              
+                for (var i = 0; i < count; i++) {
+                    var red = o(r()*255)
+                    var green = o(r()*255)
+                    var blue = o(r()*255)
+                    this.background.push('rgba(' + red + ',' + green + ',' + blue + ',' + .6 + ')');
+                    this.border.push('rgba(' + red + ',' + green + ',' + blue + ',' + 1 + ')');
+                }          
+            },
+            type(type){
+                console.log(type)
+                this.charttype = type
+            },
 			getdata(){
 				NProgress.start();
 				axios.get('analytics/topcountries',{params:{period:this.period}})
@@ -48,12 +75,14 @@
 			},
 			fillData(){
 				this.datacollection = {
-		          labels: [this.getRandomInt(), this.getRandomInt()],
+		          labels: this.labels,
 		          datasets: [
 		            {
-		              label: 'Data One',
-		              backgroundColor: '#f87979',
-		              data: [this.getRandomInt(), this.getRandomInt()]
+		                label: 'Sessions',
+		                data: this.values,
+		                backgroundColor: this.background,
+                        borderColor: this.border,
+                        borderWidth: 1
 		            }]
 		        }
 		        this.chartOptions = {

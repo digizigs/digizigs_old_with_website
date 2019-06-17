@@ -36,10 +36,10 @@ class AnalyticController extends Controller
         //dd($referrer);
     	
         $live_users = Analytics::getAnalyticsService()->data_realtime->get('ga:'.env('ANALYTICS_VIEW_ID'), 'rt:activeVisitors')->totalsForAllResults['rt:activeVisitors'];
-        //dd($live_users);
+        // dd($live_users);
 
-        $trending = GoogleAnalytics::getPages(180);       
-        //dd($trending);
+        $trending = GoogleAnalytics::getPages(365);       
+        // dd($trending);
         
 
     	$analyticsData = Analytics::fetchVisitorsAndPageViews(Period::days(180));
@@ -134,9 +134,26 @@ class AnalyticController extends Controller
      
     }
 
-    public function topCountries(Request $request){
+    public function alldata(Request $request){
         $top_countries = GoogleAnalytics::topCountries($request->period);
-        return request()->json(200,$top_countries);
+        $top_browser = Analytics::fetchTopBrowsers(Period::days($request->period));
+        $visitor_type = Analytics::fetchUserTypes(Period::days($request->period));
+        $referrer = Analytics::fetchTopReferrers(Period::days($request->period));
+
+        $mobile_traffic = GoogleAnalytics::moblileTraffic($request->period);
+        $traffic_source = GoogleAnalytics::traffic_source($request->period);
+
+        $trending = GoogleAnalytics::getPages($request->period); 
+
+
+        $data = array('topcountries'=> $top_countries,
+                        'topbrowser'=>$top_browser,
+                        'visitor'=>$visitor_type,
+                        'referrer'=>$referrer,
+                        'mobiletraffic'=>$mobile_traffic,
+                        'trafficsource'=>$traffic_source,
+                        'trending'=>$trending);
+        return request()->json(200,$data);
     }
 
 

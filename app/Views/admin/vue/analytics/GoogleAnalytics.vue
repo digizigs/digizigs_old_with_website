@@ -22,7 +22,36 @@
 
 		</div>
 		<div class="x_content">
-			<topcountries :topcountries="topcountries"></topcountries>
+			<div class="row">
+				<div class="col-md-6 col-xs-12">
+					<topcountries :dataset="topcountries"></topcountries>
+				</div>
+
+				<div class="col-md-6 col-xs-12">
+					<topbrowser :dataset="topbrowser"></topbrowser>
+				</div>
+
+				<div class="col-md-6 col-xs-12">
+					<visitor :dataset="visitors"></visitor>
+				</div>
+
+				<div class="col-md-6 col-xs-12">
+					<referrer :dataset="referrer"></referrer>
+				</div>
+
+				<div class="col-md-12 col-xs-12">
+					<mobiletraffic :dataset="mobiletraffic"></mobiletraffic>
+				</div>
+
+				<div class="col-md-12 col-xs-12">
+					<trafficsource :dataset="trafficsource"></trafficsource>
+				</div>
+
+				
+
+
+			</div>
+			
 		</div>
 	</div>
 </template>
@@ -34,6 +63,12 @@
 				search:'',
 				duration:'7',
 				topcountries:[],
+				topbrowser:[],
+				visitors:[],
+				referrer:[],
+				mobiletraffic:[],
+				trafficsource:[],
+				trending:[],
 				renderComponent:true
 			}
 		},
@@ -48,10 +83,16 @@
 			},
 			request(){
 				NProgress.start();
-				axios.get('analytics/topcountries',{params:{period:this.duration}})
+				axios.get('analytics/analyticsdata',{params:{period:this.duration}})
             	.then((response) => {
-            		this.topcountries = response.data
-            		//console.log(response.data)
+            		this.topcountries = response.data.topcountries
+            		this.topbrowser = response.data.topbrowser
+            		this.visitors = response.data.visitor
+            		this.referrer = response.data.referrer
+            		this.mobiletraffic = response.data.mobiletraffic.rows
+            		this.trafficsource = response.data.trafficsource.rows
+            		//this.overalltraffic = response.data.trafficsource.rows
+            		console.log(response.data)
             		NProgress.done();
             	})
             	.catch((error) => {

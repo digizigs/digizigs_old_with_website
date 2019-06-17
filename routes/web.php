@@ -182,7 +182,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
     //Google Analytics
     Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
-    Route::get('/analytics/topcountries', 'Admin\Analytics\AnalyticController@topCountries')->name('google.topCountries');
+    Route::get('/analytics/analyticsdata', 'Admin\Analytics\AnalyticController@alldata')->name('google.topCountries');
 
 
 

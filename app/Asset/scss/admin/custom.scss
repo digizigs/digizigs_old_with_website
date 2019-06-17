@@ -594,15 +594,22 @@ footer {
         margin-right: 10px;
         line-height: 1.4;
     }
-    span {
-        color: #919aa3;
-        display: block;
-        font-size: 13px;
-        margin-top: 5px;
+      span {
+          color: #919aa3;
+          display: block;
+          font-size: 13px;
+          margin-top: 5px;
+      }
     }
-  }
   .card-block{
     padding: 5px 15px;
   }
+
+
+}
+
+.bg-c-yellow {
+    background: -webkit-gradient(linear, left top, right top, from(#fe9365), to(#feb798));
+    background: linear-gradient(to right, #fe9365, #feb798)
 }
 //=========================Material Card Design==================================//

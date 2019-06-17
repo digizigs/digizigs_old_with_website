@@ -23,31 +23,6 @@
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 
-                <div class="col-md-6 col-xs-12">
-                  <topcountries  :data ="{{$top_countries}}"></topcountries>
-                </div>
-                
-                <div class="col-md-6 col-xs-12">
-                  <topbrowser  :data ="{{$top_browser}}"></topbrowser>
-                </div>
-                
-                <div class="col-md-6 col-xs-12">
-                  <visitor  :data ="{{$visitor_type}}"></visitor>
-                </div>
-                
-                               
-                <div class="col-md-6 col-xs-12">
-                  <referrer  :data ="{{$referrer}}"></referrer>
-                </div>
-                
-                <div class="col-md-12 col-xs-12">
-                  <mobiletraffic  :data ="{{json_encode($mobile_traffic->rows,TRUE)}}"></mobiletraffic>
-                </div>
-                
-                <div class="col-md-12 col-xs-12">
-                  <trafficsource  :data ="{{json_encode($traffic_source->rows,TRUE)}}"></trafficsource>
-                </div>
-        
                
                 <!-- Top Page Views-->  
                 <div class="col-md-12 col-xs-12">
