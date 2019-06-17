@@ -2,21 +2,13 @@
 	<section>
 		<div class="x_panel">
 			<div class="x_title">
-              	<h2>
-              		<i class="fa fa-align-left"></i>
-              		Users <small></small> 
-              		<span class="search">
-						<i class="fa fa-search"></i>
-						<div class="form-group">
-					        <div class="form-line">
-					            <input type="text" class="form-control" placeholder="Search here..." v-model="search">
-					        </div>
-
-					    </div>
-					</span>	
-              	</h2>	                              	                 
-            	<a href="#addnewuser" class="btn btn-dark btn-sm pull-right" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> New Client</a>
-            	<div class="clearfix"></div>
+				<span class="panel-title">
+					<i class="fa fa-align-left"></i>
+					Users
+				</span>
+				<a href="#addnewuser" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+					<i class="fa fa-plus" aria-hidden="true"></i> Add User
+				</a>         	
           	</div>
 
             <div class="x_content">
@@ -39,11 +31,9 @@
                     </div>
 		
             	</div>
-
-            	<pagination :data="users" @pagination-change-page="paginationdata" ></pagination>
-				<div>		                    	
-                    Showing {{users.from}} to {{users.to}} of total {{users.total}}	                    	
-                </div>	
+				
+				<vuepagination :input="users" @pagechange="paginationdata"></vuepagination>
+          
             </div>
 		</div>
 		<div id="modal">

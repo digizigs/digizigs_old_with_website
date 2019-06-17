@@ -97,8 +97,8 @@
 		this.clients=record.data;
 		},
 		closesearch(){
-		this.filter=''
-			},
+			this.filter=''
+		},
 		detailclient(id){
 			axios.get('client/'+id+'/edit')
 					.then((response) => {

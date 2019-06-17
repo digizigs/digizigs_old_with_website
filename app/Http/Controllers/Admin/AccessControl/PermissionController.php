@@ -44,6 +44,7 @@ class PermissionController extends Controller
 
         $permission = new Permission;
         $permission->name = $request->name;
+        $permission->description = $request->description;
         $permission->save();
 
         $permission = Permission::orderby('created_at','desc')->paginate(8);
@@ -76,6 +77,7 @@ class PermissionController extends Controller
 
         $permission = Permission::find($id);
         $permission->name = $request->name;
+        $permission->description = $request->description;
         $permission->save();
 
         $permission = Permission::orderby('created_at','desc')->paginate(8);

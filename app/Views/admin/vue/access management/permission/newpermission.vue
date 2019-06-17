@@ -1,19 +1,19 @@
 <template>
 	<section>
-		<div class="modal fade" id="newpermission" role="dialog"  data-backdrop="false">
+		<div class="modal fade modal-right-slide" id="newpermission" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
 
                 <div class="modal-header panel-heading">
-                  	<button type="button" class="close" data-dismiss="modal" >&times;</button>
+                  	<button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   	<h4 class="modal-title"><b>New Permission</b></h4>
               	</div>
 
               	<div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
-                  		<div class="col-md-12">
+                  		<div class="row">
                   			<div class="form-group wp-input">
-                              	<label for="" class="col-sm-3" >Permission name</label> 
+                              	<label for="" class="control-label col-sm-3" >Permission name</label> 
                                 <div class="col-sm-9">
                                   <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="newpermission.name">
@@ -23,10 +23,25 @@
                                   </div>
                                 </div>
                             </div>
+
+                            <div class="form-group wp-input">
+                              	<label for="" class="control-label col-sm-3" >Permission Description</label> 
+                                <div class="col-sm-9">
+                                  <div class="form-line">
+                                    <textarea class="form-control input-sm" cols="30" rows="5" v-model="newpermission.description"></textarea>
+                                  </div>
+                                  <div class="error-message" v-if="errors.description">
+                                    {{ errors.description[0] }}
+                                  </div>
+                                </div>
+                            </div>
+							
+							<div class="form-group">
+		                      	<button class="btn btn-dark btn-sm pull-right" @click="addclient" >Add Permission</button>
+		                    </div>
+
                   		</div>
-                  		<div class="form-group">
-	                      <button class="btn btn-dark btn-sm pull-right" @click="addclient" >Add Permission</button>
-	                    </div>
+                  		
                   	</form>
               	</div>
 
@@ -48,6 +63,10 @@
 
 		},
 		methods:{
+			modalclose(){
+				this.newpermission = {};
+				NProgress.done();
+			},
 			addclient(){
 				NProgress.start();
 		        axios.post('permissions',this.newpermission)

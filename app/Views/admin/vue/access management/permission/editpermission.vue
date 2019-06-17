@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<div class="modal fade" id="editpermission" role="dialog"  data-backdrop="false">
+		<div class="modal fade modal-right-slide" id="editpermission" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
 
@@ -11,9 +11,10 @@
 
               	<div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
-                  		<div class="col-md-12">
+                  		<div class="row">
+
                   			<div class="form-group wp-input">
-                              	<label for="" class="col-sm-3" >Permission name</label> 
+                              	<label for="" class="control-label col-sm-3" >Permission name</label> 
                                 <div class="col-sm-9">
                                   <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="permission.name">
@@ -23,10 +24,25 @@
                                   </div>
                                 </div>
                             </div>
+
+                            <div class="form-group wp-input">
+                              	<label for="" class="control-label col-sm-3" >Permission Description</label> 
+                                <div class="col-sm-9">
+                                  <div class="form-line">
+                                    <textarea class="form-control input-sm" cols="30" rows="5" v-model="permission.description"></textarea>
+                                  </div>
+                                  <div class="error-message" v-if="errors.description">
+                                    {{ errors.description[0] }}
+                                  </div>
+                                </div>
+                            </div>
+
+							<div class="form-group">
+		                      <button class="btn btn-dark btn-sm pull-right" @click="updatepermission" >Update Permission</button>
+		                    </div>
+
                   		</div>
-                  		<div class="form-group">
-	                      <button class="btn btn-dark btn-sm pull-right" @click="updatepermission" >Update Permission</button>
-	                    </div>
+
                   	</form>
               	</div>
 
@@ -49,6 +65,7 @@
 		},
 		methods:{
 			updatepermission(){
+				NProgress.start();
 				axios.put('permissions/'+this.permission.id,this.permission)
 			        .then(data=>{			        	
 			            this.$emit('recordupdated',data),
@@ -57,6 +74,7 @@
 			                type: 'success',
 			                title: 'Permission Updated successfully'
 			            })
+			            NProgress.done();
 			            this.errors=''
 			        })
 			        .catch((error) => {
@@ -72,5 +90,7 @@
 </script>
 
 <style lang="scss">
-
+	button{
+		margin-left:-20px;
+	}
 </style>

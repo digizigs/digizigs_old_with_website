@@ -148,6 +148,7 @@ Vue.component('horizontalbarchartjs', require('./components/charts/horizontalbar
 Vue.component('doughnutchartjs', require('./components/charts/doughnutchartjs.vue'));
 Vue.component('linechartjs', require('./components/charts/linechartjs.vue'));
 Vue.component('barlinechartjs', require('./components/charts/barlinechartjs.vue'));
+Vue.component('select2multiselect', require('./components/select2/select2multiselect.vue'));
 
 
 

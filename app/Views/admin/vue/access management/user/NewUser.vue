@@ -1,5 +1,5 @@
 <template>
-	<div class="modal fade" id="addnewuser" role="dialog"  data-backdrop="false">
+	<div class="modal fade modal-right-slide" id="addnewuser" role="dialog"  data-backdrop="false">
         <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -11,79 +11,81 @@
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
                   		<div class="col-md-12">
 
-                           <div class="form-group">
-                              <label for="" class="col-sm-3" >First name</label>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >First name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control" v-model="newuser.firstname">
+                                    <input type="text" class="form-control input-sm" v-model="newuser.firstname">
                                  </div>
                                  <div class="error-message" v-if="errors.firstname">
                                     {{ errors.firstname[0] }}
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label for="" class="col-sm-3" >Last name</label>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >Last name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control" v-model="newuser.lastname">
+                                    <input type="text" class="form-control input-sm" v-model="newuser.lastname">
                                  </div>
                                  <div class="error-message" v-if="errors.lastname">
                                     {{ errors.lastname[0] }}
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label for="" class="col-sm-3" >Email</label>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >Email</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control" v-model="newuser.email">
+                                    <input type="text" class="form-control input-sm" v-model="newuser.email">
                                  </div>
                                  <div class="error-message" v-if="errors.email">
                                     {{ errors.email[0] }}
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label for="" class="col-sm-3" >Password</label>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >Password</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="password" class="form-control" v-model="newuser.password">
+                                    <input type="password" class="form-control input-sm" v-model="newuser.password">
                                  </div>
                                  <div class="error-message" v-if="errors.password">
                                     {{ errors.password[0] }}
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group">
-                              <label for="" class="col-sm-3" >Confirm Password</label>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >Confirm Password</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="password" class="form-control" v-model="newuser.cpassword">
+                                    <input type="password" class="form-control input-sm" v-model="newuser.cpassword">
                                  </div>
                                  <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
                                  </div>
                               </div>
                            </div>
-                           <div class="form-group">
-              								<label for="" class="col-sm-3">Roles</label>
+                           <!--div class="form-group">
+              								<label for="" class="control-label col-sm-3">Roles</label>
               								<div class="col-sm-9">
               									<multiselect  v-model="value" 
                                               tag-placeholder="Add this as new tag" 
                                               placeholder="Search or add a role" 
                                               label="name"
                                               track-by="id"                                      
-                                              :options="options" 
+                                              :options="roles" 
                                               :multiple="true" 
                                               :taggable="true" 
                                               @input="updateSelected"
                                               @tag="addTag">
                                             
                                          </multiselect>
-                                      <!--pre>{{value}}</pre-->
+                                      <pre>{{value}}</pre>
               								</div>							  								  	
-            					     </div>
+            					     </div-->
+
+                            <select2multiselect :options="roles" v-model="selected" multiple=true> </select2multiselect>
 
 
                   		</div>
@@ -106,9 +108,7 @@
 				newuser:{},
 				errors:'',
 				value: [],
-			    options: [
-			       
-			    ]
+			  selected:''
 			}
 		},
 		watch:{
@@ -159,11 +159,13 @@
 <style lang="scss">
 
   .multiselect{
+    padding:0 !important;
     .multiselect__tags{
       font-size: 12px;
       border:none;
       border-bottom: 1px solid #e8e8e8;
       border-radius:0px;
+
     }
     .multiselect__content-wrapper{
       .multiselect__content{
