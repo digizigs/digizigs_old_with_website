@@ -66,14 +66,14 @@
                                  </div>
                               </div>
                            </div>
-                           <!--div class="form-group">
+                           <div class="form-group">
               								<label for="" class="control-label col-sm-3">Roles</label>
               								<div class="col-sm-9">
               									<multiselect  v-model="value" 
                                               tag-placeholder="Add this as new tag" 
                                               placeholder="Search or add a role" 
                                               label="name"
-                                              track-by="id"                                      
+                                              track-by="language"                                      
                                               :options="roles" 
                                               :multiple="true" 
                                               :taggable="true" 
@@ -81,13 +81,11 @@
                                               @tag="addTag">
                                             
                                          </multiselect>
-                                      <pre>{{value}}</pre>
+                                      
               								</div>							  								  	
-            					     </div-->
+            					     </div>
 
-                            <select2multiselect :options="roles" v-model="selected" multiple=true> </select2multiselect>
-
-
+                           
                   		</div>
                   		<div class="form-group">
 	                      <button class="btn btn-dark btn-sm pull-right" @click="adduser" >Add User</button>
@@ -107,12 +105,19 @@
 				search:'',
 				newuser:{},
 				errors:'',
-				value: [],
-			  selected:''
+			  selected:'',
+        value: null,
+        options: []
 			}
 		},
 		watch:{
-
+      roles(){
+        console.log(
+          this.options.push(
+            this.roles.map(x => x.name)
+            )
+          )
+      }
 		},
       computed:{
          rolearray(){

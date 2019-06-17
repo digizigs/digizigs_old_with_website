@@ -104524,7 +104524,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				page = 1;
 			}
 			axios.get('users/create?page=' + page).then(function (response) {
-				console.log(response);
+				console.log(response.data);
 				_this.users = response.data.users;
 				_this.roles = response.data.roles;
 			});
@@ -104554,7 +104554,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						});
 					}) //this.categories=response.data
 					.catch(function (error) {
-						console.log(response.data);
+						//console.log(response.data);
 
 						_this2.errors = error.response.data.errors;
 					});
@@ -104974,58 +104974,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['roles'],
-	data: function data() {
-		return {
-			search: '',
-			newuser: {},
-			errors: '',
-			value: [],
-			selected: ''
-		};
-	},
+  props: ['roles'],
+  data: function data() {
+    return {
+      search: '',
+      newuser: {},
+      errors: '',
+      selected: '',
+      value: null,
+      options: []
+    };
+  },
 
-	watch: {},
-	computed: {
-		rolearray: function rolearray() {
-			return _.map(this.roles, function (num, key) {
-				num.name;
-			});
-		}
-	},
-	methods: {
-		adduser: function adduser() {
-			var _this = this;
+  watch: {
+    roles: function roles() {
+      console.log(this.options.push(this.roles.map(function (x) {
+        return x.name;
+      })));
+    }
+  },
+  computed: {
+    rolearray: function rolearray() {
+      return _.map(this.roles, function (num, key) {
+        num.name;
+      });
+    }
+  },
+  methods: {
+    adduser: function adduser() {
+      var _this = this;
 
-			axios.post('users', this.newuser).then(function (data) {
-				console.log(data);
-				_this.$emit('recordupdated', data), $('#addnewuser').modal('hide');
-				_this.newuser = {};
-				toast({
-					type: 'success',
-					title: 'New Permission added successfully'
-				});
-			}).catch(function (error) {
-				_this.errors = error.response.data.errors;
-			});
-		},
-		addTag: function addTag(newTag) {
-			var tag = {
-				name: newTag,
-				id: newTag
-			};
-			this.options.push(tag);
-			this.value.push(tag);
-		},
-		updateSelected: function updateSelected() {
-			console.log('@input');
-		}
-	},
-	created: function created() {}
+      axios.post('users', this.newuser).then(function (data) {
+        console.log(data);
+        _this.$emit('recordupdated', data), $('#addnewuser').modal('hide');
+        _this.newuser = {};
+        toast({
+          type: 'success',
+          title: 'New Permission added successfully'
+        });
+      }).catch(function (error) {
+        _this.errors = error.response.data.errors;
+      });
+    },
+    addTag: function addTag(newTag) {
+      var tag = {
+        name: newTag,
+        id: newTag
+      };
+      this.options.push(tag);
+      this.value.push(tag);
+    },
+    updateSelected: function updateSelected() {
+      console.log('@input');
+    }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -105063,278 +105068,300 @@ var render = function() {
                   }
                 },
                 [
-                  _c(
-                    "div",
-                    { staticClass: "col-md-12" },
-                    [
-                      _c("div", { staticClass: "form-group wp-input" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label col-sm-3",
-                            attrs: { for: "" }
-                          },
-                          [_vm._v("First name")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9" }, [
-                          _c("div", { staticClass: "form-line" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newuser.firstname,
-                                  expression: "newuser.firstname"
-                                }
-                              ],
-                              staticClass: "form-control input-sm",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.newuser.firstname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newuser,
-                                    "firstname",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.errors.firstname
-                            ? _c("div", { staticClass: "error-message" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(_vm.errors.firstname[0]) +
-                                    "\n                                 "
-                                )
-                              ])
-                            : _vm._e()
-                        ])
-                      ]),
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _c("div", { staticClass: "form-group wp-input" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("First name")]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group wp-input" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label col-sm-3",
-                            attrs: { for: "" }
-                          },
-                          [_vm._v("Last name")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9" }, [
-                          _c("div", { staticClass: "form-line" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newuser.lastname,
-                                  expression: "newuser.lastname"
-                                }
-                              ],
-                              staticClass: "form-control input-sm",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.newuser.lastname },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newuser,
-                                    "lastname",
-                                    $event.target.value
-                                  )
-                                }
+                      _c("div", { staticClass: "col-sm-9" }, [
+                        _c("div", { staticClass: "form-line" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newuser.firstname,
+                                expression: "newuser.firstname"
                               }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.errors.lastname
-                            ? _c("div", { staticClass: "error-message" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(_vm.errors.lastname[0]) +
-                                    "\n                                 "
+                            ],
+                            staticClass: "form-control input-sm",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.newuser.firstname },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newuser,
+                                  "firstname",
+                                  $event.target.value
                                 )
-                              ])
-                            : _vm._e()
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group wp-input" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label col-sm-3",
-                            attrs: { for: "" }
-                          },
-                          [_vm._v("Email")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9" }, [
-                          _c("div", { staticClass: "form-line" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newuser.email,
-                                  expression: "newuser.email"
-                                }
-                              ],
-                              staticClass: "form-control input-sm",
-                              attrs: { type: "text" },
-                              domProps: { value: _vm.newuser.email },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newuser,
-                                    "email",
-                                    $event.target.value
-                                  )
-                                }
                               }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.errors.email
-                            ? _c("div", { staticClass: "error-message" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(_vm.errors.email[0]) +
-                                    "\n                                 "
-                                )
-                              ])
-                            : _vm._e()
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group wp-input" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label col-sm-3",
-                            attrs: { for: "" }
-                          },
-                          [_vm._v("Password")]
-                        ),
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9" }, [
-                          _c("div", { staticClass: "form-line" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newuser.password,
-                                  expression: "newuser.password"
-                                }
-                              ],
-                              staticClass: "form-control input-sm",
-                              attrs: { type: "password" },
-                              domProps: { value: _vm.newuser.password },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newuser,
-                                    "password",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.errors.password
-                            ? _c("div", { staticClass: "error-message" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(_vm.errors.password[0]) +
-                                    "\n                                 "
-                                )
-                              ])
-                            : _vm._e()
-                        ])
-                      ]),
+                        _vm.errors.firstname
+                          ? _c("div", { staticClass: "error-message" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.errors.firstname[0]) +
+                                  "\n                                 "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group wp-input" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("Last name")]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "form-group wp-input" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "control-label col-sm-3",
-                            attrs: { for: "" }
-                          },
-                          [_vm._v("Confirm Password")]
-                        ),
+                      _c("div", { staticClass: "col-sm-9" }, [
+                        _c("div", { staticClass: "form-line" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newuser.lastname,
+                                expression: "newuser.lastname"
+                              }
+                            ],
+                            staticClass: "form-control input-sm",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.newuser.lastname },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newuser,
+                                  "lastname",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "col-sm-9" }, [
-                          _c("div", { staticClass: "form-line" }, [
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.newuser.cpassword,
-                                  expression: "newuser.cpassword"
-                                }
-                              ],
-                              staticClass: "form-control input-sm",
-                              attrs: { type: "password" },
-                              domProps: { value: _vm.newuser.cpassword },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.newuser,
-                                    "cpassword",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _vm.errors.name
-                            ? _c("div", { staticClass: "error-message" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(_vm.errors.name[0]) +
-                                    "\n                                 "
-                                )
-                              ])
-                            : _vm._e()
-                        ])
-                      ]),
+                        _vm.errors.lastname
+                          ? _c("div", { staticClass: "error-message" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.errors.lastname[0]) +
+                                  "\n                                 "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group wp-input" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("Email")]
+                      ),
                       _vm._v(" "),
-                      _c("select2multiselect", {
-                        attrs: { options: _vm.roles, multiple: "true" },
-                        model: {
-                          value: _vm.selected,
-                          callback: function($$v) {
-                            _vm.selected = $$v
-                          },
-                          expression: "selected"
-                        }
-                      })
-                    ],
-                    1
-                  ),
+                      _c("div", { staticClass: "col-sm-9" }, [
+                        _c("div", { staticClass: "form-line" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newuser.email,
+                                expression: "newuser.email"
+                              }
+                            ],
+                            staticClass: "form-control input-sm",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.newuser.email },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newuser,
+                                  "email",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm.errors.email
+                          ? _c("div", { staticClass: "error-message" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.errors.email[0]) +
+                                  "\n                                 "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group wp-input" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("Password")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9" }, [
+                        _c("div", { staticClass: "form-line" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newuser.password,
+                                expression: "newuser.password"
+                              }
+                            ],
+                            staticClass: "form-control input-sm",
+                            attrs: { type: "password" },
+                            domProps: { value: _vm.newuser.password },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newuser,
+                                  "password",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm.errors.password
+                          ? _c("div", { staticClass: "error-message" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.errors.password[0]) +
+                                  "\n                                 "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group wp-input" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("Confirm Password")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-9" }, [
+                        _c("div", { staticClass: "form-line" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.newuser.cpassword,
+                                expression: "newuser.cpassword"
+                              }
+                            ],
+                            staticClass: "form-control input-sm",
+                            attrs: { type: "password" },
+                            domProps: { value: _vm.newuser.cpassword },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.newuser,
+                                  "cpassword",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm.errors.name
+                          ? _c("div", { staticClass: "error-message" }, [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.errors.name[0]) +
+                                  "\n                                 "
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "control-label col-sm-3",
+                          attrs: { for: "" }
+                        },
+                        [_vm._v("Roles")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-sm-9" },
+                        [
+                          _c("multiselect", {
+                            attrs: {
+                              "tag-placeholder": "Add this as new tag",
+                              placeholder: "Search or add a role",
+                              label: "name",
+                              "track-by": "language",
+                              options: _vm.roles,
+                              multiple: true,
+                              taggable: true
+                            },
+                            on: { input: _vm.updateSelected, tag: _vm.addTag },
+                            model: {
+                              value: _vm.value,
+                              callback: function($$v) {
+                                _vm.value = $$v
+                              },
+                              expression: "value"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c(

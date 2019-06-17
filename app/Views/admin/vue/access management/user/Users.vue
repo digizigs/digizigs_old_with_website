@@ -64,7 +64,7 @@
 		        } 
 		        axios.get('users/create?page=' + page)
 		          .then((response) => {
-		          	console.log(response)
+		          	console.log(response.data)
 		          	this.users = response.data.users
 		          	this.roles = response.data.roles
 		          })
@@ -97,7 +97,7 @@
 
 		            })//this.categories=response.data
 		            .catch((error) => {
-		              console.log(response.data);
+		              //console.log(response.data);
 		              	
 		                    this.errors=error.response.data.errors;		                                  
 		              });
