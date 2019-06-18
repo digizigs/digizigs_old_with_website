@@ -32,27 +32,54 @@ class RoleController extends Controller
     }
 
    
-    public function create()
-    {
-        //
+    public function create(Request $request) {
+
+        $permissions = Permission::orderby('created_at','desc')->get()->toArray();
+
+        if($request->search_string == ''){
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);        
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
+        }else{
+            $roles['data'] = Role::where('name','like', '%'.$request->search_string.'%')                             
+                                ->orderby('created_at','desc')
+                                ->with('permissions')
+                                ->get();
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
+        }
     }
 
    
-    public function store(StoreRolesRequest $request) {
-        if (! Gate::allows('manage_role')) {
-            return abort(401);
-        }
+    public function store(Request $request) {
 
-       
-        $role = Role::create($request->except('permission'));
-        $permissions = $request->input('permission') ? $request->input('permission') : [];
-        $role->givePermissionTo($permissions);
+        /*if (! Gate::allows('manage_role')) {
+            return abort(401);
+        }*/
+
+        //return $request->permissions;
+
+
+        $role = new Role;
+        $role->name = $request->name;
+        $role->description = $request->description;
+        $role->save();
+
+        $role->givePermissionTo($request->permissions);
+
+        //$role = Role::create($request->except('permission'));
+        //$permissions = $request->input('permission') ? $request->input('permission') : [];
+        //$role->givePermissionTo($permissions);
         //$role_name= $request->role_name;
         //$role = Role::create(['name' => $role_name]);
 
         //$roles = Role::orderby('created_at','desc')->get();
         //return request()->json(200,$roles);
-        return redirect()->route('roles.index')->with('message', 'Role added successfully');
+
+
+
+
+        $permissions = Permission::orderby('created_at','desc')->get()->toArray();
+        $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+        return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
     }
 
   
@@ -95,10 +122,13 @@ class RoleController extends Controller
         /*if (! Gate::allows('users_manage')) {
             return abort(401);
         }*/
-        $role = Role::findOrFail($id);
-        $role->delete();
-
-         return redirect()->route('roles.index')->with('deleted', 'Role deleted successfully');
+        $role = Role::find($id);
+        $is_deleted=$role->delete();
+        if($is_deleted){
+            $permissions = Permission::orderby('created_at','desc')->get()->toArray();
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
+        }
         
     }
 }

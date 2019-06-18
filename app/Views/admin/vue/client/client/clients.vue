@@ -74,8 +74,8 @@
 			search:function(){
 				if(this.search.length >= 0){
 					axios.get('client/create',{params:{search_string:this.search}})
-											.then((response) => {
-											this.clients=response.data
+						.then((response) => {
+						this.clients=response.data
 					})
 					.catch((error) => console.log(error))
 				}
@@ -86,55 +86,55 @@
 		},
 		methods:{
 			paginationdata(page){
-		if (typeof page === 'undefined'){
-		page=1;
-		}
-		axios.get('client/create?page=' + page)
-		.then(response => this.clients = response.data)
+				if (typeof page === 'undefined'){
+				page=1;
+			}
+			axios.get('client/create?page=' + page)
+			.then(response => this.clients = response.data)
 			//	.catch(error => this.errors=error.response.data.errors);
-				},
-							refreshRecord(record){
-		this.clients=record.data;
-		},
-		closesearch(){
-			this.filter=''
-		},
-		detailclient(id){
-			axios.get('client/'+id+'/edit')
+			},
+			refreshRecord(record){
+				this.clients=record.data;
+			},
+			closesearch(){
+				this.filter=''
+			},
+			detailclient(id){
+				axios.get('client/'+id+'/edit')
 					.then((response) => {
-			this.clientdetail=response.data
-		})
-		.catch(error => this.errors=error.response.data.errors);
-		},
-		deleteclient(id){
-			NProgress.start();
-			swalWithBootstrapButtons({
-		title: 'Delete Client?',
-		text: "You won't be able to revert this!",
-		type: 'warning',
-		showCancelButton: true,
-		confirmButtonText: 'Yes, delete it!',
-		cancelButtonText: 'No, cancel!',
-		reverseButtons: true
-		}).then((result) => {
-		if (result.value) {
-		axios.delete('client/'+id)
-		.then(response =>{
-		this.clients=response.data;
-		this.success="Client Deleted Successfuly";
-		toast({
-			type: 'success',
-					title: 'Client  deleted successfully'
-			})
-		NProgress.done();
-		})//this.categories=response.data
-			.catch((error) => {
-		this.errors=error.response.data.errors;
-		this.success='';
-		});
-		}
-		})
-		}
+					this.clientdetail=response.data
+				})
+				.catch(error => this.errors=error.response.data.errors);
+			},
+			deleteclient(id){
+				NProgress.start();
+				swalWithBootstrapButtons({
+					title: 'Delete Client?',
+					text: "You won't be able to revert this!",
+					type: 'warning',
+					showCancelButton: true,
+					confirmButtonText: 'Yes, delete it!',
+					cancelButtonText: 'No, cancel!',
+					reverseButtons: true
+				}).then((result) => {
+				if (result.value) {
+					axios.delete('client/'+id)
+						.then(response =>{
+						this.clients=response.data;
+						this.success="Client Deleted Successfuly";
+						toast({
+							type: 'success',
+									title: 'Client  deleted successfully'
+							})
+					NProgress.done();
+				})//this.categories=response.data
+					.catch((error) => {
+						this.errors=error.response.data.errors;
+						this.success='';
+					});
+				}
+				})
+			}
 		},
 		created(){
 			

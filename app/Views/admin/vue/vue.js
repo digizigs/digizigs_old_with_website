@@ -124,7 +124,10 @@ Vue.component('newpermission', require('./access management/permission/newpermis
 Vue.component('editpermission', require('./access management/permission/editpermission.vue'));
 Vue.component('users', require('./access management/user/Users.vue'));
 Vue.component('newuser', require('./access management/user/NewUser.vue'));
-
+Vue.component('edituser', require('./access management/user/EditUser.vue'));
+Vue.component('roles', require('./access management/roles/Roles.vue'));
+Vue.component('newrole', require('./access management/roles/NewRole.vue'));
+Vue.component('editrole', require('./access management/roles/EditRole.vue'));
 
 //Analytics
 Vue.component('googleanalytics', require('./analytics/GoogleAnalytics.vue'));

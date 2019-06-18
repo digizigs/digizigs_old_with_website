@@ -4,10 +4,10 @@
 			<div class="x_title">
 				<span class="panel-title">
 					<i class="fa fa-align-left"></i>
-					Users
+					Roles
 				</span>
-				<a href="#addnewuser" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
-					<i class="fa fa-plus" aria-hidden="true"></i> Add User
+				<a href="#addrole" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+					<i class="fa fa-plus" aria-hidden="true"></i> Add Roles
 				</a>
 				<span class="x-title-option">
 				<ul>
@@ -26,21 +26,21 @@
             <div class="x_content">
             	<div class="panel-group pannel-line-group" id="accordion">
 			                        		                         
-                    <div v-for="user in users.data"  class="panel panel-default pannel-line">
+                    <div v-for="role in roles.data"  class="panel panel-default pannel-line">
 
                         <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">		                        
-                          	<span class="title">{{user.firstname}},{{user.lastname}}</span>
-                          	<span v-for="role in user.roles">
+                          	<span class="title">{{role.name}}</span>
+                          	<span v-for="permission in role.permissions">
                           		<span class="label label-info label-many" style="margin-left:5px;">
-                          			{{ role.name }}
+                          			{{permission.name}}
                           		</span>
                           	</span>                             
                           
 							<!-- Action icons -->
                           	<span class="action-text subscription pull-right">
-                            	<a href="#edituser" v-on:click.prevent data-toggle="modal" @click="detailuser(user.id)" ><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            	<a href="#editrole" v-on:click.prevent data-toggle="modal" @click="detailrole()" ><i class="fa fa-eye" aria-hidden="true"></i></a>
                             	|
-                            	<a href="" v-on:click.prevent ><i class="fa fa-trash-o" aria-hidden="true" @click="deleteuser(user.id)"></i></a>	                               
+                            	<a href="" v-on:click.prevent ><i class="fa fa-trash-o" aria-hidden="true" @click="deleterole(role.id)"></i></a>	                               
                           	</span>
                           	<!-- Action icons -->                                    
                         </div>
@@ -49,13 +49,13 @@
 		
             	</div>
 				
-				<vuepagination :input="users" @pagechange="paginationdata"></vuepagination>
+				<vuepagination :input="roles" @pagechange="paginationdata"></vuepagination>
           
             </div>
 		</div>
 		<div id="modal">
-          <newuser @recordupdated="refreshRecord" :roles="roles"></newuser>
-          <edituser :roles="roles" :user="user" @recordupdated="refreshRecord"></edituser>
+          <newrole  :roles="roles" :permissions="permissions" @recordupdated="refreshRecord"></newrole>
+          <editrole :roles="roles" :permissions="permissions"  @recordupdated="refreshRecord"></editrole>
          
         </div>
     </section>
@@ -66,21 +66,19 @@
 		data(){
 			return{
 				search:'',
-				users:{},
 				roles:{},
-				userdetails:{},
+				permissions:[],		
 				errors:'',
-				user:''
-
 			}
 		},
 		watch:{
 			search(){
 				if(this.search.length >= 0){
-					axios.get('users/create',{params:{search_string:this.search}})
+					axios.get('roles/create',{params:{search_string:this.search}})
 						.then((response) => {
-						this.users = response.data.users
-						this.roles = response.data.roles
+
+							this.roles = response.data.roles
+							this.permissions = response.data.permissions
 					})
 					.catch((error) => {
 						this.errors = error.errors
@@ -94,15 +92,16 @@
 		        if (typeof page === 'undefined'){
 		          page=1;
 		        } 
-		        axios.get('users/create?page=' + page)
+		        axios.get('roles/create?page=' + page)
 		          .then((response) => {
-		          	this.users = response.data.users
+		          	console.log(response.data)
 		          	this.roles = response.data.roles
+		          	this.permissions = response.data.permissions
 		          })
 		          //	.catch(error => this.errors=error.response.data.errors);
 
 		  },
-	    detailuser(id){
+	    detailrole(id){
 	    	axios.get('users/'+id+'/edit')
 					.then((response) => {
 						console.log(response.data)
@@ -113,9 +112,9 @@
 	    closesearch(){
 				this.search=''
 			},
-	    deleteuser(id){
+	    deleterole(id){
 	    	swalWithBootstrapButtons({
-	          title: 'Delete User?',
+	          title: 'Delete Role?',
 	          text: "You won't be able to revert this!",
 	          type: 'warning',
 	          showCancelButton: true,
@@ -125,13 +124,13 @@
 	        }).then((result) => {
 	          if (result.value) {
 
-	            axios.delete('users/'+id)
+	            axios.delete('roles/'+id)
 	            .then(response =>{
-	              this.users=response.data;
-	              
+	              this.roles = response.data.roles
+	              this.permissions = response.data.permissions     
 	              toast({
 	                	type: 'success',
-	                	title: 'User  deleted successfully'	                	
+	                	title: 'Role  deleted successfully'	                	
 	            	})
 
 	            })//this.categories=response.data
@@ -144,7 +143,8 @@
 	        })
 	    },
 	    refreshRecord(record){
-	    	this.users = record.data
+	    	this.roles = record.data.roles
+	    	this.permissions = response.data.permissions
 	    }
 		
 		},

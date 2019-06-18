@@ -1,71 +1,39 @@
 <template>
-	<div class="modal fade modal-right-slide" id="addnewuser" role="dialog"  data-backdrop="false">
+	<div class="modal fade modal-right-slide" id="addrole" role="dialog"  data-backdrop="false">
         <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   
-                  <h4 class="modal-title" id="defaultModalLabel">New User</h4>
+                  <h4 class="modal-title" id="defaultModalLabel">New Role</h4>
                 </div>
                 <div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
                   		<div class="col-md-12">
 
                            <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >First name</label>
+                              <label for="" class="control-label col-sm-3" >Role Name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.firstname">
-                                 </div>
-                                 <div class="error-message" v-if="errors.firstname">
-                                    {{ errors.firstname[0] }}
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >Last name</label>
-                              <div class="col-sm-9">
-                                 <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.lastname">
-                                 </div>
-                                 <div class="error-message" v-if="errors.lastname">
-                                    {{ errors.lastname[0] }}
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >Email</label>
-                              <div class="col-sm-9">
-                                 <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.email">
-                                 </div>
-                                 <div class="error-message" v-if="errors.email">
-                                    {{ errors.email[0] }}
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >Password</label>
-                              <div class="col-sm-9">
-                                 <div class="form-line">
-                                    <input type="password" class="form-control input-sm" v-model="newuser.password">
-                                 </div>
-                                 <div class="error-message" v-if="errors.password">
-                                    {{ errors.password[0] }}
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >Confirm Password</label>
-                              <div class="col-sm-9">
-                                 <div class="form-line">
-                                    <input type="password" class="form-control input-sm" v-model="newuser.cpassword">
+                                    <input type="text" class="form-control input-sm" v-model="role.name">
                                  </div>
                                  <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
                                  </div>
                               </div>
                            </div>
+                           <div class="form-group wp-input">
+                              <label for="" class="control-label col-sm-3" >Role Description</label>
+                              <div class="col-sm-9">
+                                 <div class="form-line">
+                                    <textarea class="form-control input-sm" cols="30" rows="5" v-model="role.description"></textarea>
+                                 </div>
+                                 <div class="error-message" v-if="errors.description">
+                                    {{ errors.description[0] }}
+                                 </div>
+                              </div>
+                           </div>
+                                                    
                            <div class="form-group">
               								<label for="" class="control-label col-sm-3">Roles</label>
               								<div class="col-sm-9">
@@ -88,7 +56,7 @@
                            
                   		</div>
                   		<div class="form-group">
-	                      <button class="btn btn-dark btn-sm pull-right" @click="adduser" >Add User</button>
+	                      <button class="btn btn-dark btn-sm pull-right" @click="addrole" >Add Role</button>
 	                    </div>
                   </form>
                 </div>
@@ -99,11 +67,10 @@
 
 <script type="text/javascript">
 	export default{
-		props:['roles'],
+		props:['roles','permissions'],
 		data(){
 			return{
-				search:'',
-				newuser:{},
+				role:{},
 				errors:'',
 			  selected:'',
         value: null,
@@ -111,12 +78,12 @@
 			}
 		},
 		watch:{
-      roles(){
-        this.options = Object.values(this.roles)
+      permissions(){
+        this.options = Object.values(this.permissions)
       },
       value(){
         if(this.value !== null){
-          this.newuser.roles = this.value.map(x => x.id)
+          this.role.permissions = this.value.map(x => x.id)
         }
         
         //console.log(this.value.map(x => x.id))
@@ -125,14 +92,14 @@
     computed:{
     },
 		methods:{
-			adduser(){
+			addrole(){
         NProgress.start();
-         axios.post('users',this.newuser)
+         axios.post('roles',this.role)
             .then(data => {
               //console.log(data)                              
               this.$emit('recordupdated',data),                            
-              $('#addnewuser').modal('hide');             
-              this.newuser = {};
+              $('#addrole').modal('hide');             
+              this.role = {};
             toast({
                 type: 'success',
                 title: 'New User added successfully'
@@ -155,7 +122,7 @@
         console.log('@input')
       },
       modalclose(){
-        this.newuser = {}
+        this.role = {}
         this.value = null
       }
 		},

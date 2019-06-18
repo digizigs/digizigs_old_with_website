@@ -1,11 +1,11 @@
 <template>
-	<div class="modal fade modal-right-slide" id="addnewuser" role="dialog"  data-backdrop="false">
+	<div class="modal fade modal-right-slide" id="edituser" role="dialog"  data-backdrop="false">
         <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   
-                  <h4 class="modal-title" id="defaultModalLabel">New User</h4>
+                  <h4 class="modal-title" id="defaultModalLabel">{{user.firstname}},{{user.lastname}}</h4>
                 </div>
                 <div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
@@ -15,7 +15,7 @@
                               <label for="" class="control-label col-sm-3" >First name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.firstname">
+                                    <input type="text" class="form-control input-sm" v-model="user.firstname">
                                  </div>
                                  <div class="error-message" v-if="errors.firstname">
                                     {{ errors.firstname[0] }}
@@ -26,7 +26,7 @@
                               <label for="" class="control-label col-sm-3" >Last name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.lastname">
+                                    <input type="text" class="form-control input-sm" v-model="user.lastname">
                                  </div>
                                  <div class="error-message" v-if="errors.lastname">
                                     {{ errors.lastname[0] }}
@@ -37,7 +37,7 @@
                               <label for="" class="control-label col-sm-3" >Email</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="newuser.email">
+                                    <input type="text" class="form-control input-sm" v-model="user.email">
                                  </div>
                                  <div class="error-message" v-if="errors.email">
                                     {{ errors.email[0] }}
@@ -48,7 +48,7 @@
                               <label for="" class="control-label col-sm-3" >Password</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="password" class="form-control input-sm" v-model="newuser.password">
+                                    <input type="password" class="form-control input-sm" v-model="user.password">
                                  </div>
                                  <div class="error-message" v-if="errors.password">
                                     {{ errors.password[0] }}
@@ -88,7 +88,7 @@
                            
                   		</div>
                   		<div class="form-group">
-	                      <button class="btn btn-dark btn-sm pull-right" @click="adduser" >Add User</button>
+	                      <button class="btn btn-dark btn-sm pull-right" @click="updateuser" >Update User</button>
 	                    </div>
                   </form>
                 </div>
@@ -99,7 +99,7 @@
 
 <script type="text/javascript">
 	export default{
-		props:['roles'],
+		props:['roles','user'],
 		data(){
 			return{
 				search:'',
@@ -111,38 +111,36 @@
 			}
 		},
 		watch:{
+      user(){
+        this.value = this.user.roles
+      },
       roles(){
         this.options = Object.values(this.roles)
       },
       value(){
         if(this.value !== null){
-          this.newuser.roles = this.value.map(x => x.id)
+          this.user.roles = this.value.map(x => x.id)
         }
-        
-        //console.log(this.value.map(x => x.id))
       }
 		},
     computed:{
     },
 		methods:{
-			adduser(){
-        NProgress.start();
-         axios.post('users',this.newuser)
-            .then(data => {
-              //console.log(data)                              
-              this.$emit('recordupdated',data),                            
-              $('#addnewuser').modal('hide');             
-              this.newuser = {};
+			updateuser(){
+        axios.put('users/'+this.user.id,this.user)
+         .then(data=>{
+            this.$emit('recordupdated',data),
+            $('#edituser').modal('hide');
             toast({
                 type: 'success',
-                title: 'New User added successfully'
+                title: 'User Updated successfully'
             })
-            NProgress.done();
+            //this.errors=''
+         })
+         .catch((error) => {
+            this.errors=error.response.data.errors;           
           })
-          .catch((error) => {
-            this.errors = error.response.data.errors;        
-          })
-			},
+      },
 			addTag (newTag) {
 			    const tag = {
 			        name: newTag,

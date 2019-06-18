@@ -24,18 +24,23 @@ class UserController extends Controller
     }
 
     
-    public function create(Request $request)
-    {   
+    public function create(Request $request) { 
+
+
         $roles = Role::orderby('created_at','desc')->get()->toArray();
 
         if($request->search_string == ''){
-            $users = User::orderby('created_at','desc')->paginate(8);
+            $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
             //$data = ['roles'=$roles,'users'=>$users];          
             return request()->json(200,['roles'=>$roles,'users'=>$users]);
         }else{
-            $users['data'] = User::where('name','like', '%'.$request->search_string.'%')                               
-                                ->orderby('created_at','desc')->get();
-            return request()->json(200,$users);
+            $users['data'] = User::where('firstname','like', '%'.$request->search_string.'%')
+                                ->orWhere('lastname','like', '%'.$request->search_string.'%')
+                                ->orWhere('email','like', '%'.$request->search_string.'%')                                 
+                                ->orderby('created_at','desc')->with('roles')->get();
+
+            
+            return request()->json(200,['roles'=>$roles,'users'=>$users]);
         }
     }
 
@@ -48,17 +53,19 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
         ]);  
-        //return $request->all();
+        //return $request->roles;
 
         /*if (! Gate::allows('users_manage')) {
             return abort(401);
         }*/
 
         $user = User::create($request->all());
+        $roles = $request->roles;
+
         //$roles = $request->input('roles') ? $request->input('roles') : [];
         //dd($roles);
-        //$user->assignRole($roles);
-        $users = User::orderby('created_at','desc')->paginate(8);
+        $user->assignRole($roles);
+        $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
         return request()->json(200,$users);
        
     }
@@ -71,25 +78,37 @@ class UserController extends Controller
         /*if (! Gate::allows('users_manage')) {
             return abort(401);
         }*/
-
-        $roles = Role::get()->pluck('name', 'name');
-        $user = User::findOrFail($id);
-        return view('admin.pages.access.user_edit', compact('user', 'roles'));
+        //$client = Client::find($id);
+        //return request()->json(200,$client);
+      
+        //$roles = Role::get()->pluck('name', 'name');
+        $roles = Role::orderby('created_at','desc')->get()->toArray();
+        $user = User::where('id',$id)->with('roles')->first();
+        return request()->json(200,['roles'=>$roles,'user'=>$user]);
     }
 
     
-    public function update(UserUpdateRequest $request, $id){
+    public function update(Request $request, $id){
 
         /*if (! Gate::allows('users_manage')) {
             return abort(401);
         }*/
 
-        $user = User::findOrFail($id);
-        $user->update($request->all());
-        $roles = $request->input('roles') ? $request->input('roles') : [];
-        $user->syncRoles($roles);
+      $user = User::findOrFail($id);
+      $user->firstname = $request->firstname;
+      $user->lastname = $request->lastname;
+      $user->email = $request->email;
+      $user_save = $user->save();
 
-        return redirect()->route('users.index')->with('message', 'User updated successfully');
+      $roles = $request->roles;
+      $user->syncRoles($roles);
+
+
+      if($user_save){
+         $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
+         //return request()->json(200,$users);
+         return $users;
+      }
     }
 
    
