@@ -5,7 +5,7 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   
-                  <h4 class="modal-title" id="defaultModalLabel">{{roles.name}}</h4>
+                  <h4 class="modal-title" id="defaultModalLabel">{{role.name}}</h4>
                 </div>
                 <div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
@@ -15,7 +15,7 @@
                               <label for="" class="control-label col-sm-3" >First name</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="roles.name">
+                                    <input type="text" class="form-control input-sm" v-model="role.name">
                                  </div>
                                  <div class="error-message" v-if="errors.name">
                                     {{ errors.name[0] }}
@@ -29,7 +29,7 @@
                               <label for="" class="control-label col-sm-3" >Role Description</label>
                               <div class="col-sm-9">
                                  <div class="form-line">
-                                    <textarea class="form-control input-sm" cols="30" rows="5" v-model="roles.description"></textarea>
+                                    <textarea class="form-control input-sm" cols="30" rows="5" v-model="role.description"></textarea>
                                  </div>
                                  <div class="error-message" v-if="errors.description">
                                     {{ errors.description[0] }}
@@ -59,7 +59,7 @@
                            
                   		</div>
                   		<div class="form-group">
-	                      <button class="btn btn-dark btn-sm pull-right" @click="updateuser" >Update Role</button>
+	                      <button class="btn btn-dark btn-sm pull-right" @click="updaterole" >Update Role</button>
 	                    </div>
                   </form>
                 </div>
@@ -70,11 +70,9 @@
 
 <script type="text/javascript">
 	export default{
-		props:['roles','permissions'],
+		props:['role','permissions'],
 		data(){
 			return{
-				search:'',
-				newuser:{},
 				errors:'',
 			  selected:'',
         value: null,
@@ -82,24 +80,27 @@
 			}
 		},
 		watch:{
-      
+      role(){
+        this.value = this.role.permissions
+      },
       permissions(){
         this.options = Object.values(this.permissions)
       },
       value(){
         if(this.value !== null){
-          //this.user.roles = this.value.map(x => x.id)
+          this.role.permissions = this.value.map(x => x.id)
         }
       }
 		},
     computed:{
     },
 		methods:{
-			updateuser(){
-        axios.put('users/'+this.roles.id,this.roles)
+			updaterole(){
+        axios.put('roles/'+this.role.id,this.role)
          .then(data=>{
+            console.log(data)
             this.$emit('recordupdated',data),
-            $('#edituser').modal('hide');
+            $('#editrole').modal('hide');
             toast({
                 type: 'success',
                 title: 'User Updated successfully'

@@ -13,8 +13,6 @@ class RoleController extends Controller
 {
    
     public function index(){
-
-        
         
         $roles = Role::all();
         $permissions = Permission::get()->pluck('name', 'name');
@@ -23,8 +21,8 @@ class RoleController extends Controller
     }
 
 
-    public function getroles()
-    {
+    public function getroles() {
+
         $roles = Role::orderby('created_at','desc')->get();
         $permission = Permission::orderby('created_at','desc')->get();
 
@@ -87,31 +85,50 @@ class RoleController extends Controller
 
     
     public function edit($id) {
-        if (! Gate::allows('manage_role')) {
+        /*if (! Gate::allows('manage_role')) {
             return abort(401);
-        }
+        }*/
 
-        $permissions = Permission::get()->pluck('name', 'name');
+        $role = Role::where('id',$id)->with('permissions')->first();
+        return request()->json(200,$role);
 
-        $role = Role::findOrFail($id);
-
-
-        return view('admin.pages.access.role_edit', compact('role', 'permissions'));
     }
 
   
-    public function update(Request $request, $id)
-    {
-        if (! Gate::allows('manage_role')) {
+    public function update(Request $request, $id) {
+        /*if (! Gate::allows('manage_role')) {
             return abort(401);
-        }
+        }*/
+
+        $this->validate($request, [          
+            'name' => 'required|string|max:200',
+            'description' => 'required|string|max:200',
+        ]);
+
 
         $role = Role::findOrFail($id);
-        $role->update($request->except('permission'));
-        $permissions = $request->input('permission') ? $request->input('permission') : [];
-        $role->syncPermissions($permissions);
+        $role->name = $request->name;
+        $role->description = $request->description;
+        $role_save = $role->save();
 
-        return redirect()->route('roles.index')->with('message', 'Role updated successfully');
+        //return $request->permissions;
+
+        $role->syncPermissions($request->permissions);
+       
+        //return $permission = $request->permissions;
+
+
+        //$role = Role::findOrFail($id);
+        //$role->update($request->except('permission'));
+        //$permissions = $request->input('permission') ? $request->input('permission') : [];
+        //$role->syncPermissions($permissions);
+
+        //return redirect()->route('roles.index')->with('message', 'Role updated successfully');
+        if($role_save){
+            $permissions = Permission::orderby('created_at','desc')->get()->toArray();
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);  
+        }
     }
 
    

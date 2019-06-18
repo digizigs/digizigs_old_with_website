@@ -38,7 +38,7 @@
                           
 							<!-- Action icons -->
                           	<span class="action-text subscription pull-right">
-                            	<a href="#editrole" v-on:click.prevent data-toggle="modal" @click="detailrole()" ><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            	<a href="#editrole" v-on:click.prevent data-toggle="modal" @click="detailrole(role.id)" ><i class="fa fa-eye" aria-hidden="true"></i></a>
                             	|
                             	<a href="" v-on:click.prevent ><i class="fa fa-trash-o" aria-hidden="true" @click="deleterole(role.id)"></i></a>	                               
                           	</span>
@@ -55,7 +55,7 @@
 		</div>
 		<div id="modal">
           <newrole  :roles="roles" :permissions="permissions" @recordupdated="refreshRecord"></newrole>
-          <editrole :roles="roles" :permissions="permissions"  @recordupdated="refreshRecord"></editrole>
+          <editrole :role="role" :permissions="permissions"  @recordupdated="refreshRecord"></editrole>
          
         </div>
     </section>
@@ -67,8 +67,10 @@
 			return{
 				search:'',
 				roles:{},
+				role:{},
 				permissions:[],		
 				errors:'',
+
 			}
 		},
 		watch:{
@@ -100,52 +102,52 @@
 		          })
 		          //	.catch(error => this.errors=error.response.data.errors);
 
-		  },
-	    detailrole(id){
-	    	axios.get('users/'+id+'/edit')
-					.then((response) => {
-						console.log(response.data)
-						this.user=response.data.user
-				})
-				.catch(error => this.errors=error.response.data.errors);
-	    },
-	    closesearch(){
-				this.search=''
-			},
-	    deleterole(id){
-	    	swalWithBootstrapButtons({
-	          title: 'Delete Role?',
-	          text: "You won't be able to revert this!",
-	          type: 'warning',
-	          showCancelButton: true,
-	          confirmButtonText: 'Yes, delete it!',
-	          cancelButtonText: 'No, cancel!',
-	          reverseButtons: true
-	        }).then((result) => {
-	          if (result.value) {
+		  	},
+		    detailrole(id){
+		    	axios.get('roles/'+id+'/edit')
+						.then((response) => {
+							//console.log(response.data)
+							this.role = response.data
+					})
+					.catch(error => this.errors=error.response.data.errors);
+		    },
+		    closesearch(){
+					this.search=''
+				},
+		    deleterole(id){
+		    	swalWithBootstrapButtons({
+		          title: 'Delete Role?',
+		          text: "You won't be able to revert this!",
+		          type: 'warning',
+		          showCancelButton: true,
+		          confirmButtonText: 'Yes, delete it!',
+		          cancelButtonText: 'No, cancel!',
+		          reverseButtons: true
+		        }).then((result) => {
+		          if (result.value) {
 
-	            axios.delete('roles/'+id)
-	            .then(response =>{
-	              this.roles = response.data.roles
-	              this.permissions = response.data.permissions     
-	              toast({
-	                	type: 'success',
-	                	title: 'Role  deleted successfully'	                	
-	            	})
+		            axios.delete('roles/'+id)
+		            .then(response =>{
+		              this.roles = response.data.roles
+		              this.permissions = response.data.permissions     
+		              toast({
+		                	type: 'success',
+		                	title: 'Role  deleted successfully'	                	
+		            	})
 
-	            })//this.categories=response.data
-	            .catch((error) => {
-	              //console.log(response.data);
-	              	
-	                    this.errors=error.response.data.errors;		                                  
-	              });
-	          } 
-	        })
-	    },
-	    refreshRecord(record){
-	    	this.roles = record.data.roles
-	    	this.permissions = response.data.permissions
-	    }
+		            })//this.categories=response.data
+		            .catch((error) => {
+		              //console.log(response.data);
+		              	
+		                    this.errors=error.response.data.errors;		                                  
+		              });
+		          } 
+		        })
+		    },
+		    refreshRecord(record){
+		    	this.roles = record.data.roles
+		    	//this.permissions = response.data.permissions
+		    }
 		
 		},
 		created(){
