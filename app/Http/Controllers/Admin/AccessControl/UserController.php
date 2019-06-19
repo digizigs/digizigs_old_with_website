@@ -15,24 +15,20 @@ use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
    
-    public function index()
-    {
-        $users = User::orderby('created_at','desc')->paginate(7);
-        $roles = Role::orderby('created_at','desc')->paginate(10);
-        return view('admin.pages.access.users', compact('users','roles'));
-      
+    public function index() {
+
+        return view('admin.pages.access.users');
     }
 
-    
     public function create(Request $request) { 
-
 
         $roles = Role::orderby('created_at','desc')->get()->toArray();
 
         if($request->search_string == ''){
-            $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
-            //$data = ['roles'=$roles,'users'=>$users];          
+
+            $users = User::orderby('created_at','desc')->with('roles')->paginate(8); 
             return request()->json(200,['roles'=>$roles,'users'=>$users]);
+
         }else{
             $users['data'] = User::where('firstname','like', '%'.$request->search_string.'%')
                                 ->orWhere('lastname','like', '%'.$request->search_string.'%')
@@ -69,9 +65,6 @@ class UserController extends Controller
         return request()->json(200,$users);
        
     }
-
-    
-
    
     public function edit($id) {
 
@@ -86,7 +79,6 @@ class UserController extends Controller
         $user = User::where('id',$id)->with('roles')->first();
         return request()->json(200,['roles'=>$roles,'user'=>$user]);
     }
-
     
     public function update(Request $request, $id){
 
@@ -111,7 +103,6 @@ class UserController extends Controller
       }
     }
 
-   
     public function destroy($id) {
 
       /*if (! Gate::allows('users_manage')) {
@@ -124,8 +115,6 @@ class UserController extends Controller
             $users = User::orderby('created_at','desc')->paginate(8);
             return request()->json(200,$users);
         }
-
-
     }
 
     public function massDestroy(Request $request) {

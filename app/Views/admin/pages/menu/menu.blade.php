@@ -5,7 +5,9 @@
 
 
 
-@section('content')	
-    <menupage></menupage>
+@section('content')
+	<div class="right_col" role="main">
+    	<menupage></menupage>
+	</div>
 @endsection
 

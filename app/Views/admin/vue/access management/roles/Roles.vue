@@ -10,17 +10,17 @@
 					<i class="fa fa-plus" aria-hidden="true"></i> Add Roles
 				</a>
 				<span class="x-title-option">
-				<ul>
-					<li>
-						<span id="x-title-search" class="title-searchs x-title-search c">
-							<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-							<input type="text" v-model="search">
-							<span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
-						</span>
-					</li>
-				</ul>
-				
-			</span>         	
+					<ul>
+						<li>
+							<span id="x-title-search" class="title-searchs x-title-search c">
+								<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+								<input type="text" v-model="search">
+								<span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</span>
+						</li>
+					</ul>				
+				</span>
+
           	</div>
 
             <div class="x_content">

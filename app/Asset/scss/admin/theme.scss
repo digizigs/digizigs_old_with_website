@@ -1123,7 +1123,8 @@ a:visited {
 }
 
 footer {
-    background: #FAFBFC;
+    //background: #FAFBFC;
+    background: #FAFBFC !important;
     //padding: 15px 20px;
     display: block
 }
@@ -1289,7 +1290,10 @@ h2 {
         padding: 10px;
     }
     .x-title-option{
+
         margin-right: 20px !important;
+        margin-bottom: -20px !important;
+
         .option-item{
             color: #01A9DB;
             font-size: 12px;
@@ -1413,7 +1417,7 @@ h2 {
     //border-bottom: 2px solid #E6E9ED;
     padding: 1px 5px 6px;
     .panel-title{
-        color: #2A5D84;
+        color: $page_title;
         font-weight: 600;
         font-size: 20px;
     }
@@ -2926,9 +2930,9 @@ a.btn-warning {
 }
 
 .btn-dark {
-    color: #E9EDEF;
-    background-color: #4B5F71;
-    border-color: #364B5F
+    color: #FFF;
+    background-color: $btn_dark;
+    border-color: $btn_dark
 }
 
 .btn-dark.active,
@@ -2937,8 +2941,8 @@ a.btn-warning {
 .btn-dark:hover,
 .open .dropdown-toggle.btn-dark {
     color: #FFF;
-    background-color: #394D5F;
-    border-color: #394D5F
+    background-color: $btn_dark_hover;
+    border-color: $btn_dark_hover;
 }
 
 .btn-round {
@@ -2999,7 +3003,7 @@ textarea:focus {
 
 .btn_ {
     display: inline-block;
-    padding: 3px 9px;
+    padding: 2x 5px;
     margin-bottom: 0;
     font-size: 14px;
     line-height: 20px;

@@ -1,59 +1,59 @@
 <template>
-<section>
-	<div class="x_panel">
-		<div class="x_title">
-			
-			<span class="panel-title">
-				<i class="fa fa-align-left"></i>
-				Clients
-			</span>
-			<a href="#addclient" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
-				<i class="fa fa-plus" aria-hidden="true"></i> New Client
-			</a>
-			<span class="x-title-option">
-				<ul>
-					<li>
-						<span id="x-title-search" class="title-searchs x-title-search c">
-							<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-							<input type="text" v-model="search">
-							<span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
-						</span>
-					</li>
-				</ul>
+	<section>
+		<div class="x_panel">
+			<div class="x_title">
 				
-			</span>
-		</div>
-		<div class="x_content">
-			<div class="panel-group pannel-line-group" id="accordion">
-				
-				<div v-for="client in clients.data" class="panel panel-default pannel-line">
-					<div class="panel-heading">
-						<span class="title">{{client.client_name}}</span>
-						
-						<!-- Action icons -->
-						<span class="action-text subscription pull-right">
-							<a href="#editclient" v-on:click.prevent data-toggle="modal" @click="detailclient(client.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
-							|
-							<a href="" v-on:click.prevent @click="deleteclient(client.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-						</span>
-						<!-- Action icons -->
+				<span class="panel-title">
+					<i class="fa fa-align-left"></i>
+					Clients
+				</span>
+				<a href="#addclient" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+					<i class="fa fa-plus" aria-hidden="true"></i> New Client
+				</a>
+				<span class="x-title-option">
+					<ul>
+						<li>
+							<span id="x-title-search" class="title-searchs x-title-search c">
+								<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+								<input type="text" v-model="search">
+								<span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</span>
+						</li>
+					</ul>
+					
+				</span>
+			</div>
+			<div class="x_content">
+				<div class="panel-group pannel-line-group" id="accordion">
+					
+					<div v-for="client in clients.data" class="panel panel-default pannel-line">
+						<div class="panel-heading">
+							<span class="title">{{client.client_name}}</span>
+							
+							<!-- Action icons -->
+							<span class="action-text subscription pull-right">
+								<a href="#editclient" v-on:click.prevent data-toggle="modal" @click="detailclient(client.id)"><i class="fa fa-eye" aria-hidden="true"></i></a>
+								|
+								<a href="" v-on:click.prevent @click="deleteclient(client.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+							</span>
+							<!-- Action icons -->
+						</div>
 					</div>
+					
 				</div>
 				
+				
+				<vuepagination :input="clients" @pagechange="paginationdata"></vuepagination>
+				
 			</div>
-			
-			
-			<vuepagination :input="clients" @pagechange="paginationdata"></vuepagination>
+		</div>
+		
+		<div id="modal">
+			<newclient @recordupdated="refreshRecord"></newclient>
+			<editclient :selClient="clientdetail" @recordupdated="refreshRecord"></editclient>
 			
 		</div>
-	</div>
-	
-	<div id="modal">
-		<newclient @recordupdated="refreshRecord"></newclient>
-		<editclient :selClient="clientdetail" @recordupdated="refreshRecord"></editclient>
-		
-	</div>
-</section>
+	</section>
 </template>
 <script type="text/javascript">
 	export default{
@@ -67,7 +67,6 @@
 				success:'',
 				errors:'',
 				pagination: {}
-				
 			}
 		},
 		watch:{

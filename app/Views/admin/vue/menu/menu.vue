@@ -1,26 +1,129 @@
 <template>
 	<section>
-		<div class="right_col" role="main">
+    <div class="x_panel">
 
-        <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3> Menus <small></small></h3>
-              </div>
+      <div class="x_title">
 
-              <!-- <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div> -->
+          <span class="panel-title">
+            <i class="fa fa-align-left"></i>
+            Menus
+          </span>       
+
+      </div>
+
+      <div class="x_content">
+         <div class="row">
+
+            <div class="col-md-12" style="margin-bottom:20px;">
+               <div class="form-group wp-input">                                
+                  <select name="menu" class="col-md-2 input-sm" v-model="selectedmenu">
+                      <option value="">Select</option>
+                      <option v-for="menu in menus" v-bind:value="menu.name">{{menu.name}}</option>                              
+                  </select>
+                  <button class="select-menu btn btn-dark btn-sm" @click="selectmenu">Select Menu</button>                             
+                  <span > 
+                    or <a href="" v-on:click.prevent @click="createmenu">Create new menu</a>.                
+                  </span>
+               </div>
             </div>
 
-            <div class="clearfix"></div>
+            <div class="col-md-4 col-xs-12">
+               <div class="panel-group" id="accordion">
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="title">
+                              Pages
+                           </a>
+                      
+                      </div>
+                      <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          <ul class="">
+                            <li>
+                              <input type="checkbox" id="checkbox" v-model="checked">
+                              <label for="checkbox">Check{{checked}}</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="test1">
+                              <label for="test1" style="margin-top:-10px !important;">Red</label>
+                            </li>
+                            <li>
+                              <input type="checkbox" id="test1">
+                              <label for="test1" style="margin-top:-10px !important;">Red</label>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="title">
+                              Posts
+                           </a>
+                      </div>
+                      <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="title">
+                              Categories
+                           </a>
+                      </div>
+                      <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                           <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="title">
+                              Custom links
+                           </a>
+                      </div>
+                      <div id="collapse4" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</div>
+                      </div>
+                    </div>
+
+               </div>
+            </div>
+
+            <div class="col-md-8 col-xs-12">
+               <div class="panel panel-dz">
+
+                  <div class="panel-heading active">
+                     <span class="panel-title wp-input">
+                        <i>Menu Name</i>
+                        <input type="text" class="input-sm" v-model="menu_name.name">
+                     </span>
+                     <a href="" class="btn btn-dark btn-sm pull-right">Save Menu</a>
+                  </div>
+                  
+                  <div class="panel-body open">
+                     Panel Content
+                  </div>
+                  
+               </div>
+            </div>
+
+         </div><!--row-->   
+
+      </div>
+
+    </div>
+      
 
             <div class="row">
               <div class="clearfix"></div>
@@ -41,16 +144,7 @@
 
                           <div class="select-menu" v-if="this.newmenu == false">
 
-                              <div class="form-group">                                
-                                <select name="menu" class="col-md-2 input-sm glow-input input" v-model="selectedmenu">
-                                    <option value="">Select</option>
-                                    <option v-for="menu in menus" v-bind:value="menu.name">{{menu.name}}</option>                              
-                                </select>
-                                <button class="select-menu btn btn-dark btn-sm" @click="selectmenu">Select Menu</button>                             
-                                <span > or <a href="" v-on:click.prevent @click="createmenu">Create new menu</a>. 
-                                
-                              </span>
-                              </div>
+                              
                               
                           </div>
 
@@ -288,9 +382,8 @@
                   </div>  
                 </div>
               </div>
-        </div>
-    </div>
-  </div>
+            </div>
+
 	</section>
 </template>
 
@@ -299,12 +392,13 @@
 		data(){
 			return{
 			   menuselect:false,
-         newmenu:false,
-         selectedmenu:'',
-         menus:'',
-         menu_name:{'name':''},
-         errors:[],
-         error_message:'',
+            newmenu:false,
+            selectedmenu:'',
+            menus:'',
+            menu_name:{'name':''},
+            errors:[],
+            error_message:'',
+            checked:false
 			}
 		},
 		watch:{
@@ -379,5 +473,37 @@
     margin-left: -10px;
   }
 
+  input[type="checkbox"]{
+    border: 1px solid #b4b9be;
+    background: #fff;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 16px;
+    margin: -4px 4px 0 0;
+    outline: 0;
+    padding: 0 !important;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    min-width: 16px;
   
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: .05s border-color ease-in-out;
+  }
+
+  input[type="checkbox"]:checked:before {
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  font: normal 21px/1 dashicons;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 </style>

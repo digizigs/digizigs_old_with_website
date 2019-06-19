@@ -613,3 +613,76 @@ footer {
     background: linear-gradient(to right, #fe9365, #feb798)
 }
 //=========================Material Card Design==================================//
+
+
+//=========================DZ PAnnel ============================================//
+.panel-dz{
+  border-radius:1px !important;
+  background-color: #FFFFFF;
+  border-bottom:1px solid #F1F1F1;
+
+  .panel-heading{
+    background-color: #FFFFFF;
+    //border-bottom:1px solid #F1F1F1;
+    padding: 6px 8px !important;
+    margin:0 !important;
+
+    .panel-title{
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    
+    
+    .fa{
+      margin-top:5px;
+      transition: .3s transform ease-in-out;
+    }
+    
+
+  }
+  .panel-heading.active{
+    .fa{
+      //transition: .3s transform ease-in-out;
+      transform: rotate(180deg);
+    }
+  }  
+
+  .panel-body{
+    border-top:1px solid #F1F1F1;
+    background-color: #FFFFFF;
+    padding: 6px 8px !important;
+  }
+
+  .panel-body.open{
+    transition: .5s transform ease-in-out;
+    display: block;
+  }
+  .panel-body.close{
+    transition: .5s transform ease-in-out;
+    display: none;
+  }
+
+}
+//=========================DZ PAnnel ============================================//
+
+
+
+////////////////////////////Dashboard////////////////////////////////////////////
+.dashboard-post-page-comment-indicator{
+  .panel-body{
+    span{
+      padding: 8px 5px;
+      i{
+
+      }
+      a{
+        color: $wpfontcolor;
+        font-weight: 600;
+      }
+      a:hover{
+        color: $wpfontcolor_hover;
+      }
+    }
+  }
+}

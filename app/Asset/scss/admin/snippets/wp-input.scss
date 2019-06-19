@@ -109,9 +109,9 @@ input[type="radio"]:checked + label:before {
 	color: #00a0d2;
 }
 
-td > input[type="checkbox"],
-.wp-admin p input[type="checkbox"],
-.wp-admin p input[type="radio"] {
+input[type="checkbox"],
+input[type="checkbox"],
+input[type="radio"] {
 	margin-top: 0;
 }
 

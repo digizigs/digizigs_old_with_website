@@ -38,6 +38,14 @@
               <li><a href="{{route('post.create')}}">New Article</a></li>
             </ul>
           </li>
+
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-paper-plane-o"></i> Pages <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">
+              <li><a href="{{route('post.index')}}">All Page</a></li>
+              <li><a href="{{route('post.create')}}">New Page</a></li>
+            </ul>
+          </li>
           
           <li class="menu-item">
             <a href="{{route('category.index')}}"><i class="fa fa-object-group"></i> Category </a>

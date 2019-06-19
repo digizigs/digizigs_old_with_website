@@ -211,11 +211,23 @@ $(document).ready(function(){
         }, 300);
     });
 
+	 // Page search feild open and close
 	 $(".close-icon").on('click',function(){
 	 	$("#x-title-search").removeClass('o').addClass('c')
 	 })
 	 $(".search-icon").on('click',function(){
 	 	$("#x-title-search").removeClass('c').addClass('o')
 	 })
+
+	// Panel fa icon rotate
+	$('.panel-collapse').on('show.bs.collapse', function () {
+	    $(this).siblings('.panel-heading').addClass('active');
+	});
+
+	$('.panel-collapse').on('hide.bs.collapse', function () {
+	    $(this).siblings('.panel-heading').removeClass('active');
+	});
+
+
 
 });
