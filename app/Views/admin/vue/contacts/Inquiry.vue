@@ -1,68 +1,67 @@
 <template>
 	<section>
-		<div class="">          
-            <div class="row">
-            	<div class="col-md-12 col-sm-12 col-xs-12">
-            		<div class="x_panel">
-            			<div class="x_title">	                   
-		                    <h2>
-		                    	<i class="fa fa-align-left"></i> Inquiry <small></small>
-		                    	<span class="search">
-		                  			<i class="fa fa-search"></i>
-		                  			<div class="form-group">
-	                                    <div class="form-line">
-	                                        <input type="text" class="form-control" placeholder="Search here...">
+		
+		<div class="x_panel">
+			<div class="x_title">
 
-	                                    </div>
-
-	                                </div>
-	                            </span>	
-		                    </h2>
-		                    <div class="clearfix"></div>
-		                </div>
-
-		                <div class="x_content">
-
-		                	<div class="panel-group pannel-line-group" id="accordion">
-	                           	                           
-	                           <div v-for="inq,key in inquiries.data" class="panel panel-default pannel-line">
-	                              <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
-	                                   	                                   	                                  
-	                                   	<span class="title">{{inq.name}}</span> 
-	                                
-	                                   	<span>email:-{{inq.email}}</span>
-
-	                                   	<span class="time">at {{inq.created_at | vueAgoTime }}</span>
-
-	                                    <span class="action-text">
-	                                    	<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
-		                                 		View
-		                                 	</a>  |                               
-	                                      	<a href="" class="subscribe" v-on:click.prevent @click="delet(inq.id)">
-		                                 		Delete
-		                                 	</a> 
-	                                    </span>
-	                                                                  
-	                              </div>
-
-	                              <div id="inq.id" class="panel-collapse collapse">
-	                                <div class="panel-body" style="padding: 8px !important;">
-	                                  <p>messagwe</p>  
-	                                                                                                       
-	                                </div>                                 
-	                              </div>
-	                           </div>	                           
-	                          
-	                        </div>
-	                        <pagination :data="inquiries" @pagination-change-page="paginationdata" ></pagination>
-		                    <div>		                    	
-		                    	Showing {{inquiries.from}} to {{inquiries.to}} of total {{inquiries.total}}	                    	
-		                    </div>	
-		                </div>
-            		</div>
-            	</div>
+				<span class="panel-title">
+	              <i class="fa fa-align-left"></i>
+	               Inquiry <small></small> 
+	            </span>
+	            <span class="x-title-option">
+					<ul>
+						<li>
+							<span id="x-title-search" class="title-searchs x-title-search c">
+								<span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+								<input type="text" v-model="search">
+								<span class="close-icon" @click="closesearch"><i class="fa fa-times" aria-hidden="true"></i></span>
+							</span>
+						</li>
+					</ul>	
+				</span>	                   
+                
+       
             </div>
-        </div>
+
+            <div class="x_content">
+
+            	<div class="panel-group pannel-line-group" id="accordion">
+                   	                           
+                   <div v-for="inq,key in inquiries.data" class="panel panel-default pannel-line">
+                      <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">
+                           	                                   	                                  
+                           	<span class="title">{{inq.name}}</span> 
+                        
+                           	<span>email:-{{inq.email}}</span>
+
+                           	<span class="time">at {{inq.created_at | vueAgoTime }}</span>
+
+                            <span class="action-text">
+                            	<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
+                             		View
+                             	</a>  |                               
+                              	<a href="" class="subscribe" v-on:click.prevent @click="delet(inq.id)">
+                             		Delete
+                             	</a> 
+                            </span>
+                                                          
+                      </div>
+
+                      <div id="inq.id" class="panel-collapse collapse">
+                        <div class="panel-body" style="padding: 8px !important;">
+                          <p>messagwe</p>  
+                                                                                               
+                        </div>                                 
+                      </div>
+                   </div>	                           
+                  
+                </div>
+                
+                <vuepagination :input="inquiries" @pagechange="paginationdata"></vuepagination>
+                
+            </div>
+		</div>
+
         <div id="modal">
           <inquiryview  :inqiry="inquiry"></inquiryview>
         </div>
@@ -73,6 +72,7 @@
 	export default{
 		data(){
 			return{
+				search:'',
 				inquiries:{},
 				inquiry:'',
 				errors:''
@@ -133,8 +133,10 @@
 		            
 		          } 
 		        })
-
-			}
+			},
+			closesearch(){
+				this.filter=''
+			},
 		},
 		mounted(){
 			axios.get('inquiry/create')

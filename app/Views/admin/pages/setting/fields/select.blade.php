@@ -10,8 +10,8 @@
 
 
 <div class="form-group wp-input">
-    <label for="{{ $field['name'] }}" class="col-sm-2 control-label">{{ $field['label'] }}</label>
-    <div class="col-sm-10">
+    <label for="{{ $field['name'] }}" class="col-sm-3 control-label">{{ $field['label'] }}</label>
+    <div class="col-sm-9 col-xs-12">
         
             <select id="{{ $field['name'] }}" class="form-control input-sm" name="{{ $field['name'] }}">
 		   			@foreach(array_get($field, 'options', []) as $val => $label)

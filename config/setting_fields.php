@@ -171,6 +171,35 @@ return [
 
 
     ],
+    'billing' => [
+
+        'title' => 'Invoice and Quotations',
+        'desc' => 'Terms and conditions for billing in quotations' ,
+        'icon' => 'fa fa-picture-o',
+
+        'elements' => [
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'breifdesc',
+                'label' => 'Breif About Description',
+                'rules' => 'required|min:2',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'billingterms',
+                'label' => 'Terms and Conditions',
+                'rules' => 'required|min:2',
+                'class' => 'input-sm', // class for input
+            ],
+            
+            
+        ],
+
+
+    ],
     
 
   

@@ -1450,14 +1450,13 @@ table.tile_info {
 
 .x_title{
     .title{     
-        color: #7B879C;
+        color: $page_title;
         font-size: 18px;
         font-weight: 600;
-        
-        small{
-            font-size: 14;
-            font-weight: 400;
-        }
+    }
+    .subtitle{
+        font-size: 11px !important;
+        font-weight: 600;
     }
 }
 .x_title span {

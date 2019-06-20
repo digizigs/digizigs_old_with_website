@@ -10028,7 +10028,7 @@ h2 {
 }
 
 .x_title .panel-title {
-  color: #333333;
+  color: #000;
   font-weight: 600;
   font-size: 20px;
 }
@@ -10058,14 +10058,14 @@ table.tile_info {
 }
 
 .x_title .title {
-  color: #7B879C;
+  color: #000;
   font-size: 18px;
   font-weight: 600;
 }
 
-.x_title .title small {
-  font-size: 14;
-  font-weight: 400;
+.x_title .subtitle {
+  font-size: 11px !important;
+  font-weight: 600;
 }
 
 .x_title span {
@@ -16401,7 +16401,7 @@ footer a {
 }
 
 .material-tab-pane .tab-content .panel-post .panel-heading {
-  background-color: #F1F1F1 !important;
+  background-color: #fff !important;
   border-radius: 0;
 }
 
@@ -16428,7 +16428,7 @@ footer a {
 
 .material-tab-pane .tab-content .panel-post .panel-body {
   padding: 0;
-  background-color: #F1F1F1 !important;
+  background-color: #fff !important;
 }
 
 .material-tab-pane .tab-content .panel-post .panel-body .post .post-heading {
@@ -16440,7 +16440,7 @@ footer a {
 }
 
 .material-tab-pane .tab-content .panel-post .panel-footer {
-  background-color: #F1F1F1 !important;
+  background-color: #fff !important;
   border: none;
 }
 
@@ -16583,7 +16583,7 @@ footer a {
 .modal .modal-content {
   border-radius: 0px !important;
   border: none;
-  background-color: #F1F1F1;
+  background-color: #fff;
 }
 
 .modal .modal-content .modal-header {
@@ -16603,7 +16603,7 @@ footer a {
 .modal .modal-content .modal-header .modal-title {
   font-weight: bold;
   font-size: 16px;
-  color: #333333;
+  color: #000;
   font-weight: 500;
   margin-top: -5px;
 }
@@ -16611,12 +16611,12 @@ footer a {
 .modal .modal-content .modal-body {
   color: #777;
   padding: 15px 25px;
-  background-color: #F1F1F1;
+  background-color: #fff;
 }
 
 .modal .modal-content .modal-footer {
   border: none;
-  background-color: #F1F1F1;
+  background-color: #fff;
 }
 
 .is-invalid {

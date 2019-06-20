@@ -140,15 +140,7 @@
                           <!-- /.col -->
                         </div>
                         <!-- /.row -->
-
-                        <!-- this row will not appear when printing -->
-                        <div class="row no-print">
-                          <div class="col-xs-12">
-                            <button  class="btn btn-default" onclick="javascript.printinvoice();"><i class="fa fa-print"></i> Print</button>
-                            <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button>
-                            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
-                          </div>
-                        </div>
+                        
 	                </div>
 	            </div>
 	        </div>
@@ -211,6 +203,9 @@
     .action_buttons{
       margin-top: -10px !important;
     }
+  }
+  .modal-body{
+    background-color: #fff !important;
   }
 
 </style>

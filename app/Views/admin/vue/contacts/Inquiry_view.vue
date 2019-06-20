@@ -1,9 +1,10 @@
 <template>
 	<section>
-		<div class="modal fade" id="inqview" tabindex="-1" role="dialog" style="display: none;">
+		<div class="modal fade modal-right-slide" id="inqview" tabindex="-1" role="dialog" style="display: none;">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" >&times;</button>
                         <h4 class="modal-title" id="defaultModalLabel">
                         	{{inqiry.name}} <small></small>
                         	<br>
@@ -26,8 +27,7 @@
 
                     </div>
                     <div class="modal-footer">
-                    	<button type="button" class="btn btn-primary btn-sm waves-effect" data-dismiss="modal">Send</button>                      
-                        <button type="button" class="btn btn-dark btn-sm waves-effect" data-dismiss="modal">Close</button>
+                    	<button type="button" class="btn btn-primary btn-sm waves-effect" data-dismiss="modal">Send Response</button>                      
                     </div>
                 </div>
             </div>

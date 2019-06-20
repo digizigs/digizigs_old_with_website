@@ -85,7 +85,7 @@
   			border-radius: 0;
 
   			.panel-heading {
-    			background-color: $container_background_color !important;
+    			background-color: #fff !important;
     			-webkit-border-radius: 0;
     			-moz-border-radius: 0;
     			-ms-border-radius: 0;
@@ -114,7 +114,7 @@
 			}
 			.panel-body {
 			    padding: 0;
-			    background-color: $container_background_color !important;
+			    background-color: #fff !important;
 			    .post{
 			    	.post-heading {
 				        padding: 12px 15px;
@@ -125,7 +125,7 @@
 			    } 
 			}
 			.panel-footer {
-			    background-color: $container_background_color !important;
+			    background-color: #fff !important;
 			    border: none;
 			    ul {
 				    margin: 0;

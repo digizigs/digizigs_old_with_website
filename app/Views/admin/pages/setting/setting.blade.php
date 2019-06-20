@@ -39,18 +39,20 @@
 					            		@foreach(config('setting_fields') as $section => $fields)   
 										<div class="x_panel">
 						                    <div class="x_title">
-						                    	
-						                      	<h2>
-						                      		<i class="{{ array_get($fields, 'icon', 'glyphicon glyphicon-flash') }}"></i>
-						                      		{{ $fields['title'] }}
-						                       		<small>{{ $fields['desc'] }}</small>
-						                       	</h2>
+						                    		
+						                    		<span class="title">
+										              <i class="{{ array_get($fields, 'icon', 'glyphicon glyphicon-flash') }}"></i>
+										               {{ $fields['title'] }} <small></small> 
+										            </span>
+										            <span class="subtitle">
+										            	{{ $fields['desc'] }}
+										            </span>
 						                      
 						                     	<div class="clearfix"></div>
 						                    </div>
 							                <div class="x_content">
 							                    @foreach($fields['elements'] as $field) 
-				                                    <div class="col-md-8">@includeIf('admin.pages.setting.fields.' . $field['type'] )</div>
+				                                    <div class="col-md-10 col-xs-12 ">@includeIf('admin.pages.setting.fields.' . $field['type'] )</div>
 				                                @endforeach
 							                </div>
 						                </div>
