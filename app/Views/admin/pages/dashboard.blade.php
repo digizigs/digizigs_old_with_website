@@ -7,7 +7,7 @@
 
 @section('content')
 
-	@if(Session::has('message'))
+	   @if(Session::has('message'))
       <p class="alert alert-info " id="successMessage">{{ Session::get('message') }}</p>
     @endif
 	
@@ -61,8 +61,11 @@
                            </div>
                         </div>
                   </div>
-
                </div>
+                <br>
+               {{setting('ga_view_id')}}
+               <br>
+               {{setting('ga_service_json')}}
            </div>
          </div>
       </div>

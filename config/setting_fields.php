@@ -200,6 +200,35 @@ return [
 
 
     ],
+    'googleanalytics' => [
+
+        'title' => 'Google Analytics',
+        'desc' => 'Google analytics service credentials' ,
+        'icon' => 'fa fa-line-chart',
+
+        'elements' => [
+            [
+                'type' => 'text',
+                'data' => 'text',
+                'name' => 'ga_view_id',
+                'label' => 'Analytics View Id',
+                'rules' => 'required',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'ga_service_json',
+                'label' => 'Service Account JSON',
+                'rules' => 'required',
+                'class' => 'input-sm', // class for input
+            ],
+            
+            
+        ],
+
+
+    ],
     
 
   
