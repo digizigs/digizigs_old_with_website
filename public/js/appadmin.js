@@ -99368,6 +99368,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -99379,14 +99388,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       menu_name: { 'name': '' },
       errors: [],
       error_message: '',
-      checked: false
+      checked: false,
+      menuname: ''
     };
   },
 
-  watch: {},
+  watch: {
+    selectedmenu: function selectedmenu() {
+      toast({
+        type: 'success',
+        title: this.selectedmenu + ' is selected'
+      });
+    }
+  },
   methods: {
     selectmenu: function selectmenu() {
-
       this.newmenu = false;
       this.menuselect = false;
     },
@@ -99509,11 +99525,12 @@ var render = function() {
                   [_vm._v("Select Menu")]
                 ),
                 _vm._v(" "),
-                _c("span", [
+                _c("span", { staticStyle: { "margin-top": "10px" } }, [
                   _vm._v(" \n                    or "),
                   _c(
                     "a",
                     {
+                      staticClass: "wpfont",
                       attrs: { href: "" },
                       on: {
                         click: [
@@ -99596,8 +99613,19 @@ var render = function() {
                           _vm._v(" "),
                           _vm._m(2),
                           _vm._v(" "),
-                          _vm._m(3)
-                        ])
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("li")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default btn-sm pull-right",
+                            attrs: { href: "" }
+                          },
+                          [_vm._v("Add to menu")]
+                        )
                       ])
                     ]
                   )
@@ -99623,19 +99651,19 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.menu_name.name,
-                        expression: "menu_name.name"
+                        value: _vm.selectedmenu,
+                        expression: "selectedmenu"
                       }
                     ],
                     staticClass: "input-sm",
                     attrs: { type: "text" },
-                    domProps: { value: _vm.menu_name.name },
+                    domProps: { value: _vm.selectedmenu },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.menu_name, "name", $event.target.value)
+                        _vm.selectedmenu = $event.target.value
                       }
                     }
                   })
@@ -99651,11 +99679,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "panel-body open" }, [
-                _vm._v(
-                  "\n                     Panel Content\n                  "
-                )
-              ])
+              _vm._m(7)
             ])
           ])
         ])
@@ -99751,13 +99775,13 @@ var render = function() {
                           attrs: { id: "accordion" }
                         },
                         [
-                          _vm._m(7),
-                          _vm._v(" "),
                           _vm._m(8),
                           _vm._v(" "),
                           _vm._m(9),
                           _vm._v(" "),
-                          _vm._m(10)
+                          _vm._m(10),
+                          _vm._v(" "),
+                          _vm._m(11)
                         ]
                       )
                     : _vm._e()
@@ -99788,14 +99812,14 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(11)
+                                  _vm._m(12)
                                 ]
                               )
                             ])
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._m(12)
+                        _vm._m(13)
                       ])
                     : _vm._e(),
                   _vm._v(" "),
@@ -99823,7 +99847,7 @@ var render = function() {
                                   "div",
                                   { staticClass: "form-group glow-input" },
                                   [
-                                    _vm._m(13),
+                                    _vm._m(14),
                                     _vm._v(" "),
                                     _c(
                                       "div",
@@ -99850,7 +99874,7 @@ var render = function() {
                         _c("div", { staticClass: "panel-body" }, [
                           _c("h4", [_vm._v("Create Menu")]),
                           _vm._v(" "),
-                          _vm._m(14),
+                          _vm._m(15),
                           _vm._v(" "),
                           this.menuselect == true
                             ? _c(
@@ -99859,7 +99883,7 @@ var render = function() {
                                   staticClass: "panel-group col-md-6",
                                   attrs: { id: "accordion" }
                                 },
-                                [_vm._m(15)]
+                                [_vm._m(16)]
                               )
                             : _vm._e()
                         ])
@@ -100052,6 +100076,14 @@ var staticRenderFns = [
           ])
         ]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "panel-body open" }, [
+      _c("div", {}, [_vm._v("Add menu items from the column on the left.")])
     ])
   },
   function() {

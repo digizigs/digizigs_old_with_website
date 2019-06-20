@@ -8594,6 +8594,10 @@ button.close {
   }
 }
 
+.wpfont {
+  color: #008EC2;
+}
+
 .x_title h2,
 table.tile_info td p {
   white-space: nowrap;

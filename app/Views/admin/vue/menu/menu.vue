@@ -21,8 +21,8 @@
                       <option v-for="menu in menus" v-bind:value="menu.name">{{menu.name}}</option>                              
                   </select>
                   <button class="select-menu btn btn-dark btn-sm" @click="selectmenu">Select Menu</button>                             
-                  <span > 
-                    or <a href="" v-on:click.prevent @click="createmenu">Create new menu</a>.                
+                  <span style="margin-top: 10px;" > 
+                    or <a href="" v-on:click.prevent @click="createmenu" class="wpfont" >Create new menu</a>.                
                   </span>
                </div>
             </div>
@@ -53,7 +53,11 @@
                               <input type="checkbox" id="test1">
                               <label for="test1" style="margin-top:-10px !important;">Red</label>
                             </li>
+                            <li>
+                              
+                            </li>
                           </ul>
+                          <a href="" class="btn btn-default btn-sm pull-right">Add to menu</a>
                         </div>
                       </div>
                     </div>
@@ -106,14 +110,19 @@
                   <div class="panel-heading active">
                      <span class="panel-title wp-input">
                         <i>Menu Name</i>
-                        <input type="text" class="input-sm" v-model="menu_name.name">
+                        <input type="text" class="input-sm" v-model="selectedmenu">
                      </span>
                      <a href="" class="btn btn-dark btn-sm pull-right">Save Menu</a>
                   </div>
                   
                   <div class="panel-body open">
-                     Panel Content
+                     
+                     <div class="">Add menu items from the column on the left.</div>
+                     
+                    
                   </div>
+
+                  
                   
                </div>
             </div>
@@ -391,26 +400,30 @@
 	export default{
 		data(){
 			return{
-			   menuselect:false,
+			      menuselect:false,
             newmenu:false,
             selectedmenu:'',
             menus:'',
             menu_name:{'name':''},
             errors:[],
             error_message:'',
-            checked:false
+            checked:false,
+            menuname:''
 			}
 		},
 		watch:{
+      selectedmenu(){
+        toast({
+                type: 'success',
+                title: this.selectedmenu + ' is selected'
+            })
+      }
 
 		},
 		methods:{
 		  selectmenu(){
-
-       
           this.newmenu=false;
-          this.menuselect=false;
-            
+          this.menuselect=false;   
       },
       createmenu(){
         this.menuselect=false;
