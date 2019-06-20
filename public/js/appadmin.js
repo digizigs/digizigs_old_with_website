@@ -86179,7 +86179,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86246,13 +86246,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
+			search: '',
 			subscriptions: {},
 			status: { 'action': '' },
 			errors: '',
@@ -86304,6 +86302,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				});
 				NProgress.done();
 			});
+		},
+		closesearch: function closesearch() {
+			this.filter = '';
 		}
 	},
 	mounted: function mounted() {
@@ -86326,130 +86327,161 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", {}, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12" }, [
-          _c("div", { staticClass: "x_panel" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "x_content" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-group pannel-line-group",
-                    attrs: { id: "accordion" }
-                  },
-                  _vm._l(_vm.subscriptions.data, function(subs) {
-                    return _c(
-                      "div",
-                      { staticClass: "panel panel-default pannel-line" },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "panel-heading",
-                            staticStyle: {
-                              padding: "8px !important",
-                              "background-color": "#F2F5F7",
-                              margin: "0!important"
-                            }
-                          },
-                          [
-                            _c("span", { staticClass: "title" }, [
-                              _vm._v(_vm._s(subs.email))
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "time" }, [
-                              _vm._v(
-                                "at  " +
-                                  _vm._s(_vm._f("vueAgoTime")(subs.created_at))
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              { staticClass: "action-text subscription" },
-                              [
-                                subs.status == "0"
-                                  ? _c(
-                                      "a",
-                                      {
-                                        staticClass: "unsubscribe",
-                                        attrs: { href: "" },
-                                        on: {
-                                          click: [
-                                            function($event) {
-                                              $event.preventDefault()
-                                            },
-                                            function($event) {
-                                              _vm.subscribe(subs.id)
-                                            }
-                                          ]
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t                                 \tSubscribe\n\t\t                                "
-                                        )
-                                      ]
-                                    )
-                                  : _c(
-                                      "a",
-                                      {
-                                        staticClass: "subscribe",
-                                        attrs: { href: "" },
-                                        on: {
-                                          click: [
-                                            function($event) {
-                                              $event.preventDefault()
-                                            },
-                                            function($event) {
-                                              _vm.unsubscribe(subs.id)
-                                            }
-                                          ]
-                                        }
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n\t\t                                \tUnSubscribe\n\t\t                                "
-                                        )
-                                      ]
-                                    )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
+    _c("div", { staticClass: "x_panel" }, [
+      _c("div", { staticClass: "x_title" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("span", { staticClass: "x-title-option" }, [
+          _c("ul", [
+            _c("li", [
+              _c(
+                "span",
+                {
+                  staticClass: "title-searchs x-title-search c",
+                  attrs: { id: "x-title-search" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.search },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
                   }),
-                  0
-                ),
-                _vm._v(" "),
-                _c("pagination", {
-                  attrs: { data: _vm.subscriptions },
-                  on: { "pagination-change-page": _vm.paginationdata }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\t\t                    \t\n\t\t                    \tShowing " +
-                      _vm._s(_vm.subscriptions.from) +
-                      " to " +
-                      _vm._s(_vm.subscriptions.to) +
-                      " of total " +
-                      _vm._s(_vm.subscriptions.total) +
-                      "\t                    \t\n\t\t                    "
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "close-icon",
+                      on: { click: _vm.closesearch }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-times",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
                   )
-                ])
-              ],
-              1
-            )
+                ]
+              )
+            ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "x_content" },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "panel-group pannel-line-group",
+              attrs: { id: "accordion" }
+            },
+            _vm._l(_vm.subscriptions.data, function(subs) {
+              return _c(
+                "div",
+                { staticClass: "panel panel-default pannel-line" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      staticStyle: {
+                        padding: "8px !important",
+                        "background-color": "#F2F5F7",
+                        margin: "0!important"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "title" }, [
+                        _vm._v(_vm._s(subs.email))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "time" }, [
+                        _vm._v(
+                          "at  " + _vm._s(_vm._f("vueAgoTime")(subs.created_at))
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "action-text subscription" }, [
+                        subs.status == "0"
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "unsubscribe",
+                                attrs: { href: "" },
+                                on: {
+                                  click: [
+                                    function($event) {
+                                      $event.preventDefault()
+                                    },
+                                    function($event) {
+                                      _vm.subscribe(subs.id)
+                                    }
+                                  ]
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                             \tSubscribe\n                            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "a",
+                              {
+                                staticClass: "subscribe",
+                                attrs: { href: "" },
+                                on: {
+                                  click: [
+                                    function($event) {
+                                      $event.preventDefault()
+                                    },
+                                    function($event) {
+                                      _vm.unsubscribe(subs.id)
+                                    }
+                                  ]
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                            \tUnSubscribe\n                            "
+                                )
+                              ]
+                            )
+                      ])
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("vuepagination", {
+            attrs: { input: _vm.subscriptions },
+            on: { pagechange: _vm.paginationdata }
+          })
+        ],
+        1
+      )
     ])
   ])
 }
@@ -86458,27 +86490,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x_title" }, [
-      _c("h2", [
-        _c("i", { staticClass: "fa fa-align-left" }),
-        _vm._v(" Subscriptions "),
-        _c("small"),
-        _vm._v(" "),
-        _c("span", { staticClass: "search" }, [
-          _c("i", { staticClass: "fa fa-search" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "form-line" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Search here..." }
-              })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "clearfix" })
+    return _c("span", { staticClass: "panel-title" }, [
+      _c("i", { staticClass: "fa fa-align-left" }),
+      _vm._v("\n\t               Subscriptions "),
+      _c("small")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "search-icon" }, [
+      _c("i", { staticClass: "fa fa-search", attrs: { "aria-hidden": "true" } })
     ])
   }
 ]
@@ -86577,7 +86600,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -86658,11 +86681,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
+			search: '',
 			inquiries: {},
 			inquiry: '',
 			errors: ''
@@ -86722,6 +86745,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					});
 				}
 			});
+		},
+		closesearch: function closesearch() {
+			this.filter = '';
 		}
 	},
 	mounted: function mounted() {
@@ -86744,134 +86770,166 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", {}, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12 col-sm-12 col-xs-12" }, [
-          _c("div", { staticClass: "x_panel" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "x_content" },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "panel-group pannel-line-group",
-                    attrs: { id: "accordion" }
-                  },
-                  _vm._l(_vm.inquiries.data, function(inq, key) {
-                    return _c(
-                      "div",
-                      { staticClass: "panel panel-default pannel-line" },
-                      [
+    _c("div", { staticClass: "x_panel" }, [
+      _c("div", { staticClass: "x_title" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("span", { staticClass: "x-title-option" }, [
+          _c("ul", [
+            _c("li", [
+              _c(
+                "span",
+                {
+                  staticClass: "title-searchs x-title-search c",
+                  attrs: { id: "x-title-search" }
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.search },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "close-icon",
+                      on: { click: _vm.closesearch }
+                    },
+                    [
+                      _c("i", {
+                        staticClass: "fa fa-times",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "x_content" },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "panel-group pannel-line-group",
+              attrs: { id: "accordion" }
+            },
+            _vm._l(_vm.inquiries.data, function(inq, key) {
+              return _c(
+                "div",
+                { staticClass: "panel panel-default pannel-line" },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "panel-heading",
+                      staticStyle: {
+                        padding: "8px !important",
+                        "background-color": "#F2F5F7",
+                        margin: "0!important"
+                      }
+                    },
+                    [
+                      _c("span", { staticClass: "title" }, [
+                        _vm._v(_vm._s(inq.name))
+                      ]),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("email:-" + _vm._s(inq.email))]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "time" }, [
+                        _vm._v(
+                          "at " + _vm._s(_vm._f("vueAgoTime")(inq.created_at))
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "action-text" }, [
                         _c(
-                          "div",
+                          "a",
                           {
-                            staticClass: "panel-heading",
-                            staticStyle: {
-                              padding: "8px !important",
-                              "background-color": "#F2F5F7",
-                              margin: "0!important"
+                            attrs: { href: "#inqview", "data-toggle": "modal" },
+                            on: {
+                              click: [
+                                function($event) {
+                                  $event.preventDefault()
+                                },
+                                function($event) {
+                                  _vm.view(inq.id)
+                                }
+                              ]
                             }
                           },
                           [
-                            _c("span", { staticClass: "title" }, [
-                              _vm._v(_vm._s(inq.name))
-                            ]),
-                            _vm._v(" "),
-                            _c("span", [_vm._v("email:-" + _vm._s(inq.email))]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "time" }, [
-                              _vm._v(
-                                "at " +
-                                  _vm._s(_vm._f("vueAgoTime")(inq.created_at))
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "action-text" }, [
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href: "#inqview",
-                                    "data-toggle": "modal"
-                                  },
-                                  on: {
-                                    click: [
-                                      function($event) {
-                                        $event.preventDefault()
-                                      },
-                                      function($event) {
-                                        _vm.view(inq.id)
-                                      }
-                                    ]
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n\t\t                                 \t\tView\n\t\t                                 \t"
-                                  )
-                                ]
-                              ),
-                              _vm._v(
-                                "  |                               \n\t                                      \t"
-                              ),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "subscribe",
-                                  attrs: { href: "" },
-                                  on: {
-                                    click: [
-                                      function($event) {
-                                        $event.preventDefault()
-                                      },
-                                      function($event) {
-                                        _vm.delet(inq.id)
-                                      }
-                                    ]
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n\t\t                                 \t\tDelete\n\t\t                                 \t"
-                                  )
-                                ]
-                              )
-                            ])
+                            _vm._v(
+                              "\n                             \t\tView\n                             \t"
+                            )
                           ]
                         ),
-                        _vm._v(" "),
-                        _vm._m(1, true)
-                      ]
-                    )
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c("pagination", {
-                  attrs: { data: _vm.inquiries },
-                  on: { "pagination-change-page": _vm.paginationdata }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\t\t                    \t\n\t\t                    \tShowing " +
-                      _vm._s(_vm.inquiries.from) +
-                      " to " +
-                      _vm._s(_vm.inquiries.to) +
-                      " of total " +
-                      _vm._s(_vm.inquiries.total) +
-                      "\t                    \t\n\t\t                    "
-                  )
-                ])
-              ],
-              1
-            )
-          ])
-        ])
-      ])
+                        _vm._v(
+                          "  |                               \n                              \t"
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "subscribe",
+                            attrs: { href: "" },
+                            on: {
+                              click: [
+                                function($event) {
+                                  $event.preventDefault()
+                                },
+                                function($event) {
+                                  _vm.delet(inq.id)
+                                }
+                              ]
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                             \t\tDelete\n                             \t"
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2, true)
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("vuepagination", {
+            attrs: { input: _vm.inquiries },
+            on: { pagechange: _vm.paginationdata }
+          })
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     _c(
@@ -86887,27 +86945,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x_title" }, [
-      _c("h2", [
-        _c("i", { staticClass: "fa fa-align-left" }),
-        _vm._v(" Inquiry "),
-        _c("small"),
-        _vm._v(" "),
-        _c("span", { staticClass: "search" }, [
-          _c("i", { staticClass: "fa fa-search" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "form-line" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Search here..." }
-              })
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "clearfix" })
+    return _c("span", { staticClass: "panel-title" }, [
+      _c("i", { staticClass: "fa fa-align-left" }),
+      _vm._v("\n\t               Inquiry "),
+      _c("small")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "search-icon" }, [
+      _c("i", { staticClass: "fa fa-search", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {
@@ -87097,7 +87146,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "modal fade",
+        staticClass: "modal fade modal-right-slide",
         staticStyle: { display: "none" },
         attrs: { id: "inqview", tabindex: "-1", role: "dialog" }
       },
@@ -87108,6 +87157,15 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-content" }, [
               _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "close",
+                    attrs: { type: "button", "data-dismiss": "modal" }
+                  },
+                  [_vm._v("×")]
+                ),
+                _vm._v(" "),
                 _c(
                   "h4",
                   {
@@ -87180,16 +87238,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary btn-sm waves-effect",
           attrs: { type: "button", "data-dismiss": "modal" }
         },
-        [_vm._v("Send")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-dark btn-sm waves-effect",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
+        [_vm._v("Send Response")]
       )
     ])
   }
@@ -93416,7 +93465,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.action_buttons{\n  margin-top: -10px !important;\na{\n    margin-left: 10px !important;\n}\n}\n.modal-header i{\n  margin-left: 10px !important;\n  margin-top: -10px !important;\n.action_buttons{\n    margin-top: -10px !important;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.action_buttons{\n  margin-top: -10px !important;\na{\n    margin-left: 10px !important;\n}\n}\n.modal-header i{\n  margin-left: 10px !important;\n  margin-top: -10px !important;\n.action_buttons{\n    margin-top: -10px !important;\n}\n}\n.modal-body{\n  background-color: #fff !important;\n}\n\n", ""]);
 
 // exports
 
@@ -93427,14 +93476,6 @@ exports.push([module.i, "\n.action_buttons{\n  margin-top: -10px !important;\na{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -93830,9 +93871,7 @@ var render = function() {
                       ])
                     ])
                   ])
-                ]),
-                _vm._v(" "),
-                _vm._m(3)
+                ])
               ]
             )
           ])
@@ -93925,37 +93964,6 @@ var staticRenderFns = [
           )
         ]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row no-print" }, [
-      _c("div", { staticClass: "col-xs-12" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-default",
-            attrs: { onclick: "javascript.printinvoice();" }
-          },
-          [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print")]
-        ),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-success pull-right" }, [
-          _c("i", { staticClass: "fa fa-credit-card" }),
-          _vm._v(" Submit Payment")
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary pull-right",
-            staticStyle: { "margin-right": "5px" }
-          },
-          [_c("i", { staticClass: "fa fa-download" }), _vm._v(" Generate PDF")]
-        )
-      ])
     ])
   }
 ]
@@ -95017,6 +95025,13 @@ exports.push([module.i, "\n.fa{\r\n\tmargin-right:5px !important;\n}\n.fa-inr{\r
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -95148,20 +95163,19 @@ var moment = __webpack_require__(0);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['regno', 'gstno', 'gst', 'due_date'],
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       dt: 'all',
       filter: '',
       invoices: {},
+      client: {},
       clientdetail: {},
       invoicedetail: {},
       success: '',
       errors: '',
-      moment: moment,
-      client: '',
-      invoice: '',
-      items: '',
-      invoicetest: {}
-    };
+      moment: moment
+    }, _defineProperty(_ref, 'client', ''), _defineProperty(_ref, 'invoice', ''), _defineProperty(_ref, 'items', ''), _defineProperty(_ref, 'invoicetest', {}), _ref;
   },
 
   watch: {
@@ -95169,24 +95183,27 @@ var moment = __webpack_require__(0);
       this.paginationdata();
     }
   },
-  computed: {
-    servicecount: function servicecount() {}
-  },
   methods: {
     paginationdata: function paginationdata(page) {
       var _this = this;
 
+      NProgress.start();
       if (typeof page === 'undefined') {
         page = 1;
       }
       axios.get('quotation/create?page=' + page, { params: { filter: this.filter } }).then(function (response) {
         //console.log(response.data)
         _this.invoices = response.data;
+        NProgress.done();
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
       });
     },
+    clientrender: function clientrender(client) {
+      this.client = client;
+    },
     refreshRecord: function refreshRecord(record) {
+      this.paginationdata();
       this.invoices = record.data;
     },
     closesearch: function closesearch() {
@@ -95249,7 +95266,7 @@ var moment = __webpack_require__(0);
       });
     },
     sendreminder: function sendreminder(id) {
-      Console.log('Reminder');
+      console.log('Reminder');
     },
     invoicedelete: function invoicedelete(id) {
       var _this6 = this;
@@ -95283,9 +95300,6 @@ var moment = __webpack_require__(0);
     }
   },
   created: function created() {
-    /*axios.get('invoice/create')
-    .then((response) => {this.invoices=response.data})//this.appointments=response.data
-    .catch((error) => this.errors = error)	*/
     this.paginationdata();
   }
 });
@@ -95389,7 +95403,27 @@ var render = function() {
                       : _vm._e(),
                     _vm._v(" "),
                     _c("span", { staticClass: "title" }, [
-                      _vm._v(_vm._s(invoice.client.client_name))
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "#editclient",
+                            "data-toggle": "modal"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.clientrender(invoice.client)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                          " +
+                              _vm._s(invoice.client.client_name) +
+                              "\n                        "
+                          )
+                        ]
+                      )
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "label label-success" }, [
@@ -95566,6 +95600,11 @@ var render = function() {
             clt: _vm.client
           },
           on: { recordupdated: _vm.refreshRecord }
+        }),
+        _vm._v(" "),
+        _c("editclient", {
+          attrs: { selClient: _vm.client },
+          on: { recordupdated: _vm.refreshRecord }
         })
       ],
       1
@@ -95627,7 +95666,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(258)
+  __webpack_require__(493)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
@@ -95672,46 +95711,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 258 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(259);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("79b3bc21", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f51fd7d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newquotation.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f51fd7d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newquotation.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 259 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.fa-inr {\n  margin-left: 5px;\n}\n.vdp-datepicker input {\n  background-color: #fff !important;\n  width: 100% !important;\n  border-radius: 1px !important;\n  font-size: 12px !important;\n  height: 28px;\n  border: 1px solid #aaa;\n  margin-bottom: 5px !important;\n}\n.single-select-wrapper {\n  margin-bottom: 0px !important;\n}\n.single-select-wrapper input {\n    border-radius: 1px !important;\n    border: 1px solid #ddd;\n    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n    background-color: #fff;\n    color: #32373c;\n    outline: none;\n    -webkit-transition: 0.05s border-color ease-in-out;\n    transition: 0.05s border-color ease-in-out;\n    font-size: 12px;\n}\n.single-select-wrapper input:focus {\n    border-color: #5b9dd9;\n}\n.single-select-wrapper label {\n    margin-top: 10px;\n}\n.box-title {\n  font-size: 14px;\n  font-weight: 550;\n  padding: 5px 10px;\n  margin: 0;\n  border: 1px solid grey;\n}\n.add-new-item {\n  color: #1f91f3;\n  font-weight: 500;\n}\n.table-data {\n  color: #1f91f3;\n}\n.error-message {\n  margin-top: -5px;\n}\n\n/* .select2-container--default .select2-selection--single,\n.select2-container--default .select2-selection--multiple {\n    background-color: #fff;\n    border: 1px solid #ccc !important;\n    border-radius: 0;\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\n    color: #000;\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\n    margin-top: 2px;\n    border: none;\n    border-radius: 0;\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\n    border: 1px solid #ccc\n}\n\n.select2-selection__choice{\n\tbackground-color: #3F5367 !important;\n\tcolor: #fff;\n\tborder-radius: 3px !important;\n\t-webkit-tap-highlight-color: transparent;\n    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n    letter-spacing: .5px;\n    transition: .2s ease-out;\n}\n.select2-container{\n\tborder-radius: 1px solid #fff !important;\n}\n\n\n */\n.mb10 {\n  margin-bottom: 10px;\n}\n.mt20 {\n  margin-top: -20px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 258 */,
+/* 259 */,
 /* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -96606,7 +96607,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.action_buttons{\n  margin-top: -10px !important;\na{\n    margin-left: 10px !important;\n}\n}\n.modal-header i{\n  margin-left: 10px !important;\n  margin-top: -10px !important;\n.action_buttons{\n    margin-top: -10px !important;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.action_buttons{\n  margin-top: -10px !important;\na{\n    margin-left: 10px !important;\n}\n}\n.modal-header i{\n  margin-left: 10px !important;\n  margin-top: -10px !important;\n.action_buttons{\n    margin-top: -10px !important;\n}\n}\n.modal-body{\n  background-color: #fff !important;\n}\n\n", ""]);
 
 // exports
 
@@ -97236,7 +97237,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(268)
+  __webpack_require__(491)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
@@ -97281,46 +97282,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 268 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(269);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("98716f10", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69639281\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editquotation.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69639281\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editquotation.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 269 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.fa-inr {\n  margin-left: 5px;\n}\n.vdp-datepicker input {\n  background-color: #fff !important;\n  width: 100% !important;\n  border-radius: 1px !important;\n  font-size: 12px !important;\n  height: 28px;\n  border: 1px solid #aaa;\n  margin-bottom: 5px !important;\n}\n.single-select-wrapper {\n  margin-bottom: 0px !important;\n}\n.single-select-wrapper input {\n    border-radius: 1px !important;\n    border: 1px solid #ddd;\n    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n    background-color: #fff;\n    color: #32373c;\n    outline: none;\n    -webkit-transition: 0.05s border-color ease-in-out;\n    transition: 0.05s border-color ease-in-out;\n    font-size: 12px;\n}\n.single-select-wrapper input:focus {\n    border-color: #5b9dd9;\n}\n.single-select-wrapper label {\n    margin-top: 10px;\n}\n.box-title {\n  font-size: 14px;\n  font-weight: 550;\n  padding: 5px 10px;\n  margin: 0;\n  border: 1px solid grey;\n}\n.add-new-item {\n  color: #1f91f3;\n  font-weight: 500;\n}\n.table-data {\n  color: #1f91f3;\n}\n.error-message {\n  margin-top: -5px;\n}\n\n/* .select2-container--default .select2-selection--single,\n.select2-container--default .select2-selection--multiple {\n    background-color: #fff;\n    border: 1px solid #ccc !important;\n    border-radius: 0;\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\n    color: #000;\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\n    margin-top: 2px;\n    border: none;\n    border-radius: 0;\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\n    border: 1px solid #ccc\n}\n\n.select2-selection__choice{\n\tbackground-color: #3F5367 !important;\n\tcolor: #fff;\n\tborder-radius: 3px !important;\n\t-webkit-tap-highlight-color: transparent;\n    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n    letter-spacing: .5px;\n    transition: .2s ease-out;\n}\n.select2-container{\n\tborder-radius: 1px solid #fff !important;\n}\n\n\n */\n.mb10 {\n  margin-bottom: 10px;\n}\n.mt20 {\n  margin-top: -20px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 268 */,
+/* 269 */,
 /* 270 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -113427,6 +113390,97 @@ var CURRENT_URL = window.location.href.split('#')[0].split('?')[0],
 $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('active');
 $SIDEBAR_MENU.find('a[href="' + CURRENT_URL + '"]').parents('.pcoded-hasmenu').addClass('pcoded-trigger');
 //alert($SIDEBAR_MENU);
+
+/***/ }),
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(492);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("50625309", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69639281\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editquotation.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-69639281\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./editquotation.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 492 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.fa-inr{\n\tmargin-left: 5px;\n}\n.vdp-datepicker input{\n\t\n\t\tbackground-color: #fff !important;\n\t\twidth: 100% !important;\n\t\tborder-radius: 1px !important;\n\t\tfont-size: 12px !important;\n\t\theight: 28px;\n\t\tborder: 1px solid #aaa;\n\t\tmargin-bottom: 5px !important;\n\t\t//border-bottom: 1px solid #aaa\t !important;\n}\n.single-select-wrapper{\n\tmargin-bottom:0px !important;\ninput{\n\t\t//border: none;\n\t\t//border-bottom: 1px solid #aaa\t !important;\n\t\tborder-radius: 1px !important;\n\t\tborder: 1px solid #ddd;\n\t\t-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n\t\t        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n\t\tbackground-color: #fff;\n\t\tcolor: #32373c;\n\t\toutline: none;\n\t\t-webkit-transition: 0.05s border-color ease-in-out;\n\t\ttransition: 0.05s border-color ease-in-out;\n\t\tfont-size: 12px;\n}\ninput:focus{\n\t\tborder-color: #5b9dd9;\n}\nlabel{\n\t\tmargin-top: 10px;\n}\n}\n.box-container{\n}\n.box-title{\n\tfont-size: 14px;\n\tfont-weight: 550 ;\n\tpadding: 5px 10px;\n\tmargin: 0;\n\tborder: 1px solid grey;\n}\n.add-new-item{\n\tcolor: #1f91f3;\n\tfont-weight: 500;\n}\n.table-data{\n\tcolor: #1f91f3;\n}\n.error-message{\n\tmargin-top:-5px;\n}\n/* .select2-container--default .select2-selection--single,\n.select2-container--default .select2-selection--multiple {\n    background-color: #fff;\n    border: 1px solid #ccc !important;\n    border-radius: 0;\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\n    color: #000;\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\n    margin-top: 2px;\n    border: none;\n    border-radius: 0;\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\n    border: 1px solid #ccc\n}\n\n.select2-selection__choice{\n\tbackground-color: #3F5367 !important;\n\tcolor: #fff;\n\tborder-radius: 3px !important;\n\t-webkit-tap-highlight-color: transparent;\n    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n    letter-spacing: .5px;\n    transition: .2s ease-out;\n}\n.select2-container{\n\tborder-radius: 1px solid #fff !important;\n}\n\n\n */\n.mb10{\n \tmargin-bottom: 10px;\n}\n.mt20{\n \tmargin-top: -20px;\n}\n.modal-body{\n \tbackground-color: #fff !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 493 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(494);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("62bab55c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f51fd7d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newquotation.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6f51fd7d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./newquotation.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 494 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.fa-inr{\n\tmargin-left: 5px;\n}\n.vdp-datepicker input{\n\t\n\t\tbackground-color: #fff !important;\n\t\twidth: 100% !important;\n\t\tborder-radius: 1px !important;\n\t\tfont-size: 12px !important;\n\t\theight: 28px;\n\t\tborder: 1px solid #aaa;\n\t\tmargin-bottom: 5px !important;\n\t\t//border-bottom: 1px solid #aaa\t !important;\n}\n.single-select-wrapper{\n\tmargin-bottom:0px !important;\ninput{\n\t\t//border: none;\n\t\t//border-bottom: 1px solid #aaa\t !important;\n\t\tborder-radius: 1px !important;\n\t\tborder: 1px solid #ddd;\n\t\t-webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n\t\t        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);\n\t\tbackground-color: #fff;\n\t\tcolor: #32373c;\n\t\toutline: none;\n\t\t-webkit-transition: 0.05s border-color ease-in-out;\n\t\ttransition: 0.05s border-color ease-in-out;\n\t\tfont-size: 12px;\n}\ninput:focus{\n\t\tborder-color: #5b9dd9;\n}\nlabel{\n\t\tmargin-top: 10px;\n}\n}\n.box-container{\n}\n.box-title{\n\tfont-size: 14px;\n\tfont-weight: 550 ;\n\tpadding: 5px 10px;\n\tmargin: 0;\n\tborder: 1px solid grey;\n}\n.add-new-item{\n\tcolor: #1f91f3;\n\tfont-weight: 500;\n}\n.table-data{\n\tcolor: #1f91f3;\n}\n.error-message{\n\tmargin-top:-5px;\n}\n/* .select2-container--default .select2-selection--single,\n.select2-container--default .select2-selection--multiple {\n    background-color: #fff;\n    border: 1px solid #ccc !important;\n    border-radius: 0;\n    min-height: 30px\n}\n.select2-container--default .select2-selection--single .select2-selection__rendered {\n    color: #000;\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__rendered {\n    padding-top: 3px\n}\n.select2-container--default .select2-selection--single .select2-selection__arrow {\n    height: 30px\n}\n.select2-container--default .select2-selection--multiple .select2-selection__choice,\n.select2-container--default .select2-selection--multiple .select2-selection__clear {\n    margin-top: 2px;\n    border: none;\n    border-radius: 0;\n    padding: 3px 5px\n}\n.select2-container--default.select2-container--focus .select2-selection--multiple {\n    border: 1px solid #ccc\n}\n\n.select2-selection__choice{\n\tbackground-color: #3F5367 !important;\n\tcolor: #fff;\n\tborder-radius: 3px !important;\n\t-webkit-tap-highlight-color: transparent;\n    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);\n    letter-spacing: .5px;\n    transition: .2s ease-out;\n}\n.select2-container{\n\tborder-radius: 1px solid #fff !important;\n}\n\n\n */\n.mb10{\n \tmargin-bottom: 10px;\n}\n.mt20{\n \tmargin-top: -20px;\n}\n.modal-content{\n\tbackground-color: #fff !important;\n}\n.modal-body{\n \tbackground-color: #fff !important;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

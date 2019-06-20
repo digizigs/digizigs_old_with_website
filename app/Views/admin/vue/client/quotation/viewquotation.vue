@@ -269,4 +269,8 @@
     }
   }
 
+  .modal-body{
+    background-color: #fff !important;
+  }
+
 </style>

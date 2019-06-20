@@ -349,7 +349,7 @@
 
 </script>
 
-<style lang="scss">
+<style lan="scss">
 	.fa-inr{
 		margin-left: 5px;
 	}
@@ -457,5 +457,9 @@
 
 	 .mt20{
 	 	margin-top: -20px;
+	 }
+
+	 .modal-body{
+	 	background-color: #fff !important;
 	 }
 </style>

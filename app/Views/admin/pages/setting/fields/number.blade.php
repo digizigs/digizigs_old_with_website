@@ -12,8 +12,8 @@
 
 
 <div class="form-group wp-input">
-    <label for="{{ $field['name'] }}" class="col-sm-2 control-label">{{ $field['label'] }}</label>
-    <div class="col-sm-10">
+    <label for="{{ $field['name'] }}" class="col-sm-3 control-label">{{ $field['label'] }}</label>
+    <div class="col-sm-9 col-xs-12">
         <div class="form-line">
             <input  type="{{ $field['type'] }}" 
        			    name="{{ $field['name'] }}" 

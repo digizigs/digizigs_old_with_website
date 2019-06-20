@@ -46,7 +46,11 @@
                     <div class="panel-heading" >
                       <i v-if="invoice.bill_status == 'paid'" class="fa fa-thumbs-up" aria-hidden="true"></i>
                       <i v-if="invoice.bill_status == 'pending'" class="fa fa-thumbs-down" aria-hidden="true"></i>	                        
-                      <span class="title">{{invoice.client.client_name}}</span>                             
+                      <span class="title">
+                        <a href="#editclient" data-toggle="modal"  @click="clientrender(invoice.client)">
+                          {{invoice.client.client_name}}
+                        </a>
+                      </span>                             
                       
                       
                         <!-- <span v-for="(item) in invoice.invoice_item" class="label label-info label-many" style="margin-right:5px;">
@@ -117,6 +121,7 @@
                           @recordupdated="refreshRecord">
           </editquotation>
           <newquotation :qgst="gst" :qduedate="due_date":invc="invoicedetail" :clt="client" @recordupdated="refreshRecord"></newquotation>
+          <editclient :selClient="client" @recordupdated="refreshRecord"></editclient>
     </div>
 
 	</section>
@@ -132,7 +137,8 @@
 			return{
         dt:'all',
 				filter:'',
-				invoices:{},			
+				invoices:{},
+        client:{},			
 				clientdetail:{},
 				invoicedetail:{},
 				success:'',
@@ -148,16 +154,10 @@
       filter(){
         this.paginationdata()
       }
-
 		},
-    computed:{
-      servicecount(){
-      
-      }
-    },	
 		methods:{
     	paginationdata(page){
-
+        NProgress.start();
         if (typeof page === 'undefined'){
         	page=1;
         } 
@@ -165,11 +165,15 @@
           	.then((response) => {
               //console.log(response.data)
               this.invoices = response.data
+              NProgress.done();
             })
           	.catch(error => this.errors=error.response.data.errors);
     	},
-     
+      clientrender(client){
+        this.client = client
+      },
   	  refreshRecord(record){
+        this.paginationdata()
       	this.invoices=record.data;
     	},
       closesearch(){
@@ -183,7 +187,6 @@
         this.dt = data
         this.filter = data
         //this.paginationdata()
-
       },
     	updateservice(id){
         axios.get('service/'+id+'/edit')
@@ -223,7 +226,7 @@
         .catch(error => this.errors=error.response.data.errors);
       },
       sendreminder(id){
-        Console.log('Reminder')
+        console.log('Reminder')
       },
     	invoicedelete(id){
       	swalWithBootstrapButtons({
@@ -259,9 +262,6 @@
       }
 		},
 		created(){
-			/*axios.get('invoice/create')
-			.then((response) => {this.invoices=response.data})//this.appointments=response.data
-			.catch((error) => this.errors = error)	*/
 			this.paginationdata();	
 		}
 	};

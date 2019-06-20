@@ -16,11 +16,12 @@
   <label for="{{ $field['name'] }}" class="col-sm-3 control-label">{{ $field['label'] }}</label> 
     <div class="col-sm-9 col-xs-12">
       <div class="form-line">
-        <input  type="{{ $field['type'] }}" 
+        <!--input  type="{{ $field['type'] }}" 
                 id="{{ $field['name'] }}" 
                 class="form-control input-sm" 
                 name="{{ $field['name'] }}" 
-                value="{{ old($field['name'], \setting($field['name'])) }}">
+                value="{{ old($field['name'], \setting($field['name'])) }}"-->
+        <textarea  id="{{ $field['name'] }}" class="form-control input-sm" name="{{ $field['name'] }}" rows="10" cols="10">{{ old($field['name'], \setting($field['name'])) }}</textarea>
       </div>
     </div>
 </div>

@@ -8,7 +8,7 @@
   		//box-shadow: 0 5px 20px rgba(0, 0, 0, 0.31) !important;
   		border: none;
 		//box-shadow:0 2px 10px rgba(0, 0, 0, 0.2);
-		background-color: $container_background_color;
+		background-color: #fff;
 		.modal-header{
 			border: none;
 	  		padding: 20px 20px 5px 20px;
@@ -33,12 +33,12 @@
   		.modal-body {
 		    color: #777;
 		    padding: 15px 25px;
-		    background-color: $container_background_color;
+		    background-color: #fff;
 		}
 
 		.modal-footer {
 			border: none;
-			background-color: $container_background_color; 
+			background-color: #fff; 
 		} 
 	}
 	
