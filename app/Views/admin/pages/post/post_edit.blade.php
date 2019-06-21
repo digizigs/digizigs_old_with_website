@@ -70,9 +70,9 @@
 
                            <div class="header">
                               <div class="x_title">
-                                 <h2><i class="fa fa-align-left"></i> Options <small>Post Options</small></h2>
-                                    <button class="btn btn-dark btn-sm pull-right">Update</button>
-                                    <div class="clearfix"></div>
+                                  <h2>Post Options<small></small></h2>
+                                  <button class="btn btn-dark btn-sm pull-right">Update</button>
+                                  <div class="clearfix"></div>
                               </div>
                            </div>
 

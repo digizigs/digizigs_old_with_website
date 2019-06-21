@@ -22,7 +22,8 @@ class Category extends Model
     //Delete
     public function posts()
     {
-        return $this->belongsToMany('App\Models\Post','post_category');
+        return $this->belongsToMany($this,'post_category');
     }
 
+   
 }

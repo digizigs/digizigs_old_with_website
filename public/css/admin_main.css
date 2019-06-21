@@ -8596,6 +8596,21 @@ button.close {
 
 .wpfont {
   color: #008EC2;
+  font-weight: 600;
+}
+
+.wpfont a {
+  color: #008EC2;
+  font-weight: 600;
+}
+
+.wpfont a:hover {
+  color: #0073AA;
+  font-weight: 600;
+}
+
+.ml-20 {
+  margin-left: 20px;
 }
 
 .x_title h2,
@@ -10672,8 +10687,10 @@ ul.quick-list li {
   padding-left: 10px;
   list-style: none;
   margin: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   padding-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 ul.quick-list li i {
@@ -14325,6 +14342,8 @@ footer a {
   border-radius: 1px !important;
   background-color: #FFFFFF;
   border-bottom: 1px solid #F1F1F1;
+  margin: 0px !important;
+  margin-bottom: 8px !important;
 }
 
 .panel-dz .panel-heading {
@@ -14338,13 +14357,13 @@ footer a {
   font-weight: 600;
 }
 
-.panel-dz .panel-heading .fa {
+.panel-dz .panel-heading .fa-caret-down {
   margin-top: 5px;
   -webkit-transition: .3s transform ease-in-out;
   transition: .3s transform ease-in-out;
 }
 
-.panel-dz .panel-heading.active .fa {
+.panel-dz .panel-heading.active .fa-caret-down {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }

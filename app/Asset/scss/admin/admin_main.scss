@@ -28,8 +28,20 @@ $btn_dark_hover:#0073AA;
 
 .wpfont{
 	color: $wpfontcolor;
+	font-weight: 600;
+	a{
+		color: $wpfontcolor;
+		font-weight: 600;
+	}
+	a:hover{
+		color: $wpfontcolor_hover;
+		font-weight: 600;
+	}
 }
 
+.ml-20{
+	margin-left: 20px;
+}
 //Variable and preset
 //@import '../app/variables';
 //@import '../app/presets';

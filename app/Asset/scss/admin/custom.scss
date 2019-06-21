@@ -620,6 +620,8 @@ footer {
   border-radius:1px !important;
   background-color: #FFFFFF;
   border-bottom:1px solid #F1F1F1;
+  margin: 0px !important;
+  margin-bottom: 8px !important;
 
   .panel-heading{
     background-color: #FFFFFF;
@@ -634,7 +636,7 @@ footer {
     
     
     
-    .fa{
+    .fa-caret-down{
       margin-top:5px;
       transition: .3s transform ease-in-out;
     }
@@ -642,7 +644,7 @@ footer {
 
   }
   .panel-heading.active{
-    .fa{
+    .fa-caret-down{
       //transition: .3s transform ease-in-out;
       transform: rotate(180deg);
     }

@@ -3,11 +3,9 @@
 		<div class="x_title">
 			<span class="panel-title">
 	            <i class="fa fa-align-left hidden-xs"></i>
-	            Title
+	            Web Blocks
 	         </span>
-	         <a href="#addservices" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
-	            <i class="fa fa-plus" aria-hidden="true"></i> Action
-	         </a>
+	         
 	         <span class="x-title-option">
 	            <ul>
 	               <li>
@@ -16,6 +14,9 @@
 	                     <input type="text">
 	                     <span class="close-icon" ><i class="fa fa-times" aria-hidden="true"></i></span>
 	                  </span>
+	               </li>
+	               <li>
+	               		<a href="#newwebblock" class="wpfont" data-toggle="modal">Create New</a>
 	               </li>
 	            </ul>
 	         </span>
@@ -26,7 +27,7 @@
 		</div>
 
 		<div id="modal">
-					
+			<newwebblock @recordupdated="refreshRecord"></newwebblock>	
 		</div>
 
 
@@ -44,7 +45,9 @@
 
 		},
 		methods:{
-		
+			refreshRecord(){
+
+			}
 		},
 		created(){
 		

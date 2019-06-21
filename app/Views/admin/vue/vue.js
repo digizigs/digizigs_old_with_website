@@ -109,6 +109,12 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 
 //Posts
 
+
+
+//Web Block
+Vue.component('webblock', require('./webblock/WebBlock.vue'));
+Vue.component('newwebblock', require('./webblock/NewWebBlock.vue'));
+
 //Category
 Vue.component('category', require('./category/Category.vue'));
 

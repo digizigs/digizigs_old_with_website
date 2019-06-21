@@ -39,14 +39,14 @@ class CategoryController extends Controller
   
     public function create()
     {
-        $categories = Category::with('child')->where('parent_id',0)->get();
+        $categories = Category::with('child','posts')->where('parent_id',0)->get();
         return request()->json(200,$categories);
     }
 
    
     public function store(Request $request)
     {
-        //dd($request->all());
+        
 
         $data = Validator::make($request->all(),[
             'category_name'=>'required|max:255',   
@@ -54,15 +54,25 @@ class CategoryController extends Controller
             'category_name.required' => 'Category name is required',
         ])->Validate();
 
+        if($request->category_parent == ''){
+            $parent_id = 0;
+            
+        }else{
+            $parent_id = $request->category_parent;
+        }
+        
+
         $category = new Category;
-        $category->parent_id = $request->parent_id;
+        $category->parent_id = $parent_id;
         $category->name = $request->category_name;
         $category->slug = str_slug( $request->category_name );
-        
         $cat_save = $category->save();
 
+        
         if($cat_save){
             return redirect()->route('category.index')->with('success', 'Category added successfully');
+            //$categories = Category::with('child','posts')->where('parent_id',0)->get();
+            //return request()->json(200,$categories);
         }
 
     }
@@ -74,12 +84,12 @@ class CategoryController extends Controller
     }
 
    
-    public function edit($id)
-    {   
+    public function edit($id) {   
 
         $category = Category::find($id);
         $parent = Category::find($category->parent_id);
         $categories = Category::with('child')->where('parent_id',0)->get();
+        //dd($parent);
         return view('admin.pages.category.category_edit',compact('category','parent','categories'));
     }
 
