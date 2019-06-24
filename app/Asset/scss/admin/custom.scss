@@ -622,6 +622,7 @@ footer {
   border-bottom:1px solid #F1F1F1;
   margin: 0px !important;
   margin-bottom: 8px !important;
+  padding: 0 !important;
 
   .panel-heading{
     background-color: #FFFFFF;
@@ -654,6 +655,12 @@ footer {
     border-top:1px solid #F1F1F1;
     background-color: #FFFFFF;
     padding: 6px 8px !important;
+
+    ul{
+      li{
+        padding: 5px 0px;
+      }
+    }
   }
 
   .panel-body.open{

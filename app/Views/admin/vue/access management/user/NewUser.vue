@@ -87,10 +87,12 @@
 
                            
                   		</div>
+
                   		<div class="form-group">
 	                      <button class="btn btn-dark btn-sm pull-right" @click="adduser" >Add User</button>
 	                    </div>
                   </form>
+                  
                 </div>
             </div>
         </div>

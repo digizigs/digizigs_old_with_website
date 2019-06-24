@@ -42,6 +42,8 @@ $btn_dark_hover:#0073AA;
 .ml-20{
 	margin-left: 20px;
 }
+
+.red{ color: red }
 //Variable and preset
 //@import '../app/variables';
 //@import '../app/presets';
@@ -60,7 +62,8 @@ $btn_dark_hover:#0073AA;
 @import './snippets/material/panel-group'; 
 @import './snippets/material/list-group'; 
 @import './snippets/material/modal'; 
-
+@import './snippets/slidemodal'; 
+@import './typography'; 
 
 //Variables
 $admin_primary_color:#3F5367;

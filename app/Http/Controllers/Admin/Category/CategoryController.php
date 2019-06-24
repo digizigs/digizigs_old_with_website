@@ -39,7 +39,8 @@ class CategoryController extends Controller
   
     public function create()
     {
-        $categories = Category::with('child','posts')->where('parent_id',0)->get();
+        //$categories = Category::orderby('created_at','desc')->with('child','posts')->where('parent_id',0)->get();
+        $categories = Category::where('parent_id', 0)->orderby('created_at','desc')->with('child','posts')->get();
         return request()->json(200,$categories);
     }
 
@@ -70,9 +71,9 @@ class CategoryController extends Controller
 
         
         if($cat_save){
-            return redirect()->route('category.index')->with('success', 'Category added successfully');
-            //$categories = Category::with('child','posts')->where('parent_id',0)->get();
-            //return request()->json(200,$categories);
+            //return redirect()->route('category.index')->with('success', 'Category added successfully');
+            $categories = Category::with('child','posts')->where('parent_id',0)->orderby('created_at','desc')->get();
+            return request()->json(200,$categories);
         }
 
     }

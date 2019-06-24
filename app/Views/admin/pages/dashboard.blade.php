@@ -62,10 +62,7 @@
                         </div>
                   </div>
                </div>
-                <br>
-               {{setting('ga_view_id')}}
-               <br>
-               {{setting('ga_service_json')}}
+                
            </div>
          </div>
       </div>

@@ -8613,6 +8613,10 @@ button.close {
   margin-left: 20px;
 }
 
+.red {
+  color: red;
+}
+
 .x_title h2,
 table.tile_info td p {
   white-space: nowrap;
@@ -14344,6 +14348,7 @@ footer a {
   border-bottom: 1px solid #F1F1F1;
   margin: 0px !important;
   margin-bottom: 8px !important;
+  padding: 0 !important;
 }
 
 .panel-dz .panel-heading {
@@ -14372,6 +14377,10 @@ footer a {
   border-top: 1px solid #F1F1F1;
   background-color: #FFFFFF;
   padding: 6px 8px !important;
+}
+
+.panel-dz .panel-body ul li {
+  padding: 5px 0px;
 }
 
 .panel-dz .panel-body.open {
@@ -14463,7 +14472,7 @@ footer a {
 
 .menu_section .side-menu li a {
   font-size: 13px !important;
-  padding: 7px 7px;
+  padding: 10px 8px;
   font-weight: 500 !important;
 }
 
@@ -16636,6 +16645,100 @@ footer a {
 .modal .modal-content .modal-footer {
   border: none;
   background-color: #fff;
+}
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  -webkit-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+
+.modal.right.w80 .modal-dialog {
+  width: calc(100% - 230px);
+}
+
+@media (max-width: 768px) {
+  .modal.right.w80 .modal-dialog {
+    width: 100%;
+  }
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+  padding: 15px 15px 80px;
+}
+
+/*Left*/
+
+.modal.left.fade .modal-dialog {
+  left: -50%;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.w80.fade .modal-dialog {
+  left: -80%;
+}
+
+@media (max-width: 768px) {
+  .modal.left.w80.fade .modal-dialog {
+    left: -100%;
+  }
+}
+
+/*Right*/
+
+.modal.right.fade .modal-dialog {
+  right: -50%;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.w80.fade .modal-dialog {
+  right: -80%;
+}
+
+.modal.right.fade.in .modal-dialog {
+  right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+
+.modal-content {
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header {
+  border-bottom-color: #EEEEEE;
+  background-color: #FAFAFA;
+}
+
+/* ----- v CAN BE DELETED v ----- */
+
+.list-title {
+  color: #008EC2;
+  font-weight: 600;
+}
+
+.m20 {
+  margin: 20px;
 }
 
 .is-invalid {

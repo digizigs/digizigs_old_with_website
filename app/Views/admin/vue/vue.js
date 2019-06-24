@@ -52,6 +52,12 @@ Vue.component('multiselect', Multiselect)
 import vueMultiSelect from 'vue-multi-select'
 //import 'vue-multi-select/dist/lib/vue-multi-select.min.css'
 
+//ck editor
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use( CKEditor );
+
+import VTooltip from 'v-tooltip'
+Vue.use(VTooltip)
 
 //Posts
 //Vue.component('posts', require('./components/post/PostLists.vue'));
@@ -114,6 +120,8 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 //Web Block
 Vue.component('webblock', require('./webblock/WebBlock.vue'));
 Vue.component('newwebblock', require('./webblock/NewWebBlock.vue'));
+Vue.component('viewpost', require('./webblock/ViewPost.vue'));
+Vue.component('newpost', require('./webblock/NewPost.vue'));
 
 //Category
 Vue.component('category', require('./category/Category.vue'));
