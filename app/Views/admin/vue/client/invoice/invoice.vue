@@ -131,7 +131,7 @@
 </template>
 
 <script type="text/javascript">
-  	Vue.component('pagination', require('laravel-vue-pagination'));
+  Vue.component('pagination', require('laravel-vue-pagination'));
 	var moment = require('moment');
 
 	export default{

@@ -10,15 +10,27 @@
 	      <span class="x-title-option">
 	            <ul>
 	            	<li>
-	               	<a href="#newwebblock" class="option-item wpfont" data-toggle="modal">New WebBlock</a>
-	               </li>
-	               <li>
+	               		<a href="#newwebblock" class="option-item wpfont" data-toggle="modal">New Block</a>
+	               	</li>
+	               	<li>
+	               		<a href="" class="option-item wpfont">All</a>
+	               	</li>
+	               	<li>
+	               		<a href="" class="option-item wpfont">Published</a>
+	               	</li>
+	               	<li>
+	               		<a href="" class="option-item wpfont">Draft</a>
+	               	</li>
+	               	<li>
+	               		<a href="" class="option-item wpfont">Trash</a>
+	               	</li>
+	               	<li>
 	                  <span id="x-title-search" class="title-searchs x-title-search c">
 	                     <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
 	                     <input type="text">
 	                     <span class="close-icon" ><i class="fa fa-times" aria-hidden="true"></i></span>
 	                  </span>
-	               </li>	               
+	               	</li>	               
 	            </ul>
 	      </span>
 		</div>
@@ -33,7 +45,7 @@
                	</a>
             	</span>
             	<span class="action-text">
-               	<a href="#newpost" data-toggle="modal" @click="blockname(block.slug)">
+               	<a href="#newpost" data-toggle="modal" @click="blockname(block)">
                      <i class="fa fa-plus" aria-hidden="true" ></i>
                   </a>
                	<a href="">
@@ -121,13 +133,13 @@
 
 	          axios.delete('webblock/'+id)
 	          .then(response =>{
-	          	console.log(response.data)
+	          	//console.log(response.data)
 	            this.blocks=response.data;
 	          })
 	          .catch((error) => {
-	            console.log(response.data);
-	                  this.errors=error.response.data.errors;
-	                  this.success='';                
+	            	//console.log(response.data);
+	                this.errors=error.response.data.errors;
+	                this.success='';                
 	            });
 
 	          toast({
@@ -138,16 +150,16 @@
 	        })
 			},
 			deletepost(id){
-				console.log(id)
+				//console.log(id)
 			},
-			blockname(slug){
-				this.block = slug
+			blockname(block){
+				this.block = block
 			}
 		},
 		mounted(){
 			axios.get('webblock/create')
 			.then((response) => {
-					console.log(response.data)
+					//console.log(response.data)
 					this.blocks=response.data
 				})
 			.catch((error) => console.log(error))

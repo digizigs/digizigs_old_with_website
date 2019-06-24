@@ -6,7 +6,7 @@
         	<!--Modal Header-->
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
-            <h4 class="modal-title" id="defaultModalLabel">New Post ({{block}})</h4>
+            <h4 class="modal-title" id="defaultModalLabel">New Post ({{block.name}})</h4>
           </div>
           <!--Modal Header-->
           
@@ -15,105 +15,111 @@
             
             <div class="row">
               
-              <div class="col-md-8 col-xs-12">
-                
-                <div class="form-group wp-input">
-                   <div class="form-line">
-                      <label class="form-label">Post Title</label>
-                      <input type="text" class="form-control input-sm" v-model="post.title"> 
-                   </div>
-                </div>
+              <form @submit="addpost" enctype="multipart/form-data">
 
-                <div class="form-group wp-input">
-                   <div class="form-line">
-                      <label class="form-label">Post Description</label>
-                      <input type="text" class="form-control input-sm" v-model="post.description">
-                   </div>
-                </div>
+                  <div class="col-md-8 col-xs-12">
 
-                <div class="form-group wp-input">
-                    <label for="editor1">Post Content</label>
-                    <ckeditor :editor="editor" v-model="post.body" :config="editorConfig"></ckeditor>                        
-                </div>
-
-
-              </div>
-
-              <div class="col-md-4 col-xs-12">
-                
-              
-
-                <div class="mat-card">
-                  <div class="card-header">
-                    <h5>Status & Visiblity</h5>
-                    <button class="btn btn-dark btn-sm pull-right btn-publish">Publish</button>
-                  </div>
-                  <div class="card-block">
-                    <div class="wp-input radio">
-                        <input name="status" type="radio" id="radio_1" checked="" value="published" v-model="post.status" v-bind:value="draft">
-                        <label for="radio_1">Published</label>
-                        <input name="status" type="radio" id="radio_2" value="draft" v-model="post.status">
-                        <label for="radio_2">Draft</label>
+                     <div class="form-group wp-input">
+                       <div class="form-line" v-bind:class="{ 'form-invalid': titleerror }">
+                          <label class="form-label">Post Title</label>
+                          <input type="text" class="form-control input-sm" v-model="post.title">
+                          <small v-if="this.errors.errors">{{this.errors.errors.title[0]}}</small> 
+                       </div>
                      </div>
-                  </div>
-                </div>
 
-                <div class="mat-card pb10">
-                  <div class="card-header">
-                    <h5>Catagories</h5>
-                  </div>
-                  <div class="card-block">
-                    <multiselect  v-model="value" 
-                                        tag-placeholder="Add this as new tag" 
-                                        placeholder="Select Category" 
-                                        label="name"
-                                        track-by="id"                                      
-                                        :options="options" 
-                                        :multiple="true" 
-                                        :taggable="false"
-                                        @input="updateSelected">    
-                                   </multiselect>
-                  </div>
-                </div>
+                     <div class="form-group wp-input">
+                       <div class="form-line">
+                          <label class="form-label">Post Description</label>
+                          <input type="text" class="form-control input-sm" v-model="post.description">
+                       </div>
+                     </div>
 
-                <div class="mat-card pb10">
-                  <div class="card-header">
-                    <h5>Tags</h5>
+                     <div class="form-group wp-input">
+                        <label for="editor1">Post Content</label>
+                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig"></ckeditor>                        
+                     </div>
+
                   </div>
-                  <div class="card-block">
-                    <multiselect  v-model="value" 
-                                        tag-placeholder="Add this as new tag" 
-                                        placeholder="Select or Add tags" 
-                                        label="name"
-                                        track-by="id"                                      
-                                        :options="tags" 
-                                        :multiple="true" 
-                                        :taggable="true"
-                                        @input="updateSelected" 
-                                        @tag="addTag">    
-                                   </multiselect>
+
+                  <div class="col-md-4 col-xs-12">
+                  
+                     <div class="mat-card">
+                      <div class="card-header">
+                        <h5>Status & Visiblity</h5>
+                        <button class="btn btn-dark btn-sm pull-right btn-publish">{{ post.status|capitalize}}</button>               
+                      </div>
+                      <div class="card-block">
+                        <div class="wp-input radio">
+                            <input type="radio" id="radio_1" checked="" value="publish" v-model="post.status" v-on:change="radio">
+                            <label for="radio_1">Published</label>
+                            <input type="radio" id="radio_2" value="draft" v-model="post.status" v-on:change="radio">
+                            <label for="radio_2">Draft</label>
+                         </div>
+                      </div>
+                     </div>
+
+                     <div class="mat-card pb10">
+                      <div class="card-header">
+                        <h5>Catagories</h5>
+                      </div>
+                      <div class="card-block">
+                        <multiselect  v-model="catvalue" 
+                                      placeholder="Select Category" 
+                                      label="name"
+                                      track-by="id"
+                                      openDirection="top"
+                                      :max-height="150"
+                                      :hideSelected="true"                                      
+                                      :options="categories" 
+                                      :multiple="true" 
+                                      :taggable="false">    
+                        </multiselect>
+                      </div>
+                     </div>
+
+                     <div class="mat-card pb10">
+                      <div class="card-header">
+                        <h5>Tags</h5>
+                      </div>
+                      <div class="card-block">
+                        <multiselect  v-model="tagvalue" 
+                                      tag-placeholder="Press enter to create a tag" 
+                                      placeholder="Select or Add tags" 
+                                      label="name"
+                                      track-by="id"
+                                      openDirection="top"                                      
+                                      :options="tags" 
+                                      :multiple="true" 
+                                      :taggable="true" 
+                                      @tag="addTag">    
+                        </multiselect>
+                      </div>
+                     </div>
+
+                     <div class="mat-card">
+                      <div class="card-header">
+                        <h5>Feature Image</h5>
+                      </div>
+                      <div class="card-block ">
+
+                        <div class="avatar-preview imgUp img-thumbnail form-control" style="margin:auto;">                                                
+                          
+                        </div>
+                        <label class="btn btn-dark btn-sm form-control" style="margin-top: 20px;">
+                           Browse Image
+                           <input type="file" 
+                                  id="imageUpload" 
+                                  class="uploadFile img" 
+                                  v-on:change="onImageChange" 
+                                  style="width: 0px;height: 0px;overflow: hidden;"
+                                  >
+                        </label>             
+                      </div>
+                     </div>
+
                   </div>
-                </div>
-
-                <div class="mat-card">
-                  <div class="card-header">
-                    <h5>Feature Image</h5>
-                  </div>
-                  <div class="card-block ">
-
-                    <div class="avatar-preview imgUp img-thumbnail form-control" style="margin:auto;">                                                
-                      
-                    </div>
-                    <label class="btn btn-dark btn-sm form-control" style="margin-top: 20px;">
-                       Browse Image
-                       <input type="file" id="imageUpload" class="uploadFile img" style="width: 0px;height: 0px;overflow: hidden;">
-                    </label>             
-                  </div>
-                </div>
-
-
-              </div>
-
+               
+               </form>
 
 
             </div>
@@ -133,43 +139,103 @@
 
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+  Vue.filter('capitalize', function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+  })
+
 	export default{
     props:['block'],
 		data(){
 			return{
-        submitbutton:'',
-        editor: ClassicEditor,
-        editorData: '',
-        editorHeight:'500px',
-        editorConfig: {},
-        value: null,
-        options: [{"id":4,"name":"admin","description":"sdsdsd","guard_name":"web","created_at":"2019-06-17 22:10:48","updated_at":"2019-06-18 23:22:34"},{"id":3,"name":"new role","description":"asddadds","guard_name":"web","created_at":"2019-06-17 22:10:40","updated_at":"2019-06-18 23:29:00"},{"id":2,"name":"Test role","description":"sasdadasdaad","guard_name":"web","created_at":"2019-06-17 22:10:31","updated_at":"2019-06-18 23:35:00"},{"id":1,"name":"superadmin","description":"f","guard_name":"web","created_at":"2019-06-03 20:49:10","updated_at":"2019-06-18 23:26:38"}],
-        tags:[],
-        post:{}
+            titleerror:false,
+            submitbutton:'Publish',
+            editor: ClassicEditor,
+            editorData: '',
+            editorHeight:'500px',
+            editorConfig: {},
+            catvalue: [],
+            tagvalue: [],
+            categories:[],
+            tags:[],
+            post:{'status':'publish','categories':[],'tags':[]},
+            errors:{}
 
 			}
 		},
 		watch:{
-
+      block(){
+         if(this.block !== null){
+            this.post.categories = [this.block.id]
+            console.log(this.block.id)
+         }
+         axios.get('webblock/'+this.block)
+            .then((response) => {
+               this.categories = response.data.categories
+               this.tags = response.data.tags
+            })
+            .catch((error) => console.log(error))
+      },
+      catvalue(){
+        if(this.catvalue !== null){
+          this.post.categories = this.catvalue.map(x => x.id)
+        }
+      },
+      tagvalue(){
+        if(this.tagvalue !== null){
+          this.post.tags = this.tagvalue.map(x => x.name)
+        }
+      }
 		},
 		methods:{
+      radio(){
+        //console.log(this.post.status)
+        
+      },
 			modalclose(){
 
-			},
-      updateSelected(){
-        console.log('@input')
-      },
+			},      
       addTag (newTag) {
           const tag = {
               name: newTag,
-              id: newTag,
+              //id: newTag,
           }
-          this.options.push(tag)
-          this.value.push(tag)
+          this.tagvalue.push(tag)
       },
+      onImageChange(e){
+         console.log(e.target.files[0]);
+         let files = e.target.files || e.dataTransfer.files;
+         if (!files.length)
+                    return;
+         this.createImage(files[0]);
+      },
+      createImage(file){
+         let reader = new FileReader();
+         let vm = this;
+         reader.onload = (e) => {
+              vm.post.image = e.target.result;
+         };
+         reader.readAsDataURL(file);
+      },
+      addpost(e){
+         e.preventDefault();
+         axios.post('webblock',this.post)
+            .then((response) => {
+               //this.$emit('recordupdated',data),                            
+               $('#newpost').modal('hide');
+               this.post = {'status':'publish'}
+               //this.blocks=response.data
+               this.titleerror = false  
+            })
+            .catch((error) => {
+               this.errors = error.response.data
+               this.titleerror = true          
+            })
+      }
 		},
-		created(){
-		
+		mounted(){
+		 
 		}
 	};
 
@@ -180,7 +246,7 @@
     min-height: 500px;
    } */
 
-   .ck-content { min-height:440px; }
+  .ck-content { min-height:335px; }
     
   .panel{
     border:1px solid #F8F9FA !important;
