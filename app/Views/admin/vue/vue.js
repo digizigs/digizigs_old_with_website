@@ -122,6 +122,7 @@ Vue.component('webblock', require('./webblock/WebBlock.vue'));
 Vue.component('newwebblock', require('./webblock/NewWebBlock.vue'));
 Vue.component('viewpost', require('./webblock/ViewPost.vue'));
 Vue.component('newpost', require('./webblock/NewPost.vue'));
+Vue.component('editpost', require('./webblock/EditPost.vue'));
 
 //Category
 Vue.component('category', require('./category/Category.vue'));

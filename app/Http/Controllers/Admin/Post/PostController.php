@@ -233,7 +233,11 @@ class PostController extends Controller
         $post = Post::find($id);
         $is_deleted=$post->delete();
         if($is_deleted){
-            return redirect()->route('post.index')->with('deleted', 'Post deleted successfully');
+            $categories = Category::where('parent_id', 0)
+                        ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                        ->orderby('created_at','desc')
+                        ->get();
+            return request()->json(200,$categories);  
         }
     }
 

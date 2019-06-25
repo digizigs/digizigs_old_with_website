@@ -1,7 +1,7 @@
 <template>
 	<div class="modal right w80 fade" id="viewpost" role="dialog"  data-backdrop="false">
       <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
+        <div class="modal-content white">
 
         	<!--Modal Header-->
           <div class="modal-header">
@@ -11,9 +11,10 @@
           <!--Modal Header-->
           
           <!--Modal Body-->
-          <div class="modal-body">
+          <div class="modal-body white">
             <div class="row">
-
+            
+            
               <div v-if="post.user" class="mb5">
                 <b>Author:</b>
                 {{post.user.firstname}}
@@ -33,18 +34,17 @@
                 </span>
               </div>
               
-              <div class="post-description">{{post.description}}</div>
+              <div class="post-description mb5">{{post.description}}</div>
 
               <span v-if="post.image_url !== null" class="post-image">
-                <span class="col-md-10 col-md-offset-1">
+                <span class="col-md-10 col-md-offset-1 mt20">
                   <img :src="post.image_url" class="img-responsive" alt="Cinque Terre">
                 </span>
               </span>
 
-              <div v-html="post.body" class="col-md-12 col-xs-12 post-body">
-                
+              <div v-html="post.body" class="col-md-12 col-xs-12 post-body mt20">
               </div>
-
+          
 
             </div>
 
@@ -98,7 +98,7 @@
   
   }
   .post-image{
-
+    
   }
 
   .post-body{
@@ -111,5 +111,8 @@
 
   .mb5{
     margin-bottom: 5px;
+  }
+  .mt20{
+    margin-top: 20px;
   }
 </style>

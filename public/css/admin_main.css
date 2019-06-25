@@ -16730,6 +16730,14 @@ footer a {
   background-color: #FAFAFA;
 }
 
+.modal-body.white {
+  background-color: #FFFFFF !important;
+}
+
+.modal-content.white {
+  background-color: #FFFFFF !important;
+}
+
 /* ----- v CAN BE DELETED v ----- */
 
 .list-title {

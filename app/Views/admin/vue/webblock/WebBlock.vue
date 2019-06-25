@@ -6,12 +6,12 @@
 	            <i class="fa fa-align-left hidden-xs"></i>
 	            Web Blocks
 	      </span>
+	      <a href="#newpost" data-toggle="modal" class="btn btn-dark btn-sm pull-right" @click="blockname(block)">
+	      	New Article
+	      </a>
 	         
 	      <span class="x-title-option">
 	            <ul>
-	            	<li>
-	               		<a href="#newwebblock" class="option-item wpfont" data-toggle="modal">New Block</a>
-	               	</li>
 	               	<li>
 	               		<a href="" class="option-item wpfont">All</a>
 	               	</li>
@@ -25,11 +25,11 @@
 	               		<a href="" class="option-item wpfont">Trash</a>
 	               	</li>
 	               	<li>
-	                  <span id="x-title-search" class="title-searchs x-title-search c">
-	                     <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-	                     <input type="text">
-	                     <span class="close-icon" ><i class="fa fa-times" aria-hidden="true"></i></span>
-	                  </span>
+		                  <span id="x-title-search" class="title-searchs x-title-search c">
+		                     <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+		                     <input type="text">
+		                     <span class="close-icon" ><i class="fa fa-times" aria-hidden="true"></i></span>
+		                  </span>
 	               	</li>	               
 	            </ul>
 	      </span>
@@ -38,14 +38,15 @@
 		<div class="x_content">
 			
 			<div v-for='block in blocks' class="panel panel-dz dashboard-post-page-comment-indicator">
+
          	<div class="panel-heading active">
             	<span class="panel-title">
               		<a data-toggle="collapse" v-bind:href="'#'+ block.id" class="wpfont">
                  		{{block.name}}                    
                	</a>
             	</span>
-            	<span class="action-text">
-               	<a href="#newpost" data-toggle="modal" @click="blockname(block)">
+            	<!--span class="action-text">
+               	<a href="#newpost" data-toggle="modal" @click="blockname(block)" >
                      <i class="fa fa-plus" aria-hidden="true" ></i>
                   </a>
                	<a href="">
@@ -54,32 +55,43 @@
                   <a href="" data-toggle="tooltip" data-placement="top" title="Delete" v-on:click.prevent @click="deleteblock(block.id)">
                		<i class="fa fa-trash-o" aria-hidden="true"></i>
                	</a>
-               </span>
+               </span-->
              	<i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
             
          	</div>
 
           	<div :id="block.id" class="panel-collapse collapse in">
-             	<div v-if="block.posts.length > 0" class="panel-body open">
+             	<div v-if="block.child.length > 0" class="panel-body open">
            						
 						<ul>
-							<li v-for='post in block.posts'>
-								<a href="#viewpost" class="list-title" data-toggle="modal" @click="showpost(post)">{{post.title}}</a>
-								<small>
-										by
-									<i v-if="post.user"><a href="">{{post.user.firstname}}</a></i>
-									on
-									<i>{{post.created_at | vueAgoTime}}</i>
-								</small>
-								<span class="action-text">
-									<a href="">
-			                     <i class="fa fa-pencil" aria-hidden="true"></i>
-			                  </a>
-			                  <a href="" data-toggle="tooltip" data-placement="top" title="Delete" v-on:click.prevent @click="deletepost(post.id)">
-			               		<i class="fa fa-trash-o" aria-hidden="true"></i>
-			               	</a>
-								</span>
+							<li v-for='child in block.child'>
+								
+									
+									
+									<ul>
+										<li v-for="post in child.posts" class="posts-list">
+											<a href="#viewpost" class="list-title" data-toggle="modal" @click="showpost(post)">{{post.title}}</a>
+											<small>
+													by
+												<i v-if="post.user"><a href="">{{post.user.firstname}}</a></i>
+												on
+												<i>{{post.created_at | vueAgoTime}}</i>
+											</small>
+											<span class="action-text">
+												<a href="" href="#editpost" class="list-title" data-toggle="modal" v-on:click.prevent @click="editpost(post)">
+						                     <i class="fa fa-pencil" aria-hidden="true"></i>
+						                  </a>
+						                  <a href="" data-toggle="tooltip" data-placement="top" title="Delete" v-on:click.prevent @click="deletepost(post.id)">
+						               		<i class="fa fa-trash-o" aria-hidden="true"></i>
+						               	</a>
+											</span>
+										</li>
+									</ul>
+								
+								
+																	
 							</li>
+
 						</ul>
 
              	</div>
@@ -93,6 +105,7 @@
 			<newwebblock @recordupdated="refreshRecord"></newwebblock>	
 			<viewpost :post="post" @recordupdated="refreshRecord"></viewpost>	
 			<newpost :block="block"  @recordupdated="refreshRecord"></newpost>	
+			<editpost :post="post"  @recordupdated="refreshRecord"></editpost>	
 		</div>
 
 
@@ -114,14 +127,19 @@
 		},
 		methods:{
 			refreshRecord(record){
-				this.blocks = record.data
+				this.blocks = record
+				console.log(record)
 			},
 			showpost(post){
 				this.post = post
 			},
-			deleteblock(id){
+			editpost(post){
+				console.log(post)
+				this.post = post
+			},
+			deletepost(id){
 				swalWithBootstrapButtons({
-	        	title: 'Delete WebBlock?',
+	        	title: 'Delete Post?',
 	        	text: "You won't be able to revert this!",
 	        	type: 'warning',
 	        	showCancelButton: true,
@@ -129,28 +147,23 @@
 	        	cancelButtonText: 'No, cancel!',
 	        	reverseButtons: true
 	         }).then((result) => {
-	        if (result.value) {
+		        if (result.value) {
 
-	          axios.delete('webblock/'+id)
-	          .then(response =>{
-	          	//console.log(response.data)
-	            this.blocks=response.data;
-	          })
-	          .catch((error) => {
-	            	//console.log(response.data);
-	                this.errors=error.response.data.errors;
-	                this.success='';                
-	            });
+		          axios.delete('post/'+id)
+		          .then(response =>{		          	
+		            this.blocks=response.data;
+		          })
+		          .catch((error) => {		            	
+		                this.errors=error.response.data.errors;
+		                this.success='';                
+		            });
 
-	          toast({
-	                type: 'success',
-	                title: 'WebBlock deleted successfully'
-	            })
-	        } 
+		          toast({
+		                type: 'success',
+		                title: 'Post deleted successfully'
+		            })
+		        } 
 	        })
-			},
-			deletepost(id){
-				//console.log(id)
 			},
 			blockname(block){
 				this.block = block
@@ -159,7 +172,7 @@
 		mounted(){
 			axios.get('webblock/create')
 			.then((response) => {
-					//console.log(response.data)
+					console.log(response.data)
 					this.blocks=response.data
 				})
 			.catch((error) => console.log(error))
@@ -174,5 +187,30 @@
 		margin-left: 10px;
 		i{ margin: 0 2px; }
 	}
+	
+	ul{
+		margin:0 !important;
+		padding: 0 !important;
+	}
+	li{
+		margin: !important;
+		padding: 0 !important;
+	}
 
+	.posts-list{
+		margin-top: 5px !important;
+	}
+
+	.dark{
+		background-color: #F2F5F7 !important
+	}
+
+	.multiselect__option{
+		//margin:0 !important;
+		//padding: 0 !important;
+	}
+	.multiselect__element{
+		//margin:0 !important;
+		//padding: 0 !important;
+	}
 </style>
