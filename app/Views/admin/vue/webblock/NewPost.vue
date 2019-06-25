@@ -67,7 +67,7 @@
                                       placeholder="Select Category" 
                                       label="name"
                                       track-by="id"
-                                      openDirection="top"
+                                      openDirection="bottom"
                                       :max-height="150"
                                       :hideSelected="true"                                      
                                       :options="categories" 
@@ -87,7 +87,7 @@
                                       placeholder="Select or Add tags" 
                                       label="name"
                                       track-by="id"
-                                      openDirection="top"                                      
+                                      openDirection="bottom"                                      
                                       :options="tags" 
                                       :multiple="true" 
                                       :taggable="true" 
@@ -165,74 +165,84 @@
 			}
 		},
 		watch:{
-      block(){
-         if(this.block !== null){
-            this.post.categories = [this.block.id]
-            console.log(this.block.id)
+         block(){
+            if(this.block !== null){
+               this.post.categories = [this.block.id]
+               console.log(this.block.id)
+            }
+            axios.get('webblock/'+this.block)
+               .then((response) => {
+                  this.categories = response.data.categories
+                  this.tags = response.data.tags
+               })
+               .catch((error) => console.log(error))
+         },
+         catvalue(){
+           if(this.catvalue !== null){
+             this.post.categories = this.catvalue.map(x => x.id)
+           }
+           this.post.categories.push = this.block.id
+         },
+         tagvalue(){
+           if(this.tagvalue !== null){
+             this.post.tags = this.tagvalue.map(x => x.name)
+           }
          }
-         axios.get('webblock/'+this.block)
-            .then((response) => {
-               this.categories = response.data.categories
-               this.tags = response.data.tags
-            })
-            .catch((error) => console.log(error))
-      },
-      catvalue(){
-        if(this.catvalue !== null){
-          this.post.categories = this.catvalue.map(x => x.id)
-        }
-      },
-      tagvalue(){
-        if(this.tagvalue !== null){
-          this.post.tags = this.tagvalue.map(x => x.name)
-        }
-      }
 		},
 		methods:{
-      radio(){
-        //console.log(this.post.status)
-        
-      },
+         radio(){
+           //console.log(this.post.status)
+           
+         },
 			modalclose(){
 
 			},      
-      addTag (newTag) {
-          const tag = {
-              name: newTag,
-              //id: newTag,
-          }
-          this.tagvalue.push(tag)
-      },
-      onImageChange(e){
-         console.log(e.target.files[0]);
-         let files = e.target.files || e.dataTransfer.files;
-         if (!files.length)
-                    return;
-         this.createImage(files[0]);
-      },
-      createImage(file){
-         let reader = new FileReader();
-         let vm = this;
-         reader.onload = (e) => {
-              vm.post.image = e.target.result;
-         };
-         reader.readAsDataURL(file);
-      },
-      addpost(e){
-         e.preventDefault();
-         axios.post('webblock',this.post)
-            .then((response) => {
-               //this.$emit('recordupdated',data),                            
-               $('#newpost').modal('hide');
-               this.post = {'status':'publish'}
-               //this.blocks=response.data
-               this.titleerror = false  
+         addTag (newTag) {
+             const tag = {
+                 name: newTag,
+                 //id: newTag,
+             }
+             this.tagvalue.push(tag)
+         },
+         onImageChange(e){
+            console.log(e.target.files[0]);
+            let files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                       return;
+            this.createImage(files[0]);
+         },
+         createImage(file){
+            let reader = new FileReader();
+            let vm = this;
+            reader.onload = (e) => {
+                 vm.post.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+         },
+         addpost(e){
+            
+            NProgress.start();
+            e.preventDefault();
+            axios.post('webblock',this.post)
+                  .then((response) => {
+                  console.log(response.data)
+                  //this.$emit('recordupdated',data),                            
+                  //$('#newpost').modal('hide');
+                  //this.post = {'status':'publish'}
+                  //this.blocks=response.data
+                  this.titleerror = false
+                  toast({
+                     type: 'success',
+                     title: 'New Post added successfully'
+                  })
+
+               })
+               .catch((error) => {
+                  this.errors = error.response.data
+                  this.titleerror = true          
             })
-            .catch((error) => {
-               this.errors = error.response.data
-               this.titleerror = true          
-            })
-      }
+            NProgress.done()
+         }
 		},
 		mounted(){
 		 

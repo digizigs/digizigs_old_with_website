@@ -32,7 +32,7 @@ class WebBlockController extends Controller
    
     public function store(Request $request) {
 
-        
+        return $request->all();
 
         $data = Validator::make($request->all(),[
             'title'=>'required|unique:posts,title|max:191',  
