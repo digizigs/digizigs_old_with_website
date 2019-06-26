@@ -14408,6 +14408,16 @@ footer a {
   color: #0073AA;
 }
 
+#nprogress .bar {
+  background: #29d;
+  z-index: 9999;
+  height: 5px;
+}
+
+#nprogress .spinner {
+  z-index: 9999;
+}
+
 .sidebar-brand {
   height: 45px;
   padding: 0;

@@ -695,3 +695,20 @@ footer {
     }
   }
 }
+
+
+//Nprogress
+
+#nprogress{
+
+  .bar{
+    background: #29d;
+    z-index: 9999;
+    height: 5px;
+  }
+  
+  .spinner {
+    z-index: 9999;
+  }
+
+}

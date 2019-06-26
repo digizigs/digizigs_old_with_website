@@ -79,7 +79,7 @@
 					this.catgerror = false
 					axios.post('category',this.category)
 					.then((data) => {
-						console.log(data)
+						//console.log(data)
 						//this.categories=response.data
 						//this.category = {'category_name':'','category_parent':''};
 						//this.selectedparent = '';
@@ -100,7 +100,7 @@
 
 			axios.get('category/create')
 			.then((response) => {
-					console.log(response.data)
+					//console.log(response.data)
 					this.categories=response.data
 				})
 			.catch((error) => console.log(error))

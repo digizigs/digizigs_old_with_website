@@ -6,7 +6,7 @@
         	<!--Modal Header-->
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
-            <h4 class="modal-title" id="defaultModalLabel">New Post ({{block.name}})</h4>
+            <h4 class="modal-title" id="defaultModalLabel">New Post</h4>
           </div>
           <!--Modal Header-->
           
@@ -46,13 +46,13 @@
                      <div class="mat-card">
                       <div class="card-header">
                         <h5>Status & Visiblity</h5>
-                        <button class="btn btn-dark btn-sm pull-right btn-publish">{{ post.status|capitalize}}</button>               
+                        <button class="btn btn-dark btn-sm pull-right btn-publish">{{submitbutton}}</button>               
                       </div>
                       <div class="card-block">
                         <div class="wp-input radio">
-                            <input type="radio" id="radio_1" value="publish" v-model="post.status">
+                            <input type="radio" id="radio_1" value="published" v-model="post.status" v-on:change="radio('published')">
                             <label for="radio_1">Published</label>
-                            <input type="radio" id="radio_2" value="draft" v-model="post.status">
+                            <input type="radio" id="radio_2" value="draft" v-model="post.status" v-on:change="radio('draft')">
                             <label for="radio_2">Draft</label>
                          </div>
                       </div>
@@ -102,13 +102,14 @@
                       </div>
                       <div class="card-block ">
 
-                        <div class="avatar-preview imgUp img-thumbnail form-control" style="margin:auto;">                                                
+                        <div class="avatar-preview  img-thumbnail form-control" style="margin:auto;">                                                
                           
                         </div>
                         <label class="btn btn-dark btn-sm form-control" style="margin-top: 20px;">
                            Browse Image
                            <input type="file" 
-                                  id="imageUpload" 
+                                  id="imageUpload"
+                                  ref="fileInput" 
                                   class="uploadFile img" 
                                   v-on:change="onImageChange" 
                                   style="width: 0px;height: 0px;overflow: hidden;"
@@ -137,16 +138,10 @@
 
 <script type="text/javascript">
 
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-  Vue.filter('capitalize', function (value) {
-    if (!value) return ''
-    value = value.toString()
-    return value.charAt(0).toUpperCase() + value.slice(1)
-  })
+   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 	export default{
-    props:['block'],
+    props:['categories','tags'],
 		data(){
 			return{
             titleerror:false,
@@ -157,27 +152,17 @@
             editorConfig: {},
             catvalue: [],
             tagvalue: [],
-            categories:[],
-            tags:[],
-            post:{'status':'publish'},
-            errors:{}
+            post:{'status':'published'},
+            errors:{},
+            files:null
 
 			}
 		},
 		watch:{
-         block(){
-            axios.get('webblock/'+this.block)
-               .then((response) => {
-                  this.categories = response.data.categories
-                  this.tags = response.data.tags
-               })
-               .catch((error) => console.log(error))
-         },
          catvalue(){
            if(this.catvalue !== null){
              this.post.categories = this.catvalue.map(x => x.id)
            }
-           //this.post.categories.push = this.block.id
          },
          tagvalue(){
            if(this.tagvalue !== null){
@@ -186,62 +171,73 @@
          }
 		},
 		methods:{
-      onReadyEditor(){
-        console.log('Editor Ready')
-           
-      },
-			modalclose(){
+         radio(status){
+            if(status == 'published'){
+               this.submitbutton = 'Publish'
+               this.post.status = 'published' 
+            }else{
+               this.submitbutton = 'Save Draft'
+               this.post.status = 'draft'  
+            }
+         },
+         onReadyEditor(){
+           //console.log('Editor Ready')     
+         },
+   		modalclose(){
+            $('#newpost').modal('hide');
+            this.post = {'status':'published'}
+            this.catvalue = []
+            this.tagvalue = []
+            this.titleerror = false
+            this.file=null
+            $('.avatar-preview').css('background-image', '');
+            //console.log(this.files)
+   		},      
+         addTag (newTag) {
+            const tag = {
+                name: newTag,
+                //id: newTag,
+            }
+            this.tagvalue.push(tag)
+         },
+         onImageChange(e){
+           //console.log(e.target.files[0]);
+           this.files = e.target.files || e.dataTransfer.files;
+           if (!this.files.length)
+                      return;
+           this.createImage(this.files[0]);
+         },
+         createImage(file){
+           let reader = new FileReader();
+           let vm = this;
+           reader.onload = (e) => {
+                vm.post.image = e.target.result;
+           };
+           reader.readAsDataURL(file);
+         },
+         addpost(e){        
+           NProgress.start();
+           e.preventDefault();
+           axios.post('webblock',this.post)
+                 .then((response) => {
+                 console.log(response.data)
+                 this.$emit('recordupdated',response.data),                            
+                 this.modalclose()
+                 toast({
+                    type: 'success',
+                    title: 'New Post added successfully'
+                 })
 
-			},      
-      addTag (newTag) {
-         const tag = {
-             name: newTag,
-             //id: newTag,
-         }
-         this.tagvalue.push(tag)
-      },
-      onImageChange(e){
-        console.log(e.target.files[0]);
-        let files = e.target.files || e.dataTransfer.files;
-        if (!files.length)
-                   return;
-        this.createImage(files[0]);
-      },
-      createImage(file){
-        let reader = new FileReader();
-        let vm = this;
-        reader.onload = (e) => {
-             vm.post.image = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      },
-      addpost(e){
-            
-        NProgress.start();
-        e.preventDefault();
-        axios.post('webblock',this.post)
-              .then((response) => {
-              console.log(response.data)
-              this.$emit('recordupdated',response.data),                            
-              $('#newpost').modal('hide');
-              this.post = {'status':'publish'}
-              //this.blocks=response.data
-              this.titleerror = false
-              toast({
-                 type: 'success',
-                 title: 'New Post added successfully'
               })
-
+              .catch((error) => {
+                 this.errors = error.response.data
+                 this.titleerror = true          
            })
-           .catch((error) => {
-              this.errors = error.response.data
-              this.titleerror = true          
-        })
-        NProgress.done()
-      }
+           NProgress.done()
+         }
 		},
-		mounted(){
-		 
+		created(){
+		   
 		}
 	};
 

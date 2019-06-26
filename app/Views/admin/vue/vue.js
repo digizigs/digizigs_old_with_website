@@ -191,9 +191,6 @@ const app = new Vue({
          alert('Category submited')
       }
    },
-   created(){
-      console.log('vue js created')
-   }
 
 
 

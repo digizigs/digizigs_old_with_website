@@ -78,7 +78,7 @@
 												<i>{{post.created_at | vueAgoTime}}</i>
 											</small>
 											<span class="action-text">
-												<a href="" href="#editpost" class="list-title" data-toggle="modal" v-on:click.prevent @click="editpost(post)">
+												<a href="#editpost" class="list-title" data-placement="top" title="Edit" data-toggle="modal" v-on:click.prevent @click="editpost(post)">
 						                     <i class="fa fa-pencil" aria-hidden="true"></i>
 						                  </a>
 						                  <a href="" data-toggle="tooltip" data-placement="top" title="Delete" v-on:click.prevent @click="deletepost(post.id)">
@@ -102,10 +102,10 @@
 		</div>
 
 		<div id="modal">
-			<newwebblock @recordupdated="refreshRecord"></newwebblock>	
+			<newwebblock  @recordupdated="refreshRecord"></newwebblock>	
 			<viewpost :post="post" @recordupdated="refreshRecord"></viewpost>	
-			<newpost :block="block"  @recordupdated="refreshRecord"></newpost>	
-			<editpost :post="post"  @recordupdated="refreshRecord"></editpost>	
+			<newpost :categories="categories" :tags="tags"  @recordupdated="refreshRecord"></newpost>	
+			<editpost :categories="categories" :tags="tags" :post="post"  @recordupdated="refreshRecord"></editpost>	
 		</div>
 
 
@@ -119,7 +119,9 @@
 				search:'',
 				block:'',
 				blocks:{},
-				post:{}
+				post:{},
+				categories:[],
+            tags:[],
 			}
 		},
 		watch:{
@@ -128,13 +130,11 @@
 		methods:{
 			refreshRecord(record){
 				this.blocks = record
-				console.log(record)
 			},
 			showpost(post){
 				this.post = post
 			},
 			editpost(post){
-				console.log(post)
 				this.post = post
 			},
 			deletepost(id){
@@ -150,10 +150,10 @@
 		        if (result.value) {
 
 		          axios.delete('post/'+id)
-		          .then(response =>{		          	
-		            this.blocks=response.data;
-		          })
-		          .catch((error) => {		            	
+		          	.then(response =>{		          	
+		            	this.blocks=response.data;
+		          	})
+		          	.catch((error) => {		            	
 		                this.errors=error.response.data.errors;
 		                this.success='';                
 		            });
@@ -171,11 +171,18 @@
 		},
 		mounted(){
 			axios.get('webblock/create')
-			.then((response) => {
-					console.log(response.data)
-					this.blocks=response.data
-				})
-			.catch((error) => console.log(error))
+				.then((response) => {
+						console.log(response.data)
+						this.blocks=response.data
+					})
+				.catch((error) => console.log(error))
+
+			axios.get('webblock/'+6)
+               .then((response) => {
+                  this.categories = response.data.categories
+                  this.tags = response.data.tags
+               })
+               .catch((error) => console.log(error))
 		}
 	};
 
