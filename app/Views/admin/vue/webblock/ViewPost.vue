@@ -23,7 +23,9 @@
               <div v-if="post.categories !='' " class="mb5">
                 <b>Categories:</b>
                 <span v-for="category in post.categories" class="label label-info">
+                  {{category}}
                   {{category.name}}
+                  }
                 </span>
               </div>
 
