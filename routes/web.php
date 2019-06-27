@@ -111,8 +111,8 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::resource('/settings', 'Admin\SettingController');
 
     //Articleblock
-    Route::resource('/webblock', 'Admin\WebBlock\WebBlockController');
-    Route::resource('/articles', 'Admin\Article\ArticleController');
+    //Route::resource('/webblock', 'Admin\WebBlock\WebBlockController');
+    Route::resource('/article', 'Admin\Article\ArticleController');
 
     //Posts
     Route::resource('/post', 'Admin\Post\PostController');

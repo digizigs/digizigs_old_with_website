@@ -218,7 +218,7 @@
          addpost(e){        
            NProgress.start();
            e.preventDefault();
-           axios.post('webblock',this.post)
+           axios.post('article',this.post)
                  .then((response) => {
                  console.log(response.data)
                  this.$emit('recordupdated',response.data),                            

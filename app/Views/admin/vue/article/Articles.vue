@@ -159,9 +159,9 @@
 			}
 		},
 		mounted(){
-			axios.get('webblock/create')
+			axios.get('article/create')
 				.then((response) => {
-						//console.log(response.data)
+						console.log(response.data.blocks)
 						this.blocks=response.data.blocks
 						this.categories = response.data.categories
                   this.tags = response.data.tags

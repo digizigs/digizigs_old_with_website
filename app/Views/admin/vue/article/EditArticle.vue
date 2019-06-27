@@ -240,7 +240,7 @@
 
                NProgress.start();
                e.preventDefault();
-               axios.put('webblock/'+this.epost.id,this.epost)
+               axios.put('article/'+this.epost.id,this.epost)
                      .then((response) => {
                      //console.log(response.data)
                      this.$emit('recordupdated',response.data),                            

@@ -32,13 +32,10 @@
           </li>
 
           <li class="menu-item">
-            <a href="{{route('articles.index')}}"><i class="fa fa-puzzle-piece"></i> Articles </a>
+            <a href="{{route('article.index')}}"><i class="fa fa-puzzle-piece"></i> Articles </a>
           </li>
 
-          <li class="menu-item">
-            <a href="{{route('webblock.index')}}"><i class="fa fa-puzzle-piece"></i> Article Blocks </a>
-          </li>
-
+          
           <!--li class="menu-item has-submenu">
             <a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu menu-item-submenu">
