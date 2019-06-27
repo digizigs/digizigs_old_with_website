@@ -4,7 +4,7 @@
 		<div class="x_title">
 			<span class="panel-title">
 	            <i class="fa fa-align-left hidden-xs"></i>
-	            Web Blocks
+	            Articles
 	      </span>
 	      <a href="#newpost" data-toggle="modal" class="btn btn-dark btn-sm pull-right" @click="blockname(block)">
 	      	New Article
@@ -45,19 +45,7 @@
                  		{{block.name}}                    
                	</a>
             	</span>
-            	<!--span class="action-text">
-               	<a href="#newpost" data-toggle="modal" @click="blockname(block)" >
-                     <i class="fa fa-plus" aria-hidden="true" ></i>
-                  </a>
-               	<a href="">
-                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                  </a>
-                  <a href="" data-toggle="tooltip" data-placement="top" title="Delete" v-on:click.prevent @click="deleteblock(block.id)">
-               		<i class="fa fa-trash-o" aria-hidden="true"></i>
-               	</a>
-               </span-->
              	<i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
-            
          	</div>
 
           	<div :id="block.id" class="panel-collapse collapse in">
@@ -70,6 +58,7 @@
 									
 									<ul>
 										<li v-for="post in child.posts" class="posts-list">
+											
 											<a href="#viewpost" class="list-title" data-toggle="modal" @click="showpost(post)">{{post.title}}</a>
 											<small>
 													by
@@ -103,9 +92,9 @@
 
 		<div id="modal">
 			<newwebblock  @recordupdated="refreshRecord"></newwebblock>	
-			<viewpost :post="post" @recordupdated="refreshRecord"></viewpost>	
+			<viewpost :post="post"></viewpost>	
 			<newpost :categories="categories" :tags="tags"  @recordupdated="refreshRecord"></newpost>	
-			<editpost :categories="categories" :tags="tags" :post="post"  @recordupdated="refreshRecord"></editpost>	
+			<editpost :categories="categories" :tags="tags" :epost="post"  @recordupdated="refreshRecord"></editpost>	
 		</div>
 
 
@@ -119,7 +108,7 @@
 				search:'',
 				block:'',
 				blocks:{},
-				post:{},
+				post:'',
 				categories:[],
             tags:[],
 			}
@@ -131,7 +120,7 @@
 			refreshRecord(record){
 				this.blocks = record
 			},
-			showpost(post){
+			showpost(post){				
 				this.post = post
 			},
 			editpost(post){
@@ -172,17 +161,19 @@
 		mounted(){
 			axios.get('webblock/create')
 				.then((response) => {
-						console.log(response.data)
-						this.blocks=response.data
+						//console.log(response.data)
+						this.blocks=response.data.blocks
+						this.categories = response.data.categories
+                  this.tags = response.data.tags
 					})
 				.catch((error) => console.log(error))
 
-			axios.get('webblock/'+6)
+			/*axios.get('webblock/'+6)
                .then((response) => {
                   this.categories = response.data.categories
                   this.tags = response.data.tags
                })
-               .catch((error) => console.log(error))
+               .catch((error) => console.log(error))*/
 		}
 	};
 

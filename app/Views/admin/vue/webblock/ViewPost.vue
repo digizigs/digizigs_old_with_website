@@ -6,7 +6,10 @@
         	<!--Modal Header-->
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
-            <h4 class="modal-title" id="defaultModalLabel">{{post.title}}</h4>
+            <h4 class="modal-title" id="defaultModalLabel">
+              {{post.title}}.
+            </h4>
+
           </div>
           <!--Modal Header-->
           
@@ -23,9 +26,9 @@
               <div v-if="post.categories !='' " class="mb5">
                 <b>Categories:</b>
                 <span v-for="category in post.categories" class="label label-info">
-                  {{category}}
+                  
                   {{category.name}}
-                  }
+                  
                 </span>
               </div>
 
@@ -60,6 +63,8 @@
         
         </div>
       </div>
+       
+
   </div>
 </template>
 
@@ -68,19 +73,22 @@
     props:['post'],
 		data(){
 			return{
-				search:''
+			
 			}
-		},
-		watch:{
-
 		},
 		methods:{
 			modalclose(){
 
-			}
+			},
+      editpost(){
+        this.editpost = post
+      },
+      refreshRecord(){
+
+      }
 		},
 		mounted(){
-		  console.log(this.post)
+		  
 		}
 	};
 

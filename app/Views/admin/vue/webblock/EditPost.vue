@@ -6,7 +6,9 @@
         	<!--Modal Header-->
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
-            <h4 class="modal-title" id="defaultModalLabel">{{post.title}}</h4>
+            <h4 class="modal-title" id="defaultModalLabel">
+               {{epost.title}} <small>(edit)</small>
+            </h4>
           </div>
           <!--Modal Header-->
           
@@ -22,7 +24,7 @@
                      <div class="form-group wp-input">
                        <div class="form-line" v-bind:class="{ 'form-invalid': titleerror }">
                           <label class="form-label">Post Title</label>
-                          <input type="text" class="form-control input-sm" v-model="post.title">
+                          <input type="text" class="form-control input-sm" v-model="epost.title">
                           <small v-if="this.errors.errors">{{this.errors.errors.title[0]}}</small> 
                        </div>
                      </div>
@@ -30,13 +32,13 @@
                      <div class="form-group wp-input">
                        <div class="form-line">
                           <label class="form-label">Post Description</label>
-                          <input type="text" class="form-control input-sm" v-model="post.description">
+                          <input type="text" class="form-control input-sm" v-model="epost.description">
                        </div>
                      </div>
 
                      <div class="form-group wp-input">
                         <label for="editor1">Post Content</label>
-                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig"></ckeditor>                        
+                        <ckeditor :editor="editor" v-model="epost.body" :config="editorConfig"></ckeditor>                        
                      </div>
 
                   </div>
@@ -50,9 +52,9 @@
                       </div>
                       <div class="card-block">
                         <div class="wp-input radio">
-                            <input type="radio" id="radio_1" value="published" v-model="post.status" v-on:change="radio('published')">
+                            <input type="radio" id="radio_1" value="published" v-model="epost.status" v-on:change="radio('published')">
                             <label for="radio_1">Published</label>
-                            <input type="radio" id="radio_2" value="draft" v-model="post.status" v-on:change="radio('draft')">
+                            <input type="radio" id="radio_2" value="draft" v-model="epost.status" v-on:change="radio('draft')">
                             <label for="radio_2">Draft</label>                           
                          </div>
                       </div>
@@ -105,7 +107,7 @@
 
                         <div  id="avtrprv" 
                               class="avatar-preview imgUp img-thumbnail form-control"  
-                              v-bind:style="[ post.image_url ?{ 'background-image': 'url(' + post.image_url + ')'} : {}]">                 
+                              v-bind:style="[ epost.image_url ?{ 'background-image': 'url(' + epost.image_url + ')'} : {}]">                 
                         </div>
 
                         <label class="btn btn-dark btn-sm form-control" style="margin-top: 20px;">
@@ -143,7 +145,7 @@
    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 	export default{
-      props:['post','categories','tags'],
+      props:['epost','categories','tags'],
 		data(){
 			return{
             titleerror:false,
@@ -160,22 +162,22 @@
 			}
 		},
 		watch:{
-         post(){
-            if(this.post.body == null){
-              this.post.body = ''
+         epost(){
+            if(this.epost.body == null){
+              this.epost.body = ''
             }
 
-            this.catvalue = this.post.categories
-            this.tagvalue = this.post.tags
+            this.catvalue = this.epost.categories
+            this.tagvalue = this.epost.tags
          },
          catvalue(){
            if(this.catvalue !== null){
-             this.post.categories = this.catvalue.map(x => x.id)
+             //this.epost.categories = this.catvalue.map(x => x.id)
            }
          },
          tagvalue(){
            if(this.tagvalue !== null){
-             this.post.tags = this.tagvalue.map(x => x.name)
+             //this.epost.tags = this.tagvalue.map(x => x.name)
            }
          }
 		},
@@ -183,10 +185,10 @@
          radio(status){
             if(status == 'published'){
                this.submitbutton = 'Publish'
-               this.post.status = 'published' 
+               this.epost.status = 'published' 
             }else{
                this.submitbutton = 'Save Draft'
-               this.post.status = 'draft'  
+               this.epost.status = 'draft'  
             }         
          },
    		modalclose(){
@@ -211,7 +213,7 @@
              let reader = new FileReader();
              let vm = this;
              reader.onload = (e) => {
-                  vm.post.image = e.target.result;
+                  vm.epost.image = e.target.result;
              };
              reader.readAsDataURL(file);
              this.imageprivew()
@@ -229,9 +231,16 @@
          },
          updatepost(e){
                
+               if(this.catvalue !== null){
+                  this.epost.categories = this.catvalue.map(x => x.id)
+               }
+               if(this.tagvalue !== null){
+                  this.epost.tags = this.tagvalue.map(x => x.name)
+               }
+
                NProgress.start();
                e.preventDefault();
-               axios.put('webblock/'+this.post.id,this.post)
+               axios.put('webblock/'+this.epost.id,this.epost)
                      .then((response) => {
                      //console.log(response.data)
                      this.$emit('recordupdated',response.data),                            

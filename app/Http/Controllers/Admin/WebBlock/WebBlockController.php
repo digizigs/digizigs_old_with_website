@@ -15,19 +15,22 @@ use Illuminate\Support\Facades\Hash;
 class WebBlockController extends Controller
 {
     
-   public function index() {
+    public function index() {
       return view('admin.pages.webblock.webblock');
-   }
+    }
 
     
-   public function create() {
+    public function create() {
 
-         $categories = Category::where('parent_id', 0)
-                        ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
-                        ->orderby('created_at','desc')
-                        ->get();  
-         return request()->json(200,$categories);
-   }
+      $categories = Category::where('parent_id','<>', 0 )->with('child')->orderby('created_at','desc')->get();
+      $tags = Tag::orderby('created_at','desc')->get();
+      $blocks = Category::where('parent_id', 0)
+                    ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                    ->orderby('created_at','desc')
+                    ->get();  
+      return request()->json(200,['categories'=>$categories,'tags'=>$tags,'blocks'=>$blocks]);
+
+    }
 
    
    public function store(Request $request) {
@@ -94,9 +97,8 @@ class WebBlockController extends Controller
 
     
     public function show($id) {
-        $categories = Category::where('parent_id','<>', 0 )->with('child')->orderby('created_at','desc')->get();
-        $tags = Tag::orderby('created_at','desc')->get();
-        return request()->json(200,['categories'=>$categories,'tags'=>$tags]);
+        $post = Post::where('id',$id)->with('categories','tags')->first();
+        return request()->json(200,$post);
     }
 
     

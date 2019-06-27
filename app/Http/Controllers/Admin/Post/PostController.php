@@ -140,7 +140,10 @@ class PostController extends Controller
    
     public function show($id)
     {
-        //
+        $post = Post::where('id',$id)
+            ->where('type','quotation')
+            ->with('client','invoice_item')
+            ->first();
     }
 
    
