@@ -14,8 +14,8 @@ class CategorySeed extends Seeder
     public function run()
     {        
         
-        Category::create(['id'=>0,'name' => 'Zero Block','slug' => 'zeroblock']);
-        Category::create(['parent_id'=>1,'name' => 'Uncategorised','slug' => 'uncategorised']);
+        Category::create(['name' => 'Default','slug' => 'default']);
+        Category::create(['parent_id'=>1,'name' => 'Uncategorized','slug' => 'uncategorized.']);
         Category::create(['name' => 'Posts','slug' => 'posts']);
         Category::create(['name' => 'Blog','slug' => 'blog']);
 

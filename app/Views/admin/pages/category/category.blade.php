@@ -11,7 +11,7 @@
 
 	<div class="right_col" role="main">
 
-         <div class="">
+         <!--div class="">
                       
             <div class="row">                          
                 
@@ -150,7 +150,10 @@
                   
               	</div>
             </div>
-         </div>
+
+         </div-->
+
+         <category></category>
 
          
   	</div>

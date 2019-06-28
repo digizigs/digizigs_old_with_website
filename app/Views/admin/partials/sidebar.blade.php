@@ -32,7 +32,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="{{route('article.index')}}"><i class="fa fa-puzzle-piece"></i> Articles </a>
+            <a href="{{route('post.index')}}"><i class="fa fa-puzzle-piece"></i> Posts </a>
           </li>
 
           

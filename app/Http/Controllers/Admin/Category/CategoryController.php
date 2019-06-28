@@ -29,18 +29,23 @@ class CategoryController extends Controller
     }
 
     public function getcategories(){
-        //$categories=Category::with('sub_category')->get();//Category::orderby('created_at','desc')->get();
-        $categories = Category::where('parent_id', '=', 0)->with('childs')->get();
+        
+        $categories = Category::where('parent_id', 0)
+                    ->with('child.posts')
+                    ->orderby('created_at','desc')
+                    ->get();  
 
 
         return request()->json(200,$categories);
     }
 
   
-    public function create()
-    {
-        //$categories = Category::orderby('created_at','desc')->with('child','posts')->where('parent_id',0)->get();
-        $categories = Category::where('parent_id', 0)->orderby('created_at','desc')->with('child','posts')->get();
+    public function create() {
+        
+        $categories = Category::where('parent_id', 0)
+                    ->with('child.posts')
+                    ->orderby('created_at','desc')
+                    ->get(); 
         return request()->json(200,$categories);
     }
 
@@ -50,7 +55,7 @@ class CategoryController extends Controller
         
 
         $data = Validator::make($request->all(),[
-            'category_name'=>'required|max:255',   
+            'category_name'=>'required|max:50',   
         ],[
             'category_name.required' => 'Category name is required',
         ])->Validate();
@@ -71,8 +76,10 @@ class CategoryController extends Controller
 
         
         if($cat_save){
-            //return redirect()->route('category.index')->with('success', 'Category added successfully');
-            $categories = Category::with('child','posts')->where('parent_id',0)->orderby('created_at','desc')->get();
+            $categories = Category::where('parent_id', 0)
+                    ->with('child.posts')
+                    ->orderby('created_at','desc')
+                    ->get(); 
             return request()->json(200,$categories);
         }
 
@@ -127,7 +134,11 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $is_deleted=$category->delete();
         if($is_deleted){
-            return redirect()->route('category.index')->with('danger', 'Category deleted successfully');
+            $categories = Category::where('parent_id', 0)
+                    ->with('child.posts')
+                    ->orderby('created_at','desc')
+                    ->get(); 
+            return request()->json(200,$categories);
         }
     }
 }

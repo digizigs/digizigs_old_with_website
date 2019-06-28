@@ -118,14 +118,14 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 
 
 //Web Block
-Vue.component('articles', require('./article/Articles.vue'));
-Vue.component('newwebblock', require('./article/NewWebBlock.vue'));
-Vue.component('viewpost', require('./article/ViewPost.vue'));
-Vue.component('newpost', require('./article/NewPost.vue'));
-Vue.component('editpost', require('./article/EditArticle.vue'));
+Vue.component('posts', require('./post/Posts.vue'));
+Vue.component('viewpost', require('./post/ViewPost.vue'));
+Vue.component('newpost', require('./post/NewPost.vue'));
+Vue.component('editpost', require('./post/EditPost.vue'));
 
 //Category
 Vue.component('category', require('./category/Category.vue'));
+Vue.component('editcategory', require('./category/EditCategory.vue'));
 
 //Profile
 Vue.component('profile', require('./profile/profile.vue'));
