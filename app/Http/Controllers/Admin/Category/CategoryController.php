@@ -11,32 +11,11 @@ use Illuminate\Support\Facades\Validator;
 class CategoryController extends Controller
 {
     
-    public function index()
-    {   
+    public function index() {   
 
-        //$Menu =new Category;
-        //$allCategories=$Menu->tree();    
-        //dd($allCategories);
-
-
-        //$categories = Category::orderby('created_at','desc')->with('posts')->get();
         $categories = Category::with('child')->where('parent_id',0)->get();
         $cat = Category::with('child')->where('parent_id',0)->get();
-        //dd(json_encode($categories));
-        //return $categories;
-        //return json_encode($categories);
         return view('admin.pages.category.category',compact('categories','cat'));
-    }
-
-    public function getcategories(){
-        
-        $categories = Category::where('parent_id', 0)
-                    ->with('child.posts')
-                    ->orderby('created_at','desc')
-                    ->get();  
-
-
-        return request()->json(200,$categories);
     }
 
   
@@ -50,8 +29,7 @@ class CategoryController extends Controller
     }
 
    
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         
 
         $data = Validator::make($request->all(),[
@@ -103,33 +81,29 @@ class CategoryController extends Controller
 
    
     public function update(Request $request, $id){
-
        
-
-        $data = Validator::make($request->all(),[
-            'name'=>'required|unique:tags',
-                 
-        ],[
-            'name.required' => 'Category already avaliable',
-           
-        ])->Validate();
-       
+       //return $id;
         $category = Category::find($id);
         
-        $category->name = $request->name;
-        $category->slug = str_slug( $request->name );
-        $category->parent_id = $request->parent_id;
+        $category->name = $request->category_name;
+        $category->slug = str_slug( $request->category_name );
+        $category->parent_id = $request->category_parent;
         $cat_save = $category->save();
 
         if($cat_save){           
-            return redirect()->route('category.index')->with('success', 'Category Updated successfully');
+            $categories = Category::where('parent_id', 0)
+                    ->with('child.posts')
+                    ->orderby('created_at','desc')
+                    ->get(); 
+            return request()->json(200,$categories);
         }
+
+        
 
     }
 
   
-    public function destroy($id)
-    {
+    public function destroy($id) {
 
         $category = Category::find($id);
         $is_deleted=$category->delete();

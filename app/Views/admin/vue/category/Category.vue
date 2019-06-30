@@ -8,91 +8,81 @@
 
          <div class="x_content">
 
-          	<div class="col-md-4 col-xs-12">
+				<div class="col-md-4 col-xs-12">
+					<div class="form-group wp-input" >
+						<div v-bind:class="{ 'form-invalid': catgerror }">
+							<label for="usr">Category Name</label>
+							<input type="text" class="form-control input-sm " v-model="category.category_name">
+							<small><i>The name is how it appears on your site.</i></small>
+							<small v-if="this.errors.errors">{{this.errors.errors.title[0]}}</small>
+						</div>
+					</div>
+					
+					<!--Parent category dropdown-->
+					<div class="form-group wp-input">
+						<label for="sel1">Parent Catagory</label>
+						<select class="form-control input-sm" v-model="category.category_parent">
+							<option value="">--Please select parent--</option>
+							<option v-for="cat,key in categories" v-bind:value="cat.id">{{cat.name}}</option>
+						</select>
+						<small><i>By Selecting this WebBlock Name will become category under select parent/Block</i></small>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-dark btn-sm" style="margin-bottom: 20px;" @click="addcategory">
+						Add New
+						</button>
+					</div>
+				</div>
 
-          		<div class="form-group wp-input" >
-                       <div v-bind:class="{ 'form-invalid': catgerror }">
-                       	<label for="usr">Category Name</label>
-                          <input type="text" class="form-control input-sm " v-model="category.category_name">
-                          <small><i>The name is how it appears on your site.</i></small>
-                          <small v-if="this.errors.errors">{{this.errors.errors.title[0]}}</small> 
-                       </div>
-                   </div>
-
-                   
-
-                   <!--Parent category dropdown-->
-                   	<div class="form-group wp-input">
-                    	<label for="sel1">Parent Catagory</label>
-                       	<select class="form-control input-sm" v-model="category.category_parent">	                                   
-                          <option value="">--Please select parent--</option>
-                          <option v-for="cat,key in categories" v-bind:value="cat.id">{{cat.name}}</option>                               
-                       	</select>
-                     	<small><i>By Selecting this WebBlock Name will become category under select parent/Block</i></small>
-                   	</div>
-
-                   	<div>
-                    	<button type="submit" class="btn btn-dark btn-sm" style="margin-bottom: 20px;" @click="addcategory">
-                       		Add New
-                     	</button>
-                   	</div>
-          	</div>
-
-          	<div class="col-md-8 col-xs-12">
-
-               <div v-for="cat in categories" class="panel panel-dz dashboard-post-page-comment-indicator">
-                    	<div class="panel-heading active">
-                       	<span class="panel-title">
-                          <a data-toggle="collapse" v-bind:href="'#'+ cat.id">
-                            {{cat.name}}                    
-                          </a>
-                         
-                           <span class="action-text wpfont ml-20">
-                             <a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(child)">
-                             		<small><i class="fa fa-pencil" aria-hidden="true"></i></small>
-                             	</a>
-                              |
-                             <a href="" v-on:click.prevent @click="deletecategory(cat.id)">
-                             		<small><i class="fa fa-trash-o" aria-hidden="true"></i></small>
-                             	</a>
-                           </span>
-
-                          <i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
-                       	</span>
-                       
-                    	</div>
-                     <div :id="cat.id" class="panel-collapse collapse in">
-                          
-                        <div v-if="cat.child.length > 0" class="panel-body open">
-                           
-                               <ul class="quick-list">
-                                 
-                                   <li v-for="child in cat.child" class="wpfont">
-                                     <a href="">
-                                       {{child.name}} ({{child.posts.length}})
-                                     </a>
-
-                                     <span ></span>
-
-
-                                     <span class="action-text wpfont ml-20">
-                                       <a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(child)">
-                                       	<small>Edit</small>
-                                       </a>
-                                        |
-                                       <a href="" v-on:click.prevent @click="deletecategory(child.id)">
-                                       	<small>Delete</small>
-                                       </a>
-                                     </span>
-
-                                   </li>
-                            
-                               </ul>  
-                              
-                        </div>
-                         
-                     </div>
-               </div>
+				<div class="col-md-8 col-xs-12">
+					<div v-for="cat in categories" class="panel panel-dz dashboard-post-page-comment-indicator">
+						<div class="panel-heading active">
+							<span class="panel-title">
+								<a data-toggle="collapse" v-bind:href="'#'+ cat.id">
+									{{cat.name}}
+								</a>
+								
+								<span class="action-text wpfont ml-20">
+									<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(cat)">
+										<small><i class="fa fa-pencil" aria-hidden="true"></i></small>
+									</a>
+									|
+									<a href="" v-on:click.prevent @click="deletecategory(cat.id)">
+										<small><i class="fa fa-trash-o" aria-hidden="true"></i></small>
+									</a>
+								</span>
+								<i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
+							</span>
+							
+						</div>
+						<div :id="cat.id" class="panel-collapse collapse in">
+							
+							<div v-if="cat.child.length > 0" class="panel-body open">
+								
+								<ul class="quick-list">
+									
+									<li v-for="child in cat.child" class="wpfont">
+										<a href="">
+											{{child.name}} ({{child.posts.length}})
+										</a>
+										<span ></span>
+										<span class="action-text wpfont ml-20">
+											<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(child)">
+												<small>Edit</small>
+											</a>
+											|
+											<a href="" v-on:click.prevent @click="deletecategory(child.id)">
+												<small>Delete</small>
+											</a>
+										</span>
+									</li>
+									
+								</ul>
+								
+							</div>
+							
+						</div>
+					</div>
                  
 					<b><i style="color:#aaa">Note:</i></b>
                <p>
@@ -187,21 +177,12 @@
 	        })
 			},
 			updatecategory(data){
-				//console.log(data)
-				//this.submit.type = 'update'
-				//this.submit.text = 'Update'
-				
+				console.log(data)
 				this.catprop = data
-
-				/*if(data.child){
-					this.category.category_name = data.name
-				}else{
-					this.category.category_name = data.name
-					this.category.category_parent = data.parent_id
-				}*/
 			},
-			refreshRecord(){
-
+			refreshRecord(record){
+				console.log(record)
+				this.categories = record.data
 			}
 		},
 		created(){

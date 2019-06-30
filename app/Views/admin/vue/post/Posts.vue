@@ -59,7 +59,6 @@
 	           						
 							<ul>
 								<li v-for='child in block.child'>
-									{{child.posts.length}}
 									<ul>
 										<li v-for="post in child.posts" class="posts-list">											
 											
@@ -94,7 +93,6 @@
 	          	</div>
 
          	</div>
-
 		</div>
 
 		<div id="modal">
@@ -102,6 +100,9 @@
 			<newpost :categories="categories" :tags="tags"  @recordupdated="refreshRecord"></newpost>	
 			<editpost :categories="categories" :tags="tags" :epost="post"  @recordupdated="refreshRecord"></editpost>	
 		</div>
+
+	
+	
 
 
 	</div>
