@@ -81,13 +81,21 @@ class CategoryController extends Controller
 
    
     public function update(Request $request, $id){
-       
-       //return $id;
-        $category = Category::find($id);
+
         
+       
+        if($request->category_parent == ''){
+            $parent_id = 0;
+            
+        }else{
+            $parent_id = $request->category_parent;
+        }
+
+
+        $category = Category::find($id);
         $category->name = $request->category_name;
         $category->slug = str_slug( $request->category_name );
-        $category->parent_id = $request->category_parent;
+        $category->parent_id = $parent_id;
         $cat_save = $category->save();
 
         if($cat_save){           

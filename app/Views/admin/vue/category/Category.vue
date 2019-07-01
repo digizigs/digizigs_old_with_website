@@ -62,7 +62,7 @@
 								<ul class="quick-list">
 									
 									<li v-for="child in cat.child" class="wpfont">
-										<a href="">
+										<a v-on:click.prevent >
 											{{child.name}} ({{child.posts.length}})
 										</a>
 										<span ></span>

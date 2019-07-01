@@ -48,6 +48,50 @@
                     </div>
 		
             	</div>
+
+            	<!--div class="panel panel-dz dashboard-post-page-comment-indicator">
+						<div class="panel-heading active">
+							<span class="panel-title">
+								<a data-toggle="collapse" >
+									Users
+								</a>
+															
+								<i class="fa fa-caret-down pull-right" aria-hidden="true"></i>
+							</span>
+							
+						</div>
+						
+							
+						<div  class="panel-body open">
+							
+							<ul class="quick-list">
+								
+								<li v-for="user in users.data" class="wpfont">
+									
+
+									<span class="action-text wpfont ml-20">
+		                            	<a href="#edituser" v-on:click.prevent data-toggle="modal" @click="detailuser(user.id)" ><i class="fa fa-eye" aria-hidden="true"></i></a>
+		                            	|
+		                            	<a href="" v-on:click.prevent ><i class="fa fa-trash-o" aria-hidden="true" @click="deleteuser(user.id)"></i></a>	                               
+		                          	</span>
+
+		                          	<a href="#edituser" v-on:click.prevent data-toggle="modal" @click="detailuser(user.id)">
+										{{user.firstname}},{{user.lastname}}
+									</a>
+									<span v-for="role in user.roles" class="label label-info label-many">
+										{{ role.name }}
+									</span>
+
+									
+								</li>
+								
+							</ul>
+							
+						</div>
+							
+						
+				</div-->
+
 				
 				<vuepagination :input="users" @pagechange="paginationdata"></vuepagination>
           
@@ -156,6 +200,12 @@
 </script>
 
 <style type="text/css" Scoped>
-
+	.fa{
+		font-size: 12px !important;
+	}
+	.label-info{
+		padding: 2px 5px !important;
+		margin-right: 4px;
+	}
 
 </style>

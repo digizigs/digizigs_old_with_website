@@ -59,11 +59,12 @@
 		watch:{
 			cat(){
 				
-				//console.log(this.cat)
+				console.log(this.cat)
 				if(this.cat.child){
 					this.category.category_name = this.cat.name
+					this.category.category_parent = ''
 				}else{
-					console.log(this.cat)
+					//console.log(this.cat)
 					this.category.category_name = this.cat.name
 					this.category.category_parent = this.cat.parent_id
 				}
@@ -86,11 +87,11 @@
 					.then((data) => {
 						//console.log(data)
 						//this.categories=response.data
-						//this.category = {'category_name':'','category_parent':''};
+						this.category = {'category_name':'','category_parent':''};
 						//this.selectedparent = '';
 						this.$emit('recordupdated',data),                            
               			$('#newwebblock').modal('hide');
-              			this.category = {'category_name':'','category_parent':''}   
+              			//this.category = {'category_name':'','category_parent':''}   
 						toast({
 			                type: 'success',
 			                title: 'WebBlock Added Successfully'
