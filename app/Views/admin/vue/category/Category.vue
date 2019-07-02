@@ -43,7 +43,7 @@
 								</a>
 								
 								<span class="action-text wpfont ml-20">
-									<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(cat)">
+									<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(cat.id)">
 										<small><i class="fa fa-pencil" aria-hidden="true"></i></small>
 									</a>
 									|
@@ -67,7 +67,7 @@
 										</a>
 										<span ></span>
 										<span class="action-text wpfont ml-20">
-											<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(child)">
+											<a href="#editCategory" data-toggle="modal" v-on:click.prevent @click="updatecategory(child.id)">
 												<small>Edit</small>
 											</a>
 											|
@@ -176,9 +176,15 @@
 		        } 
 	        })
 			},
-			updatecategory(data){
-				console.log(data)
-				this.catprop = data
+			updatecategory(id){
+				 axios.get('category/'+id+'/edit')
+		         .then(response=>{
+		         	this.catprop = response.data
+		         })
+		         .catch((error) => {
+		            this.errors=error.response.data.errors;           
+		          })
+
 			},
 			refreshRecord(record){
 				console.log(record)

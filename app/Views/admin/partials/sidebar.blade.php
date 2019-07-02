@@ -76,6 +76,10 @@
             <a href="{{route('chat')}}"><i class="fa fa-comments-o"></i> Chat </a>
           </li>
 
+          <li class="menu-item">
+            <a href="{{route('accesss.index')}}"><i class="fa fa-universal-access"></i> Access Control </a>
+          </li>
+
           <li class="menu-item has-submenu">
             <a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu menu-item-submenu">

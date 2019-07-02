@@ -58,13 +58,9 @@
 		},
 		watch:{
 			cat(){
-				
-				console.log(this.cat)
-				if(this.cat.child){
+				if(this.cat.parent_id == 0){
 					this.category.category_name = this.cat.name
-					this.category.category_parent = ''
 				}else{
-					//console.log(this.cat)
 					this.category.category_name = this.cat.name
 					this.category.category_parent = this.cat.parent_id
 				}

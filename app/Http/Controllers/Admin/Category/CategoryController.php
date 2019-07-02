@@ -73,10 +73,8 @@ class CategoryController extends Controller
     public function edit($id) {   
 
         $category = Category::find($id);
-        $parent = Category::find($category->parent_id);
-        $categories = Category::with('child')->where('parent_id',0)->get();
-        //dd($parent);
-        return view('admin.pages.category.category_edit',compact('category','parent','categories'));
+        return request()->json(200,$category);
+        
     }
 
    
