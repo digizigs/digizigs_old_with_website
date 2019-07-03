@@ -152,6 +152,10 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
     //Access MAnagement
     Route::resource('/accesss', 'Admin\AccessControl\AccessController');
+    Route::resource('/users', 'Admin\AccessControl\UserController');
+    Route::resource('/roles', 'Admin\AccessControl\RoleController'); //Role
+    Route::resource('/permissions', 'Admin\AccessControl\PermissionController'); //Permission
+
     Route::group(['prefix' => 'access'], function(){
         Route::resource('/roles', 'Admin\AccessControl\RoleController'); //Role
         Route::resource('/permissions', 'Admin\AccessControl\PermissionController'); //Permission

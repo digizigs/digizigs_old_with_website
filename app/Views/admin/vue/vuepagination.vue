@@ -8,8 +8,8 @@
 			    </span>
 			</div>
 		    <div class="col-md-4  col-xs-4 data">
-		    	<span class="">
-			        Showing {{input.from}} to {{input.to}} of total {{input.total}} 
+		    	<span class="info">
+			        <small>{{input.from}} to {{input.to}} of {{input.total}} </small>
 			    </span>
 		    </div>
 		    <div class="col-md-4  col-xs-4">
@@ -49,6 +49,8 @@
 				}else{
 					this.prevactive=true
 				}
+
+				this.$emit('count',this.input.total)
 			}
 		},
 		methods:{
@@ -73,7 +75,7 @@
 			}
 		},
 		created(){
-		
+			//this.$emit('count',this.input.total)
 		}
 	};
 
@@ -88,7 +90,7 @@
 	  .next,.prev{
 	    cursor: pointer;
 	    color: #01A9DB;
-	    font-size: 13px;
+	    font-size: 12px;
 	    font-weight: 600;
 	    display: none;
 	  }
@@ -106,6 +108,9 @@
 	  }
 	  .data{
 	  	text-align: center;
+	  }
+	  .info{
+	  	margin-top: 20px !important;
 	  }
 	}
 

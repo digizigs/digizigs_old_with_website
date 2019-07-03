@@ -26,8 +26,8 @@ class UserController extends Controller
 
         if($request->search_string == ''){
 
-            $users = User::orderby('created_at','desc')->with('roles')->paginate(8); 
-            return request()->json(200,['roles'=>$roles,'users'=>$users]);
+            $users = User::orderby('created_at','desc')->with('roles')->paginate(5); 
+            return request()->json(200,$users);
 
         }else{
             $users['data'] = User::where('firstname','like', '%'.$request->search_string.'%')
@@ -36,7 +36,7 @@ class UserController extends Controller
                                 ->orderby('created_at','desc')->with('roles')->get();
 
             
-            return request()->json(200,['roles'=>$roles,'users'=>$users]);
+            return request()->json(200,$users);
         }
     }
 

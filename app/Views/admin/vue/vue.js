@@ -144,6 +144,16 @@ Vue.component('roles', require('./access management/roles/Roles.vue'));
 Vue.component('newrole', require('./access management/roles/NewRole.vue'));
 Vue.component('editrole', require('./access management/roles/EditRole.vue'));
 
+//Access Management
+Vue.component('accesscontrol', require('./access management/access/AccessControl.vue'));
+Vue.component('userblock', require('./access management/access/UserBlock.vue'));
+Vue.component('rolesblock', require('./access management/access/RolesBlock.vue'));
+Vue.component('permissionsblock', require('./access management/access/PermissionsBlock.vue'));
+
+
+
+
+
 //Analytics
 Vue.component('googleanalytics', require('./analytics/GoogleAnalytics.vue'));
 Vue.component('topcountries', require('./analytics/TopCountries.vue'));

@@ -20,29 +20,18 @@ class RoleController extends Controller
         return view('admin.pages.access.roles', compact('roles','permissions'));
     }
 
-
-    public function getroles() {
-
-        $roles = Role::orderby('created_at','desc')->get();
-        $permission = Permission::orderby('created_at','desc')->get();
-
-        return request()->json(200,['roles'=>$roles,'permissions'=>$permission]);
-    }
-
    
-    public function create(Request $request) {
-
-        $permissions = Permission::orderby('created_at','desc')->get()->toArray();
+    public function create(Request $request) { 
 
         if($request->search_string == ''){
             $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);        
-            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
+            return request()->json(200,$roles);
         }else{
             $roles['data'] = Role::where('name','like', '%'.$request->search_string.'%')                             
                                 ->orderby('created_at','desc')
                                 ->with('permissions')
                                 ->get();
-            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
+            return request()->json(200,$roles);
         }
     }
 

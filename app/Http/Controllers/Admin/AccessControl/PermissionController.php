@@ -21,7 +21,7 @@ class PermissionController extends Controller
 
 
         if($request->search_string == ''){
-            $permissions = Permission::orderby('created_at','desc')->paginate(8);
+            $permissions = Permission::orderby('created_at','desc')->paginate(5);
             return request()->json(200,$permissions);
         }else{
             $permissions['data'] = Permission::where('name','like', '%'.$request->search_string.'%')                               

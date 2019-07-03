@@ -2175,7 +2175,8 @@ span.right {
 .tile_count .tile_stats_count {
     border-bottom: 1px solid #D9DEE4;
     padding: 0 10px 0 20px;
-    position: relative
+    position: relative;
+    text-align: center;
 }
 
 .tile_count .tile_stats_count:before {
@@ -2204,7 +2205,7 @@ span.right {
 .tile_count .tile_stats_count .count {
     font-size: 30px;
     line-height: 47px;
-    font-weight: 600
+    font-weight: 800 !important;
 }
 
 @media (min-width:768px) {
@@ -2227,6 +2228,10 @@ span.right {
     .tile_count .tile_stats_count span {
         font-size: 13px
     }
+}
+
+.tile_count .tile_stats_count .top  {
+    font-size: 16px;
 }
 
 .tile_count .tile_stats_count .count_bottom i {
