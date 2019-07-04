@@ -144,12 +144,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     
-    //Contact Management
-    Route::group(['prefix' => 'contact'], function(){
-        Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
-        Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
-    });
+    //Connects
+    Route::resource('/connect', 'Admin\Connects\ConnectController'); //Contact
+    Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
+    Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
 
+    
     //Access MAnagement
     Route::resource('/accesss', 'Admin\AccessControl\AccessController');
     Route::resource('/users', 'Admin\AccessControl\UserController');

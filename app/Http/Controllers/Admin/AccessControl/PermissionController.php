@@ -47,7 +47,7 @@ class PermissionController extends Controller
         $permission->description = $request->description;
         $permission->save();
 
-        $permission = Permission::orderby('created_at','desc')->paginate(8);
+        $permission = Permission::orderby('created_at','desc')->paginate(5);
         return request()->json(200,$permission);
 
        
@@ -80,7 +80,7 @@ class PermissionController extends Controller
         $permission->description = $request->description;
         $permission->save();
 
-        $permission = Permission::orderby('created_at','desc')->paginate(8);
+        $permission = Permission::orderby('created_at','desc')->paginate(5);
         return request()->json(200,$permission);
     }
 
@@ -93,7 +93,7 @@ class PermissionController extends Controller
         $permission = Permission::find($id);
         $is_deleted=$permission->delete();
         if($is_deleted){
-            $permission = Permission::orderby('created_at','desc')->paginate(8);
+            $permission = Permission::orderby('created_at','desc')->paginate(5);
             return request()->json(200,$permission);
         }
        

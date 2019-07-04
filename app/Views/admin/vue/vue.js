@@ -65,10 +65,13 @@ Vue.use(VTooltip)
 
 //=======================Client Management==================================//
 
-//Contacts
-Vue.component('subscription', require('./contacts/Subscriptions.vue'));
-Vue.component('inquiry', require('./contacts/Inquiry.vue'));
-Vue.component('inquiryview', require('./contacts/Inquiry_view.vue'));
+//Connects
+Vue.component('subscription', require('./connects/Subscriptions.vue'));
+Vue.component('inquiry', require('./connects/Inquiry.vue'));
+Vue.component('inquiryview', require('./connects/Inquiry_view.vue'));
+
+
+
 
 
 //Service

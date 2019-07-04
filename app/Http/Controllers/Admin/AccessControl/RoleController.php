@@ -21,17 +21,20 @@ class RoleController extends Controller
     }
 
    
-    public function create(Request $request) { 
+    public function create(Request $request) {
+
+        $permissions = Permission::orderby('created_at','desc')->get();
+
 
         if($request->search_string == ''){
-            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);        
-            return request()->json(200,$roles);
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(5);        
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
         }else{
             $roles['data'] = Role::where('name','like', '%'.$request->search_string.'%')                             
                                 ->orderby('created_at','desc')
                                 ->with('permissions')
                                 ->get();
-            return request()->json(200,$roles);
+            return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
         }
     }
 
@@ -65,7 +68,7 @@ class RoleController extends Controller
 
 
         $permissions = Permission::orderby('created_at','desc')->get()->toArray();
-        $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+        $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(5);
         return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
     }
 
@@ -115,7 +118,7 @@ class RoleController extends Controller
         //return redirect()->route('roles.index')->with('message', 'Role updated successfully');
         if($role_save){
             $permissions = Permission::orderby('created_at','desc')->get()->toArray();
-            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(5);
             return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);  
         }
     }
@@ -132,7 +135,7 @@ class RoleController extends Controller
         $is_deleted=$role->delete();
         if($is_deleted){
             $permissions = Permission::orderby('created_at','desc')->get()->toArray();
-            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(8);
+            $roles = Role::orderby('created_at','desc')->with('permissions')->paginate(5);
             return request()->json(200,['roles'=>$roles,'permissions'=>$permissions]);
         }
         

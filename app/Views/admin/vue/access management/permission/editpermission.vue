@@ -1,10 +1,10 @@
 <template>
 	<section>
-		<div class="modal fade modal-right-slide" id="editpermission" role="dialog"  data-backdrop="false">
+		<div class="modal fade right" id="editpermission" role="dialog"  data-backdrop="false">
             <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
 
-                <div class="modal-header panel-heading">
+                <div class="modal-header">
                   	<button type="button" class="close" data-dismiss="modal" >&times;</button>
                   	<h4 class="modal-title"><b>{{permission.name}}</b></h4>
               	</div>
@@ -15,7 +15,7 @@
 
                   			<div class="form-group wp-input">
                               	<label for="" class="control-label col-sm-3" >Permission name</label> 
-                                <div class="col-sm-9">
+                                <div class="col-sm-9 col-xs-12">
                                   <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="permission.name">
                                   </div>
@@ -27,7 +27,7 @@
 
                             <div class="form-group wp-input">
                               	<label for="" class="control-label col-sm-3" >Permission Description</label> 
-                                <div class="col-sm-9">
+                                <div class="col-sm-9 col-xs-12">
                                   <div class="form-line">
                                     <textarea class="form-control input-sm" cols="30" rows="5" v-model="permission.description"></textarea>
                                   </div>

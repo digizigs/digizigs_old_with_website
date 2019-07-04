@@ -25,6 +25,12 @@
 		}
 	}
 
+	@media (max-width:768px) {
+		.modal.right .modal-dialog {
+			width: 100%;
+		}
+	}
+
 	.modal.left .modal-content,
 	.modal.right .modal-content {
 		height: 100%;
@@ -50,6 +56,12 @@
 
 	@media (max-width:768px) {
 		.modal.left.w80.fade .modal-dialog{
+			left: -100%;
+		}
+	}
+
+	@media (max-width:768px) {
+		.modal.left.fade .modal-dialog{
 			left: -100%;
 		}
 	}

@@ -64,12 +64,8 @@
             <a href="{{route('gallery.index')}}"><i class="fa fa-picture-o"></i> Media </a>
           </li>
 
-          <li class="menu-item has-submenu">
-            <a><i class="fa fa-user"></i>Subscriptions & Inquiry<span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu menu-item-submenu">            
-              <li><a href="{{route('subscription.index')}}"> Subscriptions </a></li>
-              <li><a href="{{route('inquiry.index')}}"> Inquiry </a></li>
-            </ul>
+          <li class="menu-item">
+            <a href="{{route('connect.index')}}"><i class="fa fa-share-alt"></i> Connects </a>
           </li>
 
           <li class="menu-item">
@@ -80,14 +76,14 @@
             <a href="{{route('accesss.index')}}"><i class="fa fa-universal-access"></i> Access Control </a>
           </li>
 
-          <li class="menu-item has-submenu">
+          <!-- <li class="menu-item has-submenu">
             <a><i class="fa fa-universal-access"></i>User Management<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu menu-item-submenu">
               <li><a href="{{route('users.index')}}">Users</a></li>
               <li><a href="{{route('roles.index')}}">Roles</a></li>
               <li><a href="{{route('permissions.index')}}">Permission</a></li>
             </ul>
-          </li>
+          </li> -->
 
           <li class="menu-item has-submenu">
             <a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>

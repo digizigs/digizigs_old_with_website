@@ -1,5 +1,5 @@
 <template>
-	<div class="modal fade modal-right-slide" id="editrole" role="dialog"  data-backdrop="false">
+	<div class="modal fade right" id="editrole" role="dialog"  data-backdrop="false">
         <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -13,7 +13,7 @@
 
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >First name</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="role.name">
                                  </div>
@@ -27,7 +27,7 @@
                            
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Role Description</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <textarea class="form-control input-sm" cols="30" rows="5" v-model="role.description"></textarea>
                                  </div>
@@ -39,7 +39,7 @@
 
                            <div class="form-group">
               								<label for="" class="control-label col-sm-3">Roles</label>
-              								<div class="col-sm-9">
+              								<div class="col-sm-9 col-xs-12">
               									<multiselect  v-model="value" 
                                               tag-placeholder="Add this as new tag" 
                                               placeholder="Search or add a role" 

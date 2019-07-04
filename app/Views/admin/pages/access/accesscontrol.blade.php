@@ -22,7 +22,7 @@
 
 		<div class="x_content">
 
-			@can('can_manage_user')
+			@can('manage_user')
 				<div class="col-md-12 col-xs-12">
 					<userblock></userblock>
 				</div>

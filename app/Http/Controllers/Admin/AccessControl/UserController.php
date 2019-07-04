@@ -27,16 +27,14 @@ class UserController extends Controller
         if($request->search_string == ''){
 
             $users = User::orderby('created_at','desc')->with('roles')->paginate(5); 
-            return request()->json(200,$users);
+            return request()->json(200,['roles'=>$roles,'users'=>$users]);
 
         }else{
             $users['data'] = User::where('firstname','like', '%'.$request->search_string.'%')
                                 ->orWhere('lastname','like', '%'.$request->search_string.'%')
                                 ->orWhere('email','like', '%'.$request->search_string.'%')                                 
                                 ->orderby('created_at','desc')->with('roles')->get();
-
-            
-            return request()->json(200,$users);
+            return request()->json(200,['roles'=>$roles,'users'=>$users]);
         }
     }
 
@@ -61,7 +59,7 @@ class UserController extends Controller
         //$roles = $request->input('roles') ? $request->input('roles') : [];
         //dd($roles);
         $user->assignRole($roles);
-        $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
+        $users = User::orderby('created_at','desc')->with('roles')->paginate(5);
         return request()->json(200,$users);
        
     }
@@ -97,7 +95,7 @@ class UserController extends Controller
 
 
       if($user_save){
-         $users = User::orderby('created_at','desc')->with('roles')->paginate(8);
+         $users = User::orderby('created_at','desc')->with('roles')->paginate(5);
          //return request()->json(200,$users);
          return $users;
       }
@@ -112,7 +110,7 @@ class UserController extends Controller
         $user = User::find($id);
         $is_deleted=$user->delete();
         if($is_deleted){
-            $users = User::orderby('created_at','desc')->paginate(8);
+            $users = User::orderby('created_at','desc')->paginate(5);
             return request()->json(200,$users);
         }
     }

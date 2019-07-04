@@ -1,5 +1,5 @@
 <template>
-	<div class="modal fade modal-right-slide" id="addnewuser" role="dialog"  data-backdrop="false">
+	<div class="modal fade right" id="addnewuser" role="dialog"  data-backdrop="false">
         <div class="modal-dialog modal-md" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -13,7 +13,7 @@
 
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >First name</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="newuser.firstname">
                                  </div>
@@ -24,7 +24,7 @@
                            </div>
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Last name</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="newuser.lastname">
                                  </div>
@@ -35,7 +35,7 @@
                            </div>
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Email</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="text" class="form-control input-sm" v-model="newuser.email">
                                  </div>
@@ -46,7 +46,7 @@
                            </div>
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Password</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="password" class="form-control input-sm" v-model="newuser.password">
                                  </div>
@@ -57,7 +57,7 @@
                            </div>
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Confirm Password</label>
-                              <div class="col-sm-9">
+                              <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
                                     <input type="password" class="form-control input-sm" v-model="newuser.cpassword">
                                  </div>
@@ -68,7 +68,7 @@
                            </div>
                            <div class="form-group">
               								<label for="" class="control-label col-sm-3">Roles</label>
-              								<div class="col-sm-9">
+              								<div class="col-sm-9 col-xs-12">
               									<multiselect  v-model="value" 
                                               tag-placeholder="Add this as new tag" 
                                               placeholder="Search or add a role" 
