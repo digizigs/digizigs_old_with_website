@@ -285,7 +285,7 @@ table.tile_info td p {
 }
 
 .nav-sm .nav.side-menu li a i {
-    font-size: 15px!important;
+    font-size: 10px!important;
     text-align: center;
     width: 100%!important;
     margin-bottom: 5px
@@ -422,7 +422,7 @@ table.tile_info td p {
 
 .nav-md .container.body .col-md-3.left_col {
     min-height: 100%;
-    width: 230px;
+    width: 180px !important;
     padding: 0;
     position: absolute;
     display: -ms-flexbox;
@@ -442,11 +442,11 @@ body .container.body .right_col {
 
 .nav-md .container.body .right_col {
     padding: 5px 10px;
-    margin-left: 230px
+    margin-left: 180px
 }
 
 .nav_title {
-    width: 230px;
+    width: 180px;
     float: left;
     background: #2A3F54;
     border-radius: 0;
@@ -2147,8 +2147,8 @@ span.right {
     display: block;
     padding: 5px 0 0;
     position: fixed;
-    width: 230px;
-    background: #2A3F54;
+    width: 180px;
+    //background: #2A3F54;
     z-index: 999
 }
 
@@ -2159,12 +2159,13 @@ span.right {
     font-size: 17px;
     display: block;
     float: left;
-    background: #172D44;
-    cursor: pointer
+    //background: #172D44;
+    cursor: pointer;
+    color:#FAFBFC;
 }
 
 .sidebar-footer a:hover {
-    background: #425567
+    //background: #425567
 }
 
 .tile_count {
@@ -2190,7 +2191,7 @@ span.right {
 
 @media (min-width:992px) {
     footer {
-        margin-left: 230px
+        margin-left: 180px
     }
     .tile_count .tile_stats_count {
         margin-bottom: 10px;

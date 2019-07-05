@@ -73,6 +73,10 @@
           </li>
 
           <li class="menu-item">
+            <a href="{{route('mailbox.index')}}"><i class="fa fa-envelope-o"></i> Mailbox </a>
+          </li>
+
+          <li class="menu-item">
             <a href="{{route('accesss.index')}}"><i class="fa fa-universal-access"></i> Access Control </a>
           </li>
 
@@ -86,7 +90,7 @@
           </li> -->
 
           <li class="menu-item has-submenu">
-            <a><i class="fa fa-users"></i>Client Management<span class="fa fa-chevron-down"></span></a>
+            <a><i class="fa fa-users"></i>Client Control<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu menu-item-submenu">
               <li><a href="{{route('service.index')}}">Services</a></li> 
               <li><a href="{{route('client.index')}}">Clients</a></li>

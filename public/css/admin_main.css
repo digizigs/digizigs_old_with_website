@@ -8905,7 +8905,7 @@ table.tile_info td p {
 }
 
 .nav-sm .nav.side-menu li a i {
-  font-size: 15px !important;
+  font-size: 10px !important;
   text-align: center;
   width: 100% !important;
   margin-bottom: 5px;
@@ -9041,7 +9041,7 @@ table.tile_info td p {
 
 .nav-md .container.body .col-md-3.left_col {
   min-height: 100%;
-  width: 230px;
+  width: 180px !important;
   padding: 0;
   position: absolute;
   display: -ms-flexbox;
@@ -9062,11 +9062,11 @@ body .container.body .right_col {
 
 .nav-md .container.body .right_col {
   padding: 5px 10px;
-  margin-left: 230px;
+  margin-left: 180px;
 }
 
 .nav_title {
-  width: 230px;
+  width: 180px;
   float: left;
   background: #2A3F54;
   border-radius: 0;
@@ -10781,8 +10781,7 @@ span.right {
   display: block;
   padding: 5px 0 0;
   position: fixed;
-  width: 230px;
-  background: #2A3F54;
+  width: 180px;
   z-index: 999;
 }
 
@@ -10793,12 +10792,8 @@ span.right {
   font-size: 17px;
   display: block;
   float: left;
-  background: #172D44;
   cursor: pointer;
-}
-
-.sidebar-footer a:hover {
-  background: #425567;
+  color: #FAFBFC;
 }
 
 .tile_count {
@@ -10824,7 +10819,7 @@ span.right {
 
 @media (min-width: 992px) {
   footer {
-    margin-left: 230px;
+    margin-left: 180px;
   }
 
   .tile_count .tile_stats_count {
@@ -14442,9 +14437,20 @@ footer a {
   margin-top: -20px;
 }
 
+.menu_section .side-menu li a {
+  font-size: 12px !important;
+  padding: 6px 8px;
+  font-weight: 500 !important;
+}
+
+.menu_section .side-menu li a .fa-chevron-down {
+  font-size: 10px;
+  margin-bottom: 20px !important;
+}
+
 .menu_section .side-menu li.current-page a {
   font-weight: 600 !important;
-  font-size: 14px;
+  font-size: 12px !important;
 }
 
 .menu_section .side-menu li.current-page a:before {
@@ -14485,17 +14491,6 @@ footer a {
   top: 0;
 }
 
-.menu_section .side-menu li a {
-  font-size: 13px !important;
-  padding: 10px 8px;
-  font-weight: 500 !important;
-}
-
-.menu_section .side-menu li a .fa-chevron-down {
-  font-size: 10px;
-  margin-bottom: 20px !important;
-}
-
 .nav_title {
   border: 1px solid #fff;
   margin-bottom: 10px;
@@ -14527,14 +14522,9 @@ footer a {
   font-size: 14px;
 }
 
-.nav.side-menu > li > a {
-  margin-bottom: 2px;
-  font-size: 12px;
-}
-
-@media (max-width: 480px) {
-  .nav.side-menu > li .fa {
-    font-size: 14px;
+@media (max-width: 720px) {
+  .side-menu > li .fa {
+    font-size: 5px !important;
   }
 }
 
@@ -16679,7 +16669,7 @@ footer a {
 }
 
 .modal.right.w80 .modal-dialog {
-  width: calc(100% - 230px);
+  width: calc(100% - 180px);
 }
 
 @media (max-width: 768px) {

@@ -26,15 +26,13 @@
 							<span class="time"><small>at  {{inq.created_at | vueAgoTime }} </small></span>
 
 							<span class="action-text">
-                    	<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
-                     		View
-                     	</a>  |                               
-                      	<a href=""  v-on:click.prevent @click="delet(inq.id)">
-                     		Delete
-                     	</a> 
-                   </span>
-
-
+		                    	<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)">
+		                     		View
+		                     	</a>  |                               
+		                      	<a href=""  v-on:click.prevent @click="delet(inq.id)">
+		                     		Delete
+		                     	</a> 
+		                   </span>
 						</li>
 					</ul>
 					

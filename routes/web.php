@@ -143,7 +143,10 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::get('/conversation/{id}', 'Admin\Chat\ChatController@getMessagesFor');
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
-    
+    //Mailbox
+    Route::resource('/mailbox', 'Admin\MAilbox\MailboxController'); //Contact
+
+
     //Connects
     Route::resource('/connect', 'Admin\Connects\ConnectController'); //Contact
     Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
