@@ -95,7 +95,7 @@ Route::get('/taskevent',function(){
 
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
-Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
+Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
 
     
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');
