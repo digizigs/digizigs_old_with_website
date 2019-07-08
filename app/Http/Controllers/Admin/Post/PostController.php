@@ -16,44 +16,10 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PostController extends Controller
 {
    
-    public function index(Request $request)
-    {
+    public function index() {
 
-      return 'post';
+      return view('admin.pages.post.post');
 
-        //$posts = Post::paginate(10);
-        //$posts = with('author')->find(1);
-
-        if($request->has('posts_type')){
-
-            $post_type = $request->posts_type;
-
-
-            if($post_type === 'published'){
-
-                $posts = Post::where([['type','post'],['status','=','published']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
-                return view('admin.pages.post.posts',compact('posts'));
-
-            }elseif($post_type === 'draft'){
-
-                $posts = Post::where([['type','post'],['status','=','draft']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
-                return view('admin.pages.post.posts',compact('posts'));
-
-            }elseif(($post_type === 'trashed')){
-
-                $posts = Post::where([['type','post'],['status','=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
-                return view('admin.pages.post.posts',compact('posts'));
-
-            }
-            
-            
-        }else{
-            $posts = Post::where([['type','post'],['status','!=','trashed']])->orderby('created_at','desc')->with('user','categories')->paginate(7);
-            return view('admin.pages.post.posts',compact('posts')); 
-        }
-
-        
-      
     }
 
     public function getallpost(){
@@ -62,182 +28,222 @@ class PostController extends Controller
         return request()->json(200,$posts);
     }
    
-    public function create()
-    {
-        $categories = Category::orderby('created_at','desc')->get();
-        return view('admin.pages.post.post_new',compact('categories'));
+    public function create() {
+
+        $categories = Category::where('parent_id','<>', 0 )->with('child')->orderby('created_at','desc')->get();
+        $tags = Tag::orderby('created_at','desc')->get();
+        $blocks = Category::where('parent_id', 0)
+                    ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                    ->orderby('created_at','desc')
+                    ->get();  
+        return request()->json(200,['categories'=>$categories,'tags'=>$tags,'blocks'=>$blocks]);
     }
 
-    public function publishpost(Request $request)
-    {
-        return $request->all();
-        //return 'Publish';
-    }
    
-    public function store(Request $request){
-        //dd($request->all());
-        //return  $request->all();
-     
+    public function store(Request $request) {
+      
         $data = Validator::make($request->all(),[
-            'post_title'=>'required|max:191',     
-        ],[
-            'post_title.required' => 'Post Title is required', 
+         'title'=>'required|unique:posts,title|max:191',  
         ])->Validate();
+
+       //return $post_status;
 
         $post = new Post;
         $post->user_id = Auth::user()->id;
-        $post->title = $request->post_title;
-        $post->description = $request->post_desc;
-        $post->body = $request->post_body;
-        $post->slug = str_slug( $request->post_title );
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->body = $request->body;
+        $post->slug = str_slug($request->title);
         $post->status = $request->status;
         $post->type = 'post';
 
-        if($request->hasFile('feature_image')){
-            $image = $request->file('feature_image');
-            $filename = time().'_'. $image->getClientOriginalName();
-            $location = public_path('uploads/posts/' . $filename);
-            //Image::make($image->getRealPath())->resize(250, 250)->save($location);
-            Image::make($image->getRealPath())->save($location);            
-            $post->image_url = url('/public/uploads/posts') . '/' . $filename;           
+       //return str_slug($request->title);
+       
+        if($request->get('image')){
+           $image = 'Post_id' . '_' .time() . '.' . explode('/', explode(':', substr($request->get('image'), 0, strpos($request->get('image'), ';')))[1])[1];
+           $location = public_path('uploads/posts/' . $image);
+           Image::make($request->get('image'))->save($location);
+           $post->image_url  = url('/public/uploads/posts') . '/' . $image; 
         }
-        
+
         $post->save();
 
-        //Sync categories
+           
+        //Categoty Saving
         if(!$request->categories){          
-            $post->categories()->sync([1]);
+           $post->categories()->sync([60]);
         }else{
-            $post->categories()->sync($request->categories);
+           $post->categories()->sync($request->categories);
         }
-        
+
+
         //Saving Tags
         $tagIds = [];
         if($request->tags){
 
-            $tags = $request->tags;
-            foreach($tags as $tag){
+           $tags = $request->tags;
+           foreach($tags as $tag){
 
-                $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
-                if($tag)
-                {
-                  $tagIds[] = $ntag->id;
-                }
-
-
-            }
+               $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
+               if($tag)
+               {
+                 $tagIds[] = $ntag->id;
+               }
+           }
         }
 
         //dd($tagIds);
         $post->tags()->sync($tagIds);
 
-        //if($save_post){
-            //return redirect()->back()->with('status','Category saved');
-        //}
-
-
-        return redirect()->route('post.index')->with('message', 'New Post added successfully');
+        $categories = Category::where('parent_id', 0)
+                       ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                       ->orderby('created_at','desc')
+                       ->get();  
+        return request()->json(200,$categories);
     }
 
    
-    public function show($id)
-    {
-        //
-    }
+   public function show($id) {
+
+        $post = Post::where('id',$id)
+            ->where('type','quotation')
+            ->with('client','invoice_item')
+            ->first();
+   }
 
    
-    public function edit($id)
-    {   
+   public function edit($id) {   
 
-        if (! Gate::allows('edit_post')) {
-            return abort(401);
-        }
-        
-        $post = Post::with('categories','tags')->find($id);
-        $categories = Category::orderby('created_at','desc')->get();
-        $tags = Tag::orderby('created_at','desc')->get();
-        return view('admin.pages.post.post_edit',compact('categories','post','tags'));
-    }
+      $data = Validator::make($request->all(),[
+         'title'=>'required|max:191',  
+      ])->Validate();
+
+      $post = Post::find($id);
+      $post->user_id = Auth::user()->id;
+      $post->title = $request->title;
+      $post->description = $request->description;
+      $post->body = $request->body;
+      $post->slug = str_slug($request->title);
+      $post->status = $request->status;
+      $post->type = 'post';
+
+      //Saving Image
+      if($request->get('image')){
+         $image = 'Post_id' . '_' .time() . '.' . explode('/', explode(':', substr($request->get('image'), 0, strpos($request->get('image'), ';')))[1])[1];
+         $location = public_path('uploads/posts/' . $image);
+         Image::make($request->get('image'))->save($location);
+         $post->image_url  = url('/public/uploads/posts') . '/' . $image; 
+      }
+
+      $post->save();
+
+      //Categoty Saving
+      if(!$request->categories){          
+         $post->categories()->sync([60]);
+      }else{
+         $post->categories()->sync($request->categories);
+      }
+
+
+      //Saving Tags
+      $tagIds = [];
+      if($request->tags){
+
+         $tags = $request->tags;
+         foreach($tags as $tag){
+
+             $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
+             if($tag)
+             {
+               $tagIds[] = $ntag->id;
+             }
+         }
+      }
+
+      //dd($tagIds);
+      $post->tags()->sync($tagIds);
+
+      $categories = Category::where('parent_id', 0)
+                     ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                     ->orderby('created_at','desc')
+                     ->get();  
+      return request()->json(200,$categories);
+
+   }
 
    
-    public function update(Request $request, $id){ 
+   public function update(Request $request, $id){ 
 
-        //return $request->all();
+      $data = Validator::make($request->all(),[
+         'title'=>'required|max:191',  
+      ])->Validate();
 
-        $data = Validator::make($request->all(),[
-            'post_title'=>'required|max:255',     
-        ],[
-            'post_title.required' => 'Post Title is required', 
-        ])->Validate();
+      $post = Post::find($id);
+      $post->user_id = Auth::user()->id;
+      $post->title = $request->title;
+      $post->description = $request->description;
+      $post->body = $request->body;
+      $post->slug = str_slug($request->title);
+      $post->status = $request->status;
+      $post->type = 'post';
 
-        $post = Post::find($id);
-        $post->title = $request->post_title;
-        $post->description = $request->post_desc;
-        $post->body = $request->post_body;
-        $post->slug = str_slug( $request->post_title );
-        $post->status = $request->status;
+      //Saving Image
+      if($request->get('image')){
+         $image = 'Post_id' . '_' .time() . '.' . explode('/', explode(':', substr($request->get('image'), 0, strpos($request->get('image'), ';')))[1])[1];
+         $location = public_path('uploads/posts/' . $image);
+         Image::make($request->get('image'))->save($location);
+         $post->image_url  = url('/public/uploads/posts') . '/' . $image; 
+      }
 
-        if($request->hasFile('feature_image')){
-            $image = $request->file('feature_image');
-            $filename = time().'_'. $image->getClientOriginalName();
-            $location = public_path('uploads/' . $filename);
-            //Image::make($image->getRealPath())->resize(250, 250)->save($location);
-            Image::make($image->getRealPath())->save($location);      
-            $post->image_url = url('/public/uploads') . '/' . $filename;       
-        }
+      $post->save();
 
-        $post->save();
-        //$post->categories()->sync($request->categories);
-        //Sync categories
-        if(!$request->categories){           
-            $post->categories()->sync([0]);
-        }else{
-            $post->categories()->sync($request->categories);
-        }
-        
-     
-        //Saving Tags
-        $tagIds = [];
-        if($request->tags){
-            $tags = $request->tags;
-            foreach($tags as $tag){
-
-                /*$itag = Tag::where('name', '=', $tag)->first();
+      //Categoty Saving
+      if(!$request->categories){          
+         $post->categories()->sync([60]);
+      }else{
+         $post->categories()->sync($request->categories);
+      }
 
 
-                if ($itag != null) {
-                    $tagIds[] = $itag->id;
-                }else{
-                    $ntag = new Tag;
-                    $ntag->post_id = $post->id;
-                    $ntag->name = $tag;
-                    $ntag->slug = str_slug( $tag);
-                    $ntag->save();
-                    $tagIds[] = $ntag->id;
-                }*/
+      //Saving Tags
+      $tagIds = [];
+      if($request->tags){
 
-                $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
-                if($tag)
-                {
-                  $tagIds[] = $ntag->id;
-                }
+         $tags = $request->tags;
+         foreach($tags as $tag){
 
-            }
-        }
-        
-        $post->tags()->sync($tagIds);
+             $ntag = Tag::firstOrCreate(['name'=>$tag,'slug'=>str_slug( $tag)]);
+             if($tag)
+             {
+               $tagIds[] = $ntag->id;
+             }
+         }
+      }
 
-        return redirect()->route('post.index')->with('success', 'Post Updated successfully');
-    }    
+      //dd($tagIds);
+      $post->tags()->sync($tagIds);
+
+      $categories = Category::where('parent_id', 0)
+                     ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                     ->orderby('created_at','desc')
+                     ->get();  
+      return request()->json(200,$categories);
+
+   }    
    
-    public function destroy($id)
-    {
+   public function destroy($id) {
+
         $post = Post::find($id);
         $is_deleted=$post->delete();
+
         if($is_deleted){
-            return redirect()->route('post.index')->with('deleted', 'Post deleted successfully');
+            $categories = Category::where('parent_id', 0)
+                        ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
+                        ->orderby('created_at','desc')
+                        ->get();  
+            return request()->json(200,$categories);
         }
-    }
+   }
 
 
 }

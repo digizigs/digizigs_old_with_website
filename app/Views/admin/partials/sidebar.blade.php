@@ -105,9 +105,7 @@
             <a href="{{route('google.analytics')}}"><i class="fa fa-line-chart"></i> Analytics </a>
           </li>
 
-          <li class="menu-item">
-            <a href="{{route('app.logs')}}"><i class="fa fa-exclamation-triangle"></i> Logs </a>
-          </li>
+         
 
        
         </ul>
