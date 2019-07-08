@@ -52,16 +52,37 @@ Route::get('/taskeventlisten',function(){
 //=========================================Test Routes=============================================//
 Route::get('/mail',function(){
 
-    return new App\Mail\testmail('test mail');
-    //$contact = App\Models\Contact::where('email','jaysvishwa@gmail.com')->first();
+    //return new App\Mail\testmail('test mail');
+    $contact = App\User::where('email','jaysvishwa@gmail.com')->first();
+   
     //$job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
     //$job = (new testmailjob($contact));
     //dispatch($job);
 
-    //Mail::to('jaysvishwa@gmail.com') ->send(new testMail($contact));
+    Mail::to('jaysvishwa@gmail.com') ->send(new testMail('jaysvishwa@gmail.com'));
 
-    //return 'Mail sent successfully';
+    return 'Mail sent successfully';
 });
+
+Route::get('send_test_email', function(){
+
+   $data = array('name'=>'Amit Vishwakarma','email'=>'jaysvishwa@gmail.com'); 
+   Mail::send('email.testmail',$data, function($message)
+    {
+        $message->to('jaysvishwa@gmail.com')->subject('MAilgun api mail test');
+    });
+});
+
+Route::get('send_mail', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        $message->subject('Mailgun and Laravel are awesome!');
+        $message->from('info@digizigs.com', 'DigiZigs');
+        $message->to('jaysvishwa@gmail.com');
+    });
+});
+
+
 
 Auth::routes();
 

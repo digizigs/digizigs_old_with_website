@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use BeyondCode\Mailbox\Facades\Mailbox;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         }*/
 
         //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
+
+        Mailbox::catchAll(CatchAllMailbox::class);
 
     }
 
