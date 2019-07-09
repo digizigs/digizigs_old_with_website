@@ -7,19 +7,9 @@
 
 @section('content')
 
-	
+	<div class="right_col" role="main">
+	    <clients></clients>
+	</div>
 
-<div class="right_col" role="main">
-        <clients></clients>
-</div>
-
-
-
-    
 @endsection
 
-
-@section('javascript')
- 
-                
-@endsection

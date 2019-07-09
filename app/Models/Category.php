@@ -25,4 +25,9 @@ class Category extends Model
         return $this->belongsToMany('App\Models\Post','post_category');
     }
 
+    public function post()
+    {
+        return $this->belongsToMany('App\Models\Post');
+    }
+   
 }

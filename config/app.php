@@ -62,6 +62,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -118,6 +119,7 @@ return [
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
      
 
     ],

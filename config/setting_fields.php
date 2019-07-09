@@ -127,43 +127,103 @@ return [
 
 
     ],
-    'media' => [
+    'tax' => [
 
-        'title' => 'Media',
-        'desc' => 'Media upload setting' ,
+        'title' => 'Registration and Tax info',
+        'desc' => 'Registration and Tax info' ,
         'icon' => 'fa fa-picture-o',
 
         'elements' => [
             [
-                'type' => 'select',
-                    'name' => 'default_post_category',
-                    'label' => 'Default Post Category',
-                    'rules' => 'required',
-                    'class' => 'input-sm', // class for input
-                    'options' => [
-                        '-Select-',
-                        'Uncategotised',
-                        'Blog',                        
-                    ]
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'registration_number',
+                'label' => 'Registration Number',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
             ],
             [
-                'type' => 'select',
-                    'name' => 'default_post_format',
-                    'label' => 'Default Post Format',
-                    'rules' => 'required',
-                    'class' => 'input-sm', // class for input
-                    'options' => [
-                        '-Select-',
-                        'aside',
-                        'chat',
-                        'gallery',
-                        'link',
-                        'quote',
-                        'status',
-                        'video',
-                        'audio',                       
-                    ]
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'gst_number',
+                'label' => 'GST Number',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
             ],
+            [
+                'type' => 'text',
+                'data' => 'string',
+                'name' => 'gst_tax',
+                'label' => 'GST %',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'number',
+                'data' => 'string',
+                'name' => 'invoice_due_days',
+                'label' => 'Invoice Due Days',
+                'rules' => 'required|min:2|max:50',
+                'class' => 'input-sm', // class for input
+            ],
+            
+        ],
+
+
+    ],
+    'billing' => [
+
+        'title' => 'Invoice and Quotations',
+        'desc' => 'Terms and conditions for billing in quotations' ,
+        'icon' => 'fa fa-picture-o',
+
+        'elements' => [
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'breifdesc',
+                'label' => 'Breif About Description',
+                'rules' => 'required|min:2',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'billingterms',
+                'label' => 'Terms and Conditions',
+                'rules' => 'required|min:2',
+                'class' => 'input-sm', // class for input
+            ],
+            
+            
+        ],
+
+
+    ],
+    'googleanalytics' => [
+
+        'title' => 'Google Analytics',
+        'desc' => 'Google analytics service credentials' ,
+        'icon' => 'fa fa-line-chart',
+
+        'elements' => [
+            [
+                'type' => 'text',
+                'data' => 'text',
+                'name' => 'ga_view_id',
+                'label' => 'Analytics View Id',
+                'rules' => 'required',
+                'class' => 'input-sm', // class for input
+            ],
+            [
+                'type' => 'textarea',
+                'data' => 'text',
+                'name' => 'ga_service_json',
+                'label' => 'Service Account JSON',
+                'rules' => 'required',
+                'class' => 'input-sm', // class for input
+            ],
+            
             
         ],
 

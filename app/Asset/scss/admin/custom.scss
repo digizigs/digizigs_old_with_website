@@ -1,17 +1,34 @@
 
 body,html{
  
-  margin: 0;
-  padding: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif; 
-  -webkit-font-smoothing: antialiased;  
-  font-smoothing: antialiased; 
-  font-weight: 400;
-  font-size: 12px;
-  color: #212529;
-  //background-color: #fafafa;
+
+  background-color: #2A3F54;
+  font-size: 13px;
+  //overflow-x: hidden;
+    //color: #353c4e;
+  font-weight: 500;
+  color: #455A64;
+  font-family: open sans, sans-serif;
+  //font-family: "Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;
+  //font-family: 'Nunito Sans', sans-serif;
+  background-attachment: fixed;
  
   
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0
+}
+
+*:focus {
+    outline: none
+}
+
+a {
+    font-size: 13px;
+    color: #404E67
 }
 
 //Removing autofill colour
@@ -76,9 +93,12 @@ input:-webkit-autofill:active {
 //========================Footer=========================
 footer {
     background: #fff;
-    padding: 12px;
+    padding: 5px;
     display: block;
     text-align: center;
+    a{
+      color: #FE8A7D ;
+    }
 
 }
 //=======================================================
@@ -112,10 +132,9 @@ footer {
       color:#16c7ff;
      
     }
-  }
-
- 
+  } 
 }
+
 
 
 .pannel-line-group{
@@ -136,20 +155,66 @@ footer {
     padding-bottom: 0 !important;
     background-color: #fff;
   }
+  .panel-line{
+    .action-text{
+      
+      i{
+        //color:#16c7ff;
+      }
+      .fa-trash-o{
+        color: #FF3352;
+      }
+      .fa-pencil{
+        color:#1C871A;
+      }
+      .fa-eye{
+        color:#1C871A;
+      }
+      .fa-file-text{
+        color: #478DE6;
+      }
+      .fa-thumbs-up{
+        color: #1C871A;
+      }
+      .fa-thumbs-down{
+        color: #FF3352;
+      }
+    }  
+  }
   .pannel-line:hover{
-     i::before {
-      display: inline-block;
-      animation: swing ease-in-out 0.5s 1 alternate;
-    }
-    i{
-      color:#16c7ff;
-     
-    }
+
+    .action-text{
+      i::before {
+        display: inline-block;
+        animation: swing ease-in-out 0.5s 1 alternate;
+      }
+      i{
+        //color:#16c7ff;
+      }
+      .fa-trash-o{
+        color: #FF3352;
+      }
+      .fa-pencil{
+        color:#1C871A;
+      }
+      .fa-eye{
+        color:#1C871A;
+      }
+      .fa-file-text{
+        color: #478DE6;
+      }
+      .fa-thumbs-up{
+        color: #1C871A;
+      }
+      .fa-thumbs-down{
+        color: #FF3352;
+      }
+    }  
   }
   .action-text{
     margin: 0 10px;
     a{
-      color: #2980B9;
+      //color: #2980B9;
       font-weight: 500;
     }
     button{
@@ -166,6 +231,30 @@ footer {
   }
   .list-group{
     margin-bottom: 10px !important;
+  }
+  .fa{
+    //color: #56575A;
+  }
+  .fa-trash-o{
+    color: #FF3352;
+  }
+  .fa-pencil{
+    color:#1C871A;
+  }
+  .fa-eye{
+    color:#1C871A;
+  }
+  .fa-file-text{
+    color: #478DE6;
+  }
+  .fa-thumbs-up{
+    color: #1C871A;
+  }
+  .fa-thumbs-down{
+    color: #FF3352;
+  }
+  .fa-bell{
+    color: #E45447; 
   }
 }
 //====================table-action-font-icon ============
@@ -236,8 +325,8 @@ footer {
 
 
 .right_col{
-  min-height: 2000px;
-  margin: 0;
+  //min-height: 2000px;
+  //margin: 0;
 }
 
 
@@ -324,3 +413,302 @@ footer {
   margin: -2px; 
 }
 
+//Vue js form error message
+.error-message{
+  color: #C70039;
+  font-size:xx-small;
+  font-style: italic;
+}
+
+
+
+//=========================Sliding Modal===================//
+.modal-right-slide,
+.modal-left-slide{
+
+  .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+    -ms-transform: translate3d(0%, 0, 0);
+    -o-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+  }
+  @media (max-width:768px) {
+    .modal-dialog {
+      width: 100%;
+    }
+  }
+
+  .modal-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+}
+
+.modal-right-slide.fade .modal-dialog {
+    right: -50%;
+    -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+    -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+    transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+@media (max-width:768px) {
+  .modal-right-slide.fade .modal-dialog {
+    right: 100%;
+  }
+}
+.modal-right-slide.fade.in .modal-dialog {
+  right: 0;
+}
+
+
+.modal-left-slide.fade .modal-dialog{
+  left: -50%;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+@media (max-width:768px) {
+  .modal-left-slide.fade .modal-dialog {
+    left: 100%;
+  }
+}
+
+.modal-left-slide.fade.in .modal-dialog{
+  left: 0;
+}
+//=========================Sliding Modal===================//
+
+
+//========================App Print options----Invoice printing=================//
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+//========================App Print options----Invoice printing=================//
+
+
+//========================X-title-search========================================//
+
+//========================X-title-search========================================//
+
+
+
+
+//========================Notification Flash Message=============================//
+
+#toasty{
+  //max-width: 250px;
+  //height: 50px;
+  //margin: auto;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 1px;
+  position: fixed;
+  z-index: 1;
+  right:20px;
+  top: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+ // padding:0 20px;
+  #desc{
+      color: #fff;
+      padding: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+      i{
+        margin-right: 10px;
+      }
+  }
+}
+#toasty.success{
+  background-color: #27AE60;
+  #desc{
+    color: #fff;
+  }
+}
+#toasty.info{
+  background-color: #2E86C1;
+  #desc{
+    color: #fff;
+  }
+}
+#toasty.warning{
+  background-color: #F39C12;
+  #desc{
+    color: #2A3F54;
+  }
+}
+#toasty.danger{
+  background-color: #C70039;
+   #desc{
+    color: #fff;
+  }
+}
+
+ 
+//========================Notification Flash Message=============================//
+
+
+//=========================Material Card Design==================================//
+.mat-card {
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    border: none;
+    margin-bottom: 10px;
+  background-color: #FFFFFF;
+    .card-header{
+      background-color: transparent;
+      border-bottom: none;
+      padding: 4px 15px;
+
+      h5 {
+        margin-bottom: 0;
+        color: #505458;
+        font-size: 13px;
+        font-weight: 600;
+        display: inline-block;
+        margin-right: 10px;
+        line-height: 1.2;
+    }
+      span {
+          color: #919aa3;
+          display: block;
+          font-size: 13px;
+          margin-top: 5px;
+      }
+    }
+  .card-block{
+    padding: 5px 15px;
+  }
+
+
+}
+
+.bg-c-yellow {
+    background: -webkit-gradient(linear, left top, right top, from(#fe9365), to(#feb798));
+    background: linear-gradient(to right, #fe9365, #feb798)
+}
+//=========================Material Card Design==================================//
+
+
+//=========================DZ PAnnel ============================================//
+.panel-dz{
+  border-radius:1px !important;
+  background-color: #FFFFFF;
+  border-bottom:1px solid #F1F1F1;
+  margin: 0px !important;
+  margin-bottom: 8px !important;
+  padding: 0 !important;
+
+  .panel-heading{
+    background-color: #FFFFFF;
+    //border-bottom:1px solid #F1F1F1;
+    padding: 6px 8px !important;
+    margin:0 !important;
+
+    .panel-title{
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    
+    
+    .fa-caret-down{
+      margin-top:5px;
+      transition: .3s transform ease-in-out;
+    }
+    
+
+  }
+  .panel-heading.active{
+    .fa-caret-down{
+      //transition: .3s transform ease-in-out;
+      transform: rotate(180deg);
+    }
+  }  
+
+  .panel-body{
+    border-top:1px solid #F1F1F1;
+    background-color: #FFFFFF;
+    padding: 6px 8px !important;
+
+    ul{
+      li{
+        padding: 5px 0px;
+      }
+    }
+  }
+
+  .panel-body.open{
+    transition: .5s transform ease-in-out;
+    display: block;
+  }
+  .panel-body.close{
+    transition: .5s transform ease-in-out;
+    display: none;
+  }
+
+}
+//=========================DZ PAnnel ============================================//
+
+
+
+////////////////////////////Dashboard////////////////////////////////////////////
+.dashboard-post-page-comment-indicator{
+  .panel-body{
+    span{
+      padding: 8px 5px;
+      i{
+
+      }
+      a{
+        color: $wpfontcolor;
+        font-weight: 600;
+      }
+      a:hover{
+        color: $wpfontcolor_hover;
+      }
+    }
+  }
+}
+
+
+//Nprogress
+
+#nprogress{
+
+  .bar{
+    background: #29d;
+    z-index: 9999;
+    height: 5px;
+  }
+  
+  .spinner {
+    z-index: 9999;
+  }
+
+}

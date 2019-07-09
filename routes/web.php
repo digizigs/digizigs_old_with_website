@@ -52,16 +52,37 @@ Route::get('/taskeventlisten',function(){
 //=========================================Test Routes=============================================//
 Route::get('/mail',function(){
 
-    $contact = App\Models\Contact::where('email','jaysvishwa@gmail.com')->first();
+    //return new App\Mail\testmail('test mail');
+    $contact = App\User::where('email','jaysvishwa@gmail.com')->first();
+   
     //$job = (new testmailjob())->delay(Carbon::now()->addSeconds(10));
     //$job = (new testmailjob($contact));
     //dispatch($job);
 
-    Mail::to('jaysvishwa@gmail.com')
-            ->send(new testMail($contact));
+    Mail::to('jaysvishwa@gmail.com') ->send(new testMail('jaysvishwa@gmail.com'));
 
     return 'Mail sent successfully';
 });
+
+Route::get('send_test_email', function(){
+
+   $data = array('name'=>'Amit Vishwakarma','email'=>'jaysvishwa@gmail.com'); 
+   Mail::send('email.testmail',$data, function($message)
+    {
+        $message->to('jaysvishwa@gmail.com')->subject('MAilgun api mail test');
+    });
+});
+
+Route::get('send_mail', function(){
+    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    {
+        $message->subject('Mailgun and Laravel are awesome!');
+        $message->from('info@digizigs.com', 'DigiZigs');
+        $message->to('jaysvishwa@gmail.com');
+    });
+});
+
+
 
 Auth::routes();
 
@@ -91,8 +112,6 @@ Route::get('/taskevent',function(){
 });*/
 //=========================================Test Routes=============================================//
 
-
-
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
 Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
@@ -111,6 +130,10 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
  
     //Settings
     Route::resource('/settings', 'Admin\SettingController');
+
+    //Articleblock
+    //Route::resource('/webblock', 'Admin\WebBlock\WebBlockController');
+    Route::resource('/article', 'Admin\Article\ArticleController');
 
     //Posts
     Route::resource('/post', 'Admin\Post\PostController');
@@ -141,14 +164,22 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::get('/conversation/{id}', 'Admin\Chat\ChatController@getMessagesFor');
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
-    
-    //Contact Management
-    Route::group(['prefix' => 'contact'], function(){
-        Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
-        Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
-    });
+    //Mailbox
+    Route::resource('/mailbox', 'Admin\MAilbox\MailboxController'); //Contact
 
+
+    //Connects
+    Route::resource('/connect', 'Admin\Connects\ConnectController'); //Contact
+    Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
+    Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
+
+    
     //Access MAnagement
+    Route::resource('/accesss', 'Admin\AccessControl\AccessController');
+    Route::resource('/users', 'Admin\AccessControl\UserController');
+    Route::resource('/roles', 'Admin\AccessControl\RoleController'); //Role
+    Route::resource('/permissions', 'Admin\AccessControl\PermissionController'); //Permission
+
     Route::group(['prefix' => 'access'], function(){
         Route::resource('/roles', 'Admin\AccessControl\RoleController'); //Role
         Route::resource('/permissions', 'Admin\AccessControl\PermissionController'); //Permission
@@ -162,12 +193,12 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
         Route::resource('/client', 'Admin\Client\ClientController'); //User
         Route::resource('/billing', 'Admin\Client\BillingController'); //User
         
-        Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //User
-        Route::get('/invoice/allservice', 'Admin\Client\InvoiceController@services')->name('invoice.services'); //User
-        Route::resource('/invoice', 'Admin\Client\InvoiceController'); //User
+        Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //Invoice
+        Route::get('/invoice/allservice', 'Admin\Client\InvoiceController@services')->name('invoice.services'); //Invoice
+        Route::resource('/invoice', 'Admin\Client\InvoiceController'); //Invoice
 
-        Route::resource('/quotation', 'Admin\Client\quotationController'); //User
-
+        Route::get('/quotation/pdf', 'Admin\Client\QuotationController@pdf')->name('quotation.pdf'); //Invoice
+        Route::resource('/quotation', 'Admin\Client\QuotationController'); //User
 
     });
 
@@ -182,8 +213,11 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
 
 
 
-    //testlab
+    //Google Analytics
     Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
+    Route::get('/analytics/analyticsdata', 'Admin\Analytics\AnalyticController@alldata')->name('google.topCountries');
+
+
 
     //Logs
     //Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');

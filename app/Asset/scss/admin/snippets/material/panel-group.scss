@@ -3,22 +3,28 @@
 	.panel{
 		border-radius:1px !important;
 		padding: 0 !important;
-	
-
+		
+		
+		.title{
+			font-size: 13px;
+			font-weight: 600;
+		}
 
 		h4{
-			font-size: 12px;
-			font-weight: 500;
+			font-size: 13px;
+			font-weight: 600;
 		}
 
 		.panel-heading{
-			border-radius:2px !important;
+			border-radius:1px !important;
+			line-height: 20px;
+			background-color: #FFFFFF !important;
+			padding: 8px 10px !important;
 
 			.title{
 				color: #000;
-			    font-weight: 500;
 			    color: #2A5D84;
-        		font-weight: 500;
+        		font-weight: 600;
 			}
 
 			.time{

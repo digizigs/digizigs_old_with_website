@@ -1,33 +1,36 @@
 <template>
-	<section>
-		<div class="">          
-            <div class="row">
-            	<div class="col-md-12 col-sm-12 col-xs-12">
-            		<div class="x_panel">
-            			<div class="x_title">	                   
-		                    <h2>
-			              		<i class="fa fa-align-left"></i>
-			              		Tite <small></small> 
-			              		<span class="search">
-									<i class="fa fa-search"></i>
-									<div class="form-group">
-								        <div class="form-line">
-								            <input type="text" class="form-control" placeholder="Search here..." v-model="search">
-								        </div>
+	<div class="x_panel">
+		<div class="x_title">
+			<span class="panel-title">
+	            <i class="fa fa-align-left hidden-xs"></i>
+	            Title
+	         </span>
+	         <a href="#addservices" class="btn btn-dark btn-sm pull-right" data-toggle="modal">
+	            <i class="fa fa-plus" aria-hidden="true"></i> Action
+	         </a>
+	         <span class="x-title-option">
+	            <ul>
+	               <li>
+	                  <span id="x-title-search" class="title-searchs x-title-search c">
+	                     <span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+	                     <input type="text">
+	                     <span class="close-icon" ><i class="fa fa-times" aria-hidden="true"></i></span>
+	                  </span>
+	               </li>
+	            </ul>
+	         </span>
 
-								    </div>
-								</span>	
-			              	</h2>
-		                </div>
+		</div>
+		<div class="x_content">
+			Content
+		</div>
 
-		                <div class="x_content">
-		                	
-		                </div>
-            		</div>
-            	</div>
-            </div>
-        </div>
-    </section>
+		<div id="modal">
+					
+		</div>
+
+
+	</div>
 </template>
 
 <script type="text/javascript">

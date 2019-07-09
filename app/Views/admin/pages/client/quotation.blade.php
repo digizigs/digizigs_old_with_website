@@ -10,7 +10,10 @@
   
 
   <div class="right_col" role="main">
-      <invoice></invoice>     
+      	<quotation regno="{{setting('registration_number')}}"
+                gstno="{{setting('gst_number')}}"
+                gst="{{setting('gst_tax')}}" 
+                due_date="{{setting('invoice_due_days')}}">
   </div>
 
 

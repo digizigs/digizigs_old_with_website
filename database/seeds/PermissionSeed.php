@@ -15,12 +15,12 @@ class PermissionSeed extends Seeder
         Artisan::call('cache:clear');
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
         
-        Permission::create(['name' => 'manage_app']);
-        Permission::create(['name' => 'manage_user']);
-        Permission::create(['name' => 'manage_role']);
-        Permission::create(['name' => 'manage_permission']);
-        Permission::create(['name' => 'edit_post']);
-        Permission::create(['name' => 'write_post']);
-        Permission::create(['name' => 'read_post']);
+        Permission::create(['name' => 'manage_app'],['description' => 'Manage application']);
+        Permission::create(['name' => 'manage_user'],['description' => 'Manage application users']);
+        Permission::create(['name' => 'manage_role'],['description' => 'Manage application roles']);
+        Permission::create(['name' => 'manage_permission'],['description' => 'Manage application permission']);
+        Permission::create(['name' => 'edit_post'],['description' => 'User can edit Post']);
+        Permission::create(['name' => 'write_post'],['description' => 'User can write post']);
+        Permission::create(['name' => 'read_post'],['description' => 'User can read post']);
     }
 }

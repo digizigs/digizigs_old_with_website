@@ -46,13 +46,13 @@ const router = new VueRouter({
 	routes
 })
 
-Vue.component('vue-single-select', VueSingleSelect);
+//Vue.component('vue-single-select', VueSingleSelect);
 
 //=======================Components==================================//
 
 //Chat
-Vue.component('chat', require('./chat/chat.vue'));
-Vue.component('guestchat', require('./chat/guestchat.vue'));
+//Vue.component('chat', require('./chat/chat.vue'));
+//Vue.component('guestchat', require('./chat/guestchat.vue'));
 
 
 
