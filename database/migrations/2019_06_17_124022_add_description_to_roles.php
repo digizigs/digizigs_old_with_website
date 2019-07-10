@@ -14,7 +14,7 @@ class AddDescriptionToRoles extends Migration
     public function up()
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->text('description')->after('name');
+            $table->text('description')->after('name')->nullable();
         });
     }
 

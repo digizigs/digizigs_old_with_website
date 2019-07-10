@@ -14,7 +14,7 @@ class AddDescriptionToPermissions extends Migration
     public function up()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->text('description')->after('name');
+            $table->text('description')->after('name')->nullable();
         });
     }
 
