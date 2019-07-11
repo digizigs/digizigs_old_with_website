@@ -13,7 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'mailgun',],function () {
+/*Route::group(['prefix' => 'mailgun','middleware' => ['mailgun.webhook'],],function () {
+
+    Route::post('widgets', 'MailgunWidgetsController@store');
+
+});*/
+
+Route::group(['prefix' => 'mailgun'],function () {
 
     Route::post('widgets', 'MailgunWidgetsController@store');
     
