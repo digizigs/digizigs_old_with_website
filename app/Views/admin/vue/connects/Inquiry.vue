@@ -16,7 +16,7 @@
 			<div id="collapse1" class="panel-collapse collapse in">
 				<div class="panel-body open">
 
-					<ul>
+					<ul v-if="inquiries.data.length >0">
 						<li v-for="inq,key in inquiries.data">
 							
 							<a href="#inqview" data-toggle="modal" v-on:click.prevent @click="view(inq.id)" class="list-title">
@@ -33,6 +33,12 @@
 		                     		Delete
 		                     	</a> 
 		                   </span>
+						</li>
+					</ul>
+
+					<ul v-else>
+						<li>
+							No Inquiry found
 						</li>
 					</ul>
 					

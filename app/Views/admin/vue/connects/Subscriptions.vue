@@ -13,7 +13,7 @@
 			<div id="collapse1" class="panel-collapse collapse in">
 				<div class="panel-body open">
 
-					<ul>
+					<ul v-if="subscriptions.data.length >0">
 						<li v-for="subs in subscriptions.data">
 
 							<i v-if="subs.status =='0'" class="fa fa-circle active" aria-hidden="true"></i>
@@ -35,6 +35,12 @@
 	                        </span>
 
 
+						</li>
+					</ul>
+
+					<ul v-else>
+						<li>
+							No Subscription found
 						</li>
 					</ul>
 					

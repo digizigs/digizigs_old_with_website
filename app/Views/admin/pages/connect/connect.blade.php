@@ -20,11 +20,11 @@
 
 		<div class="x_content">
 
-			<div class="col-md-12">
+			<div class="col-md-12 col-xs-12">
 				<subscription></subscription>
 			</div>
 
-			<div class="col-md-12">
+			<div class="col-md-12 col-xs-12">
 				<inquiry></inquiry>
 			</div>
 
