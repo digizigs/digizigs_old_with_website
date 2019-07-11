@@ -43,22 +43,20 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
 Route::get('/taskeventlisten',function(){
 
-        //Event Listner
-        return view('test.test');
-
-
-    });
+    //Event Listner
+    return view('test.test');
+});
 
 
 //=========================================Test Routes=============================================//
 Route::get('/inbox',function(){
 
-    $test = new Test;
-    $test->type = 'Mailgun';
-    $test->value = 'Incoming mailgun mail test';
-    $test->save();
+   $test = new Test;
+   $test->type = 'Mailgun';
+   $test->value = 'Incoming mailgun mail test';
+   $test->save();
 
-    return 'inbox';
+   return 'inbox';
     
 });
 
@@ -78,6 +76,13 @@ Route::get('send_mail', function(){
         $message->from('test@digizigs.com', 'DigiZigs');
         $message->to('jaysvishwa@gmail.com');
     });
+});
+
+
+Route::group(['prefix' => 'mailgun',],function () {
+
+    Route::get('widgets', 'MailgunWidgetsController@store');
+    
 });
 
 
@@ -163,7 +168,7 @@ Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
-    Route::resource('/mailbox', 'Admin\MAilbox\MailboxController'); //Contact
+    Route::resource('/mailbox', 'Admin\Mailbox\MailboxController'); //Contact
 
 
     //Connects

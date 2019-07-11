@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(['prefix' => 'mailgun',],function () {
+
+    Route::post('widgets', 'MailgunWidgetsController@store');
+    
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
