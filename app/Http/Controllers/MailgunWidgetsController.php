@@ -13,7 +13,7 @@ class MailgunWidgetsController extends Controller
 
         $test = new Test;
    		$test->type = 'Mailgun';
-   		$test->value = 'Test';
+   		$test->value = $request->From;
    		$test->save();
 
 
