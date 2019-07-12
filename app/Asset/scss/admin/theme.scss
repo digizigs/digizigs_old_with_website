@@ -185,7 +185,7 @@ a:hover {
 }
 
 .left_col {
-    background: #2A3F54
+    background:$sidebar;
 }
 
 .nav-sm .container.body .col-md-3.left_col {
@@ -448,7 +448,7 @@ body .container.body .right_col {
 .nav_title {
     width: 180px;
     float: left;
-    background: #2A3F54;
+    background: $sidebar;
     border-radius: 0;
     //height: 57px
 }

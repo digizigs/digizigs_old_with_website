@@ -16,6 +16,8 @@
 //@import '../../vendor/font-awesome/css/font-awesome.min';
 
 //$container_background_color: #F2F3F8;#F8FAF7
+
+$sidebar:#192F49;
 $container_background_color: #F1F1F1;
 $wpblue:#0073AA;
 $wpfontcolor:#008EC2;
@@ -66,7 +68,8 @@ $btn_dark_hover:#0073AA;
 @import './typography'; 
 
 //Variables
-$admin_primary_color:#3F5367;
+//$admin_primary_color:#3F5367;
+$admin_primary_color:#fff;
 $admin_secondary_color:#3F5367;
 
 
