@@ -11,10 +11,10 @@ class MailgunWidgetsController extends Controller
     {
         app('log')->debug(request()->all());
 
-        //$test = new Test;
-   		//$test->type = 'Mailgun';
-   		//$test->value = request()->all();
-   		//$test->save();
+        $test = new Test;
+   		$test->type = 'Mailgun';
+   		$test->value = 'Test';
+   		$test->save();
 
 
         return response()->json(['status' => 'ok']);
