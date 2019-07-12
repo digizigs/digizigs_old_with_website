@@ -19,9 +19,10 @@ use Illuminate\Http\Request;
 
 });*/
 
+
 Route::group(['prefix' => 'mailgun'],function () {
 
-    Route::post('widgets', 'MailgunWidgetsController@store');
+    Route::post('inbound', 'Admin\Mailbox\MgInboundController@store');
     
 });
 
