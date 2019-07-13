@@ -2,7 +2,8 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
 
 // Bootstrap 4
 //@import '~bootstrap/scss/bootstrap';
@@ -14,9 +15,37 @@
 //Vendors scripts and css
 //@import '../../vendor/font-awesome/css/font-awesome.min';
 
+//$container_background_color: #F2F3F8;#F8FAF7
+
+$sidebar:#192F49;
+$container_background_color: #F1F1F1;
+$wpblue:#0073AA;
+$wpfontcolor:#008EC2;
+$wpfontcolor_hover:#0073AA;
+$page_title:#000; //#2A5D84
+
+$btn_dark:#008EC2;
+$btn_dark_hover:#0073AA;
 
 
+.wpfont{
+	color: $wpfontcolor;
+	font-weight: 600;
+	a{
+		color: $wpfontcolor;
+		font-weight: 600;
+	}
+	a:hover{
+		color: $wpfontcolor_hover;
+		font-weight: 600;
+	}
+}
 
+.ml-20{
+	margin-left: 20px;
+}
+
+.red{ color: red }
 //Variable and preset
 //@import '../app/variables';
 //@import '../app/presets';
@@ -26,26 +55,21 @@
 @import './theme';
 @import './custom';
 
-@import './snippets/sidebar'; //Scroll bar modification
-@import './snippets/scrollbar'; //Scroll bar modification
-@import './snippets/flashalert'; //flash alert
-@import './snippets/glowinput'; //GlowInput
-@import './snippets/wp-input'; //GlowInput
-@import './snippets/settingpage'; //GlowInput
-@import './snippets/material_design'; //GlowInput
-@import './snippets/material/card'; //Material Card Design
-@import './snippets/material/nav-tab'; //Material Card Design
-@import './snippets/material/materialize'; //Material Card Design
-@import './snippets/material/input-form'; //Material Card Design
-@import './snippets/material/panel-group'; //Material Card Design
-@import './snippets/material/list-group'; //Material Card Design
-@import './snippets/material/modal'; //Material Card Design
-@import './snippets/material/button';
-@import './snippets/material/backgrounds';
-@import './snippets/material/vue-multiselect';
+@import './snippets/sidebar'; 
+@import './snippets/scrollbar'; 
+@import './snippets/flashalert';
+@import './snippets/wp-input';
+@import './snippets/material/card'; 
+@import './snippets/material/nav-tab'; 
+@import './snippets/material/panel-group'; 
+@import './snippets/material/list-group'; 
+@import './snippets/material/modal'; 
+@import './snippets/slidemodal'; 
+@import './typography'; 
 
 //Variables
-$admin_primary_color:#3F5367;
+//$admin_primary_color:#3F5367;
+$admin_primary_color:#fff;
 $admin_secondary_color:#3F5367;
 
 

@@ -13,6 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
+/*Route::group(['prefix' => 'mailgun','middleware' => ['mailgun.webhook'],],function () {
+
+    Route::post('widgets', 'MailgunWidgetsController@store');
+
+});*/
+
+
+Route::group(['prefix' => 'mailgun'],function () {
+
+    Route::post('inbound', 'Admin\Mailbox\MgInboundController@store');
+    
+});
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

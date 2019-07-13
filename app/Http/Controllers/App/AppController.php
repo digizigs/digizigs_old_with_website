@@ -146,7 +146,7 @@ class AppController extends Controller {
         $data = ['title' => 'Welcome to HDTuto.com'];
         $pdf = PDF::loadView('app/pdf', $data);
 
-         return $pdf->download('itsolutionstuff.pdf');
+        return $pdf->download('itsolutionstuff.pdf');
     }
 
   

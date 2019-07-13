@@ -12,9 +12,10 @@ class testMail extends Mailable
     use Queueable, SerializesModels;
 
     public $contact;
-    public function __construct($contact)
-    {
-        $this->contact = $contact;
+    public function __construct($contact) {
+
+        $this->contact = 'jaysvishwa@gmail.com';
+
     }
 
     

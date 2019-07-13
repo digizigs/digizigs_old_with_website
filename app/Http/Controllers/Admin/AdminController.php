@@ -24,6 +24,9 @@ class AdminController extends Controller
         
     } 
 
+    public function admin(){
+        return view('appadmin.dashboard');
+    }
 
     public function tables(){
     	return view('admin.asset.tables');

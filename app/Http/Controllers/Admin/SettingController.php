@@ -12,7 +12,7 @@ class SettingController extends Controller
 	{
 		$setting = setting('admin_url');
 
-    	return view('admin.setting.setting');
+    	return view('admin.pages.setting.setting');
 	}
 
 
@@ -29,7 +29,7 @@ class SettingController extends Controller
 	        }
 	    }
 
-	    return redirect()->back()->with('message', 'Settings has been saved.');
+	    return redirect()->back()->with('success', 'Settings has been saved.');
 	}
 
 

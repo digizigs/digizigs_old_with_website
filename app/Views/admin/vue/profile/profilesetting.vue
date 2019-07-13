@@ -3,81 +3,81 @@
 		<form class="form-horizontal" v-on:submit.prevent="updateprofile(user.id)">
 
 			<!-- Firstname -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="firstname" class="col-sm-2 ">First Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control"  v-model="user_update.firstname">
+	                    <input type="text" class="form-control input-sm"  v-model="user_update.firstname">
 	                </div>
 	            </div>
 	        </div>
 
 	        <!-- Lastname -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="lastname" class="col-sm-2 ">Last Name</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control"  v-model="user_update.lastname">
+	                    <input type="text" class="form-control input-sm"  v-model="user_update.lastname">
 	                </div>
 	            </div>
 	        </div>
 	        
 	        <!-- Designation -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="Email" class="col-sm-2 ">Designation</label>
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control" v-model="user_update.designation">
+	                    <input type="text" class="form-control input-sm" v-model="user_update.designation">
 	                </div>
 	            </div>
 	        </div>
 
 	        <!--Experience-->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="InputExperience" class="col-sm-2 ">Experience</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="2"  v-model="user_update.experience"></textarea>
+	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.experience"></textarea>
 	                </div>
 	            </div>
 	        </div>
 
 	        <!-- Skills -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="Skills" class="col-sm-2 ">My Skills</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="2"  v-model="user_update.skills"></textarea>
+	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.skills"></textarea>
 	                </div>
 	            </div>
 	        </div>
 
 	        <!-- description -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="InputSkills" class="col-sm-2">About me</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <textarea class="form-control" rows="2"  v-model="user_update.description"></textarea>
+	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.description"></textarea>
 	                </div>
 	            </div>
 	        </div>
 			
 			<!-- Avtar Image -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <label for="InputSkills" class="col-sm-2">Avatar Image</label>
 
 	            <div class="col-sm-10">
 	                <div class="form-line">
-	                    <input type="file" class="form-control" v-on:change="onImageChange">
+	                    <input type="file" class="form-control input-sm" v-on:change="onImageChange">
 	                </div>
 	            </div>
 	        </div>			
 	       
 	        <!-- Submit Button -->
-	        <div class="form-group">
+	        <div class="form-group wp-input">
 	            <div class="col-sm-offset-2 col-sm-10">
 	                <button class="btn btn-primary btn-sm waves-ef">Update</button>
 	            </div>

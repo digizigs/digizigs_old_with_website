@@ -18,7 +18,7 @@ body {
     padding: 0 !important;
     height: 100% !important;
     width: 100% !important;
-    background: #f1f1f1;
+    background: #000;
 }
 /* What it does: Stops email clients resizing small text. */
 * {
@@ -316,7 +316,7 @@ table{
 
 </head>
 
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #222222;">
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #E7EAF1;">
     <center style="width: 100%; background-color: #f1f1f1;">
     <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
       &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
@@ -340,7 +340,7 @@ table{
               </td>
             </tr><!-- end: tr -->
             <!--Logo black section-->
-            {{$contact->email}}
+            
             <!--Subscription message area-->
             <tr>
               <td class="bg_white email-section">
@@ -348,7 +348,7 @@ table{
                     <h2>Welcome to DigiZigs</h2>
                     <p>You are succesfully subscribed to our Newsletter and updates. 
                         You will now receive updates from us to your mail box.You can 
-                        <a href="{{route('app.unsubscribe','email')}}">unsubscribe</a> 
+                        <a href="{{route('app.unsubscribe','aasas')}}">unsubscribe</a> 
                         for our newsletters and updates notifications by visiting our website.
                     </p>
                   </div>
@@ -464,7 +464,7 @@ table{
           </table>
 
         </td>
-      </tr><!-- end:tr -->
+      </tr><end:tr -->
       <!-- 1 Column Text + Button : END -->
       </table>
 
@@ -477,7 +477,7 @@ table{
                         <td valign="top" width="33.333%">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
-                              <td style="text-align: left; padding-right: 10px;">
+                              <td style="text-align: left; padding-right: 10px;font-size: 10px;">
                                 <p>&copy; 2018 {{setting('app_name')}}. All Rights Reserved</p>
                               </td>
                             </tr>
@@ -486,7 +486,7 @@ table{
                         <td valign="top" width="33.333%">
                           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                             <tr>
-                              <td style="text-align: right; padding-left: 5px; padding-right: 5px;">
+                              <td style="text-align: right; padding-left: 5px; padding-right: 5px;font-size: 10px;">
                                 <p><a href="{{route('app.unsubscribe','aasas')}}" style="color: rgba(255,255,255,.4);">Unsubcribe</a></p>
                               </td>
                             </tr>

@@ -122,3 +122,10 @@ https://simplestweb.in/blog
 
 
 https://www.dunebook.com/author/deven/
+
+https://medium.com/employbl/build-laravel-5-7-email-authentication-with-mailgun-and-digital-ocean-15a92c5bdddf
+
+#Composer update
+rm composer.lock
+rm -rf vendor
+composer install
