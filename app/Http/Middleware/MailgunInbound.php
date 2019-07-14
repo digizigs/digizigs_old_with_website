@@ -16,10 +16,9 @@ class MailgunInbound
      */
     public function handle($request, Closure $next) {
 
-        /*if($request->timestamp > 15){
+      return $next($request);
 
-            return $next($request); 
-        }*/
+      
 
         if (!$request->isMethod('post')) {
             abort(Response::HTTP_FORBIDDEN, 'Only POST requests are allowed.');
