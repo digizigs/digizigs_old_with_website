@@ -27,8 +27,11 @@ class MgInboundController extends Controller
    		$mailbox->recipient = $request->recipient;
    		$mailbox->from = $request->From;
    		$mailbox->to = $request->To;
+   		$mailbox->subject = $request->subject;
 
-
+   		//$mailbox->body_plain = $request->('body-plain');
+   		//$mailbox->bodt_html = $request->'body-html';
+   		//$mailbox->body = $request->'body-html'; 
 
 
    		$mailbox->save();
