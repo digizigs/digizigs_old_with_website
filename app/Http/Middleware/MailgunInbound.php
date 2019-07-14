@@ -3,18 +3,24 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Response;
 
-class ValidateMailgunWebhook
+class MailgunInbound
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Closure  $nexts
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
+    public function handle($request, Closure $next) {
+
+        /*if($request->timestamp > 15){
+
+            return $next($request); 
+        }*/
+
         if (!$request->isMethod('post')) {
             abort(Response::HTTP_FORBIDDEN, 'Only POST requests are allowed.');
         }
