@@ -71,7 +71,7 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
-        'mailgun.webhook' => \App\Http\Middleware\ValidateMailgunWebhook::class,
+        'mailgun_webhook' => \App\Http\Middleware\MailgunInbound::class,
     ];
 
     /**
