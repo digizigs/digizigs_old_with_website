@@ -3,11 +3,12 @@
 namespace App\Providers;
 
 use App\Models\Setting;
+use BeyondCode\Mailbox\Facades\Mailbox;
+use BeyondCode\Mailbox\InboundEmail;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use BeyondCode\Mailbox\Facades\Mailbox;
+use Illuminate\Support\ServiceProvider;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -36,9 +37,16 @@ class AppServiceProvider extends ServiceProvider
             return view('admin.setting.app_setup');
         }*/
 
+        //app('log')->debug('App Service provider boot function triggred');
+
+        Mailbox::from('info@digizigs.com', function (InboundEmail $email) {
+            app('log')->debug('App Service provider boot function triggred');
+        });
+
+
         //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
 
-        Mailbox::catchAll(CatchAllMailbox::class);
+        //Mailbox::catchAll(CatchAllMailbox::class);
 
     }
 

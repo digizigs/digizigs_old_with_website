@@ -79,13 +79,6 @@ Route::get('send_mail', function(){
 });
 
 
-Route::group(['prefix' => 'mailgun',],function () {
-
-    Route::get('widgets', 'MailgunWidgetsController@store');
-    
-});
-
-
 
 Auth::routes();
 
