@@ -9,18 +9,19 @@ use Log;
 
 class MgInboundController extends Controller
 {
+	
+
 	public function store(Request $request){
 
-	        app('log')->debug(request()->all());
+		app('log')->debug(request()->all());
 
-        	$test = new Test;
-   		$test->type = 'Sender';
-   		$test->value = $request->sender;
-   		$test->save();
+		$test = new Test;
+		$test->type = 'Sender';
+		$test->value = $request->sender;
+		$test->save();
 
+		return response()->json(['status' => 'ok']);
 
-        return response()->json(['status' => 'ok']);
-
-    	}
+	}
 
 }
