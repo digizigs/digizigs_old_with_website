@@ -3,12 +3,17 @@
 namespace App\Providers;
 
 use App\Models\Setting;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Validator;
 use BeyondCode\Mailbox\Facades\Mailbox;
 use BeyondCode\Mailbox\InboundEmail;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
+<<<<<<< HEAD
+use BeyondCode\Mailbox\Facades\Mailbox;
+use BeyondCode\Mailbox\InboundEmail;
+=======
+use Illuminate\Support\ServiceProvider;
+>>>>>>> fbdf433d2ea052fd84c17ce912afb4552d16357c
 
 
 class AppServiceProvider extends ServiceProvider
@@ -37,8 +42,16 @@ class AppServiceProvider extends ServiceProvider
             return view('admin.setting.app_setup');
         }*/
 
+        //app('log')->debug('App Service provider boot function triggred');
+
+        Mailbox::from('info@digizigs.com', function (InboundEmail $email) {
+            app('log')->debug('App Service provider boot function triggred');
+        });
+
+
         //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
 
+<<<<<<< HEAD
         
         //Mailbox::catchAll(function () {
             //app('log')->debug('MAilbox-Catch all');
@@ -62,6 +75,9 @@ class AppServiceProvider extends ServiceProvider
             
             
         });
+=======
+        //Mailbox::catchAll(CatchAllMailbox::class);
+>>>>>>> fbdf433d2ea052fd84c17ce912afb4552d16357c
 
     }
 
