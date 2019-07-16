@@ -21,7 +21,8 @@
         "snowfire/beautymail": "dev-master",
         "spatie/laravel-analytics": "^3.6",
         "spatie/laravel-permission": "^2.29",
-        "uxweb/sweet-alert": "^2.0"
+        "uxweb/sweet-alert": "^2.0",
+        "zbateson/mail-mime-parser": "^1.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use BeyondCode\Mailbox\Facades\Mailbox;
+use BeyondCode\Mailbox\InboundEmail;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -38,7 +39,29 @@ class AppServiceProvider extends ServiceProvider
 
         //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
 
-        Mailbox::catchAll(CatchAllMailbox::class);
+        
+        //Mailbox::catchAll(function () {
+            //app('log')->debug('MAilbox-Catch all');
+        //});
+        
+        //Mailbox::to('info@digizigs.com', function (InboundEmail $email) {
+            //app('log')->debug('MAilbox-To');
+        //});
+        
+        Mailbox::from('postmaster@digizigs.com', function (InboundEmail $email) {
+            
+            app('log')->debug($email->text());
+            
+            
+            app('log')->debug($email->message());
+            
+            foreach ($email->attachments() as $attachment) {
+                //$filename = $attachment->getFilename();
+                //app('log')->debug('Attachment filename => ' &  $filename);
+            }
+            
+            
+        });
 
     }
 
