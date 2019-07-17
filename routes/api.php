@@ -24,6 +24,7 @@ Route::group(['prefix' => 'mailgun'],function () {
 
     Route::post('inbound', 'Admin\Mailbox\MgInboundController@store');
     Route::get('apitest', 'Admin\Mailbox\MgInboundController@apitest');
+    Route::get('nexmo', 'Admin\Mailbox\MgInboundController@nexmo');
     
 });
 
