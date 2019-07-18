@@ -125,6 +125,7 @@ Vue.component('posts', require('./post/Posts.vue'));
 Vue.component('viewpost', require('./post/ViewPost.vue'));
 Vue.component('newpost', require('./post/NewPost.vue'));
 Vue.component('editpost', require('./post/EditPost.vue'));
+Vue.component('newwebblock', require('./post/NewWebBlock.vue'));
 
 //Category
 Vue.component('category', require('./category/Category.vue'));

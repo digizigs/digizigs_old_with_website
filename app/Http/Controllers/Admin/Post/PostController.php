@@ -24,17 +24,16 @@ class PostController extends Controller
 
     public function getallpost(){
 
-        $posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->get();
-        return request()->json(200,$posts);
+        //$posts = Post::where('type','post')->orderby('created_at','desc')->with('user','categories')->get();
+        //return request()->json(200,$posts);
     }
    
     public function create() {
 
-        $categories = Category::where('parent_id','<>', 0 )->with('child')->orderby('created_at','desc')->get();
+        $categories = Category::where('parent_id','<>', 0 )->orderby('created_at','desc')->get();
         $tags = Tag::orderby('created_at','desc')->get();
         $blocks = Category::where('parent_id', 0)
-                    ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
-                    ->orderby('created_at','desc')
+                    ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')                  
                     ->get();  
         return request()->json(200,['categories'=>$categories,'tags'=>$tags,'blocks'=>$blocks]);
     }

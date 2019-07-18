@@ -141,7 +141,7 @@
    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 	export default{
-    props:['categories','tags'],
+    props:['categories','tags','selcat'],
 		data(){
 			return{
             titleerror:false,
@@ -159,6 +159,9 @@
 			}
 		},
 		watch:{
+         selcat(){
+            this.catvalue.push(this.selcat)
+         },
          catvalue(){
            if(this.catvalue !== null){
              this.post.categories = this.catvalue.map(x => x.id)
@@ -168,7 +171,7 @@
            if(this.tagvalue !== null){
              this.post.tags = this.tagvalue.map(x => x.name)
            }
-         }
+         }    
 		},
 		methods:{
          radio(status){

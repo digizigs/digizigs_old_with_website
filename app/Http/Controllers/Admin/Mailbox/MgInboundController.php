@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Log;
 use Nexmo\Laravel\Facade\Nexmo;
-
+use Option;
 
 class MgInboundController extends Controller
 {
@@ -59,11 +59,28 @@ class MgInboundController extends Controller
 		    'text' => 'Hello from Nexmo'
 		]);*/
 
-		Nexmo::message()->send([
+		/*Nexmo::message()->send([
 		    'to'   => '9712340450',
-		    'from' => 'Nexmo',
+		    'from' => '9712340450',
 		    'text' => 'Using the facade to send a message.'
-		]);
+		]);*/
+
+		option(['test' => 'Wola Test Option']);
+
+		
+
+		/*if(option_exists('Test')){
+			return option('Test');
+		}else{
+			return 'No key found for Test';
+		}*/
+
+		$check = Option::exists('test');
+		if($check){
+			return option('Test');
+		}else{
+			return 'No key found for Test';
+		}
 	}
 
 
