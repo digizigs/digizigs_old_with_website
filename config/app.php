@@ -63,6 +63,7 @@ return [
         Snowfire\Beautymail\BeautymailServiceProvider::class,
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
 
     ],
 
@@ -120,6 +121,7 @@ return [
         'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
      
 
     ],

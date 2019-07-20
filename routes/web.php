@@ -137,6 +137,8 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     //PAge
     Route::resource('/page', 'Admin\Page\PageController');
 
+    //Product
+    Route::resource('/product', 'Admin\Product\ProductController');
 
     //Catogery
     Route::resource('/category', 'Admin\Category\CategoryController');
@@ -198,11 +200,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     });
 
-    //Inventory Management
-    Route::group(['prefix' => 'inventory'], function(){
-        Route::resource('/product', 'Admin\Inventory\ProductController'); //Product
-
-    });
+    
 
     //account-profile
     Route::resource('/profile', 'Admin\Profile\ProfileController'); //User

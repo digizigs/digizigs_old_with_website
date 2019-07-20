@@ -27,7 +27,7 @@
                    	<div class="form-group wp-input">
                     	<label for="sel1">Parent</label>
                         <select class="form-control input-sm" v-model="category.category_parent">	                                   
-                           <option value="">--Please select parent--</option>
+                           <option value="" disabled>--Please select parent--</option>
                            <option v-for="cat,key in categories" v-bind:value="cat.id">{{cat.name}}</option>	                                   	                                   
                         </select>
                      	<small><i>By Selecting this WebBlock Name will become category under select parent/WebBlock</i></small>
@@ -52,6 +52,7 @@
 
 <script type="text/javascript">
 	export default{
+		props:['block'],
 		data(){
 			return{
 				search:'',
@@ -62,11 +63,14 @@
 			}
 		},
 		watch:{
-
+			block(){
+				//console.log('block data changed')
+				this.category.category_parent = this.block.id
+			}
 		},
 		methods:{
 			modalclose(){
-				this.category = {}
+				this.category = {'category_name':'','category_parent':''}
 			},
 			createblock(){
 				if(this.category.category_name == ''){
@@ -81,7 +85,7 @@
 					.then((data) => {
 						//console.log(data)
 						//this.categories=response.data
-						//this.category = {'category_name':'','category_parent':''};
+						this.category = {'category_name':'','category_parent':''};
 						//this.selectedparent = '';
 						this.$emit('recordupdated',data),                            
               			$('#newwebblock').modal('hide');
