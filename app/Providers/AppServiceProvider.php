@@ -8,12 +8,12 @@ use BeyondCode\Mailbox\InboundEmail;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-<<<<<<< HEAD
-use BeyondCode\Mailbox\Facades\Mailbox;
-use BeyondCode\Mailbox\InboundEmail;
-=======
+
 use Illuminate\Support\ServiceProvider;
->>>>>>> fbdf433d2ea052fd84c17ce912afb4552d16357c
+use ZBateson\MailMimeParser\Message;
+use GuzzleHttp\Psr7;
+use ZBateson\MailMimeParser\MailMimeParser;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -50,8 +50,6 @@ class AppServiceProvider extends ServiceProvider
 
 
         //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
-
-<<<<<<< HEAD
         
         //Mailbox::catchAll(function () {
             //app('log')->debug('MAilbox-Catch all');
@@ -63,21 +61,22 @@ class AppServiceProvider extends ServiceProvider
         
         Mailbox::from('postmaster@digizigs.com', function (InboundEmail $email) {
             
-            app('log')->debug($email->text());
-            
-            
-            app('log')->debug($email->message());
-            
-            foreach ($email->attachments() as $attachment) {
+            //app('log')->debug($email->text());
+            //app('log')->debug($email->message());
+            //$msg = Message::parse($email->message());
+            //app('log')->debug($email->to());
+            //foreach ($email->attachments() as $attachment) {
                 //$filename = $attachment->getFilename();
                 //app('log')->debug('Attachment filename => ' &  $filename);
-            }
-            
-            
+            //}
+            $parser = new MailMimeParser();
+            $message = $parser->parse($email->message());
+            $txtStream = $message->getTextStream();
+            $htmlStream = $message->getHtmlStream();
+            $message = Message::from($email);
+            $contentType = $message->getHeaderValue('Content-Type');
+            //app('log')->debug($contentType);
         });
-=======
-        //Mailbox::catchAll(CatchAllMailbox::class);
->>>>>>> fbdf433d2ea052fd84c17ce912afb4552d16357c
 
     }
 
