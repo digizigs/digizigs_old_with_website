@@ -22,7 +22,8 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'mailgun'],function () {
 
-    Route::post('inbound', 'Admin\Mailbox\MgInboundController@store');
+    Route::post('inbound', 'Admin\Mailbox\MgInboundController@inbound');
+    Route::post('store', 'Admin\Mailbox\MgInboundController@store');
     Route::get('apitest', 'Admin\Mailbox\MgInboundController@apitest');
     Route::get('nexmo', 'Admin\Mailbox\MgInboundController@nexmo');
     

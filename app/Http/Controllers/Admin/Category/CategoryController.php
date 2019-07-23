@@ -23,7 +23,6 @@ class CategoryController extends Controller
         
         $categories = Category::where('parent_id', 0)
                     ->with('child.posts')
-                    ->orderby('created_at','asc')
                     ->get(); 
         return request()->json(200,$categories);
         

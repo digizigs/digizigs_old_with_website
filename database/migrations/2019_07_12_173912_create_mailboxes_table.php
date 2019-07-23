@@ -15,10 +15,10 @@ class CreateMailboxesTable extends Migration
     {
         Schema::create('mailboxes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('domain')->nullable();
             $table->string('date')->nullable();
             $table->enum('mail_type', ['received', 'sent' ,'draft'])->nullable();
             $table->enum('mail_status', ['unread', 'read'])->nullable();
-            $table->string('domain')->nullable();
             $table->string('sender')->nullable();
             $table->string('recipient')->nullable();
             $table->string('from')->nullable();

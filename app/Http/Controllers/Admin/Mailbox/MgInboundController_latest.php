@@ -61,8 +61,8 @@ class MgInboundController extends Controller
         
       if($files){
       	foreach ($files as $file) {
-	      	$mailbox_id = 5;
-	      	dispatch(new MailAttachmentDownload($mailbox,$mailbox_id,$file));
+	      	$mailid = 5;
+	      	dispatch(new MailAttachmentDownload($mailbox,$mailid,$file));
 	      }
       }
         
