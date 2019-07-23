@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin\Mailbox;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Jobs\MailAttachmentDownload;
+=======
+use App\Models\Mailbox;
+>>>>>>> c4c53b3315721236ef484e4e9c2d0726232d89bf
 use App\Models\Test;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -50,6 +54,7 @@ class MgInboundController extends Controller
 
 	public function store(Request $request){
 
+<<<<<<< HEAD
 		app('log')->debug($request->all());
 
       $mailbox = $request->domain;
@@ -67,10 +72,41 @@ class MgInboundController extends Controller
       }
         
         
+=======
+
+	    app('log')->debug($request->all());
+        
+        $test = new Test;
+   		$test->type = 'Sender';
+   		$test->value = 'Test Sender';
+   		$test->save();
+   		//app('log')->debug('App Service provider boot function triggred');
+   		
+        
+        $mailbox = new Mailbox;
+   		$mailbox->date = $request->Date;
+   		$mailbox->mail_type = 'received';
+   		$mailbox->mail_status = 'unread';
+   		$mailbox->domain = $request->domain;
+   		$mailbox->sender = $request->sender;
+   		$mailbox->recipient = $request->recipient;
+   		$mailbox->from = $request->From;
+   		$mailbox->to = $request->To;
+   		$mailbox->subject = $request->subject;
+   		$mailbox->body_plain = $request->{'body-plain'};
+   		$mailbox->bodt_html = $request->{'body-html'};
+   		$mailbox->save();
+   	
+>>>>>>> c4c53b3315721236ef484e4e9c2d0726232d89bf
 		return response()->json(['status' => 'ok']);
+		
 	}
 
 	public function apitest() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c4c53b3315721236ef484e4e9c2d0726232d89bf
 	}
 
 	public function nexmo(){

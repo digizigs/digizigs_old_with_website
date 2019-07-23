@@ -44,8 +44,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-        //Validator::extend('recaptcha', 'App\\Libraries\\GoogleRecaptcha@validate');
-
 
         
         //Mailbox::catchAll(function () {
@@ -58,19 +56,22 @@ class AppServiceProvider extends ServiceProvider
         
         Mailbox::from('postmaster@digizigs.com', function (InboundEmail $email) {
             
-            app('log')->debug($email->text());
-            
-            
-            app('log')->debug($email->message());
-            
-            foreach ($email->attachments() as $attachment) {
+            //app('log')->debug($email->text());
+            //app('log')->debug($email->message());
+            //$msg = Message::parse($email->message());
+            //app('log')->debug($email->to());
+            //foreach ($email->attachments() as $attachment) {
                 //$filename = $attachment->getFilename();
                 //app('log')->debug('Attachment filename => ' &  $filename);
-            }
-            
-            
+            //}
+            $parser = new MailMimeParser();
+            $message = $parser->parse($email->message());
+            $txtStream = $message->getTextStream();
+            $htmlStream = $message->getHtmlStream();
+            $message = Message::from($email);
+            $contentType = $message->getHeaderValue('Content-Type');
+            //app('log')->debug($contentType);
         });
-
 
     }
 
