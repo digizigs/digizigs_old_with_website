@@ -76,7 +76,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="{{route('mailbox.index')}}"><i class="fa fa-envelope-o"></i> Mailbox </a>
+            <a href="{{route('mails.index')}}"><i class="fa fa-envelope-o"></i> Mailbox </a>
           </li>
 
           <li class="menu-item">

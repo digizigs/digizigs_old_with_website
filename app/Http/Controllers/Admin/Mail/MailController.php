@@ -17,6 +17,7 @@ class MailController extends Controller
     {
         $mail = Mail::all();
         return response()->json($mail);
+        return view('admin.pages.mailbox.mailbox',compact('mail'));
       
     }
 

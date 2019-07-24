@@ -163,7 +163,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
-    Route::resource('/mailbox', 'Admin\Mailbox\MailboxController'); //Contact
+    Route::resource('/mails', 'Admin\Mail\MailController'); //Contact
 
 
     //Connects
