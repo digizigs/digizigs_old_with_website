@@ -19,20 +19,7 @@
 		</div>
 
 		<div class="x_content">
-			<div class="mat-card" style="padding: 20px 0px">
-				
-
-
-				{{$mail}}
-
-
-
-
-
-
-
-
-			</div>
+			<inbox></inbox>
 		</div>
 
 	</div>

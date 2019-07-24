@@ -116,8 +116,9 @@ Vue.component('gallery', require('./gallery/gallery.vue'));
 Vue.component('product', require('./product/product.vue'));
 Vue.component('newproduct', require('./product/new_product.vue'));
 
-//Posts
-
+//Mail
+Vue.component('inbox', require('./mail/inbox.vue'));
+Vue.component('compose', require('./mail/Compose.vue'));
 
 
 //Web Block
@@ -222,5 +223,12 @@ Vue.filter('vueMoment',function(created){
   return moment(created).fromNow();
 })
 
+Vue.filter('mailname',function(from){
+
+  var frm = from.split('<')[0];
+
+  return frm;
+
+})
 
 

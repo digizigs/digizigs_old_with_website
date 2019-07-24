@@ -32,7 +32,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="{{route('post.index')}}"><i class="fa fa-puzzle-piece"></i> Posts </a>
+            <a href="{{route('post.index')}}"><i class="fa fa-puzzle-piece"></i> Web Blocks </a>
           </li>
           
           <li class="menu-item">
