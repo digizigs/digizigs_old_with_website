@@ -27,7 +27,8 @@ class MailController extends Controller
      */
     public function create()
     {
-        return 'MAil';
+        $mail = Mail::all();
+        return response()->json($mail);
     }
 
     /**
