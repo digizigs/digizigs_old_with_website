@@ -15,8 +15,7 @@ class MailController extends Controller
      */
     public function index()
     {
-        $mail = Mail::all();
-        return response()->json($mail);
+       
         return view('admin.pages.mailbox.mailbox',compact('mail'));
       
     }

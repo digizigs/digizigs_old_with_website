@@ -256,7 +256,7 @@
 		
 		},
 		created(){
-			axios.get('http://localhost:8080/digizigs/api/mail')
+			axios.get('http://localhost:8080/digizigs/api/mails')
 				.then((response) => {
 						console.log(response.data)
 						this.mails=response.data
