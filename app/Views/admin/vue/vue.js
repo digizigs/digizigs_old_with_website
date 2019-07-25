@@ -119,7 +119,7 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 //Mail
 Vue.component('inbox', require('./mail/inbox.vue'));
 Vue.component('compose', require('./mail/Compose.vue'));
-
+Vue.component('viewmail', require('./mail/ViewMail.vue'));
 
 //Web Block
 Vue.component('posts', require('./post/Posts.vue'));

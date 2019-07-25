@@ -22,10 +22,10 @@ use Illuminate\Http\Request;
 
 Route::group(['prefix' => 'mailgun'],function () {
 
-    Route::post('inbound', 'Admin\Mailbox\MgInboundController@inbound');
+    Route::post('inbound', 'Admin\Mail\MgInboundController@inbound');
     Route::post('store', 'Admin\Mail\MGInboundController@store');
-    Route::get('apitest', 'Admin\Mailbox\MgInboundController@apitest');
-    Route::get('nexmo', 'Admin\Mailbox\MgInboundController@nexmo');
+    Route::get('apitest', 'Admin\Mail\MgInboundController@apitest');
+    Route::get('nexmo', 'Admin\Mail\MgInboundController@nexmo');
     
 });
 

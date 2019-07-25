@@ -16970,8 +16970,12 @@ ul.labels-info li a i {
   padding: 12px !important;
 }
 
-.table-inbox tr td:hover {
+.table-inbox tr td.subject {
   cursor: pointer;
+}
+
+.table-inbox tr td.subject:hover {
+  color: #192F49;
 }
 
 .table-inbox tr td .fa-star.inbox-started,

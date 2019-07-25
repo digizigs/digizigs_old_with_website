@@ -18,7 +18,7 @@ class MGInboundController extends Controller
 
     public function inbound(Request $request){
 
-            app('log')->debug($request->all());
+        app('log')->debug($request->all());
         /*
         app('log')->debug($request->all());
             

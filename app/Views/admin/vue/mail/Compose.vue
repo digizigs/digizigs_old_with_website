@@ -10,26 +10,26 @@
 					<form role="form" class="form-horizontal">
 						<div class="form-group wp-input">
 							<label class="col-lg-2 control-label">To</label>
-							<div class="col-lg-10">
+							<div class="col-lg-10 col-xs-12 col-md-12">
 								<input type="text" placeholder="" id="inputEmail1" class="form-control input-sm">
 							</div>
 						</div>
 						<div class="form-group wp-input">
 							<label class="col-lg-2 control-label">Cc / Bcc</label>
-							<div class="col-lg-10">
+							<div class="col-lg-10 col-xs-12 col-md-12">
 								<input type="text" placeholder="" id="cc" class="form-control input-sm">
 							</div>
 						</div>
 						<div class="form-group wp-input">
 							<label class="col-lg-2 control-label">Subject</label>
-							<div class="col-lg-10">
+							<div class="col-lg-10 col-xs-12 col-md-12">
 								<input type="text" placeholder="" id="inputPassword1" class="form-control input-sm">
 							</div>
 						</div>
 						<div class="form-group wp-input	">
 							<label class="col-lg-2 control-label">Message</label>
-							<div class="col-lg-10">
-								<textarea rows="20" cols="25" class="form-control" id="" name=""></textarea>
+							<div class="col-lg-10 col-xs-12 col-md-12">
+								<textarea rows="15" cols="25" class="form-control" id="" name=""></textarea>
 							</div>
 						</div>
 

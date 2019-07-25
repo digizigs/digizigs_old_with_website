@@ -8,82 +8,53 @@ use Illuminate\Http\Request;
 
 class MailController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    
+    public function index(){
        
         return view('admin.pages.mailbox.mailbox',compact('mail'));
       
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $mail = Mail::all();
+   
+    public function create(){
+       
+        $mail = Mail::orderby('created_at','desc')->get();
         return response()->json($mail);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+   
+    public function store(Request $request){
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
+    
+    public function show($id){
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+    public function markread($id){
+        $mail = Mail::find($id);
+        $mail->status = 'read';
+        $mail->save();
+        $mail = Mail::orderby('created_at','desc')->get();
+        return response()->json($mail);
+    }
+    
+    public function edit($id){
+        $mail = Mail::find($id);
+        $mail->status = 'read';
+        $mail->save();
+        $mail = Mail::orderby('created_at','desc')->get();
+        return response()->json($mail);
+    }
+
+   
+    public function update(Request $request, $id){
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
+    
+    public function destroy($id){
         //
     }
 }

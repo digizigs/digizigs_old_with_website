@@ -164,6 +164,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
+    Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
     Route::resource('/mails', 'Admin\Mail\MailController'); //Contact
 
 
