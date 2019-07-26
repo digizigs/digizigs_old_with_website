@@ -1,7 +1,16 @@
 <template>
 	<div class="mail-box">
 
-		<aside class="sm-side">
+		<div class="row">
+			<div class="col-md-2 col-xs-12">
+				adadad
+			</div>
+			<div class="col-md-10 col-xs-12">
+				adadad
+			</div>
+		</div>
+
+		<aside class="sm-side col-md-4 col-xs-12">
 			
 			<div class="inbox-body">
 				<a href="#composemail" data-toggle="modal"  title="Compose"    class="btn btn-compose btn-sm">
@@ -25,20 +34,36 @@
 				<li>
 					<a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
 				</li>
-			</ul>
-			<ul class="nav nav-pills nav-stacked labels-info inbox-divider">
-				<li> <h4>Labels</h4> </li>
-				<li> <a href="#"> <i class=" fa fa-sign-blank text-danger"></i> Work </a> </li>
-				<li> <a href="#"> <i class=" fa fa-sign-blank text-success"></i> Design </a> </li>
-				<li> <a href="#"> <i class=" fa fa-sign-blank text-info "></i> Family </a>
-				</li><li> <a href="#"> <i class=" fa fa-sign-blank text-warning "></i> Friends </a>
-				</li><li> <a href="#"> <i class=" fa fa-sign-blank text-primary "></i> Office </a>
+				<li>
+					<a href="#"><i class=" fa fa-ban"></i> Spam</a>
 				</li>
+				
 			</ul>
+			<ul class="inbox-nav inbox-divider">
+
+				<li class="">
+					<a href="#"> Work <span class="label label-danger pull-right">2</span></a>
+
+				</li>
+				<li>
+					<a href="#"> Design </a>
+				</li>
+				<li>
+					<a href="#"> Family </a>
+				</li>
+				<li>
+					<a href="#"> Friends </a>
+				</li>
+				<li>
+					<a href="#"> Office </a>
+				</li>
+				
+				
+			</ul>		
 
 		</aside>
 
-		<aside class="lg-side">
+		<aside class="lg-side col-md-8 col-xs-12">
 			<div class="inbox-body">
 				<div class="mail-option">
 					<div class="chk-all">
@@ -116,7 +141,7 @@
 							<td class="view-message  inbox-small-cells">
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>
 							</td>
-							<td class="view-message  text-right">{{mail.created_at | vueAgoTime}}</td>
+							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>
 										
 						</tr>
 					

@@ -222,6 +222,9 @@ Vue.filter('vueAgoTime',function(created){
 Vue.filter('vueMoment',function(created){
   return moment(created).fromNow();
 })
+Vue.filter('vueDay',function(created){
+  return moment(created).format("MMM Do");    
+})
 
 Vue.filter('mailname',function(from){
 
