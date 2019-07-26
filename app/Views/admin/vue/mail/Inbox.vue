@@ -39,7 +39,7 @@
 				</li>
 				
 			</ul>
-			<ul class="inbox-nav inbox-divider">
+			<ul class="inbox-nav ">
 
 				<li class="">
 					<a href="#"> Work <span class="label label-danger pull-right">2</span></a>
@@ -136,7 +136,7 @@
 							</td>
 							<td class="view-message  dont-show">{{mail.from | mailname}}</td>
 							<td class="view-message subject"  @click="viewmail(mail)" data-toggle="modal" data-target="#viewmail">
-								{{mail.subject}}
+								{{mail.subject.slice(0,40)}}
 							</td>
 							<td class="view-message  inbox-small-cells">
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>

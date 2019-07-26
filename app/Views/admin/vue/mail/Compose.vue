@@ -1,5 +1,5 @@
 <template>
-	<div  role="dialog" tabindex="-1" id="composemail" class="modal right fade" style="display: none;">
+	<div  role="dialog" tabindex="-1" id="composemail" class="modal right fade w80" style="display: none;">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">

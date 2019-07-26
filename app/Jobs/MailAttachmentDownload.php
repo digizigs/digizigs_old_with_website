@@ -40,8 +40,10 @@ class MailAttachmentDownload implements ShouldQueue
         $timestamp = time().str_random();
 
         $attachment = new Attachment;
-        $attachment->mailid = $this->mailid;
+        $attachment->mail_id = $this->mailid;
         $attachment->file_name = $this->file['name'];
+        $attachment->content_type = $this->file['content-type'];
+        $attachment->file_type = \File::extension($this->file['name']);
         $attachment->file_url = storage_path('app/mailbox/').$this->mailbox.'/'.$timestamp.$this->file['name'];
         $attachment->save();
 

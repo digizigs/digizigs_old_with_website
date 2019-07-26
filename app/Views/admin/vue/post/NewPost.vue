@@ -1,5 +1,5 @@
 <template>
-	<div class="modal fade right w80" id="newpost" role="dialog"  data-backdrop="false">
+	<div class="modal fade right w80" id="newpost" role="dialog" >
       <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
 
@@ -36,7 +36,7 @@
 
                      <div class="form-group wp-input">
                         <label for="editor1">Post Content</label>
-                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig" @ready="onReadyEditor"></ckeditor>                        
+                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig" @ready="onReadyEditor"></ckeditor>                     
                      </div>
 
                   </div>
@@ -138,7 +138,12 @@
 
 <script type="text/javascript">
 
-   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+  //import EssentialsPlugin from '@ckeditor/ckeditor5-essentials';
+  //import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold';
+  //import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic';
+  //import LinkPlugin from '@ckeditor/ckeditor5-link/src/link';
+  //import ParagraphPlugin from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 
 	export default{
     props:['categories','tags','selcat'],

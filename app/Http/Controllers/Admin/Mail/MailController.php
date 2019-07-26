@@ -18,7 +18,8 @@ class MailController extends Controller
    
     public function create(){
        
-        $mail = Mail::orderby('created_at','desc')->get();
+        //$mail = Mail::orderby('created_at','desc')->get();
+        $mail = Mail::with('attachments')->orderby('created_at','desc')->get();
         return response()->json($mail);
     }
 

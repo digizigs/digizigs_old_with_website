@@ -48,8 +48,9 @@
               </span>
 
               <div v-html="post.body" class="col-md-12 col-xs-12 post-body mt20">
+
               </div>
-          
+            
 
             </div>
 
