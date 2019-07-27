@@ -17,6 +17,7 @@ class CreateMailsTable extends Migration
             $table->increments('id');
             $table->integer('parent_id')->unsigned()->nullable()->default(0); 
             $table->string('domain')->nullable();
+            $table->string('type')->nullable();
             $table->string('label')->nullable();
             $table->string('status')->nullable();
             $table->boolean('starred')->default(0);

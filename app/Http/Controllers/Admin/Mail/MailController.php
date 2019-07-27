@@ -18,7 +18,8 @@ class MailController extends Controller
    
     public function create(){
        
-        //$mail = Mail::orderby('created_at','desc')->get();
+        //$mail2 =  getData();
+
         $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
         return response()->json($mail);
     }
@@ -37,7 +38,7 @@ class MailController extends Controller
         $mail = Mail::find($id);
         $mail->status = 'read';
         $mail->save();
-        $mail = Mail::orderby('created_at','desc')->get();
+        $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
         return response()->json($mail);
     }
     
@@ -57,5 +58,10 @@ class MailController extends Controller
     
     public function destroy($id){
         //
+    }
+
+    public function getData(){
+        $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
+        return response()->json($mail);
     }
 }

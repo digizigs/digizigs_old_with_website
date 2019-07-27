@@ -54,6 +54,7 @@ class MGInboundController extends Controller
         $mail = new Mail;
         $mail->domain = $request->domain;
         $mail->label = 'inbox';
+        $mail->type = 'inbound';
         $mail->status = 'unread';
         $mail->sender = $request->sender;
         $mail->recipient = $request->recipient;

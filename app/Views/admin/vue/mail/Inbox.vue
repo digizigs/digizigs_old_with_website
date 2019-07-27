@@ -118,7 +118,7 @@
 					
 						<tr v-for="mail in mails.data" v-bind:class="mail.status">
 							<td class="inbox-small-cells">
-								<input type="checkbox" class="mail-checkbox">
+								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
 							<td class="inbox-small-cells">
 								<i v-if="mail.status == 'reply'" class="fa fa-reply"></i>
@@ -183,7 +183,12 @@
 			},
 			viewmail(mail){
 				this.mail = mail
-				this.paginationdata()
+				axios.get('mails/markread/'+mail.id+'/edit')
+				.then((response) => {
+						console.log(response)
+						this.mails = response.data
+					})
+				.catch((error) => console.log(error))
 			},
 			refreshmail(){
 				this.paginationdata()
@@ -191,9 +196,14 @@
 			inboxview(type){
 				console.log(type)
 				this.activeclass = type
+			},
+			selectmail(id){
+				this.selectedmail.push(id)
+				console.log(this.selectedmail)
 			}
 		},
 		created(){
+			
 			this.paginationdata()
 		}
 	};
