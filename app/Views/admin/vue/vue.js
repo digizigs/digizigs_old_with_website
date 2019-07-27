@@ -120,6 +120,10 @@ Vue.component('newproduct', require('./product/new_product.vue'));
 Vue.component('inbox', require('./mail/inbox.vue'));
 Vue.component('compose', require('./mail/Compose.vue'));
 Vue.component('viewmail', require('./mail/ViewMail.vue'));
+Vue.component('mailpagination', require('./mail/InboxPagination.vue'));
+
+
+
 
 //Web Block
 Vue.component('posts', require('./post/Posts.vue'));

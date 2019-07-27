@@ -129,3 +129,10 @@ https://medium.com/employbl/build-laravel-5-7-email-authentication-with-mailgun-
 rm composer.lock
 rm -rf vendor
 composer install
+
+
+
+
+
+#Chat App Template
+https://www.bootdey.com/snippets/view/bs4-simple-chat-app

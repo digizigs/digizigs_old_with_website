@@ -3,7 +3,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+					<button aria-hidden="true" data-dismiss="modal" class="close" type="button" @click="modalclose">×</button>
 					<h4 class="modal-title">{{mail.subject}}</h4>
 				</div>
 				<div class="modal-body">
@@ -79,6 +79,11 @@
 				this.reply = true
 				this.view = false
 				$("[data-toggle='tooltip']").tooltip('hide');
+			},
+			modalclose(){
+				this.view = true
+				this.reply = false
+				this.forward = false
 			}
 		},
 		created(){

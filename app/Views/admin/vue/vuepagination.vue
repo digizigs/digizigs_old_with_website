@@ -9,7 +9,7 @@
 			</div>
 		    <div class="col-md-4  col-xs-4 data">
 		    	<span class="info">
-			        <small>{{input.from}} to {{input.to}} of {{input.total}} </small>
+			        <small>{{input.from}} - {{input.to}} of {{input.total}} </small>
 			    </span>
 		    </div>
 		    <div class="col-md-4  col-xs-4">

@@ -86,11 +86,11 @@
 		methods:{
 			paginationdata(page){
 				if (typeof page === 'undefined'){
-				page=1;
-			}
-			axios.get('client/create?page=' + page)
-			.then(response => this.clients = response.data)
-			//	.catch(error => this.errors=error.response.data.errors);
+					page=1;
+				}
+				axios.get('client/create?page=' + page)
+				.then(response => this.clients = response.data)
+				//	.catch(error => this.errors=error.response.data.errors);
 			},
 			refreshRecord(record){
 				this.clients=record.data;
