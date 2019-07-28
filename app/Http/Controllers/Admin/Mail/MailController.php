@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 class MailController extends Controller
 {
     
+    
+
     public function index(){
        
         return view('admin.pages.mailbox.mailbox',compact('mail'));
@@ -16,11 +18,21 @@ class MailController extends Controller
     }
 
    
-    public function create(){
-       
-        //$mail2 =  getData();
+    public function create(Request $request){
 
-        $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
+        //getData();
+       
+        $type = $request->filter;
+
+        if($type == 'inbox'){
+            $mail = Mail::where('type','inbound')->where('label','inbox')->orderby('created_at','desc')->with('attachments')->paginate(10);
+        }elseif($type == 'sent'){
+            $mail = Mail::where('type','outbound')->where('label','sent')->orderby('created_at','desc')->with('attachments')->paginate(10);
+        }elseif($type == 'important'){
+            $mail = Mail::where('type','inbound')->where('label','inbox')->where('starred',1)->orderby('created_at','desc')->with('attachments')->paginate(10);
+        }
+
+        
         return response()->json($mail);
     }
 
@@ -41,6 +53,21 @@ class MailController extends Controller
         $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
         return response()->json($mail);
     }
+
+     public function markstar($id){
+        $mail = Mail::find($id);
+
+        if($mail->starred == 1){
+            $mail->starred = 0;
+        }else{
+            $mail->starred = 1;
+        }
+       
+        $mail->save();
+        $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
+        return response()->json($mail);
+    }
+
     
     public function edit($id){
         $mail = Mail::find($id);
@@ -61,7 +88,7 @@ class MailController extends Controller
     }
 
     public function getData(){
-        $mail = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
-        return response()->json($mail);
+        $this->data = Mail::orderby('created_at','desc')->with('attachments')->paginate(10);
+        //return response()->json($mail);
     }
 }

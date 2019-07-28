@@ -13,22 +13,22 @@
 			
 			<!-- Inbox options -->
 			<ul class="inbox-nav inbox-divider">
-				<li :class="{ 'active': activeclass == 'inbox' }" @click="inboxview('inbox')">
+				<li :class="{ 'active': filter == 'inbox' }" @click="inboxview('inbox')">
 					<a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
 				</li>
-				<li :class="{ 'active': activeclass == 'sent' }" @click="inboxview('sent')">
+				<li :class="{ 'active': filter == 'sent' }" @click="inboxview('sent')">
 					<a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
 				</li>
-				<li :class="{ 'active': activeclass == 'important' }" @click="inboxview('important')">
+				<li :class="{ 'active': filter == 'important' }" @click="inboxview('important')">
 					<a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
 				</li>
-				<li :class="{ 'active': activeclass == 'draft' }" @click="inboxview('draft')">
+				<li :class="{ 'active': filter == 'draft' }" @click="inboxview('draft')">
 					<a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
 				</li>
-				<li :class="{ 'active': activeclass == 'trash' }" @click="inboxview('trash')">
+				<li :class="{ 'active': filter == 'trash' }" @click="inboxview('trash')">
 					<a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
 				</li>
-				<li :class="{ 'active': activeclass == 'spam' }" @click="inboxview('spam')">
+				<li :class="{ 'active': filter == 'spam' }" @click="inboxview('spam')">
 					<a href="#"><i class=" fa fa-ban"></i> Spam </a>
 				</li>
 			</ul>
@@ -82,6 +82,7 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+							<li><a href="#" v-on:click.prevent @click="markmail('unread')"><i class="fa fa-pencil"></i> Mark as Unread</a></li>
 							<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
 							<li class="divider"></li>
 							<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
@@ -94,6 +95,8 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
+							
+
 							<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
 							<li class="divider"></li>
 							<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
@@ -121,9 +124,10 @@
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
 							<td class="inbox-small-cells">
+								<i v-if="mail.starred == 1"class="fa fa-star active" @click="markstar(mail.id)"></i>
+								<i v-else class="fa fa-star" @click="markstar(mail.id)"></i>
 								<i v-if="mail.status == 'reply'" class="fa fa-reply"></i>
 								<i v-if="mail.status == 'forward'" class="fa fa-share"></i>
-								<i class="fa fa-star"></i>
 							</td>
 							<td class="view-message  dont-show">{{mail.from | mailname}}</td>
 							<td class="view-message subject"  @click="viewmail(mail)" data-toggle="modal" data-target="#viewmail">
@@ -156,7 +160,7 @@
 	export default{
 		data(){
 			return{
-				activeclass:'inbox',
+				filter:'inbox',
 				dataloaded:false,
 				mails:{},
 				mail:{},
@@ -172,7 +176,7 @@
 					page=1;
 				}
 				NProgress.start();
-				axios.get('mails/create?page=' + page)
+				axios.get('mails/create?page=' + page,{params:{filter:this.filter}})
 					.then((response) => {
 						console.log(response.data)
 						this.mails=response.data
@@ -185,22 +189,38 @@
 				this.mail = mail
 				axios.get('mails/markread/'+mail.id+'/edit')
 				.then((response) => {
-						console.log(response)
 						this.mails = response.data
 					})
 				.catch((error) => console.log(error))
+			},
+			markstar(id){
+				//this.mail = mail
+				axios.get('mails/markstar/'+id+'/edit')
+				.then((response) => {
+						this.mails = response.data
+					})
+				.catch((error) => console.log(error))
+			},
+			markmail(type){
+				console.log(type + this.selectedmail)
 			},
 			refreshmail(){
 				this.paginationdata()
 			},
 			inboxview(type){
 				console.log(type)
-				this.activeclass = type
+				this.filter = type
+				this.paginationdata()
+
+
+
+
 			},
 			selectmail(id){
 				this.selectedmail.push(id)
 				console.log(this.selectedmail)
-			}
+			},
+			
 		},
 		created(){
 			
@@ -210,15 +230,15 @@
 
 </script>
 
-<style lan="scss" Scoped>
+<style lang="scss" Scoped>
 
 	.mail-group-checkbox{
 		margin-top: -5px !important;
 	}
 
 	.active{
-		color: #01A9DB !important;
-		font-weight: 600;
+		//color: #01A9DB !important;
+		//font-weight: 600;
 	}
 
 </style>

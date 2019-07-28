@@ -19,7 +19,7 @@ class CreateMailsTable extends Migration
             $table->string('domain')->nullable();
             $table->string('type')->nullable();
             $table->string('label')->nullable();
-            $table->string('status')->nullable();
+            $table->enum('status', ['unread', 'read'])->default('unread');
             $table->boolean('starred')->default(0);
             $table->string('sender')->nullable();
             $table->string('recipient')->nullable();

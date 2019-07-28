@@ -16980,7 +16980,7 @@ ul.labels-info li a i {
 }
 
 .table-inbox tr td .fa-star.inbox-started,
-.table-inbox tr td .fa-star:hover {
+.table-inbox tr td .fa-star.active {
   color: #f78a09;
 }
 

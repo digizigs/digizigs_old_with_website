@@ -185,6 +185,9 @@ ul.labels-info li a i {
     //font-weight: 600;
 }
 .table-inbox tr td .fa-star.inbox-started, .table-inbox tr td .fa-star:hover {
+    //color: #f78a09;
+}
+.table-inbox tr td .fa-star.inbox-started, .table-inbox tr td .fa-star.active {
     color: #f78a09;
 }
 .table-inbox tr td .fa-star {
