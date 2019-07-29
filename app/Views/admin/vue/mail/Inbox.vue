@@ -116,10 +116,9 @@
 				
 
 				<table class="table table-inbox table-hover">
+					
 					<tbody>
-					
-					
-						<tr v-for="mail in mails.data" v-bind:class="mail.status">
+						<tr v-for="mail in mails.data" v-bind:class="mail.status" @contextmenu="handler($event,mail.id)">
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -136,11 +135,8 @@
 							<td class="view-message  inbox-small-cells">
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>
 							</td>
-							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>
-										
-						</tr>
-					
-					
+							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>										
+						</tr>					
 					</tbody>
 
 				</table>
@@ -153,10 +149,24 @@
 			<viewmail :mail="mail"></viewmail>
 		</div>
 
+		<VueSimpleContextMenu
+		    :elementId="'myUniqueId'"
+		    :options="options"
+		    :ref="'this'"
+		    @option-clicked="optionClicked">
+		</VueSimpleContextMenu>
+
+
 	</div>
 </template>
 
 <script type="text/javascript">
+
+	//import 'vue-simple-context-menu/dist/vue-simple-context-menu.css'
+	import VueSimpleContextMenu from 'vue-simple-context-menu'
+
+	import { VueContext } from 'vue-context';
+
 	export default{
 		data(){
 			return{
@@ -165,6 +175,7 @@
 				mails:{},
 				mail:{},
 				selectedmail:[],
+				options:[{"name": "option-1" },{"name": "option-2" },{"name": "option-3" }]
 			}
 		},
 		watch:{
@@ -187,21 +198,25 @@
 			},
 			viewmail(mail){
 				this.mail = mail
-				axios.get('mails/markread/'+mail.id+'/edit')
+				axios.get('mails/markread/'+mail.id+'/edit',{params:{filter:this.filter}})
 				.then((response) => {
 						this.mails = response.data
 					})
 				.catch((error) => console.log(error))
 			},
 			markstar(id){
-				//this.mail = mail
-				axios.get('mails/markstar/'+id+'/edit')
-				.then((response) => {
-						this.mails = response.data
-					})
-				.catch((error) => console.log(error))
+				NProgress.start();
+				axios.get('mails/markstar/'+id+'/edit',{params:{filter:this.filter}})
+					.then((response) => {
+							this.mails = response.data
+						})
+					.catch((error) => console.log(error))
+					NProgress.done();
 			},
 			markmail(type){
+				console.log(type + this.selectedmail)
+			},
+			movemail(type){
 				console.log(type + this.selectedmail)
 			},
 			refreshmail(){
@@ -211,15 +226,19 @@
 				console.log(type)
 				this.filter = type
 				this.paginationdata()
-
-
-
-
 			},
 			selectmail(id){
 				this.selectedmail.push(id)
 				console.log(this.selectedmail)
 			},
+			handler(e,id){
+				console.log(id)
+				this.$refs.this.showMenu(event, id)
+				e.preventDefault();
+			},
+			optionClicked (event) {
+			    window.alert(JSON.stringify(event))
+			}
 			
 		},
 		created(){
@@ -231,6 +250,12 @@
 </script>
 
 <style lang="scss" Scoped>
+	
+	$light-grey: #ECF0F1;
+    $grey: darken($light-grey, 15%);
+    $blue: #007AFF;
+    $white: #fff;
+    $black: #333;
 
 	.mail-group-checkbox{
 		margin-top: -5px !important;
@@ -240,5 +265,49 @@
 		//color: #01A9DB !important;
 		//font-weight: 600;
 	}
+	
+	.vue-simple-context-menu {
+	  	//top: 500px;
+        //left: 0;
+        margin: 0;
+        padding: 0;
+        display: none;
+        list-style: none;
+        position: absolute;
+        z-index: 1000000;
+        background-color: $light-grey;
+        border-bottom-width: 0px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        box-shadow: 0 3px 6px 0 rgba($black, 0.2);
+        border-radius: 4px;
 
+        &--active {
+            display: block;
+        }
+
+        &__item {
+            display: flex;
+            color: $black;
+            cursor: pointer;
+            padding: 5px 15px;
+            align-items: center;
+
+            &:hover {
+                background-color: $blue;
+                color: $white;
+            }
+        }
+
+        // Have to use the element so we can make use of `first-of-type` and
+        // `last-of-type`
+        li {
+            &:first-of-type {
+                margin-top: 4px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 4px;
+            }
+        }
+	}
 </style>

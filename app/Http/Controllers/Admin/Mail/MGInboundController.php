@@ -53,7 +53,7 @@ class MGInboundController extends Controller
         app('log')->debug($request->all());
         $mail = new Mail;
         $mail->domain = $request->domain;
-        $mail->type = 'inbounds';
+        $mail->type = 'inbound';
         $mail->label = 'inbox';
         $mail->status = 'unread';
         $mail->sender = $request->sender;

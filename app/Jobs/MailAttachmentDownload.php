@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attachment;
+use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -32,22 +33,23 @@ class MailAttachmentDownload implements ShouldQueue
     public function handle()
     {
         $response = (new Client())->get($this->file['url'], [
-             //'auth' => ['api','key-332a5921c4c971f7f1d30d7385e24402'],
              'auth' => ['api', config('services.mailgun.secret')],
         ]);
 
         $item = $response->getBody();
         $timestamp = time().str_random();
+        $time = Carbon::now();
+        $date = Carbon::now()->format('Ymd');
 
         $attachment = new Attachment;
         $attachment->mail_id = $this->mailid;
         $attachment->file_name = $this->file['name'];
         $attachment->content_type = $this->file['content-type'];
         $attachment->file_type = \File::extension($this->file['name']);
-        $attachment->file_url = storage_path('app/mailbox/').$this->mailbox.'/'.$timestamp.$this->file['name'];
+        $attachment->file_url = storage_path('app/mailbox/').$this->mailbox.'/'.$date.'/'.$timestamp.$this->file['name'];
         $attachment->save();
 
-        Storage::put('/mailbox/'.$this->mailbox.'/'.$timestamp.$this->file['name'],$item);
+        Storage::put('/mailbox/'.$this->mailbox.'/'.$date.'/'.$timestamp.$this->file['name'],$item);
         app('log')->debug($this->file['name']);
 
 
