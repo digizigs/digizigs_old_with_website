@@ -33,7 +33,7 @@
 				</li>
 			</ul>
 
-			<!-- Labels -->
+			<!-- Labels>
 			<ul class="inbox-nav ">
 
 				<li class="">
@@ -52,7 +52,7 @@
 				<li>
 					<a href="#"> Office </a>
 				</li>	
-			</ul>		
+			</ul-->		
 
 		</aside>
 
@@ -110,15 +110,14 @@
 
 					<mailpagination :input="mails" @pagechange="paginationdata"></mailpagination>
 
-
 				</div>
 
 				
 
-				<table class="table table-inbox table-hover">
+				<table v-if="mails.data" class="table table-inbox table-hover">
 					
 					<tbody>
-						<tr v-for="mail in mails.data" v-bind:class="mail.status" @contextmenu="handler($event,mail.id)">
+						<tr v-for="(mail,index) in mails.data" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)">
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -149,24 +148,29 @@
 			<viewmail :mail="mail"></viewmail>
 		</div>
 
-		<VueSimpleContextMenu
-		    :elementId="'myUniqueId'"
-		    :options="options"
-		    :ref="'this'"
-		    @option-clicked="optionClicked">
-		</VueSimpleContextMenu>
-
+		
+		<vue-context ref="menu">
+			<template slot-scope="child" class="context-menu">
+		       
+	        	<li class="context-menu-list">
+		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">
+		            	Mark Read
+		            </a>
+		        </li>
+		        <li>
+		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">Mark Unread</a>
+		        </li>
+		 
+	        </template>
+	    </vue-context>
 
 	</div>
 </template>
 
 <script type="text/javascript">
 
-	//import 'vue-simple-context-menu/dist/vue-simple-context-menu.css'
-	import VueSimpleContextMenu from 'vue-simple-context-menu'
-
 	import { VueContext } from 'vue-context';
-
+	
 	export default{
 		data(){
 			return{
@@ -181,6 +185,7 @@
 		watch:{
 
 		},
+		components: {VueContext},
 		methods:{
 			paginationdata(page){
 				if (typeof page === 'undefined'){
@@ -231,14 +236,10 @@
 				this.selectedmail.push(id)
 				console.log(this.selectedmail)
 			},
-			handler(e,id){
-				console.log(id)
-				this.$refs.this.showMenu(event, id)
-				e.preventDefault();
-			},
-			optionClicked (event) {
-			    window.alert(JSON.stringify(event))
-			}
+			onClick (text, data) {
+                //alert(`You clicked "${text}"!`);
+                console.log(`You clicked "${text}"! ` + data);
+            }
 			
 		},
 		created(){
@@ -308,6 +309,14 @@
             &:last-of-type {
                 margin-bottom: 4px;
             }
+        }
+
+        .context-menu{
+        	
+        		a{
+        			background-color:#ECF0F1 !important;
+        		}
+        	
         }
 	}
 </style>
