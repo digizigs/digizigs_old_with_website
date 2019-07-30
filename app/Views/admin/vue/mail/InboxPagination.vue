@@ -3,12 +3,12 @@
 		<li class="info">
 			{{input.from}} - {{input.to}} of {{input.total}}
 		</li>
-		<li :class="{ 'active': prevactive }">
+		<li class="prev" :class="{ 'active': prevactive }">
 			<a class="np-btn" href="#"  v-on:click.prevent @click="pagechange('prevpage')">
 				<i class="fa fa-angle-left  pagination-left"></i>
 			</a>
 		</li>
-		<li :class="{ 'active': nextactive }">
+		<li class="next" :class="{ 'active': nextactive }">
 			<a class="np-btn" href="#"  v-on:click.prevent @click="pagechange('nextpage')">
 				<i class="fa fa-angle-right pagination-right"></i>
 			</a>
@@ -79,12 +79,22 @@
 	.info{
 		margin-top: 5px;
 	}
-
+	.next.active,.prev.active{
+	  	display:inline-block;
+	}
+	.next,.prev{
+		cursor: pointer;
+	    color: #01A9DB;
+	    font-size: 12px;
+	    font-weight: 600;
+	    display: none;
+	}
 	li.active{
 		i{
 			color: #01A9DB !important;
 			font-weight: 600;
 		}
 	}
+	
 
 </style>

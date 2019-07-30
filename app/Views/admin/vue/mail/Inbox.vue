@@ -31,77 +31,49 @@
 				<li :class="{ 'active': filter == 'spam' }" @click="inboxview('spam')">
 					<a href="#"><i class=" fa fa-ban"></i> Spam </a>
 				</li>
-			</ul>
-
-			<!-- Labels>
-			<ul class="inbox-nav ">
-
-				<li class="">
-					<a href="#"> Work <span class="label label-danger pull-right">2</span></a>
-
-				</li>
-				<li>
-					<a href="#"> Design </a>
-				</li>
-				<li>
-					<a href="#"> Family </a>
-				</li>
-				<li>
-					<a href="#"> Friends </a>
-				</li>
-				<li>
-					<a href="#"> Office </a>
-				</li>	
-			</ul-->		
+			</ul>		
 
 		</aside>
 
 		<aside class="lg-side col-md-8 col-xs-12">
 			<div class="inbox-body">
-				<div class="mail-option">
-									
-					
-					<div class="btn-group hidden-phone">
-						<a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
-							All
-							<i class="fa fa-angle-down "></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
-							<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
-							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
-						</ul>
-					</div>
 
-					
+				<div class="mail-option">
+										
 					<div class="btn-group hidden-phone">
 						<a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
 							More
 							<i class="fa fa-angle-down "></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
-							<li><a href="#" v-on:click.prevent @click="markmail('unread')"><i class="fa fa-pencil"></i> Mark as Unread</a></li>
+							<li><a href="#"><i class="fa fa-folder-open-o"></i> Mark as Read</a></li>
+							<li><a href="#" v-on:click.prevent @click="markmail('unread')"><i class="fa fa-folder-o"></i> Mark as Unread</a></li>
 							<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
-							<li class="divider"></li>
 							<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
 						</ul>
 					</div>
+
 					<div class="btn-group">
 						<a data-toggle="dropdown" href="#" class="btn mini blue">
 							Move to
 							<i class="fa fa-angle-down "></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
-							
-
-							<li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
-							<li class="divider"></li>
-							<li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+							<li @click.prevent="moveMail('inbox')">
+								<a href="#">
+								<i class="fa fa-pencil"></i> Inbox </a>
+							</li>
+							<li @click.prevent="moveMail('trash')">
+								<a href="#">
+								<i class="fa fa-ban"></i> Trash </a>
+							</li>
+							<li @click.prevent="moveMail('spam')">
+								<a href="#">
+								<i class="fa fa-trash-o"></i> Spam </a>
+							</li>
 						</ul>
 					</div>
+
 					<div class="btn-group">
 						<a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" class="btn mini tooltips" v-on:click.prevent @click="refreshmail">
 							<i class=" fa fa-refresh"></i>
@@ -122,8 +94,8 @@
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
 							<td class="inbox-small-cells">
-								<i v-if="mail.starred == 1"class="fa fa-star active" @click="markstar(mail.id)"></i>
-								<i v-else class="fa fa-star" @click="markstar(mail.id)"></i>
+								<i v-if="mail.starred == 1"class="fa fa-star active" @click="markMail(mail.id,'star')"></i>
+								<i v-else class="fa fa-star" @click="markMail(mail.id,'star')"></i>
 								<i v-if="mail.status == 'reply'" class="fa fa-reply"></i>
 								<i v-if="mail.status == 'forward'" class="fa fa-share"></i>
 							</td>
@@ -153,12 +125,34 @@
 			<template slot-scope="child" class="context-menu">
 		       
 	        	<li class="context-menu-list">
-		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">
-		            	Mark Read
+		            <a href="#" @click.prevent="onClick('read', child.data)">
+		            	<i class="fa fa fa-folder-open-o"></i> Mark Read
 		            </a>
 		        </li>
 		        <li>
-		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">Mark Unread</a>
+		            <a href="#" @click.prevent="onClick('unread', child.data)">
+		            	<i class="fa fa-folder-o"></i> Mark Unread
+		            </a>
+		        </li>
+		        <li>
+		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">
+		            	<i class="fa fa-reply"></i> Reply
+		        	</a>
+		        </li>
+		        <li>
+		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">
+		            	<i class="fa fa-reply-all"></i> Reply All
+		            </a>
+		        </li>
+		        <li>
+		            <a href="#" @click.prevent="onClick($event.target.innerText, child.data)">
+		            	<i class="fa fa-share"></i> Forward
+		            </a>
+		        </li>
+		        <li>
+		            <a href="#" @click.prevent="onClick('trash', child.data)">
+		            	<i class="fa fa-trash"></i> Trash
+		            </a>
 		        </li>
 		 
 	        </template>
@@ -203,11 +197,7 @@
 			},
 			viewmail(mail){
 				this.mail = mail
-				axios.get('mails/markread/'+mail.id+'/edit',{params:{filter:this.filter}})
-				.then((response) => {
-						this.mails = response.data
-					})
-				.catch((error) => console.log(error))
+				this.markMail(mail.id,'read')
 			},
 			markstar(id){
 				NProgress.start();
@@ -218,11 +208,28 @@
 					.catch((error) => console.log(error))
 					NProgress.done();
 			},
-			markmail(type){
-				console.log(type + this.selectedmail)
+			markMail(id,type){
+
+				NProgress.start();
+				axios.get('mails/markmail/'+id+'/edit',{params:{filter:this.filter,type:type}})
+					.then((response) => {
+						this.mails = response.data
+					})
+					.catch((error) => console.log(error))
+				NProgress.done();	
+
 			},
-			movemail(type){
-				console.log(type + this.selectedmail)
+			moveMail(text){
+
+				NProgress.start();
+				axios.get('mails/movemail',{params:{filter:this.filter,mailid:this.selectedmail,type:text}})
+					.then((response) => {
+						this.mails = response.data
+						//console.log(response.data)
+					})
+					.catch((error) => console.log(error))
+				NProgress.done();	
+				
 			},
 			refreshmail(){
 				this.paginationdata()
@@ -234,11 +241,10 @@
 			},
 			selectmail(id){
 				this.selectedmail.push(id)
-				console.log(this.selectedmail)
 			},
 			onClick (text, data) {
-                //alert(`You clicked "${text}"!`);
-                console.log(`You clicked "${text}"! ` + data);
+				this.markMail(data,text)
+                
             }
 			
 		},
@@ -262,61 +268,5 @@
 		margin-top: -5px !important;
 	}
 
-	.active{
-		//color: #01A9DB !important;
-		//font-weight: 600;
-	}
 	
-	.vue-simple-context-menu {
-	  	//top: 500px;
-        //left: 0;
-        margin: 0;
-        padding: 0;
-        display: none;
-        list-style: none;
-        position: absolute;
-        z-index: 1000000;
-        background-color: $light-grey;
-        border-bottom-width: 0px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-        box-shadow: 0 3px 6px 0 rgba($black, 0.2);
-        border-radius: 4px;
-
-        &--active {
-            display: block;
-        }
-
-        &__item {
-            display: flex;
-            color: $black;
-            cursor: pointer;
-            padding: 5px 15px;
-            align-items: center;
-
-            &:hover {
-                background-color: $blue;
-                color: $white;
-            }
-        }
-
-        // Have to use the element so we can make use of `first-of-type` and
-        // `last-of-type`
-        li {
-            &:first-of-type {
-                margin-top: 4px;
-            }
-
-            &:last-of-type {
-                margin-bottom: 4px;
-            }
-        }
-
-        .context-menu{
-        	
-        		a{
-        			background-color:#ECF0F1 !important;
-        		}
-        	
-        }
-	}
 </style>

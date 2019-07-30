@@ -164,8 +164,10 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
-    Route::get('/mails/markstar/{id}/edit','Admin\Mail\MailController@markstar');
-    Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
+    Route::get('/mails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    //Route::get('/mails/markstar/{id}/edit','Admin\Mail\MailController@markstar');
+    //Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
+    Route::get('/mails/movemail','Admin\Mail\MailController@moveMail');
     Route::resource('/mails', 'Admin\Mail\MailController'); //Contact
 
 
