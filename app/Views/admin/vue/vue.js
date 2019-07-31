@@ -220,7 +220,9 @@ Vue.filter('vueDate',function(created){
 })
 
 Vue.filter('vueAgoTime',function(created){
-  return moment(created).calendar();
+  if(created){
+    return moment(created).calendar();
+  }
 })
 
 Vue.filter('vueMoment',function(created){
@@ -231,11 +233,15 @@ Vue.filter('vueDay',function(created){
 })
 
 Vue.filter('mailname',function(from){
-
   var frm = from.split('<')[0];
-
   return frm;
-
 })
-
+Vue.filter('mailSenderName',function(from){
+  var frm = from.split('<')[0];
+  return frm;
+})
+Vue.filter('mailSenderEmail',function(from){
+  var frm = str.split('<').pop().split('>')[0];
+  return from;
+})
 

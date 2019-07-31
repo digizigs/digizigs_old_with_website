@@ -9,43 +9,68 @@
 				<div class="modal-body">
 
 					<div v-if="this.view == true" class="mail-view">
+												
 						<div class="col-md-10">
-							<span class="message-header">
-								<p>From:- {{mail.from}}</p>
-								<p>To:- {{mail.to}}</p>
-								<p v-if="mail.cc">Cc:- {{mail.cc}}</p>
-								<p v-if="mail.bcc">Bcc:- {{mail.bcc}}</p>
-								<p>Date:- {{mail.created_at}}</p>
-							</span>
+							
+							<h6 class="">{{mailSenderName(mail.from)}}</h6>
+							<h6>From:<span class="">{{mailSenderEmail(mail.from)}}</span></h6>
+							<h6>To:<span class="">{{mail.to}}</span></h6>
+							<h6 v-if="mail.cc">Cc:- {{mail.cc}}</h6>
+							<h6 v-if="mail.cc">Bcc:- {{mail.bcc}}</h6>
+							<h6>Date:- {{ mail.created_at }}</h6>
+								
 						</div>
 						<div class="col-md-2">
 							<span class="message-response pull-right">
-								<a href="" data-toggle="tooltip" data-placement="bottom" title="Reply" v-on:click.prevent @click="msgreply">
+								<a href="" data-toggle="tooltip" data-placement="bottom" title="Reply" v-on:click.prevent @click="msgAction('reply')">
 									<i  class="fa fa-reply"></i>
 								</a>
-								<a href="" data-toggle="tooltip" data-placement="bottom" title="Reply all" v-on:click.prevent @click="msgreply">
+								<a href="" data-toggle="tooltip" data-placement="bottom" title="Reply all" v-on:click.prevent @click="msgAction('replyall')">
 									<i  class="fa fa-reply-all"></i>
 								</a>
-								<a href="" data-toggle="tooltip" data-placement="bottom" title="Forward">
+								<a href="" data-toggle="tooltip" data-placement="bottom" title="Forward" v-on:click.prevent @click="msgAction('forward')">
 									<i  class="fa fa-share"></i>
 								</a>
 							</span>
 						</div>		
 						
 						<div v-html="mail.body_html" class="col-md-12 col-xs-12 mail-body"></div>
+					
+						
+						<div class="col-md-12">
+							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-reply"></i> Reply</a>
+							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-reply-all"></i> Reply All</a>
+							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-share"></i> Forward</a>
+						</div>
+
 					</div>
 					
-					<div v-if="this.reply == true" class="mail-reply">
-						<span class="message-header">
-							<p>From:- {{mail.from}}</p>
-							<p>To:- {{mail.to}}</p>
-							<p v-if="mail.cc">Cc:- {{mail.cc}}</p>
-							<p v-if="mail.bcc">Bcc:- {{mail.bcc}}</p>
-							<p>Date:- {{mail.created_at}}</p>
-						</span>
+					<div v-if="this.view == false" class="mail-reply">						
 						<div class="col-md-12 col-xs-12">
-							<textarea name="" id="" cols="30" rows="10">Reply</textarea>
+
+							<div v-if="this.reply == true"class="msg-header">
+								<h6 class="">To :{{mailSenderName(mail.from)}} {{mailSenderEmail(mail.from)}}</h6>
+								<div class="form-group wp-input">
+									<label class="col-lg-2 control-label">To</label>
+									<div class="col-lg-10 col-xs-12 col-md-12">
+										<input type="text" placeholder="" id="inputEmail1" class="form-control input-sm">
+									</div>
+								</div>
+							</div>
+							<div v-if="this.replyall == true"class="msg-header">
+								<h6 class="">To :{{mailSenderName(mail.from)}} {{mailSenderEmail(mail.from)}}</h6>
+								<h6 class="">Cc :{{mailSenderEmail(mail.cc)}}</h6>
+							</div>
+
+							<div class="msg-editor">
+								<textarea class="form-control col-xs-12 email-textarea" name="" id="" cols="30" rows="10"></textarea>
+							</div>
+							
+							<div class="msg-action">
+								<a href="" class="btn btn-dark btn-sm">Attachment</a>
 							<a href="" class="btn btn-dark btn-sm">Send</a>
+							</div>
+
 						</div>
 					</div>
 
@@ -68,22 +93,48 @@
 				search:'',
 				view:true,
 				reply:false,
+				replyall:false,
 				forward:false,
 			}
 		},
 		watch:{
+			
+		},
+		computed:{
 
 		},
 		methods:{
-			msgreply(){
-				this.reply = true
-				this.view = false
+			msgAction(type){
+				if(type == 'reply'){
+					this.reply = true
+					this.view = false
+				}
+				if(type == 'replyall'){
+					this.replyall = true
+					this.view = false
+				}
+				if(type == 'forward'){
+					this.forward = true
+					this.view = false
+				}
 				$("[data-toggle='tooltip']").tooltip('hide');
 			},
 			modalclose(){
 				this.view = true
 				this.reply = false
 				this.forward = false
+			},
+			mailSenderName(email){
+				if(email){
+					var frm = email.split('<')[0];
+  				return frm;
+				}
+			},
+			mailSenderEmail(email){
+				if(email){
+					var frm = email.split('<').pop().split('>')[0];
+  					return frm;
+				}
 			}
 		},
 		created(){
@@ -108,4 +159,9 @@
 		width: 100%;
 		margin: 10px 0;
 	}
+	
+	.modal-body{
+		padding-bottom: 20px !important;
+	}
+
 </style>
