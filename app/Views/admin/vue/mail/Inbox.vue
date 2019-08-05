@@ -166,6 +166,7 @@
 	import { VueContext } from 'vue-context';
 	
 	export default{
+		props:['user'],
 		data(){
 			return{
 				filter:'inbox',
@@ -186,7 +187,7 @@
 					page=1;
 				}
 				NProgress.start();
-				axios.get('mails/create?page=' + page,{params:{filter:this.filter}})
+				axios.get('mails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
 						console.log(response.data)
 						this.mails=response.data
@@ -197,7 +198,10 @@
 			},
 			viewmail(mail){
 				this.mail = mail
-				this.markMail(mail.id,'read')
+				if(this.mail.status == 'unread'){
+					this.markMail(mail.id,'read')
+				}
+				
 			},
 			markstar(id){
 				NProgress.start();

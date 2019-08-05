@@ -1,4 +1,8 @@
 
+<?php
+use Illuminate\Support\Facades\Auth;
+?>
+
 @extends('layouts.admin')
 
 @section('title','Mailbox')
@@ -19,7 +23,7 @@
 		</div>
 
 		<div class="x_content">
-			<inbox></inbox>
+			<inbox :user="{{ Auth::user()}}"></inbox>
 		</div>
 
 	</div>
