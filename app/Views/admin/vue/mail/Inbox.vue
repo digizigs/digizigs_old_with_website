@@ -109,8 +109,8 @@
 							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>										
 						</tr>					
 					</tbody>
-
 				</table>
+
 
 			</div>
 		</aside>
@@ -173,7 +173,7 @@
 				mails:{},
 				mail:{},
 				selectedmail:[],
-				options:[{"name": "option-1" },{"name": "option-2" },{"name": "option-3" }]
+				options:[{"name": "option-1" },{"name": "option-2" },{"name": "option-3" }],
 			}
 		},
 		watch:{
@@ -245,7 +245,8 @@
 			onClick (text, data) {
 				this.markMail(data,text)
                 
-            }
+            },
+
 			
 		},
 		created(){
