@@ -29,7 +29,13 @@ Route::group(['prefix' => 'mailgun'],function () {
     
 });
 
-Route::apiResource('mails', 'Api\MailController');
+
+Route::group(['prefix' => 'mail'],function () {
+//Route::group(['prefix' => 'mail','middleware' => ['auth:api']],function () {
+
+	Route::get('getmails', 'Api\MailController@getMails');
+
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
