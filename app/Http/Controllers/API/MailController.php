@@ -19,7 +19,8 @@ class MailController extends Controller
     public function getMails(Request $request) {
         
         $type = $request->filter;
-        $mail = $this->getData($type);
+        $email = $request->email;
+        $mail = $this->getData($type,$email);
         return response()->json($mail);
 
     }
@@ -38,12 +39,11 @@ class MailController extends Controller
         //
     }
 
-    public function getData($type){
+    public function getData($type,$email){
 
-        //return $this->email;
-        //$email = $request->email;
-
+    
          if($type == 'inbox'){
+
             $mail = Mail::where('type','inbound')
                 ->where('label','inbox')
                 ->where('to','like', '%'.$this->email.'%')
@@ -52,16 +52,60 @@ class MailController extends Controller
                 ->orderby('created_at','desc')
                 ->with('attachments')
                 ->paginate(10);
+
          }elseif($type == 'sent'){
-            $mail = Mail::where('type','outbound')->where('label','sent')->orderby('created_at','desc')->with('attachments')->paginate(10);
+
+            $mail = Mail::where('type','outbound')
+                    ->where('label','sent')
+                    ->where('from','like', '%'.$email.'%')      
+                    ->orderby('created_at','desc')
+                    ->with('attachments')
+                    ->paginate(10);
+
          }elseif($type == 'important'){
-            $mail = Mail::where('type','inbound')->where('label','<>','trash')->where('label','<>','spam')->where('starred',1)->orderby('created_at','desc')->with('attachments')->paginate(10);
+          
+            $mail = Mail::where('type','inbound')
+                ->where('label','<>','trash')
+                ->where('label','<>','spam')
+                ->where('starred',1)
+                ->where('to','like', '%'.$email.'%')
+                ->orWhere('cc','like', '%'.$email.'%')
+                ->orWhere('bcc','like', '%'.$email.'%')
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->paginate(10);
+
          }elseif($type == 'draft'){
-            $mail = Mail::where('type','outbound')->where('label','draft')->orderby('created_at','desc')->with('attachments')->paginate(10);
+            
+            $mail = Mail::where('type','outbound')
+                ->where('label','draft')
+                ->where('from','like', '%'.$email.'%')            
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->paginate(10);
+
          }elseif($type == 'trash'){
-            $mail = Mail::where('type','inbound')->where('label','trash')->orderby('created_at','desc')->with('attachments')->paginate(10);
+
+            $mail = Mail::where('type','inbound')
+                    ->where('label','trash')
+                    ->where('to','like', '%'.$email.'%')
+                    ->orWhere('cc','like', '%'.$email.'%')
+                    ->orWhere('bcc','like', '%'.$email.'%')
+                    ->orderby('created_at','desc')
+                    ->with('attachments')
+                    ->paginate(10);
+
          }elseif($type == 'spam'){
-            $mail = Mail::where('type','inbound')->where('label','spam')->orderby('created_at','desc')->with('attachments')->paginate(10);
+
+            $mail = Mail::where('type','inbound')
+                    ->where('label','spam')
+                    ->orderby('created_at','desc')
+                    ->where('to','like', '%'.$email.'%')
+                    ->orWhere('cc','like', '%'.$email.'%')
+                    ->orWhere('bcc','like', '%'.$email.'%')
+                    ->with('attachments')
+                    ->paginate(10);
+
          }
 
         return $mail;
