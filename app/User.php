@@ -21,12 +21,12 @@ class User extends Authenticatable
   
    
     protected $fillable = [
-        'firstname','lastname', 'email', 'password','verifyToken',
+        'name', 'email', 'password','api_token','verify_token',
     ];
 
     
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','api_token',
     ];
 
     public function profile(){

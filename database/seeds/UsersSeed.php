@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class UsersSeed extends Seeder
 {
@@ -17,10 +18,11 @@ class UsersSeed extends Seeder
     	for($i=0; $i < 10; $i++){
 
     		User::create([
-    			'firstname' => $name = $faker->name,
-    			'lastname' => $name = $faker->name,
+    			'name' => $name = $faker->name,
     			'email' => $faker->email,
-    			'password' => bcrypt('password')
+    			'password' => bcrypt('password'),
+                'api_token' => Str::random(80),//hash('sha256', Str::random(80)),
+                'verify_token' => Str::random(80),//hash('sha256', Str::random(80)),
     		]);
 
     		

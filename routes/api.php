@@ -31,7 +31,7 @@ Route::group(['prefix' => 'mailgun'],function () {
 
 
 //Route::group(['prefix' => 'mail'],function () {
-Route::group(['prefix' => 'mail','middleware' => []],function () {
+Route::group(['prefix' => 'mail','middleware' => ('auth:api')],function () {
 
 	Route::get('getmails', 'Api\MailController@getMails');
 

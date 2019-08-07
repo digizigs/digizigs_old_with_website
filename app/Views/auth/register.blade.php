@@ -19,18 +19,10 @@
               
             <h1>Sign Up</h1>
             <div>
-              <input type="text" class="form-control" placeholder="First Name" required="" name="firstname" autofocus value="{{ old('firstname') }}"/>
-              @if ($errors->has('firstname'))
+              <input type="text" class="form-control" placeholder="Name" required="" name="name" autofocus value="{{ old('name') }}"/>
+              @if ($errors->has('name'))
                    <span class="help-block">
-                       <strong>{{ $errors->first('firstname') }}</strong>
-                   </span>
-               @endif
-            </div>
-            <div>
-              <input type="text" class="form-control" placeholder="Last Name" required="" name="lastname" autofocus value="{{ old('lastname') }}"/>
-              @if ($errors->has('lastname'))
-                   <span class="help-block">
-                       <strong>{{ $errors->first('lastname') }}</strong>
+                       <strong>{{ $errors->first('name') }}</strong>
                    </span>
                @endif
             </div>
