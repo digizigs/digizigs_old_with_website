@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800);@import url(https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700);@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800);@import url(https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700);@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,900);@import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Domine|Karla:400,700Lato|Merriweather|Montserrat+Alternates|Quattrocento+Sans|Raleway:400,900|Roboto|Space+Mono|Medula+One|Open+Sans|Alegreya|ontserrat+Alternates:400:900|Unica+One|Vollkorn|Playfair+Display|Source+Sans+Pro|Lusitana|Montserrat:400,700,900|Varela+Round);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.4.0 (https://getbootstrap.com/)
@@ -16650,6 +16650,70 @@ body.mobile-nav-active #mobile-nav-toggle {
   content: " ";
   clear: both;
   height: 0;
+}
+
+#login .left {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#login .left img {
+  max-height: 100vh;
+  background-color: rgba(48, 48, 48, 0.8);
+  opacity: 0.9;
+}
+
+#login .right {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 !important;
+  padding: 20px !important;
+  background-color: #fdfdfd;
+  height: 100vh;
+}
+
+#login .right .login-content {
+  padding: 10px;
+  margin-top: 20%;
+}
+
+#login .right .login-content .brand-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#login .right .login-content h5 {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px;
+}
+
+#login .right .login-content input {
+  margin-bottom: 20px;
+}
+
+#login .right .login-content .reset_pass {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 10px;
+  color: #fafafa;
+}
+
+#login .right .login-content .separator {
+  margin-top: 10px;
+  text-align: center;
+}
+
+#login .right .login-content .info {
+  text-align: center;
+}
+
+#login .right .login-content .verify-email {
+  text-align: center;
+}
+
+#login .right .login-content .verify-email .card-header {
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .banner-area {

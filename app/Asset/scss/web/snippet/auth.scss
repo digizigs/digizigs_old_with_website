@@ -1,0 +1,76 @@
+
+@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Domine|Karla:400,700Lato|Merriweather|Montserrat+Alternates|Quattrocento+Sans|Raleway:400,900|Roboto|Space+Mono|Medula+One|Open+Sans|Alegreya|ontserrat+Alternates:400:900|Unica+One|Vollkorn|Playfair+Display|Source+Sans+Pro|Lusitana|Montserrat:400,700,900|Varela+Round");
+
+$font: "Montserrat", sans-serif;
+$black: #303030;
+$right-block-color:#252030;
+$white: #fdfdfd;
+
+#login{
+
+
+	.left{
+
+		margin: 0 !important;
+		padding: 0 !important;
+		img{
+			max-height: 100vh;
+			//width: 100%;
+			//object-fit:cover;
+			background-color: rgba($black, 0.8);
+			opacity:0.9;
+		}
+	}
+
+	.right{
+		font-family: $font;
+		margin: 0 !important;
+		padding: 20px !important;
+		background-color: $white;
+		height: 100vh;
+		.login-content{
+			padding: 10px;
+			margin-top: 20%;
+
+			.brand-logo{
+				text-align: center;
+				margin-bottom: 20px;	
+			}
+
+			h5{
+				font-size: 13px;
+				font-weight: 500;
+				padding: 10px;
+			}
+
+			input{
+				margin-bottom: 20px;
+			}
+
+			.reset_pass{
+				font-size: 12px;
+				text-align: right;
+				margin-top: 10px;
+				color: #fafafa;
+			}
+
+			.separator{
+				margin-top: 10px;
+				text-align: center;
+			}
+			.info{
+				text-align: center;
+			}
+
+			.verify-email{
+				text-align: center;
+
+				.card-header{
+					font-weight: 600;
+					margin-bottom: 10px;
+				}
+			}
+			
+		}
+	}
+}

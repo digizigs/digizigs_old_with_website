@@ -4,8 +4,8 @@ namespace App;
 
 use App\Models\Post;
 use App\Models\Profile;
-use App\Notifications\verifyEmail;
 use Hash;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable       
+class User extends Authenticatable implements MustVerifyEmail       
 {
     use Notifiable;
     use HasRoles;
@@ -58,6 +58,7 @@ class User extends Authenticatable
     public function SendVerificationEmail(){
 
         $this->notify(new verifyEmail($this));
+       //VerifyEmail::dispatch($this);
     }
 
 

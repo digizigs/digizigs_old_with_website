@@ -20,17 +20,10 @@
     <link href="{{asset('public/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{asset('public/css/custom.css')}}" rel="stylesheet">
+    <link href="{{asset('public/css/web_main.css')}}" rel="stylesheet">
   </head>
 
   <body class="login ">
-
-          
-      <div class="login_wrapper">     
-         @yield('content')
-      </div>
-
-    
-   
+    @yield('content')
   </body>
 </html>

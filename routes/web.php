@@ -81,7 +81,7 @@ Route::get('send_mail', function(){
 
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/notify',function(){
    
@@ -111,7 +111,7 @@ Route::get('/taskevent',function(){
 
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
-Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
+Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth','verified']],function(){
 
     
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');

@@ -51,12 +51,7 @@ class RegisterController extends Controller
         return  $user;
     }
 
-    public function verifyAccount($verifyToken){
-       
-        $user = User::where('verifyToken',$verifyToken)->firstorFail()->update(['verifyToken' => null]);
-        return redirect()->route('apphome')->with('success','Account verified successfully');
-
-    }
+   
 
     public function registerSuccess(){
         return 'Registration Success';
