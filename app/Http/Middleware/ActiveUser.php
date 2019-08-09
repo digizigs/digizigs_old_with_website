@@ -15,10 +15,11 @@ class ActiveUser
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->status ==1){
+        if(auth()->user()->status == 1){
             return $next($request);
         }
-
-        return redirect('/')->withErrors(['Your account is not active']);
+        //return redirect('/')->withErrors(['Your account is not active']);
+        return redirect(route('verifyEmail'));
+        //return view('auth.verify');
     }
 }

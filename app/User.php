@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements MustVerifyEmail       
+class User extends Authenticatable        
 {
     use Notifiable;
     use HasRoles;
@@ -26,7 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     
     protected $hidden = [
-        'password', 'remember_token','api_token',
+        'password', 'remember_token','api_token','verify_token'
     ];
 
     public function profile(){
@@ -57,8 +57,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function SendVerificationEmail(){
 
-        $this->notify(new verifyEmail($this));
-       //VerifyEmail::dispatch($this);
+        //$this->notify(new verifyEmail($this));
+        //VerifyEmail::dispatch($this);
     }
 
 

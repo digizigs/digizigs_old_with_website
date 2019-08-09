@@ -45,15 +45,21 @@ class RegisterController extends Controller
             'verify_token' => Str::random(80),//hash('sha256', Str::random(80)),
         ]);
 
-        //$user->SendVerificationEmail();
-
-
+        $thisuser = User::findOrFail($user->id);
+        $this->SendVerificationEmail($thisuser);
         return  $user;
     }
 
-   
+    public function SendVerificationEmail($thisuser){
 
-    public function registerSuccess(){
-        return 'Registration Success';
     }
+
+    public function verifyEmail(){
+        return view('auth.verify');
+    }
+
+
+   /* public function registerSuccess(){
+        return 'Registration Success';
+    }*/
 }

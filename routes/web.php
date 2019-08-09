@@ -75,13 +75,18 @@ Route::get('send_mail', function(){
         $message->subject('Mailgun and Laravel are awesome!');
         $message->from('info@digizigs.com', 'DigiZigs Mailer');
         //$message->to('info@digizigs.com');
-        $message->to('jaysvishwa@gmail.com');
+        $message->to('digizigs@gmail.com');
     });
 });
 
 
+/*
+    User registration email verification
+    User will redirect to verify email page
+*/
+Route::get('verifyEmail','Auth\RegisterController@verifyEmail')->name('verifyEmail');    
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/notify',function(){
    
@@ -111,7 +116,7 @@ Route::get('/taskevent',function(){
 
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
-Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth','verified']],function(){
+Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
 
     
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');

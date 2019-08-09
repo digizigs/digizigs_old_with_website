@@ -50,6 +50,9 @@
                    </span>
                @endif
               </div>
+
+              
+
               <div>
                 <input type="password" class="form-control" placeholder="Confirm Password" required="" name="password_confirmation" autofocus value="{{ old('firstname') }}" />
               </div>
@@ -68,6 +71,8 @@
                 
               </div>
             </form>
+
+            @captcha()
            
          </div>
     

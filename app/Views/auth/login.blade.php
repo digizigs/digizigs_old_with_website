@@ -43,16 +43,22 @@
                      @endif
                   </div>
                   
-                  @captcha()
+                 
 
                   <div>
                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="filled-in chk-col-pink">
                      <label for="rememberme">Remember Me</label>
+
+                     @if (Route::has('password.request'))
+                        <a class="pull-right" href="{{ route('password.request') }}">
+                            {{ __('Forgot Password?') }}
+                        </a>
+                     @endif
+            
                   </div>
                   
                   <div>
                      <button class="btn btn-default submit btn-sm pull-left" style="margin-top: 5px;">Log in</button>
-                     <a class="reset_pass pull-right" href="{{ route('password.request') }}">Lost your password?</a>
                   </div>
                   <div class="clearfix"></div>
                   <div class="separator">
@@ -65,6 +71,9 @@
                   </div>
                   <p class="info">Your data will not be used outside of www.digizigs.com. By signing up you agree that your statistics may be used anonymously inside www.digizigs.com.</p>
             </form>
+
+             @captcha()
+             
          </div>
     
    </div>
