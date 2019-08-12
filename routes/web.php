@@ -3,14 +3,17 @@
 //use Analytics;
 use App\Events\TaskEvent;
 use App\Jobs\testmailjob;
+use App\Jobs\verifyEmail;
+use App\Mail\ActivationEmail;
+use App\Mail\SubscriptionMail;
 use App\Mail\testMail;
 use App\Models\Page;
+use App\Models\Test;
 use App\Notifications\InvoiceCreated;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Analytics\Period;
-use App\Models\Test;
 
 
 //Subscriptions and Inquiries
@@ -62,21 +65,30 @@ Route::get('/inbox',function(){
 
 Route::get('send_test_email', function(){
 
-   $data = array('name'=>'Amit Vishwakarma','email'=>'jaysvishwa@gmail.com'); 
+   /*$data = array('name'=>'Amit Vishwakarma','email'=>'amitvishwa19@gmail.com'); 
    Mail::send('email.testmail',$data, function($message)
     {
-        $message->to('jaysvishwa@gmail.com')->subject('MAilgun api mail test');
-    });
+        $message->to('amitvishwa19@gmail.com')->subject('MAilgun api mail test');
+    });*/
+
+    /*$data = ['foo' => 'bar'];
+    Mail::send('email.testmail', $data, function($message) {
+        $message->to('amitvishwa19@gmail.com')->subject('MAilgun api mail test');
+    });*/
+
+    $user = User::where('email','admin@admin.com')->first();
+    Mail::to('amitvishwa19@gmail.com')->send(new ActivationEmail);
+
 });
 
 Route::get('send_mail', function(){
-    Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+    /*Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
     {
         $message->subject('Mailgun and Laravel are awesome!');
         $message->from('info@digizigs.com', 'DigiZigs Mailer');
-        //$message->to('info@digizigs.com');
-        $message->to('digizigs@gmail.com');
-    });
+        $message->to('amitvishwa19@gmail.com');
+    });*/
+    dispatch(new verifyEmail());
 });
 
 
@@ -84,7 +96,10 @@ Route::get('send_mail', function(){
     User registration email verification
     User will redirect to verify email page
 */
-Route::get('verifyEmail','Auth\RegisterController@verifyEmail')->name('verifyEmail');    
+
+Route::get('verifyEmail','Auth\RegisterController@verifyEmail')->name('verifyEmail');
+Route::get('activationLink','Auth\RegisterController@activationLink')->name('activationLink');    
+Route::post('verifyemail','Auth\RegisterController@resendEmailVerification')->name('resendEmailVerification');    
 
 Auth::routes();
 
@@ -116,7 +131,7 @@ Route::get('/taskevent',function(){
 
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
-Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
+Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth','active']],function(){
 
     
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');

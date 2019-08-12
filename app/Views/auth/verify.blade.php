@@ -35,7 +35,7 @@
                             @endif
 
                             {{ __('We have send you a activation link to your registered mail id') }}
-                            {{ __('If you did not receive the email') }}, <a href="">{{ __('click here to request another') }}</a>.
+                            {{ __('If you did not receive the email') }}, <a href="{{ route('activationLink') }}">{{ __('click here to request another') }}</a>.
                         </div>
                     </div>
                 

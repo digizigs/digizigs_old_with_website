@@ -16705,6 +16705,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #login .right .login-content .info {
   text-align: center;
+  font-size: 12px;
 }
 
 #login .right .login-content .verify-email {
@@ -16714,6 +16715,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 #login .right .login-content .verify-email .card-header {
   font-weight: 600;
   margin-bottom: 10px;
+}
+
+#login .right .status-check {
+  margin-bottom: -50px;
+  font-size: 12px;
 }
 
 .banner-area {

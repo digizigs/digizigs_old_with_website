@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Auth\resendEmailVerification;
 use App\Http\Controllers\Controller;
+use App\Jobs\verifyEmail;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -46,17 +49,41 @@ class RegisterController extends Controller
         ]);
 
         $thisuser = User::findOrFail($user->id);
-        $this->SendVerificationEmail($thisuser);
+        $this->emailVerification($thisuser);
         return  $user;
     }
 
-    public function SendVerificationEmail($thisuser){
+    public function emailVerification($thisuser){
+
+
 
     }
 
+    public function resendEmailVerification(Request $request){
+
+        $email = $request->email;
+        $user = User::where('email',$email)->first();
+
+        if($user){
+            dispatch(new verifyEmail($user));
+            return redirect('/login')->with('success', 'A fresh activation link send to your email');  
+        }else{
+            return redirect('/activationLink')->with('error', 'Oops we are unable to find this email, please check email');  
+        }
+        
+    }
+
+    /*Redirect to  email verification screen*/
     public function verifyEmail(){
         return view('auth.verify');
     }
+
+    /* Send email verification link screen*/
+    public function activationLink(){
+         return view('auth.passwords.email');
+    }
+
+
 
 
    /* public function registerSuccess(){

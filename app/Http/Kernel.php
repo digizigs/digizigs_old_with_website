@@ -40,14 +40,6 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
-        ],
-
-        'admin' => [
-            \App\Http\Middleware\Admin::class,
-            \App\Http\Middleware\ActiveUser::class,
-        ],
-        'active' =>[
-            \App\Http\Middleware\ActiveUser::class,
         ]
     ];
 
@@ -72,6 +64,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'mailgun_webhook' => \App\Http\Middleware\MailgunInbound::class,
+        'active' => \App\Http\Middleware\ActiveUser::class,
     ];
 
     /**

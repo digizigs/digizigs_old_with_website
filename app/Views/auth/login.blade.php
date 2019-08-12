@@ -13,7 +13,23 @@
    </div>
 
    <div class="col-md-4 col-xs-12 right">
-     
+         
+         @if (session('error'))
+            <div class="status-check">
+               <div class="alert alert-warning" role="alert">
+                  Your account is InActive,Please check your email for activation link or <a href="{{ route('activationLink') }}">Click here</a> for fresh activation link
+               </div>
+            </div>
+         @endif
+
+         @if (session('success'))
+            <div class="status-check">
+               <div class="alert alert-success" role="alert">
+                  {{session('success')}}
+               </div>
+            </div>
+         @endif
+
 
          <div class="login-content">
             <div class="brand-logo" >
