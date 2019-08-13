@@ -4,6 +4,7 @@
 use App\Events\TaskEvent;
 use App\Jobs\testmailjob;
 use App\Jobs\verifyEmail;
+use App\Jobs\verifyEmailJob;
 use App\Mail\ActivationEmail;
 use App\Mail\SubscriptionMail;
 use App\Mail\testMail;
@@ -65,19 +66,19 @@ Route::get('/inbox',function(){
 
 Route::get('send_test_email', function(){
 
-   /*$data = array('name'=>'Amit Vishwakarma','email'=>'amitvishwa19@gmail.com'); 
-   Mail::send('email.testmail',$data, function($message)
-    {
-        $message->to('amitvishwa19@gmail.com')->subject('MAilgun api mail test');
-    });*/
+    $user = User::where('email','amitvishwa19@gmail.com')->first();
+    $data = [
+       'name' => $user->name,
+       'password' => 'asdasdasdasd'
+    ];
 
-    /*$data = ['foo' => 'bar'];
-    Mail::send('email.testmail', $data, function($message) {
-        $message->to('amitvishwa19@gmail.com')->subject('MAilgun api mail test');
-    });*/
+    //Mail::send('email.activation', ['name' => 'Jaysvishwa'], function($message){
+        //$message->to('amitvishwa19@gmail.com', 'digizigs') ->subject('thisIsMySucject');
+    //});
 
-    $user = User::where('email','admin@admin.com')->first();
-    Mail::to('amitvishwa19@gmail.com')->send(new ActivationEmail);
+    $user = User::where('email','amitvishwa19@gmail.com')->first();
+    //Mail::to('amitvishwa19@gmail.com')->send(new ActivationEmail);
+    dispatch(new verifyEmailJob($user));
 
 });
 
@@ -99,7 +100,11 @@ Route::get('send_mail', function(){
 
 Route::get('verifyEmail','Auth\RegisterController@verifyEmail')->name('verifyEmail');
 Route::get('activationLink','Auth\RegisterController@activationLink')->name('activationLink');    
-Route::post('verifyemail','Auth\RegisterController@resendEmailVerification')->name('resendEmailVerification');    
+Route::post('verifyemail','Auth\RegisterController@resendEmailVerification')->name('resendEmailVerification');
+Route::get('activateaccount/{email}/{token}','Auth\RegisterController@activateAccount')->name('activateAccount');     
+Route::get('resetpassword','Auth\RegisterController@resetPassword')->name('resetPassword');
+Route::post('resetpasswordlink','Auth\RegisterController@resetPasswordLink')->name('resetPasswordLink');
+Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
 
 Auth::routes();
 

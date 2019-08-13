@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Auth\resendEmailVerification;
 use App\Http\Controllers\Controller;
-use App\Jobs\verifyEmail;
+use App\Jobs\PasswordResetLinkJob;
+use App\Jobs\verifyEmailJob;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
@@ -55,7 +56,8 @@ class RegisterController extends Controller
 
     public function emailVerification($thisuser){
 
-
+        dispatch(new verifyEmailJob($thisuser));
+        return redirect('/login')->with('success', 'Account activation link send to ' . $thisuser->email . ' , Check tour email to activate yor account');
 
     }
 
@@ -63,14 +65,35 @@ class RegisterController extends Controller
 
         $email = $request->email;
         $user = User::where('email',$email)->first();
+        $user->verify_token = Str::random(80);
+        $user->save();
 
         if($user){
-            dispatch(new verifyEmail($user));
-            return redirect('/login')->with('success', 'A fresh activation link send to your email');  
+            dispatch(new verifyEmailJob($user));
+            return redirect('/login')->with('success', 'Account activation link send to ' . $user['email'] . ' , Check tour email to activate yor account');  
         }else{
             return redirect('/activationLink')->with('error', 'Oops we are unable to find this email, please check email');  
         }
         
+    }
+
+    /*Account activation*/
+    public function activateAccount($id,$verifytoken){
+
+        $user = User::where(['id'=>$id,'verify_token'=>$verifytoken])->first();
+       
+        if($user){
+           
+                $user->status = '1';
+                $user->verify_token = Null;
+                $user->save();
+                return redirect('/login')->with('verified', 'Your account is verified successfully, Login to continue');
+          
+        }else{
+            return redirect('/login')->with('expired', 'Expired');
+        }
+        
+          
     }
 
     /*Redirect to  email verification screen*/
@@ -80,10 +103,33 @@ class RegisterController extends Controller
 
     /* Send email verification link screen*/
     public function activationLink(){
-         return view('auth.passwords.email');
+         return view('auth.activation');
     }
 
+    public function resetPassword(){
+        return view('auth.resetlink');
+    }
 
+    public function resetPasswordLink(Request $request){
+
+        $email = $request->email;
+        $user = User::where('email',$email)->first();
+
+        if($user){
+             
+            dispatch(new PasswordResetLinkJob($user));
+            return redirect('/resetpassword')->with('success', 'Passwor reset link is sent to ' . $user->email . ' please check your email');
+
+        }else{
+            return redirect('/resetpassword')->with('error', 'Oops we are unable to find this email, please check email');
+        }
+
+    }
+
+    public function reset(){
+
+        return view('auth.reset');
+    }
 
 
    /* public function registerSuccess(){

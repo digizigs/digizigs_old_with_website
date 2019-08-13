@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title','Activate Account')
+@section('title','Reset Password Link')
 
 @section('content')
 
@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('resendEmailVerification') }}">
+            <form method="POST" action="{{ route('resetPasswordLink') }}">
                 @csrf
 
                 <div class="form-group row">

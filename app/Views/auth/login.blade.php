@@ -22,10 +22,26 @@
             </div>
          @endif
 
+         @if (session('expired'))
+            <div class="status-check">
+               <div class="alert alert-warning" role="alert">
+                  This link is expired ! Please <a href="{{ route('activationLink') }}">Click here</a> for fresh activation link
+               </div>
+            </div>
+         @endif
+
          @if (session('success'))
             <div class="status-check">
                <div class="alert alert-success" role="alert">
                   {{session('success')}}
+               </div>
+            </div>
+         @endif
+
+         @if (session('verified'))
+            <div class="status-check">
+               <div class="alert alert-success" role="alert">
+                  {{session('verified')}}
                </div>
             </div>
          @endif
@@ -66,7 +82,7 @@
                      <label for="rememberme">Remember Me</label>
 
                      @if (Route::has('password.request'))
-                        <a class="pull-right" href="{{ route('password.request') }}">
+                        <a class="pull-right" href="{{ route('resetPassword') }}">
                             {{ __('Forgot Password?') }}
                         </a>
                      @endif

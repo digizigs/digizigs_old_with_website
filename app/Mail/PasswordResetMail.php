@@ -8,12 +8,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ActivationEmail extends Mailable
+class PasswordResetMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $user;
-
+    
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -22,9 +22,7 @@ class ActivationEmail extends Mailable
     
     public function build()
     {
-        //app('log')->debug($this->user);
-        return $this->view('email.activation')
-                    ->subject('DigiZigs Account Activation');
-
+        return $this->view('email.passwordreset')
+                    ->subject('DigiZigs Password Reset');
     }
 }
