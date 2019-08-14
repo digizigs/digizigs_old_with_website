@@ -15,6 +15,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Analytics\Period;
+use GuzzleHttp\Client;
 
 
 //Subscriptions and Inquiries
@@ -105,6 +106,22 @@ Route::get('activateaccount/{email}/{token}','Auth\RegisterController@activateAc
 Route::get('resetpassword','Auth\RegisterController@resetPassword')->name('resetPassword');
 Route::post('resetpasswordlink','Auth\RegisterController@resetPasswordLink')->name('resetPasswordLink');
 Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
+
+
+Route::get('/getmails',function(){
+
+    $client = new Client();
+    //GET http://localhost:8080/digizigs/api/mail/getmails;
+    $res = $client->request('GET', 'http://localhost:8080/digizigs/api/mail/getmails?type=inbox&email=info@digizigs.com', [
+            'form_params' => [
+                'type' => 'inbox',
+                'email' => 'info@digizigs.com',
+            ]
+        ]);
+    return $result= $res->getBody();
+    dd($result);
+
+});
 
 Auth::routes();
 
