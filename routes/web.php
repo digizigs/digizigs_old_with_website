@@ -153,7 +153,7 @@ Route::get('/taskevent',function(){
 
 //=========================================Admin Routes=============================================//
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
-Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth','active']],function(){
+Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
 
     
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');
@@ -206,11 +206,11 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
-    //Route::get('/mails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    Route::get('/emails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
     ///////Route::get('/mails/markstar/{id}/edit','Admin\Mail\MailController@markstar');
     ///////Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
-    //Route::get('/mails/movemail','Admin\Mail\MailController@moveMail');
-    //Route::resource('/mails', 'Admin\Mail\MailController'); //Contact
+    Route::get('/emails/movemail','Admin\Mail\MailController@moveMail');
+    Route::resource('/emails', 'Admin\Mail\MailController'); //Contact
 
 
     //Connects
