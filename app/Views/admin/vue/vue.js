@@ -188,6 +188,21 @@ Vue.component('barlinechartjs', require('./components/charts/barlinechartjs.vue'
 Vue.component('select2multiselect', require('./components/select2/select2multiselect.vue'));
 
 
+Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue').default
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue').default
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue').default
+);
+
 
 const app = new Vue({
    el: '#app',

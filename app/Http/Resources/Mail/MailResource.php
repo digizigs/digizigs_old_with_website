@@ -2,20 +2,18 @@
 
 namespace App\Http\Resources\Mail;
 
-use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class MailCollection extends Resource
+class MailResource extends JsonResource
 {
     
     public function toArray($request)
     {
         return [
-            'domain' => $this->domain,        
-            'type' => $this->type,        
+            'domain' => $this->domain,
+            'type' => $this->type,
             'label' => $this->label,
-            'star' => $this->starred,
-            'sender' => $this->sender,
-            'recipient' => $this->recipient,
+            'domain' => $this->domain,
             'from' => $this->from,
             'to' => $this->to,
             'cc' => $this->cc,
@@ -23,7 +21,6 @@ class MailCollection extends Resource
             'subject' => $this->subject,
             'body' => $this->body_html,
             'attachment' => $this->attachment,
-            'date' => $this->created_at,
         ];
     }
 }
