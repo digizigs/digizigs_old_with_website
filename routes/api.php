@@ -33,7 +33,7 @@ Route::group(['prefix' => 'mailgun'],function () {
 //Route::apiResource('mails', 'Api\MailController')->middleware('auth:api');
 Route::group(['prefix' => 'mailbox','middleware' => ['auth:api']],function () {
 
-	Route::apiResource('/{email}/{type}', 'Api\MailController');
+	Route::apiResource('/{email}/{type}/', 'Api\MailController');
 
 });
 
