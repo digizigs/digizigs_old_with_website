@@ -21,7 +21,8 @@ class MailCollection extends Resource
             'cc' => $this->cc,
             'bcc' => $this->bcc,
             'subject' => $this->subject,
-            'body' => $this->body_html,
+            'body_plain' => $this->body_plain,
+            'body_html' => $this->body_html,
             'attachment' => $this->attachment,
             'date' => $this->created_at,
         ];

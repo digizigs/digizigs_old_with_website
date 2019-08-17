@@ -31,7 +31,7 @@ Route::group(['prefix' => 'mailgun'],function () {
 
 
 //Route::apiResource('mails', 'Api\MailController')->middleware('auth:api');
-Route::group(['prefix' => 'mailbox','middleware' => ['auth:api']],function () {
+Route::group(['prefix' => 'mailbox'],function () {
 
 	Route::post('/{email}/inbound/', 'Api\MailController@inbound');
 	Route::apiResource('/{email}/{type}/', 'Api\MailController');
