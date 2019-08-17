@@ -112,14 +112,17 @@ Route::get('/getmails',function(){
 
     $client = new Client();
     //GET http://localhost:8080/digizigs/api/mail/getmails;
-    $res = $client->request('GET', 'http://localhost:8080/digizigs/api/mail/getmails?type=inbox&email=info@digizigs.com', [
-            'form_params' => [
-                'type' => 'inbox',
-                'email' => 'info@digizigs.com',
+    $res = $client->request('GET', 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox',
+            [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImNhNGZkN2I2Y2Q1ODQ4M2E0NGViZmRkZTg1ZDZmZjdjMmQ4NGEzOTkwZTkzMGQ0ZTc0ZGRlZmRiNmQzZGRmYTFmYmI2MWE1ZGYwMTU5OWI0In0.eyJhdWQiOiIyIiwianRpIjoiY2E0ZmQ3YjZjZDU4NDgzYTQ0ZWJmZGRlODVkNmZmN2MyZDg0YTM5OTBlOTMwZDRlNzRkZGVmZGI2ZDNkZGZhMWZiYjYxYTVkZjAxNTk5YjQiLCJpYXQiOjE1NjU5NDg0NTYsIm5iZiI6MTU2NTk0ODQ1NiwiZXhwIjoxNTk3NTcwODU1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qPkzAM-83b1kL7QGLtATAX0yGofx_oYiANsx0UPyBwWfhjrWpcP4FfTfua_SXDMnMmR1kkZUlFHJYungymU8EHj4EEQvBMr_dWqohfGgV9APZqWYu2ICub7pYuKYqRhoGiMz7t7G1jDxXCMF85RCH7upHXJwDdVnvKiKxZtUtAnxodIzU_O7l5F4IzsJURjM8FXG4jS0Ry10-uFAt86ngyqAv1WZBDxWNoKSZTFx5N8pl6Y1msTYhiREjbhl6mutvrWHvv812tfpMbO8FuKyxA5pbG5NJHMHFVu1kiYqqd7638Q5se6gVE3EcC1UYEDEdANtlJkqdTmwVqFRJQl3GNilSfjQHm1T4LsAQf4vrH1LxqA8MOPZ3q_ZuOXeAflp-7JKdGZ8fGWJOPZuAivzYBGVTU8TJIyPFOLvcCMRvbnt5mhz0QijImObENOTX7sMiHmReWRupY08n-FsCPVAPfoZHqiePM39swqG82AkVHHLkHa-39TdqUPbttJgw5vXCZ-IuBCE50J5YHT2x9iMZaQQIa0YydJCfpLMiF4QsXpPQ8F0Yv8h1h4jUqDVp4EwAI-Dzt9_DIp28bgaGys4WVzKYCZsEveMVozPs6DjW57BU369fu0_QTvZkILuPqOOcGnxzoWki9owfee1roejhQbF6Z1aFi8FCIga7cp3inc'
+                ]
             ]
-        ]);
+        );
     return $result= $res->getBody();
-    dd($result);
+    dd($result->data);
 
 });
 
