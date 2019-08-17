@@ -14,7 +14,7 @@ class MailController extends Controller
 
     public function __construct(){
 
-        $this->middleware('auth:api')->except('inbound')
+        $this->middleware('auth:api')->except('inbound');
     }
    
     public function index()
