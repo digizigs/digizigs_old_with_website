@@ -103,6 +103,9 @@
             </ul>
           </li>
          
+          <li class="menu-item">
+            <a href="{{route('oauth.index')}}"><i class="fa fa-line-chart"></i> OAuth </a>
+          </li>  
         
           <li class="menu-item">
             <a href="{{route('google.analytics')}}"><i class="fa fa-line-chart"></i> Analytics </a>

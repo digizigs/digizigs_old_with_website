@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Support\Str;
 
 class UserSeed extends Seeder
 {
@@ -16,7 +17,9 @@ class UserSeed extends Seeder
             [
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
-                'password' => bcrypt('password')
+                'password' => bcrypt('password'),
+                'api_token' => Str::random(80),
+                'verify_token' => Str::random(80),
             ]
         );
         $user->assignRole('superadmin');

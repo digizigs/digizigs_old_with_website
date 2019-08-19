@@ -173,6 +173,10 @@ Vue.component('mobiletraffic', require('./analytics/MobileTraffic.vue'));
 Vue.component('trafficsource', require('./analytics/TrafficSource.vue'));
 Vue.component('trending', require('./analytics/Trending.vue'));
 
+//Oauth
+Vue.component('clients', require('./oauth/Clients.vue'));
+Vue.component('authorizedclients',require('./oauth/AuthorizedClients.vue'));
+Vue.component('personalaccesstokens',require('./oauth/PersonalAccessTokens.vue'));
 
 
 //Components 
@@ -188,20 +192,6 @@ Vue.component('barlinechartjs', require('./components/charts/barlinechartjs.vue'
 Vue.component('select2multiselect', require('./components/select2/select2multiselect.vue'));
 
 
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue').default
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue').default
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue').default
-);
 
 
 const app = new Vue({

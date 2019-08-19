@@ -128,6 +128,9 @@ Route::get('/getmails',function(){
 
 });
 
+Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebookProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderFacebookCallback');
+
 Auth::routes();
 
 Route::get('/notify',function(){
@@ -257,7 +260,8 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     //account-profile
     Route::resource('/profile', 'Admin\Profile\ProfileController'); //User
 
-
+    //OAuth
+    Route::resource('/oauth', 'Admin\Oauth\OauthController'); //User
 
     //Google Analytics
     Route::get('/analytics', 'Admin\Analytics\AnalyticController@index')->name('google.analytics');
