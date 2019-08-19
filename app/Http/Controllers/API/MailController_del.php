@@ -110,11 +110,6 @@ class MailController_del extends Controller
 
       }
 
-      if($mail){
-         return $mail;
-      }else{
-         return 'Error';
-        } 
         
    }
 }
