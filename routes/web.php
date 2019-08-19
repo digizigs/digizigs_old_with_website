@@ -112,7 +112,7 @@ Route::get('/getmails',function(){
 
     $client = new Client();
     //GET http://localhost:8080/digizigs/api/mail/getmails;
-    $res = $client->request('GET', 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox',
+    $response = $client->request('GET', 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox',
             [
                 'headers' => [
                     'Accept' => 'application/json',
@@ -121,8 +121,10 @@ Route::get('/getmails',function(){
                 ]
             ]
         );
-    return $result= $res->getBody();
-    dd($result->data);
+    $response = $response->getBody()->getContents();
+    //$result= $res->getBody();
+    return $response;
+    dd($result['data']);
 
 });
 
