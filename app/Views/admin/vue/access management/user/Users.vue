@@ -29,7 +29,7 @@
                     <div v-for="user in users.data"  class="panel panel-default pannel-line">
 
                         <div class="panel-heading" style="padding: 8px !important; background-color: #F2F5F7; margin: 0!important;">		                        
-                          	<span class="title">{{user.firstname}},{{user.lastname}}</span>
+                          	<span class="title">{{user.name}}</span>
                           	<span v-for="role in user.roles">
                           		<span class="label label-info label-many" style="margin-left:5px;">
                           			{{ role.name }}

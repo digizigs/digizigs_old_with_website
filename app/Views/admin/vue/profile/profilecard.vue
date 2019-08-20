@@ -3,11 +3,10 @@
         <div class="profile-header">&nbsp;</div>
         <div class="profile-body">
             <div class="image-area">
-                <img :src=user.avatar_url @error="noimageurl" >
-               
+                <avatar :fullname="fullname" :image="image" :size="200"></avatar>
             </div>                                       
             <div class="content-area">
-                <h3>{{user.firstname}} {{user.lastname}}</h3>
+                <h3>{{user.name}}</h3>
                 <p>{{user.designation}}</p>
                 <span v-for="role in roles" class="label label-info label-many">{{role}}</span>
             </div>
@@ -20,7 +19,7 @@
                             Skills
                         </div>
                         <div class="content">
-                            {{user.skills}}
+                            {{profile.skills}}
                         </div>
                     </li>
                     <li>
@@ -29,7 +28,7 @@
                             Description
                         </div>
                         <div class="content">
-                            {{user.description}}
+                            {{profile.description}}
                         </div>
                     </li>
                 </ul>
@@ -41,15 +40,27 @@
 
 <script type="text/javascript">
 	export default{
-        props:['user','roles'],
+        props:['user','roles','profile'],
 		data(){
 			return{
-              
+              initial:'',
+              url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6AbD1GNiwzJwmG5vl2V8QwDyfjae_ygW-Q5KrJLAe0uffm4tEw',
+              fullname:'',
+              image:''
 			}
 		},
 		watch:{
-
+            user(){
+                this.fullname = this.user.name
+            },
+            profile(){
+                this.image = this.profile.avatar_url
+            }
 		},
+        computed: {
+          // compute initials from fullname
+          
+        },  
 		methods:{
 		  noimageurl(){
             this.user.avatar_url ='/digizigs/public/uploads/avatars/avatar.png' 
@@ -72,21 +83,29 @@
         .profile-body{
 
             .image-area {
-                text-align: center;
-                margin-top: -64px;
-                border-radius: 50%;
-                overflow:hidden;
+                background: #f9f9f9;
+                width: 150px;
+                height: 150px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                border-radius:50%;
+                margin: 0 auto;
+                margin-top: -50px;
                 
                 img {
-                    border: 2px solid #ad1455;
-                    padding: 2px;
-                    margin: 2px;
-                    -webkit-border-radius: 50%;
-                    -moz-border-radius: 50%;
-                    -ms-border-radius: 50%;
+                    //border: 2px solid #ad1455;
+                    //padding: 2px;
+                    //margin: 2px;
+                    //-webkit-border-radius: 50%;
+                    //-moz-border-radius: 50%;
+                    //-ms-border-radius: 50%;
                     border-radius: 50%;
-                    height: 200px;
-                    width: 200px;
+                    height: 100%;
+                    width: 100%;
                 } 
             }
 

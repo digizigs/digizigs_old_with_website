@@ -14,7 +14,7 @@
 			</span>
 			
 		</div>
-		<div id="permission" class="panel-collapse collapse in">
+		<div id="permission" class="panel-collapse collapse">
 			<div class="panel-body open">
 				<ul>
 					<li v-for="permission in permissions.data">

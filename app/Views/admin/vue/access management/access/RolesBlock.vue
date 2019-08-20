@@ -16,7 +16,7 @@
 			</span>
 			
 		</div>
-		<div id="roles" class="panel-collapse collapse in">
+		<div id="roles" class="panel-collapse collapse">
 			<div class="panel-body open">
 				<ul>
 					<li v-for="role in roles.data">

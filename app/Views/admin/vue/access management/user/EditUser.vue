@@ -5,34 +5,23 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
                   
-                  <h4 class="modal-title" id="defaultModalLabel">{{user.firstname}},{{user.lastname}}</h4>
+                  <h4 class="modal-title" id="defaultModalLabel">{{user.name}}</h4>
                 </div>
                 <div class="modal-body">
                 	<form  role="form" @submit.prevent="" class="form-horizontal">
                   		<div class="col-md-12">
 
                            <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >First name</label>
+                              <label for="" class="control-label col-sm-3" >Name</label>
                               <div class="col-sm-9 col-xs-12">
                                  <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="user.firstname">
+                                    <input type="text" class="form-control input-sm" v-model="user.name">
                                  </div>
-                                 <div class="error-message" v-if="errors.firstname">
-                                    {{ errors.firstname[0] }}
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="form-group wp-input">
-                              <label for="" class="control-label col-sm-3" >Last name</label>
-                              <div class="col-sm-9 col-xs-12">
-                                 <div class="form-line">
-                                    <input type="text" class="form-control input-sm" v-model="user.lastname">
-                                 </div>
-                                 <div class="error-message" v-if="errors.lastname">
-                                    {{ errors.lastname[0] }}
+                                 <div class="error-message" v-if="errors.name">
+                                    {{ errors.name[0] }}
                                  </div>
                               </div>
-                           </div>
+                           </div>                          
                            <div class="form-group wp-input">
                               <label for="" class="control-label col-sm-3" >Email</label>
                               <div class="col-sm-9 col-xs-12">

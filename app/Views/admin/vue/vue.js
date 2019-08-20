@@ -141,6 +141,7 @@ Vue.component('profile', require('./profile/profile.vue'));
 Vue.component('profilecard', require('./profile/profilecard.vue'));
 Vue.component('profilesetting', require('./profile/profilesetting.vue'));
 Vue.component('passwordchange', require('./profile/passwordchange.vue'));
+Vue.component('avatar', require('./profile/Avatar.vue'));
 
 //Access Management
 Vue.component('permission', require('./access management/permission/Permission.vue'));

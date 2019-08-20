@@ -12,7 +12,7 @@
                     <div class="row clearfix">
 
                         <div class="col-xs-12 col-sm-3">
-                            <profilecard :user="user" :roles="roles" ></profilecard>                           
+                            <profilecard :user="user" :roles="roles" :profile="profile" ></profilecard>                           
                         </div>
 
                         <div class="col-xs-12 col-sm-9">
@@ -43,6 +43,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
              	</div>
             </div>
@@ -55,6 +56,7 @@
 		data(){
 			return{
 				user:'',
+                profile:'',
                 roles:[]
 			}
 		},
@@ -62,16 +64,21 @@
 
 		},
 		methods:{
-			profileupdate(record){				
-				//this.profile=record.profile
-				this.user=record.data
+			profileupdate(record){
+                console.log(record)				
+				////this.profile=record.profile
+				this.user = record.data.user;
+                //this.roles = response.data.roles
+                this.profile = record.data.user.profile
 			}	
 		},
 		mounted(){
 			axios.get('profile/create')
                 .then((response) => {                    
-                    this.user = response.data.user[0];
+                    this.user = response.data.user;
                     this.roles = response.data.roles
+                    this.profile = response.data.user.profile
+                    console.log(response.data)
                 })
 		
 		}

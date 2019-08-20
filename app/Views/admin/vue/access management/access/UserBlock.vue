@@ -17,11 +17,11 @@
 			</span>
 			
 		</div>
-		<div id="users" class="panel-collapse collapse in">
+		<div id="users" class="panel-collapse collapse">
 			<div class="panel-body open">
 				<ul>
 					<li v-for="user in users.data">
-						<a href="" class="list-title">{{user.firstname}},{{user.lastname}}</a>
+						<a href="" class="list-title">{{user.name}}</a>
 						<span v-for="role in user.roles" class="label label-info"><small>{{role.name}}</small></span>
 						<span class="action-text wpfont ml-20">
 							<a href="#edituser" data-toggle="modal" v-on:click.prevent @click="detailuser(user.id)">

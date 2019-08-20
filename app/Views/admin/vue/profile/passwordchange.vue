@@ -3,24 +3,24 @@
 		<form class="form-horizontal" v-on:submit.prevent="updatepassword(user.id)">
 
             <div class="form-group wp-input">
-                <label for="OldPassword" class="col-sm-3 ">Old Password</label>
-                <div class="col-sm-9">
+                <label for="OldPassword" class="col-sm-3 col-xs-3">Old Password</label>
+                <div class="col-sm-9 col-xs-9">
                     <div class="form-line">
                         <input type="password" class="form-control input-sm" placeholder="Old Password" required v-model="password.oldpass">
                     </div>
                 </div>
             </div>
             <div class="form-group wp-input">
-                <label for="NewPassword" class="col-sm-3 ">New Password</label>
-                <div class="col-sm-9">
+                <label for="NewPassword" class="col-sm-3 col-xs-3">New Password</label>
+                <div class="col-sm-9 col-xs-9">
                     <div class="form-line">
                         <input type="password" class="form-control input-sm" placeholder="New Password" required v-model="password.newpass">
                     </div>
                 </div>
             </div>
             <div class="form-group wp-input">
-                <label for="NewPasswordConfirm" class="col-sm-3">New Password (Confirm)</label>
-                <div class="col-sm-9">
+                <label for="NewPasswordConfirm" class="col-sm-3 col-xs-3">New Password (Confirm)</label>
+                <div class="col-sm-9 col-xs-9">
                     <div class="form-line">
                         <input type="password" class="form-control input-sm" placeholder="New Password (Confirm)" required v-model="password.cnfpass">
                     </div>

@@ -2,30 +2,21 @@
 	<div>
 		<form class="form-horizontal" v-on:submit.prevent="updateprofile(user.id)">
 
-			<!-- Firstname -->
-	        <div class="form-group wp-input">
-	            <label for="firstname" class="col-sm-2 ">First Name</label>
-	            <div class="col-sm-10">
-	                <div class="form-line">
-	                    <input type="text" class="form-control input-sm"  v-model="user_update.firstname">
-	                </div>
-	            </div>
-	        </div>
-
+			
 	        <!-- Lastname -->
 	        <div class="form-group wp-input">
-	            <label for="lastname" class="col-sm-2 ">Last Name</label>
-	            <div class="col-sm-10">
+	            <label for="name" class="col-sm-2 col-xs-2 ">Name</label>
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
-	                    <input type="text" class="form-control input-sm"  v-model="user_update.lastname">
+	                    <input type="text" class="form-control input-sm"  v-model="user_update.name">
 	                </div>
 	            </div>
 	        </div>
 	        
 	        <!-- Designation -->
 	        <div class="form-group wp-input">
-	            <label for="Email" class="col-sm-2 ">Designation</label>
-	            <div class="col-sm-10">
+	            <label for="Email" class="col-sm-2 col-xs-2 ">Designation</label>
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
 	                    <input type="text" class="form-control input-sm" v-model="user_update.designation">
 	                </div>
@@ -34,9 +25,9 @@
 
 	        <!--Experience-->
 	        <div class="form-group wp-input">
-	            <label for="InputExperience" class="col-sm-2 ">Experience</label>
+	            <label for="InputExperience" class="col-sm-2 col-xs-2 ">Experience</label>
 
-	            <div class="col-sm-10">
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.experience"></textarea>
 	                </div>
@@ -45,9 +36,9 @@
 
 	        <!-- Skills -->
 	        <div class="form-group wp-input">
-	            <label for="Skills" class="col-sm-2 ">My Skills</label>
+	            <label for="Skills" class="col-sm-2 col-xs-2 ">My Skills</label>
 
-	            <div class="col-sm-10">
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.skills"></textarea>
 	                </div>
@@ -56,9 +47,9 @@
 
 	        <!-- description -->
 	        <div class="form-group wp-input">
-	            <label for="InputSkills" class="col-sm-2">About me</label>
+	            <label for="InputSkills" class="col-sm-2 col-xs-2">About me</label>
 
-	            <div class="col-sm-10">
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.description"></textarea>
 	                </div>
@@ -67,14 +58,16 @@
 			
 			<!-- Avtar Image -->
 	        <div class="form-group wp-input">
-	            <label for="InputSkills" class="col-sm-2">Avatar Image</label>
-
-	            <div class="col-sm-10">
+	            <label for="InputSkills" class="col-sm-2 col-xs-2">Avatar Image</label>
+	            <div class="col-sm-10 col-xs-10">
 	                <div class="form-line">
 	                    <input type="file" class="form-control input-sm" v-on:change="onImageChange">
 	                </div>
+	                <a v-if="!this.user_update.avatar_url == ''" href="">Remove profile Image</a>
 	            </div>
-	        </div>			
+
+	        </div>
+
 	       
 	        <!-- Submit Button -->
 	        <div class="form-group wp-input">
@@ -90,26 +83,33 @@
 
 <script type="text/javascript">
 	export default{
+		props:['user'],
 		data(){
 			return{
-				user:'',
+				//user:'',
 				profile:'',
 			    user_update:{
 			    	'setting_update':true,
 			    	'profile_id':'',
-			    	'firstname':'',
-			    	'lastname':'',
+			    	'name':'',
 			    	'email':'',
 			    	'designation':'',
 			    	'experience':'',
 			    	'skills':'',
 			    	'description':'',
-			    	'avatar':null
+			    	'avatar_url':''
 			    },
 			}
 		},
 		watch:{
-
+			user(){
+				this.user_update.name = this.user.name;
+	            this.user_update.designation = this.user.profile.designation;
+	            this.user_update.experience = this.user.profile.experience;
+	            this.user_update.skills = this.user.profile.skills;
+	            this.user_update.description = this.user.profile.description;
+	            this.user_update.avatar_url = this.user.profile.avatar_url;
+			}
 		},
 		methods:{
 			onImageChange(e){
@@ -124,8 +124,9 @@
 			},
 			updateprofile(id){
 				axios.put('profile/'+id,this.user_update)
-					.then((data) => {						
-						this.$emit('profileupdated',data)
+					.then((response) => {
+						//console.log(response)						
+						this.$emit('profileupdated',response)
 						toast({
 			                type: 'success',
 			                title: 'Profile updated successfully'
@@ -135,33 +136,7 @@
 		
 		},
 		mounted(){
-			this.user_update.firstname = this.user.firstname;
-            this.user_update.lastname = this.user.lastname;
-            this.user_update.email = this.user.email;
-            this.user_update.designation = this.user.designation;
-            this.user_update.experience = this.user.experience;
-            this.user_update.skills = this.user.skills;
-            this.user_update.description = this.user.description;
-
-			axios.get('profile/create')
-                .then((response) => {
-
-                    this.profile = response.data.profile;
-                    this.user = response.data.user[0];
-                    this.roles = response.data.roles;
-                    
-
-                    this.user_update.firstname = this.user.firstname;
-                    this.user_update.lastname = this.user.lastname;
-                    this.user_update.email = this.user.email;
-                    this.user_update.designation = this.user.designation;
-                    this.user_update.experience = this.user.experience;
-                    this.user_update.skills = this.user.skills;
-                    this.user_update.description = this.user.description;
-                    //this.user_update.avatar_url = this.profile.avatar_url;
-
-                })
-            
+			
 		}
 	};
 

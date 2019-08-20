@@ -27,18 +27,17 @@ class ProfileController extends Controller
 
         //dd($userprofile);
        
-        return view('admin.pages.profile.profile',compact('userprofile'));
+        return view('admin.pages.profile.profile');
     }
 
     
     public function create() {
 
-        $user = User::find(auth()->user());
+        $id = auth()->user()->id;
+        $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();
         $roles = auth()->user()->roles()->pluck('name');
-    
-        $userprofile =Profile::with('user')->where('user_id',auth()->user()->id)->first();
 
-        $data = ['user'=>$user,'profile'=>$userprofile,'roles'=>$roles];
+        $data = ['user'=>$user,'roles'=>$roles];
         return request()->json(200,$data);
     }
 
@@ -80,25 +79,40 @@ class ProfileController extends Controller
             }
         }
 
-        
         $user = User::find($id);
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
-        $user->experience = $request->experience;
-        $user->designation = $request->designation;
-        $user->skills = $request->skills;
-        $user->description = $request->description;
-        
+        $user->name = $request->name;
+        $user->save();  
+
+        $profile = Profile::where('user_id',auth()->user()->id)->first();
+
+        if(!$profile){
+            $profile = new Profile;
+            $profile->user_id = auth()->user()->id;
+            $profile->save();
+            return 'new profile created';
+        }
+
+        $profile = Profile::where('user_id',auth()->user()->id)->first(); 
+        $profile->designation = $request->designation;
+        $profile->experience = $request->experience;
+        $profile->skills = $request->skills;
+        $profile->description = $request->description;
         if($request->get('avatar')){
             $image = $id . '_' .time() . '.' . explode('/', explode(':', substr($request->get('avatar'), 0, strpos($request->get('avatar'), ';')))[1])[1];
             $location = public_path('uploads/avatars/' . $image);
             Image::make($request->get('avatar'))->save($location);            
-            $user->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
+            $profile->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
         }
+        $profile->save();
+            
+     
+            
+        $id = auth()->user()->id;
+        $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();
+        $roles = auth()->user()->roles()->pluck('name');
 
-        $user->save();     
-        return request()->json(200,$user);
+        $data = ['user'=>$user,'roles'=>$roles];
+        return request()->json(200,$data);
 
     }
 
