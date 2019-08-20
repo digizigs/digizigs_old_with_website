@@ -37,7 +37,7 @@
                      @csrf
                      
                      <!-- Post editor area -->
-                     <div class="col-md-8 col-xs-12">
+                     <div class="col-md-9 col-xs-12">
 
                         <div class="form-group wp-input">
                            <div class="form-line">
@@ -62,7 +62,7 @@
                      <!-- Post editor area -->
                      
                      <!-- Post Options -->
-                     <div class="col-md-4 col-xs-12">
+                     <div class="col-md-3 col-xs-12">
                         
                         <div class="x_panel">
                            <div class="header">

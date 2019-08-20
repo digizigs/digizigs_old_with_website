@@ -17,7 +17,7 @@
               
               <form @submit="addpost" enctype="multipart/form-data">
 
-                  <div class="col-md-8 col-xs-12">
+                  <div class="col-md-9 col-xs-12">
 
                      <div class="form-group wp-input">
                        <div class="form-line" v-bind:class="{ 'form-invalid': titleerror }">
@@ -38,10 +38,9 @@
                         <label for="editor1">Post Content</label>
                         <ckeditor :editor="editor" v-model="post.body" :config="editorConfig" @ready="onReadyEditor"></ckeditor>                     
                      </div>
-
                   </div>
 
-                  <div class="col-md-4 col-xs-12">
+                  <div class="col-md-3 col-xs-12">
                   
                      <div class="mat-card">
                       <div class="card-header">
@@ -117,7 +116,6 @@
                         </label>             
                       </div>
                      </div>
-
                   </div>
                
                </form>
