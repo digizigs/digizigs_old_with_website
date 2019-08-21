@@ -3,7 +3,7 @@
         <div class="profile-header">&nbsp;</div>
         <div class="profile-body">
             <div class="image-area">
-                <avatar :fullname="fullname" :image="image" :size="200"></avatar>
+                <avatar :fullname="fullname" :image="image" :size="180"></avatar>
             </div>                                       
             <div class="content-area">
                 <h3>{{user.name}}</h3>
@@ -83,15 +83,15 @@
         .profile-body{
 
             .image-area {
-                background: #f9f9f9;
-                width: 150px;
-                height: 150px;
+                //background: #f9f9f9;
+                width: 180px;
+                height: 180px;
                 display: -webkit-box;
                 display: -ms-flexbox;
                 display: flex;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                justify-content: center;
+                //-webkit-box-pack: center;
+                //-ms-flex-pack: center;
+                //justify-content: center;
                 border-radius:50%;
                 margin: 0 auto;
                 margin-top: -50px;

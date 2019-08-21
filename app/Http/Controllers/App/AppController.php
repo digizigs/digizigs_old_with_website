@@ -92,6 +92,12 @@ class AppController extends Controller {
     }
 
     public function unsubscribe(Request $request){
+		
+		if (! $request->hasValidSignature()) {
+			abort(401);
+		}else{
+			return 'Valid Signature';
+		}
 
         return 'You are successfully unsubscribed to the newsletter ' . '' . $request ;
 

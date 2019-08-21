@@ -39,11 +39,7 @@ class AppServiceProvider extends ServiceProvider
         }*/
 
         //app('log')->debug('App Service provider boot function triggred');
-
-        Mailbox::from('info@digizigs.com', function (InboundEmail $email) {
-            app('log')->debug('App Service provider boot function triggred');
-        });
-        
+ 
 
     }
 
@@ -54,17 +50,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        /*$this->app->bind('path.public', function() {
-            return base_path('public_html');
-        });*/
-
-        //To run sketchboard on only development mode
-        /*if ($this->app->environment() !== 'production') {
-            if (class_exists('\davestewart\sketchpad\SketchpadServiceProvider')) {
-                $this->app->register(\davestewart\sketchpad\SketchpadServiceProvider::class);
-            }
-        }*/
-
+        
 
     }
 }

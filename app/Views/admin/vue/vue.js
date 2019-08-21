@@ -179,6 +179,9 @@ Vue.component('clients', require('./oauth/Clients.vue'));
 Vue.component('authorizedclients',require('./oauth/AuthorizedClients.vue'));
 Vue.component('personalaccesstokens',require('./oauth/PersonalAccessTokens.vue'));
 
+//Log View
+Vue.component('log',require('./log/Log.vue'));
+
 
 //Components 
 Vue.component('search', require('./Filter.vue'));

@@ -2,7 +2,7 @@
 	<div class="mail-box">
 
 		
-		<aside class="sm-side col-md-4 col-xs-12">
+		<aside class="sm-side col-md-4 col-xs-12" style="height:100%">
 			
 			<!-- Compose button -->
 			<div class="inbox-body">
@@ -187,7 +187,7 @@
 					page=1;
 				}
 				NProgress.start();
-				axios.get('mails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
+				axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
 						console.log(response.data)
 						this.mails=response.data

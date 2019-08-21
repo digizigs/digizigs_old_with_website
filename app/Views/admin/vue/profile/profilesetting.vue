@@ -53,17 +53,18 @@
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.description"></textarea>
 	                </div>
+					<a v-if="!this.user_update.avatar_url == ''" href="" v-on:click.prevent @click="removeavatar(user.id)">Remove profile Image</a>
 	            </div>
 	        </div>
 			
 			<!-- Avtar Image -->
-	        <div class="form-group wp-input">
+	        <div v-if="this.user_update.avatar_url == ''" class="form-group wp-input">
 	            <label for="InputSkills" class="col-sm-2 col-xs-2">Avatar Image</label>
 	            <div class="col-sm-10 col-xs-10">
-	                <div class="form-line">
+	                <div   class="form-line">
 	                    <input type="file" class="form-control input-sm" v-on:change="onImageChange">
 	                </div>
-	                <a v-if="!this.user_update.avatar_url == ''" href="">Remove profile Image</a>
+	                
 	            </div>
 
 	        </div>
@@ -123,13 +124,28 @@
 				}
 			},
 			updateprofile(id){
+				NProgress.start();
 				axios.put('profile/'+id,this.user_update)
 					.then((response) => {
 						//console.log(response)						
 						this.$emit('profileupdated',response)
+						NProgress.done();	
 						toast({
 			                type: 'success',
 			                title: 'Profile updated successfully'
+			            })
+					})
+			},
+			removeavatar(id){
+				NProgress.start();
+				axios.get('profile/' + id + '/edit',id)
+					.then((response) => {
+						console.log(response)						
+						this.$emit('profileupdated',response)
+						NProgress.done();
+						toast({
+			                type: 'success',
+			                title: 'Avatar image removed successfully'
 			            })
 					})
 			}

@@ -54,9 +54,18 @@ class ProfileController extends Controller
     }
 
     
-    public function edit($id) {
+    public function edit(Request $request,$id) {
+		
+        $profile = Profile::where('user_id',$id)->first();
+		$profile->avatar_url = '';
+		$profile->save();
         
-        return $id;
+		$id = auth()->user()->id;
+        $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();
+        $roles = auth()->user()->roles()->pluck('name');
+
+        $data = ['user'=>$user,'roles'=>$roles];
+        return request()->json(200,$data);
 
     }
 

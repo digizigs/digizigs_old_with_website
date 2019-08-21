@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Mail;
 use App\Http\Controllers\Controller;
 use App\Models\Mail;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class MailController extends Controller
 {
@@ -20,23 +21,22 @@ class MailController extends Controller
    
     public function create(Request $request){
         
-        $this->email = $request->email;
-
-        /*$email = $request->email;
-
-        $mail = Mail::where('type','inbound')
-                ->where('label','inbox')
-                ->where('to','like', '%'.$email.'%')
-                ->orWhere('cc','like', '%'.$email.'%')
-                ->orWhere('bcc','like', '%'.$email.'%')
-                ->orderby('created_at','desc')
-                ->with('attachments')
-                ->paginate(10);*/
-        //return $mail;
-
-        $type = $request->filter;
-        $mail = $this->getData($type);
-        return response()->json($mail);
+        $client = new Client();
+        $uri = 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox';
+    
+        $params['headers'] = [
+                            'Accept' => 'application/json',
+                            'Content-type' => 'application/x-www-form-urlencoded',
+                            'Authorization' => 'Bearer ' . env('DZ_API_KEY', null)
+                        ];
+        $params['form_params'] =[
+                                'email' => 'test@gmail.com',
+                                'name' => 'Test user',
+                                'password' => 'testpassword',
+                            ];
+        $data = $client->get($uri, $params );
+        //return json_decode($request->getBody(), true);
+        return request()->json(200,$data);
     }
 
    

@@ -11,6 +11,7 @@
 
   <div class="right_col" role="main">
 
+    <log></log>
        
     <div class="page-title">
       <div class="title_left">
@@ -22,12 +23,13 @@
 
     <div class="row">    
       <div class="clearfix"></div>
-        
+       
+      
       <div class="col-md-12 col-sm-12 col-xs-12">
 
         <div class="x_panel">                               
           <div class="x_content log-view">
-            
+            {{$data}}
             <div class="col-md-2 col-xs-12">
               @foreach($folders as $folder)
                 {{$folder}}
@@ -123,6 +125,7 @@
         </div>
 
       </div>
+
     </div>
           
   </div>
@@ -141,7 +144,7 @@
       $('.table-container tr').on('click', function () {
         $('#' + $(this).data('display')).toggle();
       });
-      $('#table-log').DataTable({
+      /*$('#table-log').DataTable({
         "order": [$('#table-log').data('orderingIndex'), 'desc'],
         "stateSave": true,
         "stateSaveCallback": function (settings, data) {
@@ -152,7 +155,7 @@
           if (data) data.start = 0;
           return data;
         }
-      });
+      });*/
       $('#delete-log, #clean-log, #delete-all-log').click(function () {
         return confirm('Are you sure?');
       });

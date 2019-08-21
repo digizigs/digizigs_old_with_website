@@ -58,7 +58,8 @@ class LogViewerController extends Controller
         }
 
         //return view('admin.pages.logs.logs',' data');
-        return app('view')->make('admin.pages.logs.logs', $data);
+        //return app('view')->make('admin.pages.logs.logs', $data);
+        return app('view',compact('data'));
     }
 
     private function earlyReturn(){
@@ -108,6 +109,45 @@ class LogViewerController extends Controller
 
         // For laravel 4.2
         return app('\Illuminate\Support\Facades\Response')->download($data);
+    }
+
+    public function getLogs(){
+
+        $folderFiles = [];
+        if ($this->request->input('f')) {
+            $this->log_viewer->setFolder(Crypt::decrypt($this->request->input('f')));
+            $folderFiles = $this->log_viewer->getFolderFiles(true);
+        }
+        if ($this->request->input('l')) {
+            $this->log_viewer->setFile(Crypt::decrypt($this->request->input('l')));
+        }
+
+        if ($early_return = $this->earlyReturn()) {
+            return $early_return;
+        }
+
+        $data = [
+            'logs' => $this->log_viewer->all(),
+            'folders' => $this->log_viewer->getFolders(),
+            'current_folder' => $this->log_viewer->getFolderName(),
+            'folder_files' => $folderFiles,
+            'files' => $this->log_viewer->getFiles(true),
+            'current_file' => $this->log_viewer->getFileName(),
+            'standardFormat' => true,
+        ];
+
+        if ($this->request->wantsJson()) {
+            return $data;
+        }
+
+        if (is_array($data['logs'])) {
+            $firstLog = reset($data['logs']);
+            if (!$firstLog['context'] && !$firstLog['level']) {
+                $data['standardFormat'] = false;
+            }
+        }
+
+        return $data;
     }
 
 }

@@ -1,10 +1,17 @@
 <template>
 		
 
-		<span>
-			<img v-if="hasImage" :src=image >
-			<span v-else class="initials">{{initials}}</span>
-		</span>
+		<div class="avatar" v-bind:style="style">
+			
+			<table>
+			  <tbody>
+				<tr>
+				  <td v-if="!hasImage">{{initials}}</td>
+				</tr>
+			  </tbody>
+			</table>
+			
+		</div>
 		
 	
 </template>
@@ -63,7 +70,7 @@
 			toColor (str) {
 		        var hash = 0
 		        var len = str.length
-		        if (len === 0) return 'black'
+		        if (len === 0) return 'white'
 		        for (var i = 0; i < len; i++) {
 		          hash = ((hash << 8) - hash) + str.charCodeAt(i)
 		          hash |= 0
@@ -79,6 +86,38 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	
+	.avatar {
+		display: inline-block;
+		background-color: black;
+		color: white;
+		width: 48px;
+		height: 48px;
+		font-size: 12px;
+		border-radius: 50%;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-image: none;
+	}
+	  
+	.avatar table {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	  
+	.avatar table td{
+		text-align: center !important;
+		vertical-align: middle !important;
+		fontSize:500px;
+	}
+	.avatar img {
+		width: 100%;
+		overflow: hidden;
+	}
+  
   
 </style>

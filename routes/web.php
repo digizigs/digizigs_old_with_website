@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Analytics\Period;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\URL;
 
 
 //Subscriptions and Inquiries
@@ -93,6 +94,18 @@ Route::get('send_mail', function(){
     dispatch(new verifyEmail());
 });
 
+Route::get('/signedurl',function(){
+	//return URL::signedRoute('app.unsubscribe', ['user' => 1]);
+	
+	return Auth::user()->profile->avatar_url;
+	return URL::temporarySignedRoute(
+		'app.unsubscribe', now()->addMinutes(30), ['user' => 1]
+	);
+	
+	
+
+
+});
 
 /*
     User registration email verification
@@ -124,14 +137,11 @@ Route::get('/getmails',function(){
                                 'password' => 'testpassword',
                             ];
     //$request = $client->get($uri, $params );
-    //return $request;
     //return json_decode($request->getBody(), true);
     
 
    
-    $response = $client->put($uri, $params);
-    //return $response;
-    //$response = $request->send();
+    $response = $client->post($uri, $params);
     return json_decode($response->getBody(), true);
     
 
@@ -223,10 +233,10 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::post('/conversation/send', 'Admin\Chat\ChatController@send');
 
     //Mailbox
-    Route::get('/emails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    //Route::get('/emails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
     ///////Route::get('/mails/markstar/{id}/edit','Admin\Mail\MailController@markstar');
     ///////Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
-    Route::get('/emails/movemail','Admin\Mail\MailController@moveMail');
+    //Route::get('/emails/movemail','Admin\Mail\MailController@moveMail');
     Route::resource('/emails', 'Admin\Mail\MailController'); //Contact
 
 
@@ -267,7 +277,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     
 
     //account-profile
-    Route::resource('/profile', 'Admin\Profile\ProfileController'); //User
+    Route::resource('/profile', 'Admin\Profile\ProfileController'); //Profile
 
     //OAuth
     Route::resource('/oauth', 'Admin\Oauth\OauthController'); //User
@@ -281,6 +291,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     //Logs
     //Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
     Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.logs');
+    Route::get('/getlogs', 'Admin\LogViewer\LogViewerController@getLogs')->name('app.get.logs');
 
 
     Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');
