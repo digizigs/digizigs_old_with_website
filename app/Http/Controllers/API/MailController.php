@@ -110,7 +110,7 @@ class MailController extends Controller
              ->orWhere('bcc','like', '%'.$email.'%')
              ->orderby('created_at','desc')
              ->with('attachments')
-             ->paginate(5);
+             ->paginate(10);
 
         }elseif($type == 'sent'){
 
@@ -119,7 +119,7 @@ class MailController extends Controller
                  ->where('from','like', '%'.$email.'%')      
                  ->orderby('created_at','desc')
                  ->with('attachments')
-                 ->paginate(5);
+                 ->paginate(10);
 
         }elseif($type == 'important'){
        
@@ -132,7 +132,7 @@ class MailController extends Controller
              ->orWhere('bcc','like', '%'.$email.'%')
              ->orderby('created_at','desc')
              ->with('attachments')
-             ->paginate(5);
+             ->paginate(10);
 
         }elseif($type == 'draft'){
          
@@ -141,7 +141,7 @@ class MailController extends Controller
                 ->where('from','like', '%'.$email.'%')            
                 ->orderby('created_at','desc')
                 ->with('attachments')
-                ->paginate(5);
+                ->paginate(10);
 
         }elseif($type == 'trash'){
 
@@ -152,7 +152,7 @@ class MailController extends Controller
                  ->orWhere('bcc','like', '%'.$email.'%')
                  ->orderby('created_at','desc')
                  ->with('attachments')
-                 ->paginate(5);
+                 ->paginate(10);
 
         }elseif($type == 'spam'){
 
@@ -163,7 +163,7 @@ class MailController extends Controller
                  ->orWhere('cc','like', '%'.$email.'%')
                  ->orWhere('bcc','like', '%'.$email.'%')
                  ->with('attachments')
-                 ->paginate(5);
+                 ->paginate(10);
 
         }
 
