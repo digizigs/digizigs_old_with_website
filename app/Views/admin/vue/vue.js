@@ -243,7 +243,8 @@ Vue.filter('vueDay',function(created){
 
 Vue.filter('mailname',function(from){
   var frm = from.split('<')[0];
-  return frm;
+  var someStr = frm;
+  return someStr.replace(/['"]+/g, '');
 })
 Vue.filter('mailSenderName',function(from){
   var frm = from.split('<')[0];
@@ -254,3 +255,7 @@ Vue.filter('mailSenderEmail',function(from){
   return from;
 })
 
+Vue.filter('removeuotation',function(subject){
+  var someStr = subject;
+  return someStr.replace(/['"]+/g, '');
+})

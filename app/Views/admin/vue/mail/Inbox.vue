@@ -167,6 +167,7 @@
 	
 	export default{
 		props:['user'],
+		components: {VueContext},
 		data(){
 			return{
 				filter:'inbox',
@@ -180,7 +181,6 @@
 		watch:{
 
 		},
-		components: {VueContext},
 		methods:{
 			paginationdata(page){
 				if (typeof page === 'undefined'){
