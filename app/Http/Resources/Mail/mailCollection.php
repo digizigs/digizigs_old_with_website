@@ -13,6 +13,7 @@ class MailCollection extends Resource
             'domain' => $this->domain,        
             'type' => $this->type,        
             'label' => $this->label,
+            'status' => $this->status,
             'star' => $this->starred,
             'sender' => $this->sender,
             'recipient' => $this->recipient,
@@ -27,4 +28,5 @@ class MailCollection extends Resource
             'date' => $this->created_at,
         ];
     }
+    
 }

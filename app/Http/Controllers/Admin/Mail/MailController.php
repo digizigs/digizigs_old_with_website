@@ -22,12 +22,14 @@ class MailController extends Controller
     public function create(Request $request){
         
         $client = new Client();
-        $uri = 'http://www.digizigs.com/api/mailbox/info@digizigs.com/inbox';
+        //$uri = 'http://www.digizigs.com/api/mailbox/info@digizigs.com/inbox';
+        $uri = 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox';
     
         $params['headers'] = [
                             'Accept' => 'application/json',
                             'Content-type' => 'application/json',
-                            'Authorization' => 'Bearer ' . env('DZ_API_KEY', null)
+                            //'Authorization' => 'Bearer ' . env('DZ_API_KEY', null)
+                            'Authorization' => 'Bearer ' . env('DZ_API_KEY_DEV', null)
                         ];
         $params['form_params'] =[
                                 'email' => 'test@gmail.com',

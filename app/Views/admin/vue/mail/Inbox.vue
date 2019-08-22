@@ -1,6 +1,6 @@
 <template>
 	<div class="mail-box">
-
+		
 		
 		<aside class="sm-side col-md-4 col-xs-12" style="height:100%">
 			
@@ -14,7 +14,7 @@
 			<!-- Inbox options -->
 			<ul class="inbox-nav inbox-divider">
 				<li :class="{ 'active': filter == 'inbox' }" @click="inboxview('inbox')">
-					<a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+					<a href="#"><i class="fa fa-inbox"></i> Inbox ({{this.meta.unreadinbox}})</a>
 				</li>
 				<li :class="{ 'active': filter == 'sent' }" @click="inboxview('sent')">
 					<a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
@@ -23,7 +23,7 @@
 					<a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
 				</li>
 				<li :class="{ 'active': filter == 'draft' }" @click="inboxview('draft')">
-					<a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
+					<a href="#"><i class=" fa fa-external-link"></i> Drafts ({{this.meta.draft}})</a>
 				</li>
 				<li :class="{ 'active': filter == 'trash' }" @click="inboxview('trash')">
 					<a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
@@ -86,10 +86,11 @@
 
 				
 
-				<table v-if="mails.data" class="table table-inbox table-hover">
+				<table v-if="mails" class="table table-inbox table-hover">
 					
 					<tbody>
-						<tr v-for="(mail,index) in mails.data" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)">
+						
+						<tr v-for="(mail,index) in mails" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -106,11 +107,11 @@
 							<td class="view-message  inbox-small-cells">
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>
 							</td>
-							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>										
+							<td class="view-message  text-right">{{mail.date.date | vueDay}}</td>										
 						</tr>					
 					</tbody>
 				</table>
-
+				
 
 			</div>
 		</aside>
@@ -172,14 +173,24 @@
 			return{
 				filter:'inbox',
 				dataloaded:false,
-				mails:{},
+				mails:[],
+				nmails:[],
 				mail:{},
 				selectedmail:[],
 				options:[{"name": "option-1" },{"name": "option-2" },{"name": "option-3" }],
+				limit: 10,
+    			busy: false,
+				bottom: false,
+				meta:[]
 			}
 		},
 		watch:{
-
+			bottom(bottom){
+				if (bottom) {
+					this.getMails()
+					//console.log('Bottom Load more data')
+				}
+			}
 		},
 		methods:{
 			paginationdata(page){
@@ -195,6 +206,9 @@
 					})
 					.catch((error) => console.log(error))
 					NProgress.done();
+			},
+			loadMore(){
+				console.log('loadmore')
 			},
 			viewmail(mail){
 				this.mail = mail
@@ -250,12 +264,50 @@
 				this.markMail(data,text)
                 
             },
+			bottomVisible() {
+				const scrollY = window.scrollY
+				const visible = document.documentElement.clientHeight
+				const pageHeight = document.documentElement.scrollHeight
+				const bottomOfPage = visible + scrollY >= pageHeight
+      			return bottomOfPage || pageHeight < visible
+			},
+			getMails() {
+				//axios.get('https://api.punkapi.com/v2/beers/random')
+				if(! this.busy){
+					this.busy = true;
+					NProgress.start();
+					axios.get('emails/create',{params:{filter:this.filter,email:this.user.email}})
+						.then(response => {
+							//this.mails.push(response.data);
+							//this.mails = response.data.data
+							this.meta = response.data.meta
+							const append = response.data.data.slice(this.mails.length,this.mails.length + this.limit )
+							this.mails = this.mails.concat(append);
+
+							
+
+							if (this.bottomVisible()) {
+								//this.getMails()
+							}
+					})
+					NProgress.done();
+					this.busy = false;
+				}	
+			}
 
 			
 		},
 		created(){
 			
-			this.paginationdata()
+			//this.paginationdata();
+			//this.scroll();
+
+			window.addEventListener('scroll', () => {
+				this.bottom = this.bottomVisible()
+				//console.log('scroll event listner')
+			})
+			this.getMails()
+
 		}
 	};
 

@@ -37,11 +37,11 @@
 						<div v-html="mail.body_html" class="col-md-12 col-xs-12 mail-body"></div>
 					
 						
-						<div class="col-md-12">
+						<!--div class="col-md-12">
 							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-reply"></i> Reply</a>
 							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-reply-all"></i> Reply All</a>
 							<a href="" class="btn btn-dark btn-sm"><i  class="fa fa-share"></i> Forward</a>
-						</div>
+						</div-->
 					
 					</div>
 					

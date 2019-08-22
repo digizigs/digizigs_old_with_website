@@ -19,10 +19,11 @@ class MailController extends Controller
    
     public function index(Request $request,$email,$type)
     { 
-      
-
+      //return 'Test';
       $mail = $this->getData($email,$type);
-      return MailCollection::collection($mail);
+      $count = $this->unreadCount($email,$type);
+      return MailCollection::collection($mail)
+      ->additional(['meta' => [$this->unreadCount($email,$type)]]);
     }
 
 
@@ -104,35 +105,35 @@ class MailController extends Controller
       if($type == 'inbox'){
 
          $mail = Mail::where('type','inbound')
-             ->where('label','inbox')
-             ->where('to','like', '%'.$email.'%')
-             ->orWhere('cc','like', '%'.$email.'%')
-             ->orWhere('bcc','like', '%'.$email.'%')
-             ->orderby('created_at','desc')
-             ->with('attachments')
-             ->paginate(10);
+                ->where('label','inbox')
+                ->where('to','like', '%'.$email.'%')
+                ->orWhere('cc','like', '%'.$email.'%')
+                ->orWhere('bcc','like', '%'.$email.'%')
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->get();
 
         }elseif($type == 'sent'){
 
           $mail = Mail::where('type','outbound')
-                 ->where('label','sent')
-                 ->where('from','like', '%'.$email.'%')      
-                 ->orderby('created_at','desc')
-                 ->with('attachments')
-                 ->paginate(10);
+                ->where('label','sent')
+                ->where('from','like', '%'.$email.'%')      
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->get();
 
         }elseif($type == 'important'){
        
           $mail = Mail::where('type','inbound')
-             ->where('label','<>','trash')
-             ->where('label','<>','spam')
-             ->where('starred',1)
-             ->where('to','like', '%'.$email.'%')
-             ->orWhere('cc','like', '%'.$email.'%')
-             ->orWhere('bcc','like', '%'.$email.'%')
-             ->orderby('created_at','desc')
-             ->with('attachments')
-             ->paginate(10);
+                ->where('label','<>','trash')
+                ->where('label','<>','spam')
+                ->where('starred',1)
+                ->where('to','like', '%'.$email.'%')
+                ->orWhere('cc','like', '%'.$email.'%')
+                ->orWhere('bcc','like', '%'.$email.'%')
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->get();
 
         }elseif($type == 'draft'){
          
@@ -141,32 +142,48 @@ class MailController extends Controller
                 ->where('from','like', '%'.$email.'%')            
                 ->orderby('created_at','desc')
                 ->with('attachments')
-                ->paginate(10);
+                ->get();
 
         }elseif($type == 'trash'){
 
             $mail = Mail::where('type','inbound')
-                 ->where('label','trash')
-                 ->where('to','like', '%'.$email.'%')
-                 ->orWhere('cc','like', '%'.$email.'%')
-                 ->orWhere('bcc','like', '%'.$email.'%')
-                 ->orderby('created_at','desc')
-                 ->with('attachments')
-                 ->paginate(10);
+                ->where('label','trash')
+                ->where('to','like', '%'.$email.'%')
+                ->orWhere('cc','like', '%'.$email.'%')
+                ->orWhere('bcc','like', '%'.$email.'%')
+                ->orderby('created_at','desc')
+                ->with('attachments')
+                ->get();
 
         }elseif($type == 'spam'){
 
             $mail = Mail::where('type','inbound')
-                 ->where('label','spam')
-                 ->orderby('created_at','desc')
-                 ->where('to','like', '%'.$email.'%')
-                 ->orWhere('cc','like', '%'.$email.'%')
-                 ->orWhere('bcc','like', '%'.$email.'%')
-                 ->with('attachments')
-                 ->paginate(10);
+                ->where('label','spam')
+                ->orderby('created_at','desc')
+                ->where('to','like', '%'.$email.'%')
+                ->orWhere('cc','like', '%'.$email.'%')
+                ->orWhere('bcc','like', '%'.$email.'%')
+                ->with('attachments')
+                ->get();
 
         }
 
         return $mail;
+    }
+
+    public function unreadCount($email,$type)
+    {
+        $inbox = Mail::where('to','like', '%'.$email.'%')
+                            ->where('label',$type)
+                            ->where('status','unread')
+                            ->get()
+                            ->count();
+
+        $draft = Mail::where('from','like', '%'.$email.'%')
+                            ->where('label','draft')
+                            ->get()
+                            ->count();
+                            
+        return $data = ['unreadinbox'=> $inbox ,'draft'=>$draft];
     }
 }

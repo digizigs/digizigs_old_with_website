@@ -129,7 +129,7 @@ Route::get('/getmails',function(){
     $params['headers'] = [
                             'Accept' => 'application/json',
                             'Content-type' => 'application/x-www-form-urlencoded',
-                            'Authorization' => 'Bearer ' . env('DZ_API_KEY', null)
+                            'Authorization' => 'Bearer ' . env('DZ_API_KEY_DEV', null)
                         ];
     $params['form_params'] =[
                                 'email' => 'test@gmail.com',
