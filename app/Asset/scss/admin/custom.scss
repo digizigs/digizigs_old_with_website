@@ -1,6 +1,6 @@
 
 body,html{
- 
+
 
   background-color: #192F49;
   font-size: 13px;
@@ -12,8 +12,8 @@ body,html{
   //font-family: "Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;
   //font-family: 'Nunito Sans', sans-serif;
   background-attachment: fixed;
- 
-  
+
+
 }
 
 ul {
@@ -122,7 +122,7 @@ footer {
        font-size: 16px;
     }
   }
-  
+
   tr:hover {
     i::before {
       display: inline-block;
@@ -130,9 +130,9 @@ footer {
     }
     i{
       color:#16c7ff;
-     
+
     }
-  } 
+  }
 }
 
 
@@ -146,8 +146,8 @@ footer {
     margin-right: 3px;
   }
   .panel-heading{
-    padding: 8px !important; 
-    background-color: #F2F5F7; 
+    padding: 8px !important;
+    background-color: #F2F5F7;
     margin: 0!important;
   }
   .panel-body{
@@ -157,7 +157,7 @@ footer {
   }
   .panel-line{
     .action-text{
-      
+
       i{
         //color:#16c7ff;
       }
@@ -179,7 +179,7 @@ footer {
       .fa-thumbs-down{
         color: #FF3352;
       }
-    }  
+    }
   }
   .pannel-line:hover{
 
@@ -209,7 +209,7 @@ footer {
       .fa-thumbs-down{
         color: #FF3352;
       }
-    }  
+    }
   }
   .action-text{
     margin: 0 10px;
@@ -254,7 +254,7 @@ footer {
     color: #FF3352;
   }
   .fa-bell{
-    color: #E45447; 
+    color: #E45447;
   }
 }
 //====================table-action-font-icon ============
@@ -272,7 +272,7 @@ footer {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        cursor: pointer; 
+        cursor: pointer;
       }
 
 .avatar-preview{
@@ -360,9 +360,9 @@ footer {
 //======================Log View===============================
 .log-view{
   .llv-active{
-    
+
         color: #A94442 !important;
-    
+
   }
 }
 //======================Log View===============================
@@ -410,7 +410,7 @@ footer {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
-  margin: -2px; 
+  margin: -2px;
 }
 
 //Vue js form error message
@@ -568,7 +568,7 @@ footer {
   }
 }
 
- 
+
 //========================Notification Flash Message=============================//
 
 
@@ -634,14 +634,14 @@ footer {
       font-size: 13px;
       font-weight: 600;
     }
-    
-    
-    
+
+
+
     .fa-caret-down{
       margin-top:5px;
       transition: .3s transform ease-in-out;
     }
-    
+
 
   }
   .panel-heading.active{
@@ -649,7 +649,7 @@ footer {
       //transition: .3s transform ease-in-out;
       transform: rotate(180deg);
     }
-  }  
+  }
 
   .panel-body{
     border-top:1px solid #F1F1F1;
@@ -706,9 +706,11 @@ footer {
     z-index: 9999;
     height: 5px;
   }
-  
+
   .spinner {
     z-index: 9999;
+    //z-index: 0;
+    //display: none;
   }
 
 }
