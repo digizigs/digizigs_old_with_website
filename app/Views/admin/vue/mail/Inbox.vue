@@ -198,14 +198,14 @@
 					page=1;
 				}
 				NProgress.start();
-				axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
+				/*axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
 						console.log(response.data)
 						this.mails=response.data
 						this.dataloaded = true
 					})
-					.catch((error) => console.log(error))
-					NProgress.done();
+				.catch((error) => console.log(error))*/
+				NProgress.done();
 			},
 			loadMore(){
 				console.log('loadmore')

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Models\Profile;
 use Illuminate\Support\Str;
 
 class UserSeed extends Seeder
@@ -20,6 +21,11 @@ class UserSeed extends Seeder
                 'password' => bcrypt('password'),
                 'api_token' => Str::random(80),
                 'verify_token' => Str::random(80),
+            ]
+        );
+        $profile = Profile::create(
+            [
+                'user_id' => $user->id,
             ]
         );
         $user->assignRole('superadmin');

@@ -63,10 +63,8 @@
 	            <div class="col-sm-10 col-xs-10">
 	                <div   class="form-line">
 	                    <input type="file" class="form-control input-sm" v-on:change="onImageChange">
-	                </div>
-	                
+	                </div>    
 	            </div>
-
 	        </div>
 
 	       

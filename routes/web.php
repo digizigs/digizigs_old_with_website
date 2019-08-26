@@ -107,6 +107,25 @@ Route::get('/signedurl',function(){
 
 });
 
+Route::get('/authtoken',function(){
+
+
+    $client = new GuzzleHttp\Client;
+
+    $response = $client->post('http://localhost/digizigs/oauth/token', [
+        'form_params' => [
+            'grant_type' => 'password',
+            'client_id' => '2',
+            'client_secret' => 'QFvnYx7olfN9z6bYBJ61GUkqT0Os1zykP8KqesRN',
+            'username' => 'admin@admin.com',
+            'password' => 'password',
+            'scope' => '',
+        ],
+    ]);
+
+    return json_decode((string) $response->getBody(), true);
+
+});
 /*
     User registration email verification
     User will redirect to verify email page

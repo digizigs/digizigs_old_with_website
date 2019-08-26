@@ -24,10 +24,10 @@ class CreateMailsTable extends Migration
             $table->string('sender')->nullable();
             $table->string('recipient')->nullable();
             $table->string('from')->nullable();
-            $table->string('to')->nullable();
-            $table->string('cc')->nullable();
-            $table->string('bcc')->nullable();
-            $table->string('subject')->nullable();
+            $table->text('to')->nullable();
+            $table->text('cc')->nullable();
+            $table->text('bcc')->nullable();
+            $table->text('subject')->nullable();
             $table->text('body_plain')->nullable();
             $table->text('body_html')->nullable();
             $table->binary('body')->nullable();

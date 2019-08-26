@@ -1,5 +1,5 @@
 <template>
-	<div class="modal right w80 fade" id="viewpost" role="dialog"  data-backdrop="false">
+	<div class="modal right w80 fade" id="viewpost" role="dialog">
       <div class="modal-dialog modal-md" role="document">
         <div class="modal-content white">
 

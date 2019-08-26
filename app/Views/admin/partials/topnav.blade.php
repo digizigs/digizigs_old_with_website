@@ -1,7 +1,7 @@
 <?php
 
-$fullname = Auth::user()->name;
-$image = Auth::user()->profile->avatar_url;
+//$fullname = Auth::user()->name;
+//$image = Auth::user()->profile->avatar_url;
 
 ?>
 
