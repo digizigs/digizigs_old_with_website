@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\PasswordResetLinkJob;
 use App\Jobs\verifyEmailJob;
 use App\User;
+use App\Models\Profile;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,20 +16,20 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-   
+
 
     use RegistersUsers;
 
-   
+
     protected $redirectTo = '/';
 
-    
+
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-   
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -38,16 +39,20 @@ class RegisterController extends Controller
         ]);
     }
 
-  
+
     protected function create(array $data)
     {
         $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'api_token' => Str::random(80),//hash('sha256', Str::random(80)),
-            'verify_token' => Str::random(80),//hash('sha256', Str::random(80)),
+            'api_token' => hash('sha256', Str::random(60)),
+            'verify_token' => hash('sha256', Str::random(60)),
         ]);
+
+        $profile = new profile;
+        $profile->user_id = $user->id;
+        $profile->save();
 
         $thisuser = User::findOrFail($user->id);
         $this->emailVerification($thisuser);
@@ -70,30 +75,30 @@ class RegisterController extends Controller
 
         if($user){
             dispatch(new verifyEmailJob($user));
-            return redirect('/login')->with('success', 'Account activation link send to ' . $user['email'] . ' , Check tour email to activate yor account');  
+            return redirect('/login')->with('success', 'Account activation link send to ' . $user['email'] . ' , Check tour email to activate yor account');
         }else{
-            return redirect('/activationLink')->with('error', 'Oops we are unable to find this email, please check email');  
+            return redirect('/activationLink')->with('error', 'Oops we are unable to find this email, please check email');
         }
-        
+
     }
 
     /*Account activation*/
     public function activateAccount($id,$verifytoken){
 
         $user = User::where(['id'=>$id,'verify_token'=>$verifytoken])->first();
-       
+
         if($user){
-           
+
                 $user->status = '1';
                 $user->verify_token = Null;
                 $user->save();
                 return redirect('/login')->with('verified', 'Your account is verified successfully, Login to continue');
-          
+
         }else{
             return redirect('/login')->with('expired', 'Expired');
         }
-        
-          
+
+
     }
 
     /*Redirect to  email verification screen*/
@@ -116,7 +121,7 @@ class RegisterController extends Controller
         $user = User::where('email',$email)->first();
 
         if($user){
-             
+
             dispatch(new PasswordResetLinkJob($user));
             return redirect('/resetpassword')->with('success', 'Passwor reset link is sent to ' . $user->email . ' please check your email');
 

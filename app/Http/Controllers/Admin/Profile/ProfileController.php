@@ -57,7 +57,7 @@ class ProfileController extends Controller
     public function edit(Request $request,$id) {
 		
         $profile = Profile::where('user_id',$id)->first();
-		$profile->avatar_url = '';
+		$profile->avatar_url = null;
 		$profile->save();
         
 		$id = auth()->user()->id;

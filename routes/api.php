@@ -26,15 +26,18 @@ Route::group(['prefix' => 'mailgun'],function () {
     Route::post('store', 'Admin\Mail\MGInboundController@store');
     Route::get('apitest', 'Admin\Mail\MgInboundController@apitest');
     Route::get('nexmo', 'Admin\Mail\MgInboundController@nexmo');
-    
+
 });
 
+//Route::middleware()-prefix()->group(function(){
+
+//})
 
 //Route::apiResource('mails', 'Api\MailController')->middleware('auth:api');
-Route::group(['prefix' => 'mailbox'],function () {
+Route::group(['prefix' => 'mail'],function () {
 
-	Route::post('/{email}/inbound/', 'Api\MailController@inbound');
-	Route::apiResource('/{email}/{type}/', 'Api\MailController');
+  Route::post('/{email}/inbound/', 'Api\MailController@inbound');
+	Route::apiResource('', 'Api\MailController');
 
 });
 

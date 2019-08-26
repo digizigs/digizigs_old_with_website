@@ -27,7 +27,6 @@
 		},
 		data(){
 			return{
-				url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6AbD1GNiwzJwmG5vl2V8QwDyfjae_ygW-Q5KrJLAe0uffm4tEw'
 
 			}
 		},
@@ -52,7 +51,7 @@
 		        }
 		    },
 		    hasImage () {
-		        return (this.image !== '')
+		        return (this.image !== null)
 		    },
 		    initials () {
 		        var words = this.fullname.split(/[\s-]+/)

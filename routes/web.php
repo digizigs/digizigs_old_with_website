@@ -63,7 +63,7 @@ Route::get('/inbox',function(){
    $test->save();
 
    return 'inbox';
-    
+
 });
 
 Route::get('send_test_email', function(){
@@ -96,13 +96,13 @@ Route::get('send_mail', function(){
 
 Route::get('/signedurl',function(){
 	//return URL::signedRoute('app.unsubscribe', ['user' => 1]);
-	
+
 	return Auth::user()->profile->avatar_url;
 	return URL::temporarySignedRoute(
 		'app.unsubscribe', now()->addMinutes(30), ['user' => 1]
 	);
-	
-	
+
+
 
 
 });
@@ -132,9 +132,9 @@ Route::get('/authtoken',function(){
 */
 
 Route::get('verifyEmail','Auth\RegisterController@verifyEmail')->name('verifyEmail');
-Route::get('activationLink','Auth\RegisterController@activationLink')->name('activationLink');    
+Route::get('activationLink','Auth\RegisterController@activationLink')->name('activationLink');
 Route::post('verifyemail','Auth\RegisterController@resendEmailVerification')->name('resendEmailVerification');
-Route::get('activateaccount/{email}/{token}','Auth\RegisterController@activateAccount')->name('activateAccount');     
+Route::get('activateaccount/{email}/{token}','Auth\RegisterController@activateAccount')->name('activateAccount');
 Route::get('resetpassword','Auth\RegisterController@resetPassword')->name('resetPassword');
 Route::post('resetpasswordlink','Auth\RegisterController@resetPasswordLink')->name('resetPasswordLink');
 Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
@@ -143,26 +143,26 @@ Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
 Route::get('/getmails',function(){
 
     $client = new Client();
-    $uri = 'http://localhost:8080/digizigs/api/mailbox/info@digizigs.com/inbox';
-    
+    $uri = 'http://localhost:8080/digizigs/api/user';
+
     $params['headers'] = [
                             'Accept' => 'application/json',
                             'Content-type' => 'application/x-www-form-urlencoded',
-                            'Authorization' => 'Bearer ' . env('DZ_API_KEY_DEV', null)
+                            'Authorization' => 'Bearer 48f5491715fd2f65220f654b02bcec3bcd4aa191a89317b6c5e2c201c76e3d71'
                         ];
     $params['form_params'] =[
                                 'email' => 'test@gmail.com',
                                 'name' => 'Test user',
                                 'password' => 'testpassword',
                             ];
-    //$request = $client->get($uri, $params );
-    //return json_decode($request->getBody(), true);
-    
+    $request = $client->get($uri, $params );
+    return json_decode($request->getBody(), true);
 
-   
-    $response = $client->post($uri, $params);
-    return json_decode($response->getBody(), true);
-    
+
+
+    //$response = $client->post($uri, $params);
+    //return json_decode($response->getBody(), true);
+
 
 });
 
@@ -172,14 +172,14 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderFacebo
 Auth::routes();
 
 Route::get('/notify',function(){
-   
-    //Notification 
+
+    //Notification
     $users = User::all();
     $newinvoice = collect(['title'=>'New invoice Created','body'=>'New invoice created for client']);
     Notification::send($users, new InvoiceCreated($newinvoice));
     echo 'Notify Success';
-   
-}); 
+
+});
 
 Route::get('/taskevent',function(){
 
@@ -201,7 +201,7 @@ Route::get('/taskevent',function(){
 //Route::group(['prefix' => setting('app_admin_url','dz-admin'),'middleware'=>['auth']],function(){
 Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['auth']],function(){
 
-    
+
 	Route::get('/', 'Admin\AdminController@index')->name('admin.home');
     Route::get('/theme/tables', 'Admin\AdminController@tables')->name('theme.tables');
 
@@ -212,7 +212,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 	//Contacts
     Route::resource('/contacts', 'Admin\Contact\ContactController');
 
- 
+
     //Settings
     Route::resource('/settings', 'Admin\SettingController');
 
@@ -231,7 +231,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     //Catogery
     Route::resource('/category', 'Admin\Category\CategoryController');
-  
+
 
     //Menu
     Route::get('/menu', 'Admin\Menu\MenuController@index')->name('menu-index');
@@ -264,7 +264,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     Route::resource('/subscription', 'Admin\Contact\SubscriptionController'); //Contact
     Route::resource('/inquiry', 'Admin\Contact\InquiryController'); //Contact
 
-    
+
     //Access MAnagement
     Route::resource('/accesss', 'Admin\AccessControl\AccessController');
     Route::resource('/users', 'Admin\AccessControl\UserController');
@@ -283,7 +283,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
         Route::resource('/project', 'Admin\Client\ProjectController'); //User
         Route::resource('/client', 'Admin\Client\ClientController'); //User
         Route::resource('/billing', 'Admin\Client\BillingController'); //User
-        
+
         Route::get('/invoice/allclient', 'Admin\Client\InvoiceController@clients')->name('invoice.clients'); //Invoice
         Route::get('/invoice/allservice', 'Admin\Client\InvoiceController@services')->name('invoice.services'); //Invoice
         Route::resource('/invoice', 'Admin\Client\InvoiceController'); //Invoice
@@ -293,7 +293,7 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     });
 
-    
+
 
     //account-profile
     Route::resource('/profile', 'Admin\Profile\ProfileController'); //Profile
@@ -315,21 +315,21 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');
 
-    
+
 
 });
 //=========================================Admin Routes=============================================//
 
 Route::get('{page}',function($slug){
-   
+
     $page = \App\Models\Page::findBySlug($slug);
 
     $view = "app/pages/{$page->slug}";
-   
+
     if(view()->exists($view)){
         return view("app/pages/{$page->slug}",compact($page));
     }else{
         return abort(404);
     }
-   
-});    
+
+});
