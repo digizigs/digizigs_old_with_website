@@ -21,7 +21,7 @@ class MailController extends Controller
         ->orWhere('bcc','like', '%'.$email.'%')
         ->orderby('created_at','desc')
         ->with('attachments')->get();
-        $mail = Mail::all();
+        $mail = Mail::orderby('created_at','desc')->get();
         return MailResource::collection($mail);
     }
 
