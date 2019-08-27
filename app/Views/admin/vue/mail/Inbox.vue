@@ -14,7 +14,7 @@
 			<!-- Inbox options -->
 			<ul class="inbox-nav inbox-divider">
 				<li :class="{ 'active': filter == 'inbox' }" @click="inboxview('inbox')">
-					<a href="#"><i class="fa fa-inbox"></i> Inbox ({{this.meta.unreadinbox}})</a>
+					<a href="#"><i class="fa fa-inbox"></i> Inbox <span v-if="this.unreadinbox > 0">({{unreadinbox}})</span></a>
 				</li>
 				<li :class="{ 'active': filter == 'sent' }" @click="inboxview('sent')">
 					<a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
@@ -23,7 +23,7 @@
 					<a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
 				</li>
 				<li :class="{ 'active': filter == 'draft' }" @click="inboxview('draft')">
-					<a href="#"><i class=" fa fa-external-link"></i> Drafts ({{this.meta.draft}})</a>
+					<a href="#"><i class=" fa fa-external-link"></i> Drafts <span v-if="this.draft > 0">({{draft}})</span></a>
 				</li>
 				<li :class="{ 'active': filter == 'trash' }" @click="inboxview('trash')">
 					<a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
@@ -79,9 +79,22 @@
 							<i class=" fa fa-refresh"></i>
 						</a>
 					</div>
-
+					
 					<mailpagination :input="mails" @pagechange="paginationdata"></mailpagination>
-
+					<div class="btn-group pull-right">
+						<ul>
+							<li v-for="p in paginatedData">
+							{{p.first}} 
+							{{p.last}}  
+							{{p.suffix}}
+							</li>
+						</ul>
+						<button @click="prevPage" :disabled="pageNumber==0">
+							Previous
+						</button>
+						<button @click="nextPage" :disabled="pageNumber >= pageCount -1">
+							Next
+						</button></div>	
 				</div>
 
 				
@@ -89,8 +102,7 @@
 				<table v-if="mails" class="table table-inbox table-hover">
 					
 					<tbody>
-						
-						<tr v-for="(mail,index) in mails" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
+						<tr v-for="(mail,index) in paginatedData" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -108,7 +120,7 @@
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>
 							</td>
 							<td class="view-message  text-right">{{mail.date.date | vueDay}}</td>										
-						</tr>					
+						</tr>			
 					</tbody>
 				</table>
 				
@@ -175,13 +187,16 @@
 				dataloaded:false,
 				mails:[],
 				nmails:[],
-				mail:{},
+				mail:'',
 				selectedmail:[],
 				options:[{"name": "option-1" },{"name": "option-2" },{"name": "option-3" }],
-				limit: 10,
+				limit: 8,
     			busy: false,
 				bottom: false,
-				meta:[]
+				meta:[],
+				unreadinbox:'',
+				draft:'',
+				pageNumber: 0
 			}
 		},
 		watch:{
@@ -192,7 +207,20 @@
 				}
 			},
 			nmails(){
-				console.log(this.nmails.data.filter(value => value.status === 'read').length)
+				this.unreadinbox = this.nmails.data.filter(value => value.status === 'unread').length
+				this.draft = this.nmails.data.filter(value => value.label === 'draft').length
+			}
+		},
+		computed: {
+			pageCount(){
+				let l = this.mails.length,
+					s = this.limit;
+				return Math.ceil(l/s);
+			},
+			paginatedData(){
+				const start = this.pageNumber * this.limit,
+					end = start + this.limit;
+				return this.mails.slice(start, end);
 			}
 		},
 		methods:{
@@ -201,14 +229,21 @@
 					page=1;
 				}
 				NProgress.start();
-				/*axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
+				axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
 						console.log(response.data)
-						this.mails=response.data
-						this.dataloaded = true
+						this.nmails=response.data
+						this.mails=response.data.data
+						//this.dataloaded = true
 					})
-				.catch((error) => console.log(error))*/
+				.catch((error) => console.log(error))
 				NProgress.done();
+			},
+			nextPage(){
+				this.pageNumber++;
+			},
+			prevPage(){
+				this.pageNumber--;
 			},
 			loadMore(){
 				console.log('loadmore')
@@ -258,7 +293,7 @@
 			inboxview(type){
 				console.log(type)
 				this.filter = type
-				this.paginationdata()
+				//this.paginationdata()
 			},
 			selectmail(id){
 				this.selectedmail.push(id)
@@ -287,7 +322,7 @@
 							this.nmails = response.data
 							const append = response.data.data.slice(this.mails.length,this.mails.length + this.limit )
 							this.mails = this.mails.concat(append);
-
+							//this.mails = this.nmails.data.filter(value => value.label === 'draft').length
 							
 
 							if (this.bottomVisible()) {
@@ -303,14 +338,14 @@
 		},
 		created(){
 			
-			//this.paginationdata();
+			this.paginationdata();
 			//this.scroll();
 
-			window.addEventListener('scroll', () => {
-				this.bottom = this.bottomVisible()
+			//window.addEventListener('scroll', () => {
+				//this.bottom = this.bottomVisible()
 				//console.log('scroll event listner')
-			})
-			this.getMails()
+			//})
+			//this.getMails()
 
 		}
 	};

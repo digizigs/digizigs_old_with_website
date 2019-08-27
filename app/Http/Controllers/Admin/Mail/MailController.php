@@ -34,6 +34,7 @@ class MailController extends Controller
                             //'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
                         ];
         $params['form_params'] =[
+                                'type' => $request->filter,
                                 'email' => 'info@digizigs.com'
                             ];
         $data = $client->post($uri, $params);
