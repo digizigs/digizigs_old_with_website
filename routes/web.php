@@ -143,11 +143,11 @@ Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
 Route::get('/getmails',function(){
 
     $client = new Client();
-    $uri = 'http://localhost:8080/digizigs/api/v1/mail';
+    $uri = 'http://www.digizigs.com/api/v1/mail';
 
     $params['headers'] = [
                             'Accept' => 'application/json',
-                            'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
+                            'Authorization' => 'Bearer 0qmZS2W2CaDM3it0EVmlv2ld8VTSYAWYYotCskocbYLTpnUvRIPzSgCP1XtOzrpri6uvnpZd9Vo6Qv1z'
                         ];
     $params['form_params'] =[
                                 'email' => 'info@digizigs.com'

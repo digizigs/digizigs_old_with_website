@@ -190,6 +190,9 @@
 					this.getMails()
 					//console.log('Bottom Load more data')
 				}
+			},
+			nmails(){
+				console.log(this.nmails.data.filter(value => value.status === 'read').length)
 			}
 		},
 		methods:{
@@ -276,11 +279,12 @@
 				if(! this.busy){
 					this.busy = true;
 					NProgress.start();
-					axios.get('emails/create',{params:{filter:this.filter,email:this.user.email}})
+					axios.get('emails/create',{params:{email:this.user.email}})
 						.then(response => {
+							console.log(response.data)
 							//this.mails.push(response.data);
 							//this.mails = response.data.data
-							this.meta = response.data.meta
+							this.nmails = response.data
 							const append = response.data.data.slice(this.mails.length,this.mails.length + this.limit )
 							this.mails = this.mails.concat(append);
 
