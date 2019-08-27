@@ -143,25 +143,22 @@ Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
 Route::get('/getmails',function(){
 
     $client = new Client();
-    $uri = 'http://localhost:8080/digizigs/api/user';
+    $uri = 'http://localhost:8080/digizigs/api/v1/mail';
 
     $params['headers'] = [
                             'Accept' => 'application/json',
-                            'Content-type' => 'application/x-www-form-urlencoded',
-                            'Authorization' => 'Bearer 48f5491715fd2f65220f654b02bcec3bcd4aa191a89317b6c5e2c201c76e3d71'
+                            'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
                         ];
     $params['form_params'] =[
-                                'email' => 'test@gmail.com',
-                                'name' => 'Test user',
-                                'password' => 'testpassword',
+                                'email' => 'info@digizigs.com'
                             ];
-    $request = $client->get($uri, $params );
-    return json_decode($request->getBody(), true);
+    //$request = $client->get($uri, $params );
+    //return json_decode($request->getBody(), true);
 
 
 
-    //$response = $client->post($uri, $params);
-    //return json_decode($response->getBody(), true);
+    $response = $client->post($uri, $params);
+    return json_decode($response->getBody(), true);
 
 
 });

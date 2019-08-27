@@ -25,6 +25,7 @@ class MailResource extends JsonResource
           'body_plain' => $this->body_plain,
           'body_html' => $this->body_html,
           'attachment' => $this->attachment,
+          'attachments' => $this->attachments,
           'date' => $this->created_at,
       ];
     }

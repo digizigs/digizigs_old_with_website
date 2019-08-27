@@ -15,24 +15,17 @@ use Intervention\Image\Facades\Image;
 class ProfileController extends Controller
 {
     
-    public function index() {
-      
-
+    public function index() 
+    {
         $user = User::findOrFail(auth()->user());
-
-        //dd($user);
         $roles = auth()->user()->roles()->pluck('name');
-    
         $userprofile =Profile::with('user')->where('user_id',auth()->user()->id)->first();
-
-        //dd($userprofile);
-       
         return view('admin.pages.profile.profile');
     }
 
     
-    public function create() {
-
+    public function create()
+    {
         $id = auth()->user()->id;
         $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();
         $roles = auth()->user()->roles()->pluck('name');
@@ -42,20 +35,22 @@ class ProfileController extends Controller
     }
 
    
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
         $user = auth()->user();
         $user->addMedia($request->profilepic)->toMediaCollection('avatar');
         return redirect()->back()->with('message', 'Profile saved successfully');
     }
 
     
-    public function show($id) {
+    public function show($id) 
+    {
         //
     }
 
     
-    public function edit(Request $request,$id) {
-		
+    public function edit(Request $request,$id) 
+    {
         $profile = Profile::where('user_id',$id)->first();
 		$profile->avatar_url = null;
 		$profile->save();
@@ -66,11 +61,11 @@ class ProfileController extends Controller
 
         $data = ['user'=>$user,'roles'=>$roles];
         return request()->json(200,$data);
-
     }
 
    
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id) 
+    {
 
         //For PAssword change
         if($request->oldpass){

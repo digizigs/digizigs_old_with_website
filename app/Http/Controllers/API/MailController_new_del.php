@@ -19,7 +19,7 @@ class MailController extends Controller
 
     public function index(Request $request)
     {
-      //return 'Test';
+      
       //$mail = $this->getData($email,$type);
       //$count = $this->unreadCount($email,$type);
       //return MailResource::collection($mail);
@@ -41,7 +41,7 @@ class MailController extends Controller
     public function show($id)
     {
 
-        return new 'dasdasdas';
+        return  'dasdasdas';
 
     }
 

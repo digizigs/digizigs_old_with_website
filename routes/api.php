@@ -29,17 +29,21 @@ Route::group(['prefix' => 'mailgun'],function () {
 
 });
 
-//Route::middleware()-prefix()->group(function(){
+Route::middleware('auth:api')->prefix('v1')->group(function(){
 
-//})
-
-//Route::apiResource('mails', 'Api\MailController')->middleware('auth:api');
-Route::group(['prefix' => 'mail'],function () {
-
-  Route::post('/{email}/inbound/', 'Api\MailController@inbound');
-	Route::apiResource('', 'Api\MailController');
+    Route::post('/mail/{email}/inbound/', 'Api\MailController@inbound');
+    Route::post('/mail', 'Api\MailController@index')->name('mail.get');
+    //Route::apiResource('mail', 'Api\MailController');
 
 });
+
+//Route::apiResource('mails', 'Api\MailController')->middleware('auth:api');
+//Route::group(['prefix' => 'mail'],function () {
+
+  //Route::post('/{email}/inbound/', 'Api\MailController@inbound');
+	//Route::apiResource('', 'Api\MailController');
+
+//});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
