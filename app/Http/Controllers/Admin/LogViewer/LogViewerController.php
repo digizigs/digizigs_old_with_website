@@ -20,7 +20,8 @@ class LogViewerController extends Controller
         $this->request = app('request');
     }
     
-    public function index(){
+    public function index()
+    {
     	//return 'Log View';
 
     	$folderFiles = [];
@@ -58,11 +59,12 @@ class LogViewerController extends Controller
         }
 
         //return view('admin.pages.logs.logs',' data');
-        //return app('view')->make('admin.pages.logs.logs', $data);
-        return app('view',compact('data'));
+        return app('view')->make('admin.pages.logs.logs', $data);
+        //return app('view',compact('data'));
     }
 
-    private function earlyReturn(){
+    private function earlyReturn()
+    {
         if ($this->request->input('f')) {
             $this->log_viewer->setFolder(Crypt::decrypt($this->request->input('f')));
         }
@@ -88,12 +90,14 @@ class LogViewerController extends Controller
     }
 
 
-    private function pathFromInput($input_string){
+    private function pathFromInput($input_string)
+    {
         return $this->log_viewer->pathToLogFile(Crypt::decrypt($this->request->input($input_string)));
     }
 
     
-    private function redirect($to){
+    private function redirect($to)
+    {
         if (function_exists('redirect')) {
             return redirect($to);
         }
@@ -102,7 +106,8 @@ class LogViewerController extends Controller
     }
 
 
-    private function download($data){
+    private function download($data)
+    {
         if (function_exists('response')) {
             return response()->download($data);
         }
@@ -111,7 +116,8 @@ class LogViewerController extends Controller
         return app('\Illuminate\Support\Facades\Response')->download($data);
     }
 
-    public function getLogs(){
+    public function getLogs()
+    {
 
         $folderFiles = [];
         if ($this->request->input('f')) {
