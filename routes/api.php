@@ -30,9 +30,10 @@ Route::group(['prefix' => 'mailgun'],function () {
 });
 
 Route::middleware('auth:api')->prefix('v1')->group(function(){
+//Route::middleware('auth:api')->prefix('v1')->group(function(){
 
     Route::post('/mail/{email}/inbound/', 'Api\MailController@inbound')->name('mail.inbound');
-    Route::post('/mail', 'Api\MailController@index')->name('mail.get');
+    Route::post('/mail', 'Api\MailController@index')->name('get.mail');
     //Route::apiResource('mail', 'Api\MailController');
 
 });

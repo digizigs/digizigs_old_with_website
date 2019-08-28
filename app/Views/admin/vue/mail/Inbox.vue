@@ -81,28 +81,33 @@
 					</div>
 					
 					<mailpagination :input="mails" @pagechange="paginationdata"></mailpagination>
-					<div class="btn-group pull-right">
+					
+					<div v-if="paginatedData.length > 0" class="btn-group pull-right">
 						<ul>
-							<li v-for="p in paginatedData">
+							<li v-for="p in paginatedData" v-bind:key="p.id">
 							{{p.first}} 
 							{{p.last}}  
 							{{p.suffix}}
 							</li>
 						</ul>
-						<button @click="prevPage" :disabled="pageNumber==0">
-							Previous
+						<button class="pb btn btn-default" @click="prevPage" :disabled="pageNumber==0">
+							<i class="fa fa-angle-left"></i>
 						</button>
-						<button @click="nextPage" :disabled="pageNumber >= pageCount -1">
-							Next
-						</button></div>	
+						
+						<button class="pb btn btn-default" @click="nextPage" :disabled="pageNumber >= pageCount -1">
+							<i class="fa fa-angle-right"></i>
+						</button>
+						
+						
+					</div>	
 				</div>
 
 				
 
-				<table v-if="mails" class="table table-inbox table-hover">
+				<table v-if="paginatedData.length > 0" class="table table-inbox table-hover">
 					
 					<tbody>
-						<tr v-for="(mail,index) in paginatedData" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
+						<tr v-for="mail in paginatedData" v-bind:key="mail.id" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -123,6 +128,8 @@
 						</tr>			
 					</tbody>
 				</table>
+
+				<Span v-else >No Mail to view</Span>
 				
 
 			</div>
@@ -219,7 +226,7 @@
 			},
 			paginatedData(){
 				const start = this.pageNumber * this.limit,
-					end = start + this.limit;
+						end = start + this.limit;
 				return this.mails.slice(start, end);
 			}
 		},
@@ -293,7 +300,14 @@
 			inboxview(type){
 				console.log(type)
 				this.filter = type
-				//this.paginationdata()
+				if(type == 'inbox'){
+					this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'inbox')
+				}else if(type == 'sent'){
+					this.mails = this.nmails.data.filter(value => value.type === 'outbound' && value.label === 'sent')
+				}else if(type == 'important'){
+					this.mails = this.nmails.data.filter(value => value.label === 'inbox' && value.star === 1)
+				} 
+				
 			},
 			selectmail(id){
 				this.selectedmail.push(id)
@@ -309,7 +323,7 @@
 				const bottomOfPage = visible + scrollY >= pageHeight
       			return bottomOfPage || pageHeight < visible
 			},
-			getMails() {
+			getMails_delete() {
 				//axios.get('https://api.punkapi.com/v2/beers/random')
 				if(! this.busy){
 					this.busy = true;
@@ -332,21 +346,25 @@
 					NProgress.done();
 					this.busy = false;
 				}	
+			},
+			getMails(){
+				NProgress.start();
+				axios.get('emails/create',{params:{filter:this.filter,email:this.user.email}})
+					.then((response) => {
+						console.log(response.data)
+						this.nmails=response.data
+						//this.mails=response.data.data
+						this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'inbox')
+						this.dataloaded = true
+					})
+				.catch((error) => console.log(error))
+				NProgress.done();
 			}
 
 			
 		},
-		created(){
-			
-			this.paginationdata();
-			//this.scroll();
-
-			//window.addEventListener('scroll', () => {
-				//this.bottom = this.bottomVisible()
-				//console.log('scroll event listner')
-			//})
-			//this.getMails()
-
+		created(){	
+			this.getMails();
 		}
 	};
 
@@ -364,5 +382,28 @@
 		margin-top: -5px !important;
 	}
 
-	
+	.next.active,.prev.active{
+	  	display:inline-block;
+	}
+	.next,.prev{
+		cursor: pointer;
+	    color: #01A9DB;
+	    font-size: 12px;
+	    font-weight: 600;
+	    display: none;
+	}
+	li.active{
+		i{
+			color: #01A9DB !important;
+			font-weight: 600;
+		}
+	}
+	.pb{
+		color: #01A9DB !important;
+		font-weight: 800 !important;
+		font-size: 14px;
+		margin-left: 10px !important;
+		border-radius: 0 !important;
+	}
+
 </style>

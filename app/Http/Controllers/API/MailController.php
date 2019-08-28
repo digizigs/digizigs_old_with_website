@@ -12,20 +12,12 @@ class MailController extends Controller
 {
 
     public function index(Request $request)
-    {
-        
-        
-        //$email = $request->email;
-        //$type = $request->type;
-        
+    {   
+        //return response()->json($request->all());
+        //return response()->json($request->get('email'));
         //return $request->all();
-
-
-        //return MailResource::collection($email);
-        //return $email;
-
-
-        //return $this->getData($email,$type);
+        //return json_encode($request->get('type'),200);
+        
         $mail = Mail::orderby('created_at','desc')->get();
         return MailResource::collection($mail);
     }
