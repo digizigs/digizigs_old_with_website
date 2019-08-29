@@ -110,7 +110,7 @@
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
 							<td class="inbox-small-cells">
-								<i v-if="mail.star == 1" class="fa fa-star active" @click="markMail(mail.id,'star')"></i>
+								<i v-if="mail.starred == 1" class="fa fa-star active" @click="markMail(mail.id,'star')"></i>
 								<i v-else class="fa fa-star" @click="markMail(mail.id,'star')"></i>
 								<i v-if="mail.status == 'reply'" class="fa fa-reply"></i>
 								<i v-if="mail.status == 'forward'" class="fa fa-share"></i>
@@ -122,7 +122,7 @@
 							<td class="view-message  inbox-small-cells">
 								<i v-if="mail.attachment == 1" class="fa fa-paperclip"></i>
 							</td>
-							<td class="view-message  text-right">{{mail.date.date | vueDay}}</td>										
+							<td class="view-message  text-right">{{mail.created_at | vueDay}}</td>										
 						</tr>			
 					</tbody>
 				</table>
@@ -211,8 +211,8 @@
 				}
 			},
 			nmails(){
-				this.unreadinbox = this.nmails.data.filter(value => value.status === 'unread').length
-				this.draft = this.nmails.data.filter(value => value.label === 'draft').length
+				this.unreadinbox = this.nmails.filter(value => value.status === 'unread').length
+				this.draft = this.nmails.filter(value => value.label === 'draft').length
 			}
 		},
 		computed: {
@@ -228,64 +228,38 @@
 			}
 		},
 		methods:{
-			paginationdata(page){
-				if (typeof page === 'undefined'){
-					page=1;
-				}
-				NProgress.start();
-				axios.get('emails/create?page=' + page,{params:{filter:this.filter,email:this.user.email}})
-					.then((response) => {
-						console.log(response.data)
-						this.nmails=response.data
-						this.mails=response.data.data
-						//this.dataloaded = true
-					})
-				.catch((error) => console.log(error))
-				NProgress.done();
-			},
 			nextPage(){
 				this.pageNumber++;
 			},
 			prevPage(){
 				this.pageNumber--;
 			},
-			loadMore(){
-				console.log('loadmore')
-			},
 			viewmail(mail){
 				this.mail = mail
 				if(this.mail.status == 'unread'){
 					this.markMail(mail.id,'read')
 				}
-				
-			},
-			markstar(id){
-				NProgress.start();
-				axios.get('mails/markstar/'+id+'/edit',{params:{filter:this.filter}})
-					.then((response) => {
-							this.mails = response.data
-						})
-					.catch((error) => console.log(error))
-					NProgress.done();
-			},
+			},			
 			markMail(id,type){
-
+				console.log(id,type)
 				NProgress.start();
-				axios.get('mails/markmail/'+id+'/edit',{params:{filter:this.filter,type:type}})
+				axios.get('emails/markmail/'+id+'/edit',{params:{filter:this.filter,type:type}})
 					.then((response) => {
-						this.mails = response.data
+						this.nmails=response.data
+						this.mails=response.data
+						this.inboxview(type)
 					})
 					.catch((error) => console.log(error))
 				NProgress.done();	
-
 			},
 			moveMail(text){
 
 				NProgress.start();
-				axios.get('mails/movemail',{params:{filter:this.filter,mailid:this.selectedmail,type:text}})
+				axios.get('emails/movemail',{params:{filter:this.filter,mailid:this.selectedmail,type:text}})
 					.then((response) => {
-						this.mails = response.data
-						//console.log(response.data)
+						this.nmails=response.data
+						this.mails=response.data
+						console.log(response.data)
 					})
 					.catch((error) => console.log(error))
 				NProgress.done();	
@@ -300,17 +274,17 @@
 				console.log(this.filter)
 
 				if(this.filter == 'inbox'){
-					this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'inbox')
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox')
 				}else if(this.filter == 'sent'){
-					this.mails = this.nmails.data.filter(value => value.type === 'outbound' && value.label === 'sent')
+					this.mails = this.nmails.filter(value => value.type === 'outbound' && value.label === 'sent')
 				}else if(this.filter == 'important'){
-					this.mails = this.nmails.data.filter(value => value.label === 'inbox' && value.star === 1)
+					this.mails = this.nmails.filter(value => value.label === 'inbox' && value.starred === 1)
 				} else if(this.filter == 'draft'){
-					this.mails = this.nmails.data.filter(value => value.type === 'outbound' && value.label === 'draft')
+					this.mails = this.nmails.filter(value => value.type === 'outbound' && value.label === 'draft')
 				} else if(this.filter == 'trash'){
-					this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'trash')
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'trash')
 				} else if(this.filter == 'spam'){
-					this.mails = this.nmails.data.filter(value => value.type === 'inbox' && value.label === 'spam')
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'spam')
 				} 
 				
 			},
@@ -320,47 +294,16 @@
 			onClick (text, data) {
 				this.markMail(data,text)
                 
-            },
-			bottomVisible() {
-				const scrollY = window.scrollY
-				const visible = document.documentElement.clientHeight
-				const pageHeight = document.documentElement.scrollHeight
-				const bottomOfPage = visible + scrollY >= pageHeight
-      			return bottomOfPage || pageHeight < visible
-			},
-			getMails_delete() {
-				//axios.get('https://api.punkapi.com/v2/beers/random')
-				if(! this.busy){
-					this.busy = true;
-					NProgress.start();
-					axios.get('emails/create',{params:{email:this.user.email}})
-						.then(response => {
-							console.log(response.data)
-							//this.mails.push(response.data);
-							//this.mails = response.data.data
-							this.nmails = response.data
-							const append = response.data.data.slice(this.mails.length,this.mails.length + this.limit )
-							this.mails = this.mails.concat(append);
-							//this.mails = this.nmails.data.filter(value => value.label === 'draft').length
-							
-
-							if (this.bottomVisible()) {
-								//this.getMails()
-							}
-					})
-					NProgress.done();
-					this.busy = false;
-				}	
-			},
+            },		
 			getMails(){
 				NProgress.start();
 				axios.get('emails/create',{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
 						console.log(response.data)
 						this.nmails=response.data
-						//this.mails=response.data.data
-						this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'inbox')
-						this.dataloaded = true
+						this.mails=response.data
+						//this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox')
+						//this.dataloaded = true
 					})
 				.catch((error) => console.log(error))
 				NProgress.done();

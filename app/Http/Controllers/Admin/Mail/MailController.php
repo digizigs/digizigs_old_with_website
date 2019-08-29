@@ -21,24 +21,9 @@ class MailController extends Controller
    
     public function create(Request $request){
         
+        $mail = Mail::orderby('created_at','desc')->get();
+        return request()->json(200,$mail);
         
-        
-        $client = new Client();
-        //$uri = 'http://localhost:8080/digizigs/api/v1/mail';
-        $uri = 'http://www.digizigs.com/api/v1/mail';
-    
-        $params['headers'] = [
-                            'Accept' => 'application/json',
-                            //'Content-type' => 'application/json',
-                            'Authorization' => 'Bearer 0qmZS2W2CaDM3it0EVmlv2ld8VTSYAWYYotCskocbYLTpnUvRIPzSgCP1XtOzrpri6uvnpZd9Vo6Qv1z'
-                            //'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
-                        ];
-        $params['form_params'] =[
-                                'type' => $request->filter,
-                                'email' => 'info@digizigs.com'
-                            ];
-        $data = $client->post($uri, $params);
-        return request()->json(200,json_decode($data->getBody(), true));
     }
 
    
@@ -53,17 +38,17 @@ class MailController extends Controller
 
     public function markMail($id,Request $request){
         
-        return $request->all();
+       // return $request->all();
         
         if($request->type == 'read'){
 
             $mail = Mail::find($id);
             $mail->status = 'read';
             $mail->save();
-
-            $type = $request->filter;
-            $mail = $this->getData($type);
-            return response()->json($mail);
+            
+            $mail = Mail::orderby('created_at','desc')->get();
+            return request()->json(200,$mail);
+            
 
         }elseif($request->type == 'unread'){
 
@@ -71,9 +56,8 @@ class MailController extends Controller
             $mail->status = 'unread';
             $mail->save();
 
-            $type = $request->filter;
-            $mail = $this->getData($type);
-            return response()->json($mail);
+            $mail = Mail::orderby('created_at','desc')->get();
+            return request()->json(200,$mail);
 
         }elseif($request->type == 'trash'){
 
@@ -81,9 +65,8 @@ class MailController extends Controller
             $mail->label = 'trash';
             $mail->save();
 
-            $type = $request->filter;
-            $mail = $this->getData($type);
-            return response()->json($mail);
+            $mail = Mail::orderby('created_at','desc')->get();
+            return request()->json(200,$mail);
 
         }elseif($request->type == 'star'){
 
@@ -95,15 +78,15 @@ class MailController extends Controller
             }
             $mail->save();
 
-            $type = $request->filter;
-            $mail = $this->getData($type);
-            return response()->json($mail);
+            $mail = Mail::orderby('created_at','desc')->get();
+            return request()->json(200,$mail);
 
         }
     }
 
     public function moveMail(Request $request){
 
+        
         $ids = $request->mailid;
         foreach($ids as $id){
             $mail = Mail::find($id);
@@ -111,9 +94,8 @@ class MailController extends Controller
             $mail->save();
         }
 
-        $type = $request->filter;
-        $mail = $this->getData($type);
-        return response()->json($mail);
+        $mail = Mail::orderby('created_at','desc')->get();
+        return request()->json(200,$mail);
     }
     
     public function edit($id){

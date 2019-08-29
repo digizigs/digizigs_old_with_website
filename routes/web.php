@@ -9,6 +9,7 @@ use App\Mail\ActivationEmail;
 use App\Mail\SubscriptionMail;
 use App\Mail\testMail;
 use App\Models\Page;
+use App\Models\Mail;
 use App\Models\Test;
 use App\Notifications\InvoiceCreated;
 use App\User;
@@ -143,13 +144,13 @@ Route::get('reset/{id}','Auth\RegisterController@reset')->name('reset');
 Route::get('/getmails',function(){
 
     $client = new Client();
-    //$uri = 'http://www.digizigs.com/api/v1/mail';
-    $uri = 'http://localhost:8080/digizigs/api/v1/mail';
+    $uri = 'http://www.digizigs.com/api/v1/mail';
+    //$uri = 'http://localhost:8080/digizigs/api/v1/mail';
 
     $params['headers'] = [
                             'Accept' => 'application/json',
-                            //'Authorization' => 'Bearer 0qmZS2W2CaDM3it0EVmlv2ld8VTSYAWYYotCskocbYLTpnUvRIPzSgCP1XtOzrpri6uvnpZd9Vo6Qv1z'
-                            'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
+                            'Authorization' => 'Bearer 0qmZS2W2CaDM3it0EVmlv2ld8VTSYAWYYotCskocbYLTpnUvRIPzSgCP1XtOzrpri6uvnpZd9Vo6Qv1z'
+                            //'Authorization' => 'Bearer 5ed3fbecb5ffb84347059955a339bc7b5db4fa1c81283193b2a547cb15e7fe4f'
                         ];
     $params['form_params'] =[
                                 'email' => 'info@digizigs.com'
@@ -164,8 +165,26 @@ Route::get('/getmails',function(){
     //return json_decode($response, true);
     $data = json_decode($response, true);                        
     foreach($data as $res){
-        echo $res['domain'];
-        //return $res->get('domain');
+        //print $res['domain'];
+        //return $res;
+        $mail = new Mail;
+        $mail->domain = $res['domain'];
+        $mail->type = $res['type'];
+        $mail->label = $res['label'];
+        $mail->status = $res['status'];
+        $mail->starred = $res['star'];
+        $mail->recipient = $res['recipient'];
+        $mail->from = $res['from'];
+        $mail->to = $res['to'];
+        $mail->cc = $res['cc'];
+        $mail->bcc = $res['bcc'];
+        $mail->subject = $res['subject'];
+        $mail->body_plain = $res['body_plain'];
+        $mail->body_html = $res['body_html'];
+        $mail->attachment = $res['attachment'];
+        //$mail->attachments = $res['attachments'];
+        //$mail->created_at = $res['date'];
+        $mail->save();
     }
     
    
@@ -261,7 +280,8 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
     ///////Route::get('/mails/markstar/{id}/edit','Admin\Mail\MailController@markstar');
     ///////Route::get('/mails/markread/{id}/edit','Admin\Mail\MailController@markread');
     //Route::get('/emails/movemail','Admin\Mail\MailController@moveMail');
-    Route::get('/emails/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    Route::get('/emails/movemail','Admin\Mail\MailController@moveMail')->name('mail.move');
+    Route::get('/emails/markmail/{id}/edit','Admin\Mail\MailController@markMail')->name('mail.mark');
     Route::resource('/emails', 'Admin\Mail\MailController'); //Contact
 
 
