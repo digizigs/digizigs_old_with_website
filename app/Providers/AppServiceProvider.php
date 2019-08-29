@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
-//use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Http\Resources\Json\Resource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         //For database varchar length settings
         Schema::defaultStringLength(191);
 
-        //Resource::withoutWrapping();
+        Resource::withoutWrapping();
 
         //For App setting details
         if (Schema::hasTable('settings')) {

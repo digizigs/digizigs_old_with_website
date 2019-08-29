@@ -79,9 +79,7 @@
 							<i class=" fa fa-refresh"></i>
 						</a>
 					</div>
-					
-					<mailpagination :input="mails" @pagechange="paginationdata"></mailpagination>
-					
+									
 					<div v-if="paginatedData.length > 0" class="btn-group pull-right">
 						<ul>
 							<li v-for="p in paginatedData" v-bind:key="p.id">
@@ -112,7 +110,7 @@
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
 							<td class="inbox-small-cells">
-								<i v-if="mail.starred == 1"class="fa fa-star active" @click="markMail(mail.id,'star')"></i>
+								<i v-if="mail.star == 1" class="fa fa-star active" @click="markMail(mail.id,'star')"></i>
 								<i v-else class="fa fa-star" @click="markMail(mail.id,'star')"></i>
 								<i v-if="mail.status == 'reply'" class="fa fa-reply"></i>
 								<i v-if="mail.status == 'forward'" class="fa fa-share"></i>
@@ -129,8 +127,7 @@
 					</tbody>
 				</table>
 
-				<Span v-else >No Mail to view</Span>
-				
+				<div v-else class="no-mail-msg"> No Mail to view </div>
 
 			</div>
 		</aside>
@@ -295,17 +292,25 @@
 				
 			},
 			refreshmail(){
-				this.paginationdata()
+				this.getMails()
 			},
 			inboxview(type){
-				console.log(type)
+				
 				this.filter = type
-				if(type == 'inbox'){
+				console.log(this.filter)
+
+				if(this.filter == 'inbox'){
 					this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'inbox')
-				}else if(type == 'sent'){
+				}else if(this.filter == 'sent'){
 					this.mails = this.nmails.data.filter(value => value.type === 'outbound' && value.label === 'sent')
-				}else if(type == 'important'){
+				}else if(this.filter == 'important'){
 					this.mails = this.nmails.data.filter(value => value.label === 'inbox' && value.star === 1)
+				} else if(this.filter == 'draft'){
+					this.mails = this.nmails.data.filter(value => value.type === 'outbound' && value.label === 'draft')
+				} else if(this.filter == 'trash'){
+					this.mails = this.nmails.data.filter(value => value.type === 'inbound' && value.label === 'trash')
+				} else if(this.filter == 'spam'){
+					this.mails = this.nmails.data.filter(value => value.type === 'inbox' && value.label === 'spam')
 				} 
 				
 			},
@@ -405,5 +410,12 @@
 		margin-left: 10px !important;
 		border-radius: 0 !important;
 	}
-
+	.no-mail-msg{
+		height: 100%;
+		text-align: center;
+		vertical-align: middle;
+		color: #01A9DB !important;
+		font-weight: 800 !important;
+		font-size: 14px;
+	}
 </style>

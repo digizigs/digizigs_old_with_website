@@ -53,6 +53,8 @@ class MailController extends Controller
 
     public function markMail($id,Request $request){
         
+        return $request->all();
+        
         if($request->type == 'read'){
 
             $mail = Mail::find($id);
