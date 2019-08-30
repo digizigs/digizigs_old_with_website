@@ -346,6 +346,19 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 });
 //=========================================Admin Routes=============================================//
 
+
+//Dashboard//
+Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
+
+    Route::get('/', 'Dashboard\DashboardController@home')->name('dashboard');
+
+
+
+});
+
+
+
+
 Route::get('{page}',function($slug){
 
     $page = \App\Models\Page::findBySlug($slug);

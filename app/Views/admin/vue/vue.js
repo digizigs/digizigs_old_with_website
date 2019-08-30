@@ -32,6 +32,7 @@ const swalWithBootstrapButtons = Swal.mixin({
 window.toast = toast;
 window.swalWithBootstrapButtons = swalWithBootstrapButtons;
 
+
 let routes = [
 	//{ path: '/subscriptions', component: require('../components/admin/subscription/Subscriptions.vue') }
 ];

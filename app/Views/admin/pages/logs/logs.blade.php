@@ -29,7 +29,7 @@
 
         <div class="x_panel">                               
           <div class="x_content log-view">
-            {{$data}}
+            
             <div class="col-md-2 col-xs-12">
               @foreach($folders as $folder)
                 {{$folder}}
