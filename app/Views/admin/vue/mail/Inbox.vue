@@ -14,22 +14,22 @@
 			<!-- Inbox options -->
 			<ul class="inbox-nav inbox-divider">
 				<li :class="{ 'active': filter == 'inbox' }" @click="inboxview('inbox')">
-					<a href="#"><i class="fa fa-inbox"></i> Inbox <span v-if="this.unreadinbox > 0">({{unreadinbox}})</span></a>
+					<a href="#"> Inbox <span v-if="this.unreadinbox > 0">({{unreadinbox}})</span></a>
 				</li>
 				<li :class="{ 'active': filter == 'sent' }" @click="inboxview('sent')">
-					<a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
+					<a href="#"> Sent Mail</a>
 				</li>
 				<li :class="{ 'active': filter == 'important' }" @click="inboxview('important')">
-					<a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
+					<a href="#"> Important</a>
 				</li>
 				<li :class="{ 'active': filter == 'draft' }" @click="inboxview('draft')">
-					<a href="#"><i class=" fa fa-external-link"></i> Drafts <span v-if="this.draft > 0">({{draft}})</span></a>
+					<a href="#"> Drafts <span v-if="this.draft > 0">({{draft}})</span></a>
 				</li>
 				<li :class="{ 'active': filter == 'trash' }" @click="inboxview('trash')">
-					<a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
+					<a href="#"> Trash</a>
 				</li>
 				<li :class="{ 'active': filter == 'spam' }" @click="inboxview('spam')">
-					<a href="#"><i class=" fa fa-ban"></i> Spam </a>
+					<a href="#"> Spam </a>
 				</li>
 			</ul>		
 
@@ -53,26 +53,7 @@
 						</ul>
 					</div>
 
-					<div class="btn-group">
-						<a data-toggle="dropdown" href="#" class="btn mini blue">
-							Move to
-							<i class="fa fa-angle-down "></i>
-						</a>
-						<ul class="dropdown-menu">
-							<li @click.prevent="moveMail('inbox')">
-								<a href="#">
-								<i class="fa fa-pencil"></i> Inbox </a>
-							</li>
-							<li @click.prevent="moveMail('trash')">
-								<a href="#">
-								<i class="fa fa-ban"></i> Trash </a>
-							</li>
-							<li @click.prevent="moveMail('spam')">
-								<a href="#">
-								<i class="fa fa-trash-o"></i> Spam </a>
-							</li>
-						</ul>
-					</div>
+					
 
 					<div class="btn-group">
 						<a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" class="btn mini tooltips" v-on:click.prevent @click="refreshmail">
@@ -104,8 +85,10 @@
 
 				<table v-if="paginatedData.length > 0" class="table table-inbox table-hover">
 					
+					
+
 					<tbody>
-						<tr v-for="mail in paginatedData" v-bind:key="mail.id" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">
+						<tr v-for="mail in paginatedData" v-bind:key="mail.id" v-bind:class="mail.status" @contextmenu.prevent="$refs.menu.open($event,mail.id)" id="mail-list">							
 							<td class="inbox-small-cells">
 								<input type="checkbox" class="mail-checkbox" @click="selectmail(mail.id)">
 							</td>
@@ -127,7 +110,7 @@
 					</tbody>
 				</table>
 
-				<div v-else class="no-mail-msg"> No Mail to view </div>
+				<!--div v-else class="no-mail-msg"> No Mail to view </div-->
 
 			</div>
 		</aside>

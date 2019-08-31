@@ -5,8 +5,8 @@
 			
 	        <!-- Lastname -->
 	        <div class="form-group wp-input">
-	            <label for="name" class="col-sm-2 col-xs-2 ">Name</label>
-	            <div class="col-sm-10 col-xs-10">
+	            <label for="name" class="col-sm-3 col-xs-3 ">Name</label>
+	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
 	                    <input type="text" class="form-control input-sm"  v-model="user_update.name">
 	                </div>
@@ -15,8 +15,8 @@
 	        
 	        <!-- Designation -->
 	        <div class="form-group wp-input">
-	            <label for="Email" class="col-sm-2 col-xs-2 ">Designation</label>
-	            <div class="col-sm-10 col-xs-10">
+	            <label for="Email" class="col-sm-3 col-xs-3 ">Designation</label>
+	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
 	                    <input type="text" class="form-control input-sm" v-model="user_update.designation">
 	                </div>
@@ -25,9 +25,9 @@
 
 	        <!--Experience-->
 	        <div class="form-group wp-input">
-	            <label for="InputExperience" class="col-sm-2 col-xs-2 ">Experience</label>
+	            <label for="InputExperience" class="col-sm-3 col-xs-3 ">Experience</label>
 
-	            <div class="col-sm-10 col-xs-10">
+	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.experience"></textarea>
 	                </div>
@@ -36,9 +36,9 @@
 
 	        <!-- Skills -->
 	        <div class="form-group wp-input">
-	            <label for="Skills" class="col-sm-2 col-xs-2 ">My Skills</label>
+	            <label for="Skills" class="col-sm-3 col-xs-3 ">My Skills</label>
 
-	            <div class="col-sm-10 col-xs-10">
+	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.skills"></textarea>
 	                </div>
@@ -47,9 +47,9 @@
 
 	        <!-- description -->
 	        <div class="form-group wp-input">
-	            <label for="InputSkills" class="col-sm-2 col-xs-2">About me</label>
+	            <label for="InputSkills" class="col-sm-3 col-xs-3">About me</label>
 
-	            <div class="col-sm-10 col-xs-10">
+	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
 	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.description"></textarea>
 	                </div>
@@ -58,9 +58,9 @@
 	        </div>
 			
 			<!-- Avtar Image -->
-	        <div v-if="this.user_update.avatar_url == ''" class="form-group wp-input">
-	            <label for="InputSkills" class="col-sm-2 col-xs-2">Avatar Image</label>
-	            <div class="col-sm-10 col-xs-10">
+	        <div v-if="this.user_update.avatar_url == null" class="form-group wp-input">
+	            <label for="InputSkills" class="col-sm-3 col-xs-3">Avatar Image</label>
+	            <div class="col-sm-9 col-xs-9">
 	                <div   class="form-line">
 	                    <input type="file" class="form-control input-sm" v-on:change="onImageChange">
 	                </div>    

@@ -7,7 +7,7 @@
             </div>                                       
             <div class="content-area">
                 <h3>{{user.name}}</h3>
-                <p>{{user.designation}}</p>
+                <p>{{profile.designation}}</p>
                 <span v-for="role in roles" class="label label-info label-many">{{role}}</span>
             </div>
 
@@ -44,8 +44,8 @@
 		data(){
 			return{
               initial:'',
-              url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6AbD1GNiwzJwmG5vl2V8QwDyfjae_ygW-Q5KrJLAe0uffm4tEw',
               fullname:'',
+              designation:'',
               image:''
 			}
 		},
