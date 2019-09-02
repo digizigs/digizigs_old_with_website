@@ -350,8 +350,11 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 //Dashboard//
 Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
 
-    Route::get('/', 'Dashboard\DashboardController@home')->name('dashboard');
-
+    Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
+    //Route::get('/', 'Dashboard\DashboardController@home2')->name('dashboard.home2');
+    //Route::get('/', 'Dashboard\DashboardController@home3')->name('dashboard.home3');
+    //Route::get('/', 'Dashboard\DashboardController@home4')->name('dashboard.home4');
+    Route::get('/mail', 'Dashboard\DashboardController@mail')->name('app.mail');
 
 
 });

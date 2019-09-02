@@ -11,4 +11,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.pages.home.home');
     }
+
+     public function mail()
+    {
+        return view('dashboard.pages.mail.mail');
+    }
+    
 }
