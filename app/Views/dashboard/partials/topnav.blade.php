@@ -19,20 +19,22 @@
           <a href="{{route('app.home')}}" class="nav-link"><i data-feather="pie-chart"></i> Dashboard</a>
           
         </li>
-          <li class="nav-item with-sub">
+          <li class="nav-item with-sub active">
               <a href="#" class="nav-link"><i data-feather="package"></i> Apps</a>
               <ul class="navbar-menu-sub">
-                <li class="nav-sub-item"><a href="app-calendar.html" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
-                <li class="nav-sub-item"><a href="app-chat.html" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
-                <li class="nav-sub-item"><a href="app-contacts.html" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
-                <li class="nav-sub-item"><a href="app-file-manager.html" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
+                <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
+                <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
+                <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
+                <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
                 <li class="nav-sub-item"><a href="{{route('app.mail')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
               </ul>
           </li>
+
           <li class="nav-item with-sub">
               <a href="#" class="nav-link"><i data-feather="layers"></i> Pages</a>
               <div class="navbar-menu-sub">
                 <div class="d-lg-flex">
+                  
                   <ul>
                     <li class="nav-label">Authentication</li>
                     <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="log-in"></i> Sign In</a></li>
@@ -60,8 +62,24 @@
                 </div>
               </div><!-- nav-sub -->
           </li>
-          <li class="nav-item"><a href="" class="nav-link"><i data-feather="box"></i> Components</a></li>
-          <li class="nav-item"><a href="" class="nav-link"><i data-feather="archive"></i> Collections</a></li>
+
+          <li class="nav-item with-sub">
+              <a href="#" class="nav-link"><i data-feather="layers"></i> Options </a>
+              <div class="navbar-menu-sub">
+                <div class="d-lg-flex">
+                  <ul>               
+                    <li class="nav-label">Access Control</li>
+                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i class="fa fa-users" aria-hidden="true"></i> Users</a></li>
+                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
+                    @can('manage_permission')
+                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i class="fa fa-key" aria-hidden="true"></i> Permission </a></li>
+                    @endcan
+                  </ul>
+                  
+                  
+                </div>
+              </div><!-- nav-sub -->
+          </li>
       </ul>
   </div><!-- navbar-menu-wrapper -->
 
@@ -168,11 +186,11 @@
 
       <div class="dropdown dropdown-profile">
         <a href="#" class="dropdown-link" data-toggle="dropdown" data-display="static">
-          <div class="avatar avatar-sm"><img src="{{asset('public/dashboard/assets/img/img1.png')}}" class="rounded-circle" alt=""></div>
+          <div class="avatar avatar-sm"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
         </a><!-- dropdown-link -->
         <div class="dropdown-menu dropdown-menu-right tx-13">
-          <div class="avatar avatar-lg mg-b-15"><img src="{{asset('public/dashboard/assets/img/img1.png')}}" class="rounded-circle" alt=""></div>
-          <h6 class="tx-semibold mg-b-5">Katherine Pechon</h6>
+          <div class="avatar avatar-lg mg-b-15"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
+          <h6 class="tx-semibold mg-b-5">{{Auth::user()->name }}</h6>
           <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
 
           <a href="#" class="dropdown-item"><i data-feather="edit-3"></i> Edit Profile</a>

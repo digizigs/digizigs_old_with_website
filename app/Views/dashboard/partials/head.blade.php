@@ -21,10 +21,13 @@
 
 
 <!-- vendor css -->
-<link href="{{asset('public//dashboard/lib/%40fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+<link href="{{asset('public//dashboard/lib/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
 <link href="{{asset('public//dashboard/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
-<link href="{{asset('public//dashboard/lib/jqvmap/jqvmap.min.css')}}" rel="stylesheet">
+<!--link href="{{asset('public//dashboard/lib/jqvmap/jqvmap.min.css')}}" rel="stylesheet"-->
+<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.css')}}">
+<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.css')}}">
+<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashboard.css')}}">
 
 <!-- DashForge CSS -->
-<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.css')}}">
-<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.dashboard.css')}}">
+<!--link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.css')}}">
+<link rel="stylesheet" href="{{asset('public//dashboard/assets/css/dashforge.dashboard.css')}}"-->

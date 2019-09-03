@@ -351,11 +351,11 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
 
     Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
-    //Route::get('/', 'Dashboard\DashboardController@home2')->name('dashboard.home2');
-    //Route::get('/', 'Dashboard\DashboardController@home3')->name('dashboard.home3');
-    //Route::get('/', 'Dashboard\DashboardController@home4')->name('dashboard.home4');
     Route::get('/mail', 'Dashboard\DashboardController@mail')->name('app.mail');
-
+    Route::get('/chat', 'Dashboard\DashboardController@chat')->name('app.chat');
+    Route::get('/calender', 'Dashboard\DashboardController@calender')->name('app.calender');
+    Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
+    Route::get('/contact', 'Dashboard\DashboardController@contact')->name('app.contact');
 
 });
 

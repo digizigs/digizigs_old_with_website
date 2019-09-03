@@ -12,9 +12,29 @@ class DashboardController extends Controller
         return view('dashboard.pages.home.home');
     }
 
-     public function mail()
+    public function mail()
     {
         return view('dashboard.pages.mail.mail');
+    }
+
+    public function chat()
+    {
+        return view('dashboard.pages.chat.chat');
+    }
+
+    public function calender()
+    {
+        return view('dashboard.pages.calender.calender');
+    }
+
+    public function file()
+    {
+        return view('dashboard.pages.file.file');
+    }
+
+    public function contact()
+    {
+        return view('dashboard.pages.contact.contact');
     }
     
 }

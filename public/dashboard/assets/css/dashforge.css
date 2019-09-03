@@ -1,16 +1,42 @@
-/*
 
-/* ############### FONTS IMPORT ############### */
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,900");
 @import url("https://fonts.googleapis.com/css?family=Rubik:300,400");
 
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+
+
+
+/* --------------------------------------------------------------------------
+Single variable font.
+
+Note that you may want to do something like this to make sure you're serving
+constant fonts to older browsers:
+html {
+  font-family: 'Inter UI', sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter UI var', sans-serif;
+  }
+}
+
+BUGS:
+- Safari 12.0 will default to italic instead of regular when font-weight
+  is provided in a @font-face declaration.
+  Workaround: Use "Inter UI var alt" for Safari, or explicitly set
+  `font-variation-settings:"slnt" DEGREE`.
+*/
 @font-face {
   font-family: 'Inter UI var';
   font-weight: 100 900;
   font-style: oblique 0deg 10deg;
-  src: url("Inter-UI.var.html") format("woff2-variations"), url("Inter-UI.var.html") format("woff2"); }
+  src: url("Inter-UI.var.woff2") format("woff2-variations"), url("Inter-UI.var.woff2") format("woff2"); }
 
 /* --------------------------------------------------------------------------
 
@@ -28,14 +54,14 @@
   font-weight: 100 900;
   font-style: normal;
   font-named-instance: 'Regular';
-  src: url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2 supports variations(gvar)"), url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2-variations"), url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2"); }
+  src: url("../fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2 supports variations(gvar)"), url("../fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2-variations"), url("../fonts/inter-ui/Inter-UI-upright.var.woff2") format("woff2"); }
 
 @font-face {
   font-family: 'Inter UI var alt';
   font-weight: 100 900;
   font-style: italic;
   font-named-instance: 'Italic';
-  src: url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2 supports variations(gvar)"), url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2-variations"), url("http://themepixels.me/dashforge/assets/fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2"); }
+  src: url("../fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2 supports variations(gvar)"), url("../fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2-variations"), url("../fonts/inter-ui/Inter-UI-italic.var.woff2") format("woff2"); }
 
 /* ############### BOOTSTRAP FRAMEWORK ############### */
 /*!
@@ -11701,7 +11727,6 @@ textarea.parsley-success:focus {
   justify-content: flex-start;
   background-color: #fff;
   border-bottom: 1px solid rgba(72, 94, 144, 0.16); }
-  
   @media (min-width: 992px) {
     .navbar-header {
       height: 60px; } }
@@ -11976,7 +12001,9 @@ textarea.parsley-success:focus {
         margin-left: 30px; } }
   .navbar-menu .nav-item.active .nav-link {
     position: relative;
-    color: #0168fa; }
+    color: #0168fa;
+    font-weight:600px; 
+  }
     .navbar-menu .nav-item.active .nav-link::before {
       content: '';
       position: absolute;
@@ -12976,14 +13003,12 @@ textarea.parsley-success:focus {
     .df-settings {
       transition: none; } }
   .df-settings.show {
-    right: 200px; }
-    .df-settings.show .df-settings-link {
-      position: relative; }
-      .df-settings.show .df-settings-link, .df-settings.show .df-settings-link:hover, .df-settings.show .df-settings-link:focus {
-        background-color: #fff;
-        border-color: #c0ccda;
-        color: #1c273c;
-        box-shadow: -5px 0 10px rgba(28, 39, 60, 0.1); }
+    right: 250px; }
+    .df-settings.show .df-settings-link, .df-settings.show .df-settings-link:hover, .df-settings.show .df-settings-link:focus {
+      background-color: #fff;
+      border-color: #c0ccda;
+      color: #1c273c;
+      box-shadow: none; }
 
 .df-settings-link {
   position: absolute;
@@ -12991,13 +13016,13 @@ textarea.parsley-success:focus {
   left: -44px;
   width: 45px;
   height: 45px;
-  background-color: #1c273c;
-  border: 1px solid transparent;
-  border-right-width: 0;
-  color: #fff;
+  background-color: #fff;
+  color: #7987a1;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid #c0ccda;
+  border-right-width: 0;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   transition: all 0.2s ease-in-out;
@@ -13006,41 +13031,12 @@ textarea.parsley-success:focus {
     .df-settings-link {
       transition: none; } }
   .df-settings-link:hover, .df-settings-link:focus {
-    color: #fff;
-    background-color: #3b4863;
+    color: #1c273c;
+    border-color: #8392a5;
     box-shadow: 0 0 10px 2px rgba(28, 39, 60, 0.1); }
-
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  to {
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-
-@keyframes rotating {
-  from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg); } }
   .df-settings-link svg {
     width: 20px;
-    height: 20px;
-    -webkit-animation: rotating 3s linear infinite;
-    -moz-animation: rotating 3s linear infinite;
-    -ms-animation: rotating 3s linear infinite;
-    -o-animation: rotating 3s linear infinite;
-    animation: rotating 3s linear infinite; }
+    height: 20px; }
 
 .df-settings-body {
   position: absolute;
@@ -24674,9 +24670,6 @@ a.bg-twitter:hover, a.bg-twitter:focus, button.bg-twitter:hover, button.bg-twitt
 
 .img-object-top {
   object-position: top; }
-
-.img-object-top-left {
-  object-position: top left; }
 
 .stroke-wd-2-5 {
   stroke-width: 2.5px; }
