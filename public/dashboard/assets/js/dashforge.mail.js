@@ -33,7 +33,7 @@ $(function(){
     }
 
     if(window.matchMedia('(min-width: 768px)').matches) {
-      $('#mailSidebar').removeClass('d-md-none');
+      $('#Sidebar').removeClass('d-md-none');
       $('#mainMenuOpen').removeClass('d-md-flex');
     }
   })
@@ -87,7 +87,7 @@ $(function(){
   })
 
 
-  $('#mailSidebar').on('click touchstart', function(e){
+  $('#Sidebar').on('click touchstart', function(e){
     e.preventDefault()
 
     if($('body').hasClass('mail-content-show')) {
@@ -95,12 +95,12 @@ $(function(){
     } else {
       $('body').addClass('mail-sidebar-show');
 
-      $('#mailSidebar').addClass('d-none');
+      $('#Sidebar').addClass('d-none');
       $('#mainMenuOpen').removeClass('d-none');
     }
 
     if(window.matchMedia('(min-width: 768px)').matches) {
-      $('#mailSidebar').addClass('d-md-none');
+      $('#Sidebar').addClass('d-md-none');
       $('#mainMenuOpen').addClass('d-md-flex');
     }
   })
@@ -114,7 +114,7 @@ $(function(){
       if(!sb) {
         $('body').removeClass('mail-sidebar-show');
 
-        $('#mailSidebar').removeClass('d-none');
+        $('#Sidebar').removeClass('d-none');
         $('#mainMenuOpen').addClass('d-none');
       }
     }

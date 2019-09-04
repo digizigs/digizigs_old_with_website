@@ -36,5 +36,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.pages.contact.contact');
     }
+
+    public function applog()
+    {
+        return view('dashboard.pages.logs.error');
+    }
     
 }

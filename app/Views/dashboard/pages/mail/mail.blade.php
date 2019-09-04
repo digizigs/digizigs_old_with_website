@@ -259,7 +259,7 @@
 			</p>
 			</div>
 			<div class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
-			<div id="editor-container" class="tx-13 tx-lg-14 ht-100">
+			<div id="editor-container" class="tx-13 tx-lg-14 ht-500">
 				Type here to <u>Reply</u> or <u>Forward</u>
 			</div>
 			<div class="d-flex align-items-center justify-content-between mg-t-10">
@@ -341,11 +341,11 @@
 @section('javascript')
 	 
 	
-  <script src="{{asset('public/dashboard/lib/quill/quill.min.js')}}"></script>
+  	<script src="{{asset('public/dashboard/lib/quill/quill.min.js')}}"></script>
 	<script src="{{asset('public/dashboard/assets/js/dashforge.mail.js')}}"></script>
 
 	<!-- append theme customizer -->
 	<!--script src="{{asset('public/dashboard/lib/js-cookie/js.cookie.js')}}"></script>
-  <script src="{{asset('public/dashboard/assets/js/dashforge.settings.js')}}"></script-->
+  	<script src="{{asset('public/dashboard/assets/js/dashforge.settings.js')}}"></script-->
 
 @endsection

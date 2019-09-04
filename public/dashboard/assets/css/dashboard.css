@@ -1,9 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900);@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i);body,
 html {
-  font-size: 13px;
   font-weight: 500 !important;
   color: #455A64;
-  font-family: open sans, sans-serif;
 }
 
 .fa {

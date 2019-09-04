@@ -9,7 +9,7 @@ $(function(){
     suppressScrollX: true
   });
 
-  $('#filemgrMenu').on('click', function(e){
+  $('#Sidebar').on('click', function(e){
     e.preventDefault();
 
     $('body').addClass('filemgr-sidebar-show');
@@ -27,7 +27,7 @@ $(function(){
       if(!sb) {
         $('body').removeClass('filemgr-sidebar-show');
 
-        $('#filemgrMenu').removeClass('d-none');
+        $('#Sidebar').removeClass('d-none');
         $('#mainMenuOpen').addClass('d-none');
       }
     }
