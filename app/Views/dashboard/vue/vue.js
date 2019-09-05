@@ -10,6 +10,14 @@ Vue.use(VueRouter)
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 
+//Mail Box
+Vue.component('mailbox', require('./mail/Mailbox.vue'));
+Vue.component('mail-compose', require('./mail/MailCompose.vue'));
+Vue.component('mail-content', require('./mail/MailContent.vue'));
+Vue.component('mailbox-group', require('./mail/MailboxGroup.vue'));
+Vue.component('mailbox-sidebar', require('./mail/MailboxSidebar.vue'));
+
+
 
 let routes = [
 	{ path: '/foo', component: Foo },
@@ -47,3 +55,40 @@ const app = new Vue({
  
  
  });
+
+
+ Vue.filter('vueDate',function(created){
+    return moment(created).format('DD-MM-YYYY');
+  })
+  
+  Vue.filter('vueAgoTime',function(created){
+    if(created){
+      return moment(created).calendar();
+    }
+  })
+  
+  Vue.filter('vueMoment',function(created){
+    return moment(created).fromNow();
+  })
+  Vue.filter('vueDay',function(created){
+    return moment(created).format("MMM Do");    
+  })
+  
+  Vue.filter('mailname',function(from){
+    var frm = from.split('<')[0];
+    var someStr = frm;
+    return someStr.replace(/['"]+/g, '');
+  })
+  Vue.filter('mailSenderName',function(from){
+    var frm = from.split('<')[0];
+    return frm;
+  })
+  Vue.filter('mailSenderEmail',function(from){
+    var frm = str.split('<').pop().split('>')[0];
+    return from;
+  })
+  
+  Vue.filter('removeuotation',function(subject){
+    var someStr = subject;
+    return someStr.replace(/['"]+/g, '');
+  })

@@ -58,6 +58,7 @@ $(function(){
 
   $('#mailComposeBtn').on('click', function(){
     $('#mailCompose').addClass('show');
+
   })
 
   $('#mailComposeClose').on('click', function(e){

@@ -28,7 +28,7 @@
                 <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
                 <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
                 <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
-                <li class="nav-sub-item"><a href="{{route('app.mail')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
+                <li class="nav-sub-item"><a href="{{route('mail.index')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
 
                 <li class="nav-label mg-t-20">Logs</li>
                 <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="edit"></i> Change Logs</a></li>
@@ -36,6 +36,60 @@
 
 
               </ul>
+          </li>
+
+          <li class="nav-item with-sub">
+              <a href="#" class="nav-link"><i data-feather="layers"></i> Apps</a>
+              <div class="navbar-menu-sub">
+                <div class="d-lg-flex">
+                  
+                  <ul>
+                    <li class="nav-label">Applications</li>
+                    <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
+                    <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
+                    <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
+                    <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
+                    <li class="nav-sub-item"><a href="{{route('mail.index')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
+
+                    <li class="nav-label mg-t-20">Logs</li>
+                    <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="edit"></i> Change Logs</a></li>
+                    <li class="nav-sub-item"><a href="{{route('app.applog')}}" class="nav-sub-link"><i data-feather="zap"></i> Error Logs</a></li>
+
+                  </ul>
+                  <ul>
+                    <li class="nav-label">Access Controls</li>
+                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
+                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
+                   
+                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                    @can('manage_permission')
+                    @endcan
+
+                    <li class="nav-label mg-t-20">Publish</li>
+                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> All Articles</a></li>
+                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Create Arcitle</a></li>
+                    
+                    <li class="nav-label mg-t-20">Category</li>
+                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
+                    <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Add Category</a></li>
+                    
+
+                  </ul>
+
+                  <ul>               
+                    <li class="nav-label">Access Controls</li>
+                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
+                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
+                    @can('manage_permission')
+                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                    @endcan
+                    <li class="nav-label mg-t-20">Publish</li>
+                    <li><i class="typcn typcn-archive"></i></li>
+                  </ul>
+
+
+                </div>
+              </div><!-- nav-sub -->
           </li>
 
           <li class="nav-item with-sub">
@@ -82,28 +136,6 @@
                   </ul>
 
 
-                </div>
-              </div><!-- nav-sub -->
-          </li>
-
-          <li class="nav-item with-sub">
-              <a href="#" class="nav-link"><i data-feather="layers"></i> Options </a>
-              <div class="navbar-menu-sub">
-                <div class="d-lg-flex">
-                  
-
-                  <ul>               
-                    <li class="nav-label">Access Contro</li>
-                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
-                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                    @can('manage_permission')
-                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
-                    @endcan
-                    <li class="nav-label mg-t-20">Publish</li>
-                    <li><i class="typcn typcn-archive"></i></li>
-                  </ul>
-                  
-                  
                 </div>
               </div><!-- nav-sub -->
           </li>
@@ -216,9 +248,9 @@
           <div class="avatar avatar-sm"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
         </a><!-- dropdown-link -->
         <div class="dropdown-menu dropdown-menu-right tx-13">
-          <div class="avatar avatar-lg mg-b-15"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
+          <div class="avatar avatar-lg mg-b-15 text-center"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
           <h6 class="tx-semibold mg-b-5">{{Auth::user()->name }}</h6>
-          <p class="mg-b-25 tx-12 tx-color-03">Administrator</p>
+          <p class="mg-b-25 tx-12 tx-color-03"> Administrator </p>
           <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item"><i data-feather="settings"></i>Account Settings</a>
