@@ -1,8 +1,8 @@
 {
     "/js/admin_main.js": "/js/admin_main.js",
+    "/dashboard/assets/js/dashboard.js": "/dashboard/assets/js/dashboard.js",
     "/js/web_main.js": "/js/web_main.js",
     "/css/web_main.css": "/css/web_main.css",
     "/css/admin_main.css": "/css/admin_main.css",
-    "/dashboard/assets/css/dashboard.css": "/dashboard/assets/css/dashboard.css",
-    "/dashboard/assets/js/dashboard.js": "/dashboard/assets/js/dashboard.js"
+    "/dashboard/assets/css/dashboard.css": "/dashboard/assets/css/dashboard.css"
 }

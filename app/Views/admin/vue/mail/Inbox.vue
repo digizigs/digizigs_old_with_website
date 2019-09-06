@@ -164,14 +164,7 @@
 <script type="text/javascript">
 
 	import { VueContext } from 'vue-context';
-	import TableComponent from 'vue-table-component';
-	TableComponent.settings({
-		tableClass: 'tableclass',
-		theadClass: '',
-		tbodyClass: '',
-		filterPlaceholder: 'Filter mail data',
-		filterNoResults: 'There are no matching rows',
-	});
+	
 	export default{
 		props:['user'],
 		components: {VueContext},

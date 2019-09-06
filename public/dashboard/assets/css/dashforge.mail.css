@@ -119,7 +119,7 @@
   bottom: 0; }
   .mail-group-body .media {
     padding: 15px 20px;
-    background-color: #fff;
+    background-color: #f8f9fc;
     cursor: pointer;
     transition: all 0.2s ease-in-out; }
     @media (prefers-reduced-motion: reduce) {
@@ -128,15 +128,12 @@
     .mail-group-body .media:hover, .mail-group-body .media:focus {
       background-color: #f3f8ff; }
     .mail-group-body .media.unread, .mail-group-body .media.unread:hover, .mail-group-body .media.unread:focus {
-      background-color: #f4f5f8; }
+      background-color: #fff; }
     .mail-group-body .media.selected, .mail-group-body .media.selected:hover, .mail-group-body .media.selected:focus {
       background-color: #ecf4ff; }
     .mail-group-body .media + .media {
       margin-top: -1px;
       border-top: 1px solid #e5e9f2; }
-    .mail-group-body .media.unread .subject {
-      font-size: 10px;
-    }
 
 .mail-group-label {
   display: block;
