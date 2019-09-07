@@ -59,7 +59,7 @@ class LogViewerController extends Controller
         }
 
         //return view('admin.pages.logs.logs',' data');
-        return app('view')->make('admin.pages.logs.logs', $data);
+        return app('view')->make('dashboard.pages.logs.error', $data);
         //return app('view',compact('data'));
     }
 

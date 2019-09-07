@@ -351,11 +351,21 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
 
     Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
-    Route::get('/mail', 'Dashboard\DashboardController@mail')->name('app.mail');
+    Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
+    //Route::get('/mail', 'Dashboard\DashboardController@mail')->name('app.mail');
     Route::get('/chat', 'Dashboard\DashboardController@chat')->name('app.chat');
     Route::get('/calender', 'Dashboard\DashboardController@calender')->name('app.calender');
-    Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
     Route::get('/contact', 'Dashboard\DashboardController@contact')->name('app.contact');
+
+    Route::get('/applog', 'Admin\LogViewer\LogViewerController@index')->name('app.applog');
+
+
+    //Mailbox
+    //Route::get('/mail/movemail','Admin\Mail\MailController@moveMail');
+    //Route::get('/mail/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    Route::resource('/mail', 'Dashboard\Mail\MailController'); //Contact
+
+
 
 });
 
