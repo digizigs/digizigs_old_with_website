@@ -66,6 +66,12 @@ const app = new Vue({
       return moment(created).calendar();
     }
   })
+
+  Vue.filter('dateTime',function(created){
+    if(created){
+      return moment(created).format('MMMM Do YYYY, h:mm:ss a');
+    }
+  })
   
   Vue.filter('vueMoment',function(created){
     return moment(created).fromNow();

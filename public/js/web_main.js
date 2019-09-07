@@ -4683,7 +4683,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(171)
+var listToStyles = __webpack_require__(166)
 
 /*
 type StyleObject = {
@@ -60283,25 +60283,58 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 166 */,
-/* 167 */
+/* 166 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+/* 167 */,
+/* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VueSingleSelect_vue__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VueSingleSelect_vue__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VueSingleSelect_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VueSingleSelect_vue__);
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0__VueSingleSelect_vue___default.a);
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(169)
+  __webpack_require__(170)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -60346,13 +60379,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(170);
+var content = __webpack_require__(171);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -60372,7 +60405,7 @@ if(false) {
 }
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -60383,39 +60416,6 @@ exports = module.exports = __webpack_require__(1)(false);
 exports.push([module.i, "\n.w-full[data-v-27213e1d] {\n    width: 100%;\n}\n.inline-block[data-v-27213e1d] {\n    display: inline-block;\n}\n.block[data-v-27213e1d] {\n    display: block;\n}\n.flex[data-v-27213e1d] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.border[data-v-27213e1d] {\n    border-width: thin;\n    border-style: solid;\n}\n.rounded[data-v-27213e1d] {\n    border-radius: 0.25em;\n}\n.text-black[data-v-27213e1d] {\n    color: #22292f;\n}\n.border-grey-lighter[data-v-27213e1d] {\n    border-color: #ced4da;\n}\n.bg-grey-lighter[data-v-27213e1d] {\n    background-color: #606f7b;\n}\n.bg-grey-light[data-v-27213e1d] {\n    background-color: #dae1e7;\n}\n.bg-grey-dark[data-v-27213e1d] {\n    background-color: #8795a1;\n}\n.bg-white[data-v-27213e1d] {\n    background-color: #fff;\n}\n.pin-r[data-v-27213e1d] {\n    right: 0;\n}\n.pin-y[data-v-27213e1d] {\n    top: 0;\n    bottom: 0;\n}\n.absolute[data-v-27213e1d] {\n    position: absolute;\n}\n.relative[data-v-27213e1d] {\n    position: relative;\n}\n.items-center[data-v-27213e1d] {\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.p-0[data-v-27213e1d] {\n    padding: 0;\n}\n.p-1[data-v-27213e1d] {\n    padding: 0.25em;\n}\n.px-1[data-v-27213e1d] {\n    padding-left: 0.25em;\n    padding-right: 0.25em;\n}\n.py-2[data-v-27213e1d] {\n    padding-top: 0.5em;\n    padding-bottom: 0.5em;\n}\n.px-2[data-v-27213e1d] {\n    padding-left: 0.5em;\n    padding-right: 0.5em;\n}\n.mt-px[data-v-27213e1d] {\n    margin-top: 1px;\n}\n.leading-tight[data-v-27213e1d] {\n    line-height: 1.25;\n}\n.leading-normal[data-v-27213e1d] {\n    line-height: 1.5;\n}\n.text-left[data-v-27213e1d] {\n    text-align: left;\n}\n.w-full[data-v-27213e1d] {\n    width: 100%;\n}\n.shadow[data-v-27213e1d] {\n    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);\n            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);\n}\n.list-reset[data-v-27213e1d] {\n    list-style: none;\n    padding: 0;\n}\n.overflow-auto[data-v-27213e1d] {\n    overflow: auto;\n}\n.appearance-none[data-v-27213e1d] {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n}\n.w-1[data-v-27213e1d] {\n    width: 0.25em;\n}\n.w-2[data-v-27213e1d] {\n    width: 0.5em;\n}\n.w-3[data-v-27213e1d] {\n    width: 0.75em;\n}\n.w-4[data-v-27213e1d] {\n    width: 1em;\n}\n.h-4[data-v-27213e1d] {\n    height: 1em;\n}\n.h-1[data-v-27213e1d] {\n    height: 0.25em;\n}\n.h-2[data-v-27213e1d] {\n    height: 0.5em;\n}\n.h-3[data-v-27213e1d] {\n    height: 0.75em;\n}\n.fill-current[data-v-27213e1d] {\n    fill: currentColor;\n}\n.no-underline[data-v-27213e1d] {\n    text-decoration: none;\n}\n.hover\\:no-underline[data-v-27213e1d]:hover {\n    text-decoration: none;\n}\n.outline-none[data-v-27213e1d] {\n    outline: 0;\n}\n.hover\\:outline-none[data-v-27213e1d] {\n    outline: 0;\n}\n.hover\\:bg-grey-light[data-v-27213e1d]:hover {\n    background-color: #dae1e7;\n}\n.shadow-md[data-v-27213e1d] {\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);\n            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);\n}\n.search-input[data-v-27213e1d] {\n    display: block;\n    width: 100%;\n    padding: 0.375em 0.75em;\n    font-size: 1em;\n    line-height: 1.5;\n    color: #495057;\n    background-color: #fff;\n    background-clip: padding-box;\n    border: 1px solid #ced4da;\n    border-radius: 0.25em;\n    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;\n    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.icons[data-v-27213e1d] {\n    padding: 0 1em;\n    right: 0;\n    top: 0;\n    bottom: 0;\n    fill: #606f7b;\n}\n.icons svg[data-v-27213e1d] {\n    width: 0.75em;\n    height: 0.75em;\n}\n.single-select-wrapper[data-v-27213e1d] {\n    position: relative;\n    margin-bottom: 0.5em;\n}\n.required[data-v-27213e1d] {\n    _color: #721c24;\n    _background-color: #f8d7da;\n    border-color: #f5c6cb;\n}\n.cursor-pointer[data-v-27213e1d] {\n    cursor: pointer;\n}\n.dropdown[data-v-27213e1d] {\n    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12),\n    0 2px 4px 0 rgba(0, 0, 0, 0.08);\n    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 2px 4px 0 rgba(0, 0, 0, 0.08);\n    background-color: #fff;\n    color: #606f7b;\n    border-radius: 0.25em;\n    line-height: 1.25;\n    text-align: left;\n}\n.dropdown > li[data-v-27213e1d] {\n    padding: 0.5em 0.75em;\n}\n.active[data-v-27213e1d] {\n    background: #dae1e7;\n}\n", ""]);
 
 // exports
-
-
-/***/ }),
-/* 171 */
-/***/ (function(module, exports) {
-
-/**
- * Translates the list format produced by css-loader into something
- * easier to manipulate.
- */
-module.exports = function listToStyles (parentId, list) {
-  var styles = []
-  var newStyles = {}
-  for (var i = 0; i < list.length; i++) {
-    var item = list[i]
-    var id = item[0]
-    var css = item[1]
-    var media = item[2]
-    var sourceMap = item[3]
-    var part = {
-      id: parentId + ':' + i,
-      css: css,
-      media: media,
-      sourceMap: sourceMap
-    }
-    if (!newStyles[id]) {
-      styles.push(newStyles[id] = { id: id, parts: [part] })
-    } else {
-      newStyles[id].parts.push(part)
-    }
-  }
-  return styles
-}
 
 
 /***/ }),
@@ -64125,7 +64125,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_single_select__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_single_select__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert2__ = __webpack_require__(176);

@@ -33,7 +33,7 @@ $(function(){
     }
 
     if(window.matchMedia('(min-width: 768px)').matches) {
-      $('#Sidebar').removeClass('d-md-none');
+      $('#mailSidebar').removeClass('d-md-none');
       $('#mainMenuOpen').removeClass('d-md-flex');
     }
   })
@@ -58,7 +58,6 @@ $(function(){
 
   $('#mailComposeBtn').on('click', function(){
     $('#mailCompose').addClass('show');
-
   })
 
   $('#mailComposeClose').on('click', function(e){
@@ -88,7 +87,7 @@ $(function(){
   })
 
 
-  $('#Sidebar').on('click touchstart', function(e){
+  $('#mailSidebar').on('click touchstart', function(e){
     e.preventDefault()
 
     if($('body').hasClass('mail-content-show')) {
@@ -96,12 +95,12 @@ $(function(){
     } else {
       $('body').addClass('mail-sidebar-show');
 
-      $('#Sidebar').addClass('d-none');
+      $('#mailSidebar').addClass('d-none');
       $('#mainMenuOpen').removeClass('d-none');
     }
 
     if(window.matchMedia('(min-width: 768px)').matches) {
-      $('#Sidebar').addClass('d-md-none');
+      $('#mailSidebar').addClass('d-md-none');
       $('#mainMenuOpen').addClass('d-md-flex');
     }
   })
@@ -115,7 +114,7 @@ $(function(){
       if(!sb) {
         $('body').removeClass('mail-sidebar-show');
 
-        $('#Sidebar').removeClass('d-none');
+        $('#mailSidebar').removeClass('d-none');
         $('#mainMenuOpen').addClass('d-none');
       }
     }
