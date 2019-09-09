@@ -4,38 +4,45 @@
 
 		<div class="mail-sidebar">
 			<div class="mail-sidebar-body">
-			<div class="pd-20">
-				<button id="mailComposeBtn" class="btn btn-primary btn-block tx-uppercase tx-10 tx-medium tx-sans tx-spacing-4">Compose</button>
-			</div>
-			<div class="pd-b-10 pd-x-10">
-				<nav class="nav nav-sidebar tx-13">
-				<a href="" class="nav-link active"><i data-feather="inbox"></i> <span>Inbox</span> <span class="badge">20</span></a>
-				<a href="" class="nav-link"><i data-feather="monitor"></i> <span>Starred</span> <span class="badge">3</span></a>
-				<a href="" class="nav-link"><i data-feather="clock"></i> <span>Important</span> <span class="badge">10</span></a>
-				<a href="" class="nav-link"><i data-feather="star"></i> <span>Sent Mail</span> <span class="badge">8</span></a>
-				<a href="" class="nav-link"><i data-feather="file"></i> <span>Drafts</span> <span class="badge">15</span></a>
-				<a href="" class="nav-link"><i data-feather="slash"></i> <span>Spam</span> <span class="badge">128</span></a>
-				<a href="" class="nav-link"><i data-feather="trash"></i> <span>Trash</span> <span class="badge">6</span></a>
-				</nav>
-			</div>
-			<div class="pd-10">
-				<label class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10">Label</label>
-				<nav class="nav nav-sidebar tx-13">
-				<a href="" class="nav-link"><i data-feather="folder"></i> <span>Social</span></a>
-				<a href="" class="nav-link"><i data-feather="folder"></i> <span>Promotions</span></a>
-				<a href="" class="nav-link"><i data-feather="folder"></i> <span>Updates</span></a>
-				<a href="" class="nav-link"><i data-feather="folder"></i> <span>Business</span></a>
-				<a href="" class="nav-link"><i data-feather="folder"></i> <span>Finance</span></a>
-				</nav>
-			</div>
 
-			<div class="pd-y-15 pd-x-10">
-				<label class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10">Tags</label>
-				<nav class="nav nav-sidebar tx-13">
-				<a href="" class="nav-link"><i data-feather="tag"></i> <span>Facebook</span></a>
-				<a href="" class="nav-link"><i data-feather="tag"></i> <span>Twitter</span></a>
-				</nav>
-			</div>
+				<div class="pd-20">
+					<button id="mailComposeBtn" class="btn btn-primary btn-block tx-uppercase tx-10 tx-medium tx-sans tx-spacing-4">Compose</button>
+				</div>
+
+				<div class="pd-b-10 pd-x-10">
+					<nav class="nav nav-sidebar tx-13">
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'inbox' }" v-on:click.prevent @click="mboxview('inbox')">
+							<i data-feather="inbox"></i> <span>Inbox</span> <span class="badge">20</span>
+						</a>
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'important' }" v-on:click.prevent @click="mboxview('important')">
+							<i data-feather="star"></i> <span>Important</span> <span class="badge">3</span>
+						</a>
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'sent' }" v-on:click.prevent @click="mboxview('sent')">
+							<i data-feather="send"></i> <span>Sent Mail</span> <span class="badge">8</span>
+						</a>
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'draft' }" v-on:click.prevent @click="mboxview('draft')">
+							<i data-feather="file"></i> <span>Drafts</span> <span class="badge">15</span>
+						</a>
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'spam' }" v-on:click.prevent @click="mboxview('spam')">
+							<i data-feather="slash"></i> <span>Spam</span> <span class="badge">128</span>
+						</a>
+						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'trash' }" v-on:click.prevent @click="mboxview('trash')">
+							<i data-feather="trash"></i> <span>Trash</span> <span class="badge">6</span>
+						</a>
+					</nav>
+				</div>
+				
+				<div class="pd-10">
+					<label class="tx-sans tx-uppercase tx-medium tx-10 tx-spacing-1 tx-color-03 pd-l-10">Label</label>
+					<nav class="nav nav-sidebar tx-13">
+					<a href="" class="nav-link"><i data-feather="folder"></i> <span>Social</span></a>
+					<a href="" class="nav-link"><i data-feather="folder"></i> <span>Promotions</span></a>
+					<a href="" class="nav-link"><i data-feather="folder"></i> <span>Updates</span></a>
+					<a href="" class="nav-link"><i data-feather="folder"></i> <span>Business</span></a>
+					<a href="" class="nav-link"><i data-feather="folder"></i> <span>Finance</span></a>
+					</nav>
+				</div>
+
 			</div><!-- mail-sidebar-body -->
 		</div><!-- mail-sidebar -->
 
@@ -51,7 +58,7 @@
 			<div class="mail-group-body">
 
 				<div class="pd-y-15 pd-x-20 d-flex justify-content-between align-items-center">
-					<h6 class="tx-uppercase tx-semibold mg-b-0">Inbox</h6>
+					<h6 class="tx-uppercase tx-semibold mg-b-0"> {{mbox}} <span v-if="mails.length > 0 ">({{mails.length}})</span></h6>
 					<div class="dropdown tx-13">
 					<span class="tx-color-03">Sort:</span> <a href="#" class="dropdown-link link-02" v-on:click.prevent @click="sortmail" >Date</a>
 					</div><!-- dropdown -->
@@ -74,8 +81,8 @@
 			
 			
 			
-				<div v-if="loadmaoredata" class="pd-t-1 pd-b-5 pd-x-5">
-					<a  class="btn btn-xs btn-block btn-light bd-0 tx-uppercase tx-10 tx-spacing-1 tx-medium mn-ht-0" v-on:click.prevent @click="loadmore">
+				<div v-if="mails.length > limit" class="pd-t-1 pd-b-5 pd-x-5">
+					<a href="#"  class="btn btn-xs btn-block btn-light bd-0 tx-uppercase tx-10 tx-spacing-1 tx-medium mn-ht-0" v-on:click.prevent @click="loadmore">
 						Load more
 					</a>
 				</div>
@@ -100,7 +107,9 @@
 					<a href="" data-toggle="tooltip" title="Report Spam" class="nav-link d-none d-sm-block"><i data-feather="slash"></i></a>
 					<a href="" data-toggle="tooltip" title="Mark Unread" class="nav-link d-none d-sm-block"><i data-feather="mail"></i></a>
 					<span class="nav-divider d-none d-sm-block"></span>
-					<a href="" data-toggle="tooltip" title="Mark Important" class="nav-link d-none d-sm-block"><i data-feather="star"></i></a>
+					<a href="" data-toggle="tooltip" title="Mark Important" class="nav-link d-none d-sm-block">
+						<i data-feather="star"></i>
+					</a>
 					<a href="" data-toggle="tooltip" title="Trash" class="nav-link d-none d-sm-block"><i data-feather="trash"></i></a>
 					<a href="" data-toggle="tooltip" title="Print" class="nav-link d-none d-sm-block"><i data-feather="printer"></i></a>
 					<a href="" data-toggle="tooltip" title="Options" class="nav-link d-sm-none"><i data-feather="more-vertical"></i></a>
@@ -181,13 +190,14 @@
 		data(){
 			return{
 				filter:'',
+				mbox:'inbox',
 				email:'',
 				user:{},
 				nmails:[],
 				mails:[],
 				mail:'',
-				limit: 5,
-				count:5,
+				limit: 10,
+				count:10,
 				dataloaded:false,
 				loadmaoredata:true
 			}
@@ -209,10 +219,31 @@
 			}
 		},
 		methods:{
+			getmails(){
+				NProgress.start();
+				axios.get('mail/create',{params:{filter:this.filter,email:this.user.email}})
+					.then((response) => {
+						console.log(response.data)
+						this.nmails = response.data
+						this.mails = this.nmails.filter(value => value.label === this.mbox)
+
+
+						if(this.mails.length > 0){				
+							this.dataloaded = true
+						}
+						NProgress.done();
+						//this.mail = this.mails[0]
+						//this.mails=response.data
+						//this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox')
+						//this.dataloaded = true
+					})
+				.catch((error) => console.log(error))
+			},
 			viewmail:function(mail){
-				console.log(mail.subject)
+
+				NProgress.start();
 				this.mail = mail
-				//this.$emit('mailclick', mail)
+				NProgress.done();
 				
 				new PerfectScrollbar('.mail-content-body', {
 					suppressScrollX: true
@@ -245,13 +276,39 @@
 					$('#mainMenuOpen').removeClass('d-md-flex');
 				}
 			},
+			mboxview(mbox){
+				
+				console.log(mbox)
+				this.mbox = mbox
+				this.getmails();
+
+				if(mbox == 'inbox'){
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === mbox)
+				}
+				if(mbox == 'important'){
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === mbox)
+				}
+				if(mbox == 'sent'){
+					this.mails = this.nmails.filter(value => value.type === 'outbound' && value.label === mbox)
+				}
+				if(mbox == 'draft'){
+					this.mails = this.nmails.filter(value => value.type === 'outbound' && value.label === mbox)
+				}
+				if(mbox == 'spam'){
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === mbox)
+				}
+				if(mbox == 'trash'){
+					this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === mbox)
+				}
+				
+			
+				
+			},
 			loadmore(){
 				this.limit+=this.count
 				if(this.maildata.length >= this.mails.length){
 					this.loadmaoredata = false
 				}
-				//console.log('load more')
-				//console.log(this.maildata)
 			},
 			sortmail(){
 				this.mails = this.mails.reverse();
@@ -259,22 +316,7 @@
 			}
 		},
 		created(){
-			axios.get('mail/create',{params:{filter:this.filter,email:this.user.email}})
-					.then((response) => {
-						console.log(response.data)
-						this.mails = response.data
-						this.dataloaded = true
-
-						if(this.mails.length > 0){				
-							this.dataloaded = true
-						}
-						
-						//this.mail = this.mails[0]
-						//this.mails=response.data
-						//this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox')
-						//this.dataloaded = true
-					})
-				.catch((error) => console.log(error))
+			this.getmails()
 		}
 	};
 

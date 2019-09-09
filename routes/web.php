@@ -163,8 +163,9 @@ Route::get('/getmails',function(){
     $response = $client->post($uri, $params);
     $response = $response->getBody()->getContents();
     //return json_decode($response, true);
-    $data = json_decode($response, true);                        
-    foreach($data as $res){
+    $data = json_decode($response, true);
+    $data = array_reverse($data);                        
+    foreach($data  as $res){
         //print $res['domain'];
         //return $res;
         $mail = new Mail;

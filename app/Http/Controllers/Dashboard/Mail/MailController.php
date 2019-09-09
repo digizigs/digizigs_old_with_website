@@ -19,7 +19,7 @@ class MailController extends Controller
    
     public function create(Request $request){
         
-        $mail = Mail::orderby('created_at','desc')->get();
+        $mail = Mail::orderby('id','desc')->get();
         return request()->json(200,$mail);
         
     }

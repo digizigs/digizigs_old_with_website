@@ -4,7 +4,7 @@
 
 
 @section('css')
-	
+
 	<link href="{{asset('public/dashboard/lib/quill/quill.core.css')}}" rel="stylesheet">
     <link href="{{asset('public/dashboard/lib/quill/quill.snow.css')}}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.mail.css')}}">
@@ -73,7 +73,7 @@
 
 @section('javascript')
 	 
-	
+
   	<script src="{{asset('public/dashboard/lib/quill/quill.min.js')}}"></script>
 	<!--script src="{{asset('public/dashboard/assets/js/dashforge.mail.js')}}"></script-->
 
