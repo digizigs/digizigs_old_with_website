@@ -53,13 +53,13 @@
 				<div class="pd-y-15 pd-x-20 d-flex justify-content-between align-items-center">
 					<h6 class="tx-uppercase tx-semibold mg-b-0">Inbox</h6>
 					<div class="dropdown tx-13">
-					<span class="tx-color-03">Sort:</span> <a href="" class="dropdown-link link-02">Date</a>
+					<span class="tx-color-03">Sort:</span> <a href="#" class="dropdown-link link-02" v-on:click.prevent @click="sortmail" >Date</a>
 					</div><!-- dropdown -->
 				</div>
 
-				<label class="mail-group-label">Today</label>
+				
 				<ul class="list-unstyled media-list mg-b-0">
-					<li v-for="mail in mails" v-bind:key="mail.id" class="media unread" @click="viewmail(mail)">
+					<li v-for="mail in maildata" v-bind:key="mail.id" class="media" v-bind:class="mail.status" @click="viewmail(mail)" @contextmenu.prevent="$refs.menu.open($event,mail.id)" >
 						<div class="avatar"><span class="avatar-initial rounded-circle bg-indigo">d</span></div>
 						<div class="media-body mg-l-15">
 							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
@@ -70,46 +70,14 @@
 							<p class="tx-12 tx-color-03 mg-b-0">{{mail.body_plain.slice(0,150)}} </p>
 						</div><!-- media-body -->
 					</li>
-
-					<li class="media">
-						<div class="avatar"><img src="https://via.placeholder.com/350" class="rounded-circle" alt=""></div>
-						<div class="media-body mg-l-15">
-							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
-							<span class="tx-12">Reynante Labares</span>
-							<span class="tx-11">11:40am</span>
-							</div>
-							<h6 class="tx-13">30 Seconds Survey to Your Next Job</h6>
-							<p class="tx-12 tx-color-03 mg-b-0">Aenean commodo ligula eget dolor. Ae nean massa. Cum sociis natoque </p>
-						</div><!-- media-body -->
-					</li>
-					<li class="media">
-						<div class="avatar"><span class="avatar-initial rounded-circle bg-gray-800">r</span></div>
-						<div class="media-body mg-l-15">
-							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
-							<span class="tx-12">Rolando Paloso</span>
-							<span class="tx-11">10:54am</span>
-							</div>
-							<h6 class="tx-13">Watch, Listen and Play Longer</h6>
-							<p class="tx-12 tx-color-03 mg-b-0">Aenean commodo ligula eget dolor. Ae nean massa. Cum sociis natoque </p>
-						</div><!-- media-body -->
-					</li>
-					<li class="media">
-						<div class="avatar"><span class="avatar-initial rounded-circle bg-pink">s</span></div>
-						<div class="media-body mg-l-15">
-							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
-							<span class="tx-12">Socrates Itumay</span>
-							<span class="tx-11">09:50am</span>
-							</div>
-							<h6 class="tx-13">Pre-Order Sale: Mastering CSS</h6>
-							<p class="tx-12 tx-color-03 mg-b-0">Aenean commodo ligula eget dolor. Ae nean massa. Cum sociis natoque </p>
-						</div><!-- media-body -->
-					</li>
 				</ul>
 			
 			
 			
-				<div class="pd-t-1 pd-b-5 pd-x-5">
-					<a href="" class="btn btn-xs btn-block btn-light bd-0 tx-uppercase tx-10 tx-spacing-1 tx-medium mn-ht-0">Load more</a>
+				<div v-if="loadmaoredata" class="pd-t-1 pd-b-5 pd-x-5">
+					<a  class="btn btn-xs btn-block btn-light bd-0 tx-uppercase tx-10 tx-spacing-1 tx-medium mn-ht-0" v-on:click.prevent @click="loadmore">
+						Load more
+					</a>
 				</div>
 
 			</div><!-- mail-group-body -->
@@ -172,26 +140,66 @@
 			</div><!-- mail-content-body -->
 
 		</div><!-- mail-content -->
+
+		<vue-context ref="menu">
+			<template slot-scope="child" class="context-menu">
+		       
+	        	<li class="context-menu-list">
+		            <a href="#">
+		            	<i data-feather="book-open"></i> Mark Read
+		            </a>
+		        </li>
+		        <li class="context-menu-list">
+		            <a href="#">
+		            	<i data-feather="book"></i> Mark Unread
+		            </a>
+		        </li>
+		        <li class="context-menu-list">
+		            <a href="#">
+		            	<i data-feather="x-circle"></i> Mark Spam
+		            </a>
+		        </li>
+		        <li class="context-menu-list">
+		            <a href="#">
+		            	<i data-feather="trash"></i> Mark Trash
+		            </a>
+		        </li>
+		      
+	        </template>
+	    </vue-context>
 		
     </div><!-- mail-wrapper -->
 
 </template>
 
 <script type="text/javascript">
+
+	import { VueContext } from 'vue-context';
+
 	export default{
+		components: {VueContext},
 		data(){
 			return{
 				filter:'',
 				email:'',
 				user:{},
+				nmails:[],
 				mails:[],
 				mail:'',
-				dataloaded:false
+				limit: 5,
+				count:5,
+				dataloaded:false,
+				loadmaoredata:true
 			}
 		},
 		computed:{
 			mailbody(){
 				return 20;
+			},
+			maildata(){
+				const start = 0,
+						end = this.limit;
+				return this.mails.slice(start, end);
 			}
 		},
 		watch:{
@@ -237,7 +245,18 @@
 					$('#mainMenuOpen').removeClass('d-md-flex');
 				}
 			},
-			
+			loadmore(){
+				this.limit+=this.count
+				if(this.maildata.length >= this.mails.length){
+					this.loadmaoredata = false
+				}
+				//console.log('load more')
+				//console.log(this.maildata)
+			},
+			sortmail(){
+				this.mails = this.mails.reverse();
+				console.log('Sort mail')
+			}
 		},
 		created(){
 			axios.get('mail/create',{params:{filter:this.filter,email:this.user.email}})
@@ -261,7 +280,13 @@
 
 </script>
 
-<style type="text/css" Scoped>
+<style lang="scss"  Scoped>
 
-
+.context-menu-list{
+	a{
+		i{
+			font-size: 12px !important;
+		}
+	}
+}
 </style>
