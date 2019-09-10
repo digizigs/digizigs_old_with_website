@@ -44,7 +44,7 @@ class MailController extends Controller
             $mail->status = 'read';
             $mail->save();
             
-            $mail = Mail::orderby('created_at','desc')->get();
+            $mail = Mail::orderby('id','desc')->get();
             return request()->json(200,$mail);
             
 
@@ -54,7 +54,7 @@ class MailController extends Controller
             $mail->status = 'unread';
             $mail->save();
 
-            $mail = Mail::orderby('created_at','desc')->get();
+            $mail = Mail::orderby('id','desc')->get();
             return request()->json(200,$mail);
 
         }elseif($request->type == 'trash'){
@@ -63,7 +63,7 @@ class MailController extends Controller
             $mail->label = 'trash';
             $mail->save();
 
-            $mail = Mail::orderby('created_at','desc')->get();
+            $mail = Mail::orderby('id','desc')->get();
             return request()->json(200,$mail);
 
         }elseif($request->type == 'important'){
