@@ -10,6 +10,10 @@ Vue.use(VueRouter)
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 
+//Extra Components
+Vue.component('avatar', require('./components/Avatar.vue'));
+
+
 //Mail Box
 Vue.component('mailbox', require('./mail/Mailbox.vue'));
 Vue.component('mail-compose', require('./mail/MailCompose.vue'));

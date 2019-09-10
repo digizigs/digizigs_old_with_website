@@ -34,10 +34,10 @@ class MailController extends Controller
         //
     }
 
-    public function markMail($id,Request $request){
+    public function markMail(Request $request){
         
-       // return $request->all();
-        
+        //return $request->all();
+        $id = $request->id;
         if($request->type == 'read'){
 
             $mail = Mail::find($id);
@@ -66,17 +66,17 @@ class MailController extends Controller
             $mail = Mail::orderby('created_at','desc')->get();
             return request()->json(200,$mail);
 
-        }elseif($request->type == 'star'){
+        }elseif($request->type == 'important'){
 
             $mail = Mail::find($id);
-            if($mail->starred == 1){
-                $mail->starred = 0;
+            if($mail->label == 'important'){
+                $mail->label = 'inbox';
             }else{
-                $mail->starred = 1;
+                $mail->label = 'important';
             }
             $mail->save();
 
-            $mail = Mail::orderby('created_at','desc')->get();
+            $mail = Mail::orderby('id','desc')->get();
             return request()->json(200,$mail);
 
         }

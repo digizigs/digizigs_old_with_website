@@ -12,22 +12,22 @@
 				<div class="pd-b-10 pd-x-10">
 					<nav class="nav nav-sidebar tx-13">
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'inbox' }" v-on:click.prevent @click="mboxview('inbox')">
-							<i data-feather="inbox"></i> <span>Inbox</span> <span class="badge">20</span>
+							<i data-feather="inbox"></i> <span>Inbox</span> <span class="badge">{{inbunread}}</span>
 						</a>
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'important' }" v-on:click.prevent @click="mboxview('important')">
-							<i data-feather="star"></i> <span>Important</span> <span class="badge">3</span>
+							<i data-feather="star"></i> <span>Important</span> 
 						</a>
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'sent' }" v-on:click.prevent @click="mboxview('sent')">
-							<i data-feather="send"></i> <span>Sent Mail</span> <span class="badge">8</span>
+							<i data-feather="send"></i> <span>Sent Mail</span> 
 						</a>
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'draft' }" v-on:click.prevent @click="mboxview('draft')">
-							<i data-feather="file"></i> <span>Drafts</span> <span class="badge">15</span>
+							<i data-feather="file"></i> <span>Drafts</span> <span class="badge">{{draft}}</span>
 						</a>
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'spam' }" v-on:click.prevent @click="mboxview('spam')">
-							<i data-feather="slash"></i> <span>Spam</span> <span class="badge">128</span>
+							<i data-feather="slash"></i> <span>Spam</span>
 						</a>
 						<a href="" class="nav-link" v-bind:class="{ 'active': mbox == 'trash' }" v-on:click.prevent @click="mboxview('trash')">
-							<i data-feather="trash"></i> <span>Trash</span> <span class="badge">6</span>
+							<i data-feather="trash"></i> <span>Trash</span>
 						</a>
 					</nav>
 				</div>
@@ -58,16 +58,33 @@
 			<div class="mail-group-body">
 
 				<div class="pd-y-15 pd-x-20 d-flex justify-content-between align-items-center">
-					<h6 class="tx-uppercase tx-semibold mg-b-0"> {{mbox}} <span v-if="mails.length > 0 ">({{mails.length}})</span></h6>
+
+					<div>
+						<span class="tx-uppercase  mg-b-0">{{mbox}} <span v-if="mails.length > 0 ">({{mails.length}})</span></span>
+						
+						<span class="pd-x-20" v-if="mbox == 'inbox'">
+							<a href="" class="mg-x-3" v-on:click.prevent @click="allmail">All</a>
+							<a href="" class="mg-x-3" v-on:click.prevent @click="unread">Unread</a>
+						</span>
+					</div>
+					
+
+					<a v-if="mbox == 'trash'" href="#" v-on:click.prevent @click="emptytrash">
+						<i data-feather="trash-2"></i>Empty Trash
+					</a>
+					 
 					<div class="dropdown tx-13">
-					<span class="tx-color-03">Sort:</span> <a href="#" class="dropdown-link link-02" v-on:click.prevent @click="sortmail" >Date</a>
+					<span class="tx-color-03">Sort:</span> 
+					<a href="#" class="dropdown-link link-02" v-on:click.prevent @click="sortmail" >
+						Date
+					</a>
 					</div><!-- dropdown -->
 				</div>
 
 				
 				<ul class="list-unstyled media-list mg-b-0">
 					<li v-for="mail in maildata" v-bind:key="mail.id" class="media" v-bind:class="mail.status" @click="viewmail(mail)" @contextmenu.prevent="$refs.menu.open($event,mail.id)" >
-						<div class="avatar"><span class="avatar-initial rounded-circle bg-indigo">d</span></div>
+						<avatar :fullname="mail.from | mailname"></avatar>
 						<div class="media-body mg-l-15">
 							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
 							<span class="tx-12">{{mail.from | mailname}}</span>
@@ -96,23 +113,32 @@
 			<div class="mail-content-header d-none">
 				<a href="" id="mailContentClose" class="link-02 d-none d-lg-block d-xl-none mg-r-20"><i data-feather="arrow-left"></i></a>
 				<div v-if="dataloaded" class="media">
-					<div class="avatar avatar-sm"><img src="https://via.placeholder.com/600" class="rounded-circle" alt=""></div>
+					<avatar :fullname="mail.from | mailname"></avatar>
 					<div class="media-body mg-l-10">
 					<h6  class="mg-b-2 tx-13"> {{mail.from | mailname}} </h6>
 					<span class="d-block tx-11 tx-color-03">{{mail.created_at | dateTime}}</span>
 					</div><!-- media-body -->
 				</div><!-- media -->
 				<nav  class="nav nav-icon-only mg-l-auto">
-					<a href="" data-toggle="tooltip" title="Archive" class="nav-link d-none d-sm-block"><i data-feather="archive"></i></a>
-					<a href="" data-toggle="tooltip" title="Report Spam" class="nav-link d-none d-sm-block"><i data-feather="slash"></i></a>
-					<a href="" data-toggle="tooltip" title="Mark Unread" class="nav-link d-none d-sm-block"><i data-feather="mail"></i></a>
+					<a href="" data-toggle="tooltip" title="Report Spam" class="nav-link d-none d-sm-block">
+						<i data-feather="slash"></i>
+					</a>
+					<a href="" data-toggle="tooltip" title="Mark Unread" class="nav-link d-none d-sm-block" v-on:click.prevent @click="markmail(mail.id,'unread')">
+						<i data-feather="mail"></i>
+					</a>
 					<span class="nav-divider d-none d-sm-block"></span>
-					<a href="" data-toggle="tooltip" title="Mark Important" class="nav-link d-none d-sm-block">
+					<a href="#" data-toggle="tooltip" title="Mark Important" class="nav-link d-none d-sm-block" v-bind:class="{important:mail.label == 'important'}" v-on:click.prevent @click="markmail(mail.id,'important')">
 						<i data-feather="star"></i>
 					</a>
-					<a href="" data-toggle="tooltip" title="Trash" class="nav-link d-none d-sm-block"><i data-feather="trash"></i></a>
-					<a href="" data-toggle="tooltip" title="Print" class="nav-link d-none d-sm-block"><i data-feather="printer"></i></a>
-					<a href="" data-toggle="tooltip" title="Options" class="nav-link d-sm-none"><i data-feather="more-vertical"></i></a>
+					<a href="" data-toggle="tooltip" title="Trash" class="nav-link d-none d-sm-block">
+						<i data-feather="trash"></i>
+					</a>
+					<a href="" data-toggle="tooltip" title="Print" class="nav-link d-none d-sm-block">
+						<i data-feather="printer"></i>
+					</a>
+					<a href="" data-toggle="tooltip" title="Options" class="nav-link d-sm-none">
+						<i data-feather="more-vertical"></i>
+					</a>
 				</nav>
 			</div><!-- mail-content-header -->
 
@@ -125,7 +151,7 @@
 					<p v-if="mail.cc" class="tx-color-03 mg-b-0"><small>Cc : {{mail.cc}}</small></p>
 					<p v-if="mail.bcc" class="tx-color-03 mg-b-0"><small>Bcc : {{mail.bcc}}</small></p>
 
-					<div v-html="mail.body_html" class=""></div>
+					<div v-html="mailbody" class=""></div>
 				</div>
 				<div class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
 					<div id="editor-container" class="tx-13 tx-lg-14 ht-500">
@@ -204,13 +230,25 @@
 		},
 		computed:{
 			mailbody(){
-				return 20;
+				if(this.mail.body_html == null){
+					return this.mail.body_plain;
+				}else{
+					return this.mail.body_html;
+				}
+				
 			},
 			maildata(){
 				const start = 0,
 						end = this.limit;
 				return this.mails.slice(start, end);
+			},
+			inbunread(){
+				return this.nmails.filter(value => value.label === 'inbox' && value.status === 'unread').length
+			},
+			draft(){
+				return this.nmails.filter(value => value.label === 'draft').length
 			}
+
 		},
 		watch:{
 			dataloaded(){
@@ -244,7 +282,9 @@
 				NProgress.start();
 				this.mail = mail
 				NProgress.done();
-				
+				console.log(mail.id)
+				this.markmail(mail.id,'read')
+
 				new PerfectScrollbar('.mail-content-body', {
 					suppressScrollX: true
 				});
@@ -313,6 +353,33 @@
 			sortmail(){
 				this.mails = this.mails.reverse();
 				console.log('Sort mail')
+			},
+			markmail(id,type){
+				console.log('Mail id-'+ id + ' Type-'+type)
+				NProgress.start();
+				axios.get('mail/markmail',{params:{id:id,type:type}})
+					.then((response) => {
+						console.log(response.data)
+						this.nmails = response.data
+						this.mails = this.nmails.filter(value => value.label === this.mbox)
+
+
+						if(this.mails.length > 0){				
+							this.dataloaded = true
+						}
+						
+					})
+					.catch((error) => console.log(error))
+					NProgress.done();
+			},
+			emptytrash(){
+				console.log('Empty Trash')
+			},
+			allmail(){
+				this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox')
+			},
+			unread(){
+				this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox'  && value.status === 'unread')
 			}
 		},
 		created(){
@@ -324,11 +391,15 @@
 
 <style lang="scss"  Scoped>
 
-.context-menu-list{
-	a{
-		i{
+.context-menu{
+	.context-menu-list{
+		a{
 			font-size: 12px !important;
 		}
 	}
+}
+
+.important{
+	color: orange !important;
 }
 </style>

@@ -363,7 +363,7 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
 
     //Mailbox
     //Route::get('/mail/movemail','Admin\Mail\MailController@moveMail');
-    //Route::get('/mail/markmail/{id}/edit','Admin\Mail\MailController@markMail');
+    Route::get('/mail/markmail','Dashboard\Mail\MailController@markMail');
     Route::resource('/mail', 'Dashboard\Mail\MailController'); //Contact
 
 

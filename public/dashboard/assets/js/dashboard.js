@@ -60776,8 +60776,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_
 var Foo = { template: '<div>foo</div>' };
 var Bar = { template: '<div>bar</div>'
 
-  //Mail Box
-};__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('mailbox', __webpack_require__(585));
+  //Extra Components
+};__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('avatar', __webpack_require__(622));
+
+//Mail Box
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('mailbox', __webpack_require__(585));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('mail-compose', __webpack_require__(590));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('mail-content', __webpack_require__(595));
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('mailbox-group', __webpack_require__(600));
@@ -60941,7 +60944,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.context-menu-list a i {\n  font-size: 12px !important;\n}\n", ""]);
+exports.push([module.i, "\n.context-menu .context-menu-list a {\n  font-size: 12px !important;\n}\n.important {\n  color: orange !important;\n}\n", ""]);
 
 // exports
 
@@ -60954,6 +60957,32 @@ exports.push([module.i, "\n.context-menu-list a i {\n  font-size: 12px !importan
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_context__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_context___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_context__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61161,12 +61190,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 	computed: {
 		mailbody: function mailbody() {
-			return 20;
+			if (this.mail.body_html == null) {
+				return this.mail.body_plain;
+			} else {
+				return this.mail.body_html;
+			}
 		},
 		maildata: function maildata() {
 			var start = 0,
 			    end = this.limit;
 			return this.mails.slice(start, end);
+		},
+		inbunread: function inbunread() {
+			return this.nmails.filter(function (value) {
+				return value.label === 'inbox' && value.status === 'unread';
+			}).length;
+		},
+		draft: function draft() {
+			return this.nmails.filter(function (value) {
+				return value.label === 'draft';
+			}).length;
 		}
 	},
 	watch: {
@@ -61205,6 +61248,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			NProgress.start();
 			this.mail = mail;
 			NProgress.done();
+			console.log(mail.id);
+			this.markmail(mail.id, 'read');
 
 			new PerfectScrollbar('.mail-content-body', {
 				suppressScrollX: true
@@ -61283,6 +61328,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		sortmail: function sortmail() {
 			this.mails = this.mails.reverse();
 			console.log('Sort mail');
+		},
+		markmail: function markmail(id, type) {
+			var _this2 = this;
+
+			console.log('Mail id-' + id + ' Type-' + type);
+			NProgress.start();
+			axios.get('mail/markmail', { params: { id: id, type: type } }).then(function (response) {
+				console.log(response.data);
+				_this2.nmails = response.data;
+				_this2.mails = _this2.nmails.filter(function (value) {
+					return value.label === _this2.mbox;
+				});
+
+				if (_this2.mails.length > 0) {
+					_this2.dataloaded = true;
+				}
+			}).catch(function (error) {
+				return console.log(error);
+			});
+			NProgress.done();
+		},
+		emptytrash: function emptytrash() {
+			console.log('Empty Trash');
+		},
+		allmail: function allmail() {
+			this.mails = this.nmails.filter(function (value) {
+				return value.type === 'inbound' && value.label === 'inbox';
+			});
+		},
+		unread: function unread() {
+			this.mails = this.nmails.filter(function (value) {
+				return value.type === 'inbound' && value.label === 'inbox' && value.status === 'unread';
+			});
 		}
 	},
 	created: function created() {
@@ -61330,7 +61408,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", [_vm._v("Inbox")]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("20")])
+                  _c("span", { staticClass: "badge" }, [
+                    _vm._v(_vm._s(_vm.inbunread))
+                  ])
                 ]
               ),
               _vm._v(" "),
@@ -61354,9 +61434,7 @@ var render = function() {
                 [
                   _c("i", { attrs: { "data-feather": "star" } }),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Important")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("3")])
+                  _c("span", [_vm._v("Important")])
                 ]
               ),
               _vm._v(" "),
@@ -61380,9 +61458,7 @@ var render = function() {
                 [
                   _c("i", { attrs: { "data-feather": "send" } }),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Sent Mail")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("8")])
+                  _c("span", [_vm._v("Sent Mail")])
                 ]
               ),
               _vm._v(" "),
@@ -61408,7 +61484,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("span", [_vm._v("Drafts")]),
                   _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("15")])
+                  _c("span", { staticClass: "badge" }, [
+                    _vm._v(_vm._s(_vm.draft))
+                  ])
                 ]
               ),
               _vm._v(" "),
@@ -61432,9 +61510,7 @@ var render = function() {
                 [
                   _c("i", { attrs: { "data-feather": "slash" } }),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Spam")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("128")])
+                  _c("span", [_vm._v("Spam")])
                 ]
               ),
               _vm._v(" "),
@@ -61458,9 +61534,7 @@ var render = function() {
                 [
                   _c("i", { attrs: { "data-feather": "trash" } }),
                   _vm._v(" "),
-                  _c("span", [_vm._v("Trash")]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "badge" }, [_vm._v("6")])
+                  _c("span", [_vm._v("Trash")])
                 ]
               )
             ])
@@ -61481,12 +61555,73 @@ var render = function() {
                 "pd-y-15 pd-x-20 d-flex justify-content-between align-items-center"
             },
             [
-              _c("h6", { staticClass: "tx-uppercase tx-semibold mg-b-0" }, [
-                _vm._v(" " + _vm._s(_vm.mbox) + " "),
-                _vm.mails.length > 0
-                  ? _c("span", [_vm._v("(" + _vm._s(_vm.mails.length) + ")")])
+              _c("div", [
+                _c("span", { staticClass: "tx-uppercase  mg-b-0" }, [
+                  _vm._v(_vm._s(_vm.mbox) + " "),
+                  _vm.mails.length > 0
+                    ? _c("span", [_vm._v("(" + _vm._s(_vm.mails.length) + ")")])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _vm.mbox == "inbox"
+                  ? _c("span", { staticClass: "pd-x-20" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "mg-x-3",
+                          attrs: { href: "" },
+                          on: {
+                            click: [
+                              function($event) {
+                                $event.preventDefault()
+                              },
+                              _vm.allmail
+                            ]
+                          }
+                        },
+                        [_vm._v("All")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "mg-x-3",
+                          attrs: { href: "" },
+                          on: {
+                            click: [
+                              function($event) {
+                                $event.preventDefault()
+                              },
+                              _vm.unread
+                            ]
+                          }
+                        },
+                        [_vm._v("Unread")]
+                      )
+                    ])
                   : _vm._e()
               ]),
+              _vm._v(" "),
+              _vm.mbox == "trash"
+                ? _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: [
+                          function($event) {
+                            $event.preventDefault()
+                          },
+                          _vm.emptytrash
+                        ]
+                      }
+                    },
+                    [
+                      _c("i", { attrs: { "data-feather": "trash-2" } }),
+                      _vm._v("Empty Trash\n\t\t\t\t\t")
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "dropdown tx-13" }, [
                 _c("span", { staticClass: "tx-color-03" }, [_vm._v("Sort:")]),
@@ -61505,7 +61640,7 @@ var render = function() {
                       ]
                     }
                   },
-                  [_vm._v("Date")]
+                  [_vm._v("\n\t\t\t\t\t\tDate\n\t\t\t\t\t")]
                 )
               ])
             ]
@@ -61532,7 +61667,9 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._m(3, true),
+                  _c("avatar", {
+                    attrs: { fullname: _vm._f("mailname")(mail.from) }
+                  }),
                   _vm._v(" "),
                   _c("div", { staticClass: "media-body mg-l-15" }, [
                     _c(
@@ -61560,7 +61697,8 @@ var render = function() {
                       _vm._v(_vm._s(mail.body_plain.slice(0, 150)) + " ")
                     ])
                   ])
-                ]
+                ],
+                1
               )
             }),
             0
@@ -61592,27 +61730,91 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "mail-content" }, [
         _c("div", { staticClass: "mail-content-header d-none" }, [
-          _vm._m(4),
+          _vm._m(3),
           _vm._v(" "),
           _vm.dataloaded
-            ? _c("div", { staticClass: "media" }, [
-                _vm._m(5),
-                _vm._v(" "),
-                _c("div", { staticClass: "media-body mg-l-10" }, [
-                  _c("h6", { staticClass: "mg-b-2 tx-13" }, [
-                    _vm._v(
-                      " " + _vm._s(_vm._f("mailname")(_vm.mail.from)) + " "
-                    )
-                  ]),
+            ? _c(
+                "div",
+                { staticClass: "media" },
+                [
+                  _c("avatar", {
+                    attrs: { fullname: _vm._f("mailname")(_vm.mail.from) }
+                  }),
                   _vm._v(" "),
-                  _c("span", { staticClass: "d-block tx-11 tx-color-03" }, [
-                    _vm._v(_vm._s(_vm._f("dateTime")(_vm.mail.created_at)))
+                  _c("div", { staticClass: "media-body mg-l-10" }, [
+                    _c("h6", { staticClass: "mg-b-2 tx-13" }, [
+                      _vm._v(
+                        " " + _vm._s(_vm._f("mailname")(_vm.mail.from)) + " "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "d-block tx-11 tx-color-03" }, [
+                      _vm._v(_vm._s(_vm._f("dateTime")(_vm.mail.created_at)))
+                    ])
                   ])
-                ])
-              ])
+                ],
+                1
+              )
             : _vm._e(),
           _vm._v(" "),
-          _vm._m(6)
+          _c("nav", { staticClass: "nav nav-icon-only mg-l-auto" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "nav-link d-none d-sm-block",
+                attrs: {
+                  href: "",
+                  "data-toggle": "tooltip",
+                  title: "Mark Unread"
+                },
+                on: {
+                  click: [
+                    function($event) {
+                      $event.preventDefault()
+                    },
+                    function($event) {
+                      _vm.markmail(_vm.mail.id, "unread")
+                    }
+                  ]
+                }
+              },
+              [_c("i", { attrs: { "data-feather": "mail" } })]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "nav-divider d-none d-sm-block" }),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "nav-link d-none d-sm-block",
+                class: { important: _vm.mail.label == "important" },
+                attrs: {
+                  href: "#",
+                  "data-toggle": "tooltip",
+                  title: "Mark Important"
+                },
+                on: {
+                  click: [
+                    function($event) {
+                      $event.preventDefault()
+                    },
+                    function($event) {
+                      _vm.markmail(_vm.mail.id, "important")
+                    }
+                  ]
+                }
+              },
+              [_c("i", { attrs: { "data-feather": "star" } })]
+            ),
+            _vm._v(" "),
+            _vm._m(5),
+            _vm._v(" "),
+            _vm._m(6),
+            _vm._v(" "),
+            _vm._m(7)
+          ])
         ]),
         _vm._v(" "),
         _vm.dataloaded
@@ -61638,12 +61840,10 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _c("div", {
-                  domProps: { innerHTML: _vm._s(_vm.mail.body_html) }
-                })
+                _c("div", { domProps: { innerHTML: _vm._s(_vm.mailbody) } })
               ]),
               _vm._v(" "),
-              _vm._m(7)
+              _vm._m(8)
             ])
           : _vm._e()
       ]),
@@ -61774,16 +61974,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar" }, [
-      _c("span", { staticClass: "avatar-initial rounded-circle bg-indigo" }, [
-        _vm._v("d")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "a",
       {
@@ -61797,83 +61987,53 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar avatar-sm" }, [
-      _c("img", {
-        staticClass: "rounded-circle",
-        attrs: { src: "https://via.placeholder.com/600", alt: "" }
-      })
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link d-none d-sm-block",
+        attrs: { href: "", "data-toggle": "tooltip", title: "Report Spam" }
+      },
+      [_c("i", { attrs: { "data-feather": "slash" } })]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("nav", { staticClass: "nav nav-icon-only mg-l-auto" }, [
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Archive" }
-        },
-        [_c("i", { attrs: { "data-feather": "archive" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Report Spam" }
-        },
-        [_c("i", { attrs: { "data-feather": "slash" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Mark Unread" }
-        },
-        [_c("i", { attrs: { "data-feather": "mail" } })]
-      ),
-      _vm._v(" "),
-      _c("span", { staticClass: "nav-divider d-none d-sm-block" }),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Mark Important" }
-        },
-        [_c("i", { attrs: { "data-feather": "star" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Trash" }
-        },
-        [_c("i", { attrs: { "data-feather": "trash" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-none d-sm-block",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Print" }
-        },
-        [_c("i", { attrs: { "data-feather": "printer" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "nav-link d-sm-none",
-          attrs: { href: "", "data-toggle": "tooltip", title: "Options" }
-        },
-        [_c("i", { attrs: { "data-feather": "more-vertical" } })]
-      )
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link d-none d-sm-block",
+        attrs: { href: "", "data-toggle": "tooltip", title: "Trash" }
+      },
+      [_c("i", { attrs: { "data-feather": "trash" } })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link d-none d-sm-block",
+        attrs: { href: "", "data-toggle": "tooltip", title: "Print" }
+      },
+      [_c("i", { attrs: { "data-feather": "printer" } })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "nav-link d-sm-none",
+        attrs: { href: "", "data-toggle": "tooltip", title: "Options" }
+      },
+      [_c("i", { attrs: { "data-feather": "more-vertical" } })]
+    )
   },
   function() {
     var _vm = this
@@ -64832,6 +64992,223 @@ $(window).scroll(function () {
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(623)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(625)
+/* template */
+var __vue_template__ = __webpack_require__(626)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0648e2c1"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "app/Views/dashboard/vue/components/Avatar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0648e2c1", Component.options)
+  } else {
+    hotAPI.reload("data-v-0648e2c1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 623 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(624);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("ac37c364", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0648e2c1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Avatar.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0648e2c1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Avatar.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 624 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 625 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: {
+		fullname: { type: String, default: '##' },
+		size: { type: Number, default: 48 },
+		radius: { type: Number, default: 50, validator: function validator(value) {
+				return value >= 0 && value <= 50;
+			} },
+		color: { type: String, default: '' },
+		image: { type: String, default: null }
+	},
+	data: function data() {
+		return {};
+	},
+
+	watch: {},
+	computed: {
+		style1: function style1() {
+			var fontSize = this.initials.length > 2 ? this.size / 3 : this.size / 2;
+			return {
+
+				'background-color': this.color === '' ? this.toColor(this.fullname) : this.color
+
+			};
+		},
+		style2: function style2() {
+			var fontSize = this.initials.length > 2 ? this.size / 3 : this.size / 2;
+			return {
+				'background-size': 'cover',
+				'background-color': this.color === '' ? this.toColor(this.fullname) : this.color,
+				'background-image': this.hasImage ? 'url(' + this.image + ')' : 'none'
+			};
+		},
+		hasImage: function hasImage() {
+			return this.image !== null;
+		},
+		initials: function initials() {
+			var words = this.fullname.split(/[\s-]+/);
+			var intls = '';
+			for (var i = 0; i < words.length; i++) {
+				intls += words[i].substr(0, 1).toUpperCase();
+			}
+			if (intls.length > 1) {
+				intls = intls.slice(0, 2);
+			}
+			return intls;
+		}
+	},
+	methods: {
+		toColor: function toColor(str) {
+			var hash = 0;
+			var len = str.length;
+			if (len === 0) return 'white';
+			for (var i = 0; i < len; i++) {
+				hash = (hash << 8) - hash + str.charCodeAt(i);
+				hash |= 0;
+			}
+			hash = Math.abs(hash);
+			return '#' + hash.toString(16).substr(0, 6);
+		}
+	},
+	created: function created() {}
+});
+
+/***/ }),
+/* 626 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "avatar" }, [
+    !_vm.hasImage
+      ? _c(
+          "span",
+          {
+            staticClass: "avatar-initial rounded-circle bg-indigo",
+            style: _vm.style1
+          },
+          [_vm._v("\n        " + _vm._s(_vm.initials) + "\n    ")]
+        )
+      : _c("span", {
+          staticClass: "avatar-initial rounded-circle",
+          style: _vm.style2
+        })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0648e2c1", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
