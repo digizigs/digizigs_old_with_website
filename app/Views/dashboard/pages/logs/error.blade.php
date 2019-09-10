@@ -16,7 +16,7 @@
         bottom: 0; 
     }
 
-    .filemgr-content-body{
+    .filemgr-content-bodys{
       position: absolute;
       top: 0px;
       left: 0;
@@ -24,7 +24,7 @@
       bottom: 0; 
     }
 
-  .filemgr-content-body .media {
+  .filemgr-content-bodys .medias {
     padding: 15px 20px;
     background-color: #f8f9fc;
     transition: all 0.2s ease-in-out; }
@@ -68,12 +68,14 @@
   <div class="filemgr-content">
     <div class="filemgr-content-header">
       <nav class="nav d-none d-sm-flex mg-l-auto">
-        <a href="" class="nav-link"><i data-feather="list"></i></a>
-        <a href="" class="nav-link"><i data-feather="alert-circle"></i></a>
-        <a href="" class="nav-link"><i data-feather="settings"></i></a>
+        <a href="?dl={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}" data-toggle="tooltip" title="Download" class="nav-link"><i data-feather="download"></i></a>
+        <a href="?clean={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Clean" class="nav-link"><i data-feather="repeat"></i></a>
+        <a href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Delete" class="nav-link"><i data-feather="trash-2"></i></a>
+        <a href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Delete All" class="nav-link"><i data-feather="trash"></i></a>
       </nav>
     </div><!-- filemgr-content-header -->
     <div class="filemgr-content-body">
+    
       <div class="pd-10 pd-lg-10 pd-xl-10">
         
         <div class="row">
