@@ -143,35 +143,37 @@
 			</div><!-- mail-content-header -->
 
 			<div v-if="dataloaded" class="mail-content-body d-none">
+
 				<div class="pd-20 pd-lg-25 pd-xl-30">
 					<h5 class="mg-b-10">{{mail.subject}}</h5>
-
 					<!--h6 class="tx-semibold mg-b-0">Ms. Katherine Lumaad</h6-->
 					<p class="tx-color-03 mg-b-0"><small>To : {{mail.to}}</small></p>
 					<p v-if="mail.cc" class="tx-color-03 mg-b-0"><small>Cc : {{mail.cc}}</small></p>
 					<p v-if="mail.bcc" class="tx-color-03 mg-b-0"><small>Bcc : {{mail.bcc}}</small></p>
-
 					<div v-html="mailbody" class=""></div>
+
+					<nav  class="nav nav-icon-only mg-l-auto">
+						<a href="" data-toggle="tooltip" title="Reply" class="nav-link" >
+							<i class="fa fa-reply" aria-hidden="true"></i> Reply
+						</a>
+						<a href="" data-toggle="tooltip" title="Reply All" class="nav-link" >					
+							<i class="fa fa-reply-all" aria-hidden="true"></i> Reply All
+						</a>
+					</nav>
+
+
 				</div>
-				<div class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
-					<div id="editor-container" class="tx-13 tx-lg-14 ht-500">
-						Type here to <u>Reply</u> or <u>Forward</u>
-					</div>
-					<div class="d-flex align-items-center justify-content-between mg-t-10">
-					<div id="toolbar-container" class="bd-0-f pd-0-f">
-						<span class="ql-formats">
-						<button class="ql-bold"></button>
-						<button class="ql-italic"></button>
-						<button class="ql-underline"></button>
-						</span>
-						<span class="ql-formats">
-						<button class="ql-link"></button>
-						<button class="ql-image"></button>
-						</span>
-					</div>
-					<button class="btn btn-primary">Reply</button>
+
+				
+
+				<div v-if="reply  || replyall " class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
+					<editor :height="'100'"></editor>
+					<div class="tx-13 mg-t-15 mg-sm-t-0 mt-2" >
+						<button class="btn btn-primary mt-20" >Send</button>
 					</div>
 				</div>
+				
+
 			</div><!-- mail-content-body -->
 
 		</div><!-- mail-content -->
@@ -225,7 +227,9 @@
 				limit: 10,
 				count:10,
 				dataloaded:false,
-				loadmaoredata:true
+				loadmaoredata:true,
+				reply:false,
+				replyall:false,
 			}
 		},
 		computed:{
@@ -290,13 +294,7 @@
 				});
 
 				// reply form
-				var quill = new Quill('#editor-container', {
-					modules: {
-					toolbar: '#toolbar-container'
-					},
-					placeholder: 'Compose an epic...',
-					theme: 'snow'
-				});
+				
 
 				// removing previous selected item
 				$('.mail-group .selected').removeClass('selected');
@@ -401,5 +399,14 @@
 
 .important{
 	color: orange !important;
+}
+
+.nav-link svg{
+	color:  #1b2e4b;
+	width: 16px;
+    height: 16px;
+    margin-right: 5px;
+    fill: rgba(0, 23, 55, 0.08);
+      //display: none;
 }
 </style>

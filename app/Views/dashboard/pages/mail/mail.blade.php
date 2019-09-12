@@ -34,37 +34,30 @@
 		</div><!-- mail-compose-header -->
 		<div class="mail-compose-body">
 			<div class="form-row align-items-center">
-			<div class="col-sm">Recipient:</div>
-			<div class="col-sm-10">
-				<input type="text" class="form-control bd-0 pd-x-0" placeholder="Enter recipient's email address">
-			</div>
+				<div class="col-sm">Recipient:</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control bd-0 pd-x-0" placeholder="Enter recipient's email address">
+				</div>
 			</div>
 			<hr class="mg-y-10">
 			<div class="form-row align-items-center">
-			<div class="col-sm">Subject:</div>
-			<div class="col-sm-10">
-				<input type="text" class="form-control bd-0 pd-x-0" placeholder="Enter subject">
+				<div class="col-sm">Subject:</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control bd-0 pd-x-0" placeholder="Enter subject">
+				</div>
 			</div>
+			
+			<editor :height="'100'"></editor>
+
+			<div class="tx-13 mg-t-15 mg-sm-t-0 mt-2" >
+				<button class="btn btn-white mg-r-5 btn-sm">Save as Draft</button>
+				<button class="btn btn-primary btn-sm">Send</button>
 			</div>
-			<div id="editor-container2" class="ht-150 mg-t-15"></div>
-			<div class="d-sm-flex align-items-center justify-content-between mg-t-25">
-			<div id="toolbar-container2" class="bd-0-f pd-0-f">
-				<span class="ql-formats">
-				<button class="ql-bold"></button>
-				<button class="ql-italic"></button>
-				<button class="ql-underline"></button>
-				</span>
-				<span class="ql-formats">
-				<button class="ql-link"></button>
-				<button class="ql-image"></button>
-				</span>
-			</div>
-			<div class="tx-13 mg-t-15 mg-sm-t-0">
-				<button class="btn btn-white mg-r-5">Save as Draft</button>
-				<button class="btn btn-primary">Send</button>
-			</div>
-			</div>
+
+
 		</div><!-- mail-compose-body -->
+
+
 		</div><!-- mail-compose-dialog -->
 	</div><!-- mail-compose -->
 
@@ -80,7 +73,7 @@
 	<!-- append theme customizer -->
 	<!--script src="{{asset('public/dashboard/lib/js-cookie/js.cookie.js')}}"></script>
   	<script src="{{asset('public/dashboard/assets/js/dashforge.settings.js')}}"></script-->
-
+	
 	  <script>
 		  $(function(){
 				'use strict'
@@ -98,7 +91,8 @@
 				//new PerfectScrollbar('.mail-content-body', {
 					//suppressScrollX: true
 				//});
-
+				
+				
 
 				// UI INTERACTION
 				$('.mail-group-body .media').on('click', function(e){
@@ -132,13 +126,19 @@
 				//});
 
 				// compose form
-				var quill2 = new Quill('#editor-container2', {
-					modules: {
-					toolbar: '#toolbar-container2'
-					},
-					placeholder: 'Write your message here',
-					theme: 'snow'
-				});
+				//var quill2 = new Quill('#editor-container2', {
+					//modules: {
+						//toolbar: [
+								//[{ header: [1, 2, false] }],
+								//['bold', 'italic', 'underline'],
+								//['image', 'code-block']
+							//]
+					//},
+					//placeholder: 'Write your message here',
+					//theme: 'snow'
+				//});
+
+				
 
 				$('#mailComposeBtn').on('click', function(){
 					$('#mailCompose').addClass('show');
