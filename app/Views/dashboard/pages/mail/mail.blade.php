@@ -7,6 +7,7 @@
 
 	<link href="{{asset('public/dashboard/lib/quill/quill.core.css')}}" rel="stylesheet">
     <link href="{{asset('public/dashboard/lib/quill/quill.snow.css')}}" rel="stylesheet">
+	
 	<link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.mail.css')}}">
 
 @endsection
@@ -15,6 +16,8 @@
 @section('content')
 
 	<mailbox></mailbox>
+
+	
 
 	<div id="mailCompose" class="mail-compose">
 		<div class="mail-compose-dialog">
@@ -68,6 +71,7 @@
 	 
 
   	<script src="{{asset('public/dashboard/lib/quill/quill.min.js')}}"></script>
+	  
 	<!--script src="{{asset('public/dashboard/assets/js/dashforge.mail.js')}}"></script-->
 
 	<!-- append theme customizer -->
@@ -75,6 +79,32 @@
   	<script src="{{asset('public/dashboard/assets/js/dashforge.settings.js')}}"></script-->
 	
 	  <script>
+	  	(function($) {
+
+			'use strict'
+
+			var Defaults = $.fn.select2.amd.require('select2/defaults');
+
+			$.extend(Defaults.defaults, {
+			searchInputPlaceholder: ''
+			});
+
+			var SearchDropdown = $.fn.select2.amd.require('select2/dropdown/search');
+
+			var _renderSearchDropdown = SearchDropdown.prototype.render;
+
+			SearchDropdown.prototype.render = function(decorated) {
+
+			// invoke parent method
+			var $rendered = _renderSearchDropdown.apply(this, Array.prototype.slice.apply(arguments));
+
+			this.$search.attr('placeholder', this.options.get('searchInputPlaceholder'));
+
+			return $rendered;
+			};
+
+		})(window.jQuery);
+
 		  $(function(){
 				'use strict'
 
@@ -92,7 +122,10 @@
 					//suppressScrollX: true
 				//});
 				
-				
+				$('.select2').select2({
+					placeholder: 'Choose one',
+					searchInputPlaceholder: 'Search options'
+				});
 
 				// UI INTERACTION
 				$('.mail-group-body .media').on('click', function(e){

@@ -6,16 +6,12 @@
 <script type="text/javascript">
     import Quill from 'quill';
     export default {
-       props: {
+       props:{
             value: {
                 type: String,
-                default: '',
-            },
-            height:{
-                type:String,
-                default:50,
+                default: ''
             }
-        },
+        }, 
         data() {
             return {
                 editor: null
@@ -24,8 +20,13 @@
         computed:{
             style(){
                 return{
-                    height:this.height + 'px'
+                    height:200 + 'px'
                 }
+            }
+        },
+        watch:{
+            value(){
+                this.editor.root.innerHTML = this.value;
             }
         },
         methods: {
@@ -39,15 +40,18 @@
 						toolbar: [
 								[{ header: [1, 2, false] }],
 								['bold', 'italic', 'underline'],
-								['image', 'code-block']
+                                ['link','image','video','blockquote', 'code-block'],
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],                                 
+                                [{ 'font': [] }],
+                                [{ 'align': [] }],
+                                ['clean']     
 							]
 					},
-					placeholder: 'Write your message here',
+					placeholder: '',
 					theme: 'snow'
             });
 
             this.editor.root.innerHTML = this.value;
-
             this.editor.on('text-change', () => this.update());
         },
     }
@@ -56,8 +60,8 @@
 </script>
 
 <style lang="scss" scoped>
-	.editor{
-
+	.ql-picker-label{
+        color:black !important;
     }
 </style>
 

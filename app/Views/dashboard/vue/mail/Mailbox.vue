@@ -153,10 +153,10 @@
 					<div v-html="mailbody" class=""></div>
 
 					<nav  class="nav nav-icon-only mg-l-auto">
-						<a href="" data-toggle="tooltip" title="Reply" class="nav-link" >
+						<a href="" data-toggle="tooltip" title="Reply" class="nav-link" v-on:click.prevent @click="mailreply('sender')">
 							<i class="fa fa-reply" aria-hidden="true"></i> Reply
 						</a>
-						<a href="" data-toggle="tooltip" title="Reply All" class="nav-link" >					
+						<a href="" data-toggle="tooltip" title="Reply All" class="nav-link" v-on:click.prevent @click="mailreply('all')">					
 							<i class="fa fa-reply-all" aria-hidden="true"></i> Reply All
 						</a>
 					</nav>
@@ -164,13 +164,29 @@
 
 				</div>
 
-				
+
 
 				<div v-if="reply  || replyall " class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
-					<editor :height="'100'"></editor>
-					<div class="tx-13 mg-t-15 mg-sm-t-0 mt-2" >
-						<button class="btn btn-primary mt-20" >Send</button>
+					
+              		<input type="text" class="form-control mb-2" placeholder="To">
+
+					<div class="wd-md-80p">
+						<select class="form-control select2" multiple="multiple">
+						<option label="Choose one"></option>
+						<option value="Firefox">Firefox</option>
+						<option value="Chrome" selected>Chrome</option>
+						<option value="Safari">Safari</option>
+						<option value="Opera">Opera</option>
+						<option value="Internet Explorer" selected>Internet Explorer</option>
+						</select>
 					</div>
+           
+					<editor :height="'200'"  @input="quill"></editor>
+					
+					<div class="tx-13 mg-t-15 mg-sm-t-0 mt-2" >
+						<button class="btn btn-primary mt-20" @click="sendMail">Send</button>
+					</div>
+					
 				</div>
 				
 
@@ -212,6 +228,7 @@
 <script type="text/javascript">
 
 	import { VueContext } from 'vue-context';
+	import { quillEditor } from 'vue-quill-editor';
 
 	export default{
 		components: {VueContext},
@@ -230,6 +247,7 @@
 				loadmaoredata:true,
 				reply:false,
 				replyall:false,
+				editorvalue:''
 			}
 		},
 		computed:{
@@ -378,11 +396,37 @@
 			},
 			unread(){
 				this.mails = this.nmails.filter(value => value.type === 'inbound' && value.label === 'inbox'  && value.status === 'unread')
+			},
+			mailreply(type){
+				if(type == 'sender'){
+					this.reply = true
+					this.replyall = false
+				}else{
+					this.replyall = true
+					this.reply = false
+				}
+			},
+			sendMail(){
+				console.log('Send Mail')
+			},
+			quill(e){
+				this.editorvalue = e
+				//console.log(e)
 			}
 		},
-		created(){
+		mounted(){
 			this.getmails()
-		}
+			
+			setTimeout( function(){
+				$(".select2").select2();
+			},1000);
+			
+			$('.select2').select2({
+				placeholder: 'Choose one',
+				searchInputPlaceholder: 'Search options'
+			});
+		},
+		
 	};
 
 </script>
