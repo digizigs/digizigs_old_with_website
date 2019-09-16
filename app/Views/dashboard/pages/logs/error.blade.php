@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.appfile')
 
-@section('title','File Manager')
+@section('title','Error Log')
 
 
 @section('css')
@@ -71,7 +71,7 @@
         <a href="?dl={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}" data-toggle="tooltip" title="Download" class="nav-link"><i data-feather="download"></i></a>
         <a href="?clean={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Clean" class="nav-link"><i data-feather="repeat"></i></a>
         <a href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Delete" class="nav-link"><i data-feather="trash-2"></i></a>
-        <a href="?del={{ \Illuminate\Support\Facades\Crypt::encrypt($current_folder ? $current_folder . "/" . $current_file : $current_file) }}{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Delete All" class="nav-link"><i data-feather="trash"></i></a>
+        <a href="?delall=true{{ ($current_folder) ? '&f=' . \Illuminate\Support\Facades\Crypt::encrypt($current_folder) : '' }}"  data-toggle="tooltip" title="Delete All" class="nav-link"><i data-feather="trash"></i></a>
       </nav>
     </div><!-- filemgr-content-header -->
     <div class="filemgr-content-body">

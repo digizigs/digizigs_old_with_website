@@ -80806,3 +80806,11 @@ html {
   color: #8f9dae;
 }
 
+.navbar .navbar-right .dropdown-link svg {
+  color: #8f9dae;
+}
+
+.navbar .navbar-right #navbarSearch svg {
+  color: #8f9dae;
+}
+

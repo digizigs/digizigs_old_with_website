@@ -14,10 +14,10 @@
 	export default{
 		props: {
 		    fullname: { type: String, default: '##' },
-		    size: { type: Number, default: 48 },
+		    size: { type: Number, default: 35 },
 		    radius: { type: Number, default: 50, validator: (value) => value >= 0 && value <= 50 },
 		    color: { type: String, default: '' },
-		    image: { type: String, default: null }
+		    image: { type: String, default: '' }
 		},
 		data(){
 			return{
@@ -33,7 +33,8 @@
                 return {
                     
                     'background-color': this.color === '' ? this.toColor(this.fullname) : this.color,
-                    
+					'height':this.size + 'px',
+					'width':this.size + 'px'
                 }
             },
             style2 () {
@@ -41,11 +42,13 @@
                 return {
                     'background-size': 'cover',
                     'background-color': this.color === '' ? this.toColor(this.fullname) : this.color,
-                    'background-image': this.hasImage ? 'url(' + this.image + ')' : 'none'
+					'background-image': this.hasImage ? 'url(' + this.image + ')' : 'none',
+					'height':this.size + 'px',
+					'width':this.size + 'px'
                 }
             },
             hasImage () {
-		        return (this.image !== null)
+		        return (this.image !== '')
 		    },
 			initials () {
                 var words = this.fullname.split(/[\s-]+/)

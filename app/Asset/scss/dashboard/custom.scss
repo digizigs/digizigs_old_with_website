@@ -58,4 +58,16 @@ body,html{
       }
     }
   }
+  .navbar-right{
+    .dropdown-link{
+      svg{
+        color: #8f9dae;
+      }
+    }
+    #navbarSearch{
+      svg{
+        color: #8f9dae;
+      }
+    }
+  }
 }

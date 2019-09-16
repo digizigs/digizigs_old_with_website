@@ -63742,12 +63742,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: {
 		fullname: { type: String, default: '##' },
-		size: { type: Number, default: 48 },
+		size: { type: Number, default: 35 },
 		radius: { type: Number, default: 50, validator: function validator(value) {
 				return value >= 0 && value <= 50;
 			} },
 		color: { type: String, default: '' },
-		image: { type: String, default: null }
+		image: { type: String, default: '' }
 	},
 	data: function data() {
 		return {};
@@ -63759,8 +63759,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var fontSize = this.initials.length > 2 ? this.size / 3 : this.size / 2;
 			return {
 
-				'background-color': this.color === '' ? this.toColor(this.fullname) : this.color
-
+				'background-color': this.color === '' ? this.toColor(this.fullname) : this.color,
+				'height': this.size + 'px',
+				'width': this.size + 'px'
 			};
 		},
 		style2: function style2() {
@@ -63768,11 +63769,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return {
 				'background-size': 'cover',
 				'background-color': this.color === '' ? this.toColor(this.fullname) : this.color,
-				'background-image': this.hasImage ? 'url(' + this.image + ')' : 'none'
+				'background-image': this.hasImage ? 'url(' + this.image + ')' : 'none',
+				'height': this.size + 'px',
+				'width': this.size + 'px'
 			};
 		},
 		hasImage: function hasImage() {
-			return this.image !== null;
+			return this.image !== '';
 		},
 		initials: function initials() {
 			var words = this.fullname.split(/[\s-]+/);
@@ -78023,6 +78026,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 				if (_this.mails.length > 0) {
 					_this.dataloaded = true;
+					_this.mail = _this.mails[0];
 				}
 				NProgress.done();
 				//this.mail = this.mails[0]
@@ -78037,8 +78041,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		viewmail: function viewmail(mail) {
 
 			NProgress.start();
+
 			this.mail = mail;
-			NProgress.done();
+
 			console.log(mail.id);
 			this.markmail(mail.id, 'read');
 
@@ -78066,6 +78071,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				$('#Sidebar').removeClass('d-md-none');
 				$('#mainMenuOpen').removeClass('d-md-flex');
 			}
+
+			NProgress.done();
 		},
 		mboxview: function mboxview(mbox) {
 
@@ -78954,7 +78961,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(637)
+  __webpack_require__(606)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -78999,8 +79006,46 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 606 */,
-/* 607 */,
+/* 606 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(607);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("241e2139", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 607 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tx-white {\n  color: #8f9dae !important;\n}\na svg {\n  color: #8f9dae !important;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 608 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -81799,56 +81844,6 @@ $(window).scroll(function () {
 /* 626 */
 /***/ (function(module, exports) {
 
-
-
-/***/ }),
-/* 627 */,
-/* 628 */,
-/* 629 */,
-/* 630 */,
-/* 631 */,
-/* 632 */,
-/* 633 */,
-/* 634 */,
-/* 635 */,
-/* 636 */,
-/* 637 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(638);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("241e2139", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 638 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.tx-white {\n  color: #8f9dae !important;\n}\na svg {\n  color: #8f9dae !important;\n}\n", ""]);
-
-// exports
 
 
 /***/ })

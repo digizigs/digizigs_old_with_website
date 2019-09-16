@@ -278,6 +278,7 @@
 
 						if(this.mails.length > 0){				
 							this.dataloaded = true
+							this.mail = this.mails[0]
 						}
 						NProgress.done();
 						//this.mail = this.mails[0]
@@ -290,35 +291,38 @@
 			viewmail:function(mail){
 
 				NProgress.start();
-				this.mail = mail
-				NProgress.done();
-				console.log(mail.id)
-				this.markmail(mail.id,'read')
+				
+					this.mail = mail
+					
+					console.log(mail.id)
+					this.markmail(mail.id,'read')
 
-				new PerfectScrollbar('.mail-content-body', {
-					suppressScrollX: true
-				});
+					new PerfectScrollbar('.mail-content-body', {
+						suppressScrollX: true
+					});
 
-				// reply form
+					// reply form
 				
 
-				// removing previous selected item
-				$('.mail-group .selected').removeClass('selected');
+					// removing previous selected item
+					$('.mail-group .selected').removeClass('selected');
 
-				$(this).addClass('selected');
-				$(this).removeClass('unread');
+					$(this).addClass('selected');
+					$(this).removeClass('unread');
 
-				$('.mail-content-header').removeClass('d-none');
-				$('.mail-content-body').removeClass('d-none');
+					$('.mail-content-header').removeClass('d-none');
+					$('.mail-content-body').removeClass('d-none');
 
-				if(window.matchMedia('(max-width: 1199px)').matches) {
-					$('body').addClass('mail-content-show');
-				}
+					if(window.matchMedia('(max-width: 1199px)').matches) {
+						$('body').addClass('mail-content-show');
+					}
 
-				if(window.matchMedia('(min-width: 768px)').matches) {
-					$('#Sidebar').removeClass('d-md-none');
-					$('#mainMenuOpen').removeClass('d-md-flex');
-				}
+					if(window.matchMedia('(min-width: 768px)').matches) {
+						$('#Sidebar').removeClass('d-md-none');
+						$('#mainMenuOpen').removeClass('d-md-flex');
+					}
+
+				NProgress.done();
 			},
 			mboxview(mbox){
 				

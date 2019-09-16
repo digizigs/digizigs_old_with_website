@@ -245,11 +245,13 @@
 
       <div class="dropdown dropdown-profile">
         <a href="#" class="dropdown-link" data-toggle="dropdown" data-display="static">
-          <div class="avatar avatar-sm"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
+          <avatar :fullname="'{!! Auth::user()->name !!}'" :image="'{!! Auth::user()->profile->avatar_url !!}'"></avatar>
         </a><!-- dropdown-link -->
         <div class="dropdown-menu dropdown-menu-right tx-13">
-          <div class="avatar avatar-lg mg-b-15 text-center"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
-          <avatar :fullname="'Admin'"></avatar>
+          <div class="avatar avatar-lg mg-b-15 text-center" style="margin-top:-20px">
+            <avatar :fullname="'{!! Auth::user()->name !!}'" :image="'{!! Auth::user()->profile->avatar_url !!}'" :size="75"></avatar>
+          </div>
+          
           <h6 class="tx-semibold mg-b-5">{{Auth::user()->name }}</h6>
           <p class="mg-b-25 tx-12 tx-color-03"> Administrator </p>
           <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>

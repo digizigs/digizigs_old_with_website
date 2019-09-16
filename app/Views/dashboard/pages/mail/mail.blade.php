@@ -97,7 +97,7 @@
 					$('.mail-content-body').removeClass('d-none');
 
 					if(window.matchMedia('(max-width: 1199px)').matches) {
-						$('body').addClass('mail-content-show');
+						//$('body').addClass('mail-content-show');
 					}
 
 					if(window.matchMedia('(min-width: 768px)').matches) {
