@@ -5,7 +5,7 @@
 
   <div class="navbar-brand">
       <a href="{{route('app.home')}}" class="df-logo">
-          <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-black.png')}}" class="hidden-xs" style="height: 30px;">
+          <img src="{{asset('public/images/brand_assets/DZ-Logo Orange-white.png')}}" class="hidden-xs" style="height: 30px;">
       </a>
   </div><!-- navbar-brand -->
 
@@ -249,6 +249,7 @@
         </a><!-- dropdown-link -->
         <div class="dropdown-menu dropdown-menu-right tx-13">
           <div class="avatar avatar-lg mg-b-15 text-center"><img src="{{ Auth::user()->profile->avatar_url }}" class="rounded-circle" alt=""></div>
+          <avatar :fullname="'Admin'"></avatar>
           <h6 class="tx-semibold mg-b-5">{{Auth::user()->name }}</h6>
           <p class="mg-b-25 tx-12 tx-color-03"> Administrator </p>
           <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
@@ -291,4 +292,5 @@
         </ul>
       </div><!-- navbar-search-body -->
   </div><!-- navbar-search -->
+
 </header><!-- navbar -->

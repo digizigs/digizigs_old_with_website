@@ -37,3 +37,25 @@ body,html{
   }
 }
 
+
+
+//Main Navbar
+.navbar{
+  background: #2D353E;
+
+  #navbarMenu{
+
+    .navbar-menu{
+      .nav-item.active{
+        .nav-link{
+          color: #fff;
+        }
+      }
+      .nav-item{
+        .nav-link{
+          color: #8f9dae;
+        }
+      }
+    }
+  }
+}

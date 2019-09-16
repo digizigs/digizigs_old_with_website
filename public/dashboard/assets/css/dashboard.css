@@ -80794,3 +80794,15 @@ html {
   font-weight: 600px !important;
 }
 
+.navbar {
+  background: #2D353E;
+}
+
+.navbar #navbarMenu .navbar-menu .nav-item.active .nav-link {
+  color: #fff;
+}
+
+.navbar #navbarMenu .navbar-menu .nav-item .nav-link {
+  color: #8f9dae;
+}
+

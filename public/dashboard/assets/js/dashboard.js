@@ -77738,8 +77738,6 @@ exports.push([module.i, "\n.context-menu .context-menu-list a {\n  font-size: 12
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_context__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_context___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_context__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__ = __webpack_require__(637);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_quill_editor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_quill_editor__);
 //
 //
 //
@@ -77956,18 +77954,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 
@@ -78737,8 +78723,6 @@ var render = function() {
                         attrs: { type: "text", placeholder: "To" }
                       }),
                       _vm._v(" "),
-                      _vm._m(8),
-                      _vm._v(" "),
                       _c("editor", {
                         attrs: { height: "200" },
                         on: { input: _vm.quill }
@@ -78952,39 +78936,6 @@ var staticRenderFns = [
       },
       [_c("i", { attrs: { "data-feather": "more-vertical" } })]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wd-md-80p" }, [
-      _c(
-        "select",
-        {
-          staticClass: "form-control select2",
-          attrs: { multiple: "multiple" }
-        },
-        [
-          _c("option", { attrs: { label: "Choose one" } }),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "Firefox" } }, [_vm._v("Firefox")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "Chrome", selected: "" } }, [
-            _vm._v("Chrome")
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "Safari" } }, [_vm._v("Safari")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "Opera" } }, [_vm._v("Opera")]),
-          _vm._v(" "),
-          _c(
-            "option",
-            { attrs: { value: "Internet Explorer", selected: "" } },
-            [_vm._v("Internet Explorer")]
-          )
-        ]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -79003,7 +78954,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(606)
+  __webpack_require__(637)
 }
 var normalizeComponent = __webpack_require__(3)
 /* script */
@@ -79048,46 +78999,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 606 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(607);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("30c44793", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 607 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 606 */,
+/* 607 */,
 /* 608 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -79140,16 +79053,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			search: ''
+			search: '',
+			mailbody: ''
 		};
 	},
 
 	watch: {},
-	methods: {},
+	methods: {
+		editor: function editor(e) {
+			console.log(e);
+			this.mailbody = e;
+		}
+	},
 	created: function created() {}
 });
 
@@ -79178,7 +79099,17 @@ var render = function() {
             _vm._v(" "),
             _vm._m(2),
             _vm._v(" "),
-            _c("editor", { attrs: { height: "100" } }),
+            _c("div", [_vm._v("Cc")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control mb-2 input-sm",
+              attrs: { type: "text", placeholder: "To" }
+            }),
+            _vm._v(" "),
+            _c("editor", {
+              attrs: { height: "100" },
+              on: { input: _vm.editor }
+            }),
             _vm._v(" "),
             _vm._m(3)
           ],
@@ -79202,7 +79133,8 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "nav-link nav-link-minimize d-none d-lg-block",
+            staticClass:
+              "nav-link nav-link-minimize d-none d-lg-block tx-white",
             attrs: { id: "mailComposeMinimize", href: "" }
           },
           [
@@ -79215,7 +79147,7 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "nav-link nav-link-shrink d-none d-lg-block",
+            staticClass: "nav-link nav-link-shrink d-none d-lg-block tx-white",
             attrs: { id: "mailComposeShrink", href: "" }
           },
           [
@@ -79228,7 +79160,7 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "nav-link nav-link-close",
+            staticClass: "nav-link nav-link-close tx-white",
             attrs: { id: "mailComposeClose", href: "" }
           },
           [_c("i", { attrs: { "data-feather": "x" } })]
@@ -79273,12 +79205,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tx-13 mg-t-15 mg-sm-t-0 margin-top" }, [
-      _c("button", { staticClass: "btn btn-white mg-r-5" }, [
+    return _c("div", { staticClass: "tx-13 mg-t-15 mg-sm-t-0 mt-2" }, [
+      _c("button", { staticClass: "btn btn-white mg-r-5 btn-sm" }, [
         _vm._v("Save as Draft")
       ]),
       _vm._v(" "),
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Send")])
+      _c("button", { staticClass: "btn btn-primary btn-sm" }, [_vm._v("Send")])
     ])
   }
 ]
@@ -81883,7 +81815,41 @@ $(window).scroll(function () {
 /* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
-!function(t,e){ true?module.exports=e(__webpack_require__(594)):"function"==typeof define&&define.amd?define(["quill"],e):"object"==typeof exports?exports.VueQuillEditor=e(require("quill")):t.VueQuillEditor=e(t.Quill)}(this,function(t){return function(t){function e(i){if(n[i])return n[i].exports;var l=n[i]={i:i,l:!1,exports:{}};return t[i].call(l.exports,l,l.exports,e),l.l=!0,l.exports}var n={};return e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,i){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:i})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="/",e(e.s=2)}([function(e,n){e.exports=t},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=n(4),l=n.n(i),o=n(6),r=n(5),u=r(l.a,o.a,!1,null,null,null);e.default=u.exports},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0}),e.install=e.quillEditor=e.Quill=void 0;var l=n(0),o=i(l),r=n(1),u=i(r),s=window.Quill||o.default,a=function(t,e){e&&(u.default.props.globalOptions.default=function(){return e}),t.component(u.default.name,u.default)},c={Quill:s,quillEditor:u.default,install:a};e.default=c,e.Quill=s,e.quillEditor=u.default,e.install=a},function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={theme:"snow",boundary:document.body,modules:{toolbar:[["bold","italic","underline","strike"],["blockquote","code-block"],[{header:1},{header:2}],[{list:"ordered"},{list:"bullet"}],[{script:"sub"},{script:"super"}],[{indent:"-1"},{indent:"+1"}],[{direction:"rtl"}],[{size:["small",!1,"large","huge"]}],[{header:[1,2,3,4,5,6,!1]}],[{color:[]},{background:[]}],[{font:[]}],[{align:[]}],["clean"],["link","image","video"]]},placeholder:"Insert text here ...",readOnly:!1}},function(t,e,n){"use strict";function i(t){return t&&t.__esModule?t:{default:t}}Object.defineProperty(e,"__esModule",{value:!0});var l=n(0),o=i(l),r=n(3),u=i(r),s=window.Quill||o.default;"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(t,e){if(null==t)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(t),i=1;i<arguments.length;i++){var l=arguments[i];if(null!=l)for(var o in l)Object.prototype.hasOwnProperty.call(l,o)&&(n[o]=l[o])}return n},writable:!0,configurable:!0}),e.default={name:"quill-editor",data:function(){return{_options:{},_content:"",defaultOptions:u.default}},props:{content:String,value:String,disabled:{type:Boolean,default:!1},options:{type:Object,required:!1,default:function(){return{}}},globalOptions:{type:Object,required:!1,default:function(){return{}}}},mounted:function(){this.initialize()},beforeDestroy:function(){this.quill=null,delete this.quill},methods:{initialize:function(){var t=this;this.$el&&(this._options=Object.assign({},this.defaultOptions,this.globalOptions,this.options),this.quill=new s(this.$refs.editor,this._options),this.quill.enable(!1),(this.value||this.content)&&this.quill.pasteHTML(this.value||this.content),this.disabled||this.quill.enable(!0),this.quill.on("selection-change",function(e){e?t.$emit("focus",t.quill):t.$emit("blur",t.quill)}),this.quill.on("text-change",function(e,n,i){var l=t.$refs.editor.children[0].innerHTML,o=t.quill,r=t.quill.getText();"<p><br></p>"===l&&(l=""),t._content=l,t.$emit("input",t._content),t.$emit("change",{html:l,text:r,quill:o})}),this.$emit("ready",this.quill))}},watch:{content:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},value:function(t,e){this.quill&&(t&&t!==this._content?(this._content=t,this.quill.pasteHTML(t)):t||this.quill.setText(""))},disabled:function(t,e){this.quill&&this.quill.enable(!t)}}}},function(t,e){t.exports=function(t,e,n,i,l,o){var r,u=t=t||{},s=typeof t.default;"object"!==s&&"function"!==s||(r=t,u=t.default);var a="function"==typeof u?u.options:u;e&&(a.render=e.render,a.staticRenderFns=e.staticRenderFns,a._compiled=!0),n&&(a.functional=!0),l&&(a._scopeId=l);var c;if(o?(c=function(t){t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext,t||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),i&&i.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},a._ssrRegister=c):i&&(c=i),c){var d=a.functional,f=d?a.render:a.beforeCreate;d?(a._injectStyles=c,a.render=function(t,e){return c.call(e),f(t,e)}):a.beforeCreate=f?[].concat(f,c):[c]}return{esModule:r,exports:u,options:a}}},function(t,e,n){"use strict";var i=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"quill-editor"},[t._t("toolbar"),t._v(" "),n("div",{ref:"editor"})],2)},l=[],o={render:i,staticRenderFns:l};e.a=o}])});
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(638);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("241e2139", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-345501f8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./MailCompose.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 638 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.tx-white {\n  color: #8f9dae !important;\n}\na svg {\n  color: #8f9dae !important;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

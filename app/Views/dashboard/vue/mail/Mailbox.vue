@@ -169,17 +169,6 @@
 				<div v-if="reply  || replyall " class="pd-20 pd-lg-25 pd-xl-30 pd-t-0-f">
 					
               		<input type="text" class="form-control mb-2" placeholder="To">
-
-					<div class="wd-md-80p">
-						<select class="form-control select2" multiple="multiple">
-						<option label="Choose one"></option>
-						<option value="Firefox">Firefox</option>
-						<option value="Chrome" selected>Chrome</option>
-						<option value="Safari">Safari</option>
-						<option value="Opera">Opera</option>
-						<option value="Internet Explorer" selected>Internet Explorer</option>
-						</select>
-					</div>
            
 					<editor :height="'200'"  @input="quill"></editor>
 					
@@ -228,7 +217,6 @@
 <script type="text/javascript">
 
 	import { VueContext } from 'vue-context';
-	import { quillEditor } from 'vue-quill-editor';
 
 	export default{
 		components: {VueContext},
