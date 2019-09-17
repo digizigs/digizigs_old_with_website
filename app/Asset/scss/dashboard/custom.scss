@@ -71,3 +71,20 @@ body,html{
     }
   }
 }
+
+
+//Custom page sidebar active item
+.filemgr-sidebar-body{
+  .nav-aside{
+    ul{
+      li{
+        svg{color: red !important;}
+        a{
+         span{
+           color: red !important;
+         }
+        }
+      }
+    }
+  }
+}

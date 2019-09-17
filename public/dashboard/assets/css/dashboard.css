@@ -80814,3 +80814,11 @@ html {
   color: #8f9dae;
 }
 
+.filemgr-sidebar-body .nav-aside ul li svg {
+  color: red !important;
+}
+
+.filemgr-sidebar-body .nav-aside ul li a span {
+  color: red !important;
+}
+
