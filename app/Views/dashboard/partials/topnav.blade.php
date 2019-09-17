@@ -44,31 +44,18 @@
                   <li class="nav-label">Access Controls</li>
                   <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
                   <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                  
-                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                  <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
                   @can('manage_permission')
                   @endcan
 
                   <li class="nav-label mg-t-20">Publish</li>
-                  <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> All Posts</a></li>
-                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Create Post</a></li>
-                  
-                  <li class="nav-label mg-t-20">Category</li>
+                  <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> Web Blocks</a></li>
+                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Posts</a></li>
                   <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
-                  <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Add Category</a></li>
+
+                  
                   
 
-                </ul>
-
-                <ul>               
-                  <li class="nav-label">Access Controls</li>
-                  <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
-                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                  @can('manage_permission')
-                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
-                  @endcan
-                  <li class="nav-label mg-t-20">Publish</li>
-                  <li><i class="typcn typcn-archive"></i></li>
                 </ul>
 
 
@@ -123,7 +110,7 @@
               </div>
             </div><!-- nav-sub -->
         </li>
-        
+
       </ul>
   </div><!-- navbar-menu-wrapper -->
 
