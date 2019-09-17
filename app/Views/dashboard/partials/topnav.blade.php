@@ -20,125 +20,110 @@
           <a href="{{route('app.home')}}" class="nav-link"><i data-feather="pie-chart"></i> Dashboard</a>
           
         </li>
-          <li class="nav-item with-sub active">
-              <a href="#" class="nav-link"><i data-feather="package"></i> Apps</a>
-              <ul class="navbar-menu-sub">
-                <li class="nav-label">Applications</li>
-                <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
-                <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
-                <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
-                <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
-                <li class="nav-sub-item"><a href="{{route('mail.index')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
+        
 
-                <li class="nav-label mg-t-20">Logs</li>
-                <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="edit"></i> Change Logs</a></li>
-                <li class="nav-sub-item"><a href="{{route('app.applog')}}" class="nav-sub-link"><i data-feather="zap"></i> Error Logs</a></li>
+        <li class="nav-item with-sub">
+            <a href="#" class="nav-link"><i data-feather="layers"></i> Apps</a>
+            <div class="navbar-menu-sub">
+              <div class="d-lg-flex">
+                
+                <ul>
+                  <li class="nav-label">Applications</li>
+                  <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
+                  <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
+                  <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
+                  <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
+                  <li class="nav-sub-item"><a href="{{route('mail.index')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
 
+                  <li class="nav-label mg-t-20">Logs</li>
+                  <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="edit"></i> Change Logs</a></li>
+                  <li class="nav-sub-item"><a href="{{route('app.applog')}}" class="nav-sub-link"><i data-feather="zap"></i> Error Logs</a></li>
 
-              </ul>
-          </li>
-
-          <li class="nav-item with-sub">
-              <a href="#" class="nav-link"><i data-feather="layers"></i> Apps</a>
-              <div class="navbar-menu-sub">
-                <div class="d-lg-flex">
+                </ul>
+                <ul>
+                  <li class="nav-label">Access Controls</li>
+                  <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
+                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
                   
-                  <ul>
-                    <li class="nav-label">Applications</li>
-                    <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
-                    <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
-                    <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
-                    <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>
-                    <li class="nav-sub-item"><a href="{{route('mail.index')}}" class="nav-sub-link"><i data-feather="mail"></i>Mail</a></li>
+                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                  @can('manage_permission')
+                  @endcan
 
-                    <li class="nav-label mg-t-20">Logs</li>
-                    <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="edit"></i> Change Logs</a></li>
-                    <li class="nav-sub-item"><a href="{{route('app.applog')}}" class="nav-sub-link"><i data-feather="zap"></i> Error Logs</a></li>
-
-                  </ul>
-                  <ul>
-                    <li class="nav-label">Access Controls</li>
-                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
-                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                   
-                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
-                    @can('manage_permission')
-                    @endcan
-
-                    <li class="nav-label mg-t-20">Publish</li>
-                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> All Articles</a></li>
-                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Create Arcitle</a></li>
-                    
-                    <li class="nav-label mg-t-20">Category</li>
-                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
-                    <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Add Category</a></li>
-                    
-
-                  </ul>
-
-                  <ul>               
-                    <li class="nav-label">Access Controls</li>
-                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
-                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                    @can('manage_permission')
-                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
-                    @endcan
-                    <li class="nav-label mg-t-20">Publish</li>
-                    <li><i class="typcn typcn-archive"></i></li>
-                  </ul>
-
-
-                </div>
-              </div><!-- nav-sub -->
-          </li>
-
-          <li class="nav-item with-sub">
-              <a href="#" class="nav-link"><i data-feather="layers"></i> Pages</a>
-              <div class="navbar-menu-sub">
-                <div class="d-lg-flex">
+                  <li class="nav-label mg-t-20">Publish</li>
+                  <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> All Posts</a></li>
+                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Create Post</a></li>
                   
-                  <ul>
-                    <li class="nav-label">Authentication</li>
-                    <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="log-in"></i> Sign In</a></li>
-                    <li class="nav-sub-item"><a href="page-signup.html" class="nav-sub-link"><i data-feather="user-plus"></i> Sign Up</a></li>
-                    <li class="nav-sub-item"><a href="page-verify.html" class="nav-sub-link"><i data-feather="user-check"></i> Verify Account</a></li>
-                    <li class="nav-sub-item"><a href="page-forgot.html" class="nav-sub-link"><i data-feather="shield-off"></i> Forgot Password</a></li>
-                    <li class="nav-label mg-t-20">User Pages</li>
-                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="user"></i> View Profile</a></li>
-                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="users"></i> Connections</a></li>
-                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="users"></i> Groups</a></li>
-                    <li class="nav-sub-item"><a href="page-events.html" class="nav-sub-link"><i data-feather="calendar"></i> Events</a></li>
-                  </ul>
-                  <ul>
-                    <li class="nav-label">Error Pages</li>
+                  <li class="nav-label mg-t-20">Category</li>
+                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
+                  <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Add Category</a></li>
+                  
 
-                    <li class="nav-sub-item"><a href="page-404.html" class="nav-sub-link"><i data-feather="file"></i> 404 Page Not Found</a></li>
-                    <li class="nav-sub-item"><a href="page-500.html" class="nav-sub-link"><i data-feather="file"></i> 500 Internal Server</a></li>
-                    <li class="nav-sub-item"><a href="page-503.html" class="nav-sub-link"><i data-feather="file"></i> 503 Service Unavailable</a></li>
-                    <li class="nav-sub-item"><a href="page-505.html" class="nav-sub-link"><i data-feather="file"></i> 505 Forbidden</a></li>
-                    
-                    <li class="nav-label mg-t-20">Other Pages</li>
-                    
-                    <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Analytics</a></li>
-                    <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Error Logs</a></li>
-                    <li class="nav-sub-item"><a href="page-invoice.html" class="nav-sub-link"><i data-feather="file-text"></i> App Logs</a></li>
-                  </ul>
+                </ul>
 
-                  <ul>               
-                    <li class="nav-label">Access Controls</li>
-                    <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
-                    <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
-                    @can('manage_permission')
-                      <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
-                    @endcan
-                    <li class="nav-label mg-t-20">Publish</li>
-                    <li><i class="typcn typcn-archive"></i></li>
-                  </ul>
+                <ul>               
+                  <li class="nav-label">Access Controls</li>
+                  <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
+                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
+                  @can('manage_permission')
+                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                  @endcan
+                  <li class="nav-label mg-t-20">Publish</li>
+                  <li><i class="typcn typcn-archive"></i></li>
+                </ul>
 
 
-                </div>
-              </div><!-- nav-sub -->
-          </li>
+              </div>
+            </div><!-- nav-sub -->
+        </li>
+
+        <li class="nav-item with-sub">
+            <a href="#" class="nav-link"><i data-feather="layers"></i> Pages</a>
+            <div class="navbar-menu-sub">
+              <div class="d-lg-flex">
+                
+                <ul>
+                  <li class="nav-label">Authentication</li>
+                  <li class="nav-sub-item"><a href="page-signin.html" class="nav-sub-link"><i data-feather="log-in"></i> Sign In</a></li>
+                  <li class="nav-sub-item"><a href="page-signup.html" class="nav-sub-link"><i data-feather="user-plus"></i> Sign Up</a></li>
+                  <li class="nav-sub-item"><a href="page-verify.html" class="nav-sub-link"><i data-feather="user-check"></i> Verify Account</a></li>
+                  <li class="nav-sub-item"><a href="page-forgot.html" class="nav-sub-link"><i data-feather="shield-off"></i> Forgot Password</a></li>
+                  <li class="nav-label mg-t-20">User Pages</li>
+                  <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="user"></i> View Profile</a></li>
+                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="users"></i> Connections</a></li>
+                  <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="users"></i> Groups</a></li>
+                  <li class="nav-sub-item"><a href="page-events.html" class="nav-sub-link"><i data-feather="calendar"></i> Events</a></li>
+                </ul>
+                <ul>
+                  <li class="nav-label">Error Pages</li>
+
+                  <li class="nav-sub-item"><a href="page-404.html" class="nav-sub-link"><i data-feather="file"></i> 404 Page Not Found</a></li>
+                  <li class="nav-sub-item"><a href="page-500.html" class="nav-sub-link"><i data-feather="file"></i> 500 Internal Server</a></li>
+                  <li class="nav-sub-item"><a href="page-503.html" class="nav-sub-link"><i data-feather="file"></i> 503 Service Unavailable</a></li>
+                  <li class="nav-sub-item"><a href="page-505.html" class="nav-sub-link"><i data-feather="file"></i> 505 Forbidden</a></li>
+                  
+                  <li class="nav-label mg-t-20">Other Pages</li>
+                  
+                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Analytics</a></li>
+                  <li class="nav-sub-item"><a href="page-help-center.html" class="nav-sub-link"><i data-feather="file-text"></i> Error Logs</a></li>
+                  <li class="nav-sub-item"><a href="page-invoice.html" class="nav-sub-link"><i data-feather="file-text"></i> App Logs</a></li>
+                </ul>
+
+                <ul>               
+                  <li class="nav-label">Access Controls</li>
+                  <li class="nav-sub-item"><a href="page-profile-view.html" class="nav-sub-link"><i data-feather="users"></i> Users</a></li>
+                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="shield-off"></i> Roles</a></li>
+                  @can('manage_permission')
+                    <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="star"></i> Permission </a></li>
+                  @endcan
+                  <li class="nav-label mg-t-20">Publish</li>
+                  <li><i class="typcn typcn-archive"></i></li>
+                </ul>
+
+
+              </div>
+            </div><!-- nav-sub -->
+        </li>
+        
       </ul>
   </div><!-- navbar-menu-wrapper -->
 
@@ -254,7 +239,7 @@
           
           <h6 class="tx-semibold mg-b-5">{{Auth::user()->name }}</h6>
           <p class="mg-b-25 tx-12 tx-color-03"> Administrator </p>
-          <a href="page-profile-view.html" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
+          <a href="{{route('profile.index')}}" class="dropdown-item"><i data-feather="user"></i> View Profile</a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item"><i data-feather="settings"></i>Account Settings</a>
           <a href="#" class="dropdown-item"><i data-feather="settings"></i>Privacy Settings</a>

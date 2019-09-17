@@ -4,7 +4,7 @@
     <head>
         
         @include('dashboard.partials.head')
-
+            
         @yield('css')
 
     </head>

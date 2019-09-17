@@ -41,5 +41,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.pages.logs.error');
     }
+
+    public function profile()
+    {
+        return view('dashboard.pages.profile.profile');
+    }
     
 }

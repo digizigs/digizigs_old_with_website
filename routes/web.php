@@ -358,6 +358,10 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
     Route::get('/calender', 'Dashboard\DashboardController@calender')->name('app.calender');
     Route::get('/contact', 'Dashboard\DashboardController@contact')->name('app.contact');
 
+    Route::resource('/profile', 'Dashboard\Profile\ProfileController');
+
+    Route::resource('/post', 'Dashboard\Post\PostController');
+
     Route::get('/applog', 'Admin\LogViewer\LogViewerController@index')->name('app.applog');
 
 
