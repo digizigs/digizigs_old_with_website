@@ -48,4 +48,10 @@ class PostController extends Controller
     {
         //
     }
+
+    public function posttype($type)
+    {
+        return view('dashboard.pages.post.all');
+    }
+
 }

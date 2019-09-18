@@ -1,4 +1,7 @@
 
+$themeprimary:#0073AA;
+$themesecondary:#008EC2;
+
 body,html{
 
 
@@ -74,17 +77,32 @@ body,html{
 
 
 //Custom page sidebar active item
-.filemgr-sidebar-body{
+.sidebar-page {
   .nav-aside{
-    ul{
-      li{
-        svg{color: red !important;}
-        a{
-         span{
-           color: red !important;
-         }
+    .nav-label{
+      color:$themeprimary;
+    }
+    .nav-item.active{
+      .nav-link{
+        span{
+          color: $themesecondary;
         }
       }
+      svg{
+        color: $themesecondary;
+      }
     }
+    .nav-item:hover{
+      .nav-link{
+        span{
+          color: $themesecondary;
+        }
+      }
+      svg{
+        color: $themesecondary;
+      }
+    }
+    
   }
+  
 }

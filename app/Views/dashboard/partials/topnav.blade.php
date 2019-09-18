@@ -50,8 +50,8 @@
 
                   <li class="nav-label mg-t-20">Publish</li>
                   <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> Web Blocks</a></li>
-                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Posts</a></li>
-                  <li class="nav-sub-item"><a href="page-pricing.html" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
+                  <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> Posts</a></li>
+                  <li class="nav-sub-item"><a href="{{route('post.index')}}" class="nav-sub-link"><i data-feather="file-text"></i> Categories</a></li>
 
                   
                   

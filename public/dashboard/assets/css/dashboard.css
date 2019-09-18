@@ -80814,11 +80814,23 @@ html {
   color: #8f9dae;
 }
 
-.filemgr-sidebar-body .nav-aside ul li svg {
-  color: red !important;
+.sidebar-page .nav-aside .nav-label {
+  color: #0073AA;
 }
 
-.filemgr-sidebar-body .nav-aside ul li a span {
-  color: red !important;
+.sidebar-page .nav-aside .nav-item.active .nav-link span {
+  color: #008EC2;
+}
+
+.sidebar-page .nav-aside .nav-item.active svg {
+  color: #008EC2;
+}
+
+.sidebar-page .nav-aside .nav-item:hover .nav-link span {
+  color: #008EC2;
+}
+
+.sidebar-page .nav-aside .nav-item:hover svg {
+  color: #008EC2;
 }
 

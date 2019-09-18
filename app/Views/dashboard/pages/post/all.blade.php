@@ -5,32 +5,18 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.filemgr.css')}}">
-
-    <style> 
-      .filemgr-sidebar-body{
-          .nav-aside{
-            ul{
-              li{
-                svg{color: red !important;}
-                a{
-                 span{
-                   color: red !important;
-                 }
-                }
-              }
-            }
-          }
-        }
-        .filemgr-sidebar-body .active svg{
-          color: red !important;
-        }
+    <style>
+      ::-webkit-scrollbar {
+      display: none;
+      }
     </style>
+    
 @endsection
 
 
 @section('content')
 
-<div class="filemgr-wrapper">
+<div class="filemgr-wrapper sidebar-page">
 
   <div class="filemgr-sidebar">
       
@@ -43,13 +29,13 @@
             <ul class="nav nav-aside">
 
               <li class="nav-label active">Posts</li>
-              <li class="nav-item"><a href="dashboard-two.html" class="nav-link active "><i data-feather="cast"></i> <span>All Post</span></a></li>
+              <li class="nav-item active"><a href="dashboard-two.html" class="nav-link"><i data-feather="cast"></i> <span>All Post</span></a></li>
               <li class="nav-item"><a href="dashboard-three.html" class="nav-link"><i data-feather="plus-circle"></i> <span>Add Post</span></a></li>
 
               <li class="nav-label mg-t-25">Post Types</li>
-              <li class="nav-item"><a href="app-calendar.html" class="nav-link"><i data-feather="maximize"></i> <span>Published</span></a></li>
-              <li class="nav-item"><a href="app-chat.html" class="nav-link"><i data-feather="minimize"></i> <span>Draft</span></a></li>
-              <li class="nav-item"><a href="app-contacts.html" class="nav-link"><i data-feather="trash"></i> <span>Trash</span></a></li>
+              <li class="nav-item"><a href="{{route('post.type','publish')}}" class="nav-link"><i data-feather="maximize"></i> <span>Published</span></a></li>
+              <li class="nav-item"><a href="{{route('post.type','draft')}}" class="nav-link"><i data-feather="minimize"></i> <span>Draft</span></a></li>
+              <li class="nav-item"><a href="{{route('post.type','trash')}}" class="nav-link"><i data-feather="trash"></i> <span>Trash</span></a></li>
 
             </ul>
         </div>
@@ -75,7 +61,31 @@
 
     <div class="filemgr-content-body">
         <div class="pd-10 pd-lg-10 pd-xl-10">
-            Body
+            <div class="container content-components">
+              <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    
+                      <td>Adrian Monino</td>
+                      <td>Front-End Engineer</td>
+                      <td>Computer Science</td>
+                      <td>$120,000</td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
         </div>
     </div><!-- filemgr-content-body -->
   </div><!-- filemgr-content -->
@@ -86,84 +96,5 @@
 
 
 @section('javascript')
-
-<script>
-    $(function(){
-    'use strict'
-
-    new PerfectScrollbar('.filemgr-sidebar-body', {
-      suppressScrollX: true
-    });
-
-    new PerfectScrollbar('.filemgr-content-body', {
-      suppressScrollX: true
-    });
-    
-    
-
-    $('#Sidebar').on('click', function(e){
-      e.preventDefault();
-
-      $('body').addClass('filemgr-sidebar-show');
-
-      $(this).addClass('d-none');
-      $('#mainMenuOpen').removeClass('d-none');
-
-      
-
-
-    });
-
-    $(document).on('click touchstart', function(e){
-      e.stopPropagation();
-
-      // closing of sidebar menu when clicking outside of it
-      if(!$(e.target).closest('.burger-menu').length) {
-        var sb = $(e.target).closest('.filemgr-sidebar').length;
-        if(!sb) {
-          $('body').removeClass('filemgr-sidebar-show');
-
-          $('#Sidebar').removeClass('d-none');
-          $('#mainMenuOpen').addClass('d-none');
-        }
-      }
-    });
-
-
-    $('.important').on('click', function(e){
-      e.preventDefault();
-
-      var parent = $(this).closest('.card-file');
-      var important = parent.find('.marker-icon');
-
-      if(!important.length) {
-        $(this).closest('.card-file').append('<div class="marker-icon marker-warning pos-absolute t--1 l--1"><i data-feather="star"></i></div>');
-
-        $(this).html('<i data-feather="star"></i> Unmark as Important');
-
-      } else {
-        important.remove();
-
-        $(this).html('<i data-feather="star"></i> Mark as Important');
-      }
-
-      feather.replace();
-    })
-
-    $('.download').on('click', function(e){
-      e.preventDefault();
-
-      $('#toast').toast('show');
-    })
-
-    if(window.matchMedia('(max-width: 991px)').matches) {
-      console.log('max-width: 991px')
-      $('#mainMenuOpen').addClass('d-none');
-      //$('#mainMenuOpen').addClass('d-md-flex');
-      //$('#mainMenuOpen').removeClass('d-none');
-    }
-
-  })
-  </script>
-
+  <script src="{{asset('public/dashboard/assets/js/sidebar_page.js')}}"></script>
 @endsection
