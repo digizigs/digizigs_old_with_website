@@ -348,8 +348,12 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 //=========================================Admin Routes=============================================//
 
 
-//Dashboard//
-Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
+
+Route::group([
+        'prefix' => 'digidash',
+        'middleware'=>['auth']
+    ],
+    function(){
 
     Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
     Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');

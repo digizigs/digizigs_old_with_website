@@ -5,11 +5,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.filemgr.css')}}">
-    <style>
-      ::-webkit-scrollbar {
-      display: none;
-      }
-    </style>
+    
     
 @endsection
 
