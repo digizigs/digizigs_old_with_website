@@ -54,6 +54,15 @@ body,html{
           color: #fff;
         }
       }
+
+      @media (max-width:768px) {
+        .nav-item.active{
+          .nav-link{
+            color: #2D353E;
+          }
+        }
+      }
+
       .nav-item{
         .nav-link{
           color: #8f9dae;

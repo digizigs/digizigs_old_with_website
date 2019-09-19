@@ -77957,6 +77957,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -78004,6 +78006,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return this.nmails.filter(function (value) {
 				return value.label === 'draft';
 			}).length;
+		},
+		maillistbody: function maillistbody(e) {
+			return 'Mail body'; //mail.body_html.slice(0,150)
 		}
 	},
 	watch: {
@@ -78511,7 +78516,11 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "tx-12 tx-color-03 mg-b-0" }, [
-                      _vm._v(_vm._s(mail.body_plain.slice(0, 150)) + " ")
+                      mail.body_plain
+                        ? _c("span", [
+                            _vm._v(_vm._s(mail.body_plain.slice(0, 150)))
+                          ])
+                        : _vm._e()
                     ])
                   ])
                 ],
@@ -81845,6 +81854,13 @@ $(window).scroll(function () {
 /***/ (function(module, exports) {
 
 
+//Page-Sidebar menu  active link
+var CURRENT_URL = window.location.href.split('#')[0].split('?')[0];
+$('.nav-aside').find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('active');
+
+//Top Menu Active class
+$('.top-navbar').find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('active');
+$('.top-navbar').find('a[href="' + CURRENT_URL + '"]').parents('ul').closest('li').addClass('active');
 
 /***/ })
 /******/ ]);

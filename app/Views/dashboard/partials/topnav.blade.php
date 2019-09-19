@@ -1,5 +1,5 @@
 
-<header class="navbar navbar-header navbar-header-fixed">
+<header class="navbar navbar-header navbar-header-fixed top-navbar">
   <a href="#" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
   <a href="#" id="Sidebar" class="burger-menu d-md-none"><i data-feather="arrow-left"></i></a>
 
@@ -10,19 +10,21 @@
   </div><!-- navbar-brand -->
 
   <div id="navbarMenu" class="navbar-menu-wrapper">
+
       <div class="navbar-menu-header">
         <a href="{{route('app.home')}}" class="df-logo">digi<span>zigs</span></a>
         <a id="mainMenuClose" href="#"><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
+
       <ul class="nav navbar-menu">
-        <li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li>
-        <li class="nav-item active">
+        <!--li class="nav-label pd-l-20 pd-lg-l-25 d-lg-none">Main Navigation</li-->
+
+        <li class="nav-item">
           <a href="{{route('app.home')}}" class="nav-link"><i data-feather="pie-chart"></i> Dashboard</a>
-          
         </li>
         
 
-        <li class="nav-item with-sub">
+        <li class="nav-item with-sub ">
             <a href="#" class="nav-link"><i data-feather="layers"></i> Apps</a>
             <div class="navbar-menu-sub">
               <div class="d-lg-flex">
@@ -112,6 +114,7 @@
         </li>
 
       </ul>
+
   </div><!-- navbar-menu-wrapper -->
 
   <div class="navbar-right">

@@ -58,43 +58,7 @@
     <div class="filemgr-content-body">
         <div class="pd-10 pd-lg-10 pd-xl-10">
             <div class="container content-components">
-              <div class="table-responsive">
-                <table class="table table-striped mg-b-0">
-                  <thead>
-                    <tr>
-                      
-                      <th scope="col">Title</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Category</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                    
-                      <td>Adrian Monino</td>
-                      <td>Front-End Engineer</td>
-                      <td>Computer Science</td>
-                      <td>$120,000</td>
-                    </tr>
-                    <tr>
-                    
-                    <td>Adrian Monino</td>
-                    <td>Front-End Engineer</td>
-                    <td>Computer Science</td>
-                    <td>$120,000</td>
-                  </tr>
-                  <tr>
-                    
-                    <td>Adrian Monino</td>
-                    <td>Front-End Engineer</td>
-                    <td>Computer Science</td>
-                    <td>$120,000</td>
-                  </tr>
-                    
-                  </tbody>
-                </table>
-              </div>
+              
             </div>
         </div>
     </div><!-- filemgr-content-body -->

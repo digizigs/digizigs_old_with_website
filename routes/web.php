@@ -364,7 +364,7 @@ Route::group([
 
     Route::resource('/profile', 'Dashboard\Profile\ProfileController');
 
-    Route::get('/post/{type}/', 'Dashboard\Post\PostController@posttype')->name('post.type');
+    //Route::get('/post/{type}/', 'Dashboard\Post\PostController@posttype')->name('post.type');
     Route::resource('/post', 'Dashboard\Post\PostController');
 
 

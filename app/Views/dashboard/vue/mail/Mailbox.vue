@@ -91,7 +91,9 @@
 							<span class="tx-11">{{mail.created_at | vueDay}}</span>
 							</div>
 							<h6 class="tx-13">{{mail.subject}}</h6>
-							<p class="tx-12 tx-color-03 mg-b-0">{{mail.body_plain.slice(0,150)}} </p>
+							<p class="tx-12 tx-color-03 mg-b-0">
+								<span v-if="mail.body_plain">{{mail.body_plain.slice(0,150)}}</span>
+							</p>
 						</div><!-- media-body -->
 					</li>
 				</ul>
@@ -257,6 +259,9 @@
 			},
 			draft(){
 				return this.nmails.filter(value => value.label === 'draft').length
+			},
+			maillistbody(e){
+				return 'Mail body'; //mail.body_html.slice(0,150)
 			}
 
 		},
