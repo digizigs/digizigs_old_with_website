@@ -6,6 +6,11 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+//Vue Multiselect
+import VueSingleSelect from "vue-single-select";
+import Multiselect from 'vue-multiselect';
+
+
 //Sweet Alert
 import Swal from 'sweetalert2';
 window.swal = Swal;
