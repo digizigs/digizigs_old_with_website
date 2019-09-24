@@ -14,30 +14,7 @@
 
 <div class="filemgr-wrapper sidebar-page">
 
-  <div class="filemgr-sidebar">
-      
-    <div class="filemgr-content-header">
-        <h4 class="mg-t-10">Posts</h4>
-    </div><!-- filemgr-content-header -->
-
-    <div class="filemgr-sidebar-body">
-        <div class="pd-t-20 pd-b-10 pd-x-20">
-            <ul class="nav nav-aside">
-
-              <li class="nav-label active">Posts</li>
-              <li class="nav-item"><a href="{{route('post.index')}}" class="nav-link"><i data-feather="cast"></i> <span>All Post</span></a></li>
-              <li class="nav-item"><a href="{{route('post.create')}}" class="nav-link"><i data-feather="plus-circle"></i> <span>Add Post</span></a></li>
-
-              <li class="nav-label mg-t-25">Post Types</li>
-              <li class="nav-item"><a href="{{route('post.index',['type'=>'published'])}}" class="nav-link"><i data-feather="maximize"></i> <span>Published</span></a></li>
-              <li class="nav-item"><a href="{{route('post.index',['type'=>'draft'])}}" class="nav-link"><i data-feather="minimize"></i> <span>Draft</span></a></li>
-              <li class="nav-item"><a href="{{route('post.index',['type'=>'trash'])}}" class="nav-link"><i data-feather="trash"></i> <span>Trash</span></a></li>
-
-            </ul>
-        </div>
-    </div>
-
-  </div><!-- filemgr-sidebar -->
+  @include('dashboard.pages.post.sidebar')
 
   <div class="filemgr-content">
 
@@ -55,7 +32,7 @@
 
     
 
-    <div class="filemgr-content-body">
+    <div class="filemgr-content-body" style="background-color: #fff">
         <div class="pd-10 pd-lg-10 pd-xl-10">
             <div class="container content-components">
               <div class="table-responsive">
@@ -70,28 +47,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                    
-                      <td>Adrian Monino</td>
-                      <td>Front-End Engineer</td>
+
+                  @foreach($posts as $post)
+                    <tr>                  
+                      <td>{{$post->title}}</td>
+                      <td>{{$post->description}}</td>
                       <td>Computer Science</td>
                       <td>$120,000</td>
                     </tr>
-                    <tr>
-                    
-                    <td>Adrian Monino</td>
-                    <td>Front-End Engineer</td>
-                    <td>Computer Science</td>
-                    <td>$120,000</td>
-                  </tr>
-                  <tr>
-                    
-                    <td>Adrian Monino</td>
-                    <td>Front-End Engineer</td>
-                    <td>Computer Science</td>
-                    <td>$120,000</td>
-                  </tr>
-                    
+                  @endforeach
+
                   </tbody>
                 </table>
               </div>

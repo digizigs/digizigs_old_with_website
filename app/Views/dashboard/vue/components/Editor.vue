@@ -1,4 +1,5 @@
 <template>
+
     <div ref="editor" v-html="value" class="editor" v-bind:style="style"></div>
     
 </template>
@@ -20,7 +21,8 @@
         computed:{
             style(){
                 return{
-                    height:200 + 'px'
+                    height:200 + 'px',
+                    background: '#fff !important'
                 }
             }
         },
@@ -62,6 +64,9 @@
 <style lang="scss" scoped>
 	.ql-picker-label{
         color:black !important;
+    }
+    .ql-toolbar .ql-snow{
+        background: #fff !important;
     }
 </style>
 

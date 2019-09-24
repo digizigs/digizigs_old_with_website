@@ -8,7 +8,14 @@ Vue.use(VueRouter)
 
 //Vue Multiselect
 import VueSingleSelect from "vue-single-select";
-import Multiselect from 'vue-multiselect';
+Vue.component('vue-single-select', VueSingleSelect);
+
+//Select 2
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
+
+import vueMultiSelect from 'vue-multi-select'
+//import 'vue-multi-select/dist/lib/vue-multi-select.min.css'
 
 
 //Sweet Alert
@@ -44,7 +51,8 @@ Vue.component('mail-content', require('./mail/MailContent.vue'));
 Vue.component('mailbox-group', require('./mail/MailboxGroup.vue'));
 Vue.component('mailbox-sidebar', require('./mail/MailboxSidebar.vue'));
 
-
+//Post
+Vue.component('newpost', require('./post/NewPost.vue'));
 
 let routes = [
 	{ path: '/foo', component: Foo },

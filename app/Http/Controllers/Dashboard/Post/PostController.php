@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard\Post;
-
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,7 +12,8 @@ class PostController extends Controller
     
     public function index()
     {
-        return view('dashboard.pages.post.all');
+        $posts = Post::orderby('created_at','desc')->get();
+        return view('dashboard.pages.post.all',compact('posts'));
     }
 
     
@@ -22,7 +25,7 @@ class PostController extends Controller
     
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     

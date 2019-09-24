@@ -7,3 +7,18 @@ $('.nav-aside').find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('act
 $('.top-navbar').find('a[href="' + CURRENT_URL + '"]').parent('li').addClass('active');
 $('.top-navbar').find('a[href="' + CURRENT_URL + '"]').parents('ul').closest('li').addClass('active');
 
+
+//New Post Feature image preview
+$("#imageUpload").change(function() {
+
+    if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+             $('.avatar-preview').css('background-image', 'url('+e.target.result +')');
+             $('.avatar-preview').hide();
+             $('.avatar-preview').fadeIn(650);
+         }
+         reader.readAsDataURL(this.files[0]);
+    }
+ });

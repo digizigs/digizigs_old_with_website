@@ -1,5 +1,6 @@
 <script src="{{asset('public/dashboard/lib/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('public/dashboard/lib/jqueryui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('public/dashboard/lib/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('public/dashboard/lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('public/dashboard/lib/feather-icons/feather.min.js')}}"></script>
 <script src="{{asset('public/dashboard/lib/nprogress/nprogress.js')}}"></script>

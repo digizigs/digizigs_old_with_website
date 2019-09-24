@@ -80776,6 +80776,82 @@ button.bg-twitter:focus,
   width: 280px;
 }
 
+.mp-0 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mt-1 {
+  margin-top: 1px;
+}
+
+.mt-2 {
+  margin-top: 2px;
+}
+
+.mt-3 {
+  margin-top: 3px;
+}
+
+.mt-4 {
+  margin-top: 4px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.p-2 {
+  padding: 2 !important;
+}
+
+.p-4 {
+  padding: 4 !important;
+}
+
+.p-6 {
+  padding: 6 !important;
+}
+
+.p-8 {
+  padding: 8 !important;
+}
+
+.p-10 {
+  padding: 10 !important;
+}
+
+.px-2 {
+  padding-right: 2px !important;
+  padding-left: 2px !important;
+}
+
+.btn-wp {
+  background-color: #008EC2;
+  color: #fff;
+}
+
+.btn-wp:hover {
+  background-color: #0073AA;
+  color: #fff;
+}
+
 .wp-input {
   /* Include margin and padding in the width calculation of input and textarea. */
   /* rtl:ignore */
@@ -82444,9 +82520,113 @@ button.bg-twitter:focus,
   }
 }
 
-.mb-10 {
-  margin-bottom: 10px;
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+  position: fixed;
+  margin: auto;
+  width: 50%;
+  height: 100%;
+  z-index: 9999;
+  -webkit-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
 }
+
+.modal.right.w80 .modal-dialog {
+  width: calc(100% - 180px);
+}
+
+@media (max-width: 768px) {
+  .modal.right.w80 .modal-dialog {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal.right .modal-dialog {
+    width: 100%;
+  }
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+  height: 100%;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+  padding: 15px 15px 80px;
+}
+
+/*Left*/
+
+.modal.left.fade .modal-dialog {
+  left: -50%;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.w80.fade .modal-dialog {
+  left: -80%;
+}
+
+@media (max-width: 768px) {
+  .modal.left.w80.fade .modal-dialog {
+    left: -100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal.left.fade .modal-dialog {
+    left: -100%;
+  }
+}
+
+/*Right*/
+
+.modal.right.fade .modal-dialog {
+  right: -50%;
+  -webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+  transition: opacity 0.3s linear, right 0.3s ease-out;
+}
+
+.modal.right.w80.fade .modal-dialog {
+  right: -80%;
+}
+
+.modal.right.fade.in .modal-dialog {
+  right: 0;
+}
+
+/* ----- MODAL STYLE ----- */
+
+.modal-content {
+  border-radius: 0;
+  border: none;
+  z-index: 9999;
+}
+
+.modal-header {
+  border-bottom-color: #EEEEEE;
+  background-color: #FAFAFA;
+}
+
+.modal-body.white {
+  background-color: #FFFFFF !important;
+}
+
+.modal-content.white {
+  background-color: #FFFFFF !important;
+}
+
+/* ----- v CAN BE DELETED v ----- */
 
 body,
 html {
@@ -82510,5 +82690,17 @@ html {
 
 .sidebar-page .nav-aside .nav-item:hover svg {
   color: #008EC2;
+}
+
+.avatar-preview {
+  width: 250px;
+  height: 150px;
+  position: relative;
+  border-radius: 5px;
+  margin: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
 }
 
