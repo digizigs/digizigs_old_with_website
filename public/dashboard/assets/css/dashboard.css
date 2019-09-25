@@ -80822,3 +80822,7 @@ html {
   color: red !important;
 }
 
+.filemgr-sidebar-body .active svg {
+  color: red !important;
+}
+

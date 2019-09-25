@@ -21,9 +21,7 @@
             }
           }
         }
-        .filemgr-sidebar-body .active svg{
-          color: red !important;
-        }
+        
     </style>
 @endsection
 
