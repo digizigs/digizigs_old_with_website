@@ -83,7 +83,7 @@
 
 				
 				<ul class="list-unstyled media-list mg-b-0">
-					<li v-for="mail in maildata" v-bind:key="mail.id" class="media" v-bind:class="mail.status" @click="viewmail(mail)" @contextmenu.prevent="$refs.menu.open($event,mail.id)" >
+					<li v-for="mail in maildata" v-bind:key="mail.id" class="media" v-bind:class="mail.status" @click="viewmail(mail)">
 						<avatar :fullname="mail.from | mailname"></avatar>
 						<div class="media-body mg-l-15">
 							<div class="tx-color-03 d-flex align-items-center justify-content-between mg-b-2">
@@ -91,7 +91,9 @@
 							<span class="tx-11">{{mail.created_at | vueDay}}</span>
 							</div>
 							<h6 class="tx-13">{{mail.subject}}</h6>
-							<p class="tx-12 tx-color-03 mg-b-0">{{mail.body_plain.slice(0,150)}} </p>
+							<p class="tx-12 tx-color-03 mg-b-0">
+								<span v-if="mail.body_plain">{{mail.body_plain.slice(0,150)}}</span>
+							</p>
 						</div><!-- media-body -->
 					</li>
 				</ul>
@@ -111,7 +113,8 @@
 		<div class="mail-content">
 
 			<div class="mail-content-header d-none">
-				<a href="" id="mailContentClose" class="link-02 d-none d-lg-block d-xl-none mg-r-20"><i data-feather="arrow-left"></i></a>
+				<a href="" id="mailContentClose" class="link-02 d-none d-lg-block  mg-r-20"><i data-feather="arrow-left"></i></a>
+				
 				<div v-if="dataloaded" class="media">
 					<avatar :fullname="mail.from | mailname"></avatar>
 					<div class="media-body mg-l-10">
@@ -119,6 +122,7 @@
 					<span class="d-block tx-11 tx-color-03">{{mail.created_at | dateTime}}</span>
 					</div><!-- media-body -->
 				</div><!-- media -->
+				
 				<nav  class="nav nav-icon-only mg-l-auto">
 					<a href="" data-toggle="tooltip" title="Report Spam" class="nav-link d-none d-sm-block">
 						<i data-feather="slash"></i>
@@ -183,33 +187,6 @@
 
 		</div><!-- mail-content -->
 
-		<vue-context ref="menu">
-			<template slot-scope="child" class="context-menu">
-		       
-	        	<li class="context-menu-list">
-		            <a href="#">
-		            	<i data-feather="book-open"></i> Mark Read
-		            </a>
-		        </li>
-		        <li class="context-menu-list">
-		            <a href="#">
-		            	<i data-feather="book"></i> Mark Unread
-		            </a>
-		        </li>
-		        <li class="context-menu-list">
-		            <a href="#">
-		            	<i data-feather="x-circle"></i> Mark Spam
-		            </a>
-		        </li>
-		        <li class="context-menu-list">
-		            <a href="#">
-		            	<i data-feather="trash"></i> Mark Trash
-		            </a>
-		        </li>
-		      
-	        </template>
-	    </vue-context>
-		
     </div><!-- mail-wrapper -->
 
 </template>
@@ -257,6 +234,9 @@
 			},
 			draft(){
 				return this.nmails.filter(value => value.label === 'draft').length
+			},
+			maillistbody(e){
+				return 'Mail body'; //mail.body_html.slice(0,150)
 			}
 
 		},
@@ -271,7 +251,7 @@
 				NProgress.start();
 				axios.get('mail/create',{params:{filter:this.filter,email:this.user.email}})
 					.then((response) => {
-						console.log(response.data)
+						//console.log(response.data)
 						this.nmails = response.data
 						this.mails = this.nmails.filter(value => value.label === this.mbox)
 
@@ -288,7 +268,7 @@
 					})
 				.catch((error) => console.log(error))
 			},
-			viewmail:function(mail){
+			viewmail(mail){
 
 				NProgress.start();
 				
@@ -312,7 +292,9 @@
 
 					$('.mail-content-header').removeClass('d-none');
 					$('.mail-content-body').removeClass('d-none');
-
+					$('body').addClass('mail-content-show');
+					//console.log('Mail group body clicked')
+					
 					if(window.matchMedia('(max-width: 1199px)').matches) {
 						$('body').addClass('mail-content-show');
 					}
@@ -367,7 +349,7 @@
 				NProgress.start();
 				axios.get('mail/markmail',{params:{id:id,type:type}})
 					.then((response) => {
-						console.log(response.data)
+						//console.log(response.data)
 						this.nmails = response.data
 						this.mails = this.nmails.filter(value => value.label === this.mbox)
 
@@ -376,6 +358,11 @@
 							this.dataloaded = true
 						}
 						
+						console.log(type)
+						//toast({
+							//type: 'success',
+							//title: 'Mail marked Unread'
+						//})
 					})
 					.catch((error) => console.log(error))
 					NProgress.done();
@@ -404,7 +391,8 @@
 			quill(e){
 				this.editorvalue = e
 				//console.log(e)
-			}
+			},
+			
 		},
 		mounted(){
 			this.getmails()

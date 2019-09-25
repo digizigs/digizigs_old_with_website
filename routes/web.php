@@ -348,8 +348,12 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 //=========================================Admin Routes=============================================//
 
 
-//Dashboard//
-Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
+
+Route::group([
+        'prefix' => 'digidash',
+        'middleware'=>['auth']
+    ],
+    function(){
 
     Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
     Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
@@ -360,17 +364,16 @@ Route::group(['prefix' => 'dashboard','middleware'=>['auth']],function(){
 
     Route::resource('/profile', 'Dashboard\Profile\ProfileController');
 
+    //Route::get('/post/{type}/', 'Dashboard\Post\PostController@posttype')->name('post.type');
     Route::resource('/post', 'Dashboard\Post\PostController');
 
-    Route::get('/applog', 'Admin\LogViewer\LogViewerController@index')->name('app.applog');
 
+    Route::get('/applog', 'Admin\LogViewer\LogViewerController@index')->name('app.applog');
 
     //Mailbox
     //Route::get('/mail/movemail','Admin\Mail\MailController@moveMail');
     Route::get('/mail/markmail','Dashboard\Mail\MailController@markMail');
     Route::resource('/mail', 'Dashboard\Mail\MailController'); //Contact
-
-
 
 });
 

@@ -84,27 +84,7 @@
 					searchInputPlaceholder: 'Search options'
 				});
 
-				// UI INTERACTION
-				$('.mail-group-body .media').on('click', function(e){
-
-					// removing previous selected item
-					$('.mail-group .selected').removeClass('selected');
-
-					$(this).addClass('selected');
-					$(this).removeClass('unread');
-
-					$('.mail-content-header').removeClass('d-none');
-					$('.mail-content-body').removeClass('d-none');
-
-					if(window.matchMedia('(max-width: 1199px)').matches) {
-						//$('body').addClass('mail-content-show');
-					}
-
-					if(window.matchMedia('(min-width: 768px)').matches) {
-						$('#Sidebar').removeClass('d-md-none');
-						$('#mainMenuOpen').removeClass('d-md-flex');
-					}
-				})
+				
 
 				// reply form
 				//var quill = new Quill('#editor-container', {
@@ -165,17 +145,17 @@
 					e.preventDefault()
 
 					if($('body').hasClass('mail-content-show')) {
-					$('body').removeClass('mail-content-show');
+						$('body').removeClass('mail-content-show');
 					} else {
-					$('body').addClass('mail-sidebar-show');
+						$('body').addClass('mail-sidebar-show');
 
-					$('#Sidebar').addClass('d-none');
-					$('#mainMenuOpen').removeClass('d-none');
+						$('#Sidebar').addClass('d-none');
+						$('#mainMenuOpen').removeClass('d-none');
 					}
 
 					if(window.matchMedia('(min-width: 768px)').matches) {
-					$('#Sidebar').addClass('d-md-none');
-					$('#mainMenuOpen').addClass('d-md-flex');
+						$('#Sidebar').addClass('d-md-none');
+						$('#mainMenuOpen').addClass('d-md-flex');
 					}
 				})
 
@@ -200,7 +180,7 @@
 					$('body').removeClass('mail-content-show');
 				})
 
-
+				$('.mail-content-header').removeClass('d-none');
 				// set one mail item as selected in xl breakpoint by default
 				// for demo purpose only
 				if(window.matchMedia('(min-width: 1200px)').matches) {

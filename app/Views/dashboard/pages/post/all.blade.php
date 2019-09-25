@@ -5,6 +5,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.filemgr.css')}}">
+<<<<<<< HEAD
 
     <style> 
       .filemgr-sidebar-body{
@@ -23,37 +24,18 @@
         }
         
     </style>
+=======
+    
+    
+>>>>>>> 40f78c7d4cf72ce0bb1e9055b9332fa38a292784
 @endsection
 
 
 @section('content')
 
-<div class="filemgr-wrapper">
+<div class="filemgr-wrapper sidebar-page">
 
-  <div class="filemgr-sidebar">
-      
-    <div class="filemgr-content-header">
-        <h4 class="mg-t-10">Post & Blocks</h4>
-    </div><!-- filemgr-content-header -->
-
-    <div class="filemgr-sidebar-body">
-        <div class="pd-t-20 pd-b-10 pd-x-20">
-            <ul class="nav nav-aside">
-
-              <li class="nav-label active">Posts</li>
-              <li class="nav-item"><a href="dashboard-two.html" class="nav-link active "><i data-feather="cast"></i> <span>All Post</span></a></li>
-              <li class="nav-item"><a href="dashboard-three.html" class="nav-link"><i data-feather="plus-circle"></i> <span>Add Post</span></a></li>
-
-              <li class="nav-label mg-t-25">Post Types</li>
-              <li class="nav-item"><a href="app-calendar.html" class="nav-link"><i data-feather="maximize"></i> <span>Published</span></a></li>
-              <li class="nav-item"><a href="app-chat.html" class="nav-link"><i data-feather="minimize"></i> <span>Draft</span></a></li>
-              <li class="nav-item"><a href="app-contacts.html" class="nav-link"><i data-feather="trash"></i> <span>Trash</span></a></li>
-
-            </ul>
-        </div>
-    </div>
-
-  </div><!-- filemgr-sidebar -->
+  @include('dashboard.pages.post.sidebar')
 
   <div class="filemgr-content">
 
@@ -71,9 +53,35 @@
 
     
 
-    <div class="filemgr-content-body">
+    <div class="filemgr-content-body" style="background-color: #fff">
         <div class="pd-10 pd-lg-10 pd-xl-10">
-            Body
+            <div class="container content-components">
+              <div class="table-responsive">
+                <table class="table table-striped mg-b-0">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Category</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($posts as $post)
+                    <tr>                  
+                      <td>{{$post->title}}</td>
+                      <td>{{$post->description}}</td>
+                      <td>Computer Science</td>
+                      <td>$120,000</td>
+                    </tr>
+                  @endforeach
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
         </div>
     </div><!-- filemgr-content-body -->
   </div><!-- filemgr-content -->
@@ -84,84 +92,5 @@
 
 
 @section('javascript')
-
-<script>
-    $(function(){
-    'use strict'
-
-    new PerfectScrollbar('.filemgr-sidebar-body', {
-      suppressScrollX: true
-    });
-
-    new PerfectScrollbar('.filemgr-content-body', {
-      suppressScrollX: true
-    });
-    
-    
-
-    $('#Sidebar').on('click', function(e){
-      e.preventDefault();
-
-      $('body').addClass('filemgr-sidebar-show');
-
-      $(this).addClass('d-none');
-      $('#mainMenuOpen').removeClass('d-none');
-
-      
-
-
-    });
-
-    $(document).on('click touchstart', function(e){
-      e.stopPropagation();
-
-      // closing of sidebar menu when clicking outside of it
-      if(!$(e.target).closest('.burger-menu').length) {
-        var sb = $(e.target).closest('.filemgr-sidebar').length;
-        if(!sb) {
-          $('body').removeClass('filemgr-sidebar-show');
-
-          $('#Sidebar').removeClass('d-none');
-          $('#mainMenuOpen').addClass('d-none');
-        }
-      }
-    });
-
-
-    $('.important').on('click', function(e){
-      e.preventDefault();
-
-      var parent = $(this).closest('.card-file');
-      var important = parent.find('.marker-icon');
-
-      if(!important.length) {
-        $(this).closest('.card-file').append('<div class="marker-icon marker-warning pos-absolute t--1 l--1"><i data-feather="star"></i></div>');
-
-        $(this).html('<i data-feather="star"></i> Unmark as Important');
-
-      } else {
-        important.remove();
-
-        $(this).html('<i data-feather="star"></i> Mark as Important');
-      }
-
-      feather.replace();
-    })
-
-    $('.download').on('click', function(e){
-      e.preventDefault();
-
-      $('#toast').toast('show');
-    })
-
-    if(window.matchMedia('(max-width: 991px)').matches) {
-      console.log('max-width: 991px')
-      $('#mainMenuOpen').addClass('d-none');
-      //$('#mainMenuOpen').addClass('d-md-flex');
-      //$('#mainMenuOpen').removeClass('d-none');
-    }
-
-  })
-  </script>
-
+  <script src="{{asset('public/dashboard/assets/js/sidebar_page.js')}}"></script>
 @endsection

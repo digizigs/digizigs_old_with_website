@@ -164,14 +164,16 @@
 
 				$('.mail-content-header').removeClass('d-none');
 				$('.mail-content-body').removeClass('d-none');
-
+        $('body').addClass('mail-content-show');
+        console.log('Mail group body clicked')
+        
 				if(window.matchMedia('(max-width: 1199px)').matches) {
-				$('body').addClass('mail-content-show');
+				  $('body').addClass('mail-content-show');
 				}
 
 				if(window.matchMedia('(min-width: 768px)').matches) {
-				$('#Sidebar').removeClass('d-md-none');
-				$('#mainMenuOpen').removeClass('d-md-flex');
+				  $('#Sidebar').removeClass('d-md-none');
+				  $('#mainMenuOpen').removeClass('d-md-flex');
 				}
 			}
 		},
