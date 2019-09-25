@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderby('created_at','desc')->get();
-        return view('dashboard.pages.post.all',compact('posts'));
+        return view('dashboard.pages.post.posts',compact('posts'));
     }
 
     

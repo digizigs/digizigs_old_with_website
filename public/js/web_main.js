@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 184);
+/******/ 	return __webpack_require__(__webpack_require__.s = 185);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -64022,17 +64022,18 @@ return VueChatScroll;
 /* 181 */,
 /* 182 */,
 /* 183 */,
-/* 184 */
+/* 184 */,
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(185);
-__webpack_require__(189);
-__webpack_require__(192);
-module.exports = __webpack_require__(193);
+__webpack_require__(186);
+__webpack_require__(190);
+__webpack_require__(193);
+module.exports = __webpack_require__(194);
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -64043,18 +64044,18 @@ __webpack_require__(140);
 //Vendors
 //require('../../vendor/modernizr/modernizr-2.8.3.min.js');
 ////require('../../vendor/magnific-popup/magnific-popup.min.js');
-__webpack_require__(186);
+__webpack_require__(187);
 //require('../../vendor/wow/wow.min.js');
 //require('../../vendor/isotope/isotope.pkgd.min.js');
 //require('../../vendor/owlcarousel/js/owl.carousel.min.js');
 
 //require('../../vendor/superfish/superfish.min.js');
-__webpack_require__(187);
-
 __webpack_require__(188);
 
+__webpack_require__(189);
+
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports) {
 
 
@@ -64116,7 +64117,7 @@ __webpack_require__(188);
 })(jQuery);
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64220,7 +64221,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.filter('vueTime', function () {
 });
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports) {
 
 
@@ -64460,21 +64461,21 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 190 */,
 /* 191 */,
-/* 192 */
+/* 192 */,
+/* 193 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
