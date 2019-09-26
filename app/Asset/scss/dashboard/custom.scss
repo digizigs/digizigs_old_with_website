@@ -6,136 +6,128 @@
 body,html{
 
 
-    //background-color: #192F49;
-    //font-size: 13px;
-    //overflow-x: hidden;
-      //color: #353c4e;
-    font-weight: 500 !important;
-    color: #455A64;
-    //font-family: open sans, sans-serif;
-    //font-family: "Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;
-    //font-family: 'Nunito Sans', sans-serif;
-    //@extendbackground-attachment: fixed;
-  
-  
+  //background-color: #192F49;
+  //font-size: 13px;
+  //overflow-x: hidden;
+    //color: #353c4e;
+  font-weight: 500 !important;
+  color: #455A64;
+  //font-family: open sans, sans-serif;
+  //font-family: "Amazon Ember","HelveticaNeue","Helvetica Neue","Amazon Ember",Roboto,"Roboto-Regular","Amazon Ember",Helvetica,Arial,sans-serif;
+  //font-family: 'Nunito Sans', sans-serif;
+  //@extendbackground-attachment: fixed;
+
+
 }
 
 .fa{
-  margin-right: 5px;
+margin-right: 5px;
 }
 
 .footer{
-  //position: fixed;
-  //bottom: 0px;
-  //width: 100%;
-  text-align: center;
+//position: fixed;
+//bottom: 0px;
+//width: 100%;
+text-align: center;
 }
 
 //Top Navigation.
 .navbar-menu{
-  .nav-item.active{
-    
-    .nav-link{
-      font-weight: 600px !important;
-    }
+.nav-item.active{
+  
+  .nav-link{
+    font-weight: 600px !important;
   }
+}
 }
 
 
 //Main Navbar
 .navbar{
-  background: #2D353E;
+background: #2D353E;
 
-  #navbarMenu{
+#navbarMenu{
 
-    .navbar-menu{
+  .navbar-menu{
+    .nav-item.active{
+      .nav-link{
+        color: #fff;
+      }
+    }
+
+    @media (max-width:768px) {
       .nav-item.active{
         .nav-link{
-          color: #fff;
-        }
-      }
-
-      @media (max-width:768px) {
-        .nav-item.active{
-          .nav-link{
-            color: #2D353E;
-          }
-        }
-      }
-
-      .nav-item{
-        .nav-link{
-          color: #8f9dae;
+          color: #2D353E;
         }
       }
     }
-  }
-  .navbar-right{
-    .dropdown-link{
-      svg{
-        color: #8f9dae;
-      }
-    }
-    #navbarSearch{
-      svg{
+
+    .nav-item{
+      .nav-link{
         color: #8f9dae;
       }
     }
   }
+}
+.navbar-right{
+  .dropdown-link{
+    svg{
+      color: #8f9dae;
+    }
+  }
+  #navbarSearch{
+    svg{
+      color: #8f9dae;
+    }
+  }
+}
 }
 
 
 //Custom page sidebar active item
 .sidebar-page {
-  .nav-aside{
-    .nav-label{
-      color:$themeprimary;
-    }
-    .nav-item.active{
-      .nav-link{
-        span{
-          color: $themesecondary;
-        }
-      }
-      svg{
-        color: $themesecondary;
-      }
-    }
-    .nav-item:hover{
-      .nav-link{
-        span{
-          color: $themesecondary;
-        }
-      }
-      svg{
-        color: $themesecondary;
-      }
-    }
-    
+.nav-aside{
+  .nav-label{
+    color:$themeprimary;
   }
-<<<<<<< HEAD
+  .nav-item.active{
+    .nav-link{
+      span{
+        color: $themesecondary;
+      }
+    }
+    svg{
+      color: $themesecondary;
+    }
+  }
+  .nav-item:hover{
+    .nav-link{
+      span{
+        color: $themesecondary;
+      }
+    }
+    svg{
+      color: $themesecondary;
+    }
+  }
+  
 }
 
-.filemgr-sidebar-body .active svg{
-          color: red !important;
-        }
-=======
-  
 }
 
 //============New Post image upload image preview box====
 .avatar-preview {
-  width: 250px;
-  height: 150px;
-  position: relative;
-  border-radius: 5px;
-  //border: 6px solid #F8F8F8;
- //box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-  //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
+width: 250px;
+height: 150px;
+position: relative;
+border-radius: 5px;
+//border: 6px solid #F8F8F8;
+//box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+margin: auto;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+cursor: pointer;
 }
->>>>>>> 40f78c7d4cf72ce0bb1e9055b9332fa38a292784

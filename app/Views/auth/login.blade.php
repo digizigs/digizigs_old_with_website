@@ -57,25 +57,27 @@
 
             <form method="POST" action="{{ route('login') }}">
                   @csrf
-                  <h5>Sign in to your account</h5>
+						<h5 class="info-title">Sign in to your account</h5>
+						
                   <div>
-                     <input type="text" class="form-control" name="email" placeholder="Username" required="" autofocus value="{{ old('email') }}"/>
+							<label for="email">Email Address</label>
+                     <input type="text" class="form-control" name="email" placeholder="yourname@yourdomain.com" required="" autofocus value="{{ old('email') }}"/>
                      @if ($errors->has('email'))
                      <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
                      </span>
                      @endif
-                  </div>
+						</div>
+						
                   <div>
-                     <input type="password" class="form-control" name="password" placeholder="Password" required="" />
+							<label for="password">Password</label>
+                     <input type="password" class="form-control" name="password" placeholder="Enter your password" required="" />
                      @if ($errors->has('password'))
                      <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>
                      </span>
                      @endif
-                  </div>
-                  
-                 
+                  </div>              
 
                   <div>
                      <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="filled-in chk-col-pink">
@@ -90,8 +92,17 @@
                   </div>
                   
                   <div>
-                     <button class="btn btn-default submit btn-sm pull-left" style="margin-top: 5px;">Log in</button>
+                     <button class="btn btn-default btn-login submit btn-sm pull-left form-control" style="margin-top: 5px;">Sign In</button>
+						</div>
+						
+            </form>
+
+                  <h5 class="divider-text line razor">OR</h5>
+
+                  <div>
+                     <a href="{{route('login.google')}}" class="btn btn-default btn-google submit btn-sm pull-left form-control" >Sign In with Google</a>
                   </div>
+
                   <div class="clearfix"></div>
                   <div class="separator">
                      <p class="change_link">New to site?
@@ -101,8 +112,8 @@
                      <br />
                      
                   </div>
-                  <p class="info">Your data will not be used outside of www.digizigs.com. By signing up you agree that your statistics may be used anonymously inside www.digizigs.com.</p>
-            </form>
+                  <p class="info">Your data will not be used outside of digizigs. By signing up you agree that your statistics may be used anonymously inside www.digizigs.com.</p>
+            
 
              @captcha()
              

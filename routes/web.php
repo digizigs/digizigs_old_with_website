@@ -48,12 +48,14 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 //============================================App Routes===========================================//
 
 
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('login.google');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::get('/taskeventlisten',function(){
 
     //Event Listner
     return view('test.test');
 });
-
 
 //=========================================Test Routes=============================================//
 Route::get('/inbox',function(){
