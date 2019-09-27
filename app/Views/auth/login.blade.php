@@ -6,13 +6,13 @@
 
 <section id="login">
    
-   <div class="col-md-8 hidden-xs left">
+   <div class="col-md-9 hidden-xs left">
       
          <img src="https://miro.medium.com/max/2625/1*qAX1633WKgkCBjW-7BICCA.jpeg" alt="">
         
    </div>
 
-   <div class="col-md-4 col-xs-12 right">
+   <div class="col-md-3 col-xs-12 right">
          
          @if (session('error'))
             <div class="status-check">
