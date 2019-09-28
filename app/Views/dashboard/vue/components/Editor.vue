@@ -21,7 +21,7 @@
         computed:{
             style(){
                 return{
-                    height:200 + 'px',
+                    height:250 + 'px',
                     background: '#fff !important'
                 }
             }

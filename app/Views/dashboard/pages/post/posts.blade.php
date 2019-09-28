@@ -1,21 +1,23 @@
 @extends('layouts.dashboard.appmail')
 
-@section('title','Mailbox')
+@section('title','Posts')
 
 
 @section('css')
 
 	<link href="{{asset('public/dashboard/lib/quill/quill.core.css')}}" rel="stylesheet">
     <link href="{{asset('public/dashboard/lib/quill/quill.snow.css')}}" rel="stylesheet">
-	
 	<link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.mail.css')}}">
 
+	<style>
+		
+	</style>
 @endsection
 
 
 @section('content')
 
-	<mailbox></mailbox>
+	<postcompose></postcompose>
 
 @endsection
 
