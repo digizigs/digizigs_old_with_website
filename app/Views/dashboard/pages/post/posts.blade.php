@@ -17,10 +17,6 @@
 
 	<mailbox></mailbox>
 
-	
-
-	<mail-compose></mail-compose>
-
 @endsection
 
 
