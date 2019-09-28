@@ -5,7 +5,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.filemgr.css')}}">
-<<<<<<< HEAD
 
     <style> 
       .filemgr-sidebar-body{
@@ -24,10 +23,7 @@
         }
         
     </style>
-=======
-    
-    
->>>>>>> 40f78c7d4cf72ce0bb1e9055b9332fa38a292784
+
 @endsection
 
 

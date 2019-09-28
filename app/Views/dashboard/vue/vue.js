@@ -53,6 +53,7 @@ Vue.component('mailbox-sidebar', require('./mail/MailboxSidebar.vue'));
 
 //Post
 Vue.component('newpost', require('./post/NewPost.vue'));
+Vue.component('postcompose', require('./post/PostCompose.vue'));
 
 let routes = [
 	{ path: '/foo', component: Foo },

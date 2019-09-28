@@ -159,9 +159,9 @@
 			return{
                 search:'',
                 blockdata:[],
-								blocks:[],
-								categorydata:[],
-								category:[],
+                blocks:[],
+                categorydata:[],
+                category:[],
                 tagdata:[],
                 tags:[],
                 post:{'status':'publish'},
