@@ -63944,8 +63944,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.Sweetalert2.ve
 /***/ }),
 /* 175 */,
 /* 176 */,
-/* 177 */,
-/* 178 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function (global, factory) {
@@ -64017,6 +64016,7 @@ return VueChatScroll;
 
 
 /***/ }),
+/* 178 */,
 /* 179 */,
 /* 180 */,
 /* 181 */,
@@ -64128,7 +64128,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_single_select__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_chat_scroll__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert2__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_sweetalert2__);

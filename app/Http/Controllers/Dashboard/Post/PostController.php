@@ -19,7 +19,12 @@ class PostController extends Controller
     
     public function create()
     {
-        return view('dashboard.pages.post.new');
+        $blocks = Category::where('parent_id', 0)->get();
+        $categories = Category::where('parent_id','<>', 0 )->orderby('created_at','desc')->get();
+        $posts = Post::orderby('created_at','desc')->with('user','categories','tags')->get();
+        return request()->json(200,['blocks'=>$blocks,'categories'=>$categories,'posts'=>$posts]);
+
+
     }
 
     

@@ -18,6 +18,7 @@
 @section('content')
 
   <div class="calendar-wrapper">
+
       <div class="calendar-sidebar">
         <div class="calendar-sidebar-header">
           <i data-feather="search"></i>
@@ -68,6 +69,7 @@
       <div class="calendar-content">
         <div id="calendar" class="calendar-content-body"></div>
       </div><!-- calendar-content -->
+
   </div><!-- calendar-wrapper -->
 
   <div class="modal calendar-modal-create fade effect-scale" id="modalCreateEvent" role="dialog" aria-hidden="true">
@@ -194,7 +196,7 @@
         'use strict'
 
         // Initialize scrollbar for sidebar
-        new PerfectScrollbar('#calendarSidebarBody', {
+        new PerfectScrollbar('.calendar-sidebar-body', {
           suppressScrollX: true
         });
 

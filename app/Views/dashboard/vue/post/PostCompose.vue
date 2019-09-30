@@ -34,6 +34,25 @@
                         <li class="nav-item"><a href="" class="nav-link"><i data-feather="minimize"></i> <span>Draft</span></a></li>
                         <li class="nav-item"><a href="" class="nav-link"><i data-feather="trash"></i> <span>Trash</span></a></li>
 
+                        <li class="nav-label mg-t-25">Blocks</li>
+                        <li v-for="block in blockdata" class="nav-item">
+                           <a href="" class="nav-link">
+                              <i class="fa fa-cubes" aria-hidden="true"></i>
+                              <span>{{block.name}}</span>
+                           </a>
+                        </li>
+
+                        <li class="nav-label mg-t-25">Categories</li>
+                        <li v-for="category in categorydata" class="nav-item">
+                           <a href="" class="nav-link">
+                              <i class="fa fa-th-large" aria-hidden="true"></i>
+                              <span>{{category.name}}</span>
+                           </a>
+                        </li>
+                     
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -57,7 +76,71 @@
 
 			<div class="mail-group-body">
 
-			
+			   <div class="pd-10 pd-lg-10 pd-xl-10">
+                <div class="container content-components">
+                  <div class="table-responsive">
+                    <table class="table table-striped mg-b-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">Title</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Author</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                      
+                        <tr v-for="post in posts">                  
+                          <td>{{post.title}}</td>
+                          <td>{{post.description}}</td>
+                          <td>{{post.user.name}}</td>
+                          <td>
+                              <span v-for="cat in post.categories" class="badge badge-info cat-badge">{{cat.name}}</span>
+                           </td>
+                           <td>
+                              <span><i class="fa fa-pencil-square" aria-hidden="true"></i></span>
+                              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+                           </td>
+                        </tr>
+                        <tr>                  
+                          <td>Post Title</td>
+                          <td>Here goes the post body</td>
+                          <td>Computer Science</td>
+                          <td>$120,000</td>
+                        </tr>
+                        <tr>                  
+                          <td>Post Title</td>
+                          <td>Here goes the post body</td>
+                          <td>Computer Science</td>
+                          <td>$120,000</td>
+                        </tr>
+                        <tr>                  
+                          <td>Post Title</td>
+                          <td>Here goes the post body</td>
+                          <td>Computer Science</td>
+                          <td>$120,000</td>
+                        </tr>
+                        <tr>                  
+                          <td>Post Title</td>
+                          <td>Here goes the post body</td>
+                          <td>Computer Science</td>
+                          <td>$120,000</td>
+                        </tr>
+                        <tr>                  
+                          <td>Post Title</td>
+                          <td>Here goes the post body</td>
+                          <td>Computer Science</td>
+                          <td>$120,000</td>
+                        </tr>
+                     
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
 			
 			</div><!-- mail-group-body -->
 
@@ -102,7 +185,7 @@
 				<div class="pd-20 pd-lg-25 pd-xl-30">
 					<div class="row">
 
-                        <div class="col-lg-8 col-sm-12">
+                        <div class="col-lg-9 col-sm-12">
                             
                             <div class="form-group wp-input">
                                 <label for="email">Post Title</label>
@@ -118,7 +201,7 @@
 
                         </div>
 
-                        <div class="col-lg-4 col-sm-12">
+                        <div class="col-lg-3 col-sm-12">
                             <div data-label="Style 2" class="df-example">
                             <div id="accordion7" class="accordion ">
                             
@@ -219,14 +302,15 @@
 		
 		data(){
 			return{
-				blockdata:[],
-                blocks:[],
-                categorydata:[],
-                category:[],
-                tagdata:[],
-                tags:[],
-                post:{'status':'publish'},
-                image:null
+				   blockdata:[],
+               blocks:[],
+               categorydata:[],
+               category:[],
+               tagdata:[],
+               tags:[],
+               posts:[],
+               post:{'status':'publish'},
+               image:null
 			}
 		},
 		computed:{
@@ -237,59 +321,72 @@
 			
 		},
 		methods:{
-            showContent(){
-                new PerfectScrollbar('.mail-content-body', {
-                    suppressScrollX: true
-                });
+         paginate(){
+            NProgress.start();
+            axios.get('post/create')
+               .then((response) => {
+                  console.log(response.data)
+                  this.blockdata = response.data.blocks
+                  this.categorydata = response.data.categories
+                  this.posts = response.data.posts
+               })
+               .catch((error) => console.log(error))
+            NProgress.done();
+         },
+         showContent(){
+             new PerfectScrollbar('.mail-content-body', {
+                 suppressScrollX: true
+             });
 
-                $('.mail-group .selected').removeClass('selected');
+             $('.mail-group .selected').removeClass('selected');
 
-                $(this).addClass('selected');
-                $(this).removeClass('unread');
+             $(this).addClass('selected');
+             $(this).removeClass('unread');
 
-                $('.mail-content-header').removeClass('d-none');
-                $('.mail-content-body').removeClass('d-none');
-                $('body').addClass('mail-content-show');
-                //console.log('Mail group body clicked')
-                
-                if(window.matchMedia('(max-width: 1199px)').matches) {
-                    $('body').addClass('mail-content-show');
-                }
+             $('.mail-content-header').removeClass('d-none');
+             $('.mail-content-body').removeClass('d-none');
+             $('body').addClass('mail-content-show');
+             //console.log('Mail group body clicked')
+             
+             if(window.matchMedia('(max-width: 1199px)').matches) {
+                 $('body').addClass('mail-content-show');
+             }
 
-                if(window.matchMedia('(min-width: 768px)').matches) {
-                    $('#Sidebar').removeClass('d-md-none');
-                    $('#mainMenuOpen').removeClass('d-md-flex');
-                }
-            },
+             if(window.matchMedia('(min-width: 768px)').matches) {
+                 $('#Sidebar').removeClass('d-md-none');
+                 $('#mainMenuOpen').removeClass('d-md-flex');
+             }
+         },
 			addTag (newTag) {
-                const tag = {
-                    name: newTag,
-                    //id: newTag,
-                }
-                this.tags.push(tag)
-                this.tagdata.push(tag)
-            },
-            onImageChange(e){
-                //console.log(e.target.files[0]);
-                this.image = e.target.files || e.dataTransfer.files;
-                if (!this.image.length)
-                            return;
-                this.createImage(this.image[0]);
-            },
-            createImage(file){
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                        vm.post.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            },
-			
+             const tag = {
+                 name: newTag,
+                 //id: newTag,
+             }
+             this.tags.push(tag)
+             this.tagdata.push(tag)
+         },
+         onImageChange(e){
+             //console.log(e.target.files[0]);
+             this.image = e.target.files || e.dataTransfer.files;
+             if (!this.image.length)
+                         return;
+             this.createImage(this.image[0]);
+         },
+         createImage(file){
+             let reader = new FileReader();
+             let vm = this;
+             reader.onload = (e) => {
+                     vm.post.image = e.target.result;
+             };
+             reader.readAsDataURL(file);
+         },
+		
 		},
 		mounted(){		
             $('#accordion7').accordion({
                 heightStyle: 'content'
             });
+            this.paginate();
 		},
 		
 	};
@@ -314,4 +411,7 @@
 	.accordian-title:hover{
 		color:#0073AA;
 	}
+   .cat-badge{
+      margin-right: 5px;
+   }
 </style>
