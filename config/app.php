@@ -64,6 +64,7 @@ return [
         AlbertCht\InvisibleReCaptcha\InvisibleReCaptchaServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
 
     ],
 
@@ -122,6 +123,7 @@ return [
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
      
 
     ],

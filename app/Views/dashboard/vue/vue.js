@@ -55,6 +55,10 @@ Vue.component('mailbox-sidebar', require('./mail/MailboxSidebar.vue'));
 Vue.component('newpost', require('./post/NewPost.vue'));
 Vue.component('postcompose', require('./post/PostCompose.vue'));
 
+//Calender
+Vue.component('calender', require('./calender/Calender.vue'));
+
+
 let routes = [
 	{ path: '/foo', component: Foo },
     { path: '/bar', component: Bar }

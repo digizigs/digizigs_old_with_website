@@ -9,7 +9,7 @@
 
     </head>
 
-    <body class="app-calendar">
+    <body class="app-calendar ">
 
         <div class="" id="vueapp">
             

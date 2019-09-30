@@ -7,8 +7,6 @@
 
     <link href="{{asset('public/dashboard/lib/fullcalendar/fullcalendar.min.css')}}" rel="stylesheet">
     <link href="{{asset('public/dashboard/lib/select2/css/select2.min.css')}}" rel="stylesheet">
-
-
     <link rel="stylesheet" href="{{asset('public/dashboard/assets/css/dashforge.calendar.css')}}">
     
 
@@ -17,60 +15,9 @@
 
 @section('content')
 
-  <div class="calendar-wrapper">
+  <calender></calender>
 
-      <div class="calendar-sidebar">
-        <div class="calendar-sidebar-header">
-          <i data-feather="search"></i>
-          <div class="search-form">
-            <input type="search" class="form-control" placeholder="Search calendar">
-          </div>
-          <a href="" class="btn btn-sm btn-primary btn-icon calendar-add">
-            <div data-toggle="tooltip" title="Create New Event"><i data-feather="plus"></i></div>
-          </a><!-- calendar-add -->
-        </div><!-- calendar-sidebar-header -->
-        <div id="calendarSidebarBody" class="calendar-sidebar-body">
-          <div class="calendar-inline">
-            <div id="calendarInline"></div>
-          </div><!-- calendar-inline -->
-
-          <div class="pd-y-20 pd-x-15">
-            <label class="tx-uppercase tx-sans tx-10 tx-medium tx-spacing-1 tx-color-03 pd-l-10 mg-b-10">My Calendar</label>
-            <nav class="calendar-nav">
-              <a href="" class="calendar show"><span></span> Calendar Events</a>
-              <a href="" class="birthday show"><span></span> Birthday Events</a>
-              <a href="" class="holiday show"><span></span> Holiday Calendar</a>
-              <a href="" class="discover show"><span></span> Discovered Events</a>
-              <a href="" class="meetup show"><span></span> Meetup Events</a>
-              <a href="" class="other show"><span></span> Other Events</a>
-            </nav>
-          </div>
-
-          <div class="pd-20 mg-b-20">
-            <label class="tx-uppercase tx-sans tx-10 tx-medium tx-spacing-1 tx-color-03 mg-b-15">Upcoming Events</label>
-            <div class="schedule-group">
-              <a href="#" class="schedule-item bd-l bd-2 bd-danger">
-                <h6>Company Standup Meeting</h6>
-                <span>8:00am - 9:00am, Engineering Room</span>
-              </a><!-- schedule-item -->
-              <a href="#" class="schedule-item bd-l bd-2 bd-success">
-                <h6>Start Dashboard Concept</h6>
-                <span>9:30am - 11:30am, Office Desk</span>
-              </a><!-- schedule-item -->
-              <a href="#" class="schedule-item bd-l bd-2 bd-primary">
-                <h6>Chat Design Presentation</h6>
-                <span>2:30pm - 3:00pm, Visual Room</span>
-              </a><!-- schedule-item -->
-            </div><!-- schedule-group -->
-          </div>
-        </div><!-- calendar-sidebar-body -->
-      </div><!-- calendar-sidebar -->
-
-      <div class="calendar-content">
-        <div id="calendar" class="calendar-content-body"></div>
-      </div><!-- calendar-content -->
-
-  </div><!-- calendar-wrapper -->
+  
 
   <div class="modal calendar-modal-create fade effect-scale" id="modalCreateEvent" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -172,58 +119,48 @@
 
 @section('javascript')
     
-    <script src="{{asset('public/dashboard/lib/moment/min/moment.min.js')}}"></script>
-    <script src="{{asset('public/dashboard/lib/fullcalendar/fullcalendar.min.js')}}"></script>
-    <script src="{{asset('public/dashboard/lib/select2/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('public/dashboard/lib/moment/min/moment.min.js')}}"></script>
+  <script src="{{asset('public/dashboard/lib/fullcalendar/fullcalendar.min.js')}}"></script>
+  <script src="{{asset('public/dashboard/lib/select2/js/select2.full.min.js')}}"></script>
 
-    
-    <script src="{{asset('public/dashboard/assets/js/calendar-events.js')}}"></script>
-    <script src="{{asset('public/dashboard/assets/js/dashforge.calendar.js')}}"></script>
+  
+  <script src="{{asset('public/dashboard/assets/js/calendar-events.js')}}"></script>
+  <script src="{{asset('public/dashboard/assets/js/dashforge.calendar.js')}}"></script>
 
-    
+  <script>
+    $(function(){
+      'use strict'
+     
+      // Initialize scrollbar for sidebar
+      new PerfectScrollbar('#calendarSidebarBody', {
+        suppressScrollX: true
+      });
 
-	<!-- append theme customizer -->
-	<!--script src="{{asset('public/dashboard/lib/js-cookie/js.cookie.js')}}"></script>
-    <script src="{{asset('public/dashboard/assets/js/dashforge.settings.js')}}"></script-->
+      $('#Sidebar').on('click', function(e){
+        e.preventDefault()
+        
+        $('body').toggleClass('calendar-sidebar-show');
 
-@endsection
-
-
-@section('javascript')
-
-<script>
-      $(function(){
-        'use strict'
-
-        // Initialize scrollbar for sidebar
-        new PerfectScrollbar('.calendar-sidebar-body', {
-          suppressScrollX: true
-        });
-
-        $('#calendarSidebarShow').on('click', function(e){
-          e.preventDefault()
-          $('body').toggleClass('calendar-sidebar-show');
-
-          $(this).addClass('d-none');
-          $('#mainMenuOpen').removeClass('d-none');
-        })
-
-        $(document).on('click touchstart', function(e){
-          e.stopPropagation();
-
-          // closing of sidebar menu when clicking outside of it
-          if(!$(e.target).closest('.burger-menu').length) {
-            var sb = $(e.target).closest('.calendar-sidebar').length;
-            if(!sb) {
-              $('body').removeClass('calendar-sidebar-show');
-
-              $('#mainMenuOpen').addClass('d-none');
-              $('#calendarSidebarShow').removeClass('d-none');
-            }
-          }
-        });
-
+        $(this).addClass('d-none');
+        $('#mainMenuOpen').removeClass('d-none');
       })
-</script>
 
+      $(document).on('click touchstart', function(e){
+        e.stopPropagation();
+
+        // closing of sidebar menu when clicking outside of it
+        if(!$(e.target).closest('.burger-menu').length) {
+          var sb = $(e.target).closest('.calendar-sidebar').length;
+          if(!sb) {
+            $('body').removeClass('calendar-sidebar-show');
+
+            $('#mainMenuOpen').addClass('d-none');
+            $('#Sidebar').removeClass('d-none');
+          }
+        }
+      });
+
+    })    
+
+</script>
 @endsection

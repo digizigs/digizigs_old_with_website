@@ -31,7 +31,7 @@
                 
                 <ul>
                   <li class="nav-label">Applications</li>
-                  <li class="nav-sub-item"><a href="{{route('app.calender')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
+                  <li class="nav-sub-item"><a href="{{route('calender.index')}}" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
                   <li class="nav-sub-item"><a href="{{route('app.chat')}}" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
                   <li class="nav-sub-item"><a href="{{route('app.contact')}}" class="nav-sub-link"><i data-feather="users"></i>Contacts</a></li>
                   <li class="nav-sub-item"><a href="{{route('app.file')}}" class="nav-sub-link"><i data-feather="file-text"></i>File Manager</a></li>

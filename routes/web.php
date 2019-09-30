@@ -361,7 +361,7 @@ Route::group([
     Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
     //Route::get('/mail', 'Dashboard\DashboardController@mail')->name('app.mail');
     Route::get('/chat', 'Dashboard\DashboardController@chat')->name('app.chat');
-    Route::get('/calender', 'Dashboard\DashboardController@calender')->name('app.calender');
+    Route::resource('/calender', 'Dashboard\Calender\CalenderController');
     Route::get('/contact', 'Dashboard\DashboardController@contact')->name('app.contact');
 
     Route::resource('/profile', 'Dashboard\Profile\ProfileController');

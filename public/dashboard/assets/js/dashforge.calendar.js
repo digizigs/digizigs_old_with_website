@@ -117,6 +117,8 @@ $(function(){
   // Display calendar event modal
   calendar.on('eventClick', function(calEvent, jsEvent, view){
 
+    console.log('event clicked');
+
     var modal = $('#modalCalendarEvent');
 
     modal.modal('show');
@@ -140,6 +142,7 @@ $(function(){
   // display current date
   var dateNow = calendar.getDate();
   calendar.option('select', function(startDate, endDate){
+    console.log('Date Range Select')
     $('#modalCreateEvent').modal('show');
     $('#eventStartDate').val(startDate.format('LL'));
     $('#eventEndDate').val(endDate.format('LL'));
