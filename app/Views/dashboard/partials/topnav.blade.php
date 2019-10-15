@@ -60,6 +60,14 @@
 
                 </ul>
 
+                <ul>
+                  <li class="nav-label">Social MAnagement</li>
+                  <li class="nav-sub-item"><a href="{{route('facebook.home')}}" class="nav-sub-link"><i data-feather="facebook"></i> Facebook</a></li>
+                  <li class="nav-sub-item"><a href="page-connections.html" class="nav-sub-link"><i data-feather="globe"></i> Google</a></li>
+                  <li class="nav-sub-item"><a href="page-groups.html" class="nav-sub-link"><i data-feather="linkedin"></i> Linkedin </a></li>
+
+                </ul>
+
 
               </div>
             </div><!-- nav-sub -->

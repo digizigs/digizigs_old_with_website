@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5dc57b606678d00c9fd51b7bd8a8f8aa",
+    "content-hash": "e5f10682ef191074a5a0566ad69785ae",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -3764,34 +3764,27 @@
             "time": "2019-04-16T08:34:39+00:00"
         },
         {
-            "name": "spatie/activitylog",
-            "version": "2.4.3",
+            "name": "socialiteproviders/instagram",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spatie/activitylog.git",
-                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770"
+                "url": "https://github.com/SocialiteProviders/Instagram.git",
+                "reference": "054dc7c8d2e4cf80e94321ee6fe316d0ef78a7f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/activitylog/zipball/1f61b92b5d930d99229f02004a67bc1697c52770",
-                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770",
+                "url": "https://api.github.com/repos/SocialiteProviders/Instagram/zipball/054dc7c8d2e4cf80e94321ee6fe316d0ef78a7f6",
+                "reference": "054dc7c8d2e4cf80e94321ee6fe316d0ef78a7f6",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "~4.0"
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~3.0"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Spatie\\Activitylog\\": "src/"
+                "psr-4": {
+                    "SocialiteProviders\\Instagram\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3800,20 +3793,69 @@
             ],
             "authors": [
                 {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be"
+                    "name": "Brian Faust",
+                    "email": "hello@brianfaust.de"
                 }
             ],
-            "description": "A very simple activity logger to monitor the users of your website or application",
-            "homepage": "https://github.com/spatie/activitylog",
-            "keywords": [
-                "activity",
-                "laravel",
-                "log",
-                "user"
+            "description": "Instagram OAuth2 Provider for Laravel Socialite",
+            "time": "2017-01-25T09:48:29+00:00"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v3.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "09903d33429f9f6c0da32c545c036a3e18964bbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/09903d33429f9f6c0da32c545c036a3e18964bbf",
+                "reference": "09903d33429f9f6c0da32c545c036a3e18964bbf",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.4|~5.7.0|~5.8.0|^6.0",
+                "laravel/socialite": "~3.0|~4.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SocialiteProviders\\Manager\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
             ],
-            "abandoned": "spatie/laravel-activitylog",
-            "time": "2016-06-29T07:44:25+00:00"
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                },
+                {
+                    "name": "Anton Komarev",
+                    "email": "a.komarev@cybercog.su"
+                },
+                {
+                    "name": "Miguel Piedrafita",
+                    "email": "soy@miguelpiedrafita.com"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "time": "2019-09-25T06:06:35+00:00"
         },
         {
             "name": "spatie/laravel-analytics",
@@ -7472,6 +7514,58 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
+        },
+        {
+            "name": "spatie/activitylog",
+            "version": "2.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/activitylog.git",
+                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/activitylog/zipball/1f61b92b5d930d99229f02004a67bc1697c52770",
+                "reference": "1f61b92b5d930d99229f02004a67bc1697c52770",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Spatie\\Activitylog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "A very simple activity logger to monitor the users of your website or application",
+            "homepage": "https://github.com/spatie/activitylog",
+            "keywords": [
+                "activity",
+                "laravel",
+                "log",
+                "user"
+            ],
+            "abandoned": "spatie/laravel-activitylog",
+            "time": "2016-06-29T07:44:25+00:00"
         },
         {
             "name": "theseer/tokenizer",

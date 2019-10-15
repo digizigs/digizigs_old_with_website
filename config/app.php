@@ -65,6 +65,8 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Nexmo\Laravel\NexmoServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        App\Providers\Social\InstagramServiceProvider::class,
+        App\Providers\Social\FAcebookServiceProvider::class,
 
     ],
 
@@ -124,6 +126,8 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'InstagramAPi' => App\Facades\Social\InstagramFacade::class,
+        'Facebook' => App\Facades\Social\FacebookFacade::class,
      
 
     ],

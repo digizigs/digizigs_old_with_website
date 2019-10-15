@@ -97,11 +97,11 @@
 						
             </form>
 
-                  <h5 class="divider-text line razor">OR</h5>
+                  <!--h5 class="divider-text line razor">OR</h5>
 
                   <div>
-                     <a href="{{route('login.google')}}" class="btn btn-default btn-google submit btn-sm pull-left form-control" >Sign In with Google</a>
-                  </div>
+                     <a href="" class="btn btn-default btn-google submit btn-sm pull-left form-control" >Sign In with Google</a>
+                  </div-->
 
                   <div class="clearfix"></div>
                   <div class="separator">

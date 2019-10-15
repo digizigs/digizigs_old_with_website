@@ -37,85 +37,65 @@ class LoginController extends Controller
         
     }
 
-    /**
-     * Redirect the user to the Facebook authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirectToFacebookProvider()
-    {
-        return Socialite::driver('facebook')->scopes([
-            "publish_actions, manage_pages", "publish_pages"])->redirect();
-    }
- 
-    /**
-     * Obtain the user information from Facebook.
-     *
-     * @return void
-     */
-    public function handleProviderFacebookCallback()
-    {
-        $auth_user = Socialite::driver('facebook')->user();
- 
-        $user = User::updateOrCreate(
-            [
-                'email' => $auth_user->email
-            ],
-            [
-                'token' => $auth_user->token,
-                'name'  =>  $auth_user->name
-            ]
-        );
- 
-        Auth::login($user, true);
-        return redirect()->to('/'); // Redirect to a secure page
-    }
 
-    /**
-     * Redirect the user to the Google authentication page.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirectToProvider()
+    //Redirect to social provider
+    public function redirectToServiceProvider($service)
     {
-        return Socialite::driver('google')->redirect();
-    }
+        //return $service;
+         if($service == 'facebook'){
+
+            //return Socialite::driver($service)->scopes([
+            //"publish_actions, manage_pages", "publish_pages"])->redirect();
+
+            return Socialite::driver($service)->scopes(["manage_pages", "publish_pages"])->redirect();
 
 
-    /**
-     * Obtain the user information from Google.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
-    {
-        $user = Socialite::driver('google')->stateless()->user();
+         }else{
+
+            return Socialite::driver($service)->redirect();
+
+         }
         
-        $finduser = User::where('google_id', $user->id)->first();
+    }
 
-        if($finduser){
+    public function handleServiceProviderCallback(Request $request,$service)
+    {
+        
+        if($service == 'google'){
 
-            Auth::login($finduser, true);
+            $user = Socialite::driver($service)->stateless()->user();
 
         }else{
 
-            $newUser = User::create([
-                'name' => $user->name,
-                'email' => $user->email,
-                'google_id'=> $user->id
-            ]);
+            $user = Socialite::driver($service)->user();
 
-            $profile = new profile;
-            $profile->user_id = $newUser->id;
-            $profile->avatar_url = $user->avatar_original;
-            $profile->save();
+        } 
 
-            Auth::login($newUser, true);
+        //dd($user);
+        
+        $findUser = User::updateOrCreate(
+            ['email' => $user->getEmail()],
+            ['name' => $user->name,'email' => $user->email,'auth_id'=> $user->id,'auth_type'=> $service,'auth_token'=> $user->token,'avatar_url'=> $user->avatar_original]
+        );
 
-        }
+        $userProfile = Profile::updateOrCreate(
+            ['user_id' => $findUser->id],
+            ['user_id' => $findUser->id,'avatar_url' => $user->avatar_original]
+        );
 
-        return redirect('/digidash');
+        Auth::login($findUser, true);
+
+
+        return $this->authenticated($request, $this->guard()->user()) ?: redirect()->intended($this->redirectPath());
     }
+
+
+
+
+
+
+
+
 
 
 }

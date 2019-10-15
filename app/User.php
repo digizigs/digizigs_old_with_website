@@ -4,6 +4,8 @@ namespace App;
 
 use App\Models\Post;
 use App\Models\Profile;
+use App\Models\Social\Facebook;
+use App\Models\Social\Google;
 use Hash;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -23,7 +25,7 @@ class User extends Authenticatable
   
    
     protected $fillable = [
-        'name', 'email', 'password','api_token','verify_token','google_id',
+        'name', 'email', 'password','api_token','verify_token','auth_type','auth_id','auth_token','avatar_url',
     ];
 
     
@@ -34,6 +36,19 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne('App\Models\Profile');
     }
+
+    public function google(){
+        return $this->hasOne(Google::class,'user_id','id');
+    }
+    
+    public function instagram(){
+        return $this->hasOne(Instagram::class,'user_id','id');
+    }
+
+    public function facebook(){
+        return $this->hasOne(Facebook::class,'user_id','id');
+    }
+
 
     public function setPasswordAttribute($input)
     {

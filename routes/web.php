@@ -1,6 +1,8 @@
 <?php
 
 //use Analytics;
+use App\Classes\FacebookAPI;
+use App\Classes\InstagramAPI;
 use App\Events\TaskEvent;
 use App\Jobs\testmailjob;
 use App\Jobs\verifyEmail;
@@ -8,16 +10,16 @@ use App\Jobs\verifyEmailJob;
 use App\Mail\ActivationEmail;
 use App\Mail\SubscriptionMail;
 use App\Mail\testMail;
-use App\Models\Page;
 use App\Models\Mail;
+use App\Models\Page;
 use App\Models\Test;
 use App\Notifications\InvoiceCreated;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Notification;
-use Spatie\Analytics\Period;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
+use Spatie\Analytics\Period;
 
 
 //Subscriptions and Inquiries
@@ -48,8 +50,38 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 //============================================App Routes===========================================//
 
 
-Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('login.google');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::group(['prefix' => 'facebook'], function(){
+
+    Route::get('/','Social\FacebookAPIController@getPageAccessToken');
+    
+});//->middleware('facebook');
+
+
+
+
+
+
+
+
+
+//Laravel Socialite social auth
+Route::group(['prefix' => 'auth'], function(){
+
+    Route::get('facebook','Social\FacebookOAuthController@redirectToServiceProvider');
+    Route::get('facebook/callback','Social\FacebookOAuthController@handleServiceProviderCallback');
+
+    //::get('{service}','Social\InstagramController@redirectToInstagramProvider');
+    //Route::get('{service}/callback','Social\InstagramController@handleProviderInstagramCallback');
+
+
+});
+
+
+Route::get('/facebookposter', 'Dashboard\Facebook\FacebookPosterController@publishToProfile');
+
+
+
 
 Route::get('/taskeventlisten',function(){
 
@@ -66,7 +98,6 @@ Route::get('/inbox',function(){
    $test->save();
 
    return 'inbox';
-
 });
 
 Route::get('send_test_email', function(){
@@ -104,10 +135,6 @@ Route::get('/signedurl',function(){
 	return URL::temporarySignedRoute(
 		'app.unsubscribe', now()->addMinutes(30), ['user' => 1]
 	);
-
-
-
-
 });
 
 Route::get('/authtoken',function(){
@@ -188,9 +215,8 @@ Route::get('/getmails',function(){
         //$mail->attachments = $res['attachments'];
         //$mail->created_at = $res['date'];
         $mail->save();
-    }
-    
-   
+    } 
+
 });
 
 Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebookProvider');
@@ -343,19 +369,12 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
 
     Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');
-
-
-
 });
 //=========================================Admin Routes=============================================//
 
 
 
-Route::group([
-        'prefix' => 'digidash',
-        'middleware'=>['auth']
-    ],
-    function(){
+Route::group(['prefix' => 'digidash','middleware'=>['auth']], function(){
 
     Route::get('/', 'Dashboard\DashboardController@home')->name('app.home');
     Route::get('/file', 'Dashboard\DashboardController@file')->name('app.file');
@@ -376,6 +395,16 @@ Route::group([
     //Route::get('/mail/movemail','Admin\Mail\MailController@moveMail');
     Route::get('/mail/markmail','Dashboard\Mail\MailController@markMail');
     Route::resource('/mail', 'Dashboard\Mail\MailController'); //Contact
+
+
+
+    //Social management
+    Route::group(['prefix' => 'social'], function(){
+
+        Route::get('facebook', 'Social\FacebookAPIController@index')->name('facebook.home');
+        Route::post('facebook/page', 'Social\FacebookAPIController@show')->name('facebook.page.show');
+
+    });
 
 });
 

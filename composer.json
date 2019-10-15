@@ -25,6 +25,7 @@
         "nexmo/laravel": "^1.1",
         "pusher/pusher-php-server": "~3.0",
         "snowfire/beautymail": "dev-master",
+        "socialiteproviders/instagram": "^3.0",
         "spatie/laravel-analytics": "^3.6",
         "spatie/laravel-permission": "^2.29",
         "tymon/jwt-auth": "1.0.*",

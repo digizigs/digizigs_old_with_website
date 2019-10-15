@@ -43,6 +43,7 @@ const Bar = { template: '<div>bar</div>' }
 //Extra Components
 Vue.component('avatar', require('./components/Avatar.vue'));
 Vue.component('editor', require('./components/Editor.vue'));
+Vue.component('pagination', require('./components/Pagination.vue'));
 
 //Mail Box
 Vue.component('mailbox', require('./mail/Mailbox.vue'));
@@ -57,6 +58,10 @@ Vue.component('postcompose', require('./post/PostCompose.vue'));
 
 //Calender
 Vue.component('calender', require('./calender/Calender.vue'));
+
+
+//Social Media Manager
+Vue.component('facebook', require('./social/Facebook.vue'));
 
 
 let routes = [

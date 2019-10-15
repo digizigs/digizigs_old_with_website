@@ -65,6 +65,8 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'mailgun_webhook' => \App\Http\Middleware\MailgunInbound::class,
         'active' => \App\Http\Middleware\ActiveUser::class,
+        'instagram' => \App\Http\Middleware\Social\InstagramAPIMiddleware::class,
+        'facebook' => \App\Http\Middleware\Social\FacebookAPIMiddleware::class,
     ];
 
     /**
