@@ -16,6 +16,7 @@ use App\Models\Test;
 use App\Notifications\InvoiceCreated;
 use App\User;
 use Carbon\Carbon;
+use Facebook\Facebook;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\URL;
@@ -51,9 +52,31 @@ Route::get('/portfolio', 'App\AppController@portfolio')->name('app.portfolio');
 
 
 
-Route::group(['prefix' => 'facebook'], function(){
+Route::get('/facebooktest', function(){
 
-    Route::get('/','Social\FacebookAPIController@getPageAccessToken');
+    $access_token = 'EAAJNwjHdPbIBAFJ8bwLd5KkZCZBF0nwZCSTopSZAZAIdsGO52EQZA4cSBGkKHvvLDsZBqo4eZAKXmrPIqU1Wyd6LDyXObvl6htgev1hCZCOn557dnDwSv7jgrFbqJT9GpyvZA7orHyKzr5JZBZB6Mz8CNNqeEOs3vfZB2BpNVFiwZCSa41fl7AU8FrseeE';
+    $page_id = '642453635849236';
+
+    $fb = new Facebook;
+    $fb->setDefaultAccessToken(Auth::user()->facebook->access_token);
+
+    $response = $fb->get('/'. $page_id . '/feed',$access_token);
+    $page_feeds = $response->getGraphEdge()->asArray();
+
+    $post = [];
+
+    foreach($page_feeds as $feed){
+
+        if (isset($feed['message'])) {
+             $post[] = array(
+                'id' => $feed['id'],
+                'messagea' => $feed['message'],
+                'created_on' => $feed['created_time'],
+            );   
+        }
+    }
+
+    dd($post);
     
 });//->middleware('facebook');
 
@@ -402,7 +425,8 @@ Route::group(['prefix' => 'digidash','middleware'=>['auth']], function(){
     Route::group(['prefix' => 'social'], function(){
 
         Route::get('facebook', 'Social\FacebookAPIController@index')->name('facebook.home');
-        Route::post('facebook/page', 'Social\FacebookAPIController@show')->name('facebook.page.show');
+        Route::get('facebook/create', 'Social\FacebookAPIController@create')->name('facebook.page.show');
+        Route::post('facebook/post/publish', 'Social\FacebookAPIController@publishToPage')->name('facebook.post.publish');
 
     });
 

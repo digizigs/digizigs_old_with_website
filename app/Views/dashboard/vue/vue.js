@@ -62,7 +62,8 @@ Vue.component('calender', require('./calender/Calender.vue'));
 
 //Social Media Manager
 Vue.component('facebook', require('./social/Facebook.vue'));
-
+Vue.component('facebook-page', require('./social/FacebookPageShow.vue'));
+Vue.component('facebook-post-create', require('./social/FacebookPostCreate.vue'));
 
 let routes = [
 	{ path: '/foo', component: Foo },

@@ -14407,7 +14407,7 @@ footer a {
 #nprogress .bar {
   background: #29d;
   z-index: 9999;
-  height: 5px;
+  height: 3px;
 }
 
 #nprogress .spinner {

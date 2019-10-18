@@ -8664,13 +8664,24 @@ textarea.form-control {
       margin-left: 5px; }
 
 .card-profile {
-  border-width: 0; }
+  border: 1px solid rgba(72, 94, 144, 0.16);
+  border-width: 1px; 
+  cursor: pointer;}
+
+  .card-profile:hover{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-profile .info{
+    margin-right: 10px;
+  }
+
   .card-profile .card-img-top {
     height: 100px;
     object-fit: cover; }
   .card-profile .card-body {
     padding: 15px;
-    border: 1px solid rgba(72, 94, 144, 0.16);
+    border-top: 1px solid rgba(72, 94, 144, 0.16);
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem; }
     @media (min-width: 992px) {

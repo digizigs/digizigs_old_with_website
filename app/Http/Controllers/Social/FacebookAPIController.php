@@ -28,10 +28,18 @@ class FacebookAPIController extends Controller
 
 	public function index(){
 
-		$pgs = $this->api->get('/me/accounts', Auth::user()->facebook->access_token)->getGraphEdge()->asArray();
-		//$pages = $response->getGraphEdge()->asArray();
-		$pages = [];
+		
 
+		//dd($pages);
+		
+		return view('dashboard.pages.social.facebook');
+
+	}
+
+	public function create() {
+
+		$pages = [];
+		$pgs = $this->api->get('/me/accounts', Auth::user()->facebook->access_token)->getGraphEdge()->asArray();
 
 		foreach($pgs as $pg){
 			$pages[] = array(
@@ -42,24 +50,23 @@ class FacebookAPIController extends Controller
 				'category_list' => $pg['category_list'],
 				'page_photo' => $this->pagePhoto($pg['id'],$pg['access_token']),
 				'cover_photo' => $this->coverPhoto($pg['id'],$pg['access_token']),
-				'page_posts' => $this->pagePosts($pg['id'],$pg['access_token']),
 				'page_likes' => $this->pageLikes($pg['id'],$pg['access_token']),
+				'page_posts' => $this->pagePosts($pg['id'],$pg['access_token']),
 
 			);
 		}
 
-		//dd($pages);
-		
-		return view('dashboard.pages.social.facebook',compact('pages'));
+		return request()->json(200,$pages);
 
 	}
 
+
 	public function show(Request $request)
     {
-
-
         return view('dashboard.pages.social.facebook_page_show');
     }
+
+
 
     public function retrieveUserProfile(){
         try {
@@ -121,18 +128,20 @@ class FacebookAPIController extends Controller
 
 	public function publishToPage(Request $request){
 
-	    $page_id = '118375266236782';
-	    $access_token = $this->getPageAccessToken($page_id);
+		//return $request->all();
+
+	    $page_id = $request->page_id;
+	    $access_token = $request->access_token;
 
 	    try {
 	        $post = $this->api->post('/' . $page_id . '/feed', array(
-	        									'message' => 'test messagesssaasasa',
+	        									'message' => $request->message,
 	        									'link'=>'http://www.cybernetikz.com/change-facebook-pages-cover-photo-using-graph-api-page-api/',
 	        								),$access_token)->getGraphNode()->asArray();
 
 	        //$post = $post->getGraphNode()->asArray();
 
-	        dd($post);
+	        return 'post success';
 
 	    } catch (FacebookSDKException $e) {
 	        dd($e); // handle exception
@@ -178,16 +187,42 @@ class FacebookAPIController extends Controller
 	public function pagePosts($page_id,$access_token){
 
 		$response = $this->api->get('/'. $page_id . '/feed',$access_token);
+		$post = [];
 
 		try {
 
 	       $page_feeds = $response->getGraphEdge()->asArray();
-	       return $page_feeds;
+	       foreach($page_feeds as $feed){
+
+		        if (isset($feed['message'])) {
+		             $post[] = array(
+		                'id' => $feed['id'],
+		                'message' => $feed['message'],
+		                'image_url' => $this->pagePostsPhoto($feed['id'],$access_token),
+		                'author' => '',
+		                'created_on' => $feed['created_time'],
+		            );   
+		        }
+		    }
+	       return $post;
 	        
 	    } catch (FacebookSDKException $e) {
 	        dd($e); // handle exception
 	    }
 
+	}
+
+	public function pagePostsPhoto($post_id,$access_token){
+		$response = $this->api->get('/'. $post_id . '?fields=full_picture',$access_token);
+
+		try {
+
+	       $url = $response->getGraphNode()->asArray();
+	       return $url;
+	        
+	    } catch (FacebookSDKException $e) {
+	        dd($e); // handle exception
+	    }
 	}
 
 	public function pageLikes($page_id,$access_token){
@@ -205,7 +240,9 @@ class FacebookAPIController extends Controller
 
 	}
 
+	public function pageFullPicture($post_id,$access_token){
 
+	}
 
 
 }
