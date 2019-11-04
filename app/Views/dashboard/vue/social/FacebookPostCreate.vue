@@ -22,12 +22,12 @@
 								    <div class="col-sm-12 col-xs-12">
 
 								      	<div class="custom-control custom-radio">
-										  	<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+										  	<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="link" v-model="post.type" checked v-on:change="radio('link')">
 										  	<label class="custom-control-label" for="customRadio1">Link Post</label>
 										</div>
 
 										<div class="custom-control custom-radio">
-										  	<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+										  	<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="image" v-model="post.type" v-on:change="radio('image')">
 										  	<label class="custom-control-label" for="customRadio2">Image Post</label>
 										</div>
 
@@ -42,12 +42,11 @@
 							    	</div>
 							  	</div>
 
-							  	<div class="form-group row">
-							    	<label for="inputPassword3" class="col-sm-2 col-form-label">Post Link</label>
-							    	<div class="col-sm-12 col-xs-12">
-							      		<input type="file" class="form-control " placeholder="Post link" @change="processFile($event)">
-							    	</div>
-							  	</div>
+							  	<div class="custom-file">
+								  	<input type="file" class="custom-file-input" id="customFile" @change="processFile($event)">
+								  	<label class="custom-file-label" for="customFile">Choose file</label>
+								</div>
+
 
 							  	<div class="form-group row">
 								    <label for="inputPassword3" class="col-sm-2 col-form-label">Post Content</label>
@@ -82,7 +81,7 @@
 		data(){
 			return{
 				search:'',
-				post:{},
+				post:{'type':'link'},
 				img:''
 			}
 		},
@@ -97,11 +96,12 @@
 				axios.post('facebook/post/publish',this.post)
 	                .then((response) => {
 	                	console.log(response.data)
+	                	this.$emit('postcreated',response.data), 
+	                	$('#newpost').modal('hide');
 		                toast({
 		                    type: 'success',
 		                    title: 'New Post added successfully'
 		                })
-	                	$('#newpost').modal('hide');
 	                	NProgress.done()
 	              	})
 	              	.catch((error) => {
@@ -110,6 +110,9 @@
 			},
 			processFile($event){
 
+			},
+			radio(type){
+				this.post.type = type
 			}
 		},
 		created(){

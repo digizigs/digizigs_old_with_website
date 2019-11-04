@@ -31,6 +31,9 @@
 							<img v-if="post.image_url.full_picture" :src=post.image_url.full_picture class="img-fluid" alt="" style="height:300px;">
 						</a>
 						</div><!-- timeline-body -->
+
+						<hr>
+						
 					</div><!-- timeline-item -->
 				</div><!-- timeline-group -->
 

@@ -36,7 +36,7 @@ class FacebookAPIController extends Controller
 
 	}
 
-	public function create() {
+	public function fbPages(){
 
 		$pages = [];
 		$pgs = $this->api->get('/me/accounts', Auth::user()->facebook->access_token)->getGraphEdge()->asArray();
@@ -55,6 +55,14 @@ class FacebookAPIController extends Controller
 
 			);
 		}
+
+		return $pages;
+
+	}
+
+	public function create() {
+
+		$pages = $this->fbPages();
 
 		return request()->json(200,$pages);
 
@@ -126,7 +134,7 @@ class FacebookAPIController extends Controller
 	}
 
 
-	public function publishToPage(Request $request){
+	public function publishPost(Request $request){
 
 		//return $request->all();
 
@@ -136,12 +144,12 @@ class FacebookAPIController extends Controller
 	    try {
 	        $post = $this->api->post('/' . $page_id . '/feed', array(
 	        									'message' => $request->message,
-	        									'link'=>'http://www.cybernetikz.com/change-facebook-pages-cover-photo-using-graph-api-page-api/',
+	        									//'source'=>'http://www.cybernetikz.com/change-facebook-pages-cover-photo-using-graph-api-page-api/',
 	        								),$access_token)->getGraphNode()->asArray();
 
 	        //$post = $post->getGraphNode()->asArray();
 
-	        return 'post success';
+	        return $this->fbPages();
 
 	    } catch (FacebookSDKException $e) {
 	        dd($e); // handle exception

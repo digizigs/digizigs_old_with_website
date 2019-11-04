@@ -40,7 +40,7 @@
 			    
 			      <div class="pd-10 pd-lg-10 pd-xl-10">
 
-			      	<div v-if="dataloaded" class="dataloading-msg loader-dots">Wait ....... ! we are loading data from Facebook Graph API !!</div>
+			      	<div v-if="dataloaded" class="dataloading-msg loader-dots">Wait ....... ! we are loading data from Facebook Graph API </div>
 
 			        <div class="row">
 			          
@@ -86,7 +86,7 @@
 
 		<div id="modal">
 			<facebook-page :page="page"></facebook-page>
-			<facebook-post-create :page="page"></facebook-post-create>
+			<facebook-post-create :page="page" @postcreated="postCreated"></facebook-post-create>
 		</div>
 
 	</div>
@@ -116,6 +116,9 @@
 			createPost(page){
 				console.log(page)
 				this.page = page
+			},
+			postCreated(data){
+				console.log(data)
 			}
 		},
 		created(){

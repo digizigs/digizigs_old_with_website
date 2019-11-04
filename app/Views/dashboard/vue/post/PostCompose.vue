@@ -13,42 +13,42 @@
              <div class="pd-t-20 pd-b-10 pd-x-20">
                   <ul class="nav nav-aside">
 
-                  <li class="nav-label active">Posts</li>
+                    <li class="nav-label active">Posts</li>
 
-                  <li class="nav-item">
-                      <a href="" class="nav-link">
-                          <i data-feather="cast"></i>
-                          <span>All Post</span>
-                      </a>
-                  </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i data-feather="cast"></i>
+                            <span>All Post</span>
+                        </a>
+                    </li>
 
-                  <li class="nav-item">
-                      <a href="" class="nav-link" v-on:click.prevent @click="showContent">
-                          <i data-feather="plus-circle"></i> 
-                          <span>Add Post</span>
-                      </a>
-                  </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" v-on:click.prevent @click="showContent">
+                            <i data-feather="plus-circle"></i> 
+                            <span>Add Post</span>
+                        </a>
+                    </li>
 
-                  <li class="nav-label mg-t-25">Post Types</li>
-                  <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="maximize"></i> <span>Published</span></a></li>
-                  <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="minimize"></i> <span>Draft</span></a></li>
-                  <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="trash"></i> <span>Trash</span></a></li>
+                    <li class="nav-label mg-t-25">Post Types</li>
+                    <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="maximize"></i> <span>Published</span></a></li>
+                    <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="minimize"></i> <span>Draft</span></a></li>
+                    <li class="nav-item"><a href="" class="nav-link" v-on:click.prevent @click="postType('post')"><i data-feather="trash"></i> <span>Trash</span></a></li>
 
-                  <li class="nav-label mg-t-25">Blocks</li>
-                  <li v-for="block in blockdata" class="nav-item">
-                     <a href="" class="nav-link" v-on:click.prevent @click="postType(block.name)">
-                        <i class="fa fa-cubes" aria-hidden="true"></i>
-                        <span>{{block.name}}</span>
-                     </a>
-                  </li>
+                    <li class="nav-label mg-t-25">Blocks</li>
+                    <li v-for="block in blockdata" class="nav-item">
+                       <a href="" class="nav-link" v-on:click.prevent @click="postType(block.name)">
+                          <i class="fa fa-cubes" aria-hidden="true"></i>
+                          <span>{{block.name}}</span>
+                       </a>
+                    </li>
 
-                  <li class="nav-label mg-t-25">Categories</li>
-                  <li v-for="category in categorydata" class="nav-item">
-                     <a href="" class="nav-link" v-on:click.prevent @click="postType(category.name)">
-                        <i class="fa fa-th-large" aria-hidden="true"></i>
-                        <span>{{category.name}}</span>
-                     </a>
-                  </li>
+                    <li class="nav-label mg-t-25">Categories</li>
+                    <li v-for="category in categorydata" class="nav-item">
+                       <a href="" class="nav-link" v-on:click.prevent @click="postType(category.name)">
+                          <i class="fa fa-th-large" aria-hidden="true"></i>
+                          <span>{{category.name}}</span>
+                       </a>
+                    </li>
                
 
 
@@ -261,19 +261,19 @@
     
     data(){
       return{
-               search:'',
-               posttype:'all',
-               submitbutton:'Publish',
-           blockdata:[],
-               blocks:[],
-               categorydata:[],
-               category:[],
-               tagdata:[],
-               tags:[],
-               posts:[],
-               post:{'status':'published'},
-               image:null,
-               editortext:'Enter your content here'
+              search:'',
+              posttype:'all',
+              submitbutton:'Publish',
+              blockdata:[],
+              blocks:[],
+              categorydata:[],
+              category:[],
+              tagdata:[],
+              tags:[],
+              posts:[],
+              post:{'status':'published'},
+              image:null,
+              editortext:'Enter your content here'
       }
     },
     computed:{
@@ -361,7 +361,7 @@
                  $('#mainMenuOpen').removeClass('d-md-flex');
              }
          },
-      addTag (newTag) {
+        addTag (newTag) {
              const tag = {
                  name: newTag,
                  //id: newTag,
@@ -446,7 +446,7 @@
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style lang="scss"  Scoped>
-    .accordian-title.ui-state-active{
+  .accordian-title.ui-state-active{
     color:#0073AA;
     font-weight: 500 !important;
   }
@@ -462,7 +462,7 @@
   .accordian-title:hover{
     color:#0073AA;
   }
-   .cat-badge{
+  .cat-badge{
       margin-right: 5px;
-   }
+  }
 </style>

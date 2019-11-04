@@ -55,6 +55,9 @@ Vue.component('mailbox-sidebar', require('./mail/MailboxSidebar.vue'));
 //Post
 Vue.component('newpost', require('./post/NewPost.vue'));
 Vue.component('postcompose', require('./post/PostCompose.vue'));
+Vue.component('post', require('./post/Posts.vue'));
+Vue.component('postcreate', require('./post/Post_Create.vue'));
+
 
 //Calender
 Vue.component('calender', require('./calender/Calender.vue'));

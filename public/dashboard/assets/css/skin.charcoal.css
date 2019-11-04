@@ -166,7 +166,7 @@
 
 .nav-aside .nav-label {
   color: #fff;
-  font-weight: 500; }
+  font-weight: 600; }
 
 .nav-aside .nav-item.active .nav-link {
   color: #fff; }
@@ -182,9 +182,9 @@
   fill: rgba(255, 255, 255, 0.2); }
 
 .nav-aside .nav-item.with-sub.show .nav-link {
-  color: rgba(255, 255, 255, 0.8); }
+  color: rgba(255, 255, 255, 1); }
   .nav-aside .nav-item.with-sub.show .nav-link svg {
-    color: rgba(255, 255, 255, 0.8); }
+    color: rgba(255, 255, 255, 1); }
   .nav-aside .nav-item.with-sub.show .nav-link::before {
     border-left-color: rgba(255, 255, 255, 0.8); }
 
@@ -201,8 +201,6 @@
   .nav-aside .nav-link svg {
     color: #6a7b90;
     stroke-width: 1.7px; }
-  .nav-aside .nav-link:hover, .nav-aside .nav-link:focus {
-    color: #fff; }
 
 @media (max-width: 991.98px) {
   .content-header {

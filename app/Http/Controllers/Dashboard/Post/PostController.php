@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard\Post;
+use App\Http\Controllers\Controller;
+use App\Jobs\PublishPost;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManager;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
@@ -21,9 +22,10 @@ class PostController extends Controller
     }
 
     
-    public function create()
+    public function create(Request $request)
     {
-        return $this->data();
+        
+        return $this->data($request->status);
 
     }
 
@@ -79,8 +81,10 @@ class PostController extends Controller
         
         //dd($tagIds);
         $post->tags()->sync($tagIds);
+
+        dispatch(new PublishPost);
         
-        return $this->data();
+        return $this->data($request->status);
 
        
     }
@@ -104,14 +108,19 @@ class PostController extends Controller
     }
 
     
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
 
         $post = Post::find($id);
         $is_deleted=$post->delete();
 
         if($is_deleted){
-            return $this->data();
+            if($request->status){
+                return $this->data($request->status);
+            }else{
+                return $this->data('all');
+            }
+            
         }
     }
 
@@ -120,11 +129,19 @@ class PostController extends Controller
         return view('dashboard.pages.post.all');
     }
 
-    public function data(){
+    public function data($status){
+
+        //return $status;
+
         $blocks = Category::where('parent_id', 0)->get();
         $categories = Category::where('parent_id','<>', 0 )->orderby('created_at','desc')->get();
 
-        $posts = Post::orderby('created_at','desc')->where('type', 'post')->where('status','published')->with('user','categories','tags')->paginate(5);
+        if($status == 'all'){
+            $posts = Post::orderby('created_at','desc')->where('type', 'post')->where('status','<>','trashed')->with('user','categories','tags')->paginate(10);
+        }else{
+            $posts = Post::orderby('created_at','desc')->where('type', 'post')->where('status',$status)->with('user','categories','tags')->paginate(10);
+        }
+        
         
         return request()->json(200,['blocks'=>$blocks,'categories'=>$categories,'posts'=>$posts]);
     }

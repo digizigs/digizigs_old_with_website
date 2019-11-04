@@ -406,10 +406,10 @@ Route::group(['prefix' => 'digidash','middleware'=>['auth']], function(){
     Route::resource('/calender', 'Dashboard\Calender\CalenderController');
     Route::get('/contact', 'Dashboard\DashboardController@contact')->name('app.contact');
 
-    Route::resource('/profile', 'Dashboard\Profile\ProfileController');
+   //Route::resource('/profile', 'Dashboard\Profile\ProfileController');
 
     //Route::get('/post/{type}/', 'Dashboard\Post\PostController@posttype')->name('post.type');
-    Route::resource('/post', 'Dashboard\Post\PostController');
+    //Route::resource('/post', 'Dashboard\Post\PostController');
 
 
     Route::get('/applog', 'Admin\LogViewer\LogViewerController@index')->name('app.applog');
@@ -426,7 +426,7 @@ Route::group(['prefix' => 'digidash','middleware'=>['auth']], function(){
 
         Route::get('facebook', 'Social\FacebookAPIController@index')->name('facebook.home');
         Route::get('facebook/create', 'Social\FacebookAPIController@create')->name('facebook.page.show');
-        Route::post('facebook/post/publish', 'Social\FacebookAPIController@publishToPage')->name('facebook.post.publish');
+        Route::post('facebook/post/publish', 'Social\FacebookAPIController@publishPost')->name('facebook.post.publish');
 
     });
 
