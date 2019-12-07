@@ -28,7 +28,6 @@
         "socialiteproviders/instagram": "^3.0",
         "spatie/laravel-analytics": "^3.6",
         "spatie/laravel-permission": "^2.29",
-        "tymon/jwt-auth": "1.0.*",
         "uxweb/sweet-alert": "^2.0"
     },
     "require-dev": {

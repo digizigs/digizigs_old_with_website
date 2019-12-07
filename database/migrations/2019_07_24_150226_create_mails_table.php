@@ -28,8 +28,8 @@ class CreateMailsTable extends Migration
             $table->text('cc')->nullable();
             $table->text('bcc')->nullable();
             $table->text('subject')->nullable();
-            $table->text('body_plain')->nullable();
-            $table->text('body_html')->nullable();
+            $table->longText('body_plain')->nullable();
+            $table->longText('body_html')->nullable();
             $table->binary('body')->nullable();
             $table->boolean('attachment')->default(0);
             $table->timestamp('sent_at')->nullable();

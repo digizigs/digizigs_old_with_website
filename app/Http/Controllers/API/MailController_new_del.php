@@ -9,7 +9,7 @@ use App\Jobs\MailAttachmentDownload;
 use App\Models\Mail;
 use Illuminate\Http\Request;
 
-class MailController extends Controller
+class MailController_new_del extends Controller
 {
 
     public function __construct(){
