@@ -50,6 +50,8 @@
     <!-- Custom Theme Style -->
     <link href="{{asset('public/css/admin_main.css')}}" rel="stylesheet">
 
+    @yield('css')
+
 @section('HeaderSection')
 
 @show

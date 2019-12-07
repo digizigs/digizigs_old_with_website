@@ -40,7 +40,7 @@
 
 	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
-	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.skills"></textarea>
+	                    <textarea class="form-control input-sm" rows="4"  v-model="user_update.skills"></textarea>
 	                </div>
 	            </div>
 	        </div>
@@ -51,14 +51,14 @@
 
 	            <div class="col-sm-9 col-xs-9">
 	                <div class="form-line">
-	                    <textarea class="form-control input-sm" rows="2"  v-model="user_update.description"></textarea>
+	                    <textarea class="form-control input-sm" rows="4"  v-model="user_update.description"></textarea>
 	                </div>
-					<a v-if="!this.user_update.avatar_url == ''" href="" v-on:click.prevent @click="removeavatar(user.id)">Remove profile Image</a>
+					<a v-if="!this.user.avatar_url == ''" href="" v-on:click.prevent @click="removeavatar(user.id)">Remove profile Image</a>
 	            </div>
 	        </div>
 			
 			<!-- Avtar Image -->
-	        <div v-if="this.user_update.avatar_url == null" class="form-group wp-input">
+	        <div v-if="this.user.avatar_url == null"  class="form-group wp-input">
 	            <label for="InputSkills" class="col-sm-3 col-xs-3">Avatar Image</label>
 	            <div class="col-sm-9 col-xs-9">
 	                <div   class="form-line">
@@ -71,7 +71,7 @@
 	        <!-- Submit Button -->
 	        <div class="form-group wp-input">
 	            <div class="col-sm-offset-2 col-sm-10">
-	                <button class="btn btn-primary btn-sm waves-ef">Update</button>
+	                <button class="btn btn-primary btn-sm waves-ef pull-right">Update</button>
 	            </div>
 	        </div>
 
@@ -107,7 +107,7 @@
 	            this.user_update.experience = this.user.profile.experience;
 	            this.user_update.skills = this.user.profile.skills;
 	            this.user_update.description = this.user.profile.description;
-	            this.user_update.avatar_url = this.user.profile.avatar_url;
+	            this.user_update.avatar_url = this.user.avatar_url;
 			}
 		},
 		methods:{

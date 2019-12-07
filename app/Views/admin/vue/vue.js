@@ -142,7 +142,7 @@ Vue.component('profile', require('./profile/profile.vue'));
 Vue.component('profilecard', require('./profile/profilecard.vue'));
 Vue.component('profilesetting', require('./profile/profilesetting.vue'));
 Vue.component('passwordchange', require('./profile/passwordchange.vue'));
-Vue.component('avatar', require('./profile/Avatar.vue'));
+Vue.component('avatar-profile', require('./profile/Avatar.vue'));
 
 //Access Management
 Vue.component('permission', require('./access management/permission/Permission.vue'));
@@ -162,7 +162,8 @@ Vue.component('rolesblock', require('./access management/access/RolesBlock.vue')
 Vue.component('permissionsblock', require('./access management/access/PermissionsBlock.vue'));
 
 
-
+//Social
+Vue.component('facebook', require('./social/facebook/Facebook.vue'));
 
 
 //Analytics
@@ -196,6 +197,10 @@ Vue.component('linechartjs', require('./components/charts/linechartjs.vue'));
 Vue.component('barlinechartjs', require('./components/charts/barlinechartjs.vue'));
 Vue.component('select2multiselect', require('./components/select2/select2multiselect.vue'));
 
+//Extra Components
+Vue.component('avatar', require('./components/Avatar.vue'));
+Vue.component('editor', require('./components/Editor.vue'));
+Vue.component('pagination', require('./components/Pagination.vue'));
 
 
 

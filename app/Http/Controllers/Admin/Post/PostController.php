@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Events\PostPublishEvent;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
-use Illuminate\Support\Facades\Gate;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
@@ -28,7 +29,7 @@ class PostController extends Controller
         //return request()->json(200,$posts);
     }
    
-    public function create() {
+    public function create(Request $request) {
 
         $categories = Category::where('parent_id','<>', 0 )->orderby('created_at','desc')->get();
         $tags = Tag::orderby('created_at','desc')->get();
@@ -70,7 +71,7 @@ class PostController extends Controller
            
         //Categoty Saving
         if(!$request->categories){          
-           $post->categories()->sync([60]);
+           $post->categories()->sync([$this->defaultCategory()]);
         }else{
            $post->categories()->sync($request->categories);
         }
@@ -93,6 +94,9 @@ class PostController extends Controller
 
         //dd($tagIds);
         $post->tags()->sync($tagIds);
+
+        //Post Publish Event
+        event(new PostPublishEvent());
 
         $categories = Category::where('parent_id', 0)
                        ->with('child.posts','child.posts.user','child.posts.categories','child.posts.tags')
@@ -171,7 +175,7 @@ class PostController extends Controller
    }
 
    
-   public function update(Request $request, $id){ 
+  public function update(Request $request, $id){ 
 
       $data = Validator::make($request->all(),[
          'title'=>'required|max:191',  
@@ -228,9 +232,9 @@ class PostController extends Controller
                      ->get();  
       return request()->json(200,$categories);
 
-   }    
+  }    
    
-   public function destroy($id) {
+  public function destroy($id) {
 
         $post = Post::find($id);
         $is_deleted=$post->delete();
@@ -242,7 +246,12 @@ class PostController extends Controller
                         ->get();  
             return request()->json(200,$categories);
         }
-   }
+  }
+
+  public function defaultCategory(){
+        $category = Category::where('slug','uncategorized')->first();
+        return $category->id;
+  }
 
 
 }

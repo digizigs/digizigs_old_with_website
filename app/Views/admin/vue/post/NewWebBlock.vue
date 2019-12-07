@@ -1,5 +1,5 @@
 <template>
-	<div class="modal right fade" id="newwebblock" role="dialog"  data-backdrop="false">
+	<div class="modal right fade" id="newwebblock" role="dialog"  data-backdrop="true">
             <div class="modal-dialog modal-md" role="">
               <div class="modal-content">
 

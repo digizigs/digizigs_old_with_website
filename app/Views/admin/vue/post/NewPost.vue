@@ -36,8 +36,12 @@
 
                      <div class="form-group wp-input">
                         <label for="editor1">Post Content</label>
-                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig" @ready="onReadyEditor"></ckeditor>                     
+                        <ckeditor :editor="editor" v-model="post.body" :config="editorConfig" @ready="onReadyEditor"></ckeditor>
+                        <!--editor :value="post.body" :height="'400'" @input="editorValue" ></editor-->                     
                      </div>
+              
+
+
                   </div>
 
                   <div class="col-md-3 col-xs-12">
@@ -137,6 +141,7 @@
 <script type="text/javascript">
 
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
   //import EssentialsPlugin from '@ckeditor/ckeditor5-essentials';
   //import BoldPlugin from '@ckeditor/ckeditor5-basic-styles/src/bold';
   //import ItalicPlugin from '@ckeditor/ckeditor5-basic-styles/src/italic';
@@ -150,14 +155,15 @@
             titleerror:false,
             submitbutton:'Publish',
             editor: ClassicEditor,
-            editorData: '',
+            editorData: 'Test editor data',
             editorHeight:'500px',
             editorConfig: {},
             catvalue: [],
             tagvalue: [],
             post:{'status':'published'},
             errors:{},
-            files:null
+            files:null,
+            editorOption: { /* quill options */ }
 
 			}
 		},
@@ -177,70 +183,76 @@
          }    
 		},
 		methods:{
-         radio(status){
-            if(status == 'published'){
-               this.submitbutton = 'Publish'
-               this.post.status = 'published' 
-            }else{
-               this.submitbutton = 'Save Draft'
-               this.post.status = 'draft'  
-            }
-         },
-         onReadyEditor(){
-           //console.log('Editor Ready')     
-         },
-     		modalclose(){
-              $('#newpost').modal('hide');
-              this.post = {'status':'published'}
-              this.catvalue = []
-              this.tagvalue = []
-              this.titleerror = false
-              this.file=null
-              $('.avatar-preview').css('background-image', '');
-              //console.log(this.files)
-     		},      
-         addTag (newTag) {
-            const tag = {
-                name: newTag,
-                //id: newTag,
-            }
-            this.tagvalue.push(tag)
-         },
-         onImageChange(e){
-           //console.log(e.target.files[0]);
-           this.files = e.target.files || e.dataTransfer.files;
-           if (!this.files.length)
-                      return;
-           this.createImage(this.files[0]);
-         },
-         createImage(file){
-           let reader = new FileReader();
-           let vm = this;
-           reader.onload = (e) => {
-                vm.post.image = e.target.result;
-           };
-           reader.readAsDataURL(file);
-         },
-         addpost(e){        
-           NProgress.start();
-           e.preventDefault();
-           axios.post('post',this.post)
-                 .then((response) => {
-                 console.log(response.data)
-                 this.$emit('recordupdated',response.data),                            
-                 this.modalclose()
-                 toast({
-                    type: 'success',
-                    title: 'New Post added successfully'
-                 })
+      radio(status){
+          if(status == 'published'){
+             this.submitbutton = 'Publish'
+             this.post.status = 'published' 
+          }else{
+             this.submitbutton = 'Save Draft'
+             this.post.status = 'draft'  
+          }
+      },
+      onReadyEditor(){
+         //console.log('Editor Ready')     
+      },
+   		modalclose(){
+            $('#newpost').modal('hide');
+            this.post = {'status':'published'}
+            this.catvalue = []
+            this.tagvalue = []
+            this.titleerror = false
+            this.file=null
+            //this.editorData = ''
+            $('.avatar-preview').css('background-image', '');
+            console.log('Modal Close')
+   		},      
+      addTag (newTag) {
+        const tag = {
+            name: newTag,
+            //id: newTag,
+        }
+        this.tagvalue.push(tag)
+      },
+      onImageChange(e){
+       //console.log(e.target.files[0]);
+       this.files = e.target.files || e.dataTransfer.files;
+       if (!this.files.length)
+                  return;
+       this.createImage(this.files[0]);
+      },
+      createImage(file){
+        let reader = new FileReader();
+        let vm = this;
+        reader.onload = (e) => {
+            vm.post.image = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      },
+      editorValue(e){
+        this.post.body = e
+        //console.log(this.post.body)
+      },
+      addpost(e){        
+       NProgress.start();
+       e.preventDefault();
+       axios.post('post',this.post)
+          .then((response) => {
+            //console.log(response.data)
+            this.$emit('recordupdated',response.data)                           
+            this.modalclose()
+            this.post = {'status':'published'}
+            toast({
+              type: 'success',
+              title: 'New Post added successfully'
+            })
 
-              })
-              .catch((error) => {
-                 this.errors = error.response.data
-                 this.titleerror = true          
-           })
-           NProgress.done()
-         }
+          })
+          .catch((error) => {
+             this.errors = error.response.data
+             this.titleerror = true          
+        })
+       NProgress.done()
+      }
 		},
 		created(){
 		   

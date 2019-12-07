@@ -1280,7 +1280,7 @@ h2 {
     margin-bottom: 10px;
     h2{
         margin: 0 !important;
-        //color: #23282D;
+        color: #23282D;
         color: #2A5D84;
         font-weight: 500;
         font-size: 20px;
@@ -1382,7 +1382,7 @@ h2 {
 
 .x_panel {
     width: 100%;
-    //padding: 10px 17px;
+    padding: 5px 5px;
     display: inline-block;
     background: $container_background_color;
     //-webkit-column-break-inside: avoid;
@@ -2827,7 +2827,7 @@ textarea.parsley-error {
     transition: .42s
 }
 
-.item .alert {
+/* .item .alert {
     float: left;
     margin: 0 0 0 20px;
     padding: 3px 10px;
@@ -2859,7 +2859,7 @@ textarea.parsley-error {
 .item.bad .alert {
     left: 0;
     opacity: 1
-}
+} */
 
 .inl-bl {
     display: inline-block
@@ -4920,7 +4920,7 @@ ul.verticle_bars li {
     width: 35px
 }
 
-.alert-success {
+/* .alert-success {
     color: #fff;
     background-color: rgba(38, 185, 154, .88);
     border-color: rgba(38, 185, 154, .88)
@@ -4932,8 +4932,8 @@ ul.verticle_bars li {
     border-color: rgba(52, 152, 219, .88)
 }
 
-.alert-warning {
-    color: #E9EDEF;
+.alert-warnings {
+    color: #FFF3CD;
     background-color: rgba(243, 156, 18, .88);
     border-color: rgba(243, 156, 18, .88)
 }
@@ -4943,7 +4943,7 @@ ul.verticle_bars li {
     color: #E9EDEF;
     background-color: rgba(231, 76, 60, .88);
     border-color: rgba(231, 76, 60, .88)
-}
+} */
 
 .ui-pnotify.dark .ui-pnotify-container {
     color: #E9EDEF;

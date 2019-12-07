@@ -18,7 +18,7 @@
 
         <li class="user" >
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="{{ Auth::user()->profile->avatar_url }}" alt="">{{Auth::user()->name }}
+            <img src="{{ Auth::user()->avatar_url }}" alt=""> {{Auth::user()->name }}
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -41,47 +41,31 @@
         </li>
 
         <li role="presentation" class="dropdown">
-          
-          <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-            <i class="fa fa-bell"></i>
-              @if(Auth::user()->unreadNotifications->count())  
-                <span class="badge bg-orange">{{Auth::user()->unreadNotifications->count()}}</span>
-              @endif
-          </a>
-          
+
+          @if(Auth::user()->unreadNotifications->count())  
+            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-bell"></i>
+                  <span class="badge bg-green">{{Auth::user()->unreadNotifications->count()}}</span>
+            </a>
+          @endif
+
           <ul id="menu1" class="dropdown-menu list-unstyled msg_list to_do" role="menu">
-            
-              @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
-              <li>                
-                <a>
-                  <span>
-                    <span><b>{{$notification->data['notify']['title']}}</b></span>
-                    <span class="time">{{Carbon\Carbon::parse($notification->created_at)->diffForHumans()}}</span>
-                    
-                  </span>
-                  <span class="message">
-                    {{$notification->data['notify']['body']}}
-                    <span>
-                        <a href="">View</a>
-                    </span>                    
-                  </span>
-                </a>                                            
-              </li>          
-              @endforeach
+            @foreach(Auth::user()->unreadNotifications()->paginate(5) as $notification)
+              <li>
+               <div>
+                 <span><b>{{$notification->data['notify']['title']}}</b></span>
+                  <span class="time pull-right">{{Carbon\Carbon::parse($notification->created_at)->diffForHumans()}}</span>  
+               </div>
 
-              <div class="text-center">
-                @if(Auth::user()->unreadNotifications->count())
-                  <a class="pull-left" style="padding:5px 10px;">
-                    See All Alerts
-                  </a>
-                  <a href="{{route('marknotificationread')}}" class="pull-right" style="padding:5px 10px;">
-                    Mark all as read
-                  </a>                
-                @endif
-              </div>
-
-            
+               <div class="message" style="margin-bottom: 25px;">
+                 {{$notification->data['notify']['body']}}
+               </div>
+               
+                
+              </li>
+            @endforeach
           </ul>
+
         </li>
 
       </ul>

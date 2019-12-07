@@ -20,6 +20,8 @@
                 @if(Session::has('deleted'))
                   <p class="alert alert-danger " id="successMessage">{{ Session::get('deleted') }}</p>
                 @endif
+
+                
                 <profile></profile>
               	
             </div>

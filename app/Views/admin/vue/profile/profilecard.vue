@@ -3,7 +3,7 @@
         <div class="profile-header">&nbsp;</div>
         <div class="profile-body">
             <div class="image-area">
-                <avatar :fullname="fullname" :image="image" :size="180"></avatar>
+                <avatar-profile :fullname="fullname" :image="image" :size="190"></avatar-profile>
             </div>                                       
             <div class="content-area">
                 <h3>{{user.name}}</h3>
@@ -52,9 +52,10 @@
 		watch:{
             user(){
                 this.fullname = this.user.name
+                this.image = this.user.avatar_url
             },
             profile(){
-                this.image = this.profile.avatar_url
+                this.image = this.user.avatar_url
             }
 		},
         computed: {

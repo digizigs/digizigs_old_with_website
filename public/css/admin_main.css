@@ -9898,6 +9898,7 @@ h2 {
 .x_panel h2,
 .x_title h2 {
   margin: 0 !important;
+  color: #23282D;
   color: #2A5D84;
   font-weight: 500;
   font-size: 20px;
@@ -10020,6 +10021,7 @@ h2 {
 
 .x_panel {
   width: 100%;
+  padding: 5px 5px;
   display: inline-block;
   background: #F1F1F1;
   column-break-inside: avoid;
@@ -11459,40 +11461,39 @@ textarea.parsley-error {
   transition: .42s;
 }
 
-.item .alert {
-  float: left;
-  margin: 0 0 0 20px;
-  padding: 3px 10px;
-  color: #FFF;
-  border-radius: 3px 4px 4px 3px;
-  background-color: #CE5454;
-  max-width: 170px;
-  white-space: pre;
-  position: relative;
-  left: -15px;
-  opacity: 0;
-  z-index: 1;
-  -webkit-transition: .15s ease-out;
-  transition: .15s ease-out;
+/* .item .alert {
+    float: left;
+    margin: 0 0 0 20px;
+    padding: 3px 10px;
+    color: #FFF;
+    border-radius: 3px 4px 4px 3px;
+    background-color: #CE5454;
+    max-width: 170px;
+    white-space: pre;
+    position: relative;
+    left: -15px;
+    opacity: 0;
+    z-index: 1;
+    transition: .15s ease-out
 }
 
 .item .alert::after {
-  content: '';
-  display: block;
-  height: 0;
-  width: 0;
-  border-color: transparent #CE5454 transparent transparent;
-  border-style: solid;
-  border-width: 11px 7px;
-  position: absolute;
-  left: -13px;
-  top: 1px;
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    border-color: transparent #CE5454 transparent transparent;
+    border-style: solid;
+    border-width: 11px 7px;
+    position: absolute;
+    left: -13px;
+    top: 1px
 }
 
 .item.bad .alert {
-  left: 0;
-  opacity: 1;
-}
+    left: 0;
+    opacity: 1
+} */
 
 .inl-bl {
   display: inline-block;
@@ -13584,30 +13585,30 @@ ul.verticle_bars li {
   width: 35px;
 }
 
-.alert-success {
-  color: #fff;
-  background-color: rgba(38, 185, 154, 0.88);
-  border-color: rgba(38, 185, 154, 0.88);
+/* .alert-success {
+    color: #fff;
+    background-color: rgba(38, 185, 154, .88);
+    border-color: rgba(38, 185, 154, .88)
 }
 
 .alert-info {
-  color: #E9EDEF;
-  background-color: rgba(52, 152, 219, 0.88);
-  border-color: rgba(52, 152, 219, 0.88);
+    color: #E9EDEF;
+    background-color: rgba(52, 152, 219, .88);
+    border-color: rgba(52, 152, 219, .88)
 }
 
-.alert-warning {
-  color: #E9EDEF;
-  background-color: rgba(243, 156, 18, 0.88);
-  border-color: rgba(243, 156, 18, 0.88);
+.alert-warnings {
+    color: #FFF3CD;
+    background-color: rgba(243, 156, 18, .88);
+    border-color: rgba(243, 156, 18, .88)
 }
 
 .alert-danger,
 .alert-error {
-  color: #E9EDEF;
-  background-color: rgba(231, 76, 60, 0.88);
-  border-color: rgba(231, 76, 60, 0.88);
-}
+    color: #E9EDEF;
+    background-color: rgba(231, 76, 60, .88);
+    border-color: rgba(231, 76, 60, .88)
+} */
 
 .ui-pnotify.dark .ui-pnotify-container {
   color: #E9EDEF;
@@ -13729,7 +13730,7 @@ ul.notifications {
 
 body,
 html {
-  background-color: #192F49;
+  background-color: #2D353E;
   font-size: 13px;
   font-weight: 500;
   color: #455A64;
@@ -14089,12 +14090,12 @@ footer a {
   background-color: #F2F5F7;
 }
 
-.alert {
+/* .alert{
   position: absolute;
   z-index: 999;
   top: 20px;
   right: 20px;
-}
+} */
 
 .pagination .active a {
   background-color: #3F5367 !important;
@@ -14414,6 +14415,105 @@ footer a {
   z-index: 9999;
 }
 
+.social-card {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0;
+  background-color: #284c79;
+  color: #88acd9;
+}
+
+.social-card .header-bg {
+  /* This stretches the canvas across the entire hero unit */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px #FFF solid;
+  /* This positions the canvas under the text */
+  z-index: 1;
+}
+
+.social-card .avatar {
+  position: relative;
+  margin-top: 15px;
+  z-index: 100;
+}
+
+.social-card .avatar img {
+  width: 140px;
+  height: 100px;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 30, 0.8);
+}
+
+.card-profile {
+  border-width: 0;
+}
+
+.card-profile .card-img-top {
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-profile .card-body {
+  padding: 15px;
+  border: 1px solid rgba(72, 94, 144, 0.16);
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+@media (min-width: 992px) {
+  .card-profile .card-body {
+    padding: 20px;
+  }
+}
+
+.card-profile .card-body > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-top: -55px;
+}
+
+.card-profile h5 {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  .card-profile h5 {
+    font-size: 15px;
+  }
+}
+
+.card-profile h5 a {
+  color: #1b2e4b;
+}
+
+.card-profile h5 a:hover,
+.card-profile h5 a:focus {
+  color: #0168fa;
+}
+
+.card-profile p {
+  color: #8392a5;
+}
+
 .sidebar-brand {
   height: 45px;
   padding: 0;
@@ -14570,13 +14670,13 @@ footer a {
   background: transparent;
 }
 
-.alert {
+/* .alert{
   position: absolute;
   z-index: 999;
   top: 20px;
   right: 20px;
-  opacity: 1 !important;
-}
+  opacity:1 !important;
+} */
 
 .wp-input {
   /* Include margin and padding in the width calculation of input and textarea. */
@@ -16576,6 +16676,30 @@ footer a {
   padding: 0 !important;
 }
 
+.panel.panel-default {
+  border-radius: 1px;
+}
+
+.panel.panel-default .panel-heading {
+  border-radius: 1px !important;
+  line-height: 20px;
+  background-color: #FFFFFF !important;
+  padding: 8px 10px !important;
+}
+
+.panel.panel-default .panel-heading .title {
+  color: #000;
+  color: #2A5D84;
+  font-weight: 600;
+}
+
+.panel.panel-default .panel-heading .panel-title {
+  font-size: 12px;
+  color: #000;
+  color: #2A5D84;
+  font-weight: 600;
+}
+
 .list-group .list-group-item {
   border-radius: 1px !important;
 }
@@ -17218,8 +17342,16 @@ ul {
   font-weight: 600;
 }
 
+.m0 {
+  margin: 0 !important;
+}
+
 .m20 {
   margin: 20px;
+}
+
+.p0 {
+  padding: 0 !important;
 }
 
 .is-invalid {

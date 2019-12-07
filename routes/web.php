@@ -371,6 +371,19 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     });
 
+    //Social management
+    Route::group(['prefix' => 'social'], function(){
+
+
+        Route::get('/accesstoken','Social\FacebookOAuthController@redirectToServiceProvider')->name('facebook.access.token');
+        Route::get('/accesstoken/callback','Social\FacebookOAuthController@handleServiceProviderCallback');
+        Route::resource('/facebook', 'Admin\Social\FacebookController');
+        //Route::get('facebook', 'Social\FacebookAPIController@index')->name('facebook.home');
+        //Route::get('facebook/create', 'Social\FacebookAPIController@create')->name('facebook.page.show');
+        //Route::post('facebook/post/publish', 'Social\FacebookAPIController@publishPost')->name('facebook.post.publish');
+
+    });
+
 
 
     //account-profile
@@ -387,8 +400,8 @@ Route::group(['prefix' => setting('app_admin_url','appadmin'),'middleware'=>['au
 
     //Logs
     //Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('app.logs');
-    Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.logs');
-    Route::get('/getlogs', 'Admin\LogViewer\LogViewerController@getLogs')->name('app.get.logs');
+    Route::get('/logs', 'Admin\LogViewer\LogViewerController@index')->name('app.log');
+    //Route::get('/getlogs', 'Admin\LogViewer\LogViewerController@getLogs')->name('app.get.logs');
 
 
     Route::get('/marknotificationread', 'Admin\AdminController@markAllNotificationRead')->name('marknotificationread');

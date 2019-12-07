@@ -11,7 +11,7 @@
 
   <div class="right_col" role="main">
 
-    <log></log>
+   
        
     <div class="page-title">
       <div class="title_left">

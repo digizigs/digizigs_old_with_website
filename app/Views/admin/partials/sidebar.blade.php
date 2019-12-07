@@ -31,21 +31,16 @@
             <a href="{{route('admin.home')}}"><i class="fa fa-tachometer"></i> Dashboard </a>
           </li>
 
-          <li class="menu-item">
-            <a href="{{route('post.index')}}"><i class="fa fa-puzzle-piece"></i> Web Blocks </a>
-          </li>
 
           <li class="menu-item has-submenu">
             <a><i class="fa fa-puzzle-piece"></i>Publish<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu menu-item-submenu">
-              <li><a href="{{route('post.index')}}">Post</a></li> 
+              <li><a href="{{route('post.index')}}">Post</a></li>
+              <li><a href="#">Page</a></li>  
               <li><a href="{{route('client.index')}}">Product</a></li>                  
             </ul>
           </li>
           
-          <li class="menu-item">
-            <a href="{{route('product.index')}}"><i class="fa fa-shopping-bag"></i> Products </a>
-          </li>
           
           <!--li class="menu-item has-submenu">
             <a><i class="fa fa-edit"></i> Articles <span class="fa fa-chevron-down"></span></a>
@@ -110,6 +105,13 @@
                                          
             </ul>
           </li>
+
+          <li class="menu-item has-submenu">
+            <a><i class="fa fa-bullhorn"></i>Social<span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu menu-item-submenu">
+              <li><a href="{{route('facebook.index')}}">Facebook</a></li> 
+            </ul>
+          </li>
          
           <li class="menu-item">
             <a href="{{route('oauth.index')}}"><i class="fa fa-line-chart"></i> OAuth </a>
@@ -120,7 +122,7 @@
           </li>
 
           <li class="menu-item">
-            <a href="{{route('app.logs')}}"><i class="fa fa-bolt"></i> Logs </a>
+            <a href="{{route('app.log')}}"><i class="fa fa-bolt"></i> Logs </a>
           </li>
 
        

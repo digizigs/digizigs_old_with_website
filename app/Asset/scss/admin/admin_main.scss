@@ -16,8 +16,9 @@
 //@import '../../vendor/font-awesome/css/font-awesome.min';
 
 //$container_background_color: #F2F3F8;#F8FAF7
-$main_container:#192F49;
-$sidebar:#2D353E://#192F49;
+//$sidebar:#2D353E';//#192F49
+$main_container:#2D353E;
+$sidebar:#2D353E;
 $container_background_color: #F1F1F1;
 $wpblue:#0073AA;
 $wpfontcolor:#008EC2;
@@ -61,7 +62,8 @@ $btn_dark_hover:#0073AA;
 @import './snippets/wp-input';
 @import './snippets/material/card'; 
 @import './snippets/material/nav-tab'; 
-@import './snippets/material/panel-group'; 
+@import './snippets/material/panel-group';
+@import './snippets/material/panel'; 
 @import './snippets/material/list-group'; 
 @import './snippets/material/modal'; 
 @import './snippets/slidemodal';

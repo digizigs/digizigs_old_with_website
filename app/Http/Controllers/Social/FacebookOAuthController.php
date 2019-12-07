@@ -19,6 +19,10 @@ class FacebookOAuthController extends Controller
     
     public function redirectToServiceProvider(){
 
+        $token = Socialite::driver('facebook')->scopes(["manage_pages", "publish_pages"])->redirect();
+
+        return $token;
+
     	return Socialite::driver('facebook')->scopes(["manage_pages", "publish_pages"])->redirect();
     }
 
@@ -31,19 +35,31 @@ class FacebookOAuthController extends Controller
 
     	
 
-    	$details = [
+    	/*$details = [
     		"user_id" => $user_id,
     		"app_id" => $fb->id,
             "access_token" => $fb->token,
             "avatar_url" => $fb->avatar_original,	
-        ];
+        ];*/
 
-    	if(Auth::user()->facebook){
+        
+
+        Auth::user()->facebook()->updateOrCreate(
+            ['user_id' => $user_id],
+            [
+                'app_id' => $fb->id,
+                'token' => $fb->token,
+                'avatar_url' => $fb->avatar_original
+            ]
+        );
+
+    	/*if(Auth::user()->facebook){
             Auth::user()->facebook()->update($details);
         }else{
             Auth::user()->facebook()->create($details);
-        }
+        }*/
 
+        return redirect()->route('facebook.index');
         return redirect('/');
 
     }

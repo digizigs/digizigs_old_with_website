@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Profile;
 
+use App\Events\AppActivityLogEvent;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\User;
@@ -51,9 +52,10 @@ class ProfileController extends Controller
     
     public function edit(Request $request,$id) 
     {
-        $profile = Profile::where('user_id',$id)->first();
-		$profile->avatar_url = null;
-		$profile->save();
+        $user = User::where('id',$id)->first();
+		$user->avatar_url = null;
+		$user->save();
+        event(new AppActivityLogEvent());
         
 		$id = auth()->user()->id;
         $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();
@@ -85,6 +87,12 @@ class ProfileController extends Controller
 
         $user = User::find($id);
         $user->name = $request->name;
+        if($request->get('avatar')){
+            $image = $id . '_' .time() . '.' . explode('/', explode(':', substr($request->get('avatar'), 0, strpos($request->get('avatar'), ';')))[1])[1];
+            $location = public_path('uploads/avatars/' . $image);
+            Image::make($request->get('avatar'))->save($location);            
+            $user->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
+        }
         $user->save();  
 
         $profile = Profile::where('user_id',auth()->user()->id)->first();
@@ -93,7 +101,6 @@ class ProfileController extends Controller
             $profile = new Profile;
             $profile->user_id = auth()->user()->id;
             $profile->save();
-            return 'new profile created';
         }
 
         $profile = Profile::where('user_id',auth()->user()->id)->first(); 
@@ -101,15 +108,10 @@ class ProfileController extends Controller
         $profile->experience = $request->experience;
         $profile->skills = $request->skills;
         $profile->description = $request->description;
-        if($request->get('avatar')){
-            $image = $id . '_' .time() . '.' . explode('/', explode(':', substr($request->get('avatar'), 0, strpos($request->get('avatar'), ';')))[1])[1];
-            $location = public_path('uploads/avatars/' . $image);
-            Image::make($request->get('avatar'))->save($location);            
-            $profile->avatar_url = url('/public/uploads/avatars') . '/' . $image;         
-        }
+        
         $profile->save();
             
-     
+        event(new AppActivityLogEvent());
             
         $id = auth()->user()->id;
         $user = User::where('id',auth()->user()->id)->orderby('created_at','desc')->with('profile')->first();

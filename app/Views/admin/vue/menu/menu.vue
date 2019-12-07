@@ -31,36 +31,38 @@
                <div class="panel-group" id="accordion">
 
                     <div class="panel panel-default">
-                      <div class="panel-heading">
+                        <div class="panel-heading">
                         
-                           <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="title">
-                              Pages
-                           </a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="title">
+                                Pages
+                            </a>
                       
-                      </div>
-                      <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <ul class="">
-                            <li>
-                              <input type="checkbox" id="checkbox" v-model="checked">
-                              <label for="checkbox">Check{{checked}}</label>
-                            </li>
-                            <li>
-                              <input type="checkbox" id="test1">
-                              <label for="test1" style="margin-top:-10px !important;">Red</label>
-                            </li>
-                            <li>
-                              <input type="checkbox" id="test1">
-                              <label for="test1" style="margin-top:-10px !important;">Red</label>
-                            </li>
-                            <li>
-                              
-                            </li>
-                          </ul>
-                          <a href="" class="btn btn-default btn-sm pull-right">Add to menu</a>
                         </div>
-                      </div>
+                        <div id="collapse1" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                              <ul class="">
+                                <li>
+                                  <input type="checkbox" id="checkbox" v-model="checked">
+                                  <label for="checkbox">Check{{checked}}</label>
+                                </li>
+                                <li>
+                                  <input type="checkbox" id="test1">
+                                  <label for="test1" style="margin-top:-10px !important;">Red</label>
+                                </li>
+                                <li>
+                                  <input type="checkbox" id="test1">
+                                  <label for="test1" style="margin-top:-10px !important;">Red</label>
+                                </li>
+                                <li>
+                                  
+                                </li>
+                              </ul>
+                              <a href="" class="btn btn-default btn-sm pull-right">Add to menu</a>
+                            </div>
+                        </div>
+
                     </div>
+
                     <div class="panel panel-default">
                       <div class="panel-heading">
                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="title">
@@ -74,6 +76,7 @@
                         commodo consequat.</div>
                       </div>
                     </div>
+
                     <div class="panel panel-default">
                       <div class="panel-heading">
                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="title">
@@ -87,6 +90,7 @@
                         commodo consequat.</div>
                       </div>
                     </div>
+
                     <div class="panel panel-default">
                       <div class="panel-heading">
                            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="title">
@@ -94,10 +98,27 @@
                            </a>
                       </div>
                       <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.</div>
+                        <div class="panel-body">
+                          
+                          <div class="form-group wp-input">
+                              <label for="name" class="col-sm-3 col-xs-3 ">Item</label>
+                              <div class="col-sm-9 col-xs-9">
+                                  <div class="form-line">
+                                      <input type="text" class="form-control input-sm">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group wp-input">
+                              <label for="name" class="col-sm-3 col-xs-3 ">Item</label>
+                              <div class="col-sm-9 col-xs-9">
+                                  <div class="form-line">
+                                      <input type="text" class="form-control input-sm">
+                                  </div>
+                              </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
 
@@ -105,7 +126,45 @@
             </div>
 
             <div class="col-md-8 col-xs-12">
-               <div class="panel panel-dz">
+
+                <div v-if="editmenu == true" class="panel panel-default">
+                    <div class="panel-heading">
+                    
+                        <span class="panel-title wp-input">
+                            <i class="title">Menu Name</i>
+                            <input type="text" class="input-sm" v-model="menuname">
+                         </span>
+                         <a href="" class="btn btn-dark btn-sm pull-right" v-on:click.prevent @click="addnewmenu">Save Menu</a>
+                  
+                    </div>
+
+                    
+                    <div class="panel-body">
+                      <ul class="">
+                        <li>
+                          <input type="checkbox" id="checkbox" v-model="checked">
+                          <label for="checkbox">Check{{checked}}</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="test1">
+                          <label for="test1" style="margin-top:-10px !important;">Red</label>
+                        </li>
+                        <li>
+                          <input type="checkbox" id="test1">
+                          <label for="test1" style="margin-top:-10px !important;">Red</label>
+                        </li>
+                        <li>
+                          
+                        </li>
+                      </ul>
+                      <a href="" class="btn btn-default btn-sm pull-right">Add to menu</a>
+                    </div>         
+                    
+                </div>
+
+
+
+               <div v-if="this.menuselect == true" class="panel panel-dz">
 
                   <div class="panel-heading active">
                      <span class="panel-title wp-input">
@@ -119,7 +178,6 @@
                      
                      <div class="">Add menu items from the column on the left.</div>
                      
-                    
                   </div>
 
                   
@@ -134,264 +192,7 @@
     </div>
       
 
-            <div class="row">
-              <div class="clearfix"></div>
-
-
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                    <!--div class="x_title">                     
-                      <h2><i class="fa fa-align-left"></i> Options <small>App settings Options</small></h2>
-                      <div class="clearfix"></div>
-                    </div-->
-
-                  <div class="x_content">
-                      
-                      <!--Select menu or create new menu-->
-                      <div class="row">
-                        <div class="manage-menus">
-
-                          <div class="select-menu" v-if="this.newmenu == false">
-
-                              
-                              
-                          </div>
-
-                          <div class="select-menu" v-if="this.newmenu == true">
-                              <div class="form-group">                        
-                                <div class="col-md-2 glow-input">
-                                  <input type="text" class="cm input form-control input-sm" v-model="menu_name.name">
-                                </div>
-                                <button class=" btn btn-dark btn-sm" @click="addnewmenu">Create Menu</button>
-                                <span> or <a href="" v-on:click.prevent @click="selectmenu">Select from existing</a></span>                              
-                              </div>
-                          </div>
-
-                        </div>
-                      </div>
-                      
-
-                      <div class="row" style="margin-top: 40px;">
-
-
-                        <!--Left Column-->
-                        <div class="col-md-4 col-xs-12" >
-
-                          <div class="panel-group" id="accordion" v-if="this.menuselect == true">
-
-                            <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h5 style="margin: 0;padding: 0;">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                                  Pages
-                                </a>
-                                </h5>
-                              </div>
-                              <div id="collapse1" class="panel-collapse collapse">
-                                <div class="panel-body">                                                       
-                                  <div>
-                                    <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
-                                    Add Menu item
-                                    </button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h5 style="margin: 0;padding: 0;">
-                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                    Post
-                                  </a>
-                                </h5>
-                              </div>
-                              <div id="collapse2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                  
-
-                                      
-                                      <div>
-                                        <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
-                                          Add Menu item
-                                        </button>
-                                      </div>
-
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h5  style="margin: 0;padding: 0;">
-                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                                  Custom Link</a>
-                                </h5>
-                              </div>
-                              <div id="collapse3" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                  
-                                  <!--catagory-->
-                                  <form class="form-horizontal">
-
-                                    <div class="form-group glow-input">
-                                      <label class="col-sm-2 control-label">Link</label>
-                                      <div class="col-sm-10">
-                                        <input class="form-control input-sm" id="custom-menu-item-url" name="url" type="text" value="http://">
-                                      </div>
-                                    </div>
-
-                                    <div class="form-group glow-input">
-                                      <label class="col-sm-2 control-label">Label</label>
-                                      <div class="col-sm-10">
-                                        <input class="form-control input-sm" id="custom-menu-item-name" name="label" type="text" title="Label menu">
-                                      </div>
-                                    </div>
-
-                                    <div>
-                                      <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
-                                        Add Menu item
-                                      </button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h5 class="" style="margin: 0;padding: 0;">
-                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                                  Categories</a>
-                                </h5>
-                              </div>
-                              <div id="collapse4" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                  
-                                      <div>
-                                        <button type="submit" class="btn btn-dark btn-xs pull-right" style="margin-top: 20px;" >
-                                          Add Menu item
-                                        </button>
-                                      </div>
-
-                                 
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div><!--Left Column-->
-
-                        <!--Right Column-->
-                        <div class="col-md-8 col-xs-12">
-                          
-                          <!--IF menu is selected-->
-                          <div class="panel panel-default"  v-if="this.menuselect == true">
-
-                              <div class="panel-heading" style="padding-bottom: 0;">
-
-                                <form  class="form-horizontal">                                 
-                                  <div class="form-group glow-input">                                   
-                                    <div class="col-sm-6 col-xs-7">
-                                      <h4>{{this.selectedmenu}}</h4>
-                                    </div>
-
-                                      <div class="publishing-action">                                        
-                                        <button class="btn btn-dark btn-sm pull-right">Save menu</button>
-                                      </div>                                   
-
-                                  </div>                                     
-                                </form>
-
-                              </div>
-                              
-                              <div class="panel-body">                                  
-                                <h4>Menu Structure</h4>
-                                <div class="drag-instructions post-body-plain" style="">
-                                  <p>
-                                    Place each item in the order you prefer. Click on the arrow to the right of the item to display more configuration options.
-                                  </p>
-                                </div>
-
-                                <div class="panel-group col-md-6" id="accordion">
-
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h5 style="margin: 0;padding: 0;">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse">
-                                        Collapsible Group 1</a>
-                                      </h5>
-                                    </div>
-                                    <div id="collapse" class="panel-collapse collapse">
-                                      <div class="panel-body">
-                                       
-                                        
-
-                                      </div>
-                                    </div>
-                                  </div>                                 
-                                </div>
-                                 
-                              </div>
-                          </div>
-
-
-                          <!--New Menu is clicked-->
-                          <div class="panel panel-default" v-if="this.newmenu == true">
-
-                              <div class="panel-heading" style="padding-bottom: 0;">
-
-                                <form  class="form-horizontal" @submit.prevent="">                                 
-                                  <div class="form-group glow-input">                                   
-                                    <div class="col-sm-6 col-xs-7">
-                                      <input class="form-control input-sm"  placeholder="Menu Name" value=""  required="">
-                                    </div>
-
-                                      <div class="publishing-action">                                        
-                                        <button class="btn btn-dark btn-sm pull-right" @click="addnewmenu">Create menu</button>
-                                      </div>                                   
-
-                                  </div>                                     
-                                </form>
-
-                              </div>
-                              
-                              <div class="panel-body">                                  
-                                <h4>Create Menu</h4>
-                                <div class="drag-instructions post-body-plain" style="">
-                                  <p>
-                                    Enter a menu name to create new menu
-                                  </p>
-                                </div>
-
-                                <div class="panel-group col-md-6" id="accordion" v-if="this.menuselect == true">
-
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      <h5 style="margin: 0;padding: 0;">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse">
-                                        Collapsible Group 1</a>
-                                      </h5>
-                                    </div>
-                                    <div id="collapse" class="panel-collapse collapse">
-                                      <div class="panel-body">
-                                       
-                                        
-
-                                      </div>
-                                    </div>
-                                  </div>                                 
-                                </div>
-                                 
-                              </div>
-                          </div>
-                        </div><!--Right Column-->
-
-                      </div>
-
-                  </div>  
-                </div>
-              </div>
-            </div>
+   
 
 	</section>
 </template>
@@ -400,47 +201,46 @@
 	export default{
 		data(){
 			return{
-			      menuselect:false,
-            newmenu:false,
-            selectedmenu:'',
-            menus:'',
-            menu_name:{'name':''},
-            errors:[],
-            error_message:'',
-            checked:false,
-            menuname:''
+	      menuselect:false,
+        newmenu:'',
+        selectedmenu:'',
+        menuname:'Test Menu',
+        menus:'',
+        errors:[],
+        error_message:'',
+        checked:false,
+        menuname:'',
+        editmenu:false
 			}
 		},
 		watch:{
-      selectedmenu(){
-        toast({
-                type: 'success',
-                title: this.selectedmenu + ' is selected'
-            })
-      }
-
+  
 		},
 		methods:{
 		  selectmenu(){
-          this.newmenu=false;
-          this.menuselect=false;   
+        this.editmenu = true   
+        this.menuname = this.selectedmenu;
+        //this.menuselect = false;
       },
       createmenu(){
-        this.menuselect=false;
-        this.newmenu=true;
+        //this.newmenu=true;
+        //this.menuselect=false;
+        this.editmenu = true
       },
       addnewmenu(){
 
-         if(this.menu_name.name == ''){
+         if(this.menuname == ''){
           toast({
                 type: 'warning',
                 title: 'please enter a menu name'
             })
          }else{
-            axios.post('menu/add',this.menu_name)
+            axios.post('menu/add',{name:this.menuname})
             .then(response => {
               console.log(response.data);
-              this.menus=response.data           
+
+              this.menus=response.data
+              this.selectmenu = this.menuname        
               //this.$emit('recordupdated',data),
               //this.success='Service added successfully'
               //this.client={}

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 185);
+/******/ 	return __webpack_require__(__webpack_require__.s = 190);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -64023,17 +64023,22 @@ return VueChatScroll;
 /* 182 */,
 /* 183 */,
 /* 184 */,
-/* 185 */
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(186);
-__webpack_require__(190);
-__webpack_require__(193);
-module.exports = __webpack_require__(194);
+__webpack_require__(191);
+__webpack_require__(195);
+__webpack_require__(198);
+module.exports = __webpack_require__(199);
 
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -64044,18 +64049,18 @@ __webpack_require__(140);
 //Vendors
 //require('../../vendor/modernizr/modernizr-2.8.3.min.js');
 ////require('../../vendor/magnific-popup/magnific-popup.min.js');
-__webpack_require__(187);
+__webpack_require__(192);
 //require('../../vendor/wow/wow.min.js');
 //require('../../vendor/isotope/isotope.pkgd.min.js');
 //require('../../vendor/owlcarousel/js/owl.carousel.min.js');
 
 //require('../../vendor/superfish/superfish.min.js');
-__webpack_require__(188);
+__webpack_require__(193);
 
-__webpack_require__(189);
+__webpack_require__(194);
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports) {
 
 
@@ -64117,7 +64122,7 @@ __webpack_require__(189);
 })(jQuery);
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64221,7 +64226,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.filter('vueTime', function () {
 });
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, exports) {
 
 
@@ -64461,21 +64466,21 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 191 */,
-/* 192 */,
-/* 193 */
+/* 196 */,
+/* 197 */,
+/* 198 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \r\n$sidebar:#2D353E://#192F49;\r\n        ^\r\n      Invalid CSS after \"$sidebar:#2D353E\": expected 1 selector or at-rule, was \"://#192F49;\"\r\n      in C:\\xampp\\htdocs\\digizigs\\app\\Asset\\scss\\admin\\admin_main.scss (line 20, column 10)\n    at runLoaders (C:\\xampp\\htdocs\\digizigs\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\xampp\\htdocs\\digizigs\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\xampp\\htdocs\\digizigs\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\xampp\\htdocs\\digizigs\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (C:\\xampp\\htdocs\\digizigs\\node_modules\\sass-loader\\lib\\loader.js:55:13)\n    at Object.done [as callback] (C:\\xampp\\htdocs\\digizigs\\node_modules\\neo-async\\async.js:8077:18)\n    at options.error (C:\\xampp\\htdocs\\digizigs\\node_modules\\node-sass\\lib\\index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 194 */
+/* 199 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -8,7 +8,8 @@
                     <div class="row clearfix">
 
                         <div class="col-xs-12 col-sm-3">
-                            <profilecard :user="user" :roles="roles" :profile="profile" ></profilecard>                           
+                            <profilecard :user="user" :roles="roles" :profile="profile" ></profilecard>   
+
                         </div>
 
                         <div class="col-xs-12 col-sm-9">
@@ -16,8 +17,15 @@
                                 <div class="body">
                                     <div class="material-tab-pane">
                                         <ul class="nav nav-tabs" role="tablist">
-                                            <li role="presentation" class="active"><a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a></li>
-                                            <li role="presentation"><a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Change Password</a></li>
+                                            <li role="presentation" class="active">
+                                                <a href="#profile_settings" aria-controls="settings" role="tab" data-toggle="tab">Profile Settings</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#change_password_settings" aria-controls="settings" role="tab" data-toggle="tab">Change Password</a>
+                                            </li>
+                                             <li role="presentation">
+                                                <a href="#oauth" aria-controls="settings" role="tab" data-toggle="tab">OAuth</a>
+                                            </li>
                                         </ul>
 
                                         <div class="tab-content">
@@ -33,6 +41,12 @@
                                                 <passwordchange :user="user"></passwordchange>
                                             </div>
                                             <!--PAssword change area-->
+
+                                            <!--OAuth-->
+                                            <div role="tabpanel" class="tab-pane fade in" id="oauth">
+                                                Oauth
+                                            </div>
+                                            <!--OAuth-->
 
                                         </div>
                                     </div>
@@ -51,8 +65,8 @@
 	export default{
 		data(){
 			return{
-				user:'',
-                profile:'',
+				user:{},
+                profile:{},
                 roles:[]
 			}
 		},
@@ -74,7 +88,7 @@
                     this.user = response.data.user;
                     this.roles = response.data.roles
                     this.profile = response.data.user.profile
-                    console.log(response.data)
+                    //console.log(response.data.user.profile)
                 })
 		
 		}

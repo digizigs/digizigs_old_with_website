@@ -7,7 +7,7 @@
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" @click="modalclose">&times;</button>
             <h4 class="modal-title" id="defaultModalLabel">
-              {{post.title}}.
+              {{post.title}}
             </h4>
 
           </div>
@@ -20,7 +20,7 @@
             
               <div v-if="post.user" class="mb5">
                 <b>Author:</b>
-                {{post.user.firstname}}
+                {{post.user.name}}
               </div>
 
               <div v-if="post.categories !='' " class="mb5">
@@ -48,7 +48,7 @@
               </span>
 
               <div v-html="post.body" class="col-md-12 col-xs-12 post-body mt20">
-
+                
               </div>
             
 
@@ -77,6 +77,11 @@
 			
 			}
 		},
+    watch:{
+      post(){
+        console.log(this.post.body)
+      }
+    },
 		methods:{
 			modalclose(){
 
