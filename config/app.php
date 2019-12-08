@@ -66,7 +66,7 @@ return [
         Nexmo\Laravel\NexmoServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         App\Providers\Social\InstagramServiceProvider::class,
-        App\Providers\Social\FAcebookServiceProvider::class,
+        App\Providers\Social\FacebookServiceProvider::class,
 
     ],
 
